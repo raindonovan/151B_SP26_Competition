@@ -13,9 +13,14 @@ You may read and modify files freely. Always confirm before destructive operatio
 
 ---
 
-## Notebook Scan (Before Every Reply)
+## ⚠️ NOTEBOOK SCAN (MANDATORY BEFORE EVERY REPLY) ⚠️
 
-Before responding, read `starter_code_cse151b_comp.ipynb` and check for:
+**ALWAYS read this exact file — NO EXCEPTIONS:**
+**`/home/dvaneetv/151B_SP26_Competition/starter_code_cse151b_comp.ipynb`**
+
+There is ANOTHER notebook at `/home/dvaneetv/cse151b-math-reasoning/notebooks/starter_code_cse151b_comp.ipynb` with the same filename. NEVER read that one. NEVER operate in that repo.
+
+Check for:
 - Any cell with an error output (exceptions, tracebacks)
 - The last cell that was executed and its output
 - Any warnings that may affect results
