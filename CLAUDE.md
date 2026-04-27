@@ -45,6 +45,8 @@ When reviewing Codex output:
 ## Inference Constraints (CRITICAL)
 
 - Final model: `Qwen/Qwen3-4B-Thinking-2507`
+- Inference uses **Transformers + BitsAndBytes INT4** — vLLM is not used and has been abandoned
+- Do NOT suggest vLLM as a solution or alternative under any circumstances
 - No external tools, APIs, or calculators at inference time
 - All reasoning must come from the model
 
