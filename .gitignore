@@ -4,3 +4,5 @@ results
 data
 __pycache__
 LICENSE.ipynb_checkpoints/
+core
+*.core
