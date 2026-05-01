@@ -2,7 +2,7 @@
 
 ## Working Repo
 
-All work lives in `/home/dvaneetv/151B_SP26_Competition`. Always operate in this directory. Never assume a different repo.
+All work lives in `/workspace/151B_SP26_Competition`. Always operate in this directory. Never assume a different repo.
 
 ---
 
@@ -15,15 +15,34 @@ You may read and modify files freely. Always confirm before destructive operatio
 
 ## ⚠️ NOTEBOOK SCAN (MANDATORY BEFORE EVERY REPLY) ⚠️
 
-**ALWAYS read this exact file — NO EXCEPTIONS:**
-**`/home/dvaneetv/151B_SP26_Competition/starter_code_cse151b_comp.ipynb`**
+**ALWAYS scan this file before doing anything else — NO EXCEPTIONS:**
+**`/workspace/151B_SP26_Competition/starter_code_cse151b_comp.ipynb`**
 
-Check for:
-- Any cell with an error output (exceptions, tracebacks)
-- The last cell that was executed and its output
-- Any warnings that may affect results
+Run this to read all cell outputs:
+```bash
+python -c "
+import json
+nb = json.load(open('/workspace/151B_SP26_Competition/starter_code_cse151b_comp.ipynb'))
+for i, c in enumerate(nb['cells']):
+    outputs = c.get('outputs', [])
+    if outputs:
+        print(f'--- Cell {i} (id={c[\"id\"]}) ---')
+        for o in outputs:
+            text = ''.join(o.get('text',''))
+            tb = o.get('traceback', [])
+            if tb:
+                import re; print(re.sub(r'\x1b\[[0-9;]*m','','\n'.join(tb))[-400:])
+            elif text.strip():
+                print(text[-400:])
+        print()
+"
+```
 
-Report findings at the top of your reply if anything looks wrong.
+Check for and report:
+- Any cell with an error or traceback
+- Whether the save cell ran (look for `Saved N records to ...`)
+- The last executed cell and its output
+- Generation summary stats if present (cutoffs, gen_tokens, est. runtime)
 
 ---
 
