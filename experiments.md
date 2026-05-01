@@ -16,7 +16,7 @@
 |-----|------------|-----------|---:|-------------|--------|--------------|-----:|--------:|:-------------|:-------------|:-------------|---------|------|--------------|-------|
 | 01  | 2026-05-01 | completed |  5 | `data[:5]`  | v1     | Transformers | 2048 | ?       | 0/2 = 0.0%   | 2/3 = 66.7%  | 2/5 = 40.0%  | —       | —    | [starter_results.jsonl](results/starter_results.jsonl) | Smoke test; cutoffs not tracked |
 | 02  | 2026-05-01 | completed | 20 | `data[:20]` | v1     | Transformers | 4096 | 9/20?   | 3/9 = 33.3%  | 6/11 = 54.5% | 9/20 = 45.0% | —       | —    | [run02_baseline_20_tok4096.jsonl](results/run02_baseline_20_tok4096.jsonl) | 9/20 missing \boxed{}; likely cutoffs |
-| 03  | 2026-05-01 | completed | 20 | `data[:20]` | v1     | Transformers | 8192 | 6/20    | 3/9 = 33.3%  | 6/11 = 54.5% | 9/20 = 45.0% | 123.8 h est | —    | [run03_tok8192_20.jsonl](results/run03_tok8192_20.jsonl) | Cutoffs 9→6; score unchanged |
+| 03  | 2026-05-01 | completed | 20 | `data[:20]` | v1     | Transformers | 8192 | 6       | 4/9 = 44.4%  | 6/11 = 54.5% | 10/20 = 50.0% | 131.9 min | ~$1.52 | [run03_tok8192_20.jsonl](results/run03_tok8192_20.jsonl) | Higher token cap improved baseline but 6 cutoff/no-box failures remain |
 
 ---
 
@@ -119,7 +119,14 @@ Decision rule after each run:
 - **Results:** [run03_tok8192_20.jsonl](results/run03_tok8192_20.jsonl)
 
 **Observations:**
-- TBD
+- Overall accuracy: 10/20 = 50.0% (up from 45.0% in Run 02).
+- MCQ: 4/9 = 44.4% (up from 33.3%); one previously-cutoff question (id=4) now completed and correct.
+- Free-form: 6/11 = 54.5% (unchanged); the two newly-completed free-form items were still wrong.
+- Runtime: ~131.9 minutes for 20 questions (mean 395.7s/question).
+- Average generated tokens: ~5466 (p50=5895, p95=8192, max=8192).
+- Six responses hit the 8192-token cap with no `\boxed{}` — 5 of 6 are MCQ.
+- The MCQ prompt does not tell the model to commit to an answer once confident — it treats pick-a-letter questions like full derivations and never stops. Next MCQ experiment should enforce early answer commitment.
+- **Critical:** at 395.7s/question, a full 1126-question run takes ~124 hrs and costs ~$85 at $0.69/hr. Speed must be addressed before scaling up — this pace is completely unsustainable.
 
 ---
 
