@@ -1,89 +1,88 @@
-# CSE 151B Math Reasoning — Claude CLI Agent
- 
-## Working Repo
-All work lives in `/home/dvaneetv/151B_SP26_Competition`. Always operate in this directory. Never assume a different repo.
- 
+# CSE 151B — Competition Reference
+
+## Overview
+Improve mathematical reasoning of `Qwen/Qwen3-4B-Thinking-2507` using only model-intrinsic methods. No external APIs or tool-augmented generation permitted at inference time.
+
+Evaluated on **unified accuracy**: total correct / total questions, equally weighted across all benchmarks. Problems span high-school to graduate level math.
+
 ---
- 
-## Workflow
-This CLI agent is the **execution arm**. Strategy, planning, and high-level decisions happen in a separate planning chat (Claude in Cowork). 
- 
-Your job is to **implement what has been decided**, not to design strategy from scratch. When you encounter a decision point that isn't covered by your instructions:
-- Do less, not more
-- Surface the question to the user: "This needs a strategy decision — bring it to the planning chat"
-- Never guess at high-level direction
+
+## Allowed Methods
+1. **Prompt engineering** — chain-of-thought, few-shot, self-consistency, progressive-hint prompting, etc.
+2. **Supervised fine-tuning** — LoRA, QLoRA, or full fine-tuning on any publicly available data
+3. **Reinforcement learning** — GRPO, DPO, outcome-based reward modeling, etc.
+
+**Not permitted:** external model calls, API access, code interpreters, calculators at inference time.
+
 ---
- 
-## Role
-You are an **implementation agent running in CLI on DataHub**.
-You may read and modify files freely. Always confirm before destructive operations (deleting files, force-pushing, dropping data).
- 
+
+## Model Constraint
+- **Required model:** `Qwen/Qwen3-4B-Thinking-2507`
+- May be further trained with the above methods
+- No alternative models allowed for final response generation
+
 ---
- 
-## ⚠️ NOTEBOOK SCAN (MANDATORY BEFORE EVERY REPLY) ⚠️
-**ALWAYS read this exact file — NO EXCEPTIONS:**
-**`/home/dvaneetv/151B_SP26_Competition/starter_code_cse151b_comp.ipynb`**
- 
-Check for:
-- Any cell with an error output (exceptions, tracebacks)
-- The last cell that was executed and its output
-- Any warnings that may affect results
-Report findings at the top of your reply if anything looks wrong.
- 
+
+## Dataset Format
+Problems are in JSONL format (one JSON object per line).
+
+### Data Fields
+| Field | Description |
+|---|---|
+| `id` | Unique integer identifier |
+| `question` | Problem statement in LaTeX. Free-form uses `[ANS]` placeholders |
+| `answer` | List of strings (free-form) or single capital letter (MCQ) |
+| `options` | (MCQ only) List of candidate answer choices in LaTeX |
+
+### Question Types
+
+**Free-form (single answer):**
+```json
+{"question": "...$\\frac{1}{(-8)^{-3}}=$ [ANS]...", "answer": ["-512"], "id": 4}
+```
+
+**Free-form (multiple answers):**
+```json
+{"question": "...f(3)= [ANS]\\n(b) f(-3)= [ANS]...", "answer": ["41", "35", "16"], "id": 2}
+```
+
+**Multiple-choice:**
+```json
+{"question": "...", "options": ["...", "..."], "answer": "C", "id": 1}
+```
+
+### Data Splits
+- **Public set:** Ground truth provided — use for development and validation
+- **Private set:** No answers — used for leaderboard and final ranking (~30% revealed during competition)
+
 ---
- 
-## Current State
-*(Update this section after each experiment)*
- 
-- **Baseline score:** `[TBD]`
-- **Current best score:** `[TBD]`
-- **Last experiment:** `[TBD]`
-- **What worked:** `[TBD]`
-- **What didn't work:** `[TBD]`
-- **Next planned experiment:** `[TBD]`
+
+## Scoring
+- **Metric:** Unified accuracy = correct / total, equal weight per question
+- **Free-form:** ALL sub-answers must be correct for a question to count
+- **MCQ:** Selected letter must match ground truth exactly
+- Final ranking uses full private test set revealed after deadline
+
 ---
- 
-## Core Behavior
-- Implement **one change at a time** as directed by the planning chat
-- Define what success and failure look like before running anything
-- After each run, report: what changed, what the result was, and what the next question is
-- When reviewing or writing code: check correctness, complexity, and hidden assumptions
+
+## Submission Format
+CSV file with predictions for every problem in `private.jsonl`.
+
+```
+id,response
+0,"[full reasoning trace] ... The answer is \boxed{42}"
+1,"[full reasoning trace] ... \boxed{580, 660, 80}"
+```
+
+### Rules
+- `response` must be the **complete raw model output** including all chain-of-thought/thinking tokens
+- Properly quote and escape the response field (standard CSV double-quoting, inner quotes as `""`)
+- Every `id` in `private.jsonl` must have a row
+- Final answer is extracted from the response trace during evaluation
+
 ---
- 
-## Inference Constraints (CRITICAL)
-- Final model: `Qwen/Qwen3-4B-Thinking-2507`
-- Inference uses **Transformers + BitsAndBytes INT4** — vLLM is not used and has been abandoned
-- Do **NOT** suggest vLLM as a solution or alternative under any circumstances
-- No external tools, APIs, or calculators at inference time
-- All reasoning must come from the model
----
- 
-## Prompt Engineering
-- Output format must be: `\boxed{<answer>}` (letter for MCQ, value/expression for free-form)
-- Instructions must be explicit and unambiguous
-- Prioritize reasoning quality and extraction reliability
----
- 
-## SFT / Training
-- Quality over quantity
-- Correct reasoning traces only
-- No large-scale data generation without validation
-- Always checkpoint before training — confirm with user if unsure
----
- 
-## Codex Sync
-Codex uses `AGENTS.md` as its equivalent persistent instruction file. Keep shared rules (inference constraints, experimentation discipline, prompt format) in sync between `CLAUDE.md` and `AGENTS.md`.
- 
----
- 
-## Memory
-Do NOT write to the memory system. Instead, when you would save a memory, surface it to the user with: "Worth adding to CLAUDE.md: [what you'd save]" and let them decide.
- 
----
- 
-## Principles
-- One variable at a time
-- Small commits, clear messages
-- Keep explanations concise — user is a CS student learning
-- When unsure, ask and do less
-- Flag anything strategy-level back to the planning chat
+
+## Starter Code
+Repository: `https://github.com/brooksniu/151B_SP26_Competition`
+Local path (RunPod): `/workspace/151B_SP26_Competition`
+Local path (DataHub): `/home/dvaneetv/151B_SP26_Competition`
