@@ -62,8 +62,8 @@ When reviewing Codex output:
 ## Inference Constraints (CRITICAL)
 
 - Final model: `Qwen/Qwen3-4B-Thinking-2507`
-- Inference uses **Transformers + BitsAndBytes INT4** — vLLM is not used and has been abandoned
-- Do NOT suggest vLLM as a solution or alternative under any circumstances
+- Primary inference: **Transformers + BitsAndBytes INT4** (working, stable)
+- vLLM is a valid option for scaling but must be kept in an isolated environment (separate venv or pod) — do not contaminate the working Transformers `.venv`
 - No external tools, APIs, or calculators at inference time
 - All reasoning must come from the model
 
