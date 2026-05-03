@@ -34,7 +34,6 @@ from vllm import LLM, SamplingParams  # noqa: E402
 
 MODEL_ID = "Qwen/Qwen3-4B-Thinking-2507"
 METHOD = "vllm"
-PROMPT_VERSION = "v1-baseline"
 
 # Engine config — referenced by both LLM(...) and the summary.
 DTYPE = "bfloat16"
@@ -51,28 +50,51 @@ SAMPLING = {
     "repetition_penalty": 1.0,
 }
 
-SYSTEM_PROMPT_MATH = (
-    "You are an expert mathematician. Solve the problem step-by-step. "
-    "Put your final answer inside \\boxed{}. "
-    "If the problem has multiple sub-answers, separate them by commas inside a single \\boxed{}, "
-    "e.g. \\boxed{3, 7}. "
-    "Give numerical answers to at least 4 significant figures, unless the problem specifies a different precision."
-)
+# Prompt registry. Each policy's strings are stored verbatim — do NOT replace
+# duplicate text across policies with shared variables or references. The
+# redundancy is intentional: a reader auditing any single policy needs to see
+# its exact text without cross-referencing other policies. Treat this as
+# config, not code.
+PROMPTS = {
+    "v1-baseline": {
+        "mcq": (
+            "You are an expert mathematician. "
+            "Read the problem and the answer choices below, then select the single best answer. "
+            "Output ONLY the letter of your chosen option inside \\boxed{}, e.g. \\boxed{C}."
+        ),
+        "free": (
+            "You are an expert mathematician. Solve the problem step-by-step. "
+            "Put your final answer inside \\boxed{}. "
+            "If the problem has multiple sub-answers, separate them by commas inside a single \\boxed{}, "
+            "e.g. \\boxed{3, 7}. "
+            "Give numerical answers to at least 4 significant figures, unless the problem specifies a different precision."
+        ),
+    },
+    "v2-mcq-commit": {
+        "mcq": (
+            "You are an expert mathematician. Choose the single correct option from the choices below. "
+            "After your reasoning, output exactly one final answer in the form \\boxed{LETTER}, where LETTER is one of A, B, C, etc. "
+            "Stop generating immediately after \\boxed{}."
+        ),
+        "free": (
+            # Identical to v1-baseline.free — copied verbatim for auditability.
+            "You are an expert mathematician. Solve the problem step-by-step. "
+            "Put your final answer inside \\boxed{}. "
+            "If the problem has multiple sub-answers, separate them by commas inside a single \\boxed{}, "
+            "e.g. \\boxed{3, 7}. "
+            "Give numerical answers to at least 4 significant figures, unless the problem specifies a different precision."
+        ),
+    },
+}
 
-SYSTEM_PROMPT_MCQ = (
-    "You are an expert mathematician. "
-    "Read the problem and the answer choices below, then select the single best answer. "
-    "Output ONLY the letter of your chosen option inside \\boxed{}, e.g. \\boxed{C}."
-)
 
-
-def build_prompt(question: str, options: Optional[list]) -> tuple[str, str]:
-    """Return (system_prompt, user_prompt) for a question — v1 baseline."""
+def build_prompt(question: str, options: Optional[list], policy: dict) -> tuple[str, str]:
+    """Return (system_prompt, user_prompt) for a question under `policy`."""
     if options:
         labels = [chr(65 + i) for i in range(len(options))]
         opts_text = "\n".join(f"{lbl}. {opt.strip()}" for lbl, opt in zip(labels, options))
-        return SYSTEM_PROMPT_MCQ, f"{question}\n\nOptions:\n{opts_text}"
-    return SYSTEM_PROMPT_MATH, question
+        return policy["mcq"], f"{question}\n\nOptions:\n{opts_text}"
+    return policy["free"], question
 
 
 def extract_letter(text: str) -> str:
@@ -108,6 +130,12 @@ def has_boxed(response: str) -> bool:
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser()
     p.add_argument("--run-id", required=True)
+    p.add_argument(
+        "--prompt-version",
+        default="v1-baseline",
+        choices=list(PROMPTS.keys()),
+        help="Which prompt policy from the PROMPTS registry to use.",
+    )
     p.add_argument(
         "--slice",
         default=None,
@@ -200,11 +228,13 @@ def main() -> None:
     slice_id_value = slice_info["slice_id"] if slice_info else None
     slice_path_value = str(args.slice) if args.slice else None
 
+    policy = PROMPTS[args.prompt_version]
+
     tokenizer = AutoTokenizer.from_pretrained(MODEL_ID, trust_remote_code=True)
 
     prompts = []
     for item in items:
-        system, user = build_prompt(item["question"], item.get("options"))
+        system, user = build_prompt(item["question"], item.get("options"), policy)
         prompt_text = tokenizer.apply_chat_template(
             [
                 {"role": "system", "content": system},
@@ -276,7 +306,7 @@ def main() -> None:
             "hit_token_cap": hit_cap,
             "has_boxed_answer": boxed,
             "method": METHOD,
-            "prompt_version": PROMPT_VERSION,
+            "prompt_version": args.prompt_version,
             "model": MODEL_ID,
             "max_new_tokens": args.max_new_tokens,
             "slice_id": slice_id_value,
@@ -327,7 +357,9 @@ def main() -> None:
         "finished_at": finished_at,
         "model": MODEL_ID,
         "method": METHOD,
-        "prompt_version": PROMPT_VERSION,
+        "prompt_version": args.prompt_version,
+        "system_prompt_mcq": policy["mcq"],
+        "system_prompt_free": policy["free"],
         "vllm_version": vllm.__version__,
         "torch_version": torch.__version__,
         "transformers_version": transformers.__version__,
@@ -386,6 +418,7 @@ def main() -> None:
     print(f"Run ID            : {args.run_id}")
     if slice_info:
         print(f"Slice             : {slice_info['slice_id']}  ({args.slice})")
+    print(f"Prompt            : {args.prompt_version}")
     print(f"Output            : {out_path}")
     print(f"Summary           : {summary_path}")
     print(f"Questions         : {n}  (mcq={n_mcq}, free={n_free})")
