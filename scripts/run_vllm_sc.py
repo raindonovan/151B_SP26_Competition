@@ -1,0 +1,392 @@
+"""Self-consistency runner: N samples per prompt, majority vote.
+
+Builds on scripts/run_vllm_experiment.py — imports PROMPTS, SAMPLING,
+prompt building, slice loading, and scoring helpers from there to keep
+the prompt registry and extraction paths as a single source of truth.
+
+Differences from the deterministic runner:
+- SamplingParams(n=N, ...) — vLLM batches the N samples per prompt natively.
+- Vote on the EXTRACTED ANSWER STRING per sample, take majority.
+  - Empty extractions (no \\boxed{} found) excluded from the voting pool.
+  - Tie-break: lexicographically smallest. Deterministic.
+  - Two mathematically-equivalent forms vote SEPARATELY. Run 06 id=48
+    is the canonical example: gold I = (4/3)ln3 and E = (2/3)ln9 are
+    identical math but distinct strings — they would not combine even
+    if 5 samples produce I and 3 produce E. Symbolic-equivalence-aware
+    voting would require running sympy inside the vote loop (~9x cost
+    per item) AND would change scoring semantics mid-sweep. Out of scope.
+- Score voted_answer once via the existing single-sample path:
+  wrap in \\boxed{...} and pass through score_mcq / Judger.auto_judge.
+  Per-sample correctness is NOT computed — would burn ~9 sympy parses
+  per sample on free-form, multiplying cost by N.
+"""
+
+import argparse
+import json
+import os
+import sys
+import time
+from collections import Counter
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Optional
+
+# Must be set before `import vllm` — required by current pod setup.
+os.environ["VLLM_USE_V1"] = "0"
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(REPO_ROOT))
+sys.path.insert(0, str(REPO_ROOT / "scripts"))
+
+import torch  # noqa: E402
+import transformers  # noqa: E402
+import vllm  # noqa: E402
+from judger import Judger  # noqa: E402
+from transformers import AutoTokenizer  # noqa: E402
+from vllm import LLM, SamplingParams  # noqa: E402
+
+# Re-use everything stable from the deterministic runner so the prompt
+# registry and extraction paths can never drift between runners.
+from run_vllm_experiment import (  # noqa: E402
+    PROMPTS,
+    SAMPLING,
+    DTYPE,
+    QUANTIZATION,
+    GPU_MEMORY_UTILIZATION,
+    VLLM_USE_V1,
+    MODEL_ID,
+    build_prompt,
+    extract_letter,
+    score_mcq,
+    load_data,
+    load_slice,
+    load_data_by_ids,
+)
+
+METHOD = "vllm-sc"
+
+
+def extract_for_voting(text: str, is_mcq: bool, judger: Judger) -> str:
+    """Extract the answer string for majority voting.
+
+    Matches the extraction path the deterministic runner uses to score
+    a single response, so SC results are comparable to single-sample
+    runs item-by-item.
+
+    Returns "" if no answer can be extracted; "" is excluded from the
+    voting pool in vote().
+    """
+    if is_mcq:
+        return extract_letter(text)
+    return judger.extract_ans(text) or ""
+
+
+def vote(extracted: list[str]) -> tuple[str, int, bool]:
+    """Majority-vote among extracted answer strings.
+
+    Empty extractions are excluded from the voting pool. Tie-break is
+    lexicographically smallest (deterministic).
+
+    Returns (winning_answer, vote_count, tie_broken):
+      - winning_answer: "" if all extractions were empty
+      - vote_count:     0 if all empty, else max count among non-empty
+      - tie_broken:     True iff multiple candidates tied for max
+    """
+    candidates = [a for a in extracted if a]
+    if not candidates:
+        return "", 0, False
+    counts = Counter(candidates)
+    max_count = max(counts.values())
+    winners = sorted(a for a, c in counts.items() if c == max_count)
+    return winners[0], max_count, len(winners) > 1
+
+
+def parse_args() -> argparse.Namespace:
+    p = argparse.ArgumentParser()
+    p.add_argument("--run-id", required=True)
+    p.add_argument(
+        "--prompt-version",
+        default="v1-baseline",
+        choices=list(PROMPTS.keys()),
+        help="Which prompt policy from the PROMPTS registry to use.",
+    )
+    p.add_argument(
+        "--slice",
+        default=None,
+        help="Path to a slice JSON. Mutually exclusive with --data-end.",
+    )
+    p.add_argument("--data-start", type=int, default=0)
+    p.add_argument("--data-end", type=int, default=None)
+    p.add_argument("--max-new-tokens", type=int, required=True)
+    p.add_argument("--output", required=True)
+    p.add_argument("--max-model-len", type=int, default=16384)
+    p.add_argument("--data-path", default=str(REPO_ROOT / "data" / "public.jsonl"))
+    p.add_argument(
+        "--n-samples",
+        type=int,
+        default=8,
+        help="Number of samples per question for self-consistency vote (default 8).",
+    )
+    args = p.parse_args()
+    if args.slice is not None and args.data_end is not None:
+        p.error("--slice and --data-end are mutually exclusive")
+    if args.slice is None and args.data_end is None:
+        p.error("either --slice or --data-end must be provided")
+    if args.n_samples < 1:
+        p.error("--n-samples must be >= 1")
+    return args
+
+
+def percentile(values: list[float], p: int) -> Optional[float]:
+    """Nearest-rank percentile."""
+    if not values:
+        return None
+    s = sorted(values)
+    return s[min(int(len(s) * p / 100), len(s) - 1)]
+
+
+def main() -> None:
+    started_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    args = parse_args()
+    out_path = Path(args.output)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+
+    if args.slice:
+        slice_info = load_slice(args.slice)
+        items = load_data_by_ids(args.data_path, slice_info["ids"])
+        print(
+            f"Loaded {len(items)} questions from slice "
+            f"{slice_info.get('slice_id')!r} ({args.slice}) over {args.data_path}"
+        )
+    else:
+        slice_info = None
+        items = load_data(args.data_path, args.data_start, args.data_end)
+        print(
+            f"Loaded {len(items)} questions [{args.data_start}:{args.data_end}] "
+            f"from {args.data_path}"
+        )
+
+    slice_id_value = slice_info["slice_id"] if slice_info else None
+    slice_path_value = str(args.slice) if args.slice else None
+    policy = PROMPTS[args.prompt_version]
+
+    tokenizer = AutoTokenizer.from_pretrained(MODEL_ID, trust_remote_code=True)
+
+    prompts = []
+    for item in items:
+        system, user = build_prompt(item["question"], item.get("options"), policy)
+        prompt_text = tokenizer.apply_chat_template(
+            [
+                {"role": "system", "content": system},
+                {"role": "user", "content": user},
+            ],
+            tokenize=False,
+            add_generation_prompt=True,
+        )
+        prompts.append(prompt_text)
+
+    llm = LLM(
+        model=MODEL_ID,
+        dtype=DTYPE,
+        trust_remote_code=True,
+        gpu_memory_utilization=GPU_MEMORY_UTILIZATION,
+        max_model_len=args.max_model_len,
+    )
+
+    sampling_params = SamplingParams(
+        n=args.n_samples,
+        max_tokens=args.max_new_tokens,
+        **SAMPLING,
+    )
+
+    print(
+        f"Generating {args.n_samples} samples × {len(prompts)} prompts "
+        f"(max_new_tokens={args.max_new_tokens})..."
+    )
+    t0 = time.perf_counter()
+    outputs = llm.generate(prompts, sampling_params=sampling_params)
+    runtime = time.perf_counter() - t0
+
+    judger = Judger(strict_extract=False)
+    rows = []
+    for item, out in zip(items, outputs):
+        is_mcq = isinstance(item.get("options"), list) and len(item["options"]) > 0
+        gold = item["answer"]
+
+        # Per-sample extraction
+        samples = []
+        for completion in out.outputs:
+            response = completion.text
+            extracted = extract_for_voting(response, is_mcq, judger)
+            samples.append({
+                "response": response,
+                "gen_tokens": len(completion.token_ids),
+                "hit_token_cap": len(completion.token_ids) >= args.max_new_tokens,
+                "extracted_answer": extracted,
+            })
+
+        # Vote
+        voted_answer, vote_count, tie_broken = vote(
+            [s["extracted_answer"] for s in samples]
+        )
+        agreement_rate = vote_count / args.n_samples
+        sample1_answer = samples[0]["extracted_answer"] if samples else ""
+        voted_diff_from_sample1 = voted_answer != sample1_answer
+
+        # Score voted answer via existing single-sample path
+        if voted_answer:
+            voted_response = f"\\boxed{{{voted_answer}}}"
+            if is_mcq:
+                correct = score_mcq(voted_response, str(gold))
+                gold_field = gold
+            else:
+                gold_list = gold if isinstance(gold, list) else [gold]
+                try:
+                    correct = judger.auto_judge(
+                        pred=voted_response,
+                        gold=gold_list,
+                        options=[[]] * len(gold_list),
+                    )
+                except Exception:
+                    correct = False
+                gold_field = gold_list
+        else:
+            correct = False
+            gold_field = gold if is_mcq else (
+                gold if isinstance(gold, list) else [gold]
+            )
+
+        rows.append({
+            "run_id": args.run_id,
+            "id": item.get("id"),
+            "is_mcq": is_mcq,
+            "question": item["question"],
+            "options": item.get("options"),
+            "gold": gold_field,
+            "samples": samples,
+            "voted_answer": voted_answer,
+            "agreement_rate": agreement_rate,
+            "tie_broken": tie_broken,
+            "voted_diff_from_sample1": voted_diff_from_sample1,
+            "correct": bool(correct),
+            "method": METHOD,
+            "prompt_version": args.prompt_version,
+            "model": MODEL_ID,
+            "max_new_tokens": args.max_new_tokens,
+            "n_samples": args.n_samples,
+            "slice_id": slice_id_value,
+            "slice_path": slice_path_value,
+            **SAMPLING,
+        })
+
+    with open(out_path, "w") as f:
+        for r in rows:
+            f.write(json.dumps(r, ensure_ascii=False) + "\n")
+
+    # Summary
+    n = len(rows)
+    n_mcq = sum(1 for r in rows if r["is_mcq"])
+    n_free = n - n_mcq
+    n_correct = sum(1 for r in rows if r["correct"])
+    n_mcq_correct = sum(1 for r in rows if r["is_mcq"] and r["correct"])
+    n_free_correct = sum(1 for r in rows if (not r["is_mcq"]) and r["correct"])
+    agreement_rates = [r["agreement_rate"] for r in rows]
+    n_unanimous = sum(1 for r in rows if r["agreement_rate"] == 1.0)
+    n_tie_broken = sum(1 for r in rows if r["tie_broken"])
+    n_voted_changed_call = sum(1 for r in rows if r["voted_diff_from_sample1"])
+
+    all_tokens = [s["gen_tokens"] for r in rows for s in r["samples"]]
+    cutoffs_per_sample = sum(
+        1 for r in rows for s in r["samples"] if s["hit_token_cap"]
+    )
+
+    def safe_div(num, den):
+        return (num / den) if den else None
+
+    gpu_name = torch.cuda.get_device_name(0) if torch.cuda.is_available() else None
+    finished_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+
+    summary = {
+        "run_id": args.run_id,
+        "started_at": started_at,
+        "finished_at": finished_at,
+        "model": MODEL_ID,
+        "method": METHOD,
+        "prompt_version": args.prompt_version,
+        "system_prompt_mcq": policy["mcq"],
+        "system_prompt_free": policy["free"],
+        "vllm_version": vllm.__version__,
+        "torch_version": torch.__version__,
+        "transformers_version": transformers.__version__,
+        "torch_cuda_version": torch.version.cuda,
+        "gpu_name": gpu_name,
+        "dtype": DTYPE,
+        "quantization": QUANTIZATION,
+        "gpu_memory_utilization": GPU_MEMORY_UTILIZATION,
+        "vllm_use_v1": VLLM_USE_V1,
+        "data_path": args.data_path,
+        "data_start": args.data_start,
+        "data_end": args.data_end,
+        "slice_id": slice_id_value,
+        "slice_path": slice_path_value,
+        "slice_n": len(slice_info["ids"]) if slice_info else None,
+        "n": n,
+        "n_mcq": n_mcq,
+        "n_free": n_free,
+        "n_samples": args.n_samples,
+        "max_new_tokens": args.max_new_tokens,
+        "max_model_len": args.max_model_len,
+        **SAMPLING,
+        "overall_correct": n_correct,
+        "overall_accuracy": safe_div(n_correct, n),
+        "mcq_correct": n_mcq_correct,
+        "mcq_accuracy": safe_div(n_mcq_correct, n_mcq),
+        "free_correct": n_free_correct,
+        "free_accuracy": safe_div(n_free_correct, n_free),
+        "runtime_seconds": runtime,
+        "seconds_per_question": safe_div(runtime, n),
+        "agreement_rate_p25": percentile(agreement_rates, 25),
+        "agreement_rate_p50": percentile(agreement_rates, 50),
+        "agreement_rate_p75": percentile(agreement_rates, 75),
+        "n_unanimous": n_unanimous,
+        "n_tie_broken": n_tie_broken,
+        "n_voted_changed_call": n_voted_changed_call,
+        "total_gen_tokens_all_samples": sum(all_tokens),
+        "avg_gen_tokens_per_sample": safe_div(sum(all_tokens), len(all_tokens)),
+        "cutoffs_per_sample": cutoffs_per_sample,
+        "output_file": str(out_path),
+    }
+
+    if out_path.suffix == ".jsonl":
+        summary_path = out_path.with_suffix(".summary.json")
+    else:
+        summary_path = out_path.with_name(out_path.name + ".summary.json")
+    with open(summary_path, "w") as f:
+        json.dump(summary, f, indent=2, ensure_ascii=False)
+
+    def pct(num, den):
+        return f"{(num / den * 100):.1f}%" if den else "n/a"
+
+    print("\n" + "─" * 60)
+    print(f"Run ID            : {args.run_id}")
+    if slice_info:
+        print(f"Slice             : {slice_info['slice_id']}  ({args.slice})")
+    print(f"Prompt            : {args.prompt_version}")
+    print(f"N samples         : {args.n_samples}")
+    print(f"Output            : {out_path}")
+    print(f"Summary           : {summary_path}")
+    print(f"Questions         : {n}  (mcq={n_mcq}, free={n_free})")
+    print(f"Overall accuracy  : {pct(n_correct, n)}  ({n_correct}/{n})")
+    print(f"MCQ accuracy      : {pct(n_mcq_correct, n_mcq)}  ({n_mcq_correct}/{n_mcq})")
+    print(f"Free accuracy     : {pct(n_free_correct, n_free)}  ({n_free_correct}/{n_free})")
+    print(f"Runtime           : {runtime:.1f} s  ({runtime / max(n, 1):.1f} s/q across N={args.n_samples})")
+    print(f"Unanimous         : {n_unanimous}/{n}")
+    print(f"Tie-broken        : {n_tie_broken}/{n}")
+    print(f"Vote != sample 1  : {n_voted_changed_call}/{n}  (how often SC changed the call)")
+    if all(v is not None for v in (summary["agreement_rate_p25"], summary["agreement_rate_p50"], summary["agreement_rate_p75"])):
+        print(f"Agreement-rate p25/50/75 : {summary['agreement_rate_p25']:.3f} / {summary['agreement_rate_p50']:.3f} / {summary['agreement_rate_p75']:.3f}")
+    print("─" * 60)
+
+
+if __name__ == "__main__":
+    main()
