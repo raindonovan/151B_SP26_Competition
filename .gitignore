@@ -1,6 +1,7 @@
 .claude
 .venv
-data
+data/*
+!data/slices/
 __pycache__
 LICENSE.ipynb_checkpoints/
 core
