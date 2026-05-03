@@ -208,12 +208,20 @@ Example:
   --data-start 0 \
   --data-end 20 \
   --max-new-tokens 8192 \
+  --max-model-len 16384 \
   --output results/run04_vllm_parity_20_tok8192.jsonl
 ```
 
 CLI args: `--run-id`, `--data-start`, `--data-end`, `--max-new-tokens`,
-`--output`, `--max-model-len` (default 8192), `--data-path` (default
+`--output`, `--max-model-len` (default 16384), `--data-path` (default
 `data/public.jsonl`).
+
+**`max_model_len` matters.** vLLM caps **prompt + generation combined**
+at this value. Setting `max_model_len == max_new_tokens` silently shrinks
+the effective generation budget on any non-empty prompt (effective gen
+budget = `max_model_len − prompt_len`). For full 8k generation regardless
+of prompt length, keep the 16384 default. For a 16k generation budget,
+override to ~24576 (16384 + headroom for prompts).
 
 ---
 

@@ -111,7 +111,12 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--data-end", type=int, required=True)
     p.add_argument("--max-new-tokens", type=int, required=True)
     p.add_argument("--output", required=True)
-    p.add_argument("--max-model-len", type=int, default=8192)
+    # Default 16384 matches Pod A's input-truncation cap and gives a full
+    # 8192-token generation budget regardless of prompt length. vLLM caps
+    # prompt + generation combined at this value — setting it equal to
+    # max_new_tokens silently shrinks effective gen budget on any non-empty
+    # prompt. Override (e.g. 24576) when running with max_new_tokens > 8192.
+    p.add_argument("--max-model-len", type=int, default=16384)
     p.add_argument("--data-path", default=str(REPO_ROOT / "data" / "public.jsonl"))
     return p.parse_args()
 

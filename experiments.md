@@ -63,6 +63,15 @@ Per-run param tables write **"default"** for any sampling field below; only devi
 | Pod A | Transformers | BnB-INT4 (double quant) | bf16 compute |
 | Pod B | vLLM 0.8.5 (V0) | none | bfloat16 |
 
+**Token-budget semantics differ between pods — read this before setting `max_new_tokens` on Pod B.**
+
+| Pod | How the budget works |
+|---|---|
+| Pod A (Transformers) | `max_length=16384` truncates the **prompt only**. `max_new_tokens` is an **independent** generation cap. Effective generation budget = `max_new_tokens` regardless of prompt length. |
+| Pod B (vLLM) | `max_model_len` caps **prompt + generation combined**. Effective generation budget = `max_model_len − prompt_len`. To match Pod A's full 8192-token gen budget on the standard slice, use `max_model_len ≥ 16384` (script default is 16384). For an explicit 16k generation budget, set `max_model_len ≥ ~24576` (16384 + prompt headroom). |
+
+When comparing a Pod A run to a Pod B run, confirm both effectively allowed the same generation budget, not just that they share the same `max_new_tokens` number.
+
 If a run deviates from any sampling default, the deviation must appear in **both** that run's params table **and** the Sampling/Notes column of the Results Summary, so the diff is visible at a glance.
 
 ---
@@ -94,7 +103,7 @@ Cross-run lessons. Each cites the run(s) it came from. New insights belong here,
 
 4. **The model self-terminates near `\boxed{}` already.** Simulated early-stopping on Run 03 saved ~1% of decoded chars on average — the model emits EOS shortly after the boxed answer in the success cases. Early-stop (now wired into the notebook) is a cheap safety net but **not** a meaningful speed lever for this model on this data. Real speed wins come from Pod B and from prompt changes that prevent runaway thinking.
 
-5. **Pod B/vLLM is operational and dramatically faster on small batches (n=5 smoke).** The vLLM 8k smoke run (`run_vllm_smoke_5_tok8192`, batched on n=5) finished in 103.3 s = **20.7 s/q** vs Pod A Run 03's 395.7 s/q at the same 8k cap — roughly **19× faster** at this batch size. avg_gen_tokens was 4332 (vs Run 03's 5466), with **0 cutoffs and 0 missing `\boxed{}` on 5 questions**. *Scope caveat:* per-question wall time on a single n=5 batch is dominated by the slowest item under vLLM batching, so the speed multiplier is not stable across batch sizes; the lower avg_gen_tokens may reflect BF16 numerics producing shorter `<think>` blocks than INT4, or just sample noise on n=5. The 19× number is a floor on the speed win, not a published throughput. Run 04 (n=20 vLLM parity) is needed to confirm both the speedup and the no-cutoff pattern at a meaningful sample size.
+5. **Pod B/vLLM is operational and dramatically faster on small batches (n=5 smoke).** The vLLM 8k smoke run (`run_vllm_smoke_5_tok8192`, batched on n=5) finished in 103.3 s = **20.7 s/q** vs Pod A Run 03's 395.7 s/q at the same 8k cap — roughly **19× faster** at this batch size. avg_gen_tokens was 4332 (vs Run 03's 5466), with **0 cutoffs and 0 missing `\boxed{}` on 5 questions**. *Scope caveat:* per-question wall time on a single n=5 batch is dominated by the slowest item under vLLM batching, so the speed multiplier is not stable across batch sizes; the lower avg_gen_tokens may reflect BF16 numerics producing shorter `<think>` blocks than INT4, or just sample noise on n=5. The 19× number is a floor on the speed win, not a published throughput. *Budget caveat:* the smoke run was at `max_model_len=8192` (the old script default), which under vLLM caps prompt+generation combined — see Locked Defaults. avg_gen_tokens=4332 with max well below 8192 suggests no question actually came near the cap, so the throughput number is unaffected in practice, but technically a long-prompt item could have been silently truncated. Run 04 onward uses `max_model_len=16384`, which removes this footgun and makes timing comparisons against Pod A apples-to-apples. Run 04 (n=20 vLLM parity) is needed to confirm both the speedup and the no-cutoff pattern at a meaningful sample size.
 
 ---
 
@@ -312,6 +321,7 @@ Decision rule after each run:
 | param | value | note |
 |-------|------:|------|
 | max_new_tokens | 8192 | matches Run 03 |
+| max_model_len | 16384 | parity choice — see Locked Defaults / Token-budget semantics. With `max_model_len ≥ 16384`, the full 8192-token generation budget is available regardless of prompt length, matching Run 03's effective gen budget. The smoke run used 8192 (old default); Run 04 is the first apples-to-apples gen-budget comparison. |
 | sampling | default | per Locked Defaults |
 | `VLLM_USE_V1` | `"0"` | required on this pod |
 
@@ -319,7 +329,7 @@ Decision rule after each run:
 - **Pre-registered comparisons** (so post-run framing isn't biased):
   1. Overall accuracy vs Run 03's 50% — pass band: ±5pp (i.e. 45%–55%).
   2. MCQ accuracy vs Run 03's 44.4% (4/9) — same ±5pp band.
-  3. Cutoffs vs Run 03's 6/20 — pass band: cutoffs ≤ 6.
+  3. Cutoffs vs Run 03's 6/20 — pass band: cutoffs ≤ 6. *Apples-to-apples now: both runs effectively allow 8192 generation tokens regardless of prompt length, since Run 04 uses `max_model_len=16384`.*
   4. Wall-clock per question vs Run 03's 395.7 s/q — pass band: ≥5× faster (≤79 s/q).
 - **Decision rule:** see Run 04 row in Experiment Queue. On completion, this section gets the measured numbers, the row gets removed from the Queue, and a new row appears in Results Summary.
 
