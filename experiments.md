@@ -33,7 +33,7 @@ Two pods, same model, different inference stacks. See [`SETUP.md`](SETUP.md) for
 - gpu_memory_utilization: 0.85
 - Torch: 2.6.0+cu124 | CUDA: 12.4 | Transformers: 4.51.3
 - Runner: `scripts/run_vllm_experiment.py`
-- Used by: `run_vllm_smoke_5_tok8192`, planned Run 04 onward
+- Used by: `run_vllm_smoke_5_tok8192`, Runs 04–06
 
 ---
 
@@ -85,8 +85,10 @@ If a run deviates from any sampling default, the deviation must appear in **both
 | 03  | 2026-05-01 | 20 | `data[:20]` | v1     | Transformers | 8192 | 5466    | 395.7 | 6       | 4/9 = 44.4%  | 6/11 = 54.5% | 10/20 = 50.0% | default | [run03_tok8192_20.jsonl](results/run03_tok8192_20.jsonl) |
 | smoke‑vLLM | 2026-05-03 | 5 | `data[:5]` | v1 | vLLM BF16 | 8192 | 4332 | 20.7 | 0 | 1/2 = 50.0% | 2/3 = 66.7% | 3/5 = 60.0% | default | [run_vllm_smoke_5_tok8192.jsonl](results/run_vllm_smoke_5_tok8192.jsonl) |
 | 04  | 2026-05-03 | 20 | `data[:20]` | v1     | vLLM BF16    | 8192 | 4899    |   8.1 | 6       | 4/9 = 44.4%  | 6/11 = 54.5% | 10/20 = 50.0% | default; max_model_len=16384 | [run04_vllm_parity_20_tok8192.jsonl](results/run04_vllm_parity_20_tok8192.jsonl) |
+| 05  | 2026-05-03 | 50 | `fixed_50_v1` | v1 (sig-figs patched) | vLLM BF16 | 16384 | 4871 | 13.0 | 4 | 14/17 = 82.4% | 21/33 = 63.6% | 35/50 = 70.0% | default; max_model_len=24576 | [run05_v1_50_tok16384.jsonl](results/run05_v1_50_tok16384.jsonl) |
+| 06  | 2026-05-03 | 50 | `fixed_50_v1` | v2-mcq-commit | vLLM BF16 | 16384 | 4772 | 13.3 | 3 | 13/17 = 76.5% | 20/33 = 60.6% | 33/50 = 66.0% | default; max_model_len=24576 | [run06_v2mcq_50_tok16384.jsonl](results/run06_v2mcq_50_tok16384.jsonl) |
 
-Runtime + cost: Run 03 = 131.9 min ≈ $1.52 (Pod A). Run 04 = 162 s ≈ $0.03 (Pod B, ~48.7× faster than Run 03). vLLM smoke = 103.3 s. Earlier Pod A runs untracked.
+Runtime + cost: Run 03 = 131.9 min ≈ $1.52 (Pod A). Run 04 = 162 s ≈ $0.03 (Pod B). Run 05 = 650 s ≈ $0.13. Run 06 = 666 s ≈ $0.13. vLLM smoke = 103.3 s. Earlier Pod A runs untracked. Pod B at 13 s/q on n=50 / 16k cap extrapolates to ~245 min ≈ $2.80 for the full 1126-question set.
 
 **`smoke‑vLLM` is an infrastructure-validation run, not a comparable experiment.** N=5 is too small for accuracy claims; its purpose was to confirm Pod B (vLLM 0.8.5, V0 engine) generates end-to-end with `\boxed{}` extraction working. It is excluded from cross-run accuracy comparisons. The first comparable Pod B run is planned Run 04.
 
@@ -96,9 +98,9 @@ Runtime + cost: Run 03 = 131.9 min ≈ $1.52 (Pod A). Run 04 = 162 s ≈ $0.03 (
 
 Cross-run lessons. Each cites the run(s) it came from. New insights belong here, not buried in a single run's Observations.
 
-1. **Token budget was the dominant accuracy variable on Pod A at 4k vs 8k.** Runs 02→03 on Pod A/Transformers/BnB-INT4 (4096 → 8192, all else fixed): no-`\boxed{}` cutoffs dropped from ~9 to 6 on n=20, and one previously-cutoff MCQ flipped to correct. Overall +5pp on n=20 is within sampling noise on its own — the **cutoff-rate drop is the load-bearing evidence**. *Scope caveat:* this conclusion is from two Pod A runs only. Whether the same cap-vs-accuracy pattern (and the same cutoff rate at 8k) holds under Pod B/vLLM/BF16 is open until Run 04 parity completes; engine + numerics + quantization all changed simultaneously.
+1. **Token budget reduces cutoff rate as expected; it does NOT unlock additional reasoning depth on items that aren't already cap-bound.** Runs 02→03 on Pod A (4k→8k) dropped cutoffs ~9→6 on n=20. Runs 04→05 effectively repeat this on Pod B at a larger scale (8k→16k, slice changed from `data[:20]` to `fixed_50_v1`): cutoff *rate* dropped 30%→8% (6/20 → 4/50), but **avg gen tokens barely moved (4899→4871) despite doubling the cap.** p50 on Run 05 was 3536 — most items don't use the extra budget. The extra cap is a binary safety net for the long-tail items, not "more thinking room" for the median. **16k locked as the operating point**; chasing 32k would only matter if cutoffs > ~5/50 and Frugal Table 5 indicates diminishing returns past 16k for the base model anyway.
 
-2. **MCQ cutoffs dominate at 8k under both engines.** Pod A Run 03: 5/6 cutoffs were MCQ. Pod B Run 04 (same slice, prompt, sampling, gen budget): 4/6 cutoffs were MCQ — still the majority by a wide margin against the 9 MCQ / 11 free-form mix. The MCQ prompt does not force commitment once the model is confident; it produces full derivations like a free-form question, and that pattern is **engine-independent**. An MCQ-commitment prompt remains the single most actionable open finding (Run 06).
+2. **The MCQ-cutoff pattern is structural, not prompt-engineerable at this cap.** Pod A Run 03: 5/6 cutoffs MCQ. Pod B Run 04 at 8k: 4/6 cutoffs MCQ. Pod B Run 05 at 16k: 3/4 cutoffs MCQ (17.6% of MCQ items vs 3% of free items). Pod B Run 06 with v2-mcq-commit prompt at 16k: 2/3 cutoffs MCQ. **Pattern survives engine swap, cap doubling, AND a commitment-targeted prompt.** Most damningly, Run 06 converted *zero* of Run 05's 3 MCQ cutoffs to correct answers — its cutoff count dropped from 3 to 2 by causing the model to commit to a *wrong* answer instead of running out of tokens. Conclusion: at this model scale and cap, the items hitting the MCQ cutoff cluster are reasoning-bound, not budget- or commitment-bound. Further prompt iteration on the MCQ axis is a low-leverage move; the next high-leverage lever is sample-level (self-consistency) or training-level (RL/SFT).
 
 3. **Pod A throughput is infeasible for full-set runs.** Run 03 measured ~14 tok/s through Transformers + BnB-INT4 → ~395 s/q → ~124 hr / ~$85 for the full 1126 questions. Anything past a 50–100 q validation slice needs Pod B (vLLM batching).
 
@@ -106,7 +108,9 @@ Cross-run lessons. Each cites the run(s) it came from. New insights belong here,
 
 5. **Pod B/vLLM is ~49× faster than Pod A at the n=20 / 8k operating point, confirmed.** Run 04 = **8.12 s/q** vs Run 03's 395.7 s/q on the same slice/prompt/cap = **48.7× speedup** measured (vs the 19× n=5 smoke estimate, which was a floor as expected — batching scales). Full-set extrapolation: 1126 questions ≈ 152 minutes ≈ $0.30 on this pod. Pod B is now the default engine for runs ≥50 q (decision applied per Run 04 pre-registered comparisons).
 
-6. **vLLM/BF16 has parity in aggregate but not per-item — engine is now an experimental variable.** Run 03 vs Run 04 are byte-for-byte identical on every aggregate metric (50% / 44.4% / 54.5% / 6 cutoffs), but per-item correctness agrees on only **18/20 (90%)**: id=14 flipped wrong→right (Pod A cutoff resolved under vLLM); id=19 flipped right→wrong (vLLM ran into a new cutoff Pod A handled). vLLM/BF16 also used ~10% fewer tokens on average (4899 vs 5466) and shifted the cutoff *composition* (Pod A: 5 MCQ + 1 free; Pod B: 4 MCQ + 2 free) without changing the count. **Implication:** the two engines are equivalently *good* on this slice but not equivalently *consistent*. For all future prompt A/B comparisons, hold the engine fixed — never compare a new prompt run on Pod B against a baseline on Pod A even when aggregate metrics match. The variance under sampling at n=20 is large enough that a 2-question swing is well within engine-driven noise.
+6. **Per-item variance is real even at fixed engine + slice + cap; ~2 q on n=50 is the noise floor.** Original evidence from Run 03 vs 04 (different engine): 18/20 per-item agreement despite identical aggregate metrics. Run 05 vs Run 06 (same engine, same slice, same cap, only MCQ system prompt changed; free-form prompt byte-identical): 48/50 agreement. The 2 v1→v2 losses were id=48 (ambiguous gold — see Insight 7) and id=199 (sampling variance on a free-form item where the prompt was byte-identical). **Implication:** at n=50, ±2 q is sampling + engine noise even with everything else held fixed. A prompt-policy comparison needs >+4 q delta to clear noise (matches DESIGN.md §1.11 promotion bar). The original engine-as-variable rule still holds: never compare Pod A baseline against Pod B prompt run, ever.
+
+7. **Ambiguous-gold floor on n=50 is ~2-3 q.** id=48 (Run 06): gold `I` = `(4/3)ln3` and model's `E` = `(2/3)ln9` are mathematically identical (`ln 9 = 2 ln 3`). The question has two correct options; gold picks one and the Judger is brittle on the other. Combined with instructor-confirmed dataset errors (questions 1, 8, 12.3 — see CLAUDE.md > Data & Analysis Discipline), this means every reported accuracy on a 50-item slice carries ~2-3 q of irreducible error from gold mismatches alone, on top of the ±2 q sampling/engine noise from Insight 6. **Combined noise floor is ~3-5 q at n=50.** Self-consistency partially helps (vote across N samples reflects which equivalent form the model leans toward); the underlying scorer brittleness is unfixable without scorer changes (which don't happen mid-sweep). **Operational protocol:** see CLAUDE.md > Data & Analysis Discipline for the wrong-answer audit checklist (mathematical equivalence / gold wrong / genuine model error) before drawing behavioral conclusions from <5 items of evidence.
 
 ---
 
@@ -118,9 +122,9 @@ What's planned. The "on deck" row is the single source of truth for what runs ne
 
 | # | On deck? | Hypothesis | Variable changed | Held fixed | Expected outcome | Decision rule |
 |---|---|---|---|---|---|---|
-| 05 | **yes** | A vLLM/BF16 baseline on a 50-q slice (`fixed_50_v1` if defined per DESIGN.md §1.6, else `data[:50]`) at tok 8192 anchors the prompt sweep. | `data[:20]` → 50-q slice | engine vLLM, tok 8192, prompt v1, sampling defaults | Per-type accuracy stable (overall in 40–60% range, MCQ in 30–55%); cutoffs scale roughly with slice size (~15/50 expected at the same per-question rate as Run 04's 6/20). | Lock as the prompt-sweep anchor; do not rerun unless tok cap or engine changes. If MCQ cutoff *rate* drops vs Run 04 (e.g. ≤6/15 MCQ questions cut off, scaled), update Insight 2; if it stays ≥45% of MCQ items, Run 06 (MCQ-commitment prompt) becomes the primary lever. |
-| 06 |     | An MCQ-commitment prompt cuts MCQ cutoffs without hurting free-form accuracy. | prompt v1 → v2-mcq-commit | 50-q slice from Run 05, vLLM, tok 8192, sampling defaults | MCQ accuracy ↑ ≥ 4 q (DESIGN.md §1.11 promotion bar); free-form within ±2 q. | Promote per DESIGN.md §1.11 if gain ≥ 4 q. Otherwise iterate prompt or split MCQ-only branch. |
-| 07 | optional | If cutoffs remain meaningful at 8k under vLLM/BF16 (Run 05), test 16k token budget. Run 04 confirmed cutoff *count* is identical to Pod A (6/20), so token budget is still the dominant lever for the cutoff-cluster items even after the engine swap. | `max_new_tokens` 8192 → 16384 (and `max_model_len` 16384 → ~24576) | engine vLLM, prompt v1, slice from triggering run, sampling defaults | Cutoffs ≤ 1; overall ≥ Run 05 + 5pp. | Cutoffs > 1 at 16k → reasoning ceiling, not budget; pivot to prompt work. Cutoffs ≤ 1 → 16k becomes the new comparison cap; rerun the prompt sweep against it. **Skip if Run 05 shows cutoffs at 8k are already negligible.** |
+| 07-SC | **yes** | Self-consistency with N=8 samples per question on v1 (sig-figs patched) lifts overall accuracy via majority-vote noise reduction (Wang et al. 2022). Should also blunt the id=48-class ambiguous-gold issue (vote reflects which equivalent form the model leans toward most often). | single-sample → N=8 majority-vote | engine vLLM, slice `fixed_50_v1`, prompt v1, max_new_tokens 16384, sampling defaults | Overall +3-8 pp vs Run 05's 70.0% (i.e. 73-78%). Agreement-rate distribution informative: high-agreement-wrong items are calibration failures, low-agreement-correct items are where SC is doing real work. | Promote SC as part of submission pipeline if overall ≥ Run 05 + 4 q (per DESIGN.md §1.11). Cost is N× per question — at the full-set scale that's ~32 min × 8 ≈ 4 hr / ~$3 on Pod B; tractable. If SC underperforms or doesn't clear bar, the next move is training (SFT or RL), not more prompt work. |
+
+**Dropped from queue post-Run-06:** Runs 07 (16k token-budget test), v3-concise, v4-checking. Reasoning: Run 05 already used 16k cap and Insight 1 confirmed the cap-vs-accuracy story (cutoffs drop, median item unaffected). v3 and v4 were planned negative controls *if v2 had been a winner*; without a winner to validate sweep methodology against, running them now is busywork at $0.10 + 20 min each. Can revisit if a future prompt experiment surprises us.
 
 ---
 
@@ -131,8 +135,8 @@ A slice is the **deterministic** question set a run uses. Slices are first-class
 | Slice ID | N | Definition | Used by |
 |---|---:|---|---|
 | `data[:5]`     |  5 | First 5 rows of `data/public.jsonl`. | Run 01 |
-| `data[:20]`    | 20 | First 20 rows. | Runs 02, 03, planned 04 |
-| `fixed_50_v1`  | 50 | TBD per DESIGN.md §1.6: ~15–20 MCQ + 30–35 free, stratified to roughly match the 33%/67% competition split. ID list to be saved at `data/slices/fixed_50_v1.json` once chosen. | Planned Runs 05+ (prompt sweep) |
+| `data[:20]`    | 20 | First 20 rows. | Runs 02, 03, 04 |
+| `fixed_50_v1`  | 50 | **Locked.** 17 MCQ + 33 free stratified from `data/public.jsonl`. RNG seeds: MCQ pool = 42, free pool = 43 (per-pool independence; see `scripts/build_slice_fixed_50_v1.py`). ID list at [`data/slices/fixed_50_v1.json`](data/slices/fixed_50_v1.json). MCQ ids: 48, 53, 54, 121, 129, 142, 154, 223, 332, 340, 364, 403, 634, 830, 891, 974, 1023. Free ids: 29, 56, 93, 156, 169, 195, 199, 218, 231, 243, 269, 446, 570, 577, 581, 599, 610, 668, 671, 701, 712, 759, 766, 782, 785, 844, 893, 922, 936, 960, 1040, 1078, 1081. | Runs 05, 06, planned 07-SC |
 | `private_test` | TBD | Released on submission day. | Submission runs only. |
 
 ### Slice rules
@@ -347,6 +351,88 @@ Decision rule after each run:
 - **Token usage is ~10% lower under vLLM/BF16:** avg_gen_tokens 4899 vs 5466. Distribution: min=1017, p50=4154, p95=8192, max=8192. Most items use noticeably fewer tokens (id=0: 2383→1750, id=5: 5834→3800, id=8: 6745→3624, id=17: 5895→2836); a few use more and tip into cutoffs. BF16 numerics produce somewhat shorter `<think>` blocks on average but with higher variance than INT4 — both for better and for worse.
 - **Speed is the headline:** 48.7× faster than Pod A on this slice. Full-set extrapolation: 1126 q × 8.1 s/q ≈ 152 min ≈ $1.74 wall-clock cost (compute cost ≈ $0.30 — most of the difference is dominated by Pod A's cost when used; on Pod B at this throughput the full set is genuinely cheap). Pod B is cleared as the default engine for all runs ≥50 q.
 - **Decision applied:** vLLM adopted as default engine. Run 04 row removed from Queue; Run 05 (vLLM 50-q baseline) promoted to "on deck". Insight 5 updated to record the measured 48.7× (replacing the n=5 floor estimate of 19×). New Insight 6 added on engine-induced per-item variance.
+
+---
+
+### Run 05 — Prompt-sweep anchor on `fixed_50_v1` at 16k
+
+**Rationale:** Establish the n=50 anchor for the v1/v2 prompt sweep on the locked `fixed_50_v1` slice. Bundles **three changes vs Run 04** (slice `data[:20]` → `fixed_50_v1`, gen budget 8k → 16k, prompt v1-baseline → v1 with sig-figs patch). Bundling explicitly accepted: this run is *not* a clean A/B for any single axis. Token-budget choice (16k) was made on prior evidence (Frugal Table 5 + Run 04's unresolved 6/20 cutoffs at 8k); skipping a clean 8k→16k pre-check at n=20 is theater whose outcome wouldn't change the next action. Subsequent runs (06+) hold slice + cap fixed and vary only the prompt.
+
+- **Slice:** `fixed_50_v1` (17 MCQ + 33 free, seed=42, locked)
+- **Engine:** vLLM 0.8.5 (V0), BF16, no quantization, gpu_memory_utilization=0.85
+- **Prompt:** v1-baseline with 2026-05-03 sig-figs revision (see Prompt Versions)
+
+| param | value | note |
+|-------|------:|------|
+| max_new_tokens | 16384 | doubled from Run 04's 8192 |
+| max_model_len | 24576 | gives full 16384-token gen budget regardless of prompt length |
+| sampling | default | per Locked Defaults |
+| `VLLM_USE_V1` | `"0"` | required on this pod |
+
+- **Runtime:** 650.1 s = 10.8 min for 50 questions (13.0 s/q). Started 16:53:51 UTC, finished 17:06:24 UTC. ≈ $0.13 on the 4090.
+- **Results:** [run05_v1_50_tok16384.jsonl](results/run05_v1_50_tok16384.jsonl) + [.summary.json](results/run05_v1_50_tok16384.summary.json)
+
+**Observations:**
+
+- Overall **70.0% (35/50)**. MCQ **82.4% (14/17)**. Free-form **63.6% (21/33)**.
+- **Cutoff rate dropped 30%→8%** vs Run 04 (6/20 → 4/50). 16k locked as the operating point. Three of four remaining cutoffs are MCQ — Insight 2 reinforced, see Run 06 for the prompt-side test.
+- Avg gen tokens **4871** (essentially flat from Run 04's 4899) despite doubling the cap. p50=3536, p95=16384, max=16384, min=522. **Most items don't use the extra budget**; only the long-tail items benefit. Insight 1 updated.
+- One vLLM KV-cache preemption warning (sequence group 48, `PreemptionMode.RECOMPUTE`). Single occurrence; no correctness impact, only some wasted compute. Watch for pattern at larger n or longer caps.
+- First end-to-end use of `--slice` and `--prompt-version` infrastructure (commits b7701cd, b777480). Schema additions in summary (`slice_id`, `slice_path`, `slice_n`, `system_prompt_mcq`, `system_prompt_free`) all populated correctly.
+- Run 04's id=5 (the original sig-figs-patch motivation) is **not in `fixed_50_v1`**, so the patch's effect on the original failure case is untestable from this slice. Live with it; don't burn a slice draw to test a single item.
+- **Bundling caveat reminder:** the +20pp overall vs Run 04 cannot be attributed to any single change. Run 06 is the first clean prompt A/B; comparisons against Run 05 should hold the bundling in mind.
+
+- **Decision applied:** Run 05 locked as the prompt-sweep anchor. Run 06 (v2-mcq-commit, prompt-only change vs Run 05) promoted to "on deck". 16k cap held for all subsequent prompt-sweep runs. Insight 1 extended with the cap-doesn't-help-median finding; Insight 2 to be revisited after Run 06.
+
+---
+
+### Run 06 — v2-mcq-commit prompt A/B vs Run 05
+
+**Rationale:** First clean prompt A/B in the sweep. Holds slice (`fixed_50_v1`), engine (vLLM/BF16), cap (16k), and sampling defaults fixed against Run 05 — the *only* change is the MCQ system prompt (free-form prompt is byte-identical to Run 05's). Tests whether the v2-mcq-commit instruction *"Stop generating immediately after `\boxed{}`"* reduces the engine-independent MCQ-cutoff pattern (Insight 2) by forcing earlier commitment.
+
+- **Slice:** `fixed_50_v1` (identical to Run 05)
+- **Engine:** vLLM 0.8.5 (V0), BF16
+
+| param | value | note |
+|-------|------:|------|
+| max_new_tokens | 16384 | matches Run 05 |
+| max_model_len | 24576 | matches Run 05 |
+| prompt | v2-mcq-commit | only change vs Run 05 |
+| sampling | default | per Locked Defaults |
+| `VLLM_USE_V1` | `"0"` | required on this pod |
+
+- **Runtime:** 666.0 s = 11.1 min (13.3 s/q). Started 17:16:59 UTC, finished 17:29:29 UTC. ≈ $0.13.
+- **Results:** [run06_v2mcq_50_tok16384.jsonl](results/run06_v2mcq_50_tok16384.jsonl) + [.summary.json](results/run06_v2mcq_50_tok16384.summary.json)
+
+**Pre-registered comparisons (vs Run 05) — neither passed:**
+
+| # | Metric | Run 05 (v1) | Run 06 (v2) | Pass band | Result |
+|---|---|---:|---:|---|:-:|
+| 1 | MCQ accuracy | 14/17 = 82.4% | 13/17 = 76.5% | +4 q (DESIGN.md §1.11) | ❌ −1 q |
+| 2 | Free-form accuracy | 21/33 = 63.6% | 20/33 = 60.6% | within ±2 q | ✅ −1 q |
+
+**Observations:**
+
+- Overall **66.0% (33/50)**: −2 q vs Run 05's 70%, well within the ~±5 q noise floor at n=50 (sampling + engine + ambiguous-gold; see Insight 6 + 7). v2-mcq-commit is **not promoted**.
+- Same-slice per-item agreement vs Run 05: **48/50.** Only 2 flips, both v1-correct → v2-wrong:
+
+  | id | type | v1 (Run 05) | v2 (Run 06) | v1_tok | v2_tok | Δtok | classification |
+  |---|---|---|---|---:|---:|---:|---|
+  | 48  | MCQ  | ✓ → I (gold) | ✗ → E         | 6162 | 1627 | −4535 | **ambiguous gold** (id=48 class — see below + Insight 7) |
+  | 199 | free | ✓             | ✗             | 1005 | 921  | −84   | **sampling variance** — free-form prompt byte-identical between v1 and v2 |
+
+- **id=48 is the high-leverage finding.** The integral evaluates to `(2/3) ln 9`. Options included **E** = `(2/3) ln 9` (exact form) and **I** = `(4/3) ln 3` (simplified via `ln 9 = 2 ln 3`). Both correct. Gold is I. v1 spent ~4500 extra tokens noticing the equivalence and meta-reasoning *"in most calculus problems they expect the logarithm to be simplified to its prime base"* — picked I, won. v2 sanity-checked the computation with two substitution methods, picked E (the form matching its computed result), lost. **This is question-design ambiguity, not a v2 prompt failure.** v2 didn't cause premature commitment; it just didn't do the test-author-intent meta-reasoning. Drives Insight 7.
+- v2 **did** shift behavior as designed: p50 gen tokens dropped 3536 → 3075 (−13%); min dropped 522 → 379 (−27%). The "stop immediately after `\boxed{}`" instruction is being followed.
+- But **0 of Run 05's 3 MCQ cutoffs were converted to correct answers under v2.** v2's MCQ cutoff count dropped 3 → 2 — but the item that "stopped cutting off" is still wrong (committed to a wrong answer instead of running out of tokens). v2 traded a cutoff-wrong for a commit-wrong on that item. **No structural progress on the MCQ-cutoff cluster.** Insight 2 updated to call the pattern "structural, not prompt-engineerable at this cap."
+- Avg gen tokens 4772 (vs Run 05's 4871). Distribution: min=379, p50=3075, p95=16384, max=16384.
+- Throughput +2.5% slower (13.3 vs 13.0 s/q) despite shorter individual responses — vLLM batching means saved tokens on individual MCQ items don't trade for runtime savings; the long-tail items still dominate the wall clock.
+
+- **Decision applied:**
+  - v2-mcq-commit not promoted; remains in the registry but won't be the default. The MCQ-cutoff pattern is not addressable via prompt at 16k cap; the next high-leverage move is sample-level (self-consistency) or training-level.
+  - Drop v3-concise and v4-checking from the queue. They were planned negative controls *if v2 had been a winner*; without one, they're busywork.
+  - Run 07-SC (self-consistency on v1, N=8, same slice) promoted to "on deck".
+  - Insight 2 rewritten as "structural" finding. Insight 6 extended with the n=50 same-slice flip evidence (id=48, id=199). New Insight 7 added on the ambiguous-gold floor with id=48 as the canonical example.
+  - **Process improvement applied:** wrong-answer audit before behavioral conclusions (CLAUDE.md > Data & Analysis Discipline). Skipping it on Run 06 cost ~5 min of misguided "Hypothesis A vs B" speculation about v2 causing premature commitment, before realizing id=48 was an ambiguous-gold case where v2's pick was mathematically equivalent to gold.
 
 ---
 
