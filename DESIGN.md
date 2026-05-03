@@ -463,64 +463,11 @@ Use a table like this in the design doc or a separate experiment log.
 
 ### 1.16 What Not to Change During Prompt Trials
 
-During prompt comparisons, do not change:
-
-```text
-model
-dataset slice
-question order
-generation parameters
-max_new_tokens
-answer parser
-evaluation script
-runtime environment
-```
-
-Also:
-
-```text
-Do not change the model away from Qwen/Qwen3-4B-Thinking-2507.
-Do not rewrite the notebook architecture.
-Do not modify model loading during prompt experiments.
-Do not change the answer parser unless parser behavior is the explicit experiment.
-vLLM is allowed but must run in the isolated Pod B environment — do not install or import
-vLLM in Pod A's .venv. See SETUP.md for the two-environment strategy.
-```
-
-Prompt changes should be isolated to the prompt-construction cell/function whenever possible.
-
----
+> **Removed.** Now lives in [`CLAUDE.md`](CLAUDE.md) > Inference Constraints + Experimentation Discipline (one-variable rule, locked sampling defaults, engine-as-variable, slice-immutability, `Don't change the prompt parser or scorer mid-sweep`). Original content also contained an obsolete vLLM-isolation rule that was superseded when both engines moved to the same `.venv` (see SETUP.md).
 
 ### 1.17 Notes for Coding Agents
 
-Coding agents should follow these rules:
-
-```text
-inspect before editing
-make minimal changes
-report exact files/cells changed
-do not install packages unless explicitly requested
-do not use vLLM in Pod A (Transformers environment) — vLLM belongs in Pod B only
-do not change the model
-do not change generation parameters during prompt trials
-do not overwrite previous run outputs
-```
-
-For prompt changes, the expected target is usually:
-
-```text
-starter_code_cse151b_comp.ipynb
-prompt-construction cell/function
-```
-
-The function interface should remain:
-
-```python
-def build_prompt(question: str, options: Optional[list]) -> tuple[str, str]:
-    ...
-```
-
-unless the generation code is intentionally updated.
+> **Removed.** Now lives in [`CLAUDE.md`](CLAUDE.md) > Role + Experimentation Discipline (inspect before editing, minimal changes, no package installs without ask, no notebook edits unless asked, no overwriting previous run outputs). The `build_prompt(question, options) -> (system, user)` interface assertion was also superseded — current runner uses `build_prompt(question, options, policy)` to support the PROMPTS registry.
 
 ---
 
