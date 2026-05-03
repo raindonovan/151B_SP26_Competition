@@ -13,7 +13,9 @@ This is a **strategy and planning** chat, not execution. The user (Rain) runs co
 - Give **exact terminal commands**, not descriptions, whenever something touches the environment or files.
 - Propose one small, high-impact change at a time. Define what success and failure look like.
 - Be direct. Push back when you disagree. Don't apologize repeatedly or ask permission for every step.
+- When unsure, ask and do less.
 - Confirm before destructive operations (deleting files, force-pushing, dropping data).
+- Small commits with clear messages.
 - Read existing files (notebook outputs, run JSONL/summary, experiments.md) before proposing the next move — don't re-derive what's already measured.
 
 ---
@@ -26,8 +28,6 @@ This is a **strategy and planning** chat, not execution. The user (Rain) runs co
 
 ### Engines
 
-Both engines now share `/workspace/151B_SP26_Competition/.venv` (single-pod setup; the original two-pod isolation plan was superseded — see SETUP.md).
-
 | Pod | Engine | Quantization | When to use |
 |---|---|---|---|
 | Pod A | Transformers + BnB-INT4 | INT4 (double quant, bf16 compute) | Legacy; Runs 01–03; not for new work |
@@ -36,7 +36,6 @@ Both engines now share `/workspace/151B_SP26_Competition/.venv` (single-pod setu
 - **Pod B / vLLM is the default engine.** Confirmed on Run 04 (50% / 6 cutoffs / 48.7× faster than Pod A on `data[:20]`).
 - vLLM only works with `VLLM_USE_V1=0` set **before** `import vllm`. Any new vLLM script must do the same.
 - Pod B runner: `scripts/run_vllm_experiment.py`.
-- **Engine is an experimental variable.** Never compare a Pod A baseline against a Pod B prompt run, even when aggregate metrics match (per Insight 6 in experiments.md — per-item agreement was only 18/20 between Run 03 and Run 04).
 
 ### Locked Sampling Defaults (Qwen3-Thinking-2507 model card)
 
@@ -84,6 +83,7 @@ Don't change `judger.py` mid-sweep. Scoring changes are their own experiment wit
 ## Experimentation Discipline
 
 - **One variable at a time.** Don't bundle a prompt change with a slice change with a token-budget change. If you must bundle, name it explicitly and accept the run is not a clean comparison for either axis.
+- **Engine is an experimental variable.** Never compare a Pod A baseline against a Pod B prompt run, even when aggregate metrics match (per Insight 6 in experiments.md — per-item agreement was only 18/20 between Run 03 and Run 04).
 - A slice's ID list is locked once any run uses it. Edits = a new slice ID (e.g. `fixed_50_v1` → `fixed_50_v2`).
 - Don't change the prompt parser or scorer mid-sweep. Do not modify gold answers (see Data & Analysis Discipline above for handling suspicious golds).
 - **Don't decide accuracy from n=20.** 95% CI is ±22pp — bigger than any realistic single-variable effect. n=20 is for cutoff rate (deterministic-ish) and infra checks only. Promotion calls happen at n≥50 per DESIGN.md §1.11.
@@ -112,32 +112,10 @@ Do **not** write to the memory system. When you would save a memory, surface it 
 
 ## Document Boundaries
 
-When information could go in multiple places, prefer:
-
-| Goes in | What |
-|---|---|
-| `CLAUDE.md` | Stable agent operating rules (this file) |
-| `DESIGN.md` | Strategic phases, prompt-engineering plan, promotion criteria, Frugal-Thinking recipe, self-consistency plan |
-| `experiments.md` | Operational run log: results summary, queue, insights, known issues, slice definitions |
-| `SETUP.md` | Pod A / Pod B environment details |
-| `COMPETITION.md` | Competition rules, submission format |
-| `judger.py` | Scoring logic. Don't modify mid-sweep. See Scoring (Judger) section above. |
+Stable rules → `CLAUDE.md`. Strategy → `DESIGN.md`. Run state (results, queue, insights, slices) → `experiments.md`. Environments → `SETUP.md`. Competition rules → `COMPETITION.md`. Scoring rules → `judger.py` (don't modify mid-sweep).
 
 ---
 
 ## Model Selection
 
-Default is **Sonnet 4.6**. Suggest Opus explicitly ("switch to Opus") when:
-- Designing strategy or making high-stakes decisions
-- Debugging subtle, non-obvious failures
-- Analyzing results to pick the next direction
-
----
-
-## Principles
-
-- One variable at a time
-- Small commits, clear messages
-- Show exact commands, not descriptions
-- Be direct; push back when you disagree
-- When unsure, ask and do less
+Default Sonnet 4.6. Switch to Opus for strategy / high-stakes decisions / subtle debugging / results analysis.
