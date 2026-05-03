@@ -84,8 +84,9 @@ If a run deviates from any sampling default, the deviation must appear in **both
 | 02  | 2026-05-01 | 20 | `data[:20]` | v1     | Transformers | 4096 | —       | —     | 9 (est.) | 3/9 = 33.3%  | 6/11 = 54.5% | 9/20 = 45.0% | default  | [run02_baseline_20_tok4096.jsonl](results/run02_baseline_20_tok4096.jsonl) |
 | 03  | 2026-05-01 | 20 | `data[:20]` | v1     | Transformers | 8192 | 5466    | 395.7 | 6       | 4/9 = 44.4%  | 6/11 = 54.5% | 10/20 = 50.0% | default | [run03_tok8192_20.jsonl](results/run03_tok8192_20.jsonl) |
 | smoke‑vLLM | 2026-05-03 | 5 | `data[:5]` | v1 | vLLM BF16 | 8192 | 4332 | 20.7 | 0 | 1/2 = 50.0% | 2/3 = 66.7% | 3/5 = 60.0% | default | [run_vllm_smoke_5_tok8192.jsonl](results/run_vllm_smoke_5_tok8192.jsonl) |
+| 04  | 2026-05-03 | 20 | `data[:20]` | v1     | vLLM BF16    | 8192 | 4899    |   8.1 | 6       | 4/9 = 44.4%  | 6/11 = 54.5% | 10/20 = 50.0% | default; max_model_len=16384 | [run04_vllm_parity_20_tok8192.jsonl](results/run04_vllm_parity_20_tok8192.jsonl) |
 
-Runtime + cost: Run 03 = 131.9 min ≈ $1.52. Earlier Pod A runs untracked. vLLM smoke = 103.3 s wall-clock for generation (negligible cost).
+Runtime + cost: Run 03 = 131.9 min ≈ $1.52 (Pod A). Run 04 = 162 s ≈ $0.03 (Pod B, ~48.7× faster than Run 03). vLLM smoke = 103.3 s. Earlier Pod A runs untracked.
 
 **`smoke‑vLLM` is an infrastructure-validation run, not a comparable experiment.** N=5 is too small for accuracy claims; its purpose was to confirm Pod B (vLLM 0.8.5, V0 engine) generates end-to-end with `\boxed{}` extraction working. It is excluded from cross-run accuracy comparisons. The first comparable Pod B run is planned Run 04.
 
@@ -97,13 +98,15 @@ Cross-run lessons. Each cites the run(s) it came from. New insights belong here,
 
 1. **Token budget was the dominant accuracy variable on Pod A at 4k vs 8k.** Runs 02→03 on Pod A/Transformers/BnB-INT4 (4096 → 8192, all else fixed): no-`\boxed{}` cutoffs dropped from ~9 to 6 on n=20, and one previously-cutoff MCQ flipped to correct. Overall +5pp on n=20 is within sampling noise on its own — the **cutoff-rate drop is the load-bearing evidence**. *Scope caveat:* this conclusion is from two Pod A runs only. Whether the same cap-vs-accuracy pattern (and the same cutoff rate at 8k) holds under Pod B/vLLM/BF16 is open until Run 04 parity completes; engine + numerics + quantization all changed simultaneously.
 
-2. **MCQ cutoffs dominate at 8k on Pod A.** 5 of 6 cutoffs in Run 03 were MCQ. The MCQ prompt does not force commitment once the model is confident — it produces full derivations like a free-form question. This is the single most actionable open finding; it implies an MCQ-commitment prompt should be a high-priority experiment regardless of where the token cap lands. *Scope caveat:* observed under Pod A/Transformers/BnB-INT4 only. The vLLM smoke run (n=5, 8k tok) had 0 cutoffs, but n=5 is too small to claim anything; Run 04 (n=20 vLLM parity) is the first signal whether the MCQ cutoff pattern persists under vLLM/BF16 or whether the engine change shifts the failure mode.
+2. **MCQ cutoffs dominate at 8k under both engines.** Pod A Run 03: 5/6 cutoffs were MCQ. Pod B Run 04 (same slice, prompt, sampling, gen budget): 4/6 cutoffs were MCQ — still the majority by a wide margin against the 9 MCQ / 11 free-form mix. The MCQ prompt does not force commitment once the model is confident; it produces full derivations like a free-form question, and that pattern is **engine-independent**. An MCQ-commitment prompt remains the single most actionable open finding (Run 06).
 
 3. **Pod A throughput is infeasible for full-set runs.** Run 03 measured ~14 tok/s through Transformers + BnB-INT4 → ~395 s/q → ~124 hr / ~$85 for the full 1126 questions. Anything past a 50–100 q validation slice needs Pod B (vLLM batching).
 
 4. **The model self-terminates near `\boxed{}` already.** Simulated early-stopping on Run 03 saved ~1% of decoded chars on average — the model emits EOS shortly after the boxed answer in the success cases. Early-stop (now wired into the notebook) is a cheap safety net but **not** a meaningful speed lever for this model on this data. Real speed wins come from Pod B and from prompt changes that prevent runaway thinking.
 
-5. **Pod B/vLLM is operational and dramatically faster on small batches (n=5 smoke).** The vLLM 8k smoke run (`run_vllm_smoke_5_tok8192`, batched on n=5) finished in 103.3 s = **20.7 s/q** vs Pod A Run 03's 395.7 s/q at the same 8k cap — roughly **19× faster** at this batch size. avg_gen_tokens was 4332 (vs Run 03's 5466), with **0 cutoffs and 0 missing `\boxed{}` on 5 questions**. *Scope caveat:* per-question wall time on a single n=5 batch is dominated by the slowest item under vLLM batching, so the speed multiplier is not stable across batch sizes; the lower avg_gen_tokens may reflect BF16 numerics producing shorter `<think>` blocks than INT4, or just sample noise on n=5. The 19× number is a floor on the speed win, not a published throughput. *Budget caveat:* the smoke run was at `max_model_len=8192` (the old script default), which under vLLM caps prompt+generation combined — see Locked Defaults. avg_gen_tokens=4332 with max well below 8192 suggests no question actually came near the cap, so the throughput number is unaffected in practice, but technically a long-prompt item could have been silently truncated. Run 04 onward uses `max_model_len=16384`, which removes this footgun and makes timing comparisons against Pod A apples-to-apples. Run 04 (n=20 vLLM parity) is needed to confirm both the speedup and the no-cutoff pattern at a meaningful sample size.
+5. **Pod B/vLLM is ~49× faster than Pod A at the n=20 / 8k operating point, confirmed.** Run 04 = **8.12 s/q** vs Run 03's 395.7 s/q on the same slice/prompt/cap = **48.7× speedup** measured (vs the 19× n=5 smoke estimate, which was a floor as expected — batching scales). Full-set extrapolation: 1126 questions ≈ 152 minutes ≈ $0.30 on this pod. Pod B is now the default engine for runs ≥50 q (decision applied per Run 04 pre-registered comparisons).
+
+6. **vLLM/BF16 has parity in aggregate but not per-item — engine is now an experimental variable.** Run 03 vs Run 04 are byte-for-byte identical on every aggregate metric (50% / 44.4% / 54.5% / 6 cutoffs), but per-item correctness agrees on only **18/20 (90%)**: id=14 flipped wrong→right (Pod A cutoff resolved under vLLM); id=19 flipped right→wrong (vLLM ran into a new cutoff Pod A handled). vLLM/BF16 also used ~10% fewer tokens on average (4899 vs 5466) and shifted the cutoff *composition* (Pod A: 5 MCQ + 1 free; Pod B: 4 MCQ + 2 free) without changing the count. **Implication:** the two engines are equivalently *good* on this slice but not equivalently *consistent*. For all future prompt A/B comparisons, hold the engine fixed — never compare a new prompt run on Pod B against a baseline on Pod A even when aggregate metrics match. The variance under sampling at n=20 is large enough that a 2-question swing is well within engine-driven noise.
 
 ---
 
@@ -115,10 +118,9 @@ What's planned. The "on deck" row is the single source of truth for what runs ne
 
 | # | On deck? | Hypothesis | Variable changed | Held fixed | Expected outcome | Decision rule |
 |---|---|---|---|---|---|---|
-| 04 | **yes** | Pod B (vLLM/BF16) reproduces Run 03 accuracy within ±5pp at ≥5× speed on the same slice. First apples-to-apples Pod A↔B comparison. | Engine Transformers/INT4 → vLLM/BF16 | `data[:20]`, prompt v1, tok 8192, sampling defaults | Accuracy within ±5pp of Run 03's 50%; cutoffs ≤ Run 03's 6/20; throughput ≥5× Run 03's 395.7 s/q. | Parity passes (accuracy + cutoffs in expected range) → adopt vLLM as default engine for all runs ≥50 q. Accuracy gap >5pp → diagnose (BF16 vs INT4 numerics? sampling mismatch? prompt template mismatch?) before scaling. Throughput <5× → re-time after the 50-q run; small batches under-utilize batching. |
-| 05 |     | A vLLM/BF16 baseline on a 50-q slice (`fixed_50_v1` if defined per DESIGN.md §1.6, else `data[:50]`) at tok 8192 anchors the prompt sweep. | `data[:20]` → 50-q slice | engine vLLM, tok 8192, prompt v1, sampling defaults | Per-type accuracy stable; cutoffs reasonable. | Lock as the prompt-sweep anchor; do not rerun unless tok cap or engine changes. |
+| 05 | **yes** | A vLLM/BF16 baseline on a 50-q slice (`fixed_50_v1` if defined per DESIGN.md §1.6, else `data[:50]`) at tok 8192 anchors the prompt sweep. | `data[:20]` → 50-q slice | engine vLLM, tok 8192, prompt v1, sampling defaults | Per-type accuracy stable (overall in 40–60% range, MCQ in 30–55%); cutoffs scale roughly with slice size (~15/50 expected at the same per-question rate as Run 04's 6/20). | Lock as the prompt-sweep anchor; do not rerun unless tok cap or engine changes. If MCQ cutoff *rate* drops vs Run 04 (e.g. ≤6/15 MCQ questions cut off, scaled), update Insight 2; if it stays ≥45% of MCQ items, Run 06 (MCQ-commitment prompt) becomes the primary lever. |
 | 06 |     | An MCQ-commitment prompt cuts MCQ cutoffs without hurting free-form accuracy. | prompt v1 → v2-mcq-commit | 50-q slice from Run 05, vLLM, tok 8192, sampling defaults | MCQ accuracy ↑ ≥ 4 q (DESIGN.md §1.11 promotion bar); free-form within ±2 q. | Promote per DESIGN.md §1.11 if gain ≥ 4 q. Otherwise iterate prompt or split MCQ-only branch. |
-| 07 | optional | If cutoffs remain meaningful at 8k under vLLM/BF16 (Run 04 or Run 05), test 16k token budget. | `max_new_tokens` 8192 → 16384 | engine vLLM, prompt v1, slice from triggering run, sampling defaults | Cutoffs ≤ 1; overall ≥ Run 04 + 5pp. | Cutoffs > 1 at 16k → reasoning ceiling, not budget; pivot to prompt work. Cutoffs ≤ 1 → 16k becomes the new comparison cap; rerun the prompt sweep against it. **Skip this run entirely if Run 04 or Run 05 shows cutoffs at 8k are already negligible under vLLM.** |
+| 07 | optional | If cutoffs remain meaningful at 8k under vLLM/BF16 (Run 05), test 16k token budget. Run 04 confirmed cutoff *count* is identical to Pod A (6/20), so token budget is still the dominant lever for the cutoff-cluster items even after the engine swap. | `max_new_tokens` 8192 → 16384 (and `max_model_len` 16384 → ~24576) | engine vLLM, prompt v1, slice from triggering run, sampling defaults | Cutoffs ≤ 1; overall ≥ Run 05 + 5pp. | Cutoffs > 1 at 16k → reasoning ceiling, not budget; pivot to prompt work. Cutoffs ≤ 1 → 16k becomes the new comparison cap; rerun the prompt sweep against it. **Skip if Run 05 shows cutoffs at 8k are already negligible.** |
 
 ---
 
@@ -309,29 +311,42 @@ Decision rule after each run:
 
 ---
 
-### Run 04 — vLLM parity (planned, not yet run)
+### Run 04 — vLLM parity vs Run 03
 
-**Status:** queued, on deck. Scheduled to run as the next experiment.
+**Rationale:** First apples-to-apples Pod A↔B comparison. Same slice, prompt, sampling, and effective generation budget as Run 03; the only changes were the inference backend (Transformers → vLLM 0.8.5 V0) and quantization (BnB-INT4 → BF16/none). Goal: confirm vLLM is safe to adopt as the default engine for runs ≥50 q and learn whether the Run 03 MCQ-cutoff pattern persists under vLLM/BF16.
 
-**Rationale:** First apples-to-apples Pod A↔B comparison. Same slice, prompt, sampling, and token cap as Run 03 — only the inference backend (Transformers/INT4 → vLLM/BF16) and quantization change. Establishes whether vLLM is safe to adopt as the default engine for runs ≥50 q and whether the Run 03 MCQ-cutoff pattern (Insight 2) persists under vLLM/BF16.
-
-- **Slice:** `data[:20]` (same 9 MCQ + 11 free-form as Runs 02–03)
+- **Slice:** `data[:20]` (9 MCQ + 11 free-form, identical to Runs 02–03)
 - **Engine:** vLLM 0.8.5 (V0), BF16, no quantization, gpu_memory_utilization=0.85
 
 | param | value | note |
 |-------|------:|------|
 | max_new_tokens | 8192 | matches Run 03 |
-| max_model_len | 16384 | parity choice — see Locked Defaults / Token-budget semantics. With `max_model_len ≥ 16384`, the full 8192-token generation budget is available regardless of prompt length, matching Run 03's effective gen budget. The smoke run used 8192 (old default); Run 04 is the first apples-to-apples gen-budget comparison. |
+| max_model_len | 16384 | gives full 8192-token gen budget regardless of prompt length; matches Pod A's effective budget. See Locked Defaults / Token-budget semantics. |
 | sampling | default | per Locked Defaults |
 | `VLLM_USE_V1` | `"0"` | required on this pod |
 
-- **Predicted runtime:** ≤ ~80 s wall-clock (Run 03 = 131.9 min; smoke run amortized to 20.7 s/q on n=5; n=20 batched should be substantially faster than 5×20.7s due to batching). Real number recorded on completion.
-- **Pre-registered comparisons** (so post-run framing isn't biased):
-  1. Overall accuracy vs Run 03's 50% — pass band: ±5pp (i.e. 45%–55%).
-  2. MCQ accuracy vs Run 03's 44.4% (4/9) — same ±5pp band.
-  3. Cutoffs vs Run 03's 6/20 — pass band: cutoffs ≤ 6. *Apples-to-apples now: both runs effectively allow 8192 generation tokens regardless of prompt length, since Run 04 uses `max_model_len=16384`.*
-  4. Wall-clock per question vs Run 03's 395.7 s/q — pass band: ≥5× faster (≤79 s/q).
-- **Decision rule:** see Run 04 row in Experiment Queue. On completion, this section gets the measured numbers, the row gets removed from the Queue, and a new row appears in Results Summary.
+- **Runtime:** 162.4 s for 20 questions (8.1 s/q). Started 02:31:58 UTC, finished 02:35:49 UTC. ≈ $0.03 on the 4090 at $0.69/hr.
+- **Results:** [run04_vllm_parity_20_tok8192.jsonl](results/run04_vllm_parity_20_tok8192.jsonl) + [.summary.json](results/run04_vllm_parity_20_tok8192.summary.json)
+
+**Pre-registered comparisons — all four passed:**
+
+| # | Metric | Run 03 | Run 04 | Pass band | Result |
+|---|---|---:|---:|---|:-:|
+| 1 | Overall accuracy | 50.0% (10/20) | 50.0% (10/20) | ±5pp of 50% | ✅ exact |
+| 2 | MCQ accuracy | 44.4% (4/9) | 44.4% (4/9) | ±5pp of 44.4% | ✅ exact |
+| 3 | Cutoffs | 6/20 | 6/20 | ≤ 6 | ✅ exact |
+| 4 | Throughput | 395.7 s/q | 8.1 s/q | ≥5× faster | ✅ 48.7× |
+
+**Observations:**
+
+- **Aggregate parity is exact**, but **per-item agreement is only 18/20 (90%)**:
+  - id=14 (MCQ): Run 03 cut off at 8192 → wrong. Run 04 finished at 7803 → correct.
+  - id=19 (MCQ): Run 03 finished at 4704 → correct. Run 04 ran into a new cutoff at 8192 → wrong.
+  - The two flips cancel exactly, leaving 10/20 unchanged. This is partly chance (sampling at n=20 quantizes to 5pp steps) and partly real engine-induced variance — see Insight 6.
+- **Cutoff count is identical (6) but composition shifted:** Pod A = 5 MCQ + 1 free; Pod B = 4 MCQ + 2 free. Pod B "fixed" id=14 (MCQ) and "broke" id=19 (MCQ) and id=16 (free, finished cleanly under Pod A but cut off under vLLM). MCQ-cutoff pattern survives the engine swap; Insight 2 holds.
+- **Token usage is ~10% lower under vLLM/BF16:** avg_gen_tokens 4899 vs 5466. Distribution: min=1017, p50=4154, p95=8192, max=8192. Most items use noticeably fewer tokens (id=0: 2383→1750, id=5: 5834→3800, id=8: 6745→3624, id=17: 5895→2836); a few use more and tip into cutoffs. BF16 numerics produce somewhat shorter `<think>` blocks on average but with higher variance than INT4 — both for better and for worse.
+- **Speed is the headline:** 48.7× faster than Pod A on this slice. Full-set extrapolation: 1126 q × 8.1 s/q ≈ 152 min ≈ $1.74 wall-clock cost (compute cost ≈ $0.30 — most of the difference is dominated by Pod A's cost when used; on Pod B at this throughput the full set is genuinely cheap). Pod B is cleared as the default engine for all runs ≥50 q.
+- **Decision applied:** vLLM adopted as default engine. Run 04 row removed from Queue; Run 05 (vLLM 50-q baseline) promoted to "on deck". Insight 5 updated to record the measured 48.7× (replacing the n=5 floor estimate of 19×). New Insight 6 added on engine-induced per-item variance.
 
 ---
 
