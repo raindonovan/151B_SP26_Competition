@@ -66,11 +66,26 @@ Don't change `judger.py` mid-sweep. Scoring changes are their own experiment wit
 
 ---
 
+## Data & Analysis Discipline
+
+**The public dataset is LLM-synthesized and contains errors.** Instructor-confirmed (Piazza, Ruijia Niu). Acknowledged examples: question 1 (gold should include π√(a)), question 8 (excludes the actual decimal answer), question 12.3 (deer answer should be 14, not 13 — matches Run 04 id=12 "wrong" answer at value 14). Manipulating training data is explicitly allowed; data filtering counts as a method. **This affects evaluation, not just training** — every reported accuracy has an unknown-but-nonzero error floor from gold mismatches.
+
+- **Verify the gold before concluding "model failure."** Per id=48 (Run 06): gold `I` = `(4/3)ln3` and model's `E` = `(2/3)ln9` are mathematically identical; the question has two correct options and the Judger is brittle on the one not picked as gold. Per id=12 (Run 04): model said 14, gold says 13, instructor confirms 14 is correct. Default assumption when a Run 04+ "wrong" answer looks suspicious: **check the math before blaming the model.**
+- **n=50 noise floor includes an ambiguous-gold component.** ~2-3 q of any 50-item accuracy may be irreducible from this alone. Prompt-policy comparisons under +4 q at n=50 are within combined sampling + ambiguous-gold noise. Self-consistency partially helps (vote reflects which equivalent form the model leans toward); the underlying mismatch is unfixable without scorer changes (which don't happen mid-sweep).
+- **Wrong-answer audit before any behavioral claim.** Any time fewer than ~5 items of evidence are about to drive a conclusion (e.g. "v2 caused premature commitment"), spot-check each one first:
+  1. Mathematically equivalent to gold under any reasonable interpretation? (id=48 class)
+  2. Gold itself wrong? Verify the math. (id=12 class)
+  3. Genuine model error?
+
+  Cheap when wrong-answer counts are small (Run 05 had 4 free-form wrongs). Skipping this on Run 06 cost ~5 min of misguided Hypothesis A vs B speculation on id=48 before realizing the question had two correct options.
+
+---
+
 ## Experimentation Discipline
 
 - **One variable at a time.** Don't bundle a prompt change with a slice change with a token-budget change. If you must bundle, name it explicitly and accept the run is not a clean comparison for either axis.
 - A slice's ID list is locked once any run uses it. Edits = a new slice ID (e.g. `fixed_50_v1` → `fixed_50_v2`).
-- Don't change the prompt parser or scorer mid-sweep. Public-data labels may have errors; track suspicious items separately. Do not modify gold answers.
+- Don't change the prompt parser or scorer mid-sweep. Do not modify gold answers (see Data & Analysis Discipline above for handling suspicious golds).
 - **Don't decide accuracy from n=20.** 95% CI is ±22pp — bigger than any realistic single-variable effect. n=20 is for cutoff rate (deterministic-ish) and infra checks only. Promotion calls happen at n≥50 per DESIGN.md §1.11.
 - Don't overwrite previous run outputs.
 - Don't reinstall packages without explicit ask.
