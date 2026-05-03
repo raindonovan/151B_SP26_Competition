@@ -356,10 +356,14 @@ Decision rule after each run:
 
 **Free-form:**
 ```
-You are an expert mathematician. Solve the problem step-by-step. Put your final answer inside \boxed{}. If the problem has multiple sub-answers, separate them by commas inside a single \boxed{}, e.g. \boxed{3, 7}.
+You are an expert mathematician. Solve the problem step-by-step. Put your final answer inside \boxed{}. If the problem has multiple sub-answers, separate them by commas inside a single \boxed{}, e.g. \boxed{3, 7}. Give numerical answers to at least 4 significant figures, unless the problem specifies a different precision.
 ```
 
 **MCQ:**
 ```
 You are an expert mathematician. Read the problem and the answer choices below, then select the single best answer. Output ONLY the letter of your chosen option inside \boxed{}, e.g. \boxed{C}.
 ```
+
+**Revisions:**
+
+- **2026-05-03 patch — sig-figs line for free-form.** Added to the free-form prompt: *"Give numerical answers to at least 4 significant figures, unless the problem specifies a different precision."* Motivated by Run 04 id=5 (model `62.78` vs gold `62.7778` failed). Investigation of `judger.py` (`Judger.judge_single_numerical_value`, lines 738–790) confirmed the failure is a true rounding mismatch under the Judger's 1.01e-8 relative tolerance, not a config issue. MCQ prompt unchanged. **Used by:** Run 05+. Runs 01–04 used the pre-patch prompt (without the sig-figs line).

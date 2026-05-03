@@ -55,7 +55,8 @@ SYSTEM_PROMPT_MATH = (
     "You are an expert mathematician. Solve the problem step-by-step. "
     "Put your final answer inside \\boxed{}. "
     "If the problem has multiple sub-answers, separate them by commas inside a single \\boxed{}, "
-    "e.g. \\boxed{3, 7}."
+    "e.g. \\boxed{3, 7}. "
+    "Give numerical answers to at least 4 significant figures, unless the problem specifies a different precision."
 )
 
 SYSTEM_PROMPT_MCQ = (
