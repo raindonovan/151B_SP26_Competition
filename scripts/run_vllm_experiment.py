@@ -108,8 +108,19 @@ def has_boxed(response: str) -> bool:
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser()
     p.add_argument("--run-id", required=True)
+    p.add_argument(
+        "--slice",
+        default=None,
+        help="Path to a slice JSON (data/slices/<id>.json). "
+             "Mutually exclusive with --data-start/--data-end.",
+    )
     p.add_argument("--data-start", type=int, default=0)
-    p.add_argument("--data-end", type=int, required=True)
+    p.add_argument(
+        "--data-end",
+        type=int,
+        default=None,
+        help="Required unless --slice is provided.",
+    )
     p.add_argument("--max-new-tokens", type=int, required=True)
     p.add_argument("--output", required=True)
     # Default 16384 matches Pod A's input-truncation cap and gives a full
@@ -119,7 +130,13 @@ def parse_args() -> argparse.Namespace:
     # prompt. Override (e.g. 24576) when running with max_new_tokens > 8192.
     p.add_argument("--max-model-len", type=int, default=16384)
     p.add_argument("--data-path", default=str(REPO_ROOT / "data" / "public.jsonl"))
-    return p.parse_args()
+    args = p.parse_args()
+
+    if args.slice is not None and args.data_end is not None:
+        p.error("--slice and --data-end are mutually exclusive")
+    if args.slice is None and args.data_end is None:
+        p.error("either --slice or --data-end must be provided")
+    return args
 
 
 def load_data(path: str, start: int, end: int) -> list[dict]:
@@ -132,14 +149,56 @@ def load_data(path: str, start: int, end: int) -> list[dict]:
     return items[start:end]
 
 
+def load_slice(slice_path: str) -> dict:
+    """Load a slice manifest from data/slices/<id>.json."""
+    with open(slice_path) as f:
+        return json.load(f)
+
+
+def load_data_by_ids(data_path: str, ids: list) -> list[dict]:
+    """Return rows whose `id` field is in `ids`, in the order given by `ids`.
+    Raises ValueError if any requested id is missing from the dataset.
+    """
+    by_id = {}
+    with open(data_path) as f:
+        for line in f:
+            line = line.strip()
+            if line:
+                row = json.loads(line)
+                by_id[row["id"]] = row
+    missing = [i for i in ids if i not in by_id]
+    if missing:
+        head = missing[:5]
+        more = f" (+{len(missing) - 5} more)" if len(missing) > 5 else ""
+        raise ValueError(
+            f"slice references {len(missing)} ids not in {data_path}: {head}{more}"
+        )
+    return [by_id[i] for i in ids]
+
+
 def main() -> None:
     started_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
     args = parse_args()
     out_path = Path(args.output)
     out_path.parent.mkdir(parents=True, exist_ok=True)
 
-    items = load_data(args.data_path, args.data_start, args.data_end)
-    print(f"Loaded {len(items)} questions [{args.data_start}:{args.data_end}] from {args.data_path}")
+    if args.slice:
+        slice_info = load_slice(args.slice)
+        items = load_data_by_ids(args.data_path, slice_info["ids"])
+        print(
+            f"Loaded {len(items)} questions from slice "
+            f"{slice_info.get('slice_id')!r} ({args.slice}) over {args.data_path}"
+        )
+    else:
+        slice_info = None
+        items = load_data(args.data_path, args.data_start, args.data_end)
+        print(
+            f"Loaded {len(items)} questions [{args.data_start}:{args.data_end}] "
+            f"from {args.data_path}"
+        )
+
+    slice_id_value = slice_info["slice_id"] if slice_info else None
+    slice_path_value = str(args.slice) if args.slice else None
 
     tokenizer = AutoTokenizer.from_pretrained(MODEL_ID, trust_remote_code=True)
 
@@ -220,6 +279,8 @@ def main() -> None:
             "prompt_version": PROMPT_VERSION,
             "model": MODEL_ID,
             "max_new_tokens": args.max_new_tokens,
+            "slice_id": slice_id_value,
+            "slice_path": slice_path_value,
             **SAMPLING,
         })
 
@@ -279,6 +340,9 @@ def main() -> None:
         "data_path": args.data_path,
         "data_start": args.data_start,
         "data_end": args.data_end,
+        "slice_id": slice_id_value,
+        "slice_path": slice_path_value,
+        "slice_n": len(slice_info["ids"]) if slice_info else None,
         "n": n,
         "n_mcq": n_mcq,
         "n_free": n_free,
@@ -320,6 +384,8 @@ def main() -> None:
 
     print("\n" + "─" * 60)
     print(f"Run ID            : {args.run_id}")
+    if slice_info:
+        print(f"Slice             : {slice_info['slice_id']}  ({args.slice})")
     print(f"Output            : {out_path}")
     print(f"Summary           : {summary_path}")
     print(f"Questions         : {n}  (mcq={n_mcq}, free={n_free})")
