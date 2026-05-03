@@ -53,6 +53,19 @@ For thinking models, `max_new_tokens` is an **accuracy variable**, not just runt
 
 ---
 
+## Scoring (Judger)
+
+`judger.py` provides `Judger.auto_judge(pred, gold, options)` and is the canonical scorer for both pods.
+
+- **Numerical tolerance is 1.01e-8 relative** (`Judger.precision = 1e-8`, applied as `abs((p-g)/g) <= precision*1.01`). Numerical answers below ~4 significant figures risk false-negatives. The v1 prompt requests ≥4 sig figs to mitigate (per id=5 evidence in Run 04).
+- **Multi-answer free-form is positional element-wise:** `extract_ans` → bracket/paren-aware comma split → zipped against gold list. Order matters. Single `\boxed{a, b, c}` is correct; do not box per slot.
+- **For any RL reward function calling `auto_judge`: construct `Judger(strict_extract=True)`.** Default `strict_extract=False` enables fallbacks (`"answer is X"`, `"C: explanation"`, last-number-in-text) that a policy can learn to farm — toxic as a training signal, fine for evaluation.
+- **Judger throughput: ~9 sympy parses per item in the try-all loop** (`is_equal` tries every method until one returns True). For RL or self-consistency, route by question type to avoid the unnecessary parses.
+
+Don't change `judger.py` mid-sweep. Scoring changes are their own experiment with their own slice — never mixed with prompt or token-budget A/Bs.
+
+---
+
 ## Experimentation Discipline
 
 - **One variable at a time.** Don't bundle a prompt change with a slice change with a token-budget change. If you must bundle, name it explicitly and accept the run is not a clean comparison for either axis.
@@ -62,6 +75,7 @@ For thinking models, `max_new_tokens` is an **accuracy variable**, not just runt
 - Don't overwrite previous run outputs.
 - Don't reinstall packages without explicit ask.
 - Don't edit notebooks unless explicitly asked. Prefer `scripts/run_vllm_experiment.py` and `experiments.md` for changes.
+- **Prompt edits within the same policy are dated revisions, not new policies.** Record them under that policy's heading in `experiments.md` (e.g. "v1-baseline > 2026-05-03 patch: added sig-figs line"). New version strings (v2, v3, …) are reserved for changes large enough to warrant a separate prompt-policy comparison run.
 
 ---
 
@@ -92,6 +106,7 @@ When information could go in multiple places, prefer:
 | `experiments.md` | Operational run log: results summary, queue, insights, known issues, slice definitions |
 | `SETUP.md` | Pod A / Pod B environment details |
 | `COMPETITION.md` | Competition rules, submission format |
+| `judger.py` | Scoring logic. Don't modify mid-sweep. See Scoring (Judger) section above. |
 
 ---
 
