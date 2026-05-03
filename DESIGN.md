@@ -227,135 +227,71 @@ To make claims about individual prompt components, we need ablation testing.
 
 ### 1.9 First-Round Prompt Policies
 
-We will test 5 prompt pairs total, including the current baseline.
+> **Status (2026-05-03):** The original 5-policy plan has been substantially superseded by published evidence and our own findings. **Only v1-baseline (Policy 0, sig-figs patched) and v2-mcq-commit (a tightened revision of Policy 4) were actually run.** Policies 1, 2, 3 are formally dead (see status notes below). The verbatim text remains here for the historical record only.
 
-#### Policy 0: Current Baseline
+#### Policy 0 → v1-baseline (sig-figs patched). RAN as Run 05.
 
-Purpose:
+Purpose: establish the baseline on `fixed_50_v1`.
 
-```text
-Establish the baseline on the fixed 50-question slice.
-```
-
-This uses the repo’s current MCQ and free-response prompts.
+Result: 70.0% / 82.4% MCQ / 63.6% free at 16k cap. Locked as the prompt-sweep anchor. See [`experiments.md`](experiments.md) > Run 05 + Prompt Versions > v1-baseline for the patched text and rationale.
 
 ---
 
-#### Policy 1: Careful Reasoning
+#### Policy 1: Careful Reasoning. **DEAD.**
 
-Purpose:
+> **Status: dead.** Subsumed by Anti-Patterns in CLAUDE.md. "Reason step by step" / "check work" prompts are neutral or harmful on a thinking model — the model already does extensive `<think>` reasoning by default, and explicit reasoning instructions either drift into Policy 2/3 territory (length pressure) or just restate what the model is already doing. Not worth a run.
 
-```text
-Encourage careful step-by-step reasoning and verification.
-```
-
-General idea:
-
-```text
-Solve accurately.
-Reason step by step.
-Check work.
-Final answer inside \boxed{}.
-```
-
-MCQ version should emphasize comparing the solved result against the provided options.
-
-Free-response version should emphasize giving the exact answer unless an approximation is requested.
+Original wording (for the historical record): solve accurately, reason step by step, check work, final answer inside `\boxed{}`.
 
 ---
 
-#### Policy 2: Brief but Sufficient Reasoning
+#### Policy 2: Brief but Sufficient Reasoning. **DEAD.**
 
-Purpose:
+> **Status: dead.** "Be brief" / length-pressure prompts on thinking models are an Anti-Pattern in CLAUDE.md. Frugal Table 5 + general published evidence: forcing shorter reasoning on a thinking model degrades accuracy. Run 06's v2-mcq-commit ("Stop generating immediately after `\boxed{}`") *did* shrink the median MCQ response by 13% but converted **0 of 3** MCQ cutoffs to correct answers — the items hitting the cutoff cluster are reasoning-bound, not budget-bound (Insight 2). Brevity prompts attack the wrong axis.
 
-```text
-Test whether shorter reasoning improves efficiency and possibly accuracy.
-```
-
-General idea:
-
-```text
-Use brief but sufficient reasoning.
-Avoid unnecessary verbosity.
-Still put final answer inside \boxed{}.
-```
-
-This is motivated by the possibility that very long reasoning can waste tokens, increase runtime, or introduce mistakes.
+Original wording: brief but sufficient reasoning, avoid unnecessary verbosity, final answer inside `\boxed{}`.
 
 ---
 
-#### Policy 3: Anti-Error / Checking Prompt
+#### Policy 3: Anti-Error / Checking Prompt. **DEAD.**
 
-Purpose:
+> **Status: dead.** "Check your work" prompts on thinking models are an Anti-Pattern in CLAUDE.md. The model's default `<think>` block already performs verification; explicit "check arithmetic / units / edge cases" instructions are noise.
 
-```text
-Reduce common math-model errors.
-```
-
-General idea:
-
-```text
-Check arithmetic.
-Check units.
-Check edge cases.
-Check whether the problem asks for an exact value, expression, or choice.
-```
-
-For MCQ, the model should verify that the selected option matches the computed result.
-
-For free-response, the model should avoid unnecessary decimal approximations.
+Original wording: check arithmetic, check units, check edge cases, check whether the problem asks for an exact value or choice.
 
 ---
 
-#### Policy 4: MCQ-Elimination + Exact Free-Response
+#### Policy 4 → v2-mcq-commit. RAN as Run 06.
 
-Purpose:
+Original Policy 4 was "MCQ-elimination + exact free-response." It morphed into v2-mcq-commit, which keeps the question-type specialization spirit but replaces "compare and eliminate choices" (length-encouraging) with "stop immediately after `\boxed{LETTER}`" (commitment-targeted). Free-form prompt held byte-identical to v1 to keep the comparison clean.
 
-```text
-Use more specialized guidance for each question type.
-```
+Result: 66.0% overall (−2 q vs Run 05), MCQ 76.5% (−1 q), free 60.6% (−1 q). **Not promoted.** Both losses explainable by either ambiguous gold (id=48) or sampling noise (id=199). MCQ-cutoff cluster unaffected: 0 of Run 05's 3 MCQ cutoffs converted to correct under v2.
 
-MCQ guidance:
-
-```text
-Solve the problem.
-Compare choices.
-Eliminate wrong choices if useful.
-Return only the final option letter inside \boxed{}.
-```
-
-Free-response guidance:
-
-```text
-Solve the problem.
-Give the exact mathematical answer.
-Use \boxed{} for final answer.
-```
-
-This policy tests whether stronger question-type specialization improves performance.
+See [`experiments.md`](experiments.md) > Run 06 + Insight 2 + Insight 7 for the full analysis. The v2 wording lives in `scripts/run_vllm_experiment.py:PROMPTS["v2-mcq-commit"]`.
 
 ---
 
-### 1.10 First-Round Experiment Plan
+#### Conclusion of the prompt sweep
 
-The first round should use:
+Two policies survived the literature filter and got tested. Neither beat baseline at n=50 within the +4 q promotion bar (DESIGN.md §1.11). The MCQ-cutoff cluster, hypothesized to be commitment-bound, turns out to be reasoning-bound (Insight 2). **Phase 1 (prompt engineering) has hit its ceiling at this model + slice + cap.** Move to Phase 2 (self-consistency); see §3.
 
-```text
-5 prompt policies
-50 fixed validation questions
-same generation parameters for all runs
-same answer parser for all runs
-```
+---
 
-Run table:
+### 1.10 First-Round Experiment Plan — Outcome
 
-| Run | Prompt Policy | Questions | Purpose |
-|---|---:|---:|---|
-| 0 | Current baseline | 50 | Establish baseline |
-| 1 | Careful reasoning | 50 | Test careful verification |
-| 2 | Brief reasoning | 50 | Test shorter reasoning |
-| 3 | Anti-error/checking | 50 | Test explicit error prevention |
-| 4 | MCQ-elimination + exact free-response | 50 | Test specialized wording |
+> **Updated 2026-05-03 to reflect actual runs.** Original plan was 5 policies × 50q. Three policies (1, 2, 3) became Anti-Patterns and were never run; Policy 0 → Run 05 and Policy 4 → Run 06 (as v2-mcq-commit). Reality:
+
+| Planned | Actual | Run | Result on `fixed_50_v1` | Verdict |
+|---|---|---|---|---|
+| Policy 0 (baseline) | v1-baseline (sig-figs patched) | 05 | 70.0% / 82.4% MCQ / 63.6% free, 4 cutoffs | **Anchor.** Locked. |
+| Policy 1 (careful) | — (dead) | — | — | Anti-Pattern; not run |
+| Policy 2 (brief) | — (dead) | — | — | Anti-Pattern; not run |
+| Policy 3 (checking) | — (dead) | — | — | Anti-Pattern; not run |
+| Policy 4 (MCQ-elim) | v2-mcq-commit | 06 | 66.0% / 76.5% MCQ / 60.6% free, 3 cutoffs | Not promoted (within noise; MCQ-cutoff structural per Insight 2) |
+
+Same-slice, same-engine, same-cap, same-sampling between Runs 05 and 06 — only the MCQ system prompt changed. Per-item agreement: 48/50 (the 2 flips were id=48 ambiguous gold and id=199 free-form sampling noise).
+
+Phase 1 conclusion: the prompt-only lever has been exercised within the safe set; no winner exists at n=50 within the +4 q promotion bar. See §1.18 (Phase 1 Outcome) for the strategic summary and §3 for the Phase 2 plan.
 
 ---
 
@@ -588,16 +524,27 @@ unless the generation code is intentionally updated.
 
 ---
 
-### 1.18 Summary of Immediate Next Steps
+### 1.18 Phase 1 Outcome (was: Summary of Immediate Next Steps)
 
-1. Create or update `design.md` with this prompt-engineering plan.
-2. Create a fixed 50-question validation slice.
-3. Rerun the current baseline on that exact 50-question slice.
-4. Save baseline outputs under a unique run ID.
-5. Test 4 new prompt policies on the same 50-question slice.
-6. Compare overall, MCQ, and free-response accuracy.
-7. Promote the top 1-2 policies to a 100-question or 200-question run.
-8. Run ablations only after identifying a promising policy.
+> Original §1.18 listed the 8-step plan to *start* Phase 1. All 8 are now done or superseded. Replaced with the Phase 1 outcome — what was concluded, why, and what comes next.
+
+**Phase 1 conclusion: prompt engineering at this model + slice + cap has hit its ceiling.** Two policies survived the Anti-Patterns filter and got tested at n=50; neither beat the v1 anchor by the +4 q promotion bar. The cluster of items that drives most MCQ failures is reasoning-bound, not budget-bound or commitment-bound — and prompt instructions can't fix reasoning.
+
+**Three load-bearing findings from Phase 1** (full write-ups in [`experiments.md`](experiments.md) > Insights):
+
+1. **Token budget reduces cutoff rate but doesn't unlock reasoning depth on items that aren't already cap-bound.** 8k → 16k cap dropped cutoff rate 30% → 8% on `fixed_50_v1`, but avg gen tokens barely moved (4899 → 4871) and p50 was 3536 — most items don't use the extra budget. **16k locked as the operating point.** Chasing 32k would only matter if cutoffs > ~5/50; Frugal Table 5 shows diminishing returns past 16k for the base model. ([Insight 1](experiments.md))
+2. **MCQ-cutoff cluster is structural, not prompt-engineerable at this cap.** Survives engine swap, cap doubling, AND a commitment-targeted prompt (v2). Run 06 converted 0 of Run 05's 3 MCQ cutoffs to correct answers — its reduced cutoff count (3→2) came from the model committing to wrong answers earlier, not from solving the items. **The items are reasoning-bound.** ([Insight 2](experiments.md))
+3. **Combined noise floor on n=50 is ~3-5 q.** Sampling + engine variance contributes ±2 q (Insight 6: same-slice flips between Run 05 and Run 06); ambiguous-gold contributes ~2-3 q (Insight 7: id=48 case + instructor-confirmed dataset errors). **Any prompt-policy comparison under +4 q at n=50 is within combined noise.** Promotion bar in §1.11 stays right; the floor explains why Policy 4 (v2) at −2 q is non-evidence either way. ([Insight 6, 7](experiments.md))
+
+**Strategic implication.** The prompt-engineering knob is exhausted *within the literature-safe set of policies*. Further work on the prompt axis would either (a) re-run Anti-Pattern policies hoping for a surprise, or (b) propose entirely new prompt strategies — both low-EV. The next high-leverage move is **sample-level (self-consistency, §3) or training-level (§4)**, not more prompt iteration.
+
+**Carry-forward from Phase 1:**
+- v1-baseline (sig-figs patched) is the locked prompt for all subsequent phases unless explicitly changed
+- `fixed_50_v1` is the locked Phase-1/Phase-2 evaluation slice
+- 16k token budget / 24576 max_model_len is the locked operating point on Pod B
+- The Anti-Patterns list in CLAUDE.md is the persistent residue of Phase 1's literature filter — protects future work from re-trying dead policies
+
+**Phase 2 entry point:** §3 (Self-Consistency).
 
 ---
 
