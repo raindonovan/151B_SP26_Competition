@@ -66,15 +66,80 @@ Do not modify this environment. It is the stable fallback.
 
 ---
 
-## Pod B — vLLM (Planned)
+## Pod B — vLLM (Working)
 
-### Strategy
+### Hardware
 
-Pod B is a clean environment built for vLLM. It must be isolated from Pod A's `.venv` — no shared virtual environments.
+| Item | Value |
+|------|-------|
+| GPU | NVIDIA GeForce RTX 4090 |
+| VRAM | 24 GB |
 
-Use a RunPod template with vLLM pre-installed (official vLLM template or a community image with matching CUDA/PyTorch). This avoids manually resolving CUDA wheel mismatches.
+### Software Stack
 
-### Setup Steps (first time)
+| Package | Version |
+|---------|---------|
+| Python | 3.x (in `.venv`) |
+| Torch | 2.6.0+cu124 |
+| Transformers | 4.51.3 |
+| vLLM | 0.8.5 |
+| Engine | vLLM **V0** (V1 disabled) |
+| dtype | bfloat16 (no quantization) |
+| gpu_memory_utilization | 0.85 |
+
+### Critical: VLLM_USE_V1=0
+
+vLLM 0.8.5 on this pod **only works with the V0 engine**. The V1 engine fails to initialize.
+Set the env var **before** importing vllm:
+
+```python
+import os
+os.environ["VLLM_USE_V1"] = "0"
+import vllm  # must come after
+```
+
+`scripts/run_vllm_experiment.py` already does this. Any new vLLM script must do the same.
+
+### Environment Path
+
+```
+/workspace/151B_SP26_Competition/.venv
+```
+
+Despite the SETUP.md two-pod plan calling for environment isolation, vLLM was
+installed into the same `.venv` as Pod A's Transformers stack on this pod
+(single-pod setup). It works; treat the `.venv` as the canonical environment
+for both engines on this machine. If a true two-pod split is later needed,
+revisit this section.
+
+### Smoke test (already verified)
+
+The smoke test from the original Pod B plan was run with
+`scripts/run_vllm_experiment.py --data-end 5 --max-new-tokens 2048`.
+Pipeline ran end-to-end; cutoffs were expected at 2048 tokens for
+Qwen3-Thinking. See `results/run_vllm_smoke_5_tok2048.jsonl`.
+
+### Verifying vLLM still works
+
+```bash
+/workspace/151B_SP26_Competition/.venv/bin/python -c "
+import os
+os.environ['VLLM_USE_V1'] = '0'
+import vllm, torch, transformers
+print('vllm', vllm.__version__)
+print('torch', torch.__version__)
+print('transformers', transformers.__version__)
+print('cuda', torch.version.cuda, '| device', torch.cuda.get_device_name(0))
+"
+```
+
+Expected: `vllm 0.8.5 | torch 2.6.0+cu124 | transformers 4.51.3 | cuda 12.4 | RTX 4090`.
+
+### Original Pod B Plan (kept for reference)
+
+The original two-pod plan called for a clean isolated environment built from a
+vLLM-pre-installed RunPod template. That plan is preserved below in case the
+single-pod setup needs to be split later:
 
 1. On RunPod dashboard: **Deploy Pod** → select GPU → choose vLLM-compatible template
 2. Open terminal on new pod
@@ -86,6 +151,7 @@ Use a RunPod template with vLLM pre-installed (official vLLM template or a commu
 4. Install only missing project dependencies (do not install Transformers/BNB into this env)
 5. Verify vLLM import:
    ```python
+   import os; os.environ["VLLM_USE_V1"] = "0"
    import vllm; print(vllm.__version__)
    ```
 6. Run smoke test (see below)
@@ -124,8 +190,30 @@ This confirms vLLM produces equivalent outputs before it becomes the primary inf
 ### Qwen3-Thinking Specifics for vLLM
 
 - Verify thinking mode is active (check for `<think>` blocks in output)
-- Match sampling params to Pod A: `temperature=0.6`, `top_p=0.95`, `top_k=20`
+- Match sampling params to Pod A: `temperature=0.6`, `top_p=0.95`, `top_k=20`, `repetition_penalty=1.0`
 - `thinking_budget` parameter can cap `<think>` block length — useful for MCQ speed
+
+### Running an experiment
+
+Use `scripts/run_vllm_experiment.py`. It owns the v1-baseline prompts, MCQ
+detection by non-empty `options`, chat-template construction, vLLM batched
+generation, and Judger-based scoring. Each run writes a JSONL of per-question
+rows and a sidecar `*.summary.json` with run-level metrics.
+
+Example:
+
+```bash
+/workspace/151B_SP26_Competition/.venv/bin/python scripts/run_vllm_experiment.py \
+  --run-id run04_vllm_parity_20_tok8192 \
+  --data-start 0 \
+  --data-end 20 \
+  --max-new-tokens 8192 \
+  --output results/run04_vllm_parity_20_tok8192.jsonl
+```
+
+CLI args: `--run-id`, `--data-start`, `--data-end`, `--max-new-tokens`,
+`--output`, `--max-model-len` (default 8192), `--data-path` (default
+`data/public.jsonl`).
 
 ---
 
