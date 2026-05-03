@@ -495,67 +495,192 @@ Use a table like this in the design doc or a separate experiment log.
 
 ---
 
-## 2. Future Sections
+## 2. Phase 1 → Phase 2 Transition
 
-These sections can be expanded later.
+Phase 1 conclusion (§1.18): the prompt-engineering knob is exhausted within the literature-safe set; the items driving most failures are reasoning-bound, not budget- or commitment-bound. Phase 2's question: **can we get free accuracy by sampling the model multiple times and voting?**
 
-### 2.1 Inference Pipeline
+**Hypothesis.** Self-consistency (Wang et al. 2022) reduces sampling noise on items where the model "knows" the answer but its single-sample output drifts. On our locked v1 + `fixed_50_v1` + 16k cap setup, this is the highest-leverage non-training move available.
 
-To document:
+**Why it should work on this distribution.**
+- Run 06's two v1→v2 flips were one sampling-noise case (id=199) plus one ambiguous-gold case (id=48). SC kills the first directly (vote across N samples is noise-robust) and partially addresses the second (the vote reflects which equivalent form the model leans toward most often).
+- The MCQ-cutoff cluster (Insight 2) is reasoning-bound — SC won't fix it, since no number of samples helps if every sample produces the same wrong reasoning. But it should improve the items where the model is on the boundary between confident-correct and lucky-wrong.
 
-```text
-model loading
-quantization
-Transformers generation path
-batching strategy
-runtime constraints
-GPU memory constraints
+**Why it might not help much.**
+- Locked sampling already uses temperature=0.6 (low-ish for a thinking model). Sample diversity may be limited; if all 8 samples produce nearly identical chains, SC degenerates to single-sample.
+- High-agreement-wrong items (where 8/8 samples agree on a wrong answer) are unhelped by any voting scheme.
+
+Decision rule for whether Phase 2 is worth the cost: §3.4.
+
+---
+
+## 3. Phase 2 — Self-Consistency
+
+### 3.1 Method
+
+Sample N completions per question with the locked sampling defaults (`temperature=0.6, top_p=0.95, top_k=20, repetition_penalty=1.0`). Extract `\boxed{...}` content from each completion. **Unweighted majority vote** on the extracted strings. Submit the winning vote as the final answer.
+
+- N = 8 for the first run (see §3.4 cost table). Promote to N=16 only if N=8 shows positive returns and budget allows.
+- **No beam search.** Plain stochastic sampling per locked defaults — beam search degenerates the diversity SC needs.
+- **No weighted variants.** Wang et al. show unweighted majority beats weighted in most regimes; complexity isn't worth it.
+- **Vote on the extracted answer string, not the full response.** Two responses with different reasoning that converge on the same `\boxed{42}` should both contribute to the "42" vote.
+- **Tie-break:** if two answers tie in vote count, take the one that appeared first across the sample stream. Document the rule; ties should be rare with N=8 and a moderately-confident model.
+
+### 3.2 Implementation
+
+vLLM's `SamplingParams` supports `n=N` natively — no manual sampling loop required, the engine handles batched parallel sampling internally:
+
+```python
+SamplingParams(
+    n=8,
+    temperature=0.6, top_p=0.95, top_k=20, repetition_penalty=1.0,
+    max_tokens=16384,
+)
 ```
 
-### 2.2 Evaluation and Answer Parsing
+Each `RequestOutput.outputs` will contain N `CompletionOutput` objects. Loop over them, extract boxed, count votes, take argmax.
 
-To document:
+**Per-row JSONL schema additions:**
+- `samples`: array of N objects, each `{response, gen_tokens, hit_token_cap, extracted_answer}`. Lets us audit individual samples post-hoc.
+- `voted_answer`: the majority answer string.
+- `agreement_rate`: `max_vote / N` (e.g. 0.625 if 5/8 agreed). Per-question confidence proxy.
+- `tie_broken`: bool. Flag for the rare cases where the tie-break rule fired.
 
-```text
-boxed-answer extraction
-normalization rules
-MCQ answer handling
-free-response answer handling
-parse-failure handling
-```
+The deterministic-runner per-row fields (`prompt_version`, `slice_id`, etc.) all carry forward unchanged.
 
-### 2.3 Runtime and Compute Constraints
+**Summary additions:** `n_samples`, `agreement_rate_p25 / p50 / p75`, `n_unanimous` (count of items where all N samples agreed), `n_tie_broken`.
 
-To document:
+### 3.3 New script
 
-```text
-expected runtime per question
-max_new_tokens tradeoffs
-GPU availability
-memory limits
-cost of larger validation runs
-```
+`scripts/run_vllm_sc.py` — separate file from `run_vllm_experiment.py`. Reasons:
+- Different schema (samples array per row).
+- Different cost profile (N× per question; needs distinct cost reporting).
+- Same prompt registry, same slice loading, same chat-template path → import those from a shared module if both files start to overlap, but for now copy-and-adapt is fine.
 
-### 2.4 Competition Rules
+Estimated effort: ~80 lines new, mostly the extraction + voting logic.
 
-To document:
+### 3.4 Cost and decision rule
 
-```text
-required model
-allowed techniques
-disallowed techniques
-submission format
-fairness constraints
-```
+| N | per-q cost | n=50 slice runtime | n=1126 full set |
+|---|---|---|---|
+| 1 (Run 05/06 baseline) | 13 s | 11 min, ~$0.13 | ~245 min, ~$2.80 |
+| 8 | ~100 s* | ~85 min, ~$1.00 | ~32 hr, ~$22 |
+| 16 | ~200 s* | ~170 min, ~$2.00 | ~64 hr, ~$45 |
 
-### 2.5 Future Methods
+*assumes near-linear N-scaling on Pod B; actual could be 0.6-0.9× depending on KV-cache pressure under N-way batching. Will measure on the n=50 run.
 
-Possible later methods:
+**Decision rule (Run 07-SC, N=8 on `fixed_50_v1`):**
+- Overall accuracy ≥ Run 05 + 4 q (i.e. ≥ 78%) → **promote SC as part of submission pipeline.** Move to a confirmation run (n=100 or n=200), then full-set submission with SC.
+- Overall ≥ Run 05 + 2 q AND agreement-rate distribution shows meaningful spread (p50 < 1.0) → **SC is helping but not enough at N=8.** Re-run at N=16 if budget allows. Otherwise treat as "modest improvement, accept" and move on.
+- Overall < Run 05 + 2 q OR agreement-rate p50 = 1.0 (everything unanimous) → **SC isn't doing useful work on this distribution at locked sampling.** Don't promote; the next move is training (§4).
 
-```text
-supervised fine-tuning
-reinforcement learning
-self-consistency
-answer re-ranking
-tool-assisted verification, if allowed
-```
+### 3.5 What to record per run
+
+Standard metrics (Insights 1-7) plus:
+- agreement-rate distribution
+- breakdown of correct vs. incorrect items by agreement bucket (unanimous / strong / weak / split)
+- per-item samples for any item that flipped vs. the v1 single-sample baseline (Run 05)
+
+If N=8 reaches 75% on `fixed_50_v1` with median agreement 7/8, the model is "almost there" on most items and SC is the right last-mile lever. If N=8 lands at 71% with median 8/8 agreement, the floor is genuine model failure that no voting can fix → Phase 3 becomes urgent.
+
+---
+
+## 4. Phase 3 — Training
+
+### 4.1 Reference recipe — Frugal-Thinking (Bounhar et al., MBZUAI-Paris, arXiv 2511.01937)
+
+The cleanest published recipe targeting Qwen3-4B-Thinking-2507 specifically. Two-stage GRPO with binary verifiable reward on `\boxed{}` exact match:
+
+| Hyperparameter | Frugal value |
+|---|---|
+| Algorithm | GRPO via veRL |
+| Reward | binary on `\boxed{}` exact match |
+| Group size G | 16 |
+| Batch size | 128 |
+| Learning rate | 1e-6 |
+| Optimizer | AdamW |
+| Warmup | 5% linear |
+| Clip | asymmetric (0.8, 1.28) |
+| Max completion | 16384 |
+| Total compute (full scale) | ~250 H200-days |
+
+**Key data point — Frugal Table 5 (AIME25 accuracy by token cap):**
+
+| Model | 8k | 16k | 32k | 42k |
+|---|---:|---:|---:|---:|
+| Qwen3-4B-Thinking (base) | 13.33 | 46.67 | 73.33 | 73.33 |
+| Frugal-Stage-2 | 53.33 | 70.00 | 70.00 | 70.00 |
+
+Frugal-Stage-2 squeezes far more accuracy out of an 8k budget but plateaus earlier. For our setting at 16k on a CSE 151B distribution (easier than AIME25), both models are likely closer to saturation — the absolute gap matters less than the directional confirmation that GRPO on this base model produces real gains.
+
+**Faithful replication is infeasible on a single 4090** (1-2 OOM under-resourced — 250 H200-days vs ~1 4090-day realistic budget).
+
+### 4.2 Three realistic paths
+
+**Path A — Heavy downscale.** G=4 or 8, QLoRA, possibly TRL or Unsloth instead of veRL. Keep the recipe shape (GRPO, binary boxed-match reward, locked sampling) but accept that we get a fraction of Frugal's training signal.
+- **Pros:** straightforward; tooling exists (TRL, Unsloth).
+- **Cons:** possibly under-trained; reward signal at G=4 is noisier than at G=16.
+
+**Path B — Use Frugal-4B as init checkpoint.** Skip our own training entirely; fine-tune from `MBZUAI-Paris/Frugal-Thinking-4B` directly.
+- **Pros:** highest expected accuracy ceiling — Frugal-Stage-2 hits 53% on AIME25 at 8k vs base Qwen3-4B-Thinking's 13%.
+- **Cons:** **compliance question.** Competition rules require `Qwen/Qwen3-4B-Thinking-2507`; Frugal-4B is a fine-tuned derivative. Spirit-of-rule: base model + intrinsic methods. Letter-of-rule may exclude derivatives. **See §5.1 — Piazza question pending.**
+
+**Path C — Distillation.** Use Frugal-4B as a teacher offline; generate reasoning traces on training problems; SFT our base Qwen3-4B-Thinking on those traces.
+- **Pros:** gets some of Frugal's signal; less aggressive interpretation of the rules than Path B (we still ship the base model with our own training).
+- **Cons:** SFT on R1-distill-style traces is a known trap if format isn't translated to Qwen3-Thinking's `<think>` convention (CLAUDE.md Anti-Patterns). Frugal-4B *is* a Qwen3-Thinking variant, so format should match — but verify.
+
+### 4.3 Reward function — load-bearing detail
+
+Per CLAUDE.md > Scoring (Judger): **any reward function calling `Judger.auto_judge` MUST construct `Judger(strict_extract=True)`.** Default `strict_extract=False` enables fallbacks (`"answer is X"`, `"C: explanation"`, last-number-in-text) that a policy will learn to farm — toxic as a training signal.
+
+Other reward considerations:
+- **Throughput:** `auto_judge` does ~9 sympy parses per item in the try-all `is_equal` loop. For G=16 × batch=128 = 2048 reward computations per step, that's ~18,000 sympy parses per step. **Route by question type** to skip the unnecessary methods (CLAUDE.md > Scoring); 5× speedup easily achievable.
+- **Binary vs partial credit:** Frugal uses binary. Tempting to add partial-credit signals (e.g. correct boxed format but wrong value → small positive reward) but this opens new reward-hacking surfaces. Stay binary unless there's specific evidence partial credit helps for our regime.
+- **Eval contamination:** training data sources matter. NuminaMath, MetaMathQA, and OpenMathInstruct include MATH train, which may overlap with the public/private competition split. **Prefer post-Aug 2025 sources** (Big-Math-RL-Verified, AIME/HMMT 2025) for the training set. Document the chosen source in the run log.
+
+### 4.4 Data filtering
+
+Per CLAUDE.md > Data & Analysis Discipline: the public dataset is LLM-synthesized and contains errors (questions 1, 8, 12.3 instructor-confirmed). Manipulating training data is explicitly allowed; **filtering bad examples counts as a method**.
+
+For training data specifically:
+- Drop questions where automated filters (e.g. checking gold against a strong solver) detect mismatches. Conservative threshold; over-filtering removes hard items the model needs to see.
+- For RL: items where gold is genuinely wrong will reward the wrong answer; these are toxic for training. Worth a more aggressive filter pass than for evaluation.
+
+### 4.5 Decision tree (depends on Phase 2 outcome)
+
+| Phase 2 (SC) outcome | Phase 3 priority |
+|---|---|
+| SC promotes → ≥ 78% on n=50 | Optional. SC + v1 is the submission. Phase 3 only if budget permits another ~$50-100 of training experiments. |
+| SC marginal → 72-77% on n=50 | Mid-priority. Try Path B first if Piazza answer permits; fall back to Path C. |
+| SC flat or negative → ≤ 72% on n=50 | The next major lever. Path B (Frugal-4B init) is highest EV if compliance permits. |
+
+### 4.6 What to record for a Phase 3 run
+
+Beyond the standard run log: training step, loss curve, validation accuracy on `fixed_50_v1` at every Nth step (don't forget cost — checkpoint eval is its own compute), and a held-out check on a fresh `fixed_50_v2` slice at end-of-training to detect overfitting to `fixed_50_v1`.
+
+---
+
+## 5. Open Questions
+
+### 5.1 Piazza compliance — Frugal-4B as init checkpoint
+
+Competition requires `Qwen/Qwen3-4B-Thinking-2507`. `MBZUAI-Paris/Frugal-Thinking-4B` is a fine-tuned derivative of that exact model. **Question for course staff:** does fine-tuning *from* a public derivative checkpoint count as "using `Qwen/Qwen3-4B-Thinking-2507`" for the rules?
+
+Two interpretations:
+- **Spirit reading:** the rule is "no other architectures, no closed models" — derivatives of the same architecture trained with publicly described methods are in scope. Path B and Path C both OK.
+- **Letter reading:** the rule names the exact model; only base weights or weights you trained yourself from base are allowed. Only Path A.
+
+**Action:** post the question on Piazza before investing in Path B setup. Default-assume letter reading until staff answers; develop Path A in parallel as the safe fallback.
+
+### 5.2 Eval contamination on training sources
+
+Several popular open math datasets (NuminaMath, MetaMathQA, OpenMathInstruct) include MATH train, which may overlap with the competition's public/private split. Worth investigating overlap before Phase 3 commits to a training source.
+
+### 5.3 CSV submission generator timing
+
+Known Issue in `experiments.md`: no CSV submission generator exists yet. Not blocking the prompt sweep or Phase 2; **blocking before any private-set submission run.** Cheapest to write once, alongside whichever runner first crosses into private-set territory.
+
+### 5.4 Per-item incremental save
+
+Known Issue: the current vLLM runner writes per-row JSONL only after the full batch completes. Fine for n=50 (~11 min); risky for n=1126 (~245 min) — a mid-run crash loses everything. Schedule before any full-set run regardless of phase.
+
+---
