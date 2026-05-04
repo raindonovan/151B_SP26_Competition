@@ -436,6 +436,83 @@ Decision rule after each run:
 
 ---
 
+### Submission 1 Analysis (Run 08-v2 → Kaggle 0.586)
+
+#### Result
+
+- First Kaggle submission: Run 08-v2 (v1-baseline, single sample, 16k tok, full 943 private set)
+- Public LB score: **0.586** (58.6% on ~30% sample of private set, n≈283, ±5pp 95% CI)
+- Significantly below local `fixed_50_v1` estimate of 70%
+
+#### Key data points from response analysis ([run08v2_v1_private943_tok16384.jsonl](results/run08v2_v1_private943_tok16384.jsonl))
+
+**Cutoff rate:** 119/943 (12.6%) hit 16k token cap before producing `\boxed{}`
+
+- MCQ: 52/300 (17.3%) — model over-thinks multiple choice
+- Free-form: 67/643 (10.4%)
+
+**Format failure rate:** 115/943 (12.2%) responses have no parseable boxed answer
+
+- 100% of missing-boxed items ARE cutoffs (no items where model "finished but forgot to box")
+- Format failure and cutoff are the same problem mechanically
+
+**Token length distribution:**
+
+- median: 4,863 tokens
+- mean: 6,602 tokens
+- p90: 16,384 (already at cap)
+- p95: 16,384
+- MCQ median: 7,618 tokens (vs free-form median: 3,423) — MCQ over-thinks
+- 13.3% of items at 16k cap
+
+**MCQ format quality:** 250/300 (83.3%) of MCQ items have clean single-letter boxed answer
+
+- Upper bound on MCQ accuracy from format alone is ~83.3% (the rest are cutoffs)
+
+**Multi-answer free-form items: 338/943 (35.8% of dataset)**
+
+- These have multiple `[ANS]` placeholders and are pass/fail (all sub-answers must be correct)
+- Distribution of slot counts: 142×2-slot, 76×3-slot, 58×4-slot, 23×5-slot, 17×6-slot, 5×7-slot, 8×8-slot, etc.
+- Model behavior on multi-answer items is wildly inconsistent:
+  - Some produce 1 box with comma-separated answers (e.g. id=448 slots=2 last_box=`'x^3-4x^2-6x+30, x^2-9x+20'`)
+  - Some produce N boxes for N slots (e.g. id=87 slots=3 total_boxed=15)
+  - Some produce N intermediate boxes through reasoning, ending on a fragment (e.g. id=129 slots=4 total_boxed=32 last_box=`'\dfrac{5'`)
+  - Some produce a single-letter box for multi-slot questions (e.g. id=225 slots=4 total_boxed=8 last_box=`'A'`)
+
+#### Judger behavior (verified by reading [`judger.py`](judger.py))
+
+The Judger's `extract_all_boxed` returns the LAST CONTIGUOUS GROUP of `\boxed{...}` blocks. Two boxes are "contiguous" if separated only by whitespace, commas, punctuation, `$`, or common separators. Any non-whitespace text (e.g. mid-reasoning text) breaks the contiguous group.
+
+For multi-answer items, gold is stored as a list of strings (e.g. id=12 gold=`['380','315','13','310']`). Judger expects N separate `\boxed{...}` blocks at the end matching N gold elements. A single `\boxed{a, b, c}` produces a length-1 list and FAILS the gold list match.
+
+#### Local public-set diagnostic ([run05_v1_50_tok16384.jsonl](results/run05_v1_50_tok16384.jsonl))
+
+Re-analyzed Run 05's 7 wrong multi-answer items on `fixed_50_v1`:
+
+- 6 of 7 are FORMAT failures (single comma-sep box vs gold's list-of-strings, or intermediate boxes breaking contiguity)
+- 1 of 7 is dataset gold formatting bug (id=701: gold=`['0','0','(2,3)','NONE']` has nested commas)
+- 0 of 7 are pure reasoning errors
+
+If format-only failures were fixed, Run 05 would have scored ~41/50 = 82% (vs measured 70%).
+
+#### Implications
+
+True model capability on the test distribution is likely **70-75%**, not 58.6%. Format engineering (per-slot boxed for multi-answer + no intermediate boxes during reasoning) is the largest available lever, not self-consistency or model training.
+
+Estimated error decomposition for the 0.586:
+
+- Multi-answer format failures: ~10-15 pp
+- Cutoffs (auto-zero items): ~6-8 pp (subset includes MCQ over-thinking)
+- Genuine model errors: ~15-20 pp
+
+#### v1-baseline prompt instruction that's structurally incompatible with Judger
+
+> "If the problem has multiple sub-answers, separate them by commas inside a single \boxed{}, e.g. \boxed{3, 7}"
+
+This produces a length-1 boxed group, but Judger expects N elements for an N-slot gold list. This single instruction likely accounts for the bulk of multi-answer scoring losses.
+
+---
+
 ## Prompt Versions
 
 ### v1-baseline
