@@ -6,3 +6,4 @@ __pycache__
 LICENSE.ipynb_checkpoints/
 core
 *.core
+data/private.jsonl
