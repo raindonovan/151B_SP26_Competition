@@ -23,6 +23,7 @@ This is a **strategy and planning** chat, not execution. The user (Rain) runs co
 ## Inference Constraints (CRITICAL)
 
 - Final model: `Qwen/Qwen3-4B-Thinking-2507`. No alternatives.
+- **Training base: only `Qwen/Qwen3-4B-Thinking-2507` itself.** Competition rules don't explicitly forbid initializing from public descendants (e.g. `MBZUAI-Paris/Frugal-Thinking-4B`), but they don't permit it either — they just specify "required model". Default to the conservative reading: any training (SFT/RL) starts from base Qwen3-4B-Thinking-2507. Don't plan around descendant checkpoints unless an instructor explicitly clarifies on Piazza.
 - No external APIs, tools, or calculators at inference time. All reasoning comes from the model.
 - Output format: `\boxed{<answer>}` — letter for MCQ, value/expression for free-form.
 

@@ -616,17 +616,19 @@ Frugal-Stage-2 squeezes far more accuracy out of an 8k budget but plateaus earli
 
 ### 4.2 Three realistic paths
 
-**Path A — Heavy downscale.** G=4 or 8, QLoRA, possibly TRL or Unsloth instead of veRL. Keep the recipe shape (GRPO, binary boxed-match reward, locked sampling) but accept that we get a fraction of Frugal's training signal.
-- **Pros:** straightforward; tooling exists (TRL, Unsloth).
+> **Default path is A (per CLAUDE.md > Inference Constraints "Training base").** Conservative reading of the rules: any training starts from base Qwen/Qwen3-4B-Thinking-2507. Paths B and C are listed for completeness but are not on the active plan unless an instructor explicitly approves on Piazza (§5.1).
+
+**Path A — Heavy downscale (DEFAULT).** G=4 or 8, QLoRA, possibly TRL or Unsloth instead of veRL. Keep the recipe shape (GRPO, binary boxed-match reward, locked sampling) but accept that we get a fraction of Frugal's training signal.
+- **Pros:** straightforward; tooling exists (TRL, Unsloth); compliance unambiguous (we train from base, no descendant checkpoints).
 - **Cons:** possibly under-trained; reward signal at G=4 is noisier than at G=16.
 
-**Path B — Use Frugal-4B as init checkpoint.** Skip our own training entirely; fine-tune from `MBZUAI-Paris/Frugal-Thinking-4B` directly.
+**Path B — Use Frugal-4B as init checkpoint. (BLOCKED on Piazza compliance.)** Skip our own training entirely; fine-tune from `MBZUAI-Paris/Frugal-Thinking-4B` directly.
 - **Pros:** highest expected accuracy ceiling — Frugal-Stage-2 hits 53% on AIME25 at 8k vs base Qwen3-4B-Thinking's 13%.
-- **Cons:** **compliance question.** Competition rules require `Qwen/Qwen3-4B-Thinking-2507`; Frugal-4B is a fine-tuned derivative. Spirit-of-rule: base model + intrinsic methods. Letter-of-rule may exclude derivatives. **See §5.1 — Piazza question pending.**
+- **Cons:** **compliance.** Rules don't explicitly permit descendant init checkpoints. Operating under the conservative reading until clarified. Don't depend on this path being available.
 
-**Path C — Distillation.** Use Frugal-4B as a teacher offline; generate reasoning traces on training problems; SFT our base Qwen3-4B-Thinking on those traces.
-- **Pros:** gets some of Frugal's signal; less aggressive interpretation of the rules than Path B (we still ship the base model with our own training).
-- **Cons:** SFT on R1-distill-style traces is a known trap if format isn't translated to Qwen3-Thinking's `<think>` convention (CLAUDE.md Anti-Patterns). Frugal-4B *is* a Qwen3-Thinking variant, so format should match — but verify.
+**Path C — Distillation. (BLOCKED on same Piazza compliance.)** Use Frugal-4B as a teacher offline; generate reasoning traces on training problems; SFT our base Qwen3-4B-Thinking on those traces.
+- **Pros:** less aggressive than Path B (we still ship the base model with our own training); some of Frugal's signal.
+- **Cons:** Same compliance question as Path B (does using a descendant model as a *training data source* count as "using" it?). Also: SFT on R1-distill-style traces is a known trap if format isn't translated to Qwen3-Thinking's `<think>` convention (CLAUDE.md Anti-Patterns).
 
 ### 4.3 Reward function — load-bearing detail
 
@@ -663,13 +665,15 @@ Beyond the standard run log: training step, loss curve, validation accuracy on `
 
 ### 5.1 Piazza compliance — Frugal-4B as init checkpoint
 
-Competition requires `Qwen/Qwen3-4B-Thinking-2507`. `MBZUAI-Paris/Frugal-Thinking-4B` is a fine-tuned derivative of that exact model. **Question for course staff:** does fine-tuning *from* a public derivative checkpoint count as "using `Qwen/Qwen3-4B-Thinking-2507`" for the rules?
+**Resolved 2026-05-04 (working assumption): conservative reading adopted.** Plan around base `Qwen/Qwen3-4B-Thinking-2507` only. Don't depend on `MBZUAI-Paris/Frugal-Thinking-4B` (or any other descendant) being usable as init checkpoint or training data source.
 
-Two interpretations:
-- **Spirit reading:** the rule is "no other architectures, no closed models" — derivatives of the same architecture trained with publicly described methods are in scope. Path B and Path C both OK.
-- **Letter reading:** the rule names the exact model; only base weights or weights you trained yourself from base are allowed. Only Path A.
+Reasoning: re-read of the competition rules text. The Overview specifies "required model: Qwen/Qwen3-4B-Thinking-2507" but does NOT explicitly say "must use unmodified Qwen3-4B-Thinking-2507 as the starting point." Two readings remain plausible:
+- **Conservative:** stick to base + our own fine-tuning. Path A only.
+- **Liberal:** any open-source descendant + our own modifications. Paths B and C in scope.
 
-**Action:** post the question on Piazza before investing in Path B setup. Default-assume letter reading until staff answers; develop Path A in parallel as the safe fallback.
+The text alone can't resolve this. Default to conservative; treat Path B/C as upside contingent on instructor clarification, not as a path on the critical schedule. The Piazza question can still be asked (low cost, asymmetric upside) but it is no longer blocking — Path A planning proceeds regardless.
+
+If Piazza later confirms the liberal reading, revisit this section and update §4.2 path priorities.
 
 ### 5.2 Eval contamination on training sources
 
