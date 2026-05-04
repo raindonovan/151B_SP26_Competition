@@ -47,7 +47,7 @@ Any deviation must appear in **both** the run's params table **and** the Samplin
 ### Token Budget Semantics
 
 - **Pod A:** `max_length` truncates prompt only; `max_new_tokens` is independent gen cap.
-- **Pod B (vLLM):** `max_model_len` caps prompt+gen **combined**. For an 8k gen budget set `max_model_len ≥ 16384`. For a 16k gen budget set `max_model_len ≥ 24576`.
+- **Pod B (vLLM):** `max_model_len` caps prompt+gen **combined**. Size it **just above the realistic prompt+gen ceiling — headroom costs concurrency.** KV cache per sequence scales with `max_model_len`; over-allocation reduces concurrent sequence count and increases preemption (Run 07-SC took >1300 preemptions on 24 GB at `max_model_len=24576` with N=8). On this dataset (prompts ≤ ~1k tok), use `max_model_len ≈ max_new_tokens + 2048`. So `max_new_tokens=16384` → `max_model_len=18432`, not the 24576 we used in Runs 05–07-SC.
 
 For thinking models, `max_new_tokens` is an **accuracy variable**, not just runtime. A response cut off before `\boxed{...}` is marked wrong even when the reasoning was correct.
 
