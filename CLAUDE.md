@@ -37,6 +37,7 @@ This is a **strategy and planning** chat, not execution. The user (Rain) runs co
 - **Pod B / vLLM is the default engine.** Confirmed on Run 04 (50% / 6 cutoffs / 48.7× faster than Pod A on `data[:20]`).
 - vLLM only works with `VLLM_USE_V1=0` set **before** `import vllm`. Any new vLLM script must do the same.
 - Pod B runner: `scripts/run_vllm_experiment.py`.
+- **RunPod migration: only `/workspace` persists across pod swaps.** apt-installed system packages (`tmux`, anything from apt) and `/root` config don't migrate. After any pod migration or fresh start, run `apt install -y tmux` (and re-set up shell config) before resuming long-running work.
 
 ### Locked Sampling Defaults (Qwen3-Thinking-2507 model card)
 
@@ -47,7 +48,7 @@ Any deviation must appear in **both** the run's params table **and** the Samplin
 ### Token Budget Semantics
 
 - **Pod A:** `max_length` truncates prompt only; `max_new_tokens` is independent gen cap.
-- **Pod B (vLLM):** `max_model_len` caps prompt+gen **combined**. Size it **just above the realistic prompt+gen ceiling — headroom costs concurrency.** KV cache per sequence scales with `max_model_len`; over-allocation reduces concurrent sequence count and increases preemption (Run 07-SC took >1300 preemptions on 24 GB at `max_model_len=24576` with N=8). On this dataset (prompts ≤ ~1k tok), use `max_model_len ≈ max_new_tokens + 2048`. So `max_new_tokens=16384` → `max_model_len=18432`, not the 24576 we used in Runs 05–07-SC.
+- **Pod B (vLLM):** `max_model_len` caps prompt+gen **combined**. Size it **just above the realistic prompt+gen ceiling — headroom costs concurrency.** KV cache per sequence scales with `max_model_len`; over-allocation reduces concurrent sequence count and increases preemption (Run 07-SC took >1300 preemptions on 24 GB at `max_model_len=24576` with N=8). Default rule of thumb: **`max_model_len = max_new_tokens + 4096`** (e.g. 16k gen → `max_model_len=20480`). The 4k headroom covers prompt + chat template + tokenization slack without crowding KV cache; **never set `max_model_len == max_new_tokens`** or any non-empty prompt silently shrinks the gen budget.
 
 For thinking models, `max_new_tokens` is an **accuracy variable**, not just runtime. A response cut off before `\boxed{...}` is marked wrong even when the reasoning was correct.
 
@@ -58,7 +59,9 @@ For thinking models, `max_new_tokens` is an **accuracy variable**, not just runt
 `judger.py` provides `Judger.auto_judge(pred, gold, options)` and is the canonical scorer for both pods.
 
 - **Numerical tolerance is 1.01e-8 relative** (`Judger.precision = 1e-8`, applied as `abs((p-g)/g) <= precision*1.01`). Numerical answers below ~4 significant figures risk false-negatives. The v1 prompt requests ≥4 sig figs to mitigate (per id=5 evidence in Run 04).
-- **Multi-answer free-form is positional element-wise:** `extract_ans` → bracket/paren-aware comma split → zipped against gold list. Order matters. Single `\boxed{a, b, c}` is correct; do not box per slot.
+- **Local `judger.py` extract_all_boxed → list-match logic does NOT model Kaggle's actual grader.** Empirically confirmed across **three** Kaggle submissions on identical 943 items: Run 08-v2 (v1-baseline, single comma-separated `\boxed{a, b, c}` for multi-answer) scored **0.586**. Run 10 (v3-perslot, per-slot `\boxed{a} \boxed{b} \boxed{c}`, designed to satisfy `judger.py`) scored **0.424** — a −16.2 pp regression. Experiment A (Run 08-v2's exact responses with ONLY the multi-answer last-box reformatted to per-slot, **all reasoning byte-identical** to Run 08-v2 across 605 of 943 items) scored **0.420** — confirming format alone causes the regression. Simplest hypothesis (not directly verified — Kaggle's grader code is not visible): Kaggle extracts only the **last** `\boxed{}` and string-matches against gold-as-string. Run 08-v2's `\boxed{143.22, 2.33}` matches gold "143.22, 2.33"; per-slot output does not. See [`experiments.md`](experiments.md) > Submission 2 + Submission 3 Analysis.
+- **Working rule until contradicted: format multi-answer items as v1-baseline did — one `\boxed{...}` containing comma-separated values matching the gold string.** Hold this format fixed across future prompt iterations. Do NOT use per-slot N boxes. Do NOT trust `judger.py`'s "last contiguous group" extraction as a model of Kaggle's grader.
+- **Multi-answer items are 35.8% of the dataset (338/943) and pass/fail — all sub-answers correct or zero.** Format compliance dominates scoring on this subset.
 - **For any RL reward function calling `auto_judge`: construct `Judger(strict_extract=True)`.** Default `strict_extract=False` enables fallbacks (`"answer is X"`, `"C: explanation"`, last-number-in-text) that a policy can learn to farm — toxic as a training signal, fine for evaluation.
 - **Judger throughput: ~9 sympy parses per item in the try-all loop** (`is_equal` tries every method until one returns True). For RL or self-consistency, route by question type to avoid the unnecessary parses.
 
