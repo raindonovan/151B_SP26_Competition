@@ -184,8 +184,9 @@ Track every leaderboard submission here. Kaggle limits: 3/day, 2 final selection
 
 | # | Date | Run ID | Slice | Local accuracy | Leaderboard accuracy | Gap | Notes |
 |---|------|--------|-------|----------------|----------------------|----:|-------|
-
-(No submissions yet.)
+| 1 | 2026-05-04 | run08v2_v1_private943 | full 943 | N/A (gold withheld) | 0.586 | N/A | v1-baseline (sig-figs patched), single sample, 16k tok; first Kaggle submission |
+| 2 | 2026-05-04 / 2026-05-05 | run10_v3perslot_private943 | full 943 | N/A (gold withheld) | 0.424 | N/A | v3-perslot per-slot multi-answer format → −16.2 pp; format effect, model reasoning preserved |
+| 3 | 2026-05-05 | expA_run08_perslot_perturbed | full 943 | N/A (gold withheld) | 0.420 | N/A | diagnostic: Run 08 responses with multi-answer reformatted per-slot → confirms format alone causes regression |
 
 When the gap between local and leaderboard accuracy exceeds ~5pp, treat it as a **calibration problem first** (slice mismatch, scoring mismatch, parser mismatch, prompt-divergence between dev and submission run) — not a model problem. Investigate before spending another submission.
 
@@ -438,6 +439,8 @@ Decision rule after each run:
 
 ### Submission 1 Analysis (Run 08-v2 → Kaggle 0.586)
 
+> **[Superseded 2026-05-05 by Submission 2 + Submission 3 Analysis below.]** This section's central thesis — that Run 08-v2's 0.586 was bottlenecked by multi-answer format failure against `judger.py`'s list-match scoring, and that ~10-15 pp could be reclaimed by per-slot boxing — was directly falsified by Run 10 (per-slot, scored 0.424) and Experiment A (format-only perturbation of Run 08-v2 → 0.420). Local `judger.py` does not model Kaggle's grader. Read on for the original analysis as written; the corrected rule lives in [`CLAUDE.md`](CLAUDE.md) > Scoring (Judger).
+
 #### Result
 
 - First Kaggle submission: Run 08-v2 (v1-baseline, single sample, 16k tok, full 943 private set)
@@ -510,6 +513,112 @@ Estimated error decomposition for the 0.586:
 > "If the problem has multiple sub-answers, separate them by commas inside a single \boxed{}, e.g. \boxed{3, 7}"
 
 This produces a length-1 boxed group, but Judger expects N elements for an N-slot gold list. This single instruction likely accounts for the bulk of multi-answer scoring losses.
+
+---
+
+### Submission 2 Analysis (Run 10 → Kaggle 0.424)
+
+#### Result
+
+- Second Kaggle submission: Run 10 (v3-perslot, single sample, 16k tok, full 943 private set)
+- Public LB score: **0.424** (42.4% on ~30% sample of private set, n≈283, ±5pp 95% CI)
+- **−16.2 pp regression** vs Run 08-v2's 0.586 on identical 943 questions
+- Submission date: 2026-05-04
+
+#### What v3-perslot changed vs v1-baseline
+
+The free-form prompt was rewritten to make multi-answer outputs satisfy local `judger.py` extraction:
+
+- ONE separate `\boxed{...}` per `[ANS]` slot, in question order
+- Banned `\quad`, `\qquad`, `$`, `$$`, and any LaTeX command between consecutive boxes (these break `judger.py`'s contiguous-group regex — gap text containing letters disqualifies the group)
+- No `\boxed{}` during reasoning — final answers only
+- MCQ prompt unchanged from v1-baseline
+
+Designed under the hypothesis (now falsified) that Run 08-v2's 0.586 was bottlenecked by multi-answer format failure against `judger.py`'s list-match scoring.
+
+#### Head-to-head diagnostic (Run 08-v2 vs Run 10, 943 items each)
+
+**Aggregate gen behavior:**
+
+- Avg gen tokens: Run 08-v2 = 6,602 → Run 10 = 6,269 (−5%)
+- Cutoffs at 16k cap: Run 08-v2 = 119 → Run 10 = 110 (slight improvement)
+
+**Per-question extraction agreement:**
+
+| Type | n | Same extracted_list | Reading |
+|---|---:|---|---|
+| MCQ | 300 | 253 (84.3%) | Reasoning stable — model not broken |
+| Single-answer free | 305 | 233 (76.4%) | Reasoning stable |
+| Multi-answer free | 338 | 48 (14.2%) | Format swung as designed |
+
+The 86% disagreement on multi-answer items is structurally expected — v3-perslot was engineered to produce a different format. MCQ + single-answer agreement near 80% confirms the underlying model reasoning is stable across the two runs; the −16.2 pp swing is not a regression in capability.
+
+**Multi-answer format flip:** 209 of 338 multi-answer items moved from a length-1 extracted_list (Run 08-v2, e.g. `["143, 2.33"]`) to a length-N extracted_list (Run 10, e.g. `["143", "2.33"]`).
+
+#### Score-prediction test
+
+Under the hypothesis that Kaggle's grader takes only the **last** `\boxed{...}` and string-matches against gold-as-string:
+
+- Predicted Run 10 score: **0.438**
+- Actual Run 10 score: **0.424**
+- Gap: 1.4 pp, within the ±5pp 95% CI on n≈283
+
+The hypothesis fits the data. Caveat: Kaggle's grader code is not directly visible — other extraction logic could also fit, but no simpler model has been proposed.
+
+#### Conclusion
+
+Local `judger.py` does NOT match Kaggle's actual grader. The "extract last contiguous group → list-match positionally" logic was treated as a faithful proxy for Kaggle scoring; Run 10 falsifies that assumption.
+
+The v1-baseline format (one `\boxed{...}` containing comma-separated values matching the gold string) was already correct for Kaggle. v3-perslot moved away from a correct format toward a `judger.py`-compliant one and lost 16.2 pp.
+
+#### Implications for forward strategy
+
+- Run 08-v2 (0.586) remains the strongest single-sample submission. Discard the v3-perslot direction.
+- Run 09-SC (Pod B, v1-baseline + N=8 self-consistency, in progress, expected to finish 2026-05-05 afternoon) is the next clean experiment — it uses v1-baseline format so its outcome is interpretable.
+- Future prompt iterations should hold the v1-baseline single-box multi-answer format fixed and experiment on other axes.
+- Don't trust local-judger reverse-engineering as a model of Kaggle's grader. Submit-and-measure when scoring assumptions matter.
+
+---
+
+### Submission 3 Analysis (Experiment A → Kaggle 0.420)
+
+#### Result
+
+- Third Kaggle submission: Experiment A (`expA_run08_perslot_perturbed`)
+- Public LB score: **0.420** (42.0% on ~30% sample of private set, n≈283, ±5pp 95% CI)
+- **−16.6 pp** vs Run 08-v2's 0.586; **+0.4 pp** vs Run 10's 0.424 (within noise)
+- Submission date: 2026-05-05
+- Cost: $0 (no GPU; pure CSV perturbation in Python)
+
+#### Method — controlled format perturbation, no inference
+
+Took Run 08-v2's exact JSONL response file. For each multi-answer item where the last `\boxed{...}`'s comma-split count matched the slot count, programmatically rewrote that last box from `\boxed{a, b, c}` into per-slot `\boxed{a} \boxed{b} \boxed{c}`.
+
+- 242 of 338 multi-answer items reformatted (those with unambiguous comma split)
+- 96 of 338 multi-answer items left **byte-identical** to Run 08-v2 (no clean comma split available)
+- All 605 non-multi items (300 MCQ + 305 single-answer) left **byte-identical** to Run 08-v2
+
+Reasoning traces, MCQ outputs, and single-answer outputs were unchanged at the byte level. The ONLY difference vs Run 08-v2: the multi-answer last-box format on 242 items.
+
+#### Why this experiment
+
+Run 10's regression (Submission 2 Analysis) was correlational — both prompt and outputs differed between Run 08-v2 and Run 10. The "Kaggle takes only the last `\boxed{}`" hypothesis fit Run 10's score within noise (predicted 0.438, actual 0.424), but the run also had different reasoning paths, different cutoffs, different generation behavior — any of which could partly explain the −16.2 pp.
+
+Experiment A isolates format as the lone variable. If format is the entire causal mechanism, Experiment A should score very close to Run 10. If reasoning differences were partly responsible for Run 10's regression, Experiment A should score noticeably higher than Run 10 (closer to Run 08-v2).
+
+#### Result confirms format alone
+
+- Experiment A: **0.420**
+- Run 10: **0.424**
+- Difference: 0.4 pp, within ±5pp 95% CI on n≈283
+
+The two scores are statistically indistinguishable. With reasoning content held byte-identical for 605 of 943 items and only multi-answer last-box format changed on 242 items, the score collapse from 0.586 → 0.420 is attributable **entirely** to the format change. Run 10's −16.2 pp regression was not partly explained by reasoning drift — it was the format change in full.
+
+#### Conclusion
+
+Strongest evidence yet that local `judger.py` does not model Kaggle's actual grader and that the v1-baseline single-comma-separated `\boxed{}` format is the right one for Kaggle. The "Kaggle takes only the last `\boxed{}` and string-matches against gold-as-string" hypothesis remains the simplest fit; no simpler model has been proposed and no evidence so far contradicts it.
+
+Operational implication: do not use per-slot multi-answer formatting in any future submission. The v1-baseline format is the locked multi-answer format until a different scoring assumption is positively demonstrated.
 
 ---
 
