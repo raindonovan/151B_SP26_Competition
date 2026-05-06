@@ -1232,21 +1232,9 @@ Must all pass before burning a Kaggle slot:
 - **Multi-epoch training** — extend to 2-3 epochs only if v1 1-epoch checkpoints show
   monotonic improvement at end of epoch 1. Track learning curve to detect overfitting
   (rising eval loss while train loss falls).
-- **Alternative-teacher comparison run (v2)** — generate ~5k traces from a
-  Qwen3-4B-Thinking-2507-derived model and use as SFT teacher signal, then compare to
-  OpenR1-trained model. Approved by instructor (Piazza, May 5, 2026; see §4.2 Path C
-  and §5.1). Verified candidates (queried via
-  `huggingface_hub.HfApi().list_models(search='Qwen3-4B-Thinking')` and `model_info`
-  filtering for Qwen3-4B-Thinking-2507 lineage):
-  - `MBZUAI-Paris/Frugal-Thinking-4B` (verified at HF; gated; Apache 2.0;
-    Qwen3-4B-Thinking-2507 base; GRPO/RLVR with verifiable rewards; Stage 2 ~50% token
-    reduction vs base while preserving math accuracy)
-  - `prithivMLmods/Logics-Qwen3-Math-4B` (51 downloads, 3 likes; explicit
-    Qwen3-4B-Thinking-2507 base)
-  - `Jackrong/DASD-4B-Thinking-2507-GRPO-v2` (25 downloads; Qwen3-4B-Thinking-2507
-    base, GRPO on math + reasoning)
-
-  Defer until v1 OpenR1/NuminaMath comparison establishes baseline.
+- **Multi-teacher signal blending (v2)** — once v1 establishes which teacher signal
+  wins, explore mixing teachers (e.g., 50/50 OpenR1+Frugal traces). Defer until v1
+  ranking is clear.
 - **Public-set audit** — clean the public set's ~10% suspected gold errors via 3-LLM
   consensus + human review. Cleaned set becomes a richer eval slice. Doesn't gate v1
   SFT work.
