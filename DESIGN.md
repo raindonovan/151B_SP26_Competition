@@ -688,3 +688,35 @@ Known Issue in `experiments.md`: no CSV submission generator exists yet. Not blo
 Known Issue: the current vLLM runner writes per-row JSONL only after the full batch completes. Fine for n=50 (~11 min); risky for n=1126 (~245 min) — a mid-run crash loses everything. Schedule before any full-set run regardless of phase.
 
 ---
+
+## 6. Planned Work
+
+### 6.1 Confidence-aware abstention / resampling on SC vote distribution
+
+**Status:** Planned, dependent on Run 09-SC completion.
+
+**Hypothesis:** SC's per-item agreement rate is a usable confidence signal. Items where 7-8/8 samples agree are likely correct; items where votes are scattered (1-2/8) are essentially the model guessing. We can use this signal to route items differently.
+
+**Motivation:** Reflection/self-correction prompts have been shown to hurt thinking models (Huang et al. 2024, *"LLMs Cannot Self-Correct Reasoning Yet"*; −2 to +1 pp on math). Self-consistency vote distribution is the closest verification-style signal we can get without breaking the model's native thinking flow.
+
+**Method:**
+
+1. After Run 09-SC's JSONL is in, compute per-item agreement rate distribution.
+2. Bucket items by agreement rate (e.g. 1.00, 0.875, 0.75, ..., 0.125).
+3. Compute "if we had Kaggle gold for the public set, accuracy by bucket" — but since private is hidden, use a proxy: rerun on public set (1126 items) where we DO have gold.
+4. Identify the agreement-rate cliff (point below which accuracy drops sharply).
+5. For low-confidence items, try one of: (a) sample 8 more times, take majority of 16, (b) try a different prompt variant, (c) abstain (output an empty boxed which scores 0 — only useful if low-confidence items would have been wrong anyway).
+
+**Cost:** ~$3 for one public-set SC eval to characterize the cliff. Ablations of the routing strategy add maybe $5-10.
+
+**Success criterion:** Identify a routing rule that improves Kaggle public LB by ≥2 pp over plain v1+SC@N=8 (Run 09-SC's score, TBD).
+
+**Open questions:**
+
+- How does the cliff vary by question type? MCQ probably has a different shape than free-form.
+- For low-confidence items, is "more samples" or "different prompt" the better resampling strategy? Probably needs A/B testing once we have agreement-rate data.
+- Should we treat tie-broken items (multiple winners with same vote count) as low-confidence by default, regardless of vote count? The runner already logs `tie_broken: True` for these.
+
+**Non-goal:** This is NOT reflection prompting (e.g. "now verify your work"). The thinking-model literature is clear that adding self-correction instructions to the prompt hurts accuracy. We use the vote distribution as a routing signal, not as feedback to the model.
+
+---

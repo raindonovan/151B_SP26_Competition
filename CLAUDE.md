@@ -98,6 +98,16 @@ Don't change `judger.py` mid-sweep. Scoring changes are their own experiment wit
 
 ---
 
+## Prompt Engineering Constraints
+
+Empirically grounded constraints on prompt design for Qwen3-Thinking-2507. The corresponding Anti-Patterns section lists what NOT to suggest; this section captures the underlying facts and citations.
+
+- **Reflection / self-correction prompts hurt thinking models.** Huang et al. 2024 (*"LLMs Cannot Self-Correct Reasoning Yet"*, arXiv 2310.01798) documents −2 to +1 pp on math reasoning when the prompt asks the model to "now verify your work" or "re-check for errors." Qwen3-Thinking does this internally during the `<think>` block; adding explicit verification instructions interferes. Do not add re-check / verify / self-correct instructions to prompts.
+- **Few-shot examples hurt thinking models on math.** Documented −1 to −3 pp on Qwen3-Thinking variants in informal benchmarks. The model's native thinking style produces better reasoning than imitating exemplars. Use zero-shot prompts only.
+- **SC's `agreement_rate` field is the closest per-item confidence signal available.** Defined as the proportion of N SC samples voting for the winning answer (range 1/N to 1.0; logged per-row by `scripts/run_vllm_sc.py`). Items with high agreement are reliably correct; items with low agreement are essentially guesses. Future SC analysis should bucket items by agreement rate. See [`DESIGN.md`](DESIGN.md) > Planned Work > Confidence-aware abstention / resampling for the planned experiment.
+
+---
+
 ## Anti-Patterns (Don't Suggest)
 
 - "Let's think step by step", "be brief", "check your work" prompts on a thinking model — neutral or harmful per published evidence.
