@@ -826,6 +826,52 @@ Dataset variants to generate:
 
 Multi-answer training data is a v2 problem deferred until single-answer training is validated.
 
+### Training target format vs auto-injected `<think>` token
+
+The `qwen3-thinking` chat template auto-injects `<think>` immediately after
+`<|im_start|>assistant`. Verified empirically during environment setup; a
+trivial input tokenizes to:
+
+```
+<|im_start|>user
+What is 2+2?<|im_end|>
+<|im_start|>assistant
+<think>
+```
+
+The model is forced into thinking mode by the template itself, before any
+assistant content is added. This shapes how SFT examples must format the
+assistant turn.
+
+Two candidate formats:
+
+**Option 1 — Include `<think>...</think>` explicitly in training targets.**
+
+Format: `<think>brief reasoning</think>\boxed{answer}`
+
+Pro: model learns to close `<think>` quickly with concise content; full control
+over reasoning structure.
+Con: risk of double `<think>` tokens if SFTTrainer's text-field formatting
+collides with the template's auto-injection.
+
+**Option 2 — Rely on the template's auto-injected `<think>` opener.**
+
+Format: `brief reasoning</think>\boxed{answer}` (assistant content starts after
+the auto-injected opener)
+
+Pro: no double-token risk; matches what the template produces by default.
+Con: harder to verify what the model actually sees during training without
+inspecting tokenized sequences directly.
+
+**Resolution required before generating training data.** The check is
+mechanical: format 5 example assistant turns under each option, tokenize via
+`tokenizer.apply_chat_template(...)`, and inspect the resulting token IDs.
+The option whose tokenized form has exactly one `<think>` opener and one
+`</think>` closer per example is the correct one.
+
+This needs to run on Pod B (or wherever Unsloth is installed) before any real
+training data gets generated.
+
 ### Training data: format transformation choice
 
 The central design decision is whether assistant responses include reasoning or just the
