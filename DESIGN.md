@@ -720,3 +720,260 @@ Known Issue: the current vLLM runner writes per-row JSONL only after the full ba
 **Non-goal:** This is NOT reflection prompting (e.g. "now verify your work"). The thinking-model literature is clear that adding self-correction instructions to the prompt hurts accuracy. We use the vote distribution as a routing signal, not as feedback to the model.
 
 ---
+
+## 7. QLoRA SFT Plan (NuminaMath, short-rationale)
+
+### Goal
+
+Train a QLoRA adapter on `Qwen/Qwen3-4B-Thinking-2507` that produces shorter, format-compliant
+reasoning traces while preserving accuracy. Success criterion is Kaggle public LB score, not
+token count alone.
+
+Pass gate: Kaggle score within ±2 pp of Run 08-v2's 0.586 AND avg gen tokens drops by ≥30%.
+Strong pass: Kaggle score ≥ 0.60 AND avg gen tokens drops by ≥50%.
+Fail: Kaggle score drops > 3 pp OR cutoff rate increases.
+
+### Compliance frame
+
+Required model is `Qwen/Qwen3-4B-Thinking-2507`. The competition allows training with public
+data via SFT/QLoRA/RL but forbids "directly using open-source models or data without
+modifications." NuminaMath is the chosen training corpus: it is open-source, ~900k math
+problems with chain-of-thought solutions, and we transform its format into our competition-style
+prompt/answer schema before training. The format transformation is required (NuminaMath is
+not natively in our `[ANS]`-placeholder format), and it incidentally satisfies the
+no-direct-use clause.
+
+Excluded by design:
+- Frugal-Thinking-4B as teacher signal or distillation source (closed per prior analysis;
+  using its outputs to teach our base model is laundering another team's solution).
+- Public-set training data until the audit pass clears the gold-answer noise (~10% error
+  rate suspected; instructor-confirmed dataset is LLM-synthesized with imperfect filtering).
+
+### Tooling
+
+Primary: **Unsloth** + `trl.SFTTrainer`. Confirmed support for `unsloth/Qwen3-4B-Thinking-2507`
+via official notebook. Key advantages: ~2× training speed, ~30% lower VRAM, supported
+`qwen3-thinking` chat template, simple `save_pretrained_merged` for vLLM deployment.
+
+Fallback: HF Transformers + PEFT + bitsandbytes if Unsloth's release breaks against our
+pinned torch/transformers stack.
+
+Avoided: Axolotl (adds YAML abstraction layer; not needed for fast iteration).
+
+### Critical model behavior facts
+
+Three Qwen3-4B-Thinking-2507-specific findings shape the implementation:
+
+1. **Thinking-only mode.** This model supports only thinking mode. `enable_thinking=False`
+   appears in some Unsloth notebooks but should not be used here — it would conflict with
+   the model's required behavior. The default chat template auto-includes `<think>`, so
+   outputs may begin with content and only later close with `</think>`. Any extraction logic
+   that assumes a literal `<think>` opening tag is wrong.
+
+2. **Long thinking traces are expected behavior, not a bug.** Qwen3-Thinking-2507's model card
+   notes increased thinking length compared to predecessors. This is the source of our cutoff
+   problem. SFT must teach concise reasoning, not eliminate reasoning.
+
+3. **Sampling settings differ from Instruct.** For this thinking model:
+   - `temperature = 0.6`, `top_p = 0.95`, `top_k = 20`, `min_p = 0.0`
+   - These match what we already use in `scripts/run_vllm_experiment.py` SAMPLING dict.
+   - Do not copy Instruct settings (`temp=0.7, top_p=0.8`).
+
+### Code organization
+
+New `training/` directory parallel to existing `scripts/`:
+
+```
+training/
+prepare_numina_sft.py          # NuminaMath ingestion, filtering, format conversion
+train_qwen3_qlora.py           # SFT training loop (Unsloth + SFTTrainer)
+merge_lora_adapter.py          # adapter -> merged BF16 checkpoint for vLLM
+eval_adapter_public.py         # local public-set eval w/ Judger + Kaggle-approximation
+data/                          # generated training datasets (gitignored)
+checkpoints/                   # adapters + merged models (gitignored)
+```
+
+Inference uses existing `scripts/run_vllm_experiment.py` with `--model` pointing at the
+merged checkpoint path.
+
+### Training data: format and filtering
+
+Output schema (each row, JSONL):
+
+```json
+{
+  "messages": [
+    {"role": "system", "content": "You are an expert mathematician..."},
+    {"role": "user", "content": "<question text matching v1-baseline format>"},
+    {"role": "assistant", "content": "<short reasoning>\n\\boxed{<answer>}"}
+  ]
+}
+```
+
+Filter rules (in order, drop if any fail):
+
+1. NuminaMath solution has a clean final boxed answer
+2. Question is parseable as English-language math (drop pure code, TIR, image-required)
+3. Solution length ≤ 800 tokens (forces "short reasoning" target)
+4. Single-answer problems only in v1 dataset (multi-answer requires its own format handling)
+5. Final boxed content is non-empty and not malformed LaTeX
+
+Dataset variants to generate:
+
+- `numina_short_rationale_200.jsonl` — smoke test
+- `numina_short_rationale_5k.jsonl` — first real training run
+- `numina_short_rationale_10k.jsonl` — second iteration if 5k underfit
+
+Multi-answer training data is a v2 problem deferred until single-answer training is validated.
+
+### Training data: format transformation choice
+
+The central design decision is whether assistant responses include reasoning or just the
+boxed answer. Three options considered:
+
+**Option A — answer-only (`\boxed{x}` with no preceding reasoning).**
+Pro: maximum token reduction, dramatic cost savings, may eliminate cutoffs.
+Con: likely damages mathematical reasoning capability; teaches the model to guess on
+problems where intermediate steps matter; high risk of accuracy collapse on hard items.
+
+**Option B — short rationale (~100-500 tokens of reasoning + `\boxed{x}`).**
+Pro: preserves reasoning behavior; reduces tokens significantly; matches what Qwen3-Thinking
+"could" do under prompt pressure.
+Con: less dramatic token reduction than A; the model may regress toward longer outputs at
+inference if rationale length isn't well-controlled in training data.
+
+**Option C — full Qwen3-style thinking trace (`<think>...long reasoning...</think>` + answer).**
+Pro: preserves native model behavior most faithfully.
+Con: doesn't address the cutoff problem; trains the model to keep doing what already produces
+12.6% cutoffs; defeats the purpose of SFT here.
+
+**Decision: Option B.** Run a small Option A smoke test alongside as a sanity check, but
+the primary training path is short-rationale.
+
+### Training hyperparameters
+
+QLoRA configuration:
+
+```python
+load_in_4bit=True
+quantization: nf4
+bf16 compute dtype
+double quantization: enabled
+```
+
+LoRA configuration:
+
+```python
+r = 16                            # community default; r=32 if r=16 underfit
+lora_alpha = 32                   # 2x rank, standard
+lora_dropout = 0                  # Unsloth-recommended
+bias = "none"
+target_modules = ["q_proj", "k_proj", "v_proj", "o_proj",
+                  "gate_proj", "up_proj", "down_proj"]
+use_gradient_checkpointing = "unsloth"   # for VRAM headroom
+random_state = 3407
+```
+
+Training arguments:
+
+```python
+per_device_train_batch_size = 1
+gradient_accumulation_steps = 8        # effective batch size 8
+warmup_steps = 10
+num_train_epochs = 1                   # start with 1, scale to 2-3 if underfit
+learning_rate = 2e-4                   # community default for Qwen-class
+optim = "adamw_8bit"
+weight_decay = 0.01
+lr_scheduler_type = "cosine"
+max_seq_length = 4096                  # increase to 8192 only if 4096 trains stably
+seed = 3407
+```
+
+Rationale for batch size 1 + grad accum 8:
+- Sequence length is the dominant VRAM cost. For 4096-token sequences, batch=1 fits with
+  headroom on a 4090. Effective batch 8 is sufficient for adapter training.
+- Higher batch sizes are tempting but trade VRAM for marginal gradient quality — adapter
+  training tolerates noisier gradients than full fine-tuning.
+
+### Chat template and tokenization
+
+Use Unsloth's `qwen3-thinking` chat template:
+
+```python
+from unsloth.chat_templates import get_chat_template
+tokenizer = get_chat_template(tokenizer, chat_template="qwen3-thinking")
+```
+
+Apply via `tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=False)`
+during training data preprocessing. Do NOT pass `enable_thinking=False`; this model is
+thinking-only.
+
+### Inference: merge over LoRA serving
+
+vLLM 0.8.5 has LoRA support but is finicky for Qwen3 architecture. The competition pipeline
+is too important to depend on a finicky adapter-serving path.
+
+Decision: **train LoRA adapter, save it, then merge into a BF16 checkpoint** before vLLM
+inference. Disk cost (~8 GB per merged model) is acceptable.
+
+Path:
+
+```python
+model.save_pretrained("training/checkpoints/qwen3-numina-r16-1ep-lora/")        # adapter
+model.save_pretrained_merged(
+    "training/checkpoints/qwen3-numina-r16-1ep-merged/",
+    tokenizer,
+    save_method="merged_16bit",
+)
+```
+
+Inference invocation: existing `scripts/run_vllm_experiment.py` with `--model` argument
+pointing at the merged checkpoint directory. All other vLLM defaults (sampling, max_seq_len,
+etc.) remain unchanged.
+
+### Evaluation
+
+Public-set evaluation requires both:
+
+1. **Local eval** (Judger-based) — fast feedback on whether training broke the model
+2. **Kaggle-grader-approximated eval** — `last \boxed{...} string-match against gold-as-string`
+   on the same outputs. Calibrates against actual Kaggle scoring.
+
+Tracked metrics:
+
+- Overall accuracy (Judger)
+- MCQ / single-answer-free / multi-answer-free accuracy (Judger)
+- Kaggle-grader-approximated accuracy
+- Avg / median output tokens
+- Cutoff rate at the same `max_new_tokens` as baseline (16384)
+- Boxed answer rate (% of items with extractable final box)
+- Parse failures
+
+Submission gate (must all pass before burning a Kaggle slot):
+
+- Public eval runs end-to-end without crashes
+- CSV validates: 943 rows, IDs sequential 0-942, all responses non-empty
+- Boxed answer rate ≥ 95%
+- No catastrophic public-set regression (≥ 50% accuracy maintained)
+
+### Open questions deferred to v2
+
+- Multi-answer training data format (single-answer-only in v1)
+- LoRA rank scaling (r=16 → r=32 if underfit)
+- Multi-epoch training (1 epoch in v1)
+- Different rationale-length targets (e.g., 200 vs 500 tokens)
+- Combination with N=8 SC at inference (does SFT'd model benefit equally?)
+
+### Risks and mitigations
+
+- **Unsloth incompatibility with pinned stack:** fall back to HF PEFT.
+- **NuminaMath filtering removes too many items:** start with stricter filter, relax if <5k
+  examples remain after filtering.
+- **Training loss doesn't decrease in smoke test:** check chat template, dataset format,
+  learning rate before scaling up.
+- **Trained model produces malformed outputs:** check whether the `<think>` block is being
+  preserved vs removed during training; this model requires it.
+- **Disk fills from merged checkpoint accumulation:** keep only the latest merged model on
+  Pod B, archive prior ones to HF Hub if needed for comparison runs.
+
+---
