@@ -616,7 +616,7 @@ Frugal-Stage-2 squeezes far more accuracy out of an 8k budget but plateaus earli
 
 ### 4.2 Three realistic paths
 
-> **Default path is A (per CLAUDE.md > Inference Constraints "Training base").** Conservative reading of the rules: any training starts from base Qwen/Qwen3-4B-Thinking-2507. Paths B and C are listed for completeness but are not on the active plan unless an instructor explicitly approves on Piazza (§5.1).
+> **Updated 2026-05-06 per Piazza response from Ruijia Niu (May 5, 2026):** *"You can use any method to modify your model, as long as you start with the required Qwen3-4B-Thinking-2507 model."* This explicitly approves Path C (Qwen3-4B-Thinking-2507-derived teacher signal for distillation/SFT). Path A remains the primary plan; Path C is now an explicitly sanctioned alternative pursued in §7's v2 alternative-teacher experiment. Path B kept BLOCKED status pending its own decision (init-checkpoint-from-descendant is a stronger claim than data-source-from-descendant; revisit if needed). See §5.1 for the framing update.
 
 **Path A — Heavy downscale (DEFAULT).** G=4 or 8, QLoRA, possibly TRL or Unsloth instead of veRL. Keep the recipe shape (GRPO, binary boxed-match reward, locked sampling) but accept that we get a fraction of Frugal's training signal.
 - **Pros:** straightforward; tooling exists (TRL, Unsloth); compliance unambiguous (we train from base, no descendant checkpoints).
@@ -624,11 +624,11 @@ Frugal-Stage-2 squeezes far more accuracy out of an 8k budget but plateaus earli
 
 **Path B — Use Frugal-4B as init checkpoint. (BLOCKED on Piazza compliance.)** Skip our own training entirely; fine-tune from `MBZUAI-Paris/Frugal-Thinking-4B` directly.
 - **Pros:** highest expected accuracy ceiling — Frugal-Stage-2 hits 53% on AIME25 at 8k vs base Qwen3-4B-Thinking's 13%.
-- **Cons:** **compliance.** Rules don't explicitly permit descendant init checkpoints. Operating under the conservative reading until clarified. Don't depend on this path being available.
+- **Cons:** **compliance.** Rules don't explicitly permit descendant init checkpoints. Operating under the conservative reading until clarified. Don't depend on this path being available. (The May 5 Piazza response in the §4.2 callout speaks to "modifying your model"; whether starting *from* a descendant counts as "starting with the required model" is a separate question that has not been asked. Path B remains BLOCKED until that clarification.)
 
-**Path C — Distillation. (BLOCKED on same Piazza compliance.)** Use Frugal-4B as a teacher offline; generate reasoning traces on training problems; SFT our base Qwen3-4B-Thinking on those traces.
-- **Pros:** less aggressive than Path B (we still ship the base model with our own training); some of Frugal's signal.
-- **Cons:** Same compliance question as Path B (does using a descendant model as a *training data source* count as "using" it?). Also: SFT on R1-distill-style traces is a known trap if format isn't translated to Qwen3-Thinking's `<think>` convention (CLAUDE.md Anti-Patterns).
+**Path C — Distillation. APPROVED 2026-05-06 per Piazza (Ruijia Niu, May 5, 2026):** *"You can use any method to modify your model, as long as you start with the required Qwen3-4B-Thinking-2507 model."* Use a Qwen3-4B-Thinking-2507-derived teacher offline; generate reasoning traces on training problems; SFT our base Qwen3-4B-Thinking on those traces. Earlier "BLOCKED on Piazza compliance" framing is superseded.
+- **Pros:** less aggressive than Path B (we still ship the base model with our own training); some teacher-derived signal.
+- **Cons:** SFT on R1-distill-style traces is a known trap if format isn't translated to Qwen3-Thinking's `<think>` convention (CLAUDE.md Anti-Patterns). Note: Frugal-Thinking-4B is paper-only / not on HuggingFace as of 2026-05-06 — see §7 Open Questions for the verified Qwen3-4B-Thinking-2507-derivative shortlist used by the v2 alternative-teacher experiment.
 
 ### 4.3 Reward function — load-bearing detail
 
@@ -663,17 +663,19 @@ Beyond the standard run log: training step, loss curve, validation accuracy on `
 
 ## 5. Open Questions
 
-### 5.1 Piazza compliance — Frugal-4B as init checkpoint
+### 5.1 Piazza compliance — descendant models as training inputs
 
-**Resolved 2026-05-04 (working assumption): conservative reading adopted.** Plan around base `Qwen/Qwen3-4B-Thinking-2507` only. Don't depend on `MBZUAI-Paris/Frugal-Thinking-4B` (or any other descendant) being usable as init checkpoint or training data source.
+**Updated 2026-05-06 per Piazza response from Ruijia Niu (May 5, 2026):** *"You can use any method to modify your model, as long as you start with the required Qwen3-4B-Thinking-2507 model."*
 
-Reasoning: re-read of the competition rules text. The Overview specifies "required model: Qwen/Qwen3-4B-Thinking-2507" but does NOT explicitly say "must use unmodified Qwen3-4B-Thinking-2507 as the starting point." Two readings remain plausible:
-- **Conservative:** stick to base + our own fine-tuning. Path A only.
-- **Liberal:** any open-source descendant + our own modifications. Paths B and C in scope.
+Resolution by path:
 
-The text alone can't resolve this. Default to conservative; treat Path B/C as upside contingent on instructor clarification, not as a path on the critical schedule. The Piazza question can still be asked (low cost, asymmetric upside) but it is no longer blocking — Path A planning proceeds regardless.
+- **Path A (base + our own fine-tuning) — primary.** Always allowed; this is what §7 v1 (OpenR1 vs NuminaMath comparison) executes. Keep as the default plan; conservative framing preserved here.
+- **Path C (Qwen3-Thinking-2507-derived teacher signal for distillation/SFT) — APPROVED.** Generating training data from a Qwen3-4B-Thinking-2507 descendant and SFT'ing our base on those traces is "modifying your model" while "starting with the required model." Pursued as the v2 alternative-teacher experiment in §7 Open Questions; deferred until v1 OpenR1/NuminaMath comparison establishes baseline.
+- **Path B (init-from-descendant checkpoint) — STILL BLOCKED.** The May 5 response speaks to modification *of* the required model. Whether *starting from* a descendant satisfies "start with the required model" is a separate question that has not been asked. Don't depend on Path B being available without a follow-up Piazza clarification. Asymmetric upside if asked, but not on the critical path.
 
-If Piazza later confirms the liberal reading, revisit this section and update §4.2 path priorities.
+**Working assumption shift:** the prior "conservative reading adopted, Path A only" framing (2026-05-04) is partially superseded — Path C is now in scope. Path A remains primary because v1 establishes a baseline before any teacher signal enters the comparison; Path C joins the plan as a deliberately scoped v2 experiment, not as a replacement for Path A. The earlier two-readings framing (Conservative vs Liberal) is retired since the instructor response selected the relevant interpretation directly.
+
+If a future Piazza response addresses Path B (init-from-descendant), revisit §4.2 Path B status and update.
 
 ### 5.2 Eval contamination on training sources
 
@@ -733,21 +735,92 @@ Pass gate: Kaggle score within ±2 pp of Run 08-v2's 0.586 AND avg gen tokens dr
 Strong pass: Kaggle score ≥ 0.60 AND avg gen tokens drops by ≥50%.
 Fail: Kaggle score drops > 3 pp OR cutoff rate increases.
 
+Token reduction is a means, not an end. We're not against reasoning — there is no
+score benefit to suppressing reasoning, only to preserving accuracy while reducing
+wall-time and cutoff rate. Format choice and training data selection (next
+subsections) reflect this hierarchy: Kaggle score is primary, token reduction is
+secondary.
+
 ### Compliance frame
 
 Required model is `Qwen/Qwen3-4B-Thinking-2507`. The competition allows training with public
 data via SFT/QLoRA/RL but forbids "directly using open-source models or data without
-modifications." NuminaMath is the chosen training corpus: it is open-source, ~900k math
-problems with chain-of-thought solutions, and we transform its format into our competition-style
-prompt/answer schema before training. The format transformation is required (NuminaMath is
-not natively in our `[ANS]`-placeholder format), and it incidentally satisfies the
-no-direct-use clause.
+modifications."
+
+Two training corpora are used in a controlled comparison:
+
+(1) **OpenR1-Math-220k** — verified subset of NuminaMath problems with reasoning traces
+generated by DeepSeek-R1, where each row passed both Math-Verify and an LLM-judge against
+ground truth. Apache-2.0 license. ~94k rows. Tests the "reasoning-trace imitation" hypothesis.
+
+(2) **NuminaMath-1.5** — same underlying problem corpus, but using NuminaMath's native
+concise-solution format ("Solution: ... therefore 42"). Tests the "concise-solution
+imitation" hypothesis.
+
+Both run at matched data size, matched QLoRA config, matched eval slice. The control
+isolates whether Qwen3 benefits more from reasoning-trace teacher signal or from
+concise-solution teacher signal. Both corpora require format transformation into our
+competition-style prompt/answer schema before training, satisfying the no-direct-use clause.
 
 Excluded by design:
-- Frugal-Thinking-4B as teacher signal or distillation source (closed per prior analysis;
-  using its outputs to teach our base model is laundering another team's solution).
-- Public-set training data until the audit pass clears the gold-answer noise (~10% error
-  rate suspected; instructor-confirmed dataset is LLM-synthesized with imperfect filtering).
+- Frugal-Thinking-4B as teacher signal: instructor-approved per Piazza (Ruijia Niu,
+  May 5, 2026: *"You can use any method to modify your model, as long as you start with
+  the required Qwen3-4B-Thinking-2507 model."*) — see §4.2 Path C and §5.1. However,
+  HuggingFace search confirms Frugal-Thinking-4B does NOT appear on Hub as of
+  2026-05-06 — it may be a paper-only reference or use a different name. The
+  "alternative teacher signal" v2 experiment substitutes a verified
+  Qwen3-4B-Thinking-2507-derived candidate (see Open Questions for shortlist).
+- Public-set training data: deferred until audit pass (~10% suspected gold error rate;
+  instructor-confirmed the public set is LLM-synthesized with imperfect filtering).
+  Private set is confirmed clean per Piazza response from Ruijia Niu, May 5, 2026
+  (*"We did not synthesize the private dataset, as they are already carefully filtered
+  and verified."*). For SFT v1, we use OpenR1 + NuminaMath as primary; public set may
+  be incorporated as supplementary training data after audit.
+
+### What SFT changes (and what it doesn't)
+
+The Qwen3-4B-Thinking-2507 chat template auto-injects `<think>` regardless of training.
+SFT cannot remove this template behavior. What SFT CAN change is the model's behavior
+INSIDE the think block — making it produce shorter content, or even empty content
+(immediate `</think>`), before committing to an answer.
+
+This means "answer-only" SFT targets don't produce true 0-token responses; they produce
+`<think></think>\boxed{X}` which is ~5-10 token overhead.
+
+The training target length we choose (via filter and template wrapping) directly
+determines what the model learns to produce. We're choosing preserved-reasoning targets
+over the aggressive answer-only path because:
+
+- Math accuracy depends on intermediate reasoning steps
+- Patrick's "64 token" approach is unverified at competition-relevant accuracy
+- A model with preserved reasoning is more robust to harder problems than one trained to
+  skip reasoning entirely
+- Token count doesn't directly affect Kaggle score; it affects wall time, compute cost,
+  and cutoff rate (12.6% in Run 08-v2 baseline). The optimization target is "minimize
+  cutoffs while preserving accuracy."
+
+### Stage 1 — Pre-training measurement (mandatory)
+
+Before any training data filter is finalized, characterize the actual length distributions
+to choose informed thresholds:
+
+1. **OpenR1 trace length distribution** — tokenize all OpenR1 verified single-answer rows
+   with the Qwen3 tokenizer. Report mean, median, p25/p50/p75/p90/p95, max.
+
+2. **Qwen baseline output length distribution** — extract `gen_tokens` from existing
+   Run 09-SC outputs (943 items, 8 samples each). Same statistics.
+
+3. **NuminaMath solution length distribution** — same statistics for filtered NuminaMath
+   single-answer rows.
+
+4. **Cross-distribution comparison** — if OpenR1 traces have median ≥ Qwen baseline
+   median, the "shorter teacher" assumption is wrong and the filter must be tighter
+   than "arbitrary 2000-12000." If OpenR1 median is meaningfully shorter, default
+   candidate filter ranges (1000-6000 or 2000-8000) become viable; final choice from
+   data.
+
+Filter range selection happens after this measurement, not before. Document the chosen
+range and why.
 
 ### Tooling
 
@@ -785,12 +858,24 @@ New `training/` directory parallel to existing `scripts/`:
 
 ```
 training/
-prepare_numina_sft.py          # NuminaMath ingestion, filtering, format conversion
+prepare_openr1_sft.py          # OpenR1-Math-220k ingestion, filtering, format conversion
+prepare_numina_sft.py          # NuminaMath-1.5 ingestion, filtering, format conversion
+prepare_frugal_sft.py          # Frugal-Thinking-4B trace generation (inference + format)
 train_qwen3_qlora.py           # SFT training loop (Unsloth + SFTTrainer)
 merge_lora_adapter.py          # adapter -> merged BF16 checkpoint for vLLM
 eval_adapter_public.py         # local public-set eval w/ Judger + Kaggle-approximation
-data/                          # generated training datasets (gitignored)
 checkpoints/                   # adapters + merged models (gitignored)
+```
+
+Training data lives under the existing top-level `data/` directory to match repo
+convention (`data/public.jsonl`, `data/slices/...`):
+
+```
+data/sft/                      # generated SFT training datasets (gitignored)
+  openr1_v1_1k.jsonl
+  numina_concise_v1_1k.jsonl
+  frugal_traces_v1_1k.jsonl
+  ...
 ```
 
 Inference uses existing `scripts/run_vllm_experiment.py` with `--model` pointing at the
@@ -810,19 +895,36 @@ Output schema (each row, JSONL):
 }
 ```
 
-Filter rules (in order, drop if any fail):
+For OpenR1 (reasoning-trace arm):
 
-1. NuminaMath solution has a clean final boxed answer
-2. Question is parseable as English-language math (drop pure code, TIR, image-required)
-3. Solution length ≤ 800 tokens (forces "short reasoning" target)
-4. Single-answer problems only in v1 dataset (multi-answer requires its own format handling)
-5. Final boxed content is non-empty and not malformed LaTeX
+1. Row has at least one `correctness_math_verify=True`
+2. Pick the first such generation for the assistant content
+3. Tokenize with the Qwen3 tokenizer; keep within the filter range chosen from Stage 1
+   measurement (default candidates: 1000-6000 or 2000-8000)
+4. Regex-drop multi-part prompts: `\(a\)`, `\(i\)`, "Part 1", "prove that" (single-answer
+   only)
+5. Sympy-parse the last `\boxed{}` from the generation; drop parse failures
+6. Verify the parsed answer string-matches the row's `answer` field
+7. English-only via fasttext lid.176
+8. MinHash-LSH dedup against MATH-test, AIME 2024-2025, HMMT Feb 2025 (threshold 0.7)
 
-Dataset variants to generate:
+For NuminaMath (concise-solution arm):
 
-- `numina_short_rationale_200.jsonl` — smoke test
-- `numina_short_rationale_5k.jsonl` — first real training run
-- `numina_short_rationale_10k.jsonl` — second iteration if 5k underfit
+1. Single-answer problems only (drop multi-part)
+2. Solution length appropriate for "concise solution" format — tokenize and select to
+   match OpenR1 arm size at the same scale (1k v1, 8k scale)
+3. Final boxed answer parseable
+4. English-only
+5. Same dedup pass as OpenR1
+6. Drop `synthetic: True` rows. NuminaMath-1.5 contains LLM-generated problems; the
+   competition's public set has the same provenance with confirmed errors. Training on
+   synthetic data risks distilling toward the same hallucination patterns. Human-written
+   olympiad problems only.
+
+Both arms produce JSONL files with matched schema:
+- `data/sft/openr1_v1_1k.jsonl`
+- `data/sft/numina_concise_v1_1k.jsonl`
+- (later) `data/sft/openr1_v1_8k.jsonl`, `data/sft/numina_concise_v1_8k.jsonl`
 
 Multi-answer training data is a v2 problem deferred until single-answer training is validated.
 
@@ -863,38 +965,43 @@ Pro: no double-token risk; matches what the template produces by default.
 Con: harder to verify what the model actually sees during training without
 inspecting tokenized sequences directly.
 
-**Resolution required before generating training data.** The check is
-mechanical: format 5 example assistant turns under each option, tokenize via
-`tokenizer.apply_chat_template(...)`, and inspect the resulting token IDs.
-The option whose tokenized form has exactly one `<think>` opener and one
-`</think>` closer per example is the correct one.
+**Resolution: Option 2 (rely on the template's auto-injected opener).** Validate before
+training with this concrete check on one rendered example:
 
-This needs to run on Pod B (or wherever Unsloth is installed) before any real
-training data gets generated.
+```python
+print(tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=False))
+```
+
+If the rendered output shows `<|im_start|>assistant\n<think>\n<think>\n...`, the assistant
+content has a redundant leading `<think>`. Drop it. OpenR1 traces from R1 already contain
+`<think>...</think>` — pass through unchanged unless the duplication appears.
+
+This is a load-bearing pre-flight check, not optional. R1's chat template conventions are
+similar but not identical to Qwen3-Thinking's, and template malformation would silently
+corrupt training.
 
 ### Training data: format transformation choice
 
-The central design decision is whether assistant responses include reasoning or just the
-boxed answer. Three options considered:
+**Decision: preserved reasoning, NOT answer-only.** Justification:
 
-**Option A — answer-only (`\boxed{x}` with no preceding reasoning).**
-Pro: maximum token reduction, dramatic cost savings, may eliminate cutoffs.
-Con: likely damages mathematical reasoning capability; teaches the model to guess on
-problems where intermediate steps matter; high risk of accuracy collapse on hard items.
+1. **Inference distribution match.** Qwen3-Thinking's chat template auto-prepends
+   `<think>` to the assistant prefix at inference time. SFT on answer-only targets
+   creates a distribution mismatch — the template injects `<think>` but weights have
+   learned to emit `\boxed{}` immediately, producing malformed traces.
 
-**Option B — short rationale (~100-500 tokens of reasoning + `\boxed{x}`).**
-Pro: preserves reasoning behavior; reduces tokens significantly; matches what Qwen3-Thinking
-"could" do under prompt pressure.
-Con: less dramatic token reduction than A; the model may regress toward longer outputs at
-inference if rationale length isn't well-controlled in training data.
+2. **Unsloth's Qwen3 fine-tuning guidance: keep ≥75% reasoning in mixed datasets to
+   avoid catastrophic loss of reasoning capability.**
 
-**Option C — full Qwen3-style thinking trace (`<think>...long reasoning...</think>` + answer).**
-Pro: preserves native model behavior most faithfully.
-Con: doesn't address the cutoff problem; trains the model to keep doing what already produces
-12.6% cutoffs; defeats the purpose of SFT here.
+3. **Frugal-Thinking-4B (verified at `MBZUAI-Paris/Frugal-Thinking-4B`; gated;
+   Apache 2.0; Qwen3-4B-Thinking-2507 base) preserved the `<think>` block entirely.**
+   Its token reduction came from data curation and reward shaping, not format collapse.
 
-**Decision: Option B.** Run a small Option A smoke test alongside as a sanity check, but
-the primary training path is short-rationale.
+4. **Naive truncation of CoT degrades accuracy on math reasoning tasks (well-documented
+   in CoT-pruning literature).** Entropy-aware or verification-aware pruning methods
+   exist but are their own research projects, out of scope for v1.
+
+The data filter (chosen from Stage 1) produces shorter outputs by trimming the long
+tail. Format is preserved; length distribution shifts.
 
 ### Training hyperparameters
 
@@ -924,15 +1031,20 @@ Training arguments:
 
 ```python
 per_device_train_batch_size = 1
-gradient_accumulation_steps = 8        # effective batch size 8
-warmup_steps = 10
-num_train_epochs = 1                   # start with 1, scale to 2-3 if underfit
-learning_rate = 2e-4                   # community default for Qwen-class
+gradient_accumulation_steps = 8         # effective batch 8
+warmup_ratio = 0.03
+num_train_epochs = 1                     # 1 epoch v1 (conservative — see note below)
+learning_rate = 2e-4
 optim = "adamw_8bit"
-weight_decay = 0.01
+weight_decay = 0.01                      # PRESERVED — standard AdamW regularization
 lr_scheduler_type = "cosine"
-max_seq_length = 4096                  # increase to 8192 only if 4096 trains stably
+bf16 = True
+save_strategy = "steps"
+save_steps = 250
+save_total_limit = 4                     # keep more checkpoints for sweep
 seed = 3407
+max_seq_length = 4096
+assistant_only_loss = True               # NEW — TRL/Unsloth flag
 ```
 
 Rationale for batch size 1 + grad accum 8:
@@ -940,6 +1052,20 @@ Rationale for batch size 1 + grad accum 8:
   headroom on a 4090. Effective batch 8 is sufficient for adapter training.
 - Higher batch sizes are tempting but trade VRAM for marginal gradient quality — adapter
   training tolerates noisier gradients than full fine-tuning.
+
+1 epoch is the v1 default. Save adapters every 250 steps, evaluate each checkpoint on
+the 200-question slice, and only commit to additional epochs if step-N+250 checkpoints
+still show monotonic improvement at end of epoch 1. This is not domain adaptation —
+we're shifting reasoning style — so overtraining risks imitating teacher-specific
+verbosity tics at the expense of Qwen3's native thinking quality.
+
+**`assistant_only_loss=True` validation step:** A known issue
+([unsloth #3383](https://github.com/unslothai/unsloth/issues/3383)) had the
+Qwen3-Instruct-2507 template's `{% generation %}` markers misplaced. Verify the loss
+mask on Thinking-2507 by printing `(input_ids, labels)` for one example and confirming
+labels are -100 everywhere except after `<|im_start|>assistant\n` through `<|im_end|>`.
+Loss should apply over the FULL assistant turn including `<think>...</think>`, not
+just post-think content.
 
 ### Chat template and tokenization
 
@@ -962,40 +1088,135 @@ is too important to depend on a finicky adapter-serving path.
 Decision: **train LoRA adapter, save it, then merge into a BF16 checkpoint** before vLLM
 inference. Disk cost (~8 GB per merged model) is acceptable.
 
-Path:
+Save path:
 
 ```python
-model.save_pretrained("training/checkpoints/qwen3-numina-r16-1ep-lora/")        # adapter
 model.save_pretrained_merged(
-    "training/checkpoints/qwen3-numina-r16-1ep-merged/",
+    "qwen3-4b-thinking-merged",
     tokenizer,
-    save_method="merged_16bit",
+    save_method="merged_16bit",  # NOT merged_4bit — vLLM can't load 4bit-saved natively
 )
 ```
 
-Inference invocation: existing `scripts/run_vllm_experiment.py` with `--model` argument
-pointing at the merged checkpoint directory. All other vLLM defaults (sampling, max_seq_len,
-etc.) remain unchanged.
+Verify presence in the merged directory: `config.json`, `generation_config.json`,
+`tokenizer.json`, `tokenizer_config.json`, `special_tokens_map.json`,
+`model-0000X-of-0000Y.safetensors`, `model.safetensors.index.json`.
+
+**Primary inference invocation (single-pod, in-process):** existing
+`scripts/run_vllm_experiment.py` with `--model` argument pointing at the merged checkpoint
+directory. All other vLLM defaults (sampling, `max_model_len`, etc.) remain unchanged. No
+`--enable-lora` flag — the merged checkpoint is a self-contained model. No code changes
+to the runner needed.
+
+**Optional: separate inference pod via HF Hub.** Currently both training and inference
+run on Pod B, so the merged model lives on local disk and the runner loads it directly.
+If we later move inference to a separate pod (e.g., for cost reasons after training),
+push to a private HF repo (~8 GB, ~70s on 1 Gbps via LFS):
+
+```bash
+hf auth login                     # paste write token
+hf repo create your-org/qwen3-4b-thinking-ft --private
+hf upload your-org/qwen3-4b-thinking-ft ./qwen3-4b-thinking-merged \
+    --repo-type=model --commit-message "QLoRA merged 16bit"
+```
+
+Then either point `run_vllm_experiment.py --model your-org/qwen3-4b-thinking-ft` at the
+Hub repo, or launch an HTTP server via `vllm serve` if HTTP-based serving is desired:
+
+```bash
+HF_TOKEN=hf_xxx vllm serve your-org/qwen3-4b-thinking-ft \
+    --dtype bfloat16 \
+    --max-model-len 24576 \
+    --gpu-memory-utilization 0.92 \
+    --enable-prefix-caching \
+    --served-model-name qwen3-thinking-ft
+```
+
+vLLM 0.8.5 has known LoRA-serving issues with Qwen3 (vllm #28186, #18120, #38085).
+Merging avoids all of these. If the merged path also fails, upgrading vLLM is the move,
+not architectural workarounds.
 
 ### Evaluation
 
-Public-set evaluation requires both:
+#### Evaluation slices
 
-1. **Local eval** (Judger-based) — fast feedback on whether training broke the model
-2. **Kaggle-grader-approximated eval** — `last \boxed{...} string-match against gold-as-string`
-   on the same outputs. Calibrates against actual Kaggle scoring.
+For checkpoint ranking we use a 200-question stratified slice (within difficulty/topic
+buckets, fixed seed). Statistical motivation:
 
-Tracked metrics:
+- 50-question slice CI at observed accuracy ~0.7: ±13pp — only detects Δ ≥ 18pp reliably
+- 200-question slice CI at same accuracy: ±6pp — detects Δ ≥ 8pp
 
-- Overall accuracy (Judger)
-- MCQ / single-answer-free / multi-answer-free accuracy (Judger)
-- Kaggle-grader-approximated accuracy
-- Avg / median output tokens
-- Cutoff rate at the same `max_new_tokens` as baseline (16384)
-- Boxed answer rate (% of items with extractable final box)
-- Parse failures
+`data/slices/fixed_50_v1` stays as the prompt A/B slice (calibrated mental priors). New
+slice `data/slices/fixed_200_v1` for checkpoint ranking. Full 1126 (cleaned) only for
+the final 2-3 finalists.
 
-Submission gate (must all pass before burning a Kaggle slot):
+#### Multi-signal eval
+
+Local eval uses multiple correctness signals because no single grader matches Kaggle
+perfectly:
+
+1. **Existing local Judger** (`judger.py`) — the framework we've used since Run 03
+2. **math_verify-based Kaggle approximation** — last-boxed string match with sympy fallback
+3. **Boxed answer rate** — fraction of items with extractable final boxed
+4. **Parse failure rate** — fraction where extraction failed entirely
+5. **Cutoff rate** — fraction hitting `max_new_tokens`
+
+If Judger and math_verify disagree, neither is automatically right. Inspect examples
+manually. Kaggle submission is the ultimate arbiter — reserve for after local gates pass.
+
+**Caveat:** math_verify is also used in OpenR1's filtering. Using it as both
+training-data filter AND eval grader creates correlated blindspots. Track Judger ↔
+math_verify agreement rate as a calibration signal; if they diverge sharply on
+trained-vs-untrained outputs, that's diagnostic.
+
+#### Per-item logged metrics (Tier 1, mandatory for SFT runs)
+
+For every item in any SFT-related eval run, log:
+
+- `correct_judger` (existing) — local Judger correctness
+- `correct_kaggle_approx` (NEW) — math_verify-based grader correctness
+- `sympy_disagreement` (NEW) — True if `correct_judger != correct_kaggle_approx`
+- `has_think_open` (NEW) — True if `<think>` appears in response
+- `has_think_close` (NEW) — True if `</think>` appears in response
+- `think_tokens` (NEW) — token count between `<think>` and `</think>`, or 0 if missing
+- `post_think_tokens` (NEW) — token count after `</think>`
+- `boxed_at_end` (NEW) — True if last `\boxed{}` appears within final 100 tokens
+- `gen_tokens` (existing) — total response tokens
+- `hit_token_cap` (existing) — boolean cutoff flag
+
+#### Per-run aggregate metrics (Tier 1, mandatory for SFT runs)
+
+For every SFT eval run summary:
+
+- `judger_kaggle_approx_agreement_rate` (NEW) — fraction where both graders agree
+- `malformed_think_rate` (NEW) — fraction with open-without-close or close-without-open
+- `avg_gen_tokens`, `median_gen_tokens`, `p25/p50/p75/p95` (was just `avg`)
+- `cutoff_count`, `cutoff_rate` (existing)
+- **Length-by-correctness buckets:**
+  - `avg_tokens_correct` — average `gen_tokens` on items judged correct
+  - `avg_tokens_wrong` — average `gen_tokens` on items judged wrong
+  - `cutoff_rate_correct` vs `cutoff_rate_wrong`
+  - `boxed_rate_correct` vs `boxed_rate_wrong`
+- **Adapter metadata** (NEW):
+  - `base_model`, `adapter_path`, `lora_rank`, `train_steps_completed`
+  - `train_data_source` (openr1 / numina_concise / etc.), `train_data_size`,
+    `train_epochs_completed`
+  - `train_final_loss`, `train_eval_loss_per_epoch`
+
+#### Checkpoint selection criterion
+
+For comparing adapter checkpoints, the priority order is strict:
+
+1. **Maximum Kaggle-approximated accuracy** on `fixed_200_v1`
+2. Among checkpoints within 1pp of max accuracy: **minimum avg `gen_tokens`**
+3. Among checkpoints with similar score+length: **lowest cutoff rate**
+
+A 0.62 + 5000-token checkpoint beats a 0.61 + 1500-token checkpoint. Token reduction is
+value-add only when accuracy is preserved.
+
+#### Submission gate
+
+Must all pass before burning a Kaggle slot:
 
 - Public eval runs end-to-end without crashes
 - CSV validates: 943 rows, IDs sequential 0-942, all responses non-empty
@@ -1006,9 +1227,29 @@ Submission gate (must all pass before burning a Kaggle slot):
 
 - Multi-answer training data format (single-answer-only in v1)
 - LoRA rank scaling (r=16 → r=32 if underfit)
-- Multi-epoch training (1 epoch in v1)
 - Different rationale-length targets (e.g., 200 vs 500 tokens)
 - Combination with N=8 SC at inference (does SFT'd model benefit equally?)
+- **Multi-epoch training** — extend to 2-3 epochs only if v1 1-epoch checkpoints show
+  monotonic improvement at end of epoch 1. Track learning curve to detect overfitting
+  (rising eval loss while train loss falls).
+- **Alternative-teacher comparison run (v2)** — generate ~5k traces from a
+  Qwen3-4B-Thinking-2507-derived model and use as SFT teacher signal, then compare to
+  OpenR1-trained model. Approved by instructor (Piazza, May 5, 2026; see §4.2 Path C
+  and §5.1). Verified candidates (queried via
+  `huggingface_hub.HfApi().list_models(search='Qwen3-4B-Thinking')` and `model_info`
+  filtering for Qwen3-4B-Thinking-2507 lineage):
+  - `MBZUAI-Paris/Frugal-Thinking-4B` (verified at HF; gated; Apache 2.0;
+    Qwen3-4B-Thinking-2507 base; GRPO/RLVR with verifiable rewards; Stage 2 ~50% token
+    reduction vs base while preserving math accuracy)
+  - `prithivMLmods/Logics-Qwen3-Math-4B` (51 downloads, 3 likes; explicit
+    Qwen3-4B-Thinking-2507 base)
+  - `Jackrong/DASD-4B-Thinking-2507-GRPO-v2` (25 downloads; Qwen3-4B-Thinking-2507
+    base, GRPO on math + reasoning)
+
+  Defer until v1 OpenR1/NuminaMath comparison establishes baseline.
+- **Public-set audit** — clean the public set's ~10% suspected gold errors via 3-LLM
+  consensus + human review. Cleaned set becomes a richer eval slice. Doesn't gate v1
+  SFT work.
 
 ### Risks and mitigations
 
