@@ -11,3 +11,21 @@ results/run09sc8_v1_private943_tok16384.jsonl
 unsloth_compiled_cache/
 unsloth_compiled_cache/
 .venv-training/
+
+# Training artifacts (large)
+training/checkpoints/
+training/**/checkpoints/
+
+# Generated SFT data (regenerable via training/prepare_*.py)
+data/sft/
+
+# Logs — preserve v1 post-mortem files explicitly, ignore future
+logs/*.log
+!logs/train_openr1_v1_1k.log
+!logs/train_numina_concise_v1_1k.log
+!logs/train_frugal_v1_1k.log
+!logs/merge_openr1_v1_1k.log
+!logs/merge_numina_concise_v1_1k.log
+!logs/merge_frugal_v1_1k.log
+!logs/smoke_openr1_v1_1k_5.log
+!logs/frugal_gen_v1_1k.log

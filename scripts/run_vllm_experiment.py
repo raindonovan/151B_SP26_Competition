@@ -157,8 +157,12 @@ def parse_args() -> argparse.Namespace:
     # max_new_tokens silently shrinks effective gen budget on any non-empty
     # prompt. Override (e.g. 24576) when running with max_new_tokens > 8192.
     p.add_argument("--max-model-len", type=int, default=16384)
+    p.add_argument("--model", default=None, help="Override MODEL_ID. Pass merged adapter path or HF model ID.")
     p.add_argument("--data-path", default=str(REPO_ROOT / "data" / "public.jsonl"))
     args = p.parse_args()
+    global MODEL_ID  # noqa
+    if args.model is not None:
+        MODEL_ID = args.model
 
     if args.slice is not None and args.data_end is not None:
         p.error("--slice and --data-end are mutually exclusive")

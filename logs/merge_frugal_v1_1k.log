@@ -1,0 +1,30 @@
+Skipping import of cpp extensions due to incompatible torch version 2.6.0+cu124 for torchao version 0.16.0             Please see https://github.com/pytorch/ao/issues/2919 for more info
+`torch_dtype` is deprecated! Use `dtype` instead!
+[00:15:11] === MERGE_ADAPTER (HF/PEFT path) ===
+  Adapter:    training/checkpoints/frugal_v1_1k/final_adapter
+  Output:     training/checkpoints/frugal_v1_1k/merged
+  Base model: Qwen/Qwen3-4B-Thinking-2507
+
+[00:15:11] Importing transformers + peft...
+[00:15:34] Loading base model Qwen/Qwen3-4B-Thinking-2507 in BF16 (~30-60 sec)...
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   4%|▎         | 14/398 [00:00<00:02, 136.96it/s]Loading weights:  12%|█▏        | 49/398 [00:00<00:01, 251.82it/s]Loading weights:  23%|██▎       | 91/398 [00:00<00:00, 319.82it/s]Loading weights:  31%|███▏      | 125/398 [00:00<00:00, 327.47it/s]Loading weights:  41%|████      | 163/398 [00:00<00:00, 342.41it/s]Loading weights:  51%|█████     | 201/398 [00:00<00:00, 353.60it/s]Loading weights:  60%|█████▉    | 237/398 [00:00<00:00, 350.69it/s]Loading weights:  70%|██████▉   | 278/398 [00:00<00:00, 364.50it/s]Loading weights:  79%|███████▉  | 315/398 [00:00<00:00, 362.43it/s]Loading weights:  89%|████████▉ | 355/398 [00:01<00:00, 371.25it/s]Loading weights:  99%|█████████▊| 393/398 [00:01<00:00, 371.24it/s]Loading weights: 100%|██████████| 398/398 [00:01<00:00, 348.59it/s]
+[00:15:38] Base loaded. 4.02B params
+[00:15:38] Loading adapter from training/checkpoints/frugal_v1_1k/final_adapter...
+[00:15:43] Adapter loaded.
+[00:15:43] Merging adapter into base (merge_and_unload)...
+[00:15:44] Merge complete.
+[00:15:44] Saving merged BF16 to training/checkpoints/frugal_v1_1k/merged...
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:20<00:00, 20.29s/it]Writing model shards: 100%|██████████| 1/1 [00:20<00:00, 20.29s/it]
+[00:16:04] Saved.
+
+[00:16:04] === DONE ===
+  Total size: 8.06 GB (expect ~8 GB for proper BF16 merge)
+  Files:
+    chat_template.jinja: 0.0 MB
+    config.json: 0.0 MB
+    generation_config.json: 0.0 MB
+    model.safetensors: 8045.0 MB
+    tokenizer.json: 11.4 MB
+    tokenizer_config.json: 0.0 MB
+
+  OK: no adapter files in output (proper merge)
