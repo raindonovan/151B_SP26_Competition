@@ -29,3 +29,5 @@ logs/*.log
 !logs/merge_frugal_v1_1k.log
 !logs/smoke_openr1_v1_1k_5.log
 !logs/frugal_gen_v1_1k.log
+
+# v1 post-mortem archive (preserved for tomorrow's debug)
