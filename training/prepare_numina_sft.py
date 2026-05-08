@@ -1,16 +1,26 @@
 """
 Prepare NuminaMath-1.5 SFT training data.
-Filters: answer != 'proof', validity flags Yes, synthetic == False, 
+Filters: answer != 'proof', validity flags Yes, synthetic == False,
          source NOT in {cn_k12} (drops 60% Chinese K-12 below competition difficulty),
          solution length 200-2000 tokens.
-Format: assistant content = NuminaMath solution + '\n\nThe answer is \\boxed{<gold>}.'
+Format: messages = [system, user, assistant]
+        system  = PROMPTS["v1-baseline"]["free"] (matches inference)
+        user    = NuminaMath problem
+        assistant = NuminaMath solution + '\n\nThe answer is \\boxed{<gold>}.'
         (concise-solution arm; we wrap with explicit boxed answer for SFT consistency)
 """
 import argparse
 import json
 import re
+import sys
 import time
 from pathlib import Path
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(REPO_ROOT))
+from scripts.prompts import PROMPTS  # noqa: E402
+
+SYSTEM_PROMPT = PROMPTS["v1-baseline"]["free"]
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--target-rows", type=int, default=1000)
@@ -100,6 +110,7 @@ with open(args.output, "w") as out_f:
 
         sft_record = {
             "messages": [
+                {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": problem},
                 {"role": "assistant", "content": assistant_content},
             ],
