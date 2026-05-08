@@ -29,6 +29,7 @@ import torch  # noqa: E402
 import transformers  # noqa: E402
 import vllm  # noqa: E402
 from judger import Judger  # noqa: E402
+from scripts.prompts import PROMPTS  # noqa: E402
 from transformers import AutoTokenizer  # noqa: E402
 from vllm import LLM, SamplingParams  # noqa: E402
 
@@ -49,44 +50,6 @@ SAMPLING = {
     "top_k": 20,
     "repetition_penalty": 1.0,
 }
-
-# Prompt registry. Each policy's strings are stored verbatim — do NOT replace
-# duplicate text across policies with shared variables or references. The
-# redundancy is intentional: a reader auditing any single policy needs to see
-# its exact text without cross-referencing other policies. Treat this as
-# config, not code.
-PROMPTS = {
-    "v1-baseline": {
-        "mcq": (
-            "You are an expert mathematician. "
-            "Read the problem and the answer choices below, then select the single best answer. "
-            "Output ONLY the letter of your chosen option inside \\boxed{}, e.g. \\boxed{C}."
-        ),
-        "free": (
-            "You are an expert mathematician. Solve the problem step-by-step. "
-            "Put your final answer inside \\boxed{}. "
-            "If the problem has multiple sub-answers, separate them by commas inside a single \\boxed{}, "
-            "e.g. \\boxed{3, 7}. "
-            "Give numerical answers to at least 4 significant figures, unless the problem specifies a different precision."
-        ),
-    },
-    "v2-mcq-commit": {
-        "mcq": (
-            "You are an expert mathematician. Choose the single correct option from the choices below. "
-            "After your reasoning, output exactly one final answer in the form \\boxed{LETTER}, where LETTER is one of A, B, C, etc. "
-            "Stop generating immediately after \\boxed{}."
-        ),
-        "free": (
-            # Identical to v1-baseline.free — copied verbatim for auditability.
-            "You are an expert mathematician. Solve the problem step-by-step. "
-            "Put your final answer inside \\boxed{}. "
-            "If the problem has multiple sub-answers, separate them by commas inside a single \\boxed{}, "
-            "e.g. \\boxed{3, 7}. "
-            "Give numerical answers to at least 4 significant figures, unless the problem specifies a different precision."
-        ),
-    },
-}
-
 
 def build_prompt(question: str, options: Optional[list], policy: dict) -> tuple[str, str]:
     """Return (system_prompt, user_prompt) for a question under `policy`."""
