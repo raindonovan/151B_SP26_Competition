@@ -6,8 +6,12 @@ Filters: answer != 'proof', validity flags Yes, synthetic == False,
 Format: messages = [system, user, assistant]
         system  = PROMPTS["v1-baseline"]["free"] (matches inference)
         user    = NuminaMath problem
-        assistant = NuminaMath solution + '\n\nThe answer is \\boxed{<gold>}.'
-        (concise-solution arm; we wrap with explicit boxed answer for SFT consistency)
+        assistant = NuminaMath solution + '</think>\n\nThe answer is \\boxed{<gold>}.'
+        (Per DESIGN.md §7 Option 2: solution body lives inside the
+         auto-injected <think>...</think> block as reasoning; the explicit
+         </think> + post-think 'The answer is \\boxed{<gold>}.' is the
+         canonical answer commit. Trains preserved-reasoning, not
+         answer-only — the failure mode caught by diagnostic 4.2 on 2026-05-07.)
 """
 import argparse
 import json
@@ -99,14 +103,16 @@ with open(args.output, "w") as out_f:
         problem = row["problem"]
         gold = str(row["answer"]).strip()
 
-        # Wrap NuminaMath solution with an explicit boxed answer at the end
-        # to match SFT format expectation. NuminaMath solutions usually conclude
-        # with the answer inline; we append a boxed wrapper for consistency.
-        # If solution already contains \boxed{<gold>}, don't double-wrap.
-        if f"\\boxed{{{gold}}}" not in sol and "\\boxed{" not in sol:
-            assistant_content = f"{sol}\n\nThe answer is $\\boxed{{{gold}}}$."
-        else:
-            assistant_content = sol
+        # Per DESIGN.md §7 Option 2: append explicit </think> + canonical
+        # post-think answer regardless of whether `sol` already contains
+        # \boxed{}. The qwen3-thinking chat template auto-injects <think> at
+        # the start of the assistant turn; our </think> tells the template
+        # to elide its own auto-injected close, so `sol` lands inside the
+        # think block (reasoning trace) and the appended "The answer is
+        # \boxed{<gold>}" lands post-think (canonical commit). Mid-think
+        # \boxed{} from `sol` itself is reasoning trace, not conflict —
+        # Qwen3-Thinking emits both at inference naturally.
+        assistant_content = f"{sol}</think>\n\nThe answer is $\\boxed{{{gold}}}$."
 
         sft_record = {
             "messages": [

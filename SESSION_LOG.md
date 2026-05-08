@@ -106,6 +106,30 @@ Verify after step ~50: training loop running, wandb run visible,
 loss decreasing (not NaN, not stuck). v1 training-loss anchor for v2
 comparison: **NuminaMath v1 final = 0.726**.
 
+### Note: v2 NuminaMath SFT data on second regeneration tonight
+
+v2 NuminaMath SFT data was regenerated **twice** during the pre-training
+diagnostic session on 2026-05-07:
+
+1. **First regen** added the inference system prompt to every record's
+   messages array (Path α — `prepare_numina_sft.py` imports
+   `PROMPTS["v1-baseline"]["free"]` from `scripts/prompts.py` and
+   prepends a system message). Closed the v1 reviewer-flagged
+   prompt-mismatch contributor.
+2. **Second regen** added an explicit `</think>` to assistant content
+   so the qwen3-thinking chat template lands the NuminaMath solution
+   inside the auto-injected `<think>...</think>` block as reasoning
+   trace, with the canonical `\boxed{<gold>}` post-think as answer
+   commit (per DESIGN.md §7 Option 2). Caught by diagnostic 4.2's
+   structural inspection — the binary `<think>` count was already
+   passing, but the rendered template was Pattern B (empty think,
+   answer-only) which §7 explicitly rejects.
+
+Both regenerations preserved seed=42 determinism — same draw from
+NuminaMath-1.5, same 8000 rows by problem identity, same length
+filter. See [`experiments.md`](experiments.md) > External Review
+Insights > 2026-05-07 entries for measurements.
+
 ## Recovery state
 
 - 3 broken adapters at training/checkpoints/{openr1,numina_concise,frugal}_v1_1k/
