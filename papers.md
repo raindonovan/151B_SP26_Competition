@@ -34,7 +34,7 @@ Each entry follows this structure:
 - **Relevance to us:** v2 NuminaMath has assistant content ~658 median tokens against system + user ~200-400 tokens, so R_g ≈ 1.5-3.0. Squarely in the "long-completion" regime where their finding is null. Direct empirical evidence that loss-target choice (full-sequence vs assistant-only) should not materially affect v2 NuminaMath performance.
 - **What we took from it:** Updated v2 SFT loss-target decision toward full-sequence (option F0/F3) on 2026-05-08. The "wasted gradient on prompt tokens" argument for assistant-only loss is theoretically reasonable but empirically doesn't show up in long-completion regimes per their controlled experiment. Combined with v1↔v2 parity considerations and infrastructure-complexity costs of bypassing Unsloth's prep path for genuine assistant-only loss, full-sequence is the simpler and equally-effective path.
 - **Caveats:** Their data is Alpaca-style instruction following on LLaMA-1/2 7B, not thinking-model SFT on Qwen3-4B-Thinking-2507. The underlying mechanism (loss budget allocation across prompt vs completion tokens) is the same, but base architecture, data domain, and reasoning-trace structure all differ. Not a slam dunk; treat as strong but not conclusive prior.
-- **Used in:** experiments.md > External Review Insights > 2026-05-08 entry (forthcoming v2 SFT loss-target decision); DESIGN.md §7 hyperparameter rationale.
+- **Used in:** DESIGN.md §7 > Loss target paragraph (v2 SFT loss-target rationale).
 
 ---
 

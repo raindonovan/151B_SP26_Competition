@@ -1046,7 +1046,7 @@ save_steps = 200
 save_total_limit = 4                     # keep more checkpoints for sweep
 seed = 3407
 max_seq_length = 8192
-assistant_only_loss = True               # NEW — TRL/Unsloth flag
+assistant_only_loss = False              # 2026-05-08 reframe — Unsloth silently ignores True; v2 trains full-sequence (see "Loss target" paragraph below)
 ```
 
 Rationale for batch size 1 + grad accum 8:
@@ -1061,13 +1061,19 @@ still show monotonic improvement at end of epoch 1. This is not domain adaptatio
 we're shifting reasoning style — so overtraining risks imitating teacher-specific
 verbosity tics at the expense of Qwen3's native thinking quality.
 
-**`assistant_only_loss=True` validation step:** A known issue
-([unsloth #3383](https://github.com/unslothai/unsloth/issues/3383)) had the
-Qwen3-Instruct-2507 template's `{% generation %}` markers misplaced. Verify the loss
-mask on Thinking-2507 by printing `(input_ids, labels)` for one example and confirming
-labels are -100 everywhere except after `<|im_start|>assistant\n` through `<|im_end|>`.
-Loss should apply over the FULL assistant turn including `<think>...</think>`, not
-just post-think content.
+**Loss target — full-sequence (per 2026-05-08 reframe).** Setting `assistant_only_loss=True` on `SFTConfig` is silently ignored under Unsloth's compiled SFTTrainer override (`unsloth_compiled_cache/UnslothSFTTrainer.py:1041-1300` ships its own `_prepare_dataset` that bypasses TRL's `apply_chat_template(return_assistant_tokens_mask=True)` path; see [`experiments.md`](experiments.md) > External Review Insights > 2026-05-08 entry for the full investigation trace). v1 trained on full-sequence cross-entropy despite the flag being set to True; v2 sets the flag to `False` to align config with what actually happens. Full-sequence loss is supported as appropriate for our regime by Huerta-Enochian & Lee 2024 (no statistically significant effect of prompt loss weight on long-completion data, R_g ≥ 1; v2 NuminaMath has R_g ≈ 1.5-3.0) and Sky-T1 / NovaSky 2025 (reasoning-trace SFT is highly sensitive to *structural* perturbations of training traces and remarkably insensitive to content / per-token signal). See [`papers.md`](papers.md) for citations. v3 is pre-committed as the assistant-only ablation if v2 succeeds; achieving genuine assistant-only loss under Unsloth requires either bypassing `_prepare_dataset` via `dataset_kwargs={"skip_prepare_dataset": True}` plus pre-tokenizing the dataset with `apply_chat_template(return_assistant_tokens_mask=True)`, or switching off Unsloth entirely.
+
+### Diagnostic: assistant-only eval-loss metric
+
+Under full-sequence loss, the standard `train/loss` reported to wandb is computed over system + user + separator + assistant tokens. The system+user content is identical or near-identical across rows in our schema and trivially memorized — driving `train/loss` down without meaningful signal about assistant-content learning. To monitor genuine learning progress, [`training/train_qwen3_qlora.py`](training/train_qwen3_qlora.py) ships a custom `AssistantOnlyEvalLossCallback` that:
+
+- Holds out the **last 8 rows** of the loaded JSONL as a deterministic eval batch (training rows: 8000 → 7992; below sampling noise).
+- Constructs a per-token mask via last-occurrence token-id matching of `<|im_start|>assistant\n`, marking the assistant span (including the auto-injected `<think>\n` opener) as graded and everything before as `-100`. Token-id matching avoids reliance on `{% generation %}` markers which are absent from unsloth's `qwen3-thinking` template and is BPE-stable across Unicode/normalization edge cases.
+- At every `save_steps` boundary (5 firings per arm at v2's `save_steps=200`, ~1000 total steps), runs a forward pass on the held-out batch under `torch.no_grad()` and `model.eval()`, computes token-weighted cross-entropy on the masked positions, and logs as `eval/assistant_only_loss` to wandb (and stdout if wandb isn't active).
+
+A **hard pre-flight gate** (Pre-flight check 3 in `train_qwen3_qlora.py`) computes the metric against the untrained-LoRA model and aborts before any training compute if the value is not finite or falls outside the sanity range `[0.5, 5.0]` nats. This catches mask-construction bugs, tokenization edge cases, and base-model dtype mismatches at smoke-test time. The gate also prints a human-readable masked/graded boundary decode for one example so the span can be visually verified.
+
+Interpretation: this metric is the diagnostic ceiling for "is the model actually learning the assistant-content distribution?" — distinct from `train/loss` which is dominated by easy prompt-prediction. Under healthy v2 training we expect both to descend, but `eval/assistant_only_loss` is the truer signal of reasoning-trace fit. The metric is held-out (rows excluded from training), so it doesn't trend monotonically with training loss the way an in-set metric would.
 
 ### Chat template and tokenization
 

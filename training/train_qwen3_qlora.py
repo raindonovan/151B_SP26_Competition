@@ -10,11 +10,15 @@ Usage:
 
 Pre-flight checks (printed at startup, training begins after):
   1. Renders one chat-template example, checks for duplicate <think>
-  2. Tokenizes one example and prints (input_ids, labels) sample to verify
-     assistant_only_loss masking
+  2. Tokenizes one example and prints the token sequence
+  3. Computes assistant-only eval-loss against the (untrained-LoRA) model on
+     an 8-row held-out batch; aborts if the value is non-finite or outside
+     [0.5, 5.0] nats. Catches mask-construction bugs before any training
+     compute is committed.
 """
 import argparse
 import json
+import math
 import os
 import sys
 import time
@@ -71,7 +75,88 @@ from unsloth import FastLanguageModel
 from unsloth.chat_templates import get_chat_template
 from datasets import load_dataset
 from trl import SFTConfig, SFTTrainer
+from transformers import TrainerCallback
 import torch
+import torch.nn.functional as F
+
+
+class AssistantOnlyEvalLossCallback(TrainerCallback):
+    """Logs cross-entropy restricted to the assistant span on a fixed held-out batch.
+
+    Diagnostic for full-sequence training (v2 default per the 2026-05-08 reframe).
+    The standard `train/loss` mixes easy-to-memorize prompt tokens with assistant
+    content; this metric reports loss on the assistant span alone so genuine
+    learning progress is observable. Fires at every save_steps boundary via
+    `on_save`. See DESIGN.md §7 > Diagnostic: assistant-only eval-loss metric.
+    """
+    METRIC_NAME = "eval/assistant_only_loss"
+
+    def __init__(self, input_ids_list, labels_list):
+        self.input_ids_list = [torch.tensor(ids, dtype=torch.long) for ids in input_ids_list]
+        self.labels_list = [torch.tensor(lbl, dtype=torch.long) for lbl in labels_list]
+
+    @torch.no_grad()
+    def compute(self, model) -> float:
+        device = next(model.parameters()).device
+        was_training = model.training
+        model.eval()
+        total_loss_sum = 0.0
+        total_token_count = 0
+        try:
+            for ids, labels in zip(self.input_ids_list, self.labels_list):
+                ids_b = ids.unsqueeze(0).to(device)
+                labels_b = labels.unsqueeze(0).to(device)
+                attn_b = torch.ones_like(ids_b)
+                outputs = model(input_ids=ids_b, attention_mask=attn_b, use_cache=False)
+                shift_logits = outputs.logits[:, :-1, :].contiguous()
+                shift_labels = labels_b[:, 1:].contiguous()
+                graded = shift_labels != -100
+                n_graded = int(graded.sum().item())
+                if n_graded == 0:
+                    continue
+                loss_sum = F.cross_entropy(
+                    shift_logits.reshape(-1, shift_logits.size(-1)),
+                    shift_labels.reshape(-1),
+                    ignore_index=-100,
+                    reduction="sum",
+                )
+                total_loss_sum += float(loss_sum.item())
+                total_token_count += n_graded
+        finally:
+            if was_training:
+                model.train()
+        if total_token_count == 0:
+            raise RuntimeError(
+                "AssistantOnlyEvalLoss: zero graded tokens across eval batch. "
+                "Mask construction is broken — inspect the eval batch."
+            )
+        return total_loss_sum / total_token_count
+
+    def on_save(self, args, state, control, model=None, **kwargs):
+        if model is None:
+            return
+        try:
+            value = self.compute(model)
+        except Exception as exc:
+            print(f"[AssistantOnlyEvalLoss] compute failed at step {state.global_step}: {exc}")
+            return
+        print(f"[{time.strftime('%H:%M:%S')}] {self.METRIC_NAME} @ step {state.global_step}: {value:.4f}")
+        try:
+            import wandb
+            if wandb.run is not None:
+                wandb.log({self.METRIC_NAME: value}, step=state.global_step)
+        except Exception:
+            pass
+
+
+def find_last_subseq(seq, sub):
+    """Return the start index of the last occurrence of `sub` in `seq`, or -1."""
+    n, m = len(seq), len(sub)
+    for i in range(n - m, -1, -1):
+        if seq[i:i + m] == sub:
+            return i
+    return -1
+
 
 # --- Load model + tokenizer ---
 print(f"[{time.strftime('%H:%M:%S')}] Loading {args.base_model} (4-bit nf4)...")
@@ -117,6 +202,55 @@ def format_with_chat_template(examples):
 dataset = dataset.map(format_with_chat_template, batched=True, num_proc=4,
                      remove_columns=[c for c in dataset.column_names if c != "messages"])
 
+# --- Hold out the last 8 rows for the eval/assistant_only_loss metric ---
+HOLDOUT_N = 8
+total_n = len(dataset)
+if total_n <= HOLDOUT_N:
+    raise RuntimeError(
+        f"Dataset has {total_n} rows; need > {HOLDOUT_N} for the eval/assistant_only_loss metric."
+    )
+eval_holdout = dataset.select(range(total_n - HOLDOUT_N, total_n))
+dataset = dataset.select(range(total_n - HOLDOUT_N))
+print(f"[{time.strftime('%H:%M:%S')}] Eval holdout: last {HOLDOUT_N} rows. "
+      f"Training set: {len(dataset)} rows.")
+
+# Build the eval batch for AssistantOnlyEvalLossCallback. Mask construction
+# uses last-occurrence token-id matching of "<|im_start|>assistant\n" rather
+# than apply_chat_template(return_assistant_tokens_mask=True), since unsloth's
+# qwen3-thinking template lacks {% generation %} markers (per experiments.md
+# > External Review Insights > 2026-05-08 entry).
+ASSISTANT_MARKER_TEXT = "<|im_start|>assistant\n"
+marker_ids = tokenizer.encode(ASSISTANT_MARKER_TEXT, add_special_tokens=False)
+if not marker_ids:
+    raise RuntimeError(f"Could not encode {ASSISTANT_MARKER_TEXT!r} into tokens.")
+
+eval_input_ids_list = []
+eval_labels_list = []
+for row in eval_holdout:
+    ids = tokenizer(row["text"], truncation=True, max_length=args.max_seq_length,
+                    return_tensors=None)["input_ids"]
+    marker_pos = find_last_subseq(ids, marker_ids)
+    if marker_pos < 0:
+        raise RuntimeError(
+            f"Eval batch construction: could not find {ASSISTANT_MARKER_TEXT!r} marker tokens "
+            f"{marker_ids} in tokenized eval row of length {len(ids)}. "
+            f"Last 30 token ids: {ids[-30:]}."
+        )
+    span_start = marker_pos + len(marker_ids)
+    if span_start >= len(ids):
+        raise RuntimeError(
+            f"Eval batch construction: assistant span starts at or beyond end of input "
+            f"(span_start={span_start}, len={len(ids)}). Truncation likely cut off all "
+            f"assistant content — increase --max-seq-length or hold out shorter rows."
+        )
+    labels = [-100] * len(ids)
+    for i in range(span_start, len(ids)):
+        labels[i] = ids[i]
+    eval_input_ids_list.append(ids)
+    eval_labels_list.append(labels)
+
+eval_callback = AssistantOnlyEvalLossCallback(eval_input_ids_list, eval_labels_list)
+
 # --- Pre-flight check 1: rendered example ---
 print(f"\n[{time.strftime('%H:%M:%S')}] === PRE-FLIGHT CHECK 1: rendered template ===")
 sample_text = dataset[0]["text"]
@@ -139,7 +273,7 @@ if think_open_count > 1 + sample_text[:200].count("<think>"):
 else:
     print("OK: no obvious <think> duplication.")
 
-# --- Pre-flight check 2: tokenization + loss mask ---
+# --- Pre-flight check 2: tokenization ---
 print(f"\n[{time.strftime('%H:%M:%S')}] === PRE-FLIGHT CHECK 2: tokenization ===")
 sample_ids = tokenizer(sample_text, return_tensors=None, truncation=True,
                        max_length=args.max_seq_length)["input_ids"]
@@ -149,6 +283,45 @@ print(f"First 30 decoded:")
 print(repr(tokenizer.decode(sample_ids[:30])))
 print(f"Last 30 decoded:")
 print(repr(tokenizer.decode(sample_ids[-30:])))
+
+# --- Pre-flight check 3: assistant-only eval-loss base-model gate ---
+# Verifies (1) the assistant-mask boundary lands where expected and (2) the
+# computed metric is finite and in a sane range against the untrained-LoRA
+# model. Aborts before any training compute if either fails.
+print(f"\n[{time.strftime('%H:%M:%S')}] === PRE-FLIGHT CHECK 3: assistant-only eval-loss ===")
+
+ids0 = eval_input_ids_list[0]
+labels0 = eval_labels_list[0]
+graded_indices = [i for i, l in enumerate(labels0) if l != -100]
+if not graded_indices:
+    raise RuntimeError("PRE-FLIGHT 3 FAILED: eval example 0 has no graded tokens.")
+span0 = graded_indices[0]
+print(f"Eval example 0: {len(ids0)} tokens total, "
+      f"{span0} masked (system+user+separator), "
+      f"{len(ids0) - span0} graded (assistant content).")
+masked_text = tokenizer.decode(ids0[:span0])
+graded_text = tokenizer.decode(ids0[span0:])
+print(f"Last 80 chars of MASKED region: ...{masked_text[-80:]!r}")
+print(f"First 80 chars of GRADED region: {graded_text[:80]!r}...")
+
+base_loss = eval_callback.compute(model)
+print(f"Base-model {AssistantOnlyEvalLossCallback.METRIC_NAME} = {base_loss:.4f} nats "
+      f"over {HOLDOUT_N} held-out examples.")
+if not math.isfinite(base_loss):
+    raise RuntimeError(
+        f"PRE-FLIGHT 3 FAILED: Base-model {AssistantOnlyEvalLossCallback.METRIC_NAME}={base_loss} "
+        f"is not finite. The metric implementation is broken. Inspect the masked-decode "
+        f"output above and the eval batch construction."
+    )
+if not (0.5 <= base_loss <= 5.0):
+    raise RuntimeError(
+        f"PRE-FLIGHT 3 FAILED: Base-model {AssistantOnlyEvalLossCallback.METRIC_NAME}={base_loss:.4f} "
+        f"nats, outside expected sanity range [0.5, 5.0]. Probable causes: "
+        f"(1) assistant-mask construction is wrong (graded tokens include system/user content); "
+        f"(2) the base model is unexpectedly far from in-distribution on math reasoning; "
+        f"(3) the eval batch contains malformed rows. Inspect the masked-decode output above."
+    )
+print("PRE-FLIGHT 3 PASSED.")
 
 if args.smoke_only:
     print(f"\n[{time.strftime('%H:%M:%S')}] --smoke-only set. Pre-flight checks done. Exiting.")
@@ -182,7 +355,12 @@ training_args = SFTConfig(
     seed=args.seed,
     max_seq_length=args.max_seq_length,
     packing=False,
-    assistant_only_loss=True,
+    # assistant_only_loss=False per 2026-05-08 v1 post-mortem reframe (Unsloth
+    # silently ignored True; full-sequence loss is what we actually train under).
+    # See experiments.md > External Review Insights > 2026-05-08 entry for the
+    # full investigation trace; DESIGN.md §7 > Loss target paragraph for the
+    # rationale (Huerta-Enochian & Lee 2024 + Sky-T1 / NovaSky 2025).
+    assistant_only_loss=False,
     report_to="wandb",
     run_name=args.run_name,
     dataset_text_field="text",
@@ -193,6 +371,7 @@ trainer = SFTTrainer(
     tokenizer=tokenizer,
     train_dataset=dataset,
     args=training_args,
+    callbacks=[eval_callback],
 )
 
 # --- Train ---
