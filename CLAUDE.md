@@ -185,7 +185,9 @@ Notable failures caught (or that should have been caught) by this rule live in [
 
 ## Document Boundaries
 
-Stable rules → `CLAUDE.md`. Strategy → `DESIGN.md`. Run state (results, queue, insights, slices) → `experiments.md`. Environments → `SETUP.md`. Competition rules → `COMPETITION.md`. Scoring rules → `judger.py` (don't modify mid-sweep). Concrete dated examples (specific run numbers, specific failures) belong in the dated docs, not in CLAUDE.md — CLAUDE.md states the rule and points to evidence elsewhere.
+Stable rules → `CLAUDE.md`. Strategy → `DESIGN.md`. Run state (results, queue, insights, slices) → `experiments.md`. Environments → `SETUP.md`. Competition rules → `COMPETITION.md`. Scoring rules → `judger.py` (don't modify mid-sweep). Papers and tooling-class findings → `papers.md`. Concrete dated examples (specific run numbers, specific failures) belong in the dated docs, not in CLAUDE.md — CLAUDE.md states the rule and points to evidence elsewhere.
+
+When citing academic papers or tooling-class findings in review packets, post-mortems, or methodology arguments, add the entry to `papers.md` if not already present.
 
 ---
 
