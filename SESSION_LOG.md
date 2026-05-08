@@ -130,6 +130,43 @@ NuminaMath-1.5, same 8000 rows by problem identity, same length
 filter. See [`experiments.md`](experiments.md) > External Review
 Insights > 2026-05-07 entries for measurements.
 
+### Current state as of 2026-05-07 stop (third structural catch deferred)
+
+Tonight's pre-training diagnostics caught **three** structural bugs:
+
+1. v2 SFT system prompt absence (Path α regen) — **fixed and verified.**
+2. Pattern B answer-only structure from missing explicit `</think>` —
+   **fixed and verified** via diagnostic 4.2 + 4.1 re-runs on the
+   Option-2-shaped data.
+3. All-masked labels under `assistant_only_loss=True` (Unsloth #3383
+   class — qwen3-thinking template lacks `{% generation %}` markers,
+   transformers' fallback returns all-zeros mask, SFTTrainer writes
+   `-100` to every label) — **deferred to next session for
+   fresh-eyes fix-design decision.**
+
+**Tomorrow's first action.** Investigate whether v1 training ran
+under this same all-masked mask. Look at git history on
+`training/train_qwen3_qlora.py` at the v1 SFT commit
+(`b5454c2 v1 1k smoke training failed across 3 arms`) and any
+earlier prepare/train script revisions. If v1 used the same
+`get_chat_template("qwen3-thinking")` path, the v1 final losses
+(NuminaMath 0.726, OpenR1 0.385, Frugal 0.190) couldn't have come
+from gradient flow through the assistant span — would reframe the
+truncation hypothesis. That investigation result informs the
+F1/F2/F3 fix selection. See
+[`experiments.md`](experiments.md) > 2026-05-07: v2 SFT
+all-masked labels for the three options.
+
+**Everything else ready for kickoff:**
+- v2 NuminaMath SFT data regenerated and verified clean
+  (diagnostics 4.1 PASS, 4.2 PASS, mid-think vs gold check PASS)
+- `train_qwen3_qlora.py` edits done (`--lora-alpha` flag, wandb)
+- wandb wired (project `cse151b-sft`, `run_name` forwarded)
+- Diagnostic 4.4 (tokenizer round-trip across venvs) not yet run —
+  depends on the chat-template choice from F1/F2/F3.
+
+Only the masking-fix remains before kickoff.
+
 ## Recovery state
 
 - 3 broken adapters at training/checkpoints/{openr1,numina_concise,frugal}_v1_1k/

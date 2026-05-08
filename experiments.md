@@ -148,6 +148,22 @@ On `data/sft/numina_concise_v2_8k.jsonl` (post-`</think>` fix) after `qwen3-thin
 
 **Implication for the v1 truncation hypothesis.** v1's failure root-cause hypothesis from external review (max_seq_length=4096 truncating final `\boxed{}` from labels) was measured against OpenR1 (median ~4800) and Frugal (median ~5700). NuminaMath's true distribution is fundamentally different — solutions are concise (filtered to 200-2000 *solution* tokens; +system/user/template overhead lands at 330-2710 total). At v1's max_seq=4096, **0/8000 NuminaMath examples would have been truncated.** v1 NuminaMath's failure (final loss 0.726, degenerate output) was therefore NOT truncation-limited; the truncation hypothesis was over-generalized from the OpenR1/Frugal arms to all three. **Future v3 NuminaMath could safely run at `max_seq=3072` or even `2048`** (max example is 2710 tokens). v2 keeps `max_seq=8192` to avoid muddying the v1↔v2 comparison with an unnecessary sixth changed variable. Strategically, v2 NuminaMath becomes a cleaner isolation experiment than originally framed — the active variable for this arm is most likely the system-prompt fix (Path α) plus the assistant-content structure fix, not max_seq_length.
 
+### 2026-05-07: v2 SFT all-masked labels (Unsloth #3383 class)
+
+Diagnostic 4.3 caught silent corruption in the loss-masking machinery: **zero of 915 input tokens were graded** on the test example — all labels = `-100`, every position masked from cross-entropy loss. Training under this would compute loss over an entirely masked sequence, producing zero gradient signal across the assistant turn. The output checkpoint would be identical to the base model.
+
+**Root cause.** The active chat template (unsloth's `qwen3-thinking`, configured via `get_chat_template(tok, "qwen3-thinking")` in `training/train_qwen3_qlora.py`) lacks the `{% generation %}...{% endgeneration %}` Jinja markers that `tokenizer.apply_chat_template(return_assistant_tokens_mask=True)` requires to identify the assistant span. Without those markers, transformers' fallback returns an all-zeros mask. `SFTTrainer` with `assistant_only_loss=True` then writes `-100` to every label position. Visible only via diagnostic-time decoding — the warning is emitted at startup but eclipsed by Unsloth's own startup output (`return_assistant_tokens_mask==True but chat template does not contain '{% generation %}' keyword.`).
+
+**Relation to Unsloth bug #3383.** Same failure family, more severe symptom: #3383 reported markers *misplaced* on Qwen3-Instruct-2507 (`{% generation %}` in the wrong position, masking the wrong span). Here the markers are *entirely absent* from the qwen3-thinking template, so 100% of the assistant span is masked rather than the wrong subset.
+
+**Fix decision deferred** to a fresh session. Three candidates, each with different methodology consequences:
+
+- **F1.** Add `{% generation %}` markers to unsloth's `qwen3-thinking` template. Highest precision; modifies a vendor template; Jinja-edit risk under fatigue.
+- **F2.** Drop the `get_chat_template(...)` call and use the official `Qwen/Qwen3-4B-Thinking-2507` tokenizer's default chat template. Test whether it contains the markers; if yes, use directly. Simplest; requires full re-run of diagnostics 4.1, 4.2, 4.3 to verify other rendering behavior didn't shift.
+- **F3.** Disable `assistant_only_loss=True`; train on full-sequence loss (system + user + assistant). Wastes signal on conditioning-prediction; standard practice for many SFT setups; affects v1↔v2 comparability since v1 used `assistant_only_loss=True` per DESIGN.md §7.
+
+**Open question that may reframe the v1 post-mortem.** Did v1 training run under this same all-masked mask? If so, v1's reported final losses (NuminaMath 0.726, OpenR1 0.385, Frugal 0.190) couldn't have come from gradient flow through the assistant span — they'd be measuring something else (system + user prediction, or batch-averaged across pad positions). v1's degenerate output across all three arms would then have a different root cause than the truncation hypothesis assumed: zero-signal training rather than corrupted-label training. Tomorrow's first investigation: git history on `training/train_qwen3_qlora.py` at the v1 SFT commit (and any earlier prepare/train script revisions) to confirm whether the same `get_chat_template("qwen3-thinking")` path was used, and whether the rendered v1 training data had the same all-masked behavior.
+
 ---
 
 ## Experiment Queue
