@@ -20,6 +20,8 @@ import sys
 import time
 from pathlib import Path
 
+os.environ.setdefault("WANDB_PROJECT", "cse151b-sft")
+
 parser = argparse.ArgumentParser()
 parser.add_argument("--data", type=str, required=True,
                     help="Path to SFT JSONL (each line: {'messages': [...]})")
@@ -31,6 +33,9 @@ parser.add_argument("--base-model", type=str, default="unsloth/Qwen3-4B-Thinking
                     help="Base model. Unsloth's prequantized version recommended.")
 parser.add_argument("--max-seq-length", type=int, default=4096)
 parser.add_argument("--lora-rank", type=int, default=16)
+parser.add_argument("--lora-alpha", type=int, default=32,
+                    help="default 32 matches v1 behavior at rank=16 (16*2). "
+                         "For v2 (rank=32, Schulman default alpha==rank), pass --lora-alpha 32 explicitly.")
 parser.add_argument("--learning-rate", type=float, default=2e-4)
 parser.add_argument("--num-epochs", type=float, default=1.0)
 parser.add_argument("--per-device-batch-size", type=int, default=1)
@@ -86,7 +91,7 @@ print(f"[{time.strftime('%H:%M:%S')}] Applying LoRA (r={args.lora_rank}, alpha=3
 model = FastLanguageModel.get_peft_model(
     model,
     r=args.lora_rank,
-    lora_alpha=args.lora_rank * 2,
+    lora_alpha=args.lora_alpha,
     lora_dropout=0,
     target_modules=["q_proj", "k_proj", "v_proj", "o_proj",
                     "gate_proj", "up_proj", "down_proj"],
@@ -178,7 +183,8 @@ training_args = SFTConfig(
     max_seq_length=args.max_seq_length,
     packing=False,
     assistant_only_loss=True,
-    report_to="none",
+    report_to="wandb",
+    run_name=args.run_name,
     dataset_text_field="text",
 )
 
