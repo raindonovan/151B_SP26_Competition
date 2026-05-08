@@ -114,6 +114,28 @@ Cross-run lessons. Each cites the run(s) it came from. New insights belong here,
 
 ---
 
+## External Review Insights
+
+Failures caught — or that should have been caught — by external review of compute commits. Dated, tied to the run/decision they affected. New entries appended. See [`CLAUDE.md`](CLAUDE.md) > External Review Before Compute Commits for the rule.
+
+### 2026-05-06: v1 SFT truncation (caught by 3 reviewers)
+
+ChatGPT, Gemini, and fresh Claude research all flagged `max_seq_length=4096` as below the median trace length of OpenR1 (~4800 tokens) and Frugal (~5700 tokens), which silently truncated the final `\boxed{}` off training labels. v1 trained anyway; output degenerated across all three teacher arms (60% missing boxed answer, ~12,718 avg gen tokens vs baseline 6,602, repetition collapse). v2 raises `max_seq_length` to 8192. See [`SESSION_LOG.md`](SESSION_LOG.md) > 2026-05-06 evening.
+
+### 2026-05-06: v1 merge verification gap (Gemini)
+
+File size and structure of a merged BF16 model are not evidence that the LoRA delta was actually folded in. The authoritative check is logit-diff vs base on a fixed prompt set; a passing diff confirms the merge reached the weights. Required pre-submission, not optional. v1 skipped this; whether the merge ever applied correctly is unverified.
+
+### 2026-05-06: tokenizer round-trip (Claude research)
+
+`transformers 5.5.0` (training venv) vs `4.51.3` (inference venv) version skew can produce silent token-ID drift on the same input string under the same chat template. Diagnostic: tokenize identical input under both versions, compare ID sequences. Required before any claim of tokenizer/template equivalence between training and inference. Pending.
+
+### 2026-05-07: v2 SFT system prompt absence (execution agent)
+
+v2 SFT data was prepared by running the unmodified v1 `prepare_numina_sft.py` script, which constructs `messages = [user, assistant]` with no system message — would have repeated v1's prompt-mismatch failure mode silently. Caught during pre-training inspection at the start of the v2 prep step. Resolution: Path α — extract `PROMPTS` to `scripts/prompts.py` (no heavy imports), edit `prepare_numina_sft.py` to prepend `PROMPTS["v1-baseline"]["free"]` as a system message, regenerate `data/sft/numina_concise_v2_8k.jsonl` with seed=42 preserving user+assistant content byte-identical (only the prepended system message differs). Refactor verified via `from scripts.prompts import PROMPTS is from scripts.run_vllm_experiment import PROMPTS` → True.
+
+---
+
 ## Experiment Queue
 
 What's planned. The "on deck" row is the single source of truth for what runs next; everything below it is provisional and will be re-evaluated after each completed run.

@@ -20,6 +20,18 @@ This is a **strategy and planning** chat, not execution. The user (Rain) runs co
 
 ---
 
+## Working with Rain (Learning Context)
+
+Rain is an undergraduate using this competition as a vehicle for learning ML systems work. Optimize for understanding, not just shipping.
+
+- After each step, briefly explain in plain language what was done and what failure mode or design intent it addresses. Concept first, technical detail second.
+- Define jargon when first introduced in a chat.
+- Rain is encouraged to pause with "wait, I don't follow" — pausing 2 min beats nodding through.
+- Push back on Claude. Catching reasoning errors is part of the work.
+- "Kickoff with understanding" beats "kickoff at any cost."
+
+---
+
 ## Inference Constraints (CRITICAL)
 
 - Final model: `Qwen/Qwen3-4B-Thinking-2507`. No alternatives.
@@ -124,9 +136,56 @@ Do **not** write to the memory system. When you would save a memory, surface it 
 
 ---
 
+## External Review Before Compute Commits
+
+A "compute commit" is any decision that locks in expensive or irreversible work. Before committing, route through external review.
+
+### Trigger conditions (any one fires the rule)
+
+- Training launch ≥30 min of GPU time
+- Kaggle submission slot used
+- Hyperparameter choice that will propagate across multiple runs
+- Eval slice creation or modification (locked once a run uses it)
+- Methodology change that affects scoring or comparability
+- Decision involves a class of failure already documented in prior post-mortems (truncation, prompt mismatch, tokenizer skew, silent merge failure, loss masking corruption)
+
+If the worst-case downside is "I waste 20 minutes," skip review. If it's "I waste hours of compute and/or a Kaggle slot," review.
+
+### Required review packet
+
+Before contacting reviewers, prepare:
+
+1. The decision being made, in one paragraph
+2. The data behind it: distributions, baseline metrics, recent failures
+3. Specific question(s) you want answered
+4. The current plan and reasoning
+5. What "this was wrong" would look like (failure modes you considered)
+
+If you can't write all five in 10 minutes, the decision isn't ready for review yet — go think more first.
+
+### Reviewer pool
+
+Use ≥1 fresh model instance from a different lineage than the chat that produced the plan. Examples: ChatGPT, Gemini, fresh Claude with web research. Two reviewers from different families beats one. Unanimous flags are real. Disagreement is data.
+
+### Evaluating the feedback
+
+A reviewer's job is to surface things you missed, not to validate what you already think.
+
+Valuable: names specific failure modes with mechanism, references empirical evidence, flags implicit assumptions.
+
+Low-value: "looks good!" with no engagement, reformulates your plan back at you, generic best-practices.
+
+If review surfaces a flag: STOP, treat it seriously, diagnose before proceeding.
+
+### Case history
+
+Notable failures caught (or that should have been caught) by this rule live in [`experiments.md`](experiments.md) > External Review Insights.
+
+---
+
 ## Document Boundaries
 
-Stable rules → `CLAUDE.md`. Strategy → `DESIGN.md`. Run state (results, queue, insights, slices) → `experiments.md`. Environments → `SETUP.md`. Competition rules → `COMPETITION.md`. Scoring rules → `judger.py` (don't modify mid-sweep).
+Stable rules → `CLAUDE.md`. Strategy → `DESIGN.md`. Run state (results, queue, insights, slices) → `experiments.md`. Environments → `SETUP.md`. Competition rules → `COMPETITION.md`. Scoring rules → `judger.py` (don't modify mid-sweep). Concrete dated examples (specific run numbers, specific failures) belong in the dated docs, not in CLAUDE.md — CLAUDE.md states the rule and points to evidence elsewhere.
 
 ---
 

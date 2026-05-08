@@ -1005,6 +1005,8 @@ tail. Format is preserved; length distribution shifts.
 
 ### Training hyperparameters
 
+v2 (2026-05-07) values shown below; v1 used `r=16`, `alpha=32` (=2r), `warmup_ratio=0.03`, `save_steps=250`, `max_seq_length=4096`. The five changes target the v1 truncation post-mortem (max_seq_length), capacity headroom for 8x training data (r), Schulman's `alpha == r` convention (alpha comment only — value unchanged), more warmup steps over a ~1000-step run, and reduced disk thrash from frequent checkpointing.
+
 QLoRA configuration:
 
 ```python
@@ -1017,8 +1019,8 @@ double quantization: enabled
 LoRA configuration:
 
 ```python
-r = 16                            # community default; r=32 if r=16 underfit
-lora_alpha = 32                   # 2x rank, standard
+r = 32                            # community default; r=32 if r=16 underfit
+lora_alpha = 32                   # Schulman default: alpha == r
 lora_dropout = 0                  # Unsloth-recommended
 bias = "none"
 target_modules = ["q_proj", "k_proj", "v_proj", "o_proj",
@@ -1032,7 +1034,7 @@ Training arguments:
 ```python
 per_device_train_batch_size = 1
 gradient_accumulation_steps = 8         # effective batch 8
-warmup_ratio = 0.03
+warmup_ratio = 0.05
 num_train_epochs = 1                     # 1 epoch v1 (conservative — see note below)
 learning_rate = 2e-4
 optim = "adamw_8bit"
@@ -1040,10 +1042,10 @@ weight_decay = 0.01                      # PRESERVED — standard AdamW regulari
 lr_scheduler_type = "cosine"
 bf16 = True
 save_strategy = "steps"
-save_steps = 250
+save_steps = 200
 save_total_limit = 4                     # keep more checkpoints for sweep
 seed = 3407
-max_seq_length = 4096
+max_seq_length = 8192
 assistant_only_loss = True               # NEW — TRL/Unsloth flag
 ```
 

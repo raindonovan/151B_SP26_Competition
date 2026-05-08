@@ -34,17 +34,77 @@ NO Kaggle submissions made. All adapters preserved on disk.
 - Always cross-check (max_seq_length vs median trace length) before saying 
   "data prep looks good".
 
-## v2 fixes for tomorrow
+## v2 plan adopted (2026-05-07)
 
-- max_seq_length = 8192 (or 12288)
-- Train WITH inference system prompt, OR remove system prompt at inference
-- Don't replace training-saved chat_template.jinja
-- LR = 1e-4 OR warmup_ratio = 0.1 (or both)
-- lora_dropout = 0.05
-- Frugal v2: k=4 samples per problem, temp=0.2-0.4, keep shortest correct
-- Add multi-answer training data (37% of competition)
-- Verify merge: weight diff base vs merged (q_proj, v_proj)
-- Diagnostic FIRST: count truncated training examples per arm
+External review (ChatGPT + Gemini + fresh Claude research) consolidated the
+post-mortem's guesses into the actual v2 plan. Five hyperparameter changes
+from v1, plus three methodology changes.
+
+### Hyperparameter changes (v1 → v2)
+
+- `max_seq_length`: 4096 → **8192** (truncation fix; OpenR1 median ~4800,
+  Frugal median ~5700 — v1's 4096 cut the final `\boxed{}` off labels)
+- `r`: 16 → **32** (more capacity headroom for 8x training data)
+- `lora_alpha`: 32 → **32** (value unchanged; comment swapped from "2x rank"
+  to "Schulman default: alpha == r" — at r=32, alpha=32 satisfies alpha == r)
+- `warmup_ratio`: 0.03 → **0.05** (~50 warmup steps over a ~1000-step run)
+- `save_steps`: 250 → **200**
+
+### Methodology changes
+
+- **Train WITH inference system prompt.** `PROMPTS["v1-baseline"]["free"]`
+  baked into SFT data via Path α: PROMPTS extracted to `scripts/prompts.py`,
+  `prepare_numina_sft.py` prepends a system message to every record's messages
+  array. Not injected at train time. Eliminates v1's reviewer-flagged
+  prompt-mismatch contributor (verification still pending; truncation is the
+  only verified v1 cause).
+- **Preserve training-saved `chat_template.jinja` through merge.** Don't
+  substitute the official Qwen template post-merge — v1 did this and it's
+  one of the post-mortem suspects.
+- **wandb tracking enabled** in `training/train_qwen3_qlora.py` (project
+  `cse151b-sft`, `report_to="wandb"`, run_name forwarded from `--run-name`).
+  Catches degenerate loss curves at step ~50, not after training finishes.
+
+### Rejected from post-mortem guesses (with reasons)
+
+- **LR = 1e-4** → kept at **2e-4**. Reviewers' consensus: 2e-4 is correct for
+  Qwen3-Thinking short-run SFT (Schulman: 10× FullFT). 1e-4 was an
+  over-correction with no specific evidence.
+- **warmup_ratio = 0.1** → **0.05**. 0.1 is overkill at ~1000 steps; 0.05
+  (~50 steps) gives the model enough ramp without stretching warmup over 10%
+  of the run.
+- **lora_dropout = 0.05** → kept at **0**. Short SFT runs use
+  `weight_decay=0.01` as the regularizer; LoRA dropout at this scale adds
+  noise without measurable benefit.
+
+### Frugal v2 generation strategy (deferred)
+
+k=4 samples per problem at temp 0.2–0.4, keep shortest correct. Locked but
+rollout deferred until v2 NuminaMath kickoff results land. The v1
+single-sample-temp-0.6 strategy biased toward easier problems / low-entropy
+traces (post-mortem item 6).
+
+### v2 NuminaMath kickoff command
+
+Run inside `tmux new -s v2_numina`:
+
+```bash
+.venv-training/bin/python training/train_qwen3_qlora.py \
+    --data data/sft/numina_concise_v2_8k.jsonl \
+    --output-dir training/checkpoints/numina_concise_v2_8k \
+    --run-name numina_concise_v2_8k \
+    --max-seq-length 8192 \
+    --lora-rank 32 \
+    --lora-alpha 32 \
+    --warmup-ratio 0.05 \
+    --save-steps 200 \
+    --num-epochs 1 \
+    --learning-rate 2e-4
+```
+
+Verify after step ~50: training loop running, wandb run visible,
+loss decreasing (not NaN, not stuck). v1 training-loss anchor for v2
+comparison: **NuminaMath v1 final = 0.726**.
 
 ## Recovery state
 
