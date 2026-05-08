@@ -24,6 +24,17 @@ Root cause hypotheses (priority by reviewer consensus):
 
 NO Kaggle submissions made. All adapters preserved on disk.
 
+## Correction (2026-05-08): v1 was full-sequence, not assistant-only
+
+Hypothesis 1 above (truncation catastrophe) is partially correct but materially incomplete. Investigation on 2026-05-08 (full trace in [`experiments.md`](experiments.md) > External Review Insights > 2026-05-08: Unsloth silently disables `assistant_only_loss=True`) found:
+
+- The `assistant_only_loss=True` flag set on `SFTConfig` was silently ignored by Unsloth's compiled SFTTrainer override. Unsloth's `_prepare_dataset` bypasses TRL's `apply_chat_template(return_assistant_tokens_mask=True)` path and produces `input_ids`-only datasets. The default `DataCollatorForLanguageModeling` then constructed `labels = input_ids.clone()` (with `-100` only for pad tokens). v1 trained on **full-sequence cross-entropy**, not assistant-only.
+- v1's reported final losses (NuminaMath 0.726, OpenR1 0.385, Frugal 0.190) measured next-token prediction across system + user + auto-injected `<think>\n\n</think>\n\n` + assistant content. They are real (loss curves descend, grad norms non-zero) but they are not "loss on assistant continuation given prompt." Cross-arm comparisons remain valid (same masking applied to all three).
+- v1 NuminaMath specifically had 0/8000 truncations at `max_seq=4096` (measured on 2026-05-07), so the truncation hypothesis cannot explain its degenerate output. The Pattern B template structure (empty `<think>` block, full solution post-think — see 2026-05-07 assistant-content-structure entry) combined with full-sequence loss is the missing mechanism: v1 trained on a layout where think is empty, learned no distribution over think content, then at inference the chat template seeded `<think>\n` and the model rambled.
+- Hypotheses 2-6 above are not directly affected. Hypothesis 3 (tokenizer/chat-template swap) remains a separate concern; this finding does not absolve it.
+
+Implication for v2: F1/F2 fix candidates are inert under Unsloth; F0/F3 (full-sequence by design) and "skip Unsloth's prep + pre-tokenize ourselves" are the only live paths to assistant-only loss. Decision deferred to external review per [`CLAUDE.md`](CLAUDE.md) > External Review Before Compute Commits.
+
 ## Process lesson for next sessions
 
 - Get third-party review (GPT + Gemini + Claude research) before any 
