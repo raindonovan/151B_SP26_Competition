@@ -52,6 +52,18 @@ parser.add_argument("--logging-steps", type=int, default=10)
 parser.add_argument("--seed", type=int, default=3407)
 parser.add_argument("--smoke-only", action="store_true",
                     help="If set, do pre-flight checks then exit (no training).")
+parser.add_argument("--max-steps", type=int, default=-1,
+                    help="If >0, override num_train_epochs (for smoke/throughput tests).")
+parser.add_argument("--no-padding-free", action="store_true",
+                    help="Explicitly pass padding_free=False to SFTConfig (disables Unsloth's auto-enable, "
+                         "for throughput experiments). Default behavior unchanged when flag is absent.")
+parser.add_argument("--dataloader-num-workers", type=int, default=0,
+                    help="Number of dataloader workers. Default 0 (inline; main thread blocks on data prep). "
+                         "Try 4 for I/O-bound pipelines.")
+parser.add_argument("--dataloader-prefetch-factor", type=int, default=None,
+                    help="Per-worker prefetch factor. Auto-set to 2 when --dataloader-num-workers > 0.")
+parser.add_argument("--no-dataloader-pin-memory", action="store_true",
+                    help="Disable dataloader pin_memory (default: pin_memory=True).")
 args = parser.parse_args()
 
 if args.run_name is None:
@@ -375,6 +387,17 @@ _sft_kwargs = dict(
     run_name=args.run_name,
     dataset_text_field="text",
 )
+if args.max_steps > 0:
+    _sft_kwargs["max_steps"] = args.max_steps
+if args.no_padding_free:
+    _sft_kwargs["padding_free"] = False
+if args.dataloader_num_workers > 0:
+    _sft_kwargs["dataloader_num_workers"] = args.dataloader_num_workers
+    _sft_kwargs["dataloader_prefetch_factor"] = (
+        args.dataloader_prefetch_factor if args.dataloader_prefetch_factor is not None else 2
+    )
+if args.no_dataloader_pin_memory:
+    _sft_kwargs["dataloader_pin_memory"] = False
 training_args = SFTConfig(**_sft_kwargs)
 
 trainer = SFTTrainer(
