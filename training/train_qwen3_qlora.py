@@ -35,15 +35,15 @@ parser.add_argument("--run-name", type=str, default=None,
                     help="Identifier for logs (default: derived from --data)")
 parser.add_argument("--base-model", type=str, default="unsloth/Qwen3-4B-Thinking-2507",
                     help="Base model. Unsloth's prequantized version recommended.")
-parser.add_argument("--max-seq-length", type=int, default=4096)
+parser.add_argument("--max-seq-length", type=int, default=8192)
 parser.add_argument("--lora-rank", type=int, default=16)
 parser.add_argument("--lora-alpha", type=int, default=32,
                     help="default 32 matches v1 behavior at rank=16 (16*2). "
                          "For v2 (rank=32, Schulman default alpha==rank), pass --lora-alpha 32 explicitly.")
 parser.add_argument("--learning-rate", type=float, default=2e-4)
 parser.add_argument("--num-epochs", type=float, default=1.0)
-parser.add_argument("--per-device-batch-size", type=int, default=1)
-parser.add_argument("--grad-accum-steps", type=int, default=8)
+parser.add_argument("--per-device-batch-size", type=int, default=2)
+parser.add_argument("--grad-accum-steps", type=int, default=4)
 parser.add_argument("--warmup-ratio", type=float, default=0.03)
 parser.add_argument("--weight-decay", type=float, default=0.01)
 parser.add_argument("--save-steps", type=int, default=250)
@@ -181,7 +181,12 @@ model = FastLanguageModel.get_peft_model(
     target_modules=["q_proj", "k_proj", "v_proj", "o_proj",
                     "gate_proj", "up_proj", "down_proj"],
     bias="none",
-    use_gradient_checkpointing="unsloth",
+    # use_gradient_checkpointing=False per 2026-05-08 throughput investigation.
+    # The "unsloth" variant offloads activations to host RAM via PCIe, which was
+    # the single-core-pinned / GPU-5%-util symptom. Disabled at this layer (the
+    # one that actually wires checkpointing into the model); SFTConfig's
+    # gradient_checkpointing=False below is the matching trainer-side flag.
+    use_gradient_checkpointing=False,
     random_state=args.seed,
 )
 
@@ -336,7 +341,7 @@ print(f"  Output dir: {out_path}")
 print(f"  Effective batch: {args.per_device_batch_size * args.grad_accum_steps}")
 print(f"  Epochs: {args.num_epochs}")
 
-training_args = SFTConfig(
+_sft_kwargs = dict(
     output_dir=str(out_path),
     per_device_train_batch_size=args.per_device_batch_size,
     gradient_accumulation_steps=args.grad_accum_steps,
@@ -354,6 +359,11 @@ training_args = SFTConfig(
     save_total_limit=args.save_total_limit,
     seed=args.seed,
     max_seq_length=args.max_seq_length,
+    # gradient_checkpointing=False per 2026-05-08 throughput investigation.
+    # Belt-and-suspenders alongside use_gradient_checkpointing=False at the
+    # LoRA-attach call above — Unsloth's wrapper is the layer that mattered,
+    # this flag prevents HF Trainer from re-enabling vanilla checkpointing.
+    gradient_checkpointing=False,
     packing=False,
     # assistant_only_loss=False per 2026-05-08 v1 post-mortem reframe (Unsloth
     # silently ignored True; full-sequence loss is what we actually train under).
@@ -365,6 +375,7 @@ training_args = SFTConfig(
     run_name=args.run_name,
     dataset_text_field="text",
 )
+training_args = SFTConfig(**_sft_kwargs)
 
 trainer = SFTTrainer(
     model=model,

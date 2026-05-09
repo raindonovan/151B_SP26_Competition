@@ -1025,15 +1025,15 @@ lora_dropout = 0                  # Unsloth-recommended
 bias = "none"
 target_modules = ["q_proj", "k_proj", "v_proj", "o_proj",
                   "gate_proj", "up_proj", "down_proj"]
-use_gradient_checkpointing = "unsloth"   # for VRAM headroom
+use_gradient_checkpointing = False        # 2026-05-08 throughput investigation: Unsloth's CPU-offload variant was the single-core-pinned / 5%-GPU-util bottleneck. Disabled. SFTConfig.gradient_checkpointing=False matches at the trainer layer.
 random_state = 3407
 ```
 
 Training arguments:
 
 ```python
-per_device_train_batch_size = 1
-gradient_accumulation_steps = 8         # effective batch 8
+per_device_train_batch_size = 2          # 2026-05-09 throughput investigation
+gradient_accumulation_steps = 4          # effective batch 8 preserved
 warmup_ratio = 0.05
 num_train_epochs = 1                     # 1 epoch v1 (conservative — see note below)
 learning_rate = 2e-4
@@ -1041,6 +1041,8 @@ optim = "adamw_8bit"
 weight_decay = 0.01                      # PRESERVED — standard AdamW regularization
 lr_scheduler_type = "cosine"
 bf16 = True
+gradient_checkpointing = False           # belt-and-suspenders against use_gradient_checkpointing=False at LoRA-attach
+packing = False
 save_strategy = "steps"
 save_steps = 200
 save_total_limit = 4                     # keep more checkpoints for sweep
@@ -1049,14 +1051,15 @@ max_seq_length = 8192
 assistant_only_loss = False              # 2026-05-08 reframe — Unsloth silently ignores True; v2 trains full-sequence (see "Loss target" paragraph below)
 ```
 
-Rationale for batch size 1 + grad accum 8:
-- Sequence length is the dominant VRAM cost. For 4096-token sequences, batch=1 fits with
-  headroom on a 4090. Effective batch 8 is sufficient for adapter training.
-- Higher batch sizes are tempting but trade VRAM for marginal gradient quality — adapter
-  training tolerates noisier gradients than full fine-tuning.
+Rationale for batch=2 + grad_accum=4 (effective batch 8 preserved):
+- v1 used batch=1 + grad_accum=8 with Unsloth's CPU-offload gradient checkpointing, ran at ~25 sec/step (5% GPU util, single-core pinned).
+- 2026-05-09 throughput investigation found the offload-checkpointing was the dominant bottleneck. Disabling it dropped step time to ~16 sec/step.
+- batch=4 + grad_accum=2 reached 87.8% peak VRAM in a 20-step smoke and OOM'd at step 11 of a 100-step extension when an adversarial batch (multiple long examples in one microbatch) pushed allocation past the 24 GiB ceiling.
+- batch=2 + grad_accum=4 (current setting) held 81.5% peak VRAM with zero drift across both halves of a 100-step smoke; full-epoch v2 NuminaMath ran clean at 8.18 sec/step, 2h 16m wall-clock.
+- See [`experiments.md`](experiments.md) > External Review Insights > 2026-05-09 entry for the full investigation.
 
-1 epoch is the v1 default. Save adapters every 250 steps, evaluate each checkpoint on
-the 200-question slice, and only commit to additional epochs if step-N+250 checkpoints
+1 epoch is the v1 default. Save adapters every 200 steps, evaluate each checkpoint on
+the 200-question slice, and only commit to additional epochs if step-N+200 checkpoints
 still show monotonic improvement at end of epoch 1. This is not domain adaptation —
 we're shifting reasoning style — so overtraining risks imitating teacher-specific
 verbosity tics at the expense of Qwen3's native thinking quality.
