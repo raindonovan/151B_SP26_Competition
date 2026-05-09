@@ -184,3 +184,28 @@ Only the masking-fix remains before kickoff.
 - 3 merged BF16 models at .../merged/
 - 3 SFT data files at data/sft/
 - Working training/merge/inference scripts (modulo bugs)
+
+## 2026-05-08 stop: v2 NuminaMath SFT training complete
+
+First successful v2 SFT training. Run `numina_concise_v2_8k`, full epoch on 7992 rows, batch=2/grad_accum=4 (effective batch 8), 999 steps.
+
+**Headline metrics.**
+- Final running-average `train_loss`: **0.6092** (vs v1 NuminaMath final of 0.726, before the 2026-05-08 v1 reframe)
+- Final `eval/assistant_only_loss` (held-out 8 rows): **0.5131 at checkpoint-800** (best by held-out eval), **0.5138 at checkpoint-999 / final_adapter** (+0.0007 from best — within noise)
+- Wall-clock: **2h 16m** at 8.18 sec/step (vs ~7h baseline at 25 sec/step)
+- Eval/assistant_only_loss trajectory: 0.9300 base → 0.5356 step 200 → 0.5243 step 400 → 0.5193 step 600 → 0.5131 step 800 → 0.5138 step 999. Monotonic improvement through step 800; tail uptick is noise on N=8.
+
+**Throughput investigation completed.** Stacked-config smoke OOMed at 22.54/23.53 GiB; staged single-variable smokes isolated Unsloth's CPU-offload gradient checkpointing as the dominant bottleneck and the batch arithmetic restructure (1+8 → 2+4) as a secondary multiplier. Full investigation trace and four findings (two-layer config bug, OOM cliff, log-flush behavior, callback design held up) logged to [`experiments.md`](experiments.md) > External Review Insights > 2026-05-09 entry.
+
+**Artifacts.**
+- Final adapter: [`training/checkpoints/numina_concise_v2_8k/final_adapter`](training/checkpoints/numina_concise_v2_8k/final_adapter) (≡ checkpoint-999, no optimizer state)
+- Best-eval checkpoint: [`training/checkpoints/numina_concise_v2_8k/checkpoint-800`](training/checkpoints/numina_concise_v2_8k/checkpoint-800)
+- wandb run: `dvaneetv-university-of-california-san-diego/cse151b-sft/runs/prskijn1`
+- Total disk: 1.8 GB (4 checkpoints retained per `save_total_limit=4`; checkpoint-200 deleted)
+
+**Pending tomorrow.**
+- Merge checkpoint-800 to BF16 via `model.save_pretrained_merged(...)` (per [`DESIGN.md`](DESIGN.md) §7 inference-merge plan)
+- Run inference on `data/public.jsonl` via `scripts/run_vllm_experiment.py` against the merged model
+- Kaggle submission (slot pending)
+- Refresh "Recovery state" section above (now stale post-v2-success)
+- Decide on v2 OpenR1 / Frugal arm kickoffs based on v2 NuminaMath leaderboard result
