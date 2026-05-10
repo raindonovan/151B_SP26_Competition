@@ -202,6 +202,77 @@ Triggered by a v2 NuminaMath kickoff attempt running at 25-27 sec/step with GPU 
 
 **(d) `AssistantOnlyEvalLossCallback` design held up at production save_steps cadence.** Custom callback (added 2026-05-08 to monitor genuine learning progress under full-sequence loss) fired correctly at every `save_steps=200` boundary during the v2 NuminaMath full-epoch run — values logged to both stdout and wandb, descending monotonically through step 800 (0.9300 base → 0.5356 step 200 → 0.5131 step 800), with a noise-floor 0.0007-nat uptick at step 999 (0.5138). Pattern transfers cleanly to v2 OpenR1 and Frugal arms because the callback constructs its eval batch from raw JSONL rows in `__init__` (pre-trainer), so it is unaffected by trainer-internal data prep (packing, padding-free auto-enable, dataset.map column stripping, etc.). The pre-flight 3 gate (eval/assistant_only_loss baseline must land in [0.5, 5.0] nats against the untrained-LoRA model) caught zero false positives across 6 invocations today.
 
+**Forward-pointing caveat (added 2026-05-09 evening).** The "no checkpointing" config above is regime-specific to max_seq=8192 / batch=2, *not* a general rule. v2 OpenR1's longer reasoning traces require max_seq=11000+; at that length activation memory dominates and checkpointing must be re-enabled at both layers (`use_gradient_checkpointing="unsloth"` at the LoRA-attach call, `gradient_checkpointing=True` at the trainer flag). Today's no-checkpointing finding (a) above does not transfer to that regime. See the `2026-05-09: v2 OpenR1 OOM debug + smoke test journey` entry below for the diagnostic trail and re-enable.
+
+### 2026-05-09: v2 NuminaMath data prep failure post-mortem
+
+v2 NuminaMath inference produced 20% accuracy on `fixed_50_v1` vs v1's 70% on the same slice — catastrophic regression. Triggered an end-to-end audit of the prep pipeline.
+
+**Investigation.** Inspected `data/sft/numina_concise_v2_8k.jsonl` assistant-content samples directly. NuminaMath solutions averaged 1200 chars (~340 tokens), contained curator metadata ("Remark: Original question:", author bylines like "Chen Kuanhong, Land Reserve Center of Yueyang County, Hunan, 414100"), and showed problem restatements rather than chain-of-thought reasoning.
+
+**Root cause.** [`training/prepare_numina_sft.py`](training/prepare_numina_sft.py) was concatenating raw NuminaMath solutions with `</think>` markers, training the model to imitate terse non-reasoning answer-key text. NOT a code bug — a category error in the source-data specification. NuminaMath's `solution` field is textbook answer keys, not reasoning chains. The script was doing exactly what it was told; what it was told was wrong.
+
+**Decision.** Do NOT retrain v2 NuminaMath. The source data fundamentally lacks reasoning chains; fixing the prep script wouldn't help. Teacher-generated reasoning would cost $50–150 in API calls and would essentially reinvent OpenR1.
+
+**Pivot.** v2 OpenR1 (existing data at `data/sft/openr1_v1_1k.jsonl` is real R1 chain-of-thought). Scale to 16k examples. See following entry.
+
+**Artifact.** Failed inference output at `results/v2_numina_concise_50.jsonl` — KEEP for analysis, do NOT submit (would burn a Kaggle quota slot).
+
+**Methodological lesson.** Training metrics (`eval/assistant_only_loss = 0.5131` at checkpoint-800, looked healthy) gave no signal that the data was the wrong category. The data inspection — looking at actual assistant-content samples — caught it. **Eval-loss-on-the-wrong-distribution is a clean fit signal, not a quality signal.** Add raw-content inspection to the pre-training checklist; binary diagnostics (length distribution, token counts, Hypothesis A `</think>` test) all passed for v2 NuminaMath and missed this entirely.
+
+### 2026-05-09: v2 OpenR1 plan + prep stats
+
+Pivot target after the v2 NuminaMath post-mortem (entry above).
+
+**Source data.** `open-r1/OpenR1-Math-220k` (220k examples) via HuggingFace.
+
+**Filter pipeline** (in [`training/prepare_openr1_sft.py`](training/prepare_openr1_sft.py)):
+1. `correctness_math_verify=True` only
+2. Single-answer (drops multi-part `(a)/(b)/(i)/(ii)/Part 1/2/prove that` regex)
+3. Length filter (`max-tokens=12000`)
+4. Parseable boxed answer with math_verify fallback
+
+Yield rate ~37.5% from a 500-example sanity check.
+
+**Patches applied to prep script:**
+- Added `PROMPTS` import + `SYSTEM_PROMPT` constant (matches v1-baseline)
+- Updated argparse defaults: `target-rows=16000`, `output=data/sft/openr1_v2_16k.jsonl`, `max-tokens=12000`
+- Added system prompt to messages dict (was `[user, assistant]`, now `[system, user, assistant]`)
+
+**Run stats.** 38,389 attempts → 16,000 written. Drops: 30.8% no-verified, 6.7% multi-part, 5.9% too-long (>12k tokens), 11.5% answer-mismatch. ~29 min wall-clock.
+
+**Output stats.** Token p50=4310, p95=10450, max=11999.
+
+**Format.** Real R1-style chain-of-thought reasoning (5,600–13,300 chars per example, natural first-person exploration starting with "Okay, so I need to figure out..."). Confirms the data is what NuminaMath was supposed to be.
+
+### 2026-05-09: v2 OpenR1 OOM debug + smoke test journey
+
+**Goal.** Train on `data/sft/openr1_v2_16k.jsonl` with `max_seq_length` sized for the longest examples.
+
+**Initial config attempt.** `max_seq=12500`, `batch=2`, `grad_accum=4`. OOM at step 0 during first MLP forward. 23.23 / 23.53 GiB used.
+
+**Smoke 2.** `max_seq=11000`, `batch=1`, `grad_accum=8`. OOM at step 0 during first RoPE step. 23.51 GiB used.
+
+**Smoke 3.** Same as Smoke 2 + `PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True`. OOM at step 0 during attention V_mod reshape. 23.49 GiB used. Also confirmed Flash Attention 2 NOT installed (Xformers fallback — warning had been silently present in logs since yesterday, missed).
+
+**Multi-agent OOM diagnostic dive.** Three independent agents (ChatGPT, Gemini, fresh Claude) converged on: (1) re-enable gradient checkpointing — the load-bearing fix, (2) `expandable_segments:True` (low-impact but harmless), (3) reduce `max_seq` if needed. Disagreement on whether the `"unsloth"` checkpointing variant CPU-offloads by default — Agent 1 said no (yesterday's throughput problem may have been a different bug), Agent 3 noted ~15–25% throughput hit on PCIe 4090 regardless.
+
+**Patch applied** (lines 201, 378 of [`training/train_qwen3_qlora.py`](training/train_qwen3_qlora.py)):
+- `use_gradient_checkpointing=False` → `use_gradient_checkpointing="unsloth"`
+- `gradient_checkpointing=False` → `gradient_checkpointing=True`
+
+**Smoke 4.** `max_seq=11000`, `batch=1`, `grad_accum=8`, checkpointing on, `expandable_segments` env var. PASSED. 5/5 steps completed in 3.9 min. `train_loss=0.572`, `eval/assistant_only_loss @ step 5 = 0.4751` (already lower than v2 NuminaMath's BEST 0.5131 at step 800).
+
+**Step time observation.** 32–43 sec/step (much higher than the expected 14–16 — agents underestimated PCIe 4090 overhead).
+
+**Real run launched.** PID 31535 via `/tmp/launch_train.sh` wrapper. Config: `max_seq=11000`, `batch=1`, `grad_accum=8`, `max_steps=1500` (75% epoch), `save_steps=250`, `lora_rank=32`, `lora_alpha=32`, `warmup_ratio=0.05`, `gradient_checkpointing=unsloth+True`, `PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True`, timeout 12h. Steady-state step time: 24 sec/step (warmed up from 37). ETA ~10h.
+
+**Methodological lessons.**
+1. "OOM at training step 0" with small free memory and small reserved-but-unallocated gap = genuine memory pressure, not fragmentation. `expandable_segments:True` helps fragmentation, not pressure. Diagnostic distinction matters.
+2. Yesterday's checkpointing-disable was specific to `max_seq=8192`. Long sequences (11k+) are activation-memory-dominated; checkpointing must be re-enabled. See preceding entry's forward-pointing caveat.
+3. Flash Attention 2 missing has been present since session start; only became load-bearing at long sequences. Cosmetic warnings can become structural problems with config changes.
+4. Multi-agent triangulation works for technical decisions when agents have web search / can pull real benchmarks.
+
 ---
 
 ## Experiment Queue
@@ -265,6 +336,15 @@ When comparing across runs, only Run 03+ numbers are *measured*. Earlier rows ar
 | 01 | ✗ (not tracked) | ✗ | ✗ | ✗ | Smoke-test only; cutoff column is `?`. |
 | 02 | est. (post-hoc by counting missing `\boxed{}`) | ✗ | ✗ | ✗ | Cutoff count is an estimate, not a measurement. |
 | 03 | ✓ | ✓ | ✓ | ✗ | First run with reliable per-item stats. Lacks crash-safe save. |
+
+### Grader assumptions
+
+Format / normalization concerns about Kaggle's grader that may affect scoring across runs without showing up in local Judger output. Tracked here so they don't surface mid-run at the worst possible time. Address opportunistically before the next prompt sweep.
+
+- **Decimal/fraction normalization (Anthony Tong, Piazza, 2026-05-09).** Grader does NOT normalize fraction vs decimal forms — no sympy equivalence on the server side. Public set: can run math_verify locally to estimate format-mismatch rate. Private set: black box — no recourse beyond making outputs match probable gold-format conventions. Implication for v1-baseline prompt: the "4 significant figures" instruction may force decimal output where the gold answer is fractional, producing a format-only miss. Status: concern, not action — address during inference-side prompt sweep, not training. Mitigation candidates (deferred):
+    - Run math_verify locally on v2 OpenR1 inference output against public-set gold to estimate format-mismatch rate
+    - If high, revise prompt to defer to the problem statement's format ("respect the form of the answer the problem asks for")
+    - Consider explicit fraction handling: "If the answer is exactly representable as a fraction with small denominator, output the fraction. Otherwise, output decimal to 4+ sig figs."
 
 ---
 

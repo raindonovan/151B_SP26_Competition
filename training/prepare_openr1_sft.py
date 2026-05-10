@@ -1,19 +1,26 @@
 """
 Prepare OpenR1-Math-220k SFT training data.
-Filters by correctness flag, length range (1000-6000 tokens), single-answer,
+Filters by correctness flag, length range (1000-12000 tokens, configurable via --min-tokens / --max-tokens), single-answer,
 parseable boxed answer. Writes Qwen3-Thinking chat-format JSONL.
 """
 import argparse
 import json
 import re
+import sys
 import time
 from pathlib import Path
 
+REPO_ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(REPO_ROOT))
+from scripts.prompts import PROMPTS  # noqa: E402
+
+SYSTEM_PROMPT = PROMPTS["v1-baseline"]["free"]
+
 parser = argparse.ArgumentParser()
-parser.add_argument("--target-rows", type=int, default=1000)
-parser.add_argument("--output", type=str, default="data/sft/openr1_v1_1k.jsonl")
+parser.add_argument("--target-rows", type=int, default=16000)
+parser.add_argument("--output", type=str, default="data/sft/openr1_v2_16k.jsonl")
 parser.add_argument("--min-tokens", type=int, default=1000)
-parser.add_argument("--max-tokens", type=int, default=6000)
+parser.add_argument("--max-tokens", type=int, default=12000)
 parser.add_argument("--seed", type=int, default=42)
 args = parser.parse_args()
 
@@ -113,6 +120,7 @@ with open(args.output, "w") as out_f:
 
         sft_record = {
             "messages": [
+                {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": problem},
                 {"role": "assistant", "content": gen_text},
             ],

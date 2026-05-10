@@ -1234,6 +1234,14 @@ Must all pass before burning a Kaggle slot:
 - Boxed answer rate ≥ 95%
 - No catastrophic public-set regression (≥ 50% accuracy maintained)
 
+### Inference prompt held constant across v2 arms
+
+**Decision (2026-05-09).** v1-baseline (sig-figs patched) is the inference prompt for all three v2 SFT arms — NuminaMath, OpenR1, Frugal — during arm-vs-arm comparison. No prompt sweep until a winning arm is selected.
+
+**Rationale.** Variance from prompt changes confounds variance from training-data changes. The v2 experiment's active variable is training data; holding the inference prompt fixed is the one-variable-at-a-time discipline applied at the cross-arm level. This carries §1.18's Phase-1 conclusion (v1-baseline locked for subsequent phases) into the v2 SFT regime.
+
+**Deferred.** Prompt sweep on the chosen winner. Corpus for that sweep — 18+ verbatim production prompts surveyed across AIMO 2 teams, model cards, and community sources — lives at [`research/prompts/2026-05-09_dive_v1.md`](research/prompts/2026-05-09_dive_v1.md). Sweep order proposed there. Note: the sig-figs patch in v1-baseline is itself flagged for review during the sweep — see [`experiments.md`](experiments.md) > Known Issues > Grader assumptions for the format-mismatch concern that may invalidate the "4 significant figures" directive.
+
 ### Open questions deferred to v2
 
 - Multi-answer training data format (single-answer-only in v1)

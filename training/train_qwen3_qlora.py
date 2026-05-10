@@ -193,12 +193,13 @@ model = FastLanguageModel.get_peft_model(
     target_modules=["q_proj", "k_proj", "v_proj", "o_proj",
                     "gate_proj", "up_proj", "down_proj"],
     bias="none",
-    # use_gradient_checkpointing=False per 2026-05-08 throughput investigation.
-    # The "unsloth" variant offloads activations to host RAM via PCIe, which was
-    # the single-core-pinned / GPU-5%-util symptom. Disabled at this layer (the
-    # one that actually wires checkpointing into the model); SFTConfig's
-    # gradient_checkpointing=False below is the matching trainer-side flag.
-    use_gradient_checkpointing=False,
+    # use_gradient_checkpointing="unsloth": re-enabled 2026-05-09 for memory
+    # headroom on v2 OpenR1's longer reasoning traces (max_seq_length=11000+).
+    # The 2026-05-08 throughput investigation that disabled this is moot —
+    # activation checkpointing's memory savings are required to fit the longer
+    # sequences. SFTConfig's gradient_checkpointing=True below is the matching
+    # trainer-side flag.
+    use_gradient_checkpointing="unsloth",
     random_state=args.seed,
 )
 
@@ -371,11 +372,12 @@ _sft_kwargs = dict(
     save_total_limit=args.save_total_limit,
     seed=args.seed,
     max_seq_length=args.max_seq_length,
-    # gradient_checkpointing=False per 2026-05-08 throughput investigation.
-    # Belt-and-suspenders alongside use_gradient_checkpointing=False at the
-    # LoRA-attach call above — Unsloth's wrapper is the layer that mattered,
-    # this flag prevents HF Trainer from re-enabling vanilla checkpointing.
-    gradient_checkpointing=False,
+    # gradient_checkpointing=True: re-enabled 2026-05-09 for memory headroom on
+    # v2 OpenR1's longer reasoning traces (max_seq_length=11000+). Matches
+    # use_gradient_checkpointing="unsloth" at the LoRA-attach call above. The
+    # 2026-05-08 throughput investigation that disabled this is moot — memory
+    # savings outweigh throughput cost at these sequence lengths.
+    gradient_checkpointing=True,
     packing=False,
     # assistant_only_loss=False per 2026-05-08 v1 post-mortem reframe (Unsloth
     # silently ignored True; full-sequence loss is what we actually train under).
