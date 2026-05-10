@@ -31,3 +31,5 @@ logs/*.log
 !logs/frugal_gen_v1_1k.log
 
 # v1 post-mortem archive (preserved for tomorrow's debug)
+logs/gpu_probes/
+wandb/
