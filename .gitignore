@@ -33,3 +33,14 @@ logs/*.log
 # v1 post-mortem archive (preserved for tomorrow's debug)
 logs/gpu_probes/
 wandb/
+
+# LaTeX build artifacts (regenerable from milestone_report.tex)
+*.aux
+*.bbl
+*.blg
+*.out
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+*.toc
+milestone_report.log
