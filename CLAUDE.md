@@ -194,3 +194,14 @@ When citing academic papers or tooling-class findings in review packets, post-mo
 ## Model Selection
 
 Default Sonnet 4.6. Switch to Opus for strategy / high-stakes decisions / subtle debugging / results analysis.
+
+---
+
+## Two-Claude Setup
+
+This project uses two Claude instances:
+
+- **claude_strategy** — strategy and planning chat. Rain pastes prompts into it manually.
+- **claude_vscode** — execution agent running inside VS Code on the DSMLP pod.
+
+When claude_vscode writes a prompt intended for Rain to paste into claude_strategy, it must begin with `[FROM CLAUDE_VS_CODE]` so Rain knows the source and context. Never omit this prefix on cross-agent handoff prompts.
