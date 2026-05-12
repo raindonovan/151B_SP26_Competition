@@ -29,7 +29,14 @@ import torch  # noqa: E402
 import transformers  # noqa: E402
 import vllm  # noqa: E402
 from judger import Judger  # noqa: E402
-from scripts.prompts import PROMPTS  # noqa: E402
+from scripts.prompts import (  # noqa: E402
+    PROMPTS,
+    USER_PREFIX_MULTI,
+    USER_PREFIX_SINGLE,
+    USER_SUFFIX_MULTI,
+    USER_SUFFIX_SINGLE,
+    count_ans_placeholders,
+)
 from transformers import AutoTokenizer  # noqa: E402
 from vllm import LLM, SamplingParams  # noqa: E402
 
@@ -48,16 +55,36 @@ SAMPLING = {
     "temperature": 0.6,
     "top_p": 0.95,
     "top_k": 20,
-    "repetition_penalty": 1.0,
+    "repetition_penalty": 1.1,
 }
 
 def build_prompt(question: str, options: Optional[list], policy: dict) -> tuple[str, str]:
-    """Return (system_prompt, user_prompt) for a question under `policy`."""
+    """Return (system_prompt, user_prompt) for a question under `policy`.
+
+    If the policy includes a "user_wrapper" key, free-form user messages are
+    wrapped with a counting prefix and (for "bookend") a closing reminder.
+    MCQ messages are never wrapped — the option list is the format anchor.
+    Policies without "user_wrapper" (v1-baseline, v2-mcq-commit) behave
+    exactly as before.
+    """
     if options:
         labels = [chr(65 + i) for i in range(len(options))]
         opts_text = "\n".join(f"{lbl}. {opt.strip()}" for lbl, opt in zip(labels, options))
         return policy["mcq"], f"{question}\n\nOptions:\n{opts_text}"
-    return policy["free"], question
+
+    wrapper = policy.get("user_wrapper")
+    if wrapper is None:
+        return policy["free"], question
+
+    n = count_ans_placeholders(question)
+    if n > 1:
+        prefix = USER_PREFIX_MULTI.format(n=n)
+        suffix = USER_SUFFIX_MULTI.format(n=n) if wrapper == "bookend" else ""
+    else:
+        prefix = USER_PREFIX_SINGLE
+        suffix = USER_SUFFIX_SINGLE if wrapper == "bookend" else ""
+
+    return policy["free"], f"{prefix}{question}{suffix}"
 
 
 def extract_letter(text: str) -> str:

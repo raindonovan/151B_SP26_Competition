@@ -62,6 +62,7 @@ from run_vllm_experiment import (  # noqa: E402
     load_slice,
     load_data_by_ids,
 )
+from variants import resolve_variant  # noqa: E402
 
 METHOD = "vllm-sc"
 
@@ -105,6 +106,16 @@ def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser()
     p.add_argument("--run-id", required=True)
     p.add_argument(
+        "--variant",
+        default=None,
+        help=(
+            "Variant name from scripts/variants.py (e.g. V0_baseline). "
+            "When set, overrides --prompt-version, --n-samples, --max-new-tokens, "
+            "and all sampling params with values from resolve_variant(name). "
+            "Keys 'temperature_ladder' and 'shape_filter' are ignored in this pass."
+        ),
+    )
+    p.add_argument(
         "--prompt-version",
         default="v1-baseline",
         choices=list(PROMPTS.keys()),
@@ -117,15 +128,21 @@ def parse_args() -> argparse.Namespace:
     )
     p.add_argument("--data-start", type=int, default=0)
     p.add_argument("--data-end", type=int, default=None)
-    p.add_argument("--max-new-tokens", type=int, required=True)
+    p.add_argument(
+        "--max-new-tokens",
+        type=int,
+        default=32768,  # §7.1: Qwen-recommended floor for reasoning tasks
+        help="Max tokens per sample. Overridden by --variant when set.",
+    )
     p.add_argument("--output", required=True)
-    p.add_argument("--max-model-len", type=int, default=16384)
+    # §7.1: max_model_len = max_new_tokens + 4096 headroom (32768 + 4096 = 36864)
+    p.add_argument("--max-model-len", type=int, default=36864)
     p.add_argument("--data-path", default=str(REPO_ROOT / "data" / "public.jsonl"))
     p.add_argument(
         "--n-samples",
         type=int,
         default=8,
-        help="Number of samples per question for self-consistency vote (default 8).",
+        help="Number of samples per question for self-consistency vote. Overridden by --variant.",
     )
     args = p.parse_args()
     if args.slice is not None and args.data_end is not None:
@@ -148,6 +165,33 @@ def percentile(values: list[float], p: int) -> Optional[float]:
 def main() -> None:
     started_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
     args = parse_args()
+
+    # --- Variant config resolution (Step 3) ---
+    # When --variant is provided, override prompt_version, n_samples, max_new_tokens,
+    # and all sampling params with values from the variant registry.
+    variant_name = args.variant
+    if variant_name is not None:
+        vcfg = resolve_variant(variant_name)
+        args.prompt_version = vcfg["prompt_version"]
+        args.n_samples = vcfg["n_samples"]
+        args.max_new_tokens = vcfg["max_new_tokens"]
+        # Build sampling kwargs from variant (includes min_p and presence_penalty).
+        # temperature_ladder and shape_filter exist in vcfg but are not used in this pass.
+        sp_kwargs = {
+            "temperature": vcfg["temperature"],
+            "top_p": vcfg["top_p"],
+            "top_k": vcfg["top_k"],
+            "min_p": vcfg["min_p"],
+            "presence_penalty": vcfg["presence_penalty"],
+            "repetition_penalty": vcfg["repetition_penalty"],
+        }
+        print(f"Variant '{variant_name}' applied: {vcfg}")
+    else:
+        # §7.1 presence_penalty fix applied unconditionally even without --variant.
+        # SAMPLING (from run_vllm_experiment.py) has repetition_penalty=1.1 (adapter
+        # band-aid); without --variant we keep that value for backward compat.
+        sp_kwargs = {**SAMPLING, "presence_penalty": 1.0}
+
     out_path = Path(args.output)
     out_path.parent.mkdir(parents=True, exist_ok=True)
 
@@ -185,18 +229,25 @@ def main() -> None:
         )
         prompts.append(prompt_text)
 
+    # §7.1: enable_prefix_caching for KV-cache reuse across per-temperature generate()
+    # calls (required for temperature-diversification in V4).
+    # reasoning_parser="deepseek_r1": vLLM Issue #22507 — the qwen3 parser silently
+    # fails on Qwen3-Thinking-2507 because the model never emits an opening <think>
+    # tag. deepseek_r1 parser handles the </think>-only format correctly.
     llm = LLM(
         model=MODEL_ID,
         dtype=DTYPE,
         trust_remote_code=True,
         gpu_memory_utilization=GPU_MEMORY_UTILIZATION,
         max_model_len=args.max_model_len,
+        enable_prefix_caching=True,
+        reasoning_parser="deepseek_r1",
     )
 
     sampling_params = SamplingParams(
         n=args.n_samples,
         max_tokens=args.max_new_tokens,
-        **SAMPLING,
+        **sp_kwargs,
     )
 
     print(
@@ -271,12 +322,13 @@ def main() -> None:
             "correct": bool(correct),
             "method": METHOD,
             "prompt_version": args.prompt_version,
+            "variant": variant_name,
             "model": MODEL_ID,
             "max_new_tokens": args.max_new_tokens,
             "n_samples": args.n_samples,
             "slice_id": slice_id_value,
             "slice_path": slice_path_value,
-            **SAMPLING,
+            **sp_kwargs,  # logs the sampling params actually used
         })
 
     with open(out_path, "w") as f:
@@ -330,13 +382,14 @@ def main() -> None:
         "slice_id": slice_id_value,
         "slice_path": slice_path_value,
         "slice_n": len(slice_info["ids"]) if slice_info else None,
+        "variant": variant_name,
         "n": n,
         "n_mcq": n_mcq,
         "n_free": n_free,
         "n_samples": args.n_samples,
         "max_new_tokens": args.max_new_tokens,
         "max_model_len": args.max_model_len,
-        **SAMPLING,
+        **sp_kwargs,  # logs the sampling params actually used
         "overall_correct": n_correct,
         "overall_accuracy": safe_div(n_correct, n),
         "mcq_correct": n_mcq_correct,

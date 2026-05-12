@@ -1,3 +1,5 @@
+**DEPRECATED (2026-05-12).** This document describes the RunPod infrastructure used through early May 2026. The project has migrated to UCSD DSMLP (free for the class). The current DSMLP + VS Code tunnel setup recipe is maintained outside the repo by the project owner. RunPod content below is preserved for reference in case the project returns to paid compute (e.g., a future Phase 3 v2 training run).
+
 # CSE 151B SP26 — Environment & Infrastructure
 
 ## Overview

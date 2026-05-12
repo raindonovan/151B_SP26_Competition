@@ -515,6 +515,8 @@ Decision rule for whether Phase 2 is worth the cost: §3.4.
 
 ## 3. Phase 2 — Self-Consistency
 
+**Run 09 outcome (2026-05-05):** N=8 SC with v1-baseline scored 0.614 on Kaggle public LB. Per §3.4 decision rule, this is below the "+4q promotion" bar but above the noise floor — SC is doing useful work but not enough at N=8 with v1-baseline alone. Triggered the Phase 2 extension work in §3.6.
+
 ### 3.1 Method
 
 Sample N completions per question with the locked sampling defaults (`temperature=0.6, top_p=0.95, top_k=20, repetition_penalty=1.0`). Extract `\boxed{...}` content from each completion. **Unweighted majority vote** on the extracted strings. Submit the winning vote as the final answer.
@@ -582,9 +584,31 @@ Standard metrics (Insights 1-7) plus:
 
 If N=8 reaches 75% on `fixed_50_v1` with median agreement 7/8, the model is "almost there" on most items and SC is the right last-mile lever. If N=8 lands at 71% with median 8/8 agreement, the floor is genuine model failure that no voting can fix → Phase 3 becomes urgent.
 
+### 3.6 Phase 2 Extension — V0-V4 Prompt Ablation
+
+**Status (2026-05-12): Active.** This subsection extends Phase 2 with a linear ablation over four prompt-engineering deltas on top of the v1-baseline + SC infrastructure. Triggered by Run 09-SC's 0.614 (§3 intro) landing below §3.4's "+4q promotion" bar but above noise — evidence SC is helping but not enough at N=8 with v1-baseline alone. The four levers below address specific reasons SC might be underperforming.
+
+**Locked plan in Section 7 of `prompt_engineering_research.md`. Variant registry and implementation in `variants_and_prompts.md`. Both docs at repo root.**
+
+Variants (each one delta from the previous):
+
+- **V0** — Baseline: v1-baseline + SC=8 + locked sampling (= Run 09 setup). Reference point.
+- **V1** — V0 + answer-counting instruction at top of user message. Targets multi-answer free-response failures (37% of test distribution). Evidence: MathIF 2505.14810 (instruction-following degrades with long CoT).
+- **V2** — V0 + answer-counting instruction bookended (top AND end of user message). Tests whether the bookend pattern survives long thinking traces better than top-only. Same evidence base as V1.
+- **V3** — V2 + shape filter on samples before majority vote. Reject samples that produce >1 top-level `\boxed{}` on multi-answer questions, or 0 top-level boxes on any question. Evidence: OpenR1 discussion #5, Math-Verify CHANGELOG.
+- **V4** — V3 + cross-temperature ladder T ∈ {0.5, 0.7, 0.9, 1.1} for SC sampling diversity. Targets limited-diversity failure mode at locked T=0.6. Evidence: Sun et al. 2510.02611.
+
+Test each variant linearly on a fixed validation slice before deciding whether to keep the change. Promotion bar: same as §3.4 (+2q for keep, +4q for promote-to-larger-slice). Each variant either ships forward or gets dropped before stacking.
+
+**Relation to Section 6 (Confidence-aware abstention).** V3 (shape filter) is upstream-adjacent to Section 6's planned routing on SC vote distribution — both use post-sample signals to improve the vote. Keep Section 6 as planned future work; if V3/V4 land well, Section 6 work may layer on top.
+
+**Relation to Section 4 (Phase 3 training).** Section 4 is deferred (see Section 4 status callout). If V0-V4 plateaus below a useful Kaggle score, Phase 3 v2 with truncation fixes becomes the alternative move.
+
 ---
 
 ## 4. Phase 3 — Training
+
+**Status (2026-05-12): Deferred after v1 failure.** Phase 3 SFT v1 was attempted 2026-05-06 across three training arms (OpenR1-Math-220k, NuminaMath-1.5 concise, Frugal-Thinking traces). All three failed catastrophically; root cause was truncation (`max_seq_length=4096` truncated 50-70% of training traces, producing models that ramble forever and never produce `\boxed{}`). Full failure analysis in `SESSION_LOG.md` 2026-05-06 entry. A v2 plan with fixes was sketched but not scheduled. Project moved to extend Phase 2 via the V0-V4 prompt-engineering ablation (see §3.6). Phase 3 may be revisited if Phase 2 extension plateaus and a v2 recipe addresses the truncation/format issues.
 
 ### 4.1 Reference recipe — Frugal-Thinking (Bounhar et al., MBZUAI-Paris, arXiv 2511.01937)
 
@@ -724,6 +748,8 @@ Known Issue: the current vLLM runner writes per-row JSONL only after the full ba
 ---
 
 ## 7. QLoRA SFT Plan (NuminaMath, short-rationale)
+
+**Status (2026-05-12): v1 attempted, all 3 arms failed (see `SESSION_LOG.md` 2026-05-06 entry). v2 plan with fixes sketched but not currently scheduled. Plan content below preserved for v2 reference and historical record — do NOT delete.**
 
 ### Goal
 

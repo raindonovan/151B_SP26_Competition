@@ -185,6 +185,19 @@ Only the masking-fix remains before kickoff.
 - 3 SFT data files at data/sft/
 - Working training/merge/inference scripts (modulo bugs)
 
+## 2026-05-11–12: Phase 3 v2 not scheduled; Phase 2 extension (V0-V4) opened; DSMLP migration
+
+**Why:** Phase 3 SFT v1 (2026-05-06 entry) failed across all 3 arms. v2 fixes were sketched but not scheduled. Rather than committing to a multi-day Phase 3 v2 effort, the project pivoted to extend Phase 2 (self-consistency) with a focused V0-V4 prompt-engineering ablation. Full rationale: `PIVOT.md` (high-level pointer) and `DESIGN.md` §3.6 (in-context).
+
+**Active work:**
+- Baseline to beat: 0.614 Kaggle (Run 09-SC).
+- V0-V4 ablation per `prompt_engineering_research.md` (locked plan, Section 7) and `variants_and_prompts.md` (implementation spec).
+- Implementation completed in prior claude_vscode session: `scripts/prompts.py` (v2-counting-top, v2-counting-bookend, four template constants, count_ans_placeholders helper), `scripts/variants.py` (new — VARIANTS, VARIANT_ORDER, resolve_variant), `scripts/run_vllm_experiment.py` (build_prompt updated for user_wrapper). Two bugs in the original spec found and fixed during implementation. Experiments not yet run.
+
+**Infrastructure migration:** Moved from RunPod (paid) to UCSD DSMLP (free for class). New pod image `sp26-cuda128` (Python 3.13, CUDA 13.0). vLLM 0.20.2 install at `~/private/.local/lib/python3.13/site-packages/` is compatible with the new image; required setting `PYTHONPATH=$HOME/private/.local/lib/python3.13/site-packages:$PYTHONPATH` in `~/.bashrc`. VS Code tunnel setup recipe is maintained outside the repo (key gotcha: requires `setsid`, not `nohup` alone — DSMLP TTY quirk; also requires `VSCODE_CLI_DISABLE_KEYCHAIN_ENCRYPT=1`, `--accept-server-license-terms`, explicit `--name`). `SETUP.md` marked deprecated.
+
+**Phase 3 artifacts:** preserved at `training/` (training script, prepare_*, merge_adapter), `training/checkpoints/` (v1 adapters and merged models), `data/sft/` (training datasets). Not deleted.
+
 ## 2026-05-08 stop: v2 NuminaMath SFT training complete
 
 First successful v2 SFT training. Run `numina_concise_v2_8k`, full epoch on 7992 rows, batch=2/grad_accum=4 (effective batch 8), 999 steps.
