@@ -162,180 +162,35 @@ def percentile(values: list[float], p: int) -> Optional[float]:
     return s[min(int(len(s) * p / 100), len(s) - 1)]
 
 
-def main() -> None:
-    started_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
-    args = parse_args()
+def _write_summary_from_file(
+    out_path: Path,
+    args,
+    slice_info,
+    slice_id_value,
+    slice_path_value,
+    variant_name,
+    sp_kwargs: dict,
+    started_at: str,
+    runtime_new_questions: float = 0.0,
+) -> None:
+    """Load all rows from out_path and write the .summary.json file.
 
-    # --- Variant config resolution (Step 3) ---
-    # When --variant is provided, override prompt_version, n_samples, max_new_tokens,
-    # and all sampling params with values from the variant registry.
-    variant_name = args.variant
-    if variant_name is not None:
-        vcfg = resolve_variant(variant_name)
-        args.prompt_version = vcfg["prompt_version"]
-        args.n_samples = vcfg["n_samples"]
-        args.max_new_tokens = vcfg["max_new_tokens"]
-        # Build sampling kwargs from variant (includes min_p and presence_penalty).
-        # temperature_ladder and shape_filter exist in vcfg but are not used in this pass.
-        sp_kwargs = {
-            "temperature": vcfg["temperature"],
-            "top_p": vcfg["top_p"],
-            "top_k": vcfg["top_k"],
-            "min_p": vcfg["min_p"],
-            "presence_penalty": vcfg["presence_penalty"],
-            "repetition_penalty": vcfg["repetition_penalty"],
-        }
-        print(f"Variant '{variant_name}' applied: {vcfg}")
-    else:
-        # §7.1 presence_penalty fix applied unconditionally even without --variant.
-        # SAMPLING (from run_vllm_experiment.py) has repetition_penalty=1.1 (adapter
-        # band-aid); without --variant we keep that value for backward compat.
-        sp_kwargs = {**SAMPLING, "presence_penalty": 1.0}
+    Called both at normal completion and when all questions were already done
+    (resume with nothing left to generate). runtime_new_questions covers only
+    the generation time for this session; prior sessions' time is not tracked.
+    """
+    rows = []
+    with open(out_path) as f:
+        for line in f:
+            line = line.strip()
+            if line:
+                try:
+                    rows.append(json.loads(line))
+                except Exception:
+                    pass
 
-    out_path = Path(args.output)
-    out_path.parent.mkdir(parents=True, exist_ok=True)
-
-    if args.slice:
-        slice_info = load_slice(args.slice)
-        items = load_data_by_ids(args.data_path, slice_info["ids"])
-        print(
-            f"Loaded {len(items)} questions from slice "
-            f"{slice_info.get('slice_id')!r} ({args.slice}) over {args.data_path}"
-        )
-    else:
-        slice_info = None
-        items = load_data(args.data_path, args.data_start, args.data_end)
-        print(
-            f"Loaded {len(items)} questions [{args.data_start}:{args.data_end}] "
-            f"from {args.data_path}"
-        )
-
-    slice_id_value = slice_info["slice_id"] if slice_info else None
-    slice_path_value = str(args.slice) if args.slice else None
     policy = PROMPTS[args.prompt_version]
 
-    tokenizer = AutoTokenizer.from_pretrained(MODEL_ID, trust_remote_code=True)
-
-    prompts = []
-    for item in items:
-        system, user = build_prompt(item["question"], item.get("options"), policy)
-        prompt_text = tokenizer.apply_chat_template(
-            [
-                {"role": "system", "content": system},
-                {"role": "user", "content": user},
-            ],
-            tokenize=False,
-            add_generation_prompt=True,
-        )
-        prompts.append(prompt_text)
-
-    # §7.1: enable_prefix_caching for KV-cache reuse across per-temperature generate()
-    # calls (required for temperature-diversification in V4).
-    # reasoning_parser="deepseek_r1": vLLM Issue #22507 — the qwen3 parser silently
-    # fails on Qwen3-Thinking-2507 because the model never emits an opening <think>
-    # tag. deepseek_r1 parser handles the </think>-only format correctly.
-    llm = LLM(
-        model=MODEL_ID,
-        dtype=DTYPE,
-        trust_remote_code=True,
-        gpu_memory_utilization=GPU_MEMORY_UTILIZATION,
-        max_model_len=args.max_model_len,
-        enable_prefix_caching=True,
-        reasoning_parser="deepseek_r1",
-    )
-
-    sampling_params = SamplingParams(
-        n=args.n_samples,
-        max_tokens=args.max_new_tokens,
-        **sp_kwargs,
-    )
-
-    print(
-        f"Generating {args.n_samples} samples × {len(prompts)} prompts "
-        f"(max_new_tokens={args.max_new_tokens})..."
-    )
-    t0 = time.perf_counter()
-    outputs = llm.generate(prompts, sampling_params=sampling_params)
-    runtime = time.perf_counter() - t0
-
-    judger = Judger(strict_extract=False)
-    rows = []
-    for item, out in zip(items, outputs):
-        is_mcq = isinstance(item.get("options"), list) and len(item["options"]) > 0
-        gold = item["answer"]
-
-        # Per-sample extraction
-        samples = []
-        for completion in out.outputs:
-            response = completion.text
-            extracted = extract_for_voting(response, is_mcq, judger)
-            samples.append({
-                "response": response,
-                "gen_tokens": len(completion.token_ids),
-                "hit_token_cap": len(completion.token_ids) >= args.max_new_tokens,
-                "extracted_answer": extracted,
-            })
-
-        # Vote
-        voted_answer, vote_count, tie_broken = vote(
-            [s["extracted_answer"] for s in samples]
-        )
-        agreement_rate = vote_count / args.n_samples
-        sample1_answer = samples[0]["extracted_answer"] if samples else ""
-        voted_diff_from_sample1 = voted_answer != sample1_answer
-
-        # Score voted answer via existing single-sample path
-        if voted_answer:
-            voted_response = f"\\boxed{{{voted_answer}}}"
-            if is_mcq:
-                correct = score_mcq(voted_response, str(gold))
-                gold_field = gold
-            else:
-                gold_list = gold if isinstance(gold, list) else [gold]
-                try:
-                    correct = judger.auto_judge(
-                        pred=voted_response,
-                        gold=gold_list,
-                        options=[[]] * len(gold_list),
-                    )
-                except Exception:
-                    correct = False
-                gold_field = gold_list
-        else:
-            correct = False
-            gold_field = gold if is_mcq else (
-                gold if isinstance(gold, list) else [gold]
-            )
-
-        rows.append({
-            "run_id": args.run_id,
-            "id": item.get("id"),
-            "is_mcq": is_mcq,
-            "question": item["question"],
-            "options": item.get("options"),
-            "gold": gold_field,
-            "samples": samples,
-            "voted_answer": voted_answer,
-            "agreement_rate": agreement_rate,
-            "tie_broken": tie_broken,
-            "voted_diff_from_sample1": voted_diff_from_sample1,
-            "correct": bool(correct),
-            "method": METHOD,
-            "prompt_version": args.prompt_version,
-            "variant": variant_name,
-            "model": MODEL_ID,
-            "max_new_tokens": args.max_new_tokens,
-            "n_samples": args.n_samples,
-            "slice_id": slice_id_value,
-            "slice_path": slice_path_value,
-            **sp_kwargs,  # logs the sampling params actually used
-        })
-
-    with open(out_path, "w") as f:
-        for r in rows:
-            f.write(json.dumps(r, ensure_ascii=False) + "\n")
-
-    # Summary
     n = len(rows)
     n_mcq = sum(1 for r in rows if r["is_mcq"])
     n_free = n - n_mcq
@@ -389,15 +244,15 @@ def main() -> None:
         "n_samples": args.n_samples,
         "max_new_tokens": args.max_new_tokens,
         "max_model_len": args.max_model_len,
-        **sp_kwargs,  # logs the sampling params actually used
+        **sp_kwargs,
         "overall_correct": n_correct,
         "overall_accuracy": safe_div(n_correct, n),
         "mcq_correct": n_mcq_correct,
         "mcq_accuracy": safe_div(n_mcq_correct, n_mcq),
         "free_correct": n_free_correct,
         "free_accuracy": safe_div(n_free_correct, n_free),
-        "runtime_seconds": runtime,
-        "seconds_per_question": safe_div(runtime, n),
+        "runtime_seconds": runtime_new_questions,
+        "seconds_per_question": safe_div(runtime_new_questions, n),
         "agreement_rate_p25": percentile(agreement_rates, 25),
         "agreement_rate_p50": percentile(agreement_rates, 50),
         "agreement_rate_p75": percentile(agreement_rates, 75),
@@ -432,13 +287,229 @@ def main() -> None:
     print(f"Overall accuracy  : {pct(n_correct, n)}  ({n_correct}/{n})")
     print(f"MCQ accuracy      : {pct(n_mcq_correct, n_mcq)}  ({n_mcq_correct}/{n_mcq})")
     print(f"Free accuracy     : {pct(n_free_correct, n_free)}  ({n_free_correct}/{n_free})")
-    print(f"Runtime           : {runtime:.1f} s  ({runtime / max(n, 1):.1f} s/q across N={args.n_samples})")
+    if runtime_new_questions > 0:
+        print(f"Runtime (session) : {runtime_new_questions:.1f} s")
     print(f"Unanimous         : {n_unanimous}/{n}")
     print(f"Tie-broken        : {n_tie_broken}/{n}")
     print(f"Vote != sample 1  : {n_voted_changed_call}/{n}  (how often SC changed the call)")
-    if all(v is not None for v in (summary["agreement_rate_p25"], summary["agreement_rate_p50"], summary["agreement_rate_p75"])):
-        print(f"Agreement-rate p25/50/75 : {summary['agreement_rate_p25']:.3f} / {summary['agreement_rate_p50']:.3f} / {summary['agreement_rate_p75']:.3f}")
+    if all(v is not None for v in (
+        summary["agreement_rate_p25"],
+        summary["agreement_rate_p50"],
+        summary["agreement_rate_p75"],
+    )):
+        print(
+            f"Agreement-rate p25/50/75 : "
+            f"{summary['agreement_rate_p25']:.3f} / "
+            f"{summary['agreement_rate_p50']:.3f} / "
+            f"{summary['agreement_rate_p75']:.3f}"
+        )
     print("─" * 60)
+
+
+def main() -> None:
+    started_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    args = parse_args()
+
+    # --- Variant config resolution ---
+    variant_name = args.variant
+    if variant_name is not None:
+        vcfg = resolve_variant(variant_name)
+        args.prompt_version = vcfg["prompt_version"]
+        args.n_samples = vcfg["n_samples"]
+        args.max_new_tokens = vcfg["max_new_tokens"]
+        sp_kwargs = {
+            "temperature": vcfg["temperature"],
+            "top_p": vcfg["top_p"],
+            "top_k": vcfg["top_k"],
+            "min_p": vcfg["min_p"],
+            "presence_penalty": vcfg["presence_penalty"],
+            "repetition_penalty": vcfg["repetition_penalty"],
+        }
+        print(f"Variant '{variant_name}' applied: {vcfg}")
+    else:
+        sp_kwargs = {**SAMPLING, "presence_penalty": 1.0}
+
+    out_path = Path(args.output)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+
+    # --- Resume: read already-completed question IDs from existing output ---
+    completed_ids: set = set()
+    if out_path.exists():
+        with open(out_path) as f:
+            for line in f:
+                line = line.strip()
+                if line:
+                    try:
+                        completed_ids.add(json.loads(line)["id"])
+                    except Exception:
+                        pass
+        print(f"Resume: {len(completed_ids)} completed questions found in {out_path}")
+
+    if args.slice:
+        slice_info = load_slice(args.slice)
+        items = load_data_by_ids(args.data_path, slice_info["ids"])
+        print(
+            f"Loaded {len(items)} questions from slice "
+            f"{slice_info.get('slice_id')!r} ({args.slice}) over {args.data_path}"
+        )
+    else:
+        slice_info = None
+        items = load_data(args.data_path, args.data_start, args.data_end)
+        print(
+            f"Loaded {len(items)} questions [{args.data_start}:{args.data_end}] "
+            f"from {args.data_path}"
+        )
+
+    slice_id_value = slice_info["slice_id"] if slice_info else None
+    slice_path_value = str(args.slice) if args.slice else None
+    policy = PROMPTS[args.prompt_version]
+
+    # Filter to only questions not yet completed
+    items_todo = [item for item in items if item.get("id") not in completed_ids]
+    n_skipped = len(items) - len(items_todo)
+    if n_skipped:
+        print(f"Skipping {n_skipped} already-completed; {len(items_todo)} remaining")
+    if not items_todo:
+        print("All questions already completed — writing summary and exiting.")
+        _write_summary_from_file(
+            out_path, args, slice_info, slice_id_value, slice_path_value,
+            variant_name, sp_kwargs, started_at,
+        )
+        return
+
+    tokenizer = AutoTokenizer.from_pretrained(MODEL_ID, trust_remote_code=True)
+
+    # Build prompts for remaining items only
+    prompts_todo = []
+    for item in items_todo:
+        system, user = build_prompt(item["question"], item.get("options"), policy)
+        prompt_text = tokenizer.apply_chat_template(
+            [
+                {"role": "system", "content": system},
+                {"role": "user", "content": user},
+            ],
+            tokenize=False,
+            add_generation_prompt=True,
+        )
+        prompts_todo.append(prompt_text)
+
+    # §7.1: enable_prefix_caching, reasoning_parser=deepseek_r1 (vLLM Issue #22507)
+    llm = LLM(
+        model=MODEL_ID,
+        dtype=DTYPE,
+        trust_remote_code=True,
+        gpu_memory_utilization=GPU_MEMORY_UTILIZATION,
+        max_model_len=args.max_model_len,
+        enable_prefix_caching=True,
+        reasoning_parser="deepseek_r1",
+    )
+
+    sampling_params = SamplingParams(
+        n=args.n_samples,
+        max_tokens=args.max_new_tokens,
+        **sp_kwargs,
+    )
+
+    print(
+        f"Generating {args.n_samples} samples × {len(items_todo)} prompts "
+        f"(max_new_tokens={args.max_new_tokens}, one generate() call per question)..."
+    )
+
+    judger = Judger(strict_extract=False)
+    t0 = time.perf_counter()
+
+    # Open in append mode so resumed runs add to existing rows.
+    with open(out_path, "a") as out_f:
+        for i, (item, prompt) in enumerate(zip(items_todo, prompts_todo)):
+            q_t0 = time.perf_counter()
+            outputs = llm.generate([prompt], sampling_params=sampling_params)
+            out = outputs[0]
+            q_elapsed = time.perf_counter() - q_t0
+
+            is_mcq = isinstance(item.get("options"), list) and len(item["options"]) > 0
+            gold = item["answer"]
+
+            samples = []
+            for completion in out.outputs:
+                response = completion.text
+                extracted = extract_for_voting(response, is_mcq, judger)
+                samples.append({
+                    "response": response,
+                    "gen_tokens": len(completion.token_ids),
+                    "hit_token_cap": len(completion.token_ids) >= args.max_new_tokens,
+                    "extracted_answer": extracted,
+                })
+
+            voted_answer, vote_count, tie_broken = vote(
+                [s["extracted_answer"] for s in samples]
+            )
+            agreement_rate = vote_count / args.n_samples
+            sample1_answer = samples[0]["extracted_answer"] if samples else ""
+            voted_diff_from_sample1 = voted_answer != sample1_answer
+
+            if voted_answer:
+                voted_response = f"\\boxed{{{voted_answer}}}"
+                if is_mcq:
+                    correct = score_mcq(voted_response, str(gold))
+                    gold_field = gold
+                else:
+                    gold_list = gold if isinstance(gold, list) else [gold]
+                    try:
+                        correct = judger.auto_judge(
+                            pred=voted_response,
+                            gold=gold_list,
+                            options=[[]] * len(gold_list),
+                        )
+                    except Exception:
+                        correct = False
+                    gold_field = gold_list
+            else:
+                correct = False
+                gold_field = gold if is_mcq else (
+                    gold if isinstance(gold, list) else [gold]
+                )
+
+            row = {
+                "run_id": args.run_id,
+                "id": item.get("id"),
+                "is_mcq": is_mcq,
+                "question": item["question"],
+                "options": item.get("options"),
+                "gold": gold_field,
+                "samples": samples,
+                "voted_answer": voted_answer,
+                "agreement_rate": agreement_rate,
+                "tie_broken": tie_broken,
+                "voted_diff_from_sample1": voted_diff_from_sample1,
+                "correct": bool(correct),
+                "method": METHOD,
+                "prompt_version": args.prompt_version,
+                "variant": variant_name,
+                "model": MODEL_ID,
+                "max_new_tokens": args.max_new_tokens,
+                "n_samples": args.n_samples,
+                "slice_id": slice_id_value,
+                "slice_path": slice_path_value,
+                **sp_kwargs,
+            }
+            out_f.write(json.dumps(row, ensure_ascii=False) + "\n")
+            out_f.flush()
+
+            n_done = n_skipped + i + 1
+            n_total = len(items)
+            print(
+                f"  [{n_done}/{n_total}] id={item.get('id')}  "
+                f"correct={bool(correct)}  agree={agreement_rate:.2f}  "
+                f"voted={voted_answer!r}  {q_elapsed:.0f}s",
+                flush=True,
+            )
+
+    runtime = time.perf_counter() - t0
+
+    _write_summary_from_file(
+        out_path, args, slice_info, slice_id_value, slice_path_value,
+        variant_name, sp_kwargs, started_at, runtime_new_questions=runtime,
+    )
 
 
 if __name__ == "__main__":
