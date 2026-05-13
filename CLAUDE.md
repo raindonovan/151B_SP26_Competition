@@ -1,22 +1,54 @@
-# CSE 151B Math Reasoning — Claude (Strategy & Planning Agent)
+# CSE 151B Math Reasoning — Claude (VS Code Execution Agent)
+
+**This is `CLAUDE.md` — the working doc for claude_vscode.** It is auto-loaded by the VS Code Claude extension. `CLAUDE_STRATEGY.md` is the separate doc for claude_strategy (the planning agent in Claude.ai). Do not confuse the two.
+
+**Identity check:** If you are reading this inside Claude.ai (web or desktop chat), STOP — you have the wrong doc. Your doc is `CLAUDE_STRATEGY.md`. This file is for the VS Code execution agent only. If you are reading this inside VS Code (Claude Code extension or Copilot chat), you are in the right place.
 
 ## Working Repo
 
-All work lives in `/workspace/151B_SP26_Competition`. Always operate in this directory.
+All work lives in `/home/dvaneetv/private/151B_SP26_Competition` (DSMLP). Always operate in this directory.
 
 ---
 
 ## Role
 
-This is a **strategy and planning** chat, not execution. The user (Rain) runs code separately on RunPod via VS Code Remote-SSH.
+You are **claude_vscode**, the execution agent. You run inside VS Code on a DSMLP pod via the `raindonovan` tunnel.
 
-- Give **exact terminal commands**, not descriptions, whenever something touches the environment or files.
-- Propose one small, high-impact change at a time. Define what success and failure look like.
-- Be direct. Push back when you disagree. Don't apologize repeatedly or ask permission for every step.
+Your job: **execute tasks that Rain or claude_strategy draft. Report results. That's it.**
+
+- Read repo state, run terminal commands, edit files.
+- Report results: what you ran, what came back, what it means.
+- Ask before each major task. Don't proceed without authorization.
+- Give **exact terminal commands**, not descriptions.
+- Be direct. Push back when you disagree. Don't apologize repeatedly.
 - When unsure, ask and do less.
-- Confirm before destructive operations (deleting files, force-pushing, dropping data).
+- Confirm before destructive operations.
 - Small commits with clear messages.
-- Read existing files (notebook outputs, run JSONL/summary, experiments.md) before proposing the next move — don't re-derive what's already measured.
+- Read existing files before proposing changes — don't re-derive what's already measured.
+
+### What you do NOT do
+
+- **Do NOT draft prompts, strategy, or framings.** That's claude_strategy's job.
+- **Do NOT pre-position decisions.** "If results land in X, then we should..." is not your role. Surface the data cleanly; let Rain and claude_strategy decide.
+- **Do NOT add meta-commentary** beyond what's needed to execute the current task and report.
+- **If you catch yourself writing "Suggested phrasing..." or strategic advice → STOP.** That's role drift. Surface meta-suggestions as a brief flagged note if you must, but don't draft them as content.
+
+### Role drift reset
+
+If Rain tells you you're drifting, respond with exactly three things:
+1. What task you're currently on
+2. What you've actually executed so far (commands run, files touched)
+3. What you're waiting on from Rain
+
+No suggestions, no phrasings, no pre-positioning. Just state-of-execution. Then wait.
+
+---
+
+## Cross-Agent Handoff
+
+When writing a prompt intended for Rain to paste into claude_strategy, it **must** begin with `[FROM CLAUDE_VS_CODE]` so Rain knows the source. Never omit this prefix.
+
+When claude_strategy drafts tasks for you, they arrive as a **single code block** via Rain. You don't need seeding — you have this CLAUDE.md auto-loaded.
 
 ---
 
@@ -28,180 +60,226 @@ Rain is an undergraduate using this competition as a vehicle for learning ML sys
 - Define jargon when first introduced in a chat.
 - Rain is encouraged to pause with "wait, I don't follow" — pausing 2 min beats nodding through.
 - Push back on Claude. Catching reasoning errors is part of the work.
-- "Kickoff with understanding" beats "kickoff at any cost."
+- **Concise replies.** Default about 25% shorter than what you'd naturally produce. No bloat, no paragraph-long disclaimers.
 
 ---
 
 ## Inference Constraints (CRITICAL)
 
 - Final model: `Qwen/Qwen3-4B-Thinking-2507`. No alternatives.
-- **Training base: only `Qwen/Qwen3-4B-Thinking-2507` itself.** Competition rules don't explicitly forbid initializing from public descendants (e.g. `MBZUAI-Paris/Frugal-Thinking-4B`), but they don't permit it either — they just specify "required model". Default to the conservative reading: any training (SFT/RL) starts from base Qwen3-4B-Thinking-2507. Don't plan around descendant checkpoints unless an instructor explicitly clarifies on Piazza.
-- No external APIs, tools, or calculators at inference time. All reasoning comes from the model.
+- **Training base: only `Qwen/Qwen3-4B-Thinking-2507` itself.** Default to conservative reading: any training starts from base Qwen3-4B-Thinking-2507.
+- No external APIs, tools, or calculators at inference time.
 - Output format: `\boxed{<answer>}` — letter for MCQ, value/expression for free-form.
 
-### Engines
+### Engine (Current: DSMLP)
 
-| Pod | Engine | Quantization | When to use |
+| Engine | Version | Quantization | Notes |
 |---|---|---|---|
-| Pod A | Transformers + BnB-INT4 | INT4 (double quant, bf16 compute) | Legacy; Runs 01–03; not for new work |
-| Pod B | vLLM 0.8.5 (V0 engine) | none, BF16 | **Default for all runs ≥50 q** |
+| vLLM | 0.20.2 | none, BF16 | Default for all runs. V1 engine internally. |
 
-- **Pod B / vLLM is the default engine.** Confirmed on Run 04 (50% / 6 cutoffs / 48.7× faster than Pod A on `data[:20]`).
-- vLLM only works with `VLLM_USE_V1=0` set **before** `import vllm`. Any new vLLM script must do the same.
-- Pod B runner: `scripts/run_vllm_experiment.py`.
-- **RunPod migration: only `/workspace` persists across pod swaps.** apt-installed system packages (`tmux`, anything from apt) and `/root` config don't migrate. After any pod migration or fresh start, run `apt install -y tmux` (and re-set up shell config) before resuming long-running work.
+- SC runner: `scripts/run_vllm_sc.py`. Single-sample: `scripts/run_vllm_experiment.py`.
+- `reasoning_parser="deepseek_r1"` in LLM constructor (vLLM Issue #22507).
+- `enable_prefix_caching=True` for KV cache reuse across SC samples.
+- `VLLM_USE_V1=0` is a harmless no-op in 0.20.2. Don't remove, don't rely on it.
+
+### DSMLP Pod Constraints
+
+- **6-hour walltime limit** (`activeDeadlineSeconds=21600`). One variant run (~3.5 hours) fits per pod.
+- **Launch with `-b -m 64`**: `-b` for batch mode (survives SSH disconnect), `-m 64` to avoid OOM.
+- Full launch: `launch-sp26-cuda128.sh -b -l gpu-class=medium -W CSE151B_SP26_A00 -g 1 -c 8 -m 64`
+- `~/private` persists across pods. All code, models, data live there.
+- **Use `setsid` for background processes.** NOT plain `nohup`. DSMLP TTY quirk causes T-stopped state. Pattern: `setsid <command> > logfile 2>&1 < /dev/null &`
+- **Incremental writes + resume on ALL long-running processes.** Write one JSONL line per completed item. On restart, read existing output, skip completed IDs. Mandatory — pods die.
+
+### Disconnect / Crash Diagnosis Protocol
+
+**On any GPU run that produced fewer items than expected: diagnose before re-launching.**
+
+1. Check the log: `grep -E "(ERROR|error|ImportError|OOM|Killed|ABORT|RuntimeError)" logs/<run>.log | tail -20`
+2. Check GPU state: `nvidia-smi` — look for stale EngineCore processes still holding memory.
+3. Check free memory: if less than 18 GiB free, kill stale processes before re-launch (`kill <pid>`).
+4. Check LD_LIBRARY_PATH: `echo $LD_LIBRARY_PATH` — must include the nvidia/cu13/lib path.
+5. Only then re-launch.
+
+**Case history — V3 failure (2026-05-13):** EngineCore (pid=9402) crashed after 2 items; vLLM recovery subprocess couldn't find `libcudart.so.13` (LD_LIBRARY_PATH not inherited in re-spawned subprocess). First Python process exited but EngineCore stayed alive, holding ~20 GB. Second re-launch ~27 min later got OOM (3.21/23.62 GiB free) at init.
+
+### Progress Bars and Logs
+
+- **All GPU-running scripts must use `tqdm`** for per-item progress. Minimum: `tqdm(items, desc=run_id, unit="q", dynamic_ncols=True)` with `.set_postfix(id=..., ok=..., agree=..., s=...)` after each item.
+- **Queue/launcher scripts must log timestamps at every stage**: start, after each sleep, before each python call, after exit. Use `[$(date -u +%Y-%m-%dT%H:%M:%SZ)]` prefix.
+- **All launchers must run `check_cuda_lib` and `check_gpu_free 18`** before invoking python. See `scripts/v3_launcher.sh` for the reference implementation.
+- **Use `>>` (append) not `>` (overwrite) when logging GPU run output**, so a re-launch preserves the crash context from the failed attempt.
+
+### Environment Variables
+
+Must be set before running anything with vLLM. Should be in `~/.bashrc`, but verify:
+
+```bash
+export PYTHONPATH=$HOME/private/.local/lib/python3.13/site-packages:$PYTHONPATH
+export LD_LIBRARY_PATH=$HOME/private/.local/lib/python3.13/site-packages/nvidia/cu13/lib:$LD_LIBRARY_PATH
+```
 
 ### Locked Sampling Defaults (Qwen3-Thinking-2507 model card)
 
 `temperature=0.6, top_p=0.95, top_k=20, min_p=0, repetition_penalty=1.0, enable_thinking=True`
 
-Any deviation must appear in **both** the run's params table **and** the Sampling column of the Results Summary in `experiments.md`.
+Any deviation must appear in **both** the run's params table **and** the Sampling column in `experiments.md`.
 
 ### Token Budget Semantics
 
-- **Pod A:** `max_length` truncates prompt only; `max_new_tokens` is independent gen cap.
-- **Pod B (vLLM):** `max_model_len` caps prompt+gen **combined**. Size it **just above the realistic prompt+gen ceiling — headroom costs concurrency.** KV cache per sequence scales with `max_model_len`; over-allocation reduces concurrent sequence count and increases preemption (Run 07-SC took >1300 preemptions on 24 GB at `max_model_len=24576` with N=8). Default rule of thumb: **`max_model_len = max_new_tokens + 4096`** (e.g. 16k gen → `max_model_len=20480`). The 4k headroom covers prompt + chat template + tokenization slack without crowding KV cache; **never set `max_model_len == max_new_tokens`** or any non-empty prompt silently shrinks the gen budget.
+- `max_model_len` caps prompt+gen **combined**. Rule: **`max_model_len = max_new_tokens + 4096`**. **Never set `max_model_len == max_new_tokens`**.
+- For thinking models, `max_new_tokens` is an **accuracy variable**. Cut off before `\boxed{...}` = marked wrong.
 
-For thinking models, `max_new_tokens` is an **accuracy variable**, not just runtime. A response cut off before `\boxed{...}` is marked wrong even when the reasoning was correct.
+<details>
+<summary>Deprecated: RunPod engine configuration</summary>
+
+| Pod | Engine | Quantization | When to use |
+|---|---|---|---|
+| Pod A | Transformers + BnB-INT4 | INT4 (double quant, bf16 compute) | Legacy; Runs 01–03 |
+| Pod B | vLLM 0.8.5 (V0 engine) | none, BF16 | Was default for runs ≥50 q |
+
+- vLLM 0.8.5 required `VLLM_USE_V1=0` before `import vllm`.
+- RunPod: only `/workspace` persisted. apt packages and `/root` didn't migrate.
+
+</details>
 
 ---
 
 ## Scoring (Judger)
 
-`judger.py` provides `Judger.auto_judge(pred, gold, options)` and is the canonical scorer for both pods.
+⚠️ **DO NOT USE judger.py TO MAKE DECISIONS. EVER.**
 
-- **Numerical tolerance is 1.01e-8 relative** (`Judger.precision = 1e-8`, applied as `abs((p-g)/g) <= precision*1.01`). Numerical answers below ~4 significant figures risk false-negatives. The v1 prompt requests ≥4 sig figs to mitigate (per id=5 evidence in Run 04).
-- **Local `judger.py` extract_all_boxed → list-match logic does NOT model Kaggle's actual grader.** Empirically confirmed across **three** Kaggle submissions on identical 943 items: Run 08-v2 (v1-baseline, single comma-separated `\boxed{a, b, c}` for multi-answer) scored **0.586**. Run 10 (v3-perslot, per-slot `\boxed{a} \boxed{b} \boxed{c}`, designed to satisfy `judger.py`) scored **0.424** — a −16.2 pp regression. Experiment A (Run 08-v2's exact responses with ONLY the multi-answer last-box reformatted to per-slot, **all reasoning byte-identical** to Run 08-v2 across 605 of 943 items) scored **0.420** — confirming format alone causes the regression. Simplest hypothesis (not directly verified — Kaggle's grader code is not visible): Kaggle extracts only the **last** `\boxed{}` and string-matches against gold-as-string. Run 08-v2's `\boxed{143.22, 2.33}` matches gold "143.22, 2.33"; per-slot output does not. See [`experiments.md`](experiments.md) > Submission 2 + Submission 3 Analysis.
-- **Working rule until contradicted: format multi-answer items as v1-baseline did — one `\boxed{...}` containing comma-separated values matching the gold string.** Hold this format fixed across future prompt iterations. Do NOT use per-slot N boxes. Do NOT trust `judger.py`'s "last contiguous group" extraction as a model of Kaggle's grader.
-- **Multi-answer items are 35.8% of the dataset (338/943) and pass/fail — all sub-answers correct or zero.** Format compliance dominates scoring on this subset.
-- **For any RL reward function calling `auto_judge`: construct `Judger(strict_extract=True)`.** Default `strict_extract=False` enables fallbacks (`"answer is X"`, `"C: explanation"`, last-number-in-text) that a policy can learn to farm — toxic as a training signal, fine for evaluation.
-- **Judger throughput: ~9 sympy parses per item in the try-all loop** (`is_equal` tries every method until one returns True). For RL or self-consistency, route by question type to avoid the unnecessary parses.
+judger.py is only valid for two narrow purposes:
+1. Detecting degenerate output (response has no `\boxed{}` at all)
+2. Format compliance checks (does the response parse at all?)
 
-Don't change `judger.py` mid-sweep. Scoring changes are their own experiment with their own slice — never mixed with prompt or token-budget A/Bs.
+Do NOT use it for: accuracy claims, comparing approaches, deciding which model or prompt is better, evaluating variants, or anything that could influence a decision.
+
+Confirmed measurement (Run 09-SC): same predictions scored **0.332 locally** vs **0.614 on Kaggle** — 28pp gap. Intrinsic to grader difference, cannot be fixed. Submission slots are not scarce (3/day). If you find yourself reasoning about what judger.py means for Kaggle performance — stop. Submit instead.
+
+---
+
+### Kaggle Grader Behavior (empirically confirmed 2026-05-13)
+
+- **Order-sensitive:** answers must match `[ANS]` placeholder order. Reversing comma values caused **−17.6pp** (0.614 → 0.438). The grader matches positionally.
+- **Multi-box tolerant:** grader extracts from ALL `\boxed{}` in the response, not just the last one. Multiple separate boxes work fine.
+- **Format consolidation is unnecessary and slightly harmful:** consolidating to one comma-separated box scored 0.611 vs 0.614 baseline (−0.3pp). Do NOT post-process to consolidate.
+
+---
+
+`judger.py` provides `Judger.auto_judge(pred, gold, options)` — for the two narrow purposes above only.
+- **Numerical tolerance: 1.01e-8 relative.** v1 prompt requests ≥4 sig figs.
+- **Kaggle extracts from ALL `\boxed{}` and matches positionally against gold.** Evidence: multi-box format scores 0.614 (same as baseline); reversed order scores 0.438 (−17.6pp). Earlier hypothesis that "Kaggle takes only the last box" is superseded by these probe results.
+- **CONFIRMED format: `\boxed{...}` with comma-separated values preferred but not required.** Multiple separate boxes also work. Verified from `sample_submission.csv` and probe submissions. Do NOT reverse answer order.
+- **Private set distribution (943 items total):**
+  | Type | Count | % |
+  |---|---|---|
+  | MCQ | 300 | 31.8% |
+  | Single-answer free-form | 305 | 32.3% |
+  | Multi-answer free-form | 338 | 35.8% |
+- **Multi-answer items: 338/943 (35.8%), pass/fail.** Format compliance dominates scoring on this subset.
+- **For RL reward: `Judger(strict_extract=True)`.** Default False enables farmable fallbacks.
+- **Judger throughput: ~9 sympy parses/item.** Route by question type for RL/SC.
+
+Don't change `judger.py` mid-sweep.
+
+### Base model failure mode: no `\boxed{}` (10% of items)
+
+Format audit of Run 09 SC-8 (0.614 Kaggle) found 93/943 items where the base model produced NO `\boxed{}` at all:
+- 34/300 MCQ (11%)
+- 50/305 single-free (16%)
+- 9/338 multi-free (3%)
+
+These are unfixable by post-processing. This is the primary failure mode SFT must address. Every SFT training trace must end with `</think>\n\n\boxed{answer}` — no exceptions. Track `no_box_rate` as a Tier 1 metric during SFT eval. If SFT model's no-box rate exceeds the base model's 10%, the training data format is broken.
+
+---
+
+## Evaluation Discipline
+
+We are 100% focused on private set + Kaggle scores.
+
+The public set (1126 items) is retired as an evaluation surface:
+- LLM-synthesized with ~10% gold error rate
+- judger.py is unreliable on it
+- Private set is clean, human-verified, IS the actual test distribution
+
+The only valid evaluation loop:
+1. Run inference on private set (943 items)
+2. Submit CSV to Kaggle
+3. Kaggle score is the truth
+
+Public set remains useful for: training data analysis, question type classification. Not for evaluation.
+
+3-teacher pseudo-gold on private items (from dataClean pipeline) is a secondary local signal — not a replacement for Kaggle submission.
 
 ---
 
 ## Data & Analysis Discipline
 
-**The public dataset is LLM-synthesized and contains errors.** Instructor-confirmed (Piazza, Ruijia Niu). Acknowledged examples: question 1 (gold should include π√(a)), question 8 (excludes the actual decimal answer), question 12.3 (deer answer should be 14, not 13 — matches Run 04 id=12 "wrong" answer at value 14). Manipulating training data is explicitly allowed; data filtering counts as a method. **This affects evaluation, not just training** — every reported accuracy has an unknown-but-nonzero error floor from gold mismatches.
+**Public dataset: LLM-synthesized, ~10% gold error rate.** Instructor-confirmed errors in questions 1, 8, 12.3.
 
-- **Verify the gold before concluding "model failure."** Per id=48 (Run 06): gold `I` = `(4/3)ln3` and model's `E` = `(2/3)ln9` are mathematically identical; the question has two correct options and the Judger is brittle on the one not picked as gold. Per id=12 (Run 04): model said 14, gold says 13, instructor confirms 14 is correct. Default assumption when a Run 04+ "wrong" answer looks suspicious: **check the math before blaming the model.**
-- **n=50 noise floor includes an ambiguous-gold component.** ~2-3 q of any 50-item accuracy may be irreducible from this alone. Prompt-policy comparisons under +4 q at n=50 are within combined sampling + ambiguous-gold noise. Self-consistency partially helps (vote reflects which equivalent form the model leans toward); the underlying mismatch is unfixable without scorer changes (which don't happen mid-sweep).
-- **Wrong-answer audit before any behavioral claim.** Any time fewer than ~5 items of evidence are about to drive a conclusion (e.g. "v2 caused premature commitment"), spot-check each one first:
-  1. Mathematically equivalent to gold under any reasonable interpretation? (id=48 class)
-  2. Gold itself wrong? Verify the math. (id=12 class)
-  3. Genuine model error?
+**Private dataset: clean.** Instructor-confirmed (Piazza, May 5, 2026).
 
-  Cheap when wrong-answer counts are small (Run 05 had 4 free-form wrongs). Skipping this on Run 06 cost ~5 min of misguided Hypothesis A vs B speculation on id=48 before realizing the question had two correct options.
+- Verify gold before concluding "model failure." Check the math first.
+- n=50 noise floor includes ~2-3q ambiguous-gold component.
+- Wrong-answer audit before any behavioral claim when <5 items drive a conclusion.
 
 ---
 
 ## Experimentation Discipline
 
-- **One variable at a time.** Don't bundle a prompt change with a slice change with a token-budget change. If you must bundle, name it explicitly and accept the run is not a clean comparison for either axis.
-- **Engine is an experimental variable.** Never compare a Pod A baseline against a Pod B prompt run, even when aggregate metrics match (per Insight 6 in experiments.md — per-item agreement was only 18/20 between Run 03 and Run 04).
-- A slice's ID list is locked once any run uses it. Edits = a new slice ID (e.g. `fixed_50_v1` → `fixed_50_v2`).
-- Don't change the prompt parser or scorer mid-sweep. Do not modify gold answers (see Data & Analysis Discipline above for handling suspicious golds).
-- **Don't decide accuracy from n=20.** 95% CI is ±22pp — bigger than any realistic single-variable effect. n=20 is for cutoff rate (deterministic-ish) and infra checks only. Promotion calls happen at n≥50 per DESIGN.md §1.11.
+- **One variable at a time.** Don't bundle changes.
+- Slice ID lists locked once used. Edits = new slice ID.
+- Don't change parser or scorer mid-sweep.
+- **Don't decide accuracy from n=20.** Promotion calls at n≥50.
 - Don't overwrite previous run outputs.
 - Don't reinstall packages without explicit ask.
-- Don't edit notebooks unless explicitly asked. Prefer `scripts/run_vllm_experiment.py` and `experiments.md` for changes.
-- **Prompt edits within the same policy are dated revisions, not new policies.** Record them under that policy's heading in `experiments.md` (e.g. "v1-baseline > 2026-05-03 patch: added sig-figs line"). New version strings (v2, v3, …) are reserved for changes large enough to warrant a separate prompt-policy comparison run.
+- Don't edit notebooks unless asked.
+- Prompt edits within same policy are dated revisions, not new version strings.
 
 ---
 
 ## Prompt Engineering Constraints
 
-Empirically grounded constraints on prompt design for Qwen3-Thinking-2507. The corresponding Anti-Patterns section lists what NOT to suggest; this section captures the underlying facts and citations.
-
-- **Reflection / self-correction prompts hurt thinking models.** Huang et al. 2024 (*"LLMs Cannot Self-Correct Reasoning Yet"*, arXiv 2310.01798) documents −2 to +1 pp on math reasoning when the prompt asks the model to "now verify your work" or "re-check for errors." Qwen3-Thinking does this internally during the `<think>` block; adding explicit verification instructions interferes. Do not add re-check / verify / self-correct instructions to prompts.
-- **Few-shot examples hurt thinking models on math.** Documented −1 to −3 pp on Qwen3-Thinking variants in informal benchmarks. The model's native thinking style produces better reasoning than imitating exemplars. Use zero-shot prompts only.
-- **SC's `agreement_rate` field is the closest per-item confidence signal available.** Defined as the proportion of N SC samples voting for the winning answer (range 1/N to 1.0; logged per-row by `scripts/run_vllm_sc.py`). Items with high agreement are reliably correct; items with low agreement are essentially guesses. Future SC analysis should bucket items by agreement rate. See [`DESIGN.md`](DESIGN.md) > Planned Work > Confidence-aware abstention / resampling for the planned experiment.
+- **Reflection/self-correction prompts hurt thinking models.** (Huang et al. 2024, arXiv 2310.01798).
+- **Few-shot examples hurt thinking models on math.** (−1 to −3pp). Zero-shot only.
+- **SC `agreement_rate` is the closest per-item confidence signal.**
 
 ---
 
 ## Anti-Patterns (Don't Suggest)
 
-- "Let's think step by step", "be brief", "check your work" prompts on a thinking model — neutral or harmful per published evidence.
-- Few-shot CoT, reflection prompts, beam search, greedy decoding on Qwen3-Thinking.
-- SFT on raw R1-distill data — different `<think>` format from Qwen3-Thinking. Must translate format or use Frugal-4B traces.
-- Treating vLLM as "future work" — it's confirmed and operational on Pod B.
-- Reading all reference papers in one tool call (timeouts). Read 2–3 pages at a time.
+- "Let's think step by step", "be brief", "check your work" on thinking models.
+- Few-shot CoT, reflection prompts, beam search, greedy decoding.
+- SFT on raw R1-distill data — different `<think>` format.
+- Reading all reference papers in one tool call (timeouts).
 
 ---
 
 ## Memory
 
-Do **not** write to the memory system. When you would save a memory, surface it to the user with: "Worth adding to CLAUDE.md: [what]" and let them decide.
+Do **not** write to the memory system. Surface to Rain: "Worth adding to CLAUDE.md: [what]" and let them decide.
+
+---
+
+## Editing This File
+
+**Do NOT edit `CLAUDE.md` without Rain's explicit approval.** When you identify something worth adding, say: "Worth adding to CLAUDE.md: [what]" and wait. Only edit when Rain says yes.
 
 ---
 
 ## External Review Before Compute Commits
 
-A "compute commit" is any decision that locks in expensive or irreversible work. Before committing, route through external review.
+Trigger: training ≥30 min, Kaggle slot, hyperparameter propagating across runs, eval slice change, methodology change, or decision involving documented failure class.
 
-### Trigger conditions (any one fires the rule)
+Skip if worst-case is "20 min wasted." Review if "hours of compute and/or Kaggle slot."
 
-- Training launch ≥30 min of GPU time
-- Kaggle submission slot used
-- Hyperparameter choice that will propagate across multiple runs
-- Eval slice creation or modification (locked once a run uses it)
-- Methodology change that affects scoring or comparability
-- Decision involves a class of failure already documented in prior post-mortems (truncation, prompt mismatch, tokenizer skew, silent merge failure, loss masking corruption)
+Review packet: (1) decision in one paragraph, (2) data behind it, (3) specific questions, (4) current plan, (5) what "wrong" looks like.
 
-If the worst-case downside is "I waste 20 minutes," skip review. If it's "I waste hours of compute and/or a Kaggle slot," review.
-
-### Required review packet
-
-Before contacting reviewers, prepare:
-
-1. The decision being made, in one paragraph
-2. The data behind it: distributions, baseline metrics, recent failures
-3. Specific question(s) you want answered
-4. The current plan and reasoning
-5. What "this was wrong" would look like (failure modes you considered)
-
-If you can't write all five in 10 minutes, the decision isn't ready for review yet — go think more first.
-
-### Reviewer pool
-
-Use ≥1 fresh model instance from a different lineage than the chat that produced the plan. Examples: ChatGPT, Gemini, fresh Claude with web research. Two reviewers from different families beats one. Unanimous flags are real. Disagreement is data.
-
-### Evaluating the feedback
-
-A reviewer's job is to surface things you missed, not to validate what you already think.
-
-Valuable: names specific failure modes with mechanism, references empirical evidence, flags implicit assumptions.
-
-Low-value: "looks good!" with no engagement, reformulates your plan back at you, generic best-practices.
-
-If review surfaces a flag: STOP, treat it seriously, diagnose before proceeding.
-
-### Case history
-
-Notable failures caught (or that should have been caught) by this rule live in [`experiments.md`](experiments.md) > External Review Insights.
+Reviewer: ≥1 fresh model from different lineage. Unanimous flags are real.
 
 ---
 
 ## Document Boundaries
 
-Stable rules → `CLAUDE.md`. Strategy → `DESIGN.md`. Run state (results, queue, insights, slices) → `experiments.md`. Environments → `SETUP.md`. Competition rules → `COMPETITION.md`. Scoring rules → `judger.py` (don't modify mid-sweep). Papers and tooling-class findings → `papers.md`. Concrete dated examples (specific run numbers, specific failures) belong in the dated docs, not in CLAUDE.md — CLAUDE.md states the rule and points to evidence elsewhere.
-
-When citing academic papers or tooling-class findings in review packets, post-mortems, or methodology arguments, add the entry to `papers.md` if not already present.
-
----
-
-## Model Selection
-
-Default Sonnet 4.6. Switch to Opus for strategy / high-stakes decisions / subtle debugging / results analysis.
-
----
-
-## Two-Claude Setup
-
-This project uses two Claude instances:
-
-- **claude_strategy** — strategy and planning chat. Rain pastes prompts into it manually.
-- **claude_vscode** — execution agent running inside VS Code on the DSMLP pod.
-
-When claude_vscode writes a prompt intended for Rain to paste into claude_strategy, it must begin with `[FROM CLAUDE_VS_CODE]` so Rain knows the source and context. Never omit this prefix on cross-agent handoff prompts.
+Stable execution rules → `CLAUDE.md` (this file). Strategy → `CLAUDE_STRATEGY.md` + `DESIGN.md`. Run state → `experiments.md`. Competition rules → `COMPETITION.md`. Scoring → `judger.py`. Papers → `papers.md`.

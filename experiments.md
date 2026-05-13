@@ -357,6 +357,7 @@ Track every leaderboard submission here. Kaggle limits: 3/day, 2 final selection
 | 1 | 2026-05-04 | run08v2_v1_private943 | full 943 | N/A (gold withheld) | 0.586 | N/A | v1-baseline (sig-figs patched), single sample, 16k tok; first Kaggle submission |
 | 2 | 2026-05-04 / 2026-05-05 | run10_v3perslot_private943 | full 943 | N/A (gold withheld) | 0.424 | N/A | v3-perslot per-slot multi-answer format → −16.2 pp; format effect, model reasoning preserved |
 | 3 | 2026-05-05 | expA_run08_perslot_perturbed | full 943 | N/A (gold withheld) | 0.420 | N/A | diagnostic: Run 08 responses with multi-answer reformatted per-slot → confirms format alone causes regression |
+| 4 | 2026-05-13 | run09sc8_v1_private943 | full 943 | N/A (gold withheld) | 0.614 | N/A | v1-baseline + SC N=8, 16k tok; confirmed via Kaggle UI 2026-05-13; best submission to date (+2.8 pp vs sub 1) |
 
 When the gap between local and leaderboard accuracy exceeds ~5pp, treat it as a **calibration problem first** (slice mismatch, scoring mismatch, parser mismatch, prompt-divergence between dev and submission run) — not a model problem. Investigate before spending another submission.
 
