@@ -7,7 +7,6 @@ LICENSE.ipynb_checkpoints/
 core
 *.core
 data/private.jsonl
-results/run09sc8_v1_private943_tok16384.jsonl
 unsloth_compiled_cache/
 unsloth_compiled_cache/
 .venv-training/
