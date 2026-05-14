@@ -37,7 +37,7 @@ V4 was launched on `fixed_50_v1` slice without temperature tagging on individual
 | repetition_penalty | 1.0 |
 | Input | `--data-path private.jsonl` (at repo root, NOT `data/private.jsonl`) |
 | Output | `results/run14b_sc8_v1_private943_tok32k_pp1.jsonl` |
-| gpu_memory_utilization | 0.92 |
+| gpu_memory_utilization | 0.85 (script default; raise to 0.92 by editing run_vllm_sc.py if smoke shows preemption) |
 
 **Pod preference:** A30 if available. Blackwell MIG slice acceptable; smoke first.
 
