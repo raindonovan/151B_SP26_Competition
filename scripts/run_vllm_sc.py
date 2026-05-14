@@ -498,7 +498,7 @@ def main() -> None:
             if temperature_ladder is not None:
                 n_per_rung = args.n_samples // len(temperature_ladder)
                 remainder = args.n_samples % len(temperature_ladder)
-                all_completions = []
+                all_completions = []  # list of (completion, temperature)
                 for rung_i, temp in enumerate(temperature_ladder):
                     n_this = n_per_rung + (1 if rung_i < remainder else 0)
                     if n_this == 0:
@@ -509,16 +509,16 @@ def main() -> None:
                         **{**sp_kwargs, "temperature": temp},
                     )
                     rung_out = llm.generate([prompt], sampling_params=rung_params)
-                    all_completions.extend(rung_out[0].outputs)
+                    all_completions.extend((c, temp) for c in rung_out[0].outputs)
                 completions = all_completions
             else:
                 outputs = llm.generate([prompt], sampling_params=sampling_params)
-                completions = outputs[0].outputs
+                completions = [(c, sp_kwargs["temperature"]) for c in outputs[0].outputs]
 
             q_elapsed = time.perf_counter() - q_t0
 
             samples = []
-            for completion in completions:
+            for completion, sample_temp in completions:
                 response = completion.text
                 extracted = extract_for_voting(response, is_mcq, judger)
                 samples.append({
@@ -527,6 +527,7 @@ def main() -> None:
                     "hit_token_cap": len(completion.token_ids) >= args.max_new_tokens,
                     "extracted_answer": extracted,
                     "shape_rejected": False,
+                    "temperature": sample_temp,
                 })
 
             # --- Shape filter (V3+) ---
