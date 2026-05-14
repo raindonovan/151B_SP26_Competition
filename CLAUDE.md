@@ -183,14 +183,24 @@ Confirmed measurement (Run 09-SC): same predictions scored **0.332 locally** vs 
 
 Don't change `judger.py` mid-sweep.
 
-### Base model failure mode: no `\boxed{}` (10% of items)
+### Base model failure mode: no `\boxed{}` — token budget at 16k, not reasoning failure
 
-Format audit of Run 09 SC-8 (0.614 Kaggle) found 93/943 items where the base model produced NO `\boxed{}` at all:
-- 34/300 MCQ (11%)
-- 50/305 single-free (16%)
-- 9/338 multi-free (3%)
+Format audit of Run 09 SC-8 (0.614 Kaggle, 16k tokens) found 68/943 items where no sample produced `\boxed{}`:
+- 17/300 MCQ (5.7%)
+- 48/305 single-free (15.7%)
+- 3/338 multi-free (0.9%)
 
-These are unfixable by post-processing. This is the primary failure mode SFT must address. Every SFT training trace must end with `</think>\n\n\boxed{answer}` — no exceptions. Track `no_box_rate` as a Tier 1 metric during SFT eval. If SFT model's no-box rate exceeds the base model's 10%, the training data format is broken.
+ALL 68 had 8/8 samples hit the 16k token cap. 100% token-budget-bound.
+
+V0 baseline (32k tokens, public slice 50 items) had zero no-box items. The 8 sample cutoffs at 32k came from ONE pathological item that does not converge at any reasonable budget.
+
+Implications:
+- The no-box problem at 16k → 32k is largely a token budget issue, NOT a reasoning failure.
+- SFT-for-no-box becomes a smaller target. SFT priority shifts to wrong-answer-rate.
+- Some items remain unsolvable at any budget (id=1040 class).
+- vLLM stop-string on `\boxed{}\n` could save compute on items where the model commits early then rambles past the commit (observed in V0 id=1040 sample 1).
+
+Track `no_box_rate` as a Tier 1 SFT eval metric. With 32k tokens the base-model floor is near-zero; SFT models above ~5% no-box rate indicate broken training data format.
 
 ---
 

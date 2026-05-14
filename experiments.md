@@ -273,6 +273,34 @@ Yield rate ~37.5% from a 500-example sanity check.
 3. Flash Attention 2 missing has been present since session start; only became load-bearing at long sequences. Cosmetic warnings can become structural problems with config changes.
 4. Multi-agent triangulation works for technical decisions when agents have web search / can pull real benchmarks.
 
+### 2026-05-13: Run 09 JSONL analysis (recovered from local)
+
+Run 09's per-item JSONL was preserved (previously assumed lost from RunPod migration; located on Rain's local and restored to `results/run09sc8_v1_private943_tok16384.jsonl`).
+
+**Analysis findings.**
+
+Item-level no-box (no sample produced `\boxed{}`): **68/943 (7.2%)**
+- MCQ: 17/300 (5.7%)
+- Single-free: 48/305 (15.7%)
+- Multi-free: 3/338 (0.9%)
+
+**Critical finding:** ALL 68 no-box items had 8/8 samples hit the 16k token cap. Item-level no-box is 100% token-budget-bound at 16k. Zero items showed "completed-without-box" failure mode. Zero items showed mixed cutoff+completion patterns.
+
+Sample-level: 920/7544 (12.2%) cutoffs at 16k. Of those, 912 still produced `\boxed{}` earlier in the response; only 68 items had all 8 samples cut off AND fail to produce a box. This means even at 16k, individual samples often committed before cap; the no-box outcome required all 8 of an item's samples to fail.
+
+**Comparison to V0 at 32k (public slice, 50 items):** zero no-box items, 8 sample cutoffs all from one item (id=1040). p95 of clean gen_tokens = 16,157. 32k tokens captures ~95% of typical reasoning cleanly.
+
+**Implications:**
+1. No-box failure mode at 16k → 32k is largely a token budget issue, not reasoning failure.
+2. SFT-for-no-box becomes a smaller target than originally framed.
+3. SFT priority shifts to wrong-answer-rate among items that DO box.
+4. Some items (id=1040 class) won't be rescued by any reasonable token budget; SFT-for-commit-under-uncertainty might help.
+
+**Agreement rate distribution (Run 09):**
+- Unanimous (8/8): 449 items (47.6%)
+- Strong (5–7/8): 254 items
+- Weak (≤3/8): 166 items — essentially guesses, includes the 68 no-box items
+
 ---
 
 ## Experiment Queue
