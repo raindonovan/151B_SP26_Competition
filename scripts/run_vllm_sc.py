@@ -238,9 +238,11 @@ def _write_summary_from_file(
     n = len(rows)
     n_mcq = sum(1 for r in rows if r["is_mcq"])
     n_free = n - n_mcq
-    n_correct = sum(1 for r in rows if r["correct"])
-    n_mcq_correct = sum(1 for r in rows if r["is_mcq"] and r["correct"])
-    n_free_correct = sum(1 for r in rows if (not r["is_mcq"]) and r["correct"])
+    rows_with_gold = [r for r in rows if r.get("correct") is not None]
+    n_scored = len(rows_with_gold)
+    n_correct = sum(1 for r in rows_with_gold if r["correct"])
+    n_mcq_correct = sum(1 for r in rows_with_gold if r["is_mcq"] and r["correct"])
+    n_free_correct = sum(1 for r in rows_with_gold if not r["is_mcq"] and r["correct"])
     agreement_rates = [r["agreement_rate"] for r in rows]
     n_unanimous = sum(1 for r in rows if r["agreement_rate"] == 1.0)
     n_tie_broken = sum(1 for r in rows if r["tie_broken"])
@@ -290,11 +292,11 @@ def _write_summary_from_file(
         "max_model_len": args.max_model_len,
         **sp_kwargs,
         "overall_correct": n_correct,
-        "overall_accuracy": safe_div(n_correct, n),
+        "overall_accuracy": safe_div(n_correct, n_scored),
         "mcq_correct": n_mcq_correct,
-        "mcq_accuracy": safe_div(n_mcq_correct, n_mcq),
+        "mcq_accuracy": safe_div(n_mcq_correct, sum(1 for r in rows_with_gold if r["is_mcq"])),
         "free_correct": n_free_correct,
-        "free_accuracy": safe_div(n_free_correct, n_free),
+        "free_accuracy": safe_div(n_free_correct, sum(1 for r in rows_with_gold if not r["is_mcq"])),
         "runtime_seconds": runtime_new_questions,
         "seconds_per_question": safe_div(runtime_new_questions, n),
         "agreement_rate_p25": percentile(agreement_rates, 25),
@@ -492,7 +494,7 @@ def main() -> None:
             q_t0 = time.perf_counter()
 
             is_mcq = isinstance(item.get("options"), list) and len(item["options"]) > 0
-            gold = item["answer"]
+            gold = item.get("answer", None)
 
             # --- Generate samples (single-temp or ladder) ---
             if temperature_ladder is not None:
@@ -544,11 +546,13 @@ def main() -> None:
             sample1_answer = samples[0]["extracted_answer"] if samples else ""
             voted_diff_from_sample1 = voted_answer != sample1_answer
 
-            if voted_answer:
+            gold_field = gold
+            if gold is None:
+                correct = None
+            elif voted_answer:
                 voted_response = f"\\boxed{{{voted_answer}}}"
                 if is_mcq:
                     correct = score_mcq(voted_response, str(gold))
-                    gold_field = gold
                 else:
                     gold_list = gold if isinstance(gold, list) else [gold]
                     try:
@@ -562,9 +566,8 @@ def main() -> None:
                     gold_field = gold_list
             else:
                 correct = False
-                gold_field = gold if is_mcq else (
-                    gold if isinstance(gold, list) else [gold]
-                )
+                if not is_mcq:
+                    gold_field = gold if isinstance(gold, list) else [gold]
 
             row = {
                 "run_id": args.run_id,
@@ -579,7 +582,7 @@ def main() -> None:
                 "tie_broken": tie_broken,
                 "voted_diff_from_sample1": voted_diff_from_sample1,
                 "shape_filter_fallback": shape_fallback,
-                "correct": bool(correct),
+                "correct": None if correct is None else bool(correct),
                 "method": METHOD,
                 "prompt_version": args.prompt_version,
                 "variant": variant_name,

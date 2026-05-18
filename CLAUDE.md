@@ -194,7 +194,7 @@ ALL 68 had 8/8 samples hit the 16k token cap. 100% token-budget-bound.
 
 V0 baseline (32k tokens, public slice 50 items) had zero no-box items. The 8 sample cutoffs at 32k came from ONE pathological item that does not converge at any reasonable budget.
 
-Implications:
+Implications:O
 - The no-box problem at 16k → 32k is largely a token budget issue, NOT a reasoning failure.
 - SFT-for-no-box becomes a smaller target. SFT priority shifts to wrong-answer-rate.
 - Some items remain unsolvable at any budget (id=1040 class).
