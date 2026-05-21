@@ -1,8 +1,8 @@
 # HANDOFF — claude_strategy session continuity
 
-**Version:** 2.0  
-**Last updated:** 2026-05-21  
-**Supersedes:** HANDOFF.md v1 (2026-05-19, two-agent setup)  
+**Version:** 2.1  
+**Last updated:** 2026-05-21 (evening)  
+**Supersedes:** HANDOFF.md v2.0 (2026-05-21 morning, three-agent setup)  
 **Owner:** Rain (dvaneetv@ucsd.edu)  
 **Project:** CSE 151B (UCSD) Kaggle math reasoning competition
 
@@ -71,20 +71,22 @@ If they conflict on a behavioral rule, CLAUDE_STRATEGY.md wins. If they conflict
 
 ---
 
-## 2. THREE-AGENT SETUP
+## 2. FOUR-AGENT SETUP
 
 | Agent | Where | Job | Tools |
 |-------|-------|-----|-------|
 | **claude_strategy** (you) | Claude.ai web/desktop chat | Plan, audit, review, teach | Chrome MCP, web_search, conversation_search, memory, limited /mnt filesystem |
 | **claude_vscode** | VS Code on DSMLP pod (raindonovan tunnel) | Execute on Competition repo | DSMLP filesystem, git, bash, GPU access |
 | **claude_dataApp** | VS Code on DSMLP pod (separate window) | Execute on DataApp repo | DSMLP filesystem, git, bash, OpenAI API |
+| **claude_thunder** | VS Code on Thunder Compute instance (laptop-side) | SFT v3 training execution | Thunder filesystem, git, bash, GPU access (H100/A100), Unsloth + vLLM |
 
 ### Communication
 
 - **claude_vscode → claude_strategy:** prefixed `[FROM CLAUDE_VS_CODE]`, pasted by Rain
 - **claude_dataApp → claude_strategy:** prefixed `[FROM CLAUDE_DATAAPP]`, pasted by Rain
-- **claude_strategy → either execution agent:** single fenced code block titled `[TO CLAUDE_VSCODE — ...]` or `[TO CLAUDE_DATAAPP — ...]`, no preamble
-- **claude_vscode ↔ claude_dataApp:** never direct. Always routes through Rain + claude_strategy.
+- **claude_thunder → claude_strategy:** prefixed `[FROM CLAUDE_THUNDER]`, pasted by Rain
+- **claude_strategy → either execution agent:** single fenced code block titled `[TO CLAUDE_VSCODE — ...]`, `[TO CLAUDE_DATAAPP — ...]`, or `[TO CLAUDE_THUNDER — ...]`, no preamble
+- **claude_vscode ↔ claude_dataApp ↔ claude_thunder:** never direct. Always routes through Rain + claude_strategy. Specifically: SFT v3 dataset hand-off from claude_dataApp to claude_thunder goes via git push, then Rain pastes "ready" to claude_thunder.
 
 **One prompt at a time for claude_dataApp.** After drafting a prompt for claude_dataApp, STOP. Wait for Rain to confirm sending it OR for results to come back before drafting the next prompt. Don't queue multiple prompts in one response — Rain has to copy/paste each and managing a stack is friction.
 
@@ -106,8 +108,8 @@ If they conflict on a behavioral rule, CLAUDE_STRATEGY.md wins. If they conflict
 
 ### What's running
 
-- **run14b inference on DSMLP** (claude_vscode managing): ~88% complete (837/943 items), multi-pod resume working, ~17h estimated remaining at ~600s/item. Will produce results/run14b_sc8_v1_private943_tok32k_pp1.jsonl → CSV → Kaggle submission.
-- **DataApp Phase 4 batch on OpenAI Batch API:** stuck at 273/275 same pattern as Phase 2 (99/100) and Phase 3 (199/200). Cancel → audit → sync retry the 2 missing items is the active plan when this handoff was written. May already be resolved by the time you read this — check chat context.
+- **run14b inference on DSMLP** (claude_vscode managing): 887/943 complete (~94%), final ~56 items in progress on fresh A30 pod. GPU memory orphan issue resolved via pod cycle. ETA ~25 minutes from completion at current rate. CSV submission to Kaggle pending completion.
+- **DataApp xhigh teacher coverage: 943/943 COMPLETE.** Phase 4 batch + Responses API background mode resolved last 2 stubborn items (item_0041 = 3542, item_0836 = 2025). Full 4-teacher dataset locked.
 
 ### What's locked (DECISIONS, don't relitigate)
 
@@ -121,30 +123,61 @@ If they conflict on a behavioral rule, CLAUDE_STRATEGY.md wins. If they conflict
 - **Public set:** retired as eval surface (~10% gold errors, instructor-confirmed).
 - **Cost rule (locked 2026-05-20):** Admin API + dashboard ONLY. No multipliers. No local cost_log decisions. Budget no longer the binding constraint post-batch.
 - **Submission slots:** are not scarce (3/day). Never frame decisions around preserving them.
+- **Normalizer fix (2026-05-21):** `normalize_for_comparison()` in DataApp's src/extraction.py is now the canonical comparison normalizer. Strips whitespace around commas, collapses internal whitespace, uppercases, strips trailing periods. The earlier diagnostic build had 112 false FORMAT_FIX classifications; post-fix it has 0. The normalizer is for INTERNAL comparison only — never use it on CSV output. CSV preserves raw `\boxed{}` content.
+- **PRE-SUBMISSION CHECK (LOCKED):** Before submitting ANY run14b CSV to Kaggle, verify fix_submission_format.py preserves raw `\boxed{}` content without re-normalization. Do NOT strip whitespace, reformat commas, or re-normalize LaTeX.
+- **Confidence tier system (2026-05-21):** Items classified into R1/R2/R3/R4/W1/W2/W3/U tiers based on 4-teacher consensus + SC=8 cross-reference. R1+R2 (394 items) empirically ~100% accurate per Sub A Kaggle. W-tier (254 items) ~42% accurate per Sub C. SFT labels: DEFAULT/SECONDARY_PRIORITY/PRIORITY/FORMAT_FIX/EXCLUDE with 1×/2×/3×/1×/0 weights.
+- **Wrong-trace leak ≈ 15%:** Sub A score 0.505 implies wrong teacher traces score ~15% correct (dissenting teachers sometimes have the right answer). Solving 394×acc + 549×L = 476 gives acc≈1.00 and L≈0.149. Tomorrow's Sub E (all-placeholder) will pin L empirically.
 
 ### What's pending (decision-class)
 
-- Phase 4 cancel + sync retry — drafted in prior turn of chat that produced this handoff. ~2 items via sequential sync (documented exception to "never run generate_gpt55_full.py" rule, which exists for n=943 concurrent burns, not n=2 sequential).
-- run14b CSV submission to Kaggle — when inference completes.
-- 4-teacher consensus recompute on all 943 items after Phase 4 collection.
-- Ticket 5 (build_correctness_labels.py) — apply PRIORITY label to wrong items. Hardcoded to expect 4-teacher.
-- Ticket 6 (select_traces_for_sft.py) — produce SFT v3 training file.
-- Thunder Compute setup — tnr create from laptop, VS Code Thunder extension, fresh VS Code window for the Thunder connection. Setup plan in claude_strategy memory.
-- SFT v3 training on Thunder — gated on Ticket 6 delivery.
-- Conditional GRPO Phase 2 — gated on SFT v3 Kaggle score <0.65 and clean pseudo-gold.
+- Sub E submission (tomorrow): all-placeholder baseline to pin leak rate empirically
+- Sub D submission (tomorrow): full answer sheet, 943 real answers — measures overall pseudo-gold accuracy
+- Sub F submission (tomorrow): R3+R4+U items only with consensus answers — isolates middle/low-confidence tier accuracy
+- run14b CSV submission to Kaggle — when inference completes. MUST verify fix_submission_format.py preserves raw `\boxed{}` content per LOCKED rule.
+- Ticket 5 (build_correctness_labels.py) — apply PRIORITY label to wrong items, using post-normalizer-fix tiers
+- Ticket 6 (select_traces_for_sft.py) — produce SFT v3 training file
+- Thunder Compute instance restore from snapshot `rain-thunder` (when SFT v3 dataset ready)
+- SFT v3 training on Thunder — gated on Ticket 6 delivery
+- Conditional GRPO Phase 2 — gated on SFT v3 Kaggle score <0.65 and clean pseudo-gold
 
 ### Tier 2 (after Tier 1 ships)
 
+- Restore Thunder Compute from `rain-thunder` snapshot (when SFT v3 dataset ready)
 - Write THUNDER.md setup checklist in Competition repo
-- Generate requirements.txt (Thunder reproducibility)
-- Update experiments.md with run14b entry + Kaggle score
-- DataApp HOUSEKEEPING.md execution (post-Ticket 7) — including rotating exposed GitHub PAT
-- Order audit on run14b output (post-DataApp consensus)
-- Decide on training/, report/, archive_v1_postmortem/ directories in Competition repo (currently local-only)
+- Update experiments.md with run14b entry + Kaggle score + diagnostic findings
+- DataApp HOUSEKEEPING.md execution (rotate exposed PAT, archive Phase 1 docs)
+- Fix nested-brace regex in cross_submission_analysis.py
+- Verify Sub A wrong-teacher path failures (117 synthetic count audit)
+- Decide U-tier SFT label (currently DEFAULT, consider EXCLUDE for v3 conservative)
+- Order audit on run14b multi-answer outputs
+- Decide on local-only Competition repo directories: training/, report/, archive_v1_postmortem/ (commit or delete)
+- Add 1-line stale-flag note at top of DESIGN.md: "Sections 1-3 are historical; eval methodology §1209-1262 carries forward"
 
 ---
 
 ## 5. RECENT MAJOR EVENTS (LONGITUDINAL CONTEXT)
+
+### 2026-05-21 (evening) — Confidence tier system + diagnostic Kaggle submissions
+
+- Built 4-teacher consensus computation, confidence tier classification (R1-W3+U), answer sheet v1
+- Initial tier distribution had 112 FORMAT_FIX items from over-strict normalization
+- Fixed normalize_for_comparison in DataApp src/extraction.py — whitespace around commas, internal whitespace collapse, uppercase, trailing period strip
+- Reran tier classification: R1: 226→294 (+68), R2: 50→100 (+50), R3: 73→111 (+38), W3: 141→68 (−73), U: 210→163 (−47), FORMAT_FIX: 112→0
+- Submitted 3 diagnostic CSVs to Kaggle today:
+  - Sub C (W-tier consensus): 0.222 → consensus accuracy on W-tier ≈ 42%
+  - Sub A (R1+R2 consensus): 0.505 → R1+R2 accuracy ≈ 100%
+  - Sub B (W-tier SC=8): 0.151 → SC=8 accuracy on W-tier ≈ 15%
+- Discovered wrong-trace leak ≈ 15% (dissenting teachers sometimes have correct answer per Kaggle)
+- Leak-free delta Sub C − Sub B = +26.4% teacher advantage on W-tier
+- Cross-submission analysis script built; tomorrow's CSVs (D/E/F) prepped with guaranteed-wrong placeholders instead of teacher traces
+
+### 2026-05-21 (afternoon) — DataApp Phase 4 complete + Thunder Compute setup
+
+- DataApp xhigh coverage now 943/943. Phase 4 batch resolved 273/275; final 2 items (0041, 0836) via OpenAI Responses API background mode
+- item_0041: 87,147 output tokens (86,485 reasoning), 33 minutes wallclock — answer 3542 (disagrees with 3-teacher consensus 4048)
+- item_0836: 56,321 output tokens, 22 minutes — answer 2025 (matches consensus)
+- Thunder Compute fully set up on Rain's laptop: instance ID 0, A100-SXM4-80GB, snapshot `rain-thunder` created and instance deleted to stop billing. Full ML stack installed (torch 2.11.0+cu130, transformers 5.9.0, unsloth 2026.5.5, vllm 0.20.2). CLAUDE_THUNDER.md committed to Competition repo.
+- Four-agent setup formalized with claude_thunder added
 
 ### 2026-05-21 — Tier 1 repo hygiene + handoff doc refresh
 
@@ -193,6 +226,9 @@ If they conflict on a behavioral rule, CLAUDE_STRATEGY.md wins. If they conflict
 | probe_b_reversed | 2026-05-13 | 0.438 | order-reversal probe, −17.6pp |
 | Run 10 v3-perslot | 2026-05-04 | 0.424 | per-slot format penalty |
 | Experiment A | 2026-05-05 | 0.420 | per-slot format penalty |
+| diagnostic_sub_c.csv | 2026-05-21 | 0.222 | W-tier consensus answers, rest wrong teacher traces. 254 real answers. |
+| diagnostic_sub_a.csv | 2026-05-21 | 0.505 | R1+R2 consensus answers (394 items) + wrong traces. R1+R2 accuracy ≈ 100%. |
+| diagnostic_sub_b.csv (named post_filtered_b in Kaggle) | 2026-05-21 | 0.151 | W-tier SC=8 answers, rest wrong teacher traces. |
 
 ---
 
@@ -238,16 +274,25 @@ If they conflict on a behavioral rule, CLAUDE_STRATEGY.md wins. If they conflict
 - scripts/build_correctness_labels.py — Ticket 5 (PRIORITY label fix in 314caac)
 - scripts/select_traces_for_sft.py — Ticket 6 (consensus-match verification in bca3194)
 - scripts/check_spend.py — Admin API ground truth
+- scripts/build_diagnostic_submissions.py — confidence tier + diagnostic CSV builder
+- scripts/cross_submission_analysis.py — local cross-submission analysis (has known nested-brace regex bug, see Tier 2)
 - dataapp_outputs/dataset_manifest.jsonl — 943-item consensus manifest
 - dataapp_outputs/gpt55_full/item_NNNN_gpt5_5_response.md — xhigh teacher responses
 - dataapp_outputs/phase_lists/ — persisted Phase 1-4 item IDs
+- dataapp_outputs/confidence_tiers.jsonl — per-item tier classification (R1-W3, U)
+- dataapp_outputs/answer_sheet_v1.jsonl — best answer per item with tier + SFT label
+- dataapp_outputs/consensus_4teacher.jsonl — 4-teacher consensus per item
+- dataapp_outputs/diagnostic_sub_a.csv, diagnostic_sub_b.csv, diagnostic_sub_c.csv — today's submissions
+- dataapp_outputs/diagnostic_sub_a_manifest.jsonl, sub_b_manifest, sub_c_manifest — per-item answer source tracking
+- dataapp_outputs/sub_d_full_answer_sheet.csv, sub_e_all_placeholder.csv, sub_f_r3r4u_only.csv — tomorrow's submissions (ready)
+- dataapp_outputs/cross_sub_matrix.jsonl, cross_sub_analysis_report.md — leak-rate analysis
 - HOUSEKEEPING.md — deferred repo cleanup plan (rotate exposed PAT, archive Phase 1 docs)
 
 ### Outside both repos
 
 - **DSMLP login:** dvaneetv@dsmlp-login.ucsd.edu
 - **DSMLP pod tunnel name:** raindonovan
-- **Thunder Compute:** setup on Rain's laptop (NOT DSMLP), tnr CLI + VS Code extension. H100 PCIe workhorse.
+- **Thunder Compute snapshot:** `rain-thunder` (dormant, restorable when SFT v3 dataset ready). Instance deleted to stop billing. ~$5 of $70 balance used during setup.
 - **OpenAI Admin API endpoint:** queried via scripts/check_spend.py in DataApp repo
 - **Kaggle competition:** CSE 151B SP26 (3 submissions/day, not a scarce resource)
 
@@ -307,20 +352,26 @@ This carries between sessions. Update on each handoff revision.
 
 ### Immediate (next session pickup)
 
-- Phase 4 cancel + audit + sync retry for ~2 missing xhigh items (if not already done)
-- 4-teacher consensus recompute on all 943 items (after Phase 4 collects)
-- Execute retry_missing_gpt_oss.py for 5-item backfill (~$0.25)
-- Run Ticket 5 (build_correctness_labels.py) — verify PRIORITY label fix works
+- Submit Sub E (all-placeholder) when Kaggle window resets
+- Submit Sub D (full answer sheet) — primary measurement of pseudo-gold accuracy
+- Submit Sub F (R3+R4+U items)
+- Verify run14b completes (887/943 at last check, ~56 remaining)
+- Build run14b submission CSV with PRESERVATION of raw \boxed{} content (LOCKED rule)
+- Submit run14b CSV to Kaggle
+- Update answer sheet v1 with empirical Kaggle accuracy per tier
+- Run Ticket 5 (build_correctness_labels.py) with post-normalizer-fix tiers
 - Run Ticket 6 (select_traces_for_sft.py) — produce SFT v3 dataset
-- Submit run14b CSV to Kaggle (when inference completes)
 
 ### Tier 2 (after Tier 1 ships)
 
+- Restore Thunder Compute from `rain-thunder` snapshot (when SFT v3 dataset ready)
 - Write THUNDER.md setup checklist in Competition repo
-- Generate requirements.txt (Thunder reproducibility)
-- Update experiments.md with run14b entry + Kaggle score
+- Update experiments.md with run14b entry + Kaggle score + diagnostic findings
 - DataApp HOUSEKEEPING.md execution (rotate exposed PAT, archive Phase 1 docs)
-- Order audit on run14b multi-answer outputs (compare to consensus order)
+- Fix nested-brace regex in cross_submission_analysis.py
+- Verify Sub A wrong-teacher path failures (117 synthetic count audit)
+- Decide U-tier SFT label (currently DEFAULT, consider EXCLUDE for v3 conservative)
+- Order audit on run14b multi-answer outputs
 - Decide on local-only Competition repo directories: training/, report/, archive_v1_postmortem/ (commit or delete)
 - Add 1-line stale-flag note at top of DESIGN.md: "Sections 1-3 are historical; eval methodology §1209-1262 carries forward"
 
@@ -354,9 +405,10 @@ When updating: bump the version number at the top, update the "Last updated" dat
 
 ## 10. VERSION NOTES
 
+- **v2.1 (2026-05-21 evening):** Four-agent setup (claude_thunder added). Confidence tier system locked. 3 diagnostic Kaggle submissions complete. Normalizer fix landed in DataApp. PRE-SUBMISSION format preservation rule locked. Tomorrow's 3 CSVs (D/E/F) prepped with guaranteed-wrong placeholders. Wrong-trace leak ~15% measured empirically. R1+R2 consensus measured at ~100% accuracy.
 - **v2.0 (2026-05-21):** Three-agent setup (added claude_dataApp). Thunder Compute setup pattern locked. Phase 1-4 batch retry pipeline complete. CLAUDE_STRATEGY.md exists as separate doc. 11-day deadline marker. Boot sequence formalized with Chrome MCP + conversation_search guidance.
 - **v1 (2026-05-19):** Two-agent setup (claude_strategy + claude_dataApp). End of consolidated maintenance day. GPT-5.5-xhigh batch retry pending decision.
 
 ---
 
-**End of HANDOFF.md v2.0. If anything in here is wrong, surface it to Rain and don't act on the wrong assumption.**
+**End of HANDOFF.md v2.1. If anything in here is wrong, surface it to Rain and don't act on the wrong assumption.**
