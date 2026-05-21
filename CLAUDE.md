@@ -12,19 +12,22 @@ All work lives in `/home/dvaneetv/private/151B_SP26_Competition` (DSMLP). Always
 
 ---
 
-## Three-Agent Setup
+## Four-Agent Setup
 
-This project has THREE Claude agents. Know which you are and what the others do.
+This project has FOUR Claude agents. Know which you are and what the others do.
 
 - **claude_strategy** (Claude.ai web/desktop chat): planning, strategy, audit. Has **Chrome MCP** — can read both repos (Competition + DataApp) directly from GitHub. Limited filesystem via /mnt/skills.
 - **claude_vscode** (you, inside VS Code on DSMLP via raindonovan tunnel): execution agent for the Competition repo. Auto-loads this CLAUDE.md.
 - **claude_dataApp** (separate VS Code window on DSMLP): execution agent for the DataApp repo. Auto-loads DataApp/CLAUDE.md. Produces the SFT v3 dataset.
+- **claude_thunder** (separate VS Code window on Rain's laptop, Thunder Compute): SFT v3 training + checkpoint merge. Auto-loads CLAUDE_THUNDER.md. Produces merged BF16 checkpoint for final inference.
 
 ### Handoff rules
 
-- When writing a prompt for Rain to paste into claude_strategy, prefix with `[FROM CLAUDE_VS_CODE]`.
-- When claude_strategy drafts tasks for you, they arrive as a single code block via Rain. No preamble needed.
-- claude_vscode and claude_dataApp do NOT talk to each other. All cross-agent coordination goes through Rain + claude_strategy.
+- When writing a prompt for Rain to paste into claude_strategy, prefix with `[FROM CLAUDE_VSCODE]`.
+- When writing a prompt for Rain to paste into claude_thunder, prefix with `[FROM CLAUDE_VSCODE]`.
+- When claude_strategy or claude_thunder drafts tasks for you, they arrive as a single code block via Rain. No preamble needed.
+- claude_vscode, claude_dataApp, and claude_thunder do NOT talk to each other. All cross-agent coordination goes through Rain + claude_strategy.
+- claude_thunder reports with prefix `[FROM CLAUDE_THUNDER]`.
 
 ### What claude_strategy can verify via Chrome MCP
 
