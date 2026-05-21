@@ -43,3 +43,6 @@ wandb/
 *.fls
 *.toc
 milestone_report.log
+
+# Tunnel binaries (regenerable)
+vscode_cli.tar.gz
