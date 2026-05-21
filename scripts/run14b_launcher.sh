@@ -15,7 +15,8 @@ source scripts/gpu_cleanup.sh
 LINES=$(wc -l < "$OUTPUT" 2>/dev/null || echo 0)
 echo "[$(date -u +%Y-%m-%dT%H:%M:%SZ)] run14b launcher started. ($LINES/$EXPECTED lines already done)."
 
-check_gpu_ready 18
+kill_stale_enginecore
+check_cuda_lib
 
 echo "[$(date -u +%Y-%m-%dT%H:%M:%SZ)] Starting run14b."
 
