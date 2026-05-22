@@ -1,5 +1,10 @@
 # Design Notes
 
+> **Status note (2026-05-21):** Most of this document is historical design
+> work from Phase 1-3. The eval methodology in §1209-1262 (multi-signal eval,
+> pre-flight gates, no-box rate as Tier 1 metric) carries forward to SFT v3.
+> See PLAN.md for the current plan.
+
 ## 1. Prompt Engineering
 
 ### 1.1 Goal
