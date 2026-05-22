@@ -1,5 +1,5 @@
 # SFT v3 Training Config — Qwen3-4B-Thinking-2507
-# Dataset: 452 items (374 R1/R2 + 16 W1 + 62 W2), 530 effective samples
+# Dataset: 493 items, 594 effective samples (with weights)
 
 model_name_or_path: Qwen/Qwen3-4B-Thinking-2507
 output_dir: /mnt/user-data/outputs/sft_v3_checkpoints
@@ -41,10 +41,25 @@ eval_strategy: no
 dataloader_num_workers: 4
 remove_unused_columns: false
 
-# Notes
-# - Effective samples per epoch: 530 (with weights: 374×1 + 16×2 + 62×2)
-# - Total samples across 8 epochs: 4240
-# - Batch updates per epoch: ceil(530 / (2 × 8)) ≈ 33 updates/epoch
-# - Trace lengths: min=5, median=117, max=937 tokens (mean 157)
-# - No-box rate: 0%
-# - Base model: Qwen3-4B-Thinking-2507 (final + training variant)
+# Dataset composition
+# R1/R2: 392 items (weight 1) = 392 samples
+# W1: 24 items (weight 2) = 48 samples
+# W2: 77 items (weight 2) = 154 samples
+# Total: 594 effective samples per epoch × 8 epochs = 4752 samples
+
+# Teacher distribution
+# Sonnet: 366 items (74.2%)
+# GPT-5.4: 104 items (21.1%)
+# GPT-OSS: 23 items (4.7%)
+
+# Trace statistics
+# Length: min=5, median=110, max=937 tokens (mean=151)
+# Format: 100% have \boxed{} answers
+# Skipped: 11 items (no matching teacher answer vs consensus)
+
+# Batch updates per epoch
+# Total samples: 594
+# Batch size: 2 (per device)
+# Gradient accumulation: 8
+# Effective batch: 2 × 8 = 16
+# Updates/epoch: ceil(594 / 16) ≈ 38
