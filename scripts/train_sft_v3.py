@@ -145,7 +145,7 @@ def main():
     print(f"Learning rate: {TRAINING_CONFIG['learning_rate']}")
     print(f"Warmup ratio: {TRAINING_CONFIG['warmup_ratio']}")
     print(f"Weight decay: {TRAINING_CONFIG['weight_decay']}")
-    print(f"Max sequence length: {TRAINING_CONFIG['max_seq_length']}")
+    print(f"Max sequence length: 4096")
 
     # CRITICAL: Use DataCollatorForCompletionOnlyLM for assistant-only loss
     # This ensures we only compute loss on the assistant's response, not the system/user messages
