@@ -1,8 +1,8 @@
 # HANDOFF — claude_strategy session continuity
 
-**Version:** 2.1  
-**Last updated:** 2026-05-21 (evening)  
-**Supersedes:** HANDOFF.md v2.0 (2026-05-21 morning, three-agent setup)  
+**Version:** 2.2  
+**Last updated:** 2026-05-22 (early morning)  
+**Supersedes:** HANDOFF.md v2.1 (2026-05-21 evening, confidence tiers + diagnostic subs)  
 **Owner:** Rain (dvaneetv@ucsd.edu)  
 **Project:** CSE 151B (UCSD) Kaggle math reasoning competition
 
@@ -108,13 +108,26 @@ If they conflict on a behavioral rule, CLAUDE_STRATEGY.md wins. If they conflict
 
 ### What's running
 
-- **run14b inference on DSMLP** (claude_vscode managing): 887/943 complete (~94%), final ~56 items in progress on fresh A30 pod. GPU memory orphan issue resolved via pod cycle. ETA ~25 minutes from completion at current rate. CSV submission to Kaggle pending completion.
+- **run14b inference on DSMLP** (claude_vscode managing): 911/943 complete (~96.6%), final ~32 items in progress. GPU 19% utilization, 21.2/24.6 GiB memory. No orphaned memory or hung state. ETA ~midnight Rain's local time. CSV submission pending completion + format preservation verification.
 - **DataApp xhigh teacher coverage: 943/943 COMPLETE.** Phase 4 batch + Responses API background mode resolved last 2 stubborn items (item_0041 = 3542, item_0836 = 2025). Full 4-teacher dataset locked.
 
 ### What's locked (DECISIONS, don't relitigate)
 
 - **4-teacher consensus** = Sonnet + GPT-5.4 + GPT-OSS + GPT-5.5-xhigh. GPT-5.5-xhigh added via Batch API across Phases 1-4 (Phase 4 ~99% coverage). The ~1% gap relies on 3-teacher consensus only.
 - **SFT v3 strategy:** train on right AND wrong items, upweight wrong 3x via PRIORITY label. Filter all-teacher-disagree as noise. Trace source preference: Sonnet > GPT-5.4 > GPT-OSS. xhigh traces NOT used for student training (too verbose for 4B student).
+- **SFT v3 config LOCKED (2026-05-21 evening, 4-source research synthesis):**
+  - **Epochs:** 8 (save checkpoint every 2). Evaluate at epoch 4, 6, 8 — NOT 1-2.
+  - **LoRA rank:** r=64, alpha=128 (2×r standard)
+  - **Weight decay:** 0 (transductive setting — regularization counterproductive)
+  - **Target modules:** All linear (q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj)
+  - **Learning rate:** 2e-4 (LoRA) with cosine schedule
+  - **Traces per item:** 1 (shortest correct teacher trace, Sonnet > GPT-5.4 > GPT-OSS)
+  - **Easy items:** Include at 1× with teacher traces (format consistency anchor)
+  - **Split-SC weight:** 2× SECONDARY_PRIORITY
+  - **Wrong items weight:** 3× PRIORITY
+  - **Evidence base:** Fast-Math-R1 (arXiv 2507.08267, AIMO-2 8th/2,212): "extending SFT for 10 epochs is crucial for performance breakthroughs" + "a single epoch leads to a sharp drop in accuracy" (valley at epoch 1-2 is EXPECTED, don't abort). LIMO (800 samples, 15 epochs, 57.1% AIME). NemoSkills 1st place (single shortest-correct trace). Cross-LLM synthesis unanimous on aggressive overfitting + single-trace strategy.
+  - **Smoke test before full run:** 1-item, 1-epoch pipeline verification ONLY. Don't evaluate accuracy at early epochs.
+  - **Pre-flight gate:** no-box rate >10% at any checkpoint → investigate (format collapse distinct from accuracy valley).
 - **SFT v3 base:** Qwen/Qwen3-4B-Thinking-2507 itself (not derived checkpoints).
 - **SFT v3 compute:** Thunder Compute H100 PCIe. DSMLP is inference-only. Never chain DSMLP → Thunder.
 - **DataApp prompt strategy:** 16k max_tokens (NOT 32k), unified base + type-specific suffixes, concise teachers transfer better to 4B student (LIMO/LiteCoT/BRIDGE/ShorterBetter evidence).
@@ -156,6 +169,16 @@ If they conflict on a behavioral rule, CLAUDE_STRATEGY.md wins. If they conflict
 ---
 
 ## 5. RECENT MAJOR EVENTS (LONGITUDINAL CONTEXT)
+
+### 2026-05-21 (late evening) — SFT v3 research synthesis complete
+
+- Sent research prompt to 3 external LLMs + synthesized with own research across 5 critical training questions
+- **UNANIMOUS findings:** (1) Don't train on Qwen's own correct traces — use teacher traces. (2) Split-SC items get teacher traces, not Qwen samples. (3) Aggressive overfitting works for transductive setting.
+- **STRONGEST PRECEDENT:** Fast-Math-R1 (arXiv 2507.08267, AIMO-2 8th place of 2,212 teams): single shortest-correct trace per problem, 10 epochs crucial, accuracy valley at epoch 1-2 is EXPECTED (don't evaluate early).
+- **KEY DISAGREEMENT RESOLVED:** Q2 multi-trace vs single-trace. 3 of 4 sources (including Fast-Math-R1 competition precedent) → single trace per item for 943-item dataset with 4B model. Multi-trace helps only at 1000+ problems or for wrong items specifically (marked as SFT v4 experiment).
+- **LOCKED CONFIG:** 8 epochs (not 1-2 conservative), r=64, alpha=128, wd=0, all linear modules, 2e-4 LR, single trace per item (shortest correct teacher).
+- **BIGGEST MISTAKE CORRECTED:** Conservative 1-2 epoch first-run plan would evaluate during accuracy valley and falsely conclude training failed. Epoch count is critical — breakthrough comes at 8-10.
+- run14b updated: 890→894→901→904→911/943 (GPU 19-35%, slow items, not stuck)
 
 ### 2026-05-21 (evening) — Confidence tier system + diagnostic Kaggle submissions
 
@@ -359,8 +382,8 @@ This carries between sessions. Update on each handoff revision.
 - Build run14b submission CSV with PRESERVATION of raw \boxed{} content (LOCKED rule)
 - Submit run14b CSV to Kaggle
 - Update answer sheet v1 with empirical Kaggle accuracy per tier
-- Run Ticket 5 (build_correctness_labels.py) with post-normalizer-fix tiers
-- Run Ticket 6 (select_traces_for_sft.py) — produce SFT v3 dataset
+- Run Ticket 5 (build_correctness_labels.py) with post-normalizer-fix tiers + SFT v3 locked weighting
+- Run Ticket 6 (select_traces_for_sft.py) — produce SFT v3 dataset using LOCKED single-trace
 
 ### Tier 2 (after Tier 1 ships)
 
@@ -405,6 +428,7 @@ When updating: bump the version number at the top, update the "Last updated" dat
 
 ## 10. VERSION NOTES
 
+- **v2.2 (2026-05-22 early morning):** SFT v3 training config LOCKED after 4-source research synthesis (unanimous on single-trace, 8 epochs, r=64, aggressive overfitting). run14b progressed 904→911/943, final 32 items. Doc refresh complete (README, experiments.md, DESIGN.md). Tickets 5/6 marked with LOCKED constraints.
 - **v2.1 (2026-05-21 evening):** Four-agent setup (claude_thunder added). Confidence tier system locked. 3 diagnostic Kaggle submissions complete. Normalizer fix landed in DataApp. PRE-SUBMISSION format preservation rule locked. Tomorrow's 3 CSVs (D/E/F) prepped with guaranteed-wrong placeholders. Wrong-trace leak ~15% measured empirically. R1+R2 consensus measured at ~100% accuracy.
 - **v2.0 (2026-05-21):** Three-agent setup (added claude_dataApp). Thunder Compute setup pattern locked. Phase 1-4 batch retry pipeline complete. CLAUDE_STRATEGY.md exists as separate doc. 11-day deadline marker. Boot sequence formalized with Chrome MCP + conversation_search guidance.
 - **v1 (2026-05-19):** Two-agent setup (claude_strategy + claude_dataApp). End of consolidated maintenance day. GPT-5.5-xhigh batch retry pending decision.
