@@ -14,6 +14,7 @@ unsloth_compiled_cache/
 # Training artifacts (large)
 training/checkpoints/
 training/**/checkpoints/
+checkpoints/
 
 # Generated SFT data (regenerable via training/prepare_*.py)
 data/sft/

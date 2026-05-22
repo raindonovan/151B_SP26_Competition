@@ -6,15 +6,58 @@ Qwen3-4B-Thinking adapter on 943-item competition dataset
 
 import os
 import json
+from dataclasses import dataclass
+from typing import Any
 from datasets import Dataset
 from transformers import (
     AutoModelForCausalLM,
     AutoTokenizer,
-    TrainingArguments,
 )
-from trl import SFTTrainer, DataCollatorForCompletionOnlyLM
+from trl import SFTTrainer, SFTConfig
 from peft import LoraConfig, get_peft_model
 import torch
+
+
+@dataclass
+class AssistantOnlyCollator:
+    """Replaces DataCollatorForCompletionOnlyLM (removed in trl 0.24.0).
+    Masks loss on all tokens before and including the assistant response template."""
+    tokenizer: Any
+    response_template: str = "<|im_start|>assistant"
+
+    def __post_init__(self):
+        self.template_ids = self.tokenizer.encode(
+            self.response_template, add_special_tokens=False
+        )
+
+    def __call__(self, features):
+        # trl 0.24.0 SFTTrainer may not include attention_mask in features
+        has_attn_mask = "attention_mask" in features[0]
+        pad_input = {"input_ids": [f["input_ids"] for f in features]}
+        if has_attn_mask:
+            pad_input["attention_mask"] = [f["attention_mask"] for f in features]
+
+        padded = self.tokenizer.pad(pad_input, return_tensors="pt", padding=True)
+
+        if "attention_mask" not in padded:
+            padded["attention_mask"] = (padded["input_ids"] != self.tokenizer.pad_token_id).long()
+        labels = padded["input_ids"].clone()
+        tlen = len(self.template_ids)
+
+        for i in range(labels.shape[0]):
+            ids = padded["input_ids"][i].tolist()
+            last_pos = -1
+            for j in range(len(ids) - tlen + 1):
+                if ids[j : j + tlen] == self.template_ids:
+                    last_pos = j
+            if last_pos == -1:
+                labels[i] = torch.full_like(labels[i], -100)
+            else:
+                labels[i, : last_pos + tlen] = -100
+            labels[i][padded["input_ids"][i] == self.tokenizer.pad_token_id] = -100
+
+        padded["labels"] = labels
+        return padded
 
 # ============================================================================
 # LOCKED PARAMETERS - DO NOT MODIFY WITHOUT RESEARCH JUSTIFICATION
@@ -131,9 +174,11 @@ def main():
     # Load model
     model, tokenizer = load_model_and_tokenizer()
 
-    # Training arguments
-    training_args = TrainingArguments(
+    # Training arguments (SFTConfig replaces TrainingArguments in trl 0.24.0)
+    training_args = SFTConfig(
         output_dir=OUTPUT_DIR,
+        max_length=4096,
+        packing=False,          # CRITICAL: packing breaks <think> attention spans
         **TRAINING_CONFIG,
     )
 
@@ -147,30 +192,19 @@ def main():
     print(f"Weight decay: {TRAINING_CONFIG['weight_decay']}")
     print(f"Max sequence length: 4096")
 
-    # CRITICAL: Use DataCollatorForCompletionOnlyLM for assistant-only loss
-    # This ensures we only compute loss on the assistant's response, not the system/user messages
-    response_template = "<|im_start|>assistant"
-    collator = DataCollatorForCompletionOnlyLM(
-        response_template=response_template,
-        tokenizer=tokenizer,
-    )
-
+    collator = AssistantOnlyCollator(tokenizer=tokenizer)
     print(f"\n=== Loss Configuration ===")
-    print(f"Using DataCollatorForCompletionOnlyLM")
-    print(f"Response template: {response_template}")
-    print(f"Only assistant tokens will contribute to loss")
+    print(f"Using AssistantOnlyCollator (response_template: '{collator.response_template}')")
+    print(f"Template token IDs: {collator.template_ids}")
+    print(f"Loss computed on assistant tokens only")
 
     # Initialize trainer
-    # SFTTrainer auto-detects the "messages" column and applies the tokenizer's
-    # chat template natively — no formatting_func needed.
     trainer = SFTTrainer(
         model=model,
         args=training_args,
         train_dataset=dataset,
-        tokenizer=tokenizer,
+        processing_class=tokenizer,
         data_collator=collator,
-        max_seq_length=4096,
-        packing=False,  # CRITICAL: Do not pack sequences (breaks <think> attention)
     )
 
     print(f"\n=== Starting Training ===")

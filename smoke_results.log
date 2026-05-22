@@ -1,0 +1,491 @@
+=== EPOCH 1: checkpoint-38 ===
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+================================================================================
+SFT v3 Smoke Test
+================================================================================
+Loading checkpoint: ./checkpoints/sft_v3/checkpoint-38
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   0%|          | 1/398 [00:01<11:09,  1.69s/it]Loading weights:   1%|          | 3/398 [00:04<08:52,  1.35s/it]Loading weights:   1%|          | 4/398 [00:04<06:44,  1.03s/it]Loading weights:  45%|████▌     | 181/398 [00:04<00:02, 82.10it/s]Loading weights:  63%|██████▎   | 249/398 [00:05<00:02, 67.77it/s]Loading weights:  74%|███████▍  | 295/398 [00:06<00:01, 61.50it/s]Loading weights:  82%|████████▏ | 327/398 [00:07<00:01, 60.73it/s]Loading weights:  88%|████████▊ | 351/398 [00:07<00:00, 60.37it/s]Loading weights:  93%|█████████▎| 369/398 [00:08<00:00, 57.16it/s]Loading weights:  96%|█████████▌| 383/398 [00:08<00:00, 57.69it/s]Loading weights:  99%|█████████▉| 395/398 [00:08<00:00, 58.25it/s]Loading weights: 100%|██████████| 398/398 [00:08<00:00, 45.31it/s]
+
+Testing on 10 random items
+
+[1/10] Item 0185 (R1/R2)
+  ✅ PASS
+  - </think> present: True
+  - \boxed{} present: True
+  - </think> before \boxed: True
+  - No repetition: True
+  - Reasonable length: True (909 chars)
+  Response: 1. On $[-\pi/2,\pi/2]$, $\sin(x)$ is continuous and attains its maximum value of $1$ at $x=\pi/2$. So **T**.
+
+2. On $(-\pi/2,\pi/2)$, $\sin(x)$ is continuous and approaches $1$ as $x\to(\pi/2)^-$, but...
+
+[2/10] Item 0040 (W2)
+  ❌ FAIL
+  - </think> present: True
+  - \boxed{} present: True
+  - </think> before \boxed: True
+  - No repetition: True
+  - Reasonable length: False (41 chars)
+  Response: D = 800 - 50d
+</think>
+
+\boxed{D=800-50d}
+
+[3/10] Item 0433 (R1/R2)
+  ✅ PASS
+  - </think> present: True
+  - \boxed{} present: True
+  - </think> before \boxed: True
+  - No repetition: True
+  - Reasonable length: True (488 chars)
+  Response: We need to express cos 3θ in terms of sin θ and cos θ.
+
+Use the triple-angle formula:
+cos 3θ = 4cos³θ - 3cos θ
+
+This is already in terms of cos θ only. However, the problem says "in terms of sin θ and...
+
+[4/10] Item 0385 (R1/R2)
+  ✅ PASS
+  - </think> present: True
+  - \boxed{} present: True
+  - </think> before \boxed: True
+  - No repetition: True
+  - Reasonable length: True (709 chars)
+  Response: (a) Stratified random sampling: divided into strata (men and women), then SRS within each stratum. → A
+
+(b) Same as (a): divided into strata (males and females), SRS within each stratum. → A
+
+(c) The ...
+
+[5/10] Item 0352 (R1/R2)
+  ❌ FAIL
+  - </think> present: True
+  - \boxed{} present: True
+  - </think> before \boxed: True
+  - No repetition: True
+  - Reasonable length: False (100 chars)
+  Response: The distance between two numbers on the number line is |401 - 333| = |68| = 68.
+</think>
+
+\boxed{68}
+
+[6/10] Item 0219 (R1/R2)
+  ✅ PASS
+  - </think> present: True
+  - \boxed{} present: True
+  - </think> before \boxed: True
+  - No repetition: True
+  - Reasonable length: True (291 chars)
+  Response: Let the slower cyclist's speed be \(r\) mi/h. Then the faster cyclist's speed is \(3r\) mi/h.
+
+Together they close the gap at \(r+3r=4r\) mi/h.
+
+At 3 hours, they meet:
+\[
+4r \cdot 3 = 108
+\]
+\[
+12r = ...
+
+[7/10] Item 0171 (W2)
+  ❌ FAIL
+  - </think> present: True
+  - \boxed{} present: True
+  - </think> before \boxed: True
+  - No repetition: True
+  - Reasonable length: False (100 chars)
+  Response: The region is a rectangle with width 7-3=4 and height 7-2=5.
+
+Area = 4 × 5 = 20
+</think>
+
+\boxed{20}
+
+[8/10] Item 0890 (R1/R2)
+  ✅ PASS
+  - </think> present: True
+  - \boxed{} present: True
+  - </think> before \boxed: True
+  - No repetition: True
+  - Reasonable length: True (549 chars)
+  Response: We need to answer 4 questions about the study design.
+
+**(a)** The study investigator assigned different amounts of exposure to advertisements (30-second vs. 90-second ads, shown 1, 3, or 5 times). Th...
+
+[9/10] Item 0142 (R1/R2)
+  ❌ FAIL
+  - </think> present: True
+  - \boxed{} present: True
+  - </think> before \boxed: True
+  - No repetition: True
+  - Reasonable length: False (87 chars)
+  Response: The natural numbers between 6 and 12 are 7, 8, 9, 10, 11.
+</think>
+
+\boxed{7,8,9,10,11}
+
+[10/10] Item 0698 (R1/R2)
+  ✅ PASS
+  - </think> present: True
+  - \boxed{} present: True
+  - </think> before \boxed: True
+  - No repetition: True
+  - Reasonable length: True (174 chars)
+  Response: We need to calculate 7.6 × (-6.7).
+
+We know 76 × 67 = 5092.
+
+7.6 × 6.7 = 76 × 67 × (1/10) × (1/10) = 5092 × (1/100) = 50.92
+
+So 7.6 × (-6.7) = -50.92
+</think>
+
+\boxed{-50.92}
+
+================================================================================
+SUMMARY
+================================================================================
+No-box rate: 0.0% (0/10)
+Missing </think>: 0.0% (0/10)
+Wrong order: 0/10
+Degenerate outputs: 0/10
+
+GATES:
+✅ PASS: No-box rate 0.0% < 10% threshold
+✅ PASS: Missing </think> rate 0.0% < 10%
+
+Detailed results saved to: ./checkpoints/sft_v3/checkpoint-38_smoke_test.json
+=== EPOCH 4: checkpoint-152 ===
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+================================================================================
+SFT v3 Smoke Test
+================================================================================
+Loading checkpoint: ./checkpoints/sft_v3/checkpoint-152
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   0%|          | 1/398 [00:01<07:46,  1.17s/it]Loading weights:   1%|          | 2/398 [00:03<12:28,  1.89s/it]Loading weights:   1%|          | 3/398 [00:03<07:58,  1.21s/it]Loading weights:  24%|██▍       | 97/398 [00:04<00:06, 48.52it/s]Loading weights:  33%|███▎      | 131/398 [00:04<00:05, 48.87it/s]Loading weights:  39%|███▉      | 155/398 [00:05<00:04, 49.88it/s]Loading weights:  43%|████▎     | 173/398 [00:05<00:04, 48.55it/s]Loading weights:  47%|████▋     | 186/398 [00:05<00:04, 50.04it/s]Loading weights:  49%|████▉     | 197/398 [00:06<00:04, 49.54it/s]Loading weights:  52%|█████▏    | 206/398 [00:06<00:04, 47.51it/s]Loading weights:  54%|█████▍    | 214/398 [00:06<00:04, 45.55it/s]Loading weights:  56%|█████▌    | 223/398 [00:06<00:03, 46.38it/s]Loading weights:  59%|█████▉    | 234/398 [00:06<00:03, 46.79it/s]Loading weights:  62%|██████▏   | 245/398 [00:07<00:03, 43.71it/s]Loading weights:  64%|██████▍   | 256/398 [00:07<00:02, 48.04it/s]Loading weights:  67%|██████▋   | 267/398 [00:07<00:02, 49.03it/s]Loading weights:  70%|██████▉   | 278/398 [00:07<00:02, 49.58it/s]Loading weights:  73%|███████▎  | 289/398 [00:08<00:02, 49.42it/s]Loading weights:  75%|███████▍  | 297/398 [00:08<00:01, 54.10it/s]Loading weights:  76%|███████▌  | 303/398 [00:08<00:01, 48.39it/s]Loading weights:  78%|███████▊  | 311/398 [00:08<00:01, 49.97it/s]Loading weights:  81%|████████  | 322/398 [00:08<00:01, 51.42it/s]Loading weights:  82%|████████▏ | 328/398 [00:08<00:01, 48.71it/s]Loading weights:  84%|████████▍ | 334/398 [00:08<00:01, 48.67it/s]Loading weights:  86%|████████▋ | 344/398 [00:09<00:01, 50.20it/s]Loading weights:  88%|████████▊ | 352/398 [00:09<00:00, 53.00it/s]Loading weights:  90%|████████▉ | 358/398 [00:09<00:00, 54.42it/s]Loading weights:  92%|█████████▏| 366/398 [00:09<00:00, 47.14it/s]Loading weights:  95%|█████████▍| 377/398 [00:09<00:00, 50.83it/s]Loading weights:  97%|█████████▋| 388/398 [00:10<00:00, 40.63it/s]Loading weights: 100%|██████████| 398/398 [00:10<00:00, 38.87it/s]
+
+Testing on 10 random items
+
+[1/10] Item 0185 (R1/R2)
+  ✅ PASS
+  - </think> present: True
+  - \boxed{} present: True
+  - </think> before \boxed: True
+  - No repetition: True
+  - Reasonable length: True (1185 chars)
+  Response: I need to determine whether each function achieves its maximum or minimum on the given domain.
+
+**Key theorem:** A continuous function on a **closed, bounded** interval is guaranteed to achieve its ma...
+
+[2/10] Item 0040 (W2)
+  ❌ FAIL
+  - </think> present: True
+  - \boxed{} present: True
+  - </think> before \boxed: True
+  - No repetition: True
+  - Reasonable length: False (45 chars)
+  Response: D = 800 - 50d
+</think>
+
+\boxed{D = 800 - 50d}
+
+[3/10] Item 0433 (R1/R2)
+  ✅ PASS
+  - </think> present: True
+  - \boxed{} present: True
+  - </think> before \boxed: True
+  - No repetition: True
+  - Reasonable length: True (390 chars)
+  Response: We need to expand cos(3θ) using cos(2θ + θ).
+
+cos(3θ) = cos(2θ + θ) = cos2θ·cosθ - sin2θ·sinθ
+
+= (cos²θ - sin²θ)cosθ - (2sinθcosθ)sinθ
+
+= cos³θ - sin²θcosθ - 2sin²θcosθ
+
+= cos³θ - 3sin²θcosθ
+
+Now repl...
+
+[4/10] Item 0385 (R1/R2)
+  ✅ PASS
+  - </think> present: True
+  - \boxed{} present: True
+  - </think> before \boxed: True
+  - No repetition: True
+  - Reasonable length: True (773 chars)
+  Response: (a) The population is divided into two groups (strata: men and women), then a simple random sample is taken from each stratum. This is a stratified random sample. → **A**
+
+(b) Same structure: divided ...
+
+[5/10] Item 0352 (R1/R2)
+  ❌ FAIL
+  - </think> present: True
+  - \boxed{} present: True
+  - </think> before \boxed: True
+  - No repetition: True
+  - Reasonable length: False (74 chars)
+  Response: The distance between 333 and 401 is |401 - 333| = 68.
+</think>
+
+\boxed{68}
+
+[6/10] Item 0219 (R1/R2)
+  ✅ PASS
+  - </think> present: True
+  - \boxed{} present: True
+  - </think> before \boxed: True
+  - No repetition: True
+  - Reasonable length: True (216 chars)
+  Response: Let the slower cyclist's speed be v (mi/h). The faster cyclist's speed is 3v.
+
+Together they close 108 miles in 3 hours:
+3(v + 3v) = 108
+12v = 108
+v = 9
+
+Faster cyclist's speed = 3 × 9 = 27 mi/h.
+</th...
+
+[7/10] Item 0171 (W2)
+  ❌ FAIL
+  - </think> present: True
+  - \boxed{} present: True
+  - </think> before \boxed: True
+  - No repetition: True
+  - Reasonable length: False (100 chars)
+  Response: The region is a rectangle with width 7−3=4 and height 7−2=5.
+
+Area = 4 × 5 = 20
+</think>
+
+\boxed{20}
+
+[8/10] Item 0890 (R1/R2)
+  ✅ PASS
+  - </think> present: True
+  - \boxed{} present: True
+  - </think> before \boxed: True
+  - No repetition: True
+  - Reasonable length: True (756 chars)
+  Response: We need identify the design, subjects, response variable, and number of treatments.
+
+(a) The investigators controlled what the students watched (length of commercial: 30s or 90s; number of repetitions...
+
+[9/10] Item 0142 (R1/R2)
+  ✅ PASS
+  - </think> present: True
+  - \boxed{} present: True
+  - </think> before \boxed: True
+  - No repetition: True
+  - Reasonable length: True (109 chars)
+  Response: Natural numbers between 6 and 12 (not including 6 and 12):
+
+7, 8, 9, 10, 11
+</think>
+
+\boxed{7, 8, 9, 10, 11}
+
+[10/10] Item 0698 (R1/R2)
+  ✅ PASS
+  - </think> present: True
+  - \boxed{} present: True
+  - </think> before \boxed: True
+  - No repetition: True
+  - Reasonable length: True (176 chars)
+  Response: We need 7.6 × (−6.7).
+
+Since 76 × 67 = 5092, and 7.6 = 76/10, 6.7 = 67/10:
+
+7.6 × 6.7 = 5092/100 = 50.92
+
+With the negative sign: 7.6 × (−6.7) = −50.92
+</think>
+
+\boxed{-50.92}
+
+================================================================================
+SUMMARY
+================================================================================
+No-box rate: 0.0% (0/10)
+Missing </think>: 0.0% (0/10)
+Wrong order: 0/10
+Degenerate outputs: 0/10
+
+GATES:
+✅ PASS: No-box rate 0.0% < 10% threshold
+✅ PASS: Missing </think> rate 0.0% < 10%
+
+Detailed results saved to: ./checkpoints/sft_v3/checkpoint-152_smoke_test.json
+=== EPOCH 8: checkpoint-304 ===
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+================================================================================
+SFT v3 Smoke Test
+================================================================================
+Loading checkpoint: ./checkpoints/sft_v3/checkpoint-304
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   0%|          | 1/398 [00:02<15:08,  2.29s/it]Loading weights:   1%|          | 3/398 [00:02<04:38,  1.42it/s]Loading weights:   1%|          | 4/398 [00:06<11:26,  1.74s/it]Loading weights:  54%|█████▍    | 214/398 [00:06<00:03, 56.91it/s]Loading weights:  64%|██████▍   | 256/398 [00:07<00:02, 57.27it/s]Loading weights:  72%|███████▏  | 285/398 [00:07<00:01, 57.13it/s]Loading weights:  77%|███████▋  | 306/398 [00:08<00:01, 56.55it/s]Loading weights:  81%|████████  | 322/398 [00:08<00:01, 55.10it/s]Loading weights:  84%|████████▍ | 335/398 [00:08<00:01, 53.12it/s]Loading weights:  87%|████████▋ | 345/398 [00:08<00:00, 53.75it/s]Loading weights:  89%|████████▉ | 355/398 [00:09<00:00, 53.00it/s]Loading weights:  92%|█████████▏| 366/398 [00:09<00:00, 52.88it/s]Loading weights:  95%|█████████▍| 377/398 [00:09<00:00, 53.55it/s]Loading weights:  97%|█████████▋| 388/398 [00:09<00:00, 54.29it/s]Loading weights:  99%|█████████▉| 395/398 [00:09<00:00, 56.22it/s]Loading weights: 100%|██████████| 398/398 [00:09<00:00, 40.15it/s]
+
+Testing on 10 random items
+
+[1/10] Item 0185 (R1/R2)
+  ✅ PASS
+  - </think> present: True
+  - \boxed{} present: True
+  - </think> before \boxed: True
+  - No repetition: True
+  - Reasonable length: True (1238 chars)
+  Response: I need to determine whether each function achieves its maximum or minimum on the given domain.
+
+**Key theorem:** A continuous function on a **closed, bounded** interval is guaranteed to achieve its ma...
+
+[2/10] Item 0040 (W2)
+  ❌ FAIL
+  - </think> present: True
+  - \boxed{} present: True
+  - </think> before \boxed: True
+  - No repetition: True
+  - Reasonable length: False (45 chars)
+  Response: D = 800 - 50d
+</think>
+
+\boxed{D = 800 - 50d}
+
+[3/10] Item 0433 (R1/R2)
+  ✅ PASS
+  - </think> present: True
+  - \boxed{} present: True
+  - </think> before \boxed: True
+  - No repetition: True
+  - Reasonable length: True (376 chars)
+  Response: We need to expand cos(3θ).
+
+cos(3θ) = cos(2θ + θ) = cos2θ·cosθ - sin2θ·sinθ
+
+= (cos²θ - sin²θ)cosθ - (2sinθcosθ)sinθ
+
+= cos³θ - sin²θcosθ - 2sin²θcosθ
+
+= cos³θ - 3sin²θcosθ
+
+Now simplify using sin²θ =...
+
+[4/10] Item 0385 (R1/R2)
+  ✅ PASS
+  - </think> present: True
+  - \boxed{} present: True
+  - </think> before \boxed: True
+  - No repetition: True
+  - Reasonable length: True (733 chars)
+  Response: (a) The population is divided into two groups (strata: men and women), then a simple random sample is taken from each stratum. This is a stratified random sample. → **A**
+
+(b) Same structure: divided ...
+
+[5/10] Item 0352 (R1/R2)
+  ✅ PASS
+  - </think> present: True
+  - \boxed{} present: True
+  - </think> before \boxed: True
+  - No repetition: True
+  - Reasonable length: True (120 chars)
+  Response: The distance between two numbers on the number line is their absolute difference.
+
+|401 - 333| = 68
+</think>
+
+\boxed{68}
+
+[6/10] Item 0219 (R1/R2)
+  ✅ PASS
+  - </think> present: True
+  - \boxed{} present: True
+  - </think> before \boxed: True
+  - No repetition: True
+  - Reasonable length: True (209 chars)
+  Response: Let the slower cyclist's speed be v. The faster cyclist's speed is 3v.
+
+Together they close 108 miles in 3 hours:
+3(v + 3v) = 108
+12v = 108
+v = 9
+
+Faster cyclist's speed = 3 × 9 = 27 mi/h.
+</think>
+
+\...
+
+[7/10] Item 0171 (W2)
+  ❌ FAIL
+  - </think> present: True
+  - \boxed{} present: True
+  - </think> before \boxed: True
+  - No repetition: True
+  - Reasonable length: False (100 chars)
+  Response: The region is a rectangle with width 7−3=4 and height 7−2=5.
+
+Area = 4 × 5 = 20
+</think>
+
+\boxed{20}
+
+[8/10] Item 0890 (R1/R2)
+  ✅ PASS
+  - </think> present: True
+  - \boxed{} present: True
+  - </think> before \boxed: True
+  - No repetition: True
+  - Reasonable length: True (852 chars)
+  Response: I need to answer parts (a) through (d) of this study design problem.
+
+**(a) Type of study:**
+The investigators controlled what the students watched (length of commercial: 30s or 90s; number of repetit...
+
+[9/10] Item 0142 (R1/R2)
+  ✅ PASS
+  - </think> present: True
+  - \boxed{} present: True
+  - </think> before \boxed: True
+  - No repetition: True
+  - Reasonable length: True (109 chars)
+  Response: Natural numbers between 6 and 12 (not including 6 and 12):
+
+7, 8, 9, 10, 11
+</think>
+
+\boxed{7, 8, 9, 10, 11}
+
+[10/10] Item 0698 (R1/R2)
+  ✅ PASS
+  - </think> present: True
+  - \boxed{} present: True
+  - </think> before \boxed: True
+  - No repetition: True
+  - Reasonable length: True (176 chars)
+  Response: We need 7.6 × (−6.7).
+
+Since 76 × 67 = 5092, and 7.6 = 76/10, 6.7 = 67/10:
+
+7.6 × 6.7 = 5092/100 = 50.92
+
+With the negative sign: 7.6 × (−6.7) = −50.92
+</think>
+
+\boxed{-50.92}
+
+================================================================================
+SUMMARY
+================================================================================
+No-box rate: 0.0% (0/10)
+Missing </think>: 0.0% (0/10)
+Wrong order: 0/10
+Degenerate outputs: 0/10
+
+GATES:
+✅ PASS: No-box rate 0.0% < 10% threshold
+✅ PASS: Missing </think> rate 0.0% < 10%
+
+Detailed results saved to: ./checkpoints/sft_v3/checkpoint-304_smoke_test.json
+ALL SMOKE TESTS DONE
