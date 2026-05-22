@@ -46,3 +46,4 @@ milestone_report.log
 
 # Tunnel binaries (regenerable)
 vscode_cli.tar.gz
+results/run14b_sc8_v1_private943_tok32k_pp1.jsonl
