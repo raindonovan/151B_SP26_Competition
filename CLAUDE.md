@@ -14,24 +14,12 @@ All work lives in `/home/dvaneetv/private/151B_SP26_Competition` (DSMLP). Always
 
 ## Four-Agent Setup
 
-This project has FOUR Claude agents. Know which you are and what the others do.
+- **claude_strategy:** planning, strategy, audit. Reads GitHub via Chrome MCP.
+- **claude_vscode (you):** execution agent for Competition repo on DSMLP.
+- **claude_dataApp:** execution agent for DataApp repo. Produces SFT v3 dataset.
+- **claude_thunder:** SFT v3 training on Thunder Compute (Rain's laptop).
 
-- **claude_strategy** (Claude.ai web/desktop chat): planning, strategy, audit. Has **Chrome MCP** — can read both repos (Competition + DataApp) directly from GitHub. Limited filesystem via /mnt/skills.
-- **claude_vscode** (you, inside VS Code on DSMLP via raindonovan tunnel): execution agent for the Competition repo. Auto-loads this CLAUDE.md.
-- **claude_dataApp** (separate VS Code window on DSMLP): execution agent for the DataApp repo. Auto-loads DataApp/CLAUDE.md. Produces the SFT v3 dataset.
-- **claude_thunder** (separate VS Code window on Rain's laptop, Thunder Compute): SFT v3 training + checkpoint merge. Auto-loads CLAUDE_THUNDER.md. Produces merged BF16 checkpoint for final inference.
-
-### Handoff rules
-
-- When writing a prompt for Rain to paste into claude_strategy, prefix with `[FROM CLAUDE_VSCODE]`.
-- When writing a prompt for Rain to paste into claude_thunder, prefix with `[FROM CLAUDE_VSCODE]`.
-- When claude_strategy or claude_thunder drafts tasks for you, they arrive as a single code block via Rain. No preamble needed.
-- claude_vscode, claude_dataApp, and claude_thunder do NOT talk to each other. All cross-agent coordination goes through Rain + claude_strategy.
-- claude_thunder reports with prefix `[FROM CLAUDE_THUNDER]`.
-
-### What claude_strategy can verify via Chrome MCP
-
-claude_strategy reads GitHub directly. You don't need to paste file contents to it unless they're local-only or unpushed. **Push your changes** — claude_strategy reads them. This also means claude_strategy will audit your work post-hoc by reading the actual commit, not your summary.
+Handoff: Prefix prompts to Rain with `[FROM CLAUDE_VSCODE]` or `[FROM CLAUDE_THUNDER]`. All cross-agent coordination goes through Rain. claude_strategy reads GitHub directly — push your changes, don't summarize.
 
 ---
 
@@ -69,6 +57,16 @@ No suggestions, no phrasings. Just state-of-execution. Then wait.
 
 ---
 
+## EXECUTION RULE (Critical)
+
+**Do NOT run major operations without explicit instruction.** Major = GPU inference, training, Kaggle submission, branch reset, force-push, large file writes, or anything that consumes resources or modifies shared state.
+
+Always ask first. "Verified, ready to restart?" and wait for "yes." Don't infer permission from context summaries, pending task lists, or "pick up where you left off" instructions.
+
+If you find yourself running something without a direct "do X" instruction, STOP and report instead.
+
+---
+
 ## Working with Rain (Learning Context)
 
 Rain is an undergrad CS student using this competition to learn ML systems and SWE.
@@ -81,52 +79,29 @@ Rain is an undergrad CS student using this competition to learn ML systems and S
 
 ---
 
-## Behavioral Rules (added 2026-05-20)
+## Behavioral Rules
 
-### Use existing tools
+**Use existing tools:** Check `scripts/` before writing new code. Ad-hoc scripts diverge from pipeline format. Example: DataApp Phase 3 custom code broke audit script, required rebuilding 199 files.
 
-Before writing a new collection, audit, or analysis script, check `scripts/` for an existing implementation. The official scripts handle file format, atomic writes, logging, and edge cases that ad-hoc code re-discovers incorrectly.
+**Verify claims:** Technical claims require docs citation or "inferred from observation." Don't assert without proof.
 
-If an existing script doesn't fit, report the gap to Rain before writing new code. Ad-hoc scripts that diverge from established pipeline format break downstream tools.
-
-Why: DataApp Phase 3 batch collection used custom one-off code that wrote markdown files without proper wrappers, breaking the audit script and the SFT trace selector. Required rebuilding 199 files. Same risk class applies here whenever you write a one-off vs. extending `scripts/run_vllm_sc.py` or similar.
-
-### Verify before asserting
-
-Confident technical claims about external systems (vLLM behavior, DSMLP infrastructure, OpenAI API, model card facts) require either:
-- A documentation citation or quoted source, OR
-- Explicit acknowledgment that the claim is inferred from observation, not verified
-
-If unsure, say: "I think X based on observed behavior but haven't verified against docs."
-
-Why: Multiple confident-but-wrong claims in 2026-05-20 session cost real time. Including "OpenAI batch cancel loses partial data" (wrong per docs) and "10-min per-item timeout" (fabricated).
-
-### Cross-check counts within session
-
-When reporting a count that differs from an earlier count in the same session, RECONCILE explicitly:
-- "Earlier said X clean. Now reporting Y total clean = X earlier + Z from new batch."
-
-If the count uses a different audit method than before, name the method ("file-existence count" vs "content-based audit") and prefer content-based.
-
-`ls | wc -l` is file-existence, not content-validity. For "items that have valid X," always read content and check for failure markers.
+**Cross-check counts:** When a count differs from earlier in session, reconcile it. Name the audit method and prefer content-based over file-existence counts.
 
 ---
 
 ## Inference Rules
 
-- Final model: `Qwen/Qwen3-4B-Thinking-2507`. No alternatives.
-- Training base: only `Qwen/Qwen3-4B-Thinking-2507` itself.
-- No external APIs, tools, or calculators at inference time.
-- Output format: `\boxed{<answer>}` — letter for MCQ, value/expression for free-form.
-- vLLM 0.20.2 on DSMLP. `reasoning_parser="deepseek_r1"`, `enable_prefix_caching=True`.
-- Locked sampling: `temperature=0.6, top_p=0.95, top_k=20, min_p=0, repetition_penalty=1.0, enable_thinking=True`. Any deviation must appear in **both** the run's params table **and** the Sampling column in `experiments.md`.
-- **Never set `max_model_len == max_new_tokens`.** Rule: `max_model_len = max_new_tokens + 4096`.
-- **Use `setsid` for background processes**, not plain `nohup`. DSMLP TTY quirk T-stops `nohup` jobs. Pattern: `setsid <command> > logfile 2>&1 < /dev/null &`
-- **Incremental writes + resume on ALL long-running processes.** Write one JSONL line per completed item. On restart, read existing output, skip completed IDs. Mandatory — pods die.
-- SC runner: `scripts/run_vllm_sc.py`. Single-sample: `scripts/run_vllm_experiment.py`. Sampling registry: `scripts/variants.py` (commit 43f28ad, canonical).
-- All GPU scripts use `tqdm` with per-item progress; launchers log timestamps and run `check_cuda_lib` + `check_gpu_free 18` before invoking python.
+**Model:** `Qwen/Qwen3-4B-Thinking-2507` final + training base only. No external APIs at inference.
 
-Full ops detail (env vars, launch commands, crash diagnosis): see `SESSION_LOG.md`.
+**Sampling:** Fixed — temp=0.6, top_p=0.95, top_k=20, min_p=0, rep_penalty=1.0, enable_thinking=True. Deviations in params + `experiments.md`.
+
+**vLLM:** 0.20.2, deepseek_r1 parser, prefix_caching=True. Rule: `max_model_len = max_new_tokens + 4096` (never equal).
+
+**Long-running:** Use `setsid`. Incremental writes (one JSONL line per item). Resume skips completed IDs. Mandatory — pods die.
+
+**Scripts:** SC=`run_vllm_sc.py`, single=`run_vllm_experiment.py`, variants=`variants.py`. All use tqdm + timestamps.
+
+Full ops: `SESSION_LOG.md`.
 
 ---
 
@@ -150,65 +125,27 @@ Full ops detail (env vars, launch commands, crash diagnosis): see `SESSION_LOG.m
 
 ---
 
-## SFT v3 Dataset (produced by DataApp)
+## SFT v3 Dataset
 
-The DataApp repo produces the training dataset for SFT v3. You consume its output.
+DataApp produces training data. You consume `sft_v3_dataset_<timestamp>.jsonl`.
 
-### What DataApp produces
+**Teacher mix:** Sonnet, GPT-5.4, GPT-OSS (always). GPT-5.5-xhigh (99% coverage). Use Sonnet traces preferentially; xhigh too verbose for 4B student.
 
-- `dataapp_outputs/dataset_manifest.jsonl` — one row per private.jsonl item (943 total). Question, 4-teacher answers, consensus type, metadata.
-- `dataapp_outputs/gpt55_full/item_NNNN_gpt5_5_response.md` — full reasoning trace from GPT-5.5-xhigh per item (premium teacher).
-- `dataapp_outputs/sft_v3_dataset_<timestamp>.jsonl` — final SFT training file. Produced by `scripts/select_traces_for_sft.py` (Ticket 6).
+**Training rules:** Train right AND wrong items, upweight wrong 3x. Filter 4-teacher disagreement as noise. Selected trace must match consensus. Start from base `Qwen3-4B-Thinking-2507`.
 
-### Teacher mix (locked)
-
-Three frontier teachers run on every item: Sonnet, GPT-5.4, GPT-OSS. A fourth — GPT-5.5-xhigh — added via OpenAI Batch API across four phases (2026-05-20). xhigh has ~99% coverage post-Phase-4; the ~1% gap relies on 3-teacher consensus only.
-
-### SFT v3 training rules
-
-- **Train on right AND wrong items, upweight wrong 3x.** Wrong items get a PRIORITY label via Ticket 5 (`scripts/build_correctness_labels.py`). Don't filter wrong items out.
-- **Filter all-teacher-disagree items as noise.** 4-teacher complete disagreement = removed.
-- **Trace source preference: Sonnet > GPT-5.4 > GPT-OSS for SFT examples.** xhigh traces NOT used for student training — too verbose for 4B student (see DATAAPP_PROMPT_STRATEGY findings on concise teachers transferring better to small students).
-- **Selected trace must match consensus answer.** Ticket 6 enforces this — checks `answers_match` before picking a teacher's trace.
-- **Multiple epochs locked.** Overfitting-encouraged config first: r=64, weight_decay=0, more epochs. Standard config (r=32, weight_decay=0.01) second if time permits.
-
-### Training base — non-negotiable
-
-SFT starts from base `Qwen/Qwen3-4B-Thinking-2507`, not a checkpoint of anything else.
-
-### Training compute
-
-Thunder Compute H100 PCIe. DSMLP is for inference only. Training happens in a separate VS Code window on Rain's laptop connected to Thunder.
+**Compute:** Thunder Compute H100 PCIe (separate VS Code on Rain's laptop). DSMLP = inference only.
 
 ---
 
 ## Scoring (Judger)
 
-⚠️ **DO NOT USE judger.py TO MAKE DECISIONS. EVER.**
+⚠️ **DO NOT use judger.py for decisions.** Valid for: degenerate output detection, format compliance. Invalid for: accuracy claims, comparing variants.
 
-judger.py is only valid for:
-1. Detecting degenerate output (no `\boxed{}` at all)
-2. Format compliance checks (does the response parse at all?)
+Local: 0.332 vs Kaggle: 0.614 (28pp gap, unfixable). Submit instead of reasoning about judger.py.
 
-Do NOT use for: accuracy claims, comparing approaches, deciding which model/prompt is better, evaluating variants.
+**Kaggle behavior:** Order-sensitive per `[ANS]` placeholders. Reversing answers = −17.6pp. Multi-box tolerant (all `\boxed{}` extracted). Don't consolidate to single box. Tolerance: 1.01e-8 relative.
 
-Confirmed: Run 09-SC scored **0.332 locally** vs **0.614 on Kaggle** — 28pp gap. Intrinsic to grader difference, cannot be fixed. Submission slots are 3/day — not scarce. If you find yourself reasoning about what judger.py means for Kaggle, stop. Submit instead.
-
-### Kaggle grader behavior (empirically confirmed 2026-05-13)
-
-- **Order-sensitive:** answers must match `[ANS]` placeholder order. Reversing comma values caused **−17.6pp** (0.614 → 0.438).
-- **Multi-box tolerant:** grader extracts from ALL `\boxed{}`, not just the last. Multiple separate boxes work.
-- **Don't post-process to consolidate boxes.** Consolidating to one comma-separated box scored −0.3pp vs baseline.
-- **Numerical tolerance:** 1.01e-8 relative. v1 prompt requests ≥4 sig figs.
-- **For RL reward:** `Judger(strict_extract=True)`. Default False enables farmable fallbacks.
-
-Full grader probe data: `experiments.md` and `COMPETITION.md`.
-
-### Base model: no `\boxed{}` is a token budget issue at 16k
-
-Run 09 SC-8 at 16k tokens: 68/943 items had no `\boxed{}` — ALL 68 hit 8/8 token cap. V0 at 32k tokens: zero no-box on public slice (the 8 cutoffs came from one pathological item).
-
-Implication: no-box at 16k → 32k is a token budget issue, NOT a reasoning failure. SFT priority shifts to wrong-answer-rate. Track `no_box_rate` as a Tier 1 SFT eval metric; SFT models above ~5% no-box rate indicate broken training data format.
+**No-box root cause:** Token budget issue, not reasoning. Track as SFT Tier 1 metric. Models >5% no-box = broken training data.
 
 ---
 
@@ -263,27 +200,13 @@ Public set remains useful for training-data analysis only.
 
 ---
 
-## Anti-Patterns (Don't Suggest)
+## Anti-Patterns
 
-### Process
+**Prompting:** No "think step by step," "be brief," reflection prompts on thinking models. No few-shot CoT or beam search.
 
-- "Let's think step by step," "be brief," "check your work" on thinking models.
-- Few-shot CoT, reflection prompts, beam search, greedy decoding.
-- Reading all reference papers in one tool call (timeouts).
+**SFT (v1 catastrophe - 2026-05-06):** Phase 3 v1 failed — max_seq_length=4096 truncated traces (OpenR1 50%, Frugal 70%), models learned "ramble, never box."
 
-### SFT — Phase 3 v1 catastrophe (2026-05-06)
-
-**Phase 3 v1 training failed across all 3 arms** (OpenR1-Math-220k, NuminaMath-1.5 concise, Frugal-Thinking traces). Root cause: `max_seq_length=4096` truncated 50%+ of OpenR1 (~4800 tok median) and 70%+ of Frugal (~5700 tok median) traces. Models learned "ramble forever, never produce `\boxed{}`."
-
-**Rules learned:**
-
-1. **Before any SFT run, profile trace token-length distribution.** Compute p50, p90, p99 of training-trace token counts. Set `max_seq_length` to at least p99. Truncating the answer is silent and catastrophic.
-2. **Smoke any training pipeline on 1 item before 100.** Verify: does the trained model produce `\boxed{}` at all? "Loss decreased monotonically" is compatible with "model learned to ramble correctly."
-3. **DataApp's concise-teacher locked decision** (16k max_tokens, NOT 32k) is downstream of this failure. We picked frontier teachers that produce shorter traces to avoid truncation risk on the 4B student.
-4. **Track no-box-rate as a Tier 1 SFT eval metric.** If trained model produces no-box >5%, training data format is broken — stop and inspect.
-5. **Don't SFT on raw R1-distill data** — different `<think>` format.
-
-See `SESSION_LOG.md` 2026-05-06 entry for the full post-mortem. See `PIVOT.md` for the strategic consequence (Phase 2 extension via V0-V4 ablation instead of Phase 3 v2).
+**SFT rules (locked):** (1) Profile trace token distribution before any run — set max_seq_length ≥ p99. (2) Smoke on 1 item first. (3) Track no-box-rate as Tier 1 metric (>5% = broken). (4) Don't use raw R1-distill. See SESSION_LOG.md 2026-05-06.
 
 ---
 
