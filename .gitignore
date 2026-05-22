@@ -49,7 +49,5 @@ vscode_cli.tar.gz
 results/run14b_sc8_v1_private943_tok32k_pp1.jsonl
 results/run14b_sc8_v1_private943_tok32k_pp1.BACKUP_*.jsonl
 
-# SFT v3 dataset (too large for git, keep locally or upload to GitHub Releases)
-sft_v3_dataset_final.jsonl
 
 # Submission CSVs tracked via Git LFS (see .gitattributes)
