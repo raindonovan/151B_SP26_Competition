@@ -47,3 +47,10 @@ milestone_report.log
 # Tunnel binaries (regenerable)
 vscode_cli.tar.gz
 results/run14b_sc8_v1_private943_tok32k_pp1.jsonl
+results/run14b_sc8_v1_private943_tok32k_pp1.BACKUP_*.jsonl
+
+# SFT v3 dataset (too large for git, keep locally or upload to GitHub Releases)
+sft_v3_dataset_final.jsonl
+
+# Submission CSVs (large, keep locally; upload separately to Kaggle)
+submissions/*.csv
