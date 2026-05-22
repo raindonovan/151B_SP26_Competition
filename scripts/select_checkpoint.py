@@ -17,7 +17,7 @@ from collections import defaultdict
 # CONFIGURATION
 # ============================================================================
 
-BASE_MODEL_ID = "Qwen/Qwen2.5-Math-RM-4B-Thinking"
+BASE_MODEL_ID = "Qwen/Qwen3-4B-Thinking-2507"
 CHECKPOINTS_DIR = "./checkpoints/sft_v3"
 DATASET_PATH = "sft_v3_dataset_final.jsonl"
 

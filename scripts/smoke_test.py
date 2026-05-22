@@ -16,7 +16,7 @@ import torch
 # CONFIGURATION
 # ============================================================================
 
-BASE_MODEL_ID = "Qwen/Qwen2.5-Math-RM-4B-Thinking"
+BASE_MODEL_ID = "Qwen/Qwen3-4B-Thinking-2507"
 CHECKPOINT_DIR = sys.argv[1] if len(sys.argv) > 1 else "./checkpoints/sft_v3/checkpoint-epoch-1"
 N_SAMPLES = 10  # Number of items to test
 SEED = 42

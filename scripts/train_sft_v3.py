@@ -11,7 +11,6 @@ from transformers import (
     AutoModelForCausalLM,
     AutoTokenizer,
     TrainingArguments,
-    DataCollatorForLanguageModeling,
 )
 from trl import SFTTrainer, DataCollatorForCompletionOnlyLM
 from peft import LoraConfig, get_peft_model
@@ -21,7 +20,7 @@ import torch
 # LOCKED PARAMETERS - DO NOT MODIFY WITHOUT RESEARCH JUSTIFICATION
 # ============================================================================
 
-MODEL_ID = "Qwen/Qwen2.5-Math-RM-4B-Thinking"
+MODEL_ID = "Qwen/Qwen3-4B-Thinking-2507"
 DATASET_PATH = "sft_v3_dataset_final.jsonl"  # 594 items with system prompt
 OUTPUT_DIR = "./checkpoints/sft_v3"
 
@@ -34,7 +33,6 @@ TRAINING_CONFIG = {
     "lr_scheduler_type": "cosine",
     "weight_decay": 0.01,
     "warmup_ratio": 0.05,  # ~30 steps warmup (594 items / 16 batch = 37 steps/epoch)
-    "max_seq_length": 4096,
     "bf16": True,
     "logging_steps": 5,
     "save_strategy": "epoch",
@@ -118,19 +116,6 @@ def load_model_and_tokenizer():
     return model, tokenizer
 
 # ============================================================================
-# FORMATTING FUNCTION
-# ============================================================================
-
-def formatting_func(example):
-    """
-    Format messages into chat template.
-    Returns the full formatted text for each example.
-    """
-    # The tokenizer's chat template handles the formatting
-    # We just need to pass the messages list
-    return example["messages"]
-
-# ============================================================================
 # TRAINING
 # ============================================================================
 
@@ -176,14 +161,15 @@ def main():
     print(f"Only assistant tokens will contribute to loss")
 
     # Initialize trainer
+    # SFTTrainer auto-detects the "messages" column and applies the tokenizer's
+    # chat template natively — no formatting_func needed.
     trainer = SFTTrainer(
         model=model,
         args=training_args,
         train_dataset=dataset,
         tokenizer=tokenizer,
         data_collator=collator,
-        formatting_func=formatting_func,
-        max_seq_length=TRAINING_CONFIG['max_seq_length'],
+        max_seq_length=4096,
         packing=False,  # CRITICAL: Do not pack sequences (breaks <think> attention)
     )
 
