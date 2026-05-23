@@ -1,10 +1,25 @@
 # HANDOFF — claude_strategy session continuity
 
-**Version:** 2.2  
-**Last updated:** 2026-05-22 (early morning)  
-**Supersedes:** HANDOFF.md v2.1 (2026-05-21 evening, confidence tiers + diagnostic subs)  
+**Version:** 2.3  
+**Last updated:** 2026-05-23  
+**Supersedes:** HANDOFF.md v2.2 (2026-05-22 early morning)  
 **Owner:** Rain (dvaneetv@ucsd.edu)  
 **Project:** CSE 151B (UCSD) Kaggle math reasoning competition
+
+---
+
+## RECENT UPDATES (2026-05-23)
+
+- **NEW BEST KAGGLE: 0.646** — `run14b_v3filtered.csv` (V3 shape filter applied to run14b SC-8)
+- **V3 shape filter CONFIRMED +0.7pp** (Run14b base 0.639 → V3-filtered 0.646). Apply to all future SC runs.
+- **SFT v3 adapter ready (epoch 4 checkpoint on Thunder).** Next step is SC=1 greedy inference for first sanity check.
+- **Back-solve complete** using 12 of 14 submissions (2 missing: `run09sc8_format_fixed`, `run09sc8_probe_b_reversed`). Outputs:
+  - `results/unified_answer_sheet.csv` — slim per-item predicted answer + confidence + tier
+  - `results/back_solve_detail.csv` — full diagnostic per item
+  - `results/backsolve_summary.txt` — tier distribution + sanity checks
+  - Tier breakdown: T1=430 (45.6%), T2=63 (6.7%), T3=198 (21.0%), T4=181 (19.2%), T5=71 (7.5%)
+  - 120 items where teacher consensus disagrees with Bayesian winner — investigation candidates
+- **Back-solve docs (Google Drive):** folder ID `14ntQe56m_ufIPyDk_Cs-sPjSESQ1NRZ8`
 
 ---
 
@@ -243,7 +258,9 @@ If they conflict on a behavioral rule, CLAUDE_STRATEGY.md wins. If they conflict
 
 | Submission | Date | Score | Notes |
 |------------|------|-------|-------|
-| Run 09 SC-8 V1 | 2026-05-13 | 0.614 | ANCHOR / BEST |
+| **Run 14b V3-filtered** | **2026-05-23** | **0.646** | **NEW BEST.** Run14b SC-8 + retroactive V3 shape filter. +3.2pp over Run09. |
+| Run 14b base | 2026-05-22 | 0.639 | Run14b SC-8 V1 baseline, 32k tokens, no shape filter. +2.5pp over Run09. |
+| Run 09 SC-8 V1 | 2026-05-13 | 0.614 | Prior anchor; superseded by Run14b. |
 | run09sc8_format_fixed | 2026-05-13 | 0.611 | within noise — "fix" wasn't a real lever |
 | Run 08-v2 v1-baseline | 2026-05-04 | 0.586 | |
 | probe_b_reversed | 2026-05-13 | 0.438 | order-reversal probe, −17.6pp |
