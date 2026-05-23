@@ -351,7 +351,35 @@ Note: these 10 items are all R1/R2 tier (model originally got them right — the
 
 ---
 
-## 12. What's Next
+## 12. Deviations from CLAUDE_THUNDER.md Spec
+
+The training script (`sft/v3/scripts/train_sft_v3.py`) successfully produced checkpoint-304 (epoch 8) but deviated from the CLAUDE_THUNDER.md spec in 3 areas:
+
+### Missing safeguards (not critical for v3, would add for v4)
+- **Pre-flight gate:** No untrained loss check before training start (spec required: verify loss in [0.5, 5.0] nats on held-out batch before committing to full run)
+- **Token profiling:** Done manually post-hoc via chat analysis, not in-script (spec required: profile p50/p90/p99 of trace token counts before setting `max_seq_length`)
+- **Dry run:** Done manually via `max_steps=2` flag, not automated in-script
+
+### Intentional omissions (correct for our use case)
+- **No eval split:** This is **transductive SFT** — the training items ARE the test items (private.jsonl, Piazza-confirmed allowed). Holding out items would waste training data on a generalization metric we don't care about.
+- **No `eval/*` metrics during training:** Kaggle score is the real eval. Held-out validation loss is a proxy for generalization; we want memorization of teacher answers on the exact items being tested.
+
+### What we did instead
+- **Smoke tests after training** on checkpoint-38 (ep1), checkpoint-152 (ep4), checkpoint-304 (ep8) — all passed (0% no-box, 0% missing `</think>`)
+- **Manual token profiling** via chat analysis (p99=400 words ≪ 4096 max_length, so no truncation risk)
+- **Visual inspection of loss curves** from logged steps (smooth cosine decay, no spikes after warmup)
+- **Memorization audit on full training set** at epoch 4: 10/10 exact match with teacher answers
+
+### Outcome
+Training succeeded, all smoke tests passed, Kaggle inference proceeding.
+
+### For SFT v4 (if we do it)
+- **Add:** pre-flight gate and dry-run automation to catch tokenization/masking bugs faster
+- **Keep:** no-eval-split approach (transductive task — don't waste data on held-out)
+
+---
+
+## 13. What's Next
 
 1. **Checkpoint selection:** `scripts/select_checkpoint.py` exists in repo. Awaiting claude_strategy decision on which epoch(s) to merge. Candidates:
    - **Epoch 4** (checkpoint-152): loss=0.04, high memorization, less overfit — likely best generalization
@@ -363,7 +391,7 @@ Note: these 10 items are all R1/R2 tier (model originally got them right — the
 
 ---
 
-## 13. Files
+## 14. Files
 
 | File | Location | Description |
 |---|---|---|
