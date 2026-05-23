@@ -183,6 +183,11 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--max-model-len", type=int, default=36864)
     p.add_argument("--data-path", default=str(REPO_ROOT / "data" / "public.jsonl"))
     p.add_argument(
+        "--model",
+        default=None,
+        help="Override base model path/ID. Use merged checkpoint directory or HF model ID.",
+    )
+    p.add_argument(
         "--n-samples",
         type=int,
         default=8,
@@ -355,6 +360,9 @@ def _write_summary_from_file(
 def main() -> None:
     started_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
     args = parse_args()
+    global MODEL_ID  # noqa
+    if args.model is not None:
+        MODEL_ID = args.model
 
     # --- Variant config resolution ---
     variant_name = args.variant

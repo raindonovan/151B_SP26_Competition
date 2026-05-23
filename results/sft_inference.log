@@ -1,0 +1,114 @@
+[2026-05-23 22:54:57] === SFT INFERENCE (FIXED: chat template + training prompt) ===
+[2026-05-23 22:54:58] GPU memory at start: 4 MB
+[2026-05-23 22:54:58] Loading tokenizer...
+[2026-05-23 22:54:59] Total items: 943, pending: 943
+[2026-05-23 22:54:59] Loading merged SFT model into vLLM...
+[2026-05-23 22:55:45] Model loaded in 46.3s
+[2026-05-23 22:55:46] GPU memory after model load: 71589 MB
+[2026-05-23 22:55:46] Starting inference...
+[2026-05-23 22:55:46] First prompt preview:
+[2026-05-23 22:55:46]   <|im_start|>system
+Please reason step by step and put your final answer within \boxed{}.<|im_end|>
+<|im_start|>user
+Use the order of operations to simplify: a) $[13-(11-11)]-[8-(5-6)]=$ [ANS]
+b) $4 \cdot 3-2+2 \cdot 3=$ [ANS]<|im_end|>
+<|im_start|>assistant
+<think>
+
+[2026-05-23 22:55:46] Batch 1: items 1-50/943
+[2026-05-23 23:02:04]   ✓ Batch 1 in 378.1s | 540 tok/item | 71 tok/s | ETA: 112.5 min
+[2026-05-23 23:02:05]     GPU mem: 71593 MB
+[2026-05-23 23:02:05] Batch 2: items 51-100/943
+[2026-05-23 23:06:09]   ✓ Batch 2 in 244.5s | 550 tok/item | 112 tok/s | ETA: 87.6 min
+[2026-05-23 23:06:10]     GPU mem: 71593 MB
+[2026-05-23 23:06:10] Batch 3: items 101-150/943
+[2026-05-23 23:10:00]   ✓ Batch 3 in 229.7s | 363 tok/item | 79 tok/s | ETA: 75.2 min
+[2026-05-23 23:10:02]     GPU mem: -1 MB
+[2026-05-23 23:10:02] Batch 4: items 151-200/943
+[2026-05-23 23:12:59]   ✓ Batch 4 in 177.6s | 673 tok/item | 189 tok/s | ETA: 64.0 min
+[2026-05-23 23:13:00]     GPU mem: 71595 MB
+[2026-05-23 23:13:00] Batch 5: items 201-250/943
+[2026-05-23 23:21:09] === SFT INFERENCE (FIXED: chat template + training prompt) ===
+[2026-05-23 23:21:10] GPU memory at start: 4 MB
+[2026-05-23 23:21:10] Resuming: 200 items already completed
+[2026-05-23 23:21:10] Loading tokenizer...
+[2026-05-23 23:21:10] Total items: 943, pending: 743
+[2026-05-23 23:21:10] Loading merged SFT model into vLLM...
+[2026-05-23 23:22:40] Model loaded in 89.8s
+[2026-05-23 23:22:41] GPU memory after model load: 57441 MB
+[2026-05-23 23:22:41] Starting inference...
+[2026-05-23 23:22:41] First prompt preview:
+[2026-05-23 23:22:41]   <|im_start|>system
+Please reason step by step and put your final answer within \boxed{}.<|im_end|>
+<|im_start|>user
+Point $P$ is located inside $\triangle{ABC}$ so that $\angle{PAB}=\angle{PBC}=\angle{PCA}$ . The sides of the triangle are $AB=13$ , $BC=14$ , $CA=15$ . The tangent of $\angle{PAB}$ may be expressed in the form $\frac{m}{n}$ , where $m$ and $n$ are relatively prime positive integers. Compute $m+n$ .
+
+Options:
+469
+466
+461
+462
+465
+467
+460
+464
+463
+468<|im_end|>
+<|im_start|>assistant
+<
+[2026-05-23 23:22:41] Batch 1: items 1-50/743
+[2026-05-23 23:23:02]   ✓ Batch 1 in 21.3s | 511 tok/item | 1198 tok/s | ETA: 4.9 min
+[2026-05-23 23:23:03]     GPU mem: 57441 MB
+[2026-05-23 23:23:03] Batch 2: items 51-100/743
+[2026-05-23 23:23:44]   ✓ Batch 2 in 40.8s | 619 tok/item | 758 tok/s | ETA: 6.7 min
+[2026-05-23 23:23:45]     GPU mem: 57441 MB
+[2026-05-23 23:23:45] Batch 3: items 101-150/743
+[2026-05-23 23:24:06]   ✓ Batch 3 in 21.0s | 551 tok/item | 1312 tok/s | ETA: 5.6 min
+[2026-05-23 23:24:07]     GPU mem: 57441 MB
+[2026-05-23 23:24:07] Batch 4: items 151-200/743
+[2026-05-23 23:24:39]   ✓ Batch 4 in 32.4s | 403 tok/item | 621 tok/s | ETA: 5.3 min
+[2026-05-23 23:24:40]     GPU mem: 57441 MB
+[2026-05-23 23:24:40] Batch 5: items 201-250/743
+[2026-05-23 23:24:58]   ✓ Batch 5 in 18.7s | 506 tok/item | 1355 tok/s | ETA: 4.5 min
+[2026-05-23 23:24:59]     GPU mem: 57441 MB
+[2026-05-23 23:24:59] Batch 6: items 251-300/743
+[2026-05-23 23:25:55]   ⚠ Item 483: 8192 tokens (near 8K cap)
+[2026-05-23 23:25:55]   ⚠ Item 498: 8192 tokens (near 8K cap)
+[2026-05-23 23:25:55]   ✓ Batch 6 in 56.2s | 818 tok/item | 727 tok/s | ETA: 4.8 min
+[2026-05-23 23:25:56]     GPU mem: 57441 MB
+[2026-05-23 23:25:56] Batch 7: items 301-350/743
+[2026-05-23 23:26:37]   ✓ Batch 7 in 40.8s | 638 tok/item | 782 tok/s | ETA: 4.4 min
+[2026-05-23 23:26:38]     GPU mem: 57441 MB
+[2026-05-23 23:26:38] Batch 8: items 351-400/743
+[2026-05-23 23:27:20]   ✓ Batch 8 in 42.5s | 625 tok/item | 736 tok/s | ETA: 4.0 min
+[2026-05-23 23:27:21]     GPU mem: 57441 MB
+[2026-05-23 23:27:21] Batch 9: items 401-450/743
+[2026-05-23 23:27:44]   ✓ Batch 9 in 23.1s | 552 tok/item | 1194 tok/s | ETA: 3.3 min
+[2026-05-23 23:27:45]     GPU mem: 57441 MB
+[2026-05-23 23:27:45] Batch 10: items 451-500/743
+[2026-05-23 23:28:03]   ✓ Batch 10 in 17.8s | 402 tok/item | 1128 tok/s | ETA: 2.6 min
+[2026-05-23 23:28:04]     GPU mem: 57441 MB
+[2026-05-23 23:28:04] Batch 11: items 501-550/743
+[2026-05-23 23:28:12]   ✓ Batch 11 in 8.7s | 383 tok/item | 2192 tok/s | ETA: 1.9 min
+[2026-05-23 23:28:13]     GPU mem: 57441 MB
+[2026-05-23 23:28:13] Batch 12: items 551-600/743
+[2026-05-23 23:28:41]   ✓ Batch 12 in 28.0s | 475 tok/item | 847 tok/s | ETA: 1.4 min
+[2026-05-23 23:28:42]     GPU mem: 57441 MB
+[2026-05-23 23:28:42] Batch 13: items 601-650/743
+[2026-05-23 23:29:37]   ⚠ Item 814: 8192 tokens (near 8K cap)
+[2026-05-23 23:29:37]   ✓ Batch 13 in 55.2s | 668 tok/item | 605 tok/s | ETA: 1.0 min
+[2026-05-23 23:29:38]     GPU mem: 57441 MB
+[2026-05-23 23:29:38] Batch 14: items 651-700/743
+[2026-05-23 23:30:33]   ⚠ Item 894: 8192 tokens (near 8K cap)
+[2026-05-23 23:30:33]   ✓ Batch 14 in 54.9s | 638 tok/item | 581 tok/s | ETA: 0.5 min
+[2026-05-23 23:30:34]     GPU mem: 57441 MB
+[2026-05-23 23:30:34] Batch 15: items 701-743/743
+[2026-05-23 23:30:55]   ✓ Batch 15 in 21.2s | 490 tok/item | 995 tok/s | ETA: 0.0 min
+[2026-05-23 23:30:56]     GPU mem: 57441 MB
+[2026-05-23 23:30:56] === INFERENCE COMPLETE ===
+[2026-05-23 23:30:56] Runtime: 8.2 minutes
+[2026-05-23 23:30:56] Items: 943/943
+[2026-05-23 23:30:56] Total tokens: 410429
+[2026-05-23 23:30:56] Avg tokens/item: 552
+[2026-05-23 23:30:56] No-box items: 6/943
+[2026-05-23 23:30:56] GPU memory: 57441 MB
