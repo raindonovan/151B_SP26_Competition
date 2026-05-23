@@ -156,24 +156,32 @@ If smoke test fails (no `\boxed{}` or crash): report to Rain before proceeding.
 
 ---
 
-## Environment Setup Reference
+## Session Startup (run every fresh shell)
+
+These env vars are NOT in the snapshot — must be re-set on every new shell / instance restart:
 
 ```bash
-# Activate venv (always)
 source ~/venv/bin/activate
+export HF_HOME=~/hf_cache                                                    # persistent (NOT /ephemeral — wiped on stop)
+export LD_LIBRARY_PATH=/usr/local/cuda/targets/x86_64-linux/lib:$LD_LIBRARY_PATH  # required for bitsandbytes (libnvJitLink.so.13)
+```
 
-# Set HF cache to ephemeral (fast, won't fill persistent disk)
-export HF_HOME=/ephemeral/hf
+Verify:
+```bash
+nvidia-smi
+python -c "import torch; print(torch.cuda.is_available(), torch.cuda.get_device_name(0))"
+```
 
-# Download base model (first time only, ~8GB)
+### First-time-only: download base model
+
+(Skip if `~/hf_cache` already has it — 7.6 GB)
+
+```bash
 python3 -c "
 from huggingface_hub import snapshot_download
-snapshot_download('Qwen/Qwen3-4B-Thinking-2507', cache_dir='/ephemeral/hf')
+snapshot_download('Qwen/Qwen3-4B-Thinking-2507', cache_dir='/home/ubuntu/hf_cache')
 print('Downloaded')
 "
-
-# Check GPU
-nvidia-smi
 ```
 
 ---
