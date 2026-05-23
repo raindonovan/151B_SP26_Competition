@@ -357,7 +357,7 @@ Note: these 10 items are all R1/R2 tier (model originally got them right — the
    - **Epoch 4** (checkpoint-152): loss=0.04, high memorization, less overfit — likely best generalization
    - **Epoch 8** (checkpoint-304): maximum memorization — best if competition items overlap training distribution
 
-2. **Merge:** `python training/merge_adapter.py --adapter checkpoints/sft_v3/<chosen> --output training/merged/sft_v3_merged_bf16`
+2. **Merge:** `python sft/v3/scripts/merge_adapter.py --adapter checkpoints/sft_v3/<chosen> --output sft/v3/merged/sft_v3_merged_bf16`
 
 3. **Handoff:** Merged BF16 model → claude_vscode on DSMLP for full 943-item inference → Kaggle submission.
 
@@ -367,13 +367,15 @@ Note: these 10 items are all R1/R2 tier (model originally got them right — the
 
 | File | Location | Description |
 |---|---|---|
-| Training script | `scripts/train_sft_v3.py` | Fixed for trl 0.24.0 |
-| Smoke test script | `scripts/smoke_test.py` | 10-item format compliance check |
-| Checkpoint selector | `scripts/select_checkpoint.py` | Automated checkpoint ranking |
-| Dry run log | `sft_v3_dryrun.log` | 2-step test run output |
-| Full training log | `sft_v3_train.log` | Complete 304-step log with loss curve |
-| Smoke test log | `smoke_results.log` | All 3 checkpoint smoke test outputs |
-| Smoke JSONs | `results/sft_v3_smoke/` | Per-item results for ep1, ep4, ep8 |
-| Dataset | `sft_v3_dataset_final.jsonl` | 594-item training set (Git LFS) |
+| Training script | `sft/v3/scripts/train_sft_v3.py` | Fixed for trl 0.24.0 |
+| Smoke test script | `sft/v3/scripts/smoke_test.py` | 10-item format compliance check |
+| Checkpoint selector | `sft/v3/scripts/select_checkpoint.py` | Automated checkpoint ranking |
+| Merge script | `sft/v3/scripts/merge_adapter.py` | LoRA → BF16 merge |
+| Dry run log | `sft/v3/logs/dryrun.log` | 2-step test run output |
+| Full training log | `sft/v3/logs/train.log` | Complete 304-step log with loss curve |
+| Smoke test log | `sft/v3/logs/smoke_results.log` | All 3 checkpoint smoke test outputs |
+| Smoke JSONs | `sft/v3/results/` | Per-item results for ep1, ep4, ep8 |
+| Dataset (final) | `sft/v3/datasets/sft_v3_dataset_final.jsonl` | 594-item training set (Git LFS) |
+| Config | `sft/v3/config/sft_v3_config.yaml` | Training config reference |
 | Checkpoints | `checkpoints/sft_v3/` | 13 GB, on Thunder persistent disk only |
-| This document | `SFT_V3_TRAINING_LOG.md` | You are here |
+| This document | `sft/v3/SFT_V3_TRAINING_LOG.md` | You are here |

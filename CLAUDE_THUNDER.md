@@ -104,7 +104,7 @@ Training checkpoints go in `~/151B_SP26_Competition/training/checkpoints/` (pers
 ### What you're training
 
 - **Base model:** `Qwen/Qwen3-4B-Thinking-2507` — download once to `/ephemeral/hf`, then load from there.
-- **Training data:** delivered by claude_dataApp as `dataapp_outputs/sft_v3_dataset_<timestamp>.jsonl` in the DataApp repo. You'll receive a copy or path.
+- **Training data:** `sft/v3/datasets/sft_v3_dataset_final.jsonl` (594 items, SHA256: 901b86dca5be94e486d811672a3d4d8cdfd5d424ad93c7b2e57facb227b0605f)
 - **Method:** QLoRA via Unsloth + TRL SFTTrainer.
 
 ### First run config (conservative — make it work)
@@ -140,13 +140,13 @@ Rules:
 
 ```bash
 # Merge LoRA adapter to BF16
-python3 training/merge_adapter.py \
-    --adapter training/checkpoints/sft_v3_best \
-    --output training/merged/sft_v3_merged_bf16
+python3 sft/v3/scripts/merge_adapter.py \
+    --adapter checkpoints/sft_v3/<chosen_checkpoint> \
+    --output sft/v3/merged/sft_v3_merged_bf16
 
 # Smoke test (1 item, verify \boxed{} appears)
 python3 scripts/run_vllm_experiment.py \
-    --model training/merged/sft_v3_merged_bf16 \
+    --model sft/v3/merged/sft_v3_merged_bf16 \
     --data-path private.jsonl \
     --n-items 1
 ```
