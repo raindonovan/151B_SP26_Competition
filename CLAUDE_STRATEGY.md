@@ -51,35 +51,30 @@ You are NOT:
 
 ## Time Remaining
 
-**11 days to competition deadline as of 2026-05-20.** Tier 1 (run14b + SFT v3) is the must-ship plan. Day 9 = hard cutoff for new experiments.
+**~9 days to competition deadline as of 2026-05-23.** Tier 1 (run14b + SFT v3) is the must-ship plan. Day 9 = hard cutoff for new experiments.
 
 ---
 
 ## Project at a Glance
 
-CSE 151B SP26 Kaggle math reasoning competition. Final model: Qwen3-4B-Thinking-2507. Run 09 SC-8 V1 scored 0.614 Kaggle (anchor/best). SFT v3 pipeline in progress.
-
-Active pipeline phases:
-- run14b inference on private (32k tokens, V1 baseline) — running on DSMLP
-- DataApp Phase 4 batch retry for GPT-5.5-xhigh teacher — running on OpenAI Batch API
-- SFT v3 training on Thunder Compute H100 — pending dataset completion
-- GRPO Phase 2 (conditional) — pending SFT v3 results
+CSE 151B SP26 Kaggle math reasoning competition. Final model: Qwen/Qwen3-4B-Thinking-2507. Best Kaggle score: 0.646 (run14b_v3filtered.csv, 2026-05-23). SFT v3 training COMPLETE (epoch 4 checkpoint on Thunder). 14 Kaggle submissions total.
 
 ---
 
-## Three-Agent Setup
+## Four-Agent Setup
 
 | Agent | Where | Repo | Job |
 |---|---|---|---|
 | claude_strategy (you) | Claude.ai chat | both repos read-only via Chrome MCP | plan, audit, teach |
 | claude_vscode | VS Code on DSMLP pod (raindonovan tunnel) | `151B_SP26_Competition` on DSMLP | execute inference/training tasks |
 | claude_dataApp | VS Code on DSMLP pod (separate window) | `DataApp` on DSMLP | execute dataset construction |
+| claude_thunder | VS Code on Thunder Compute (laptop SSH) | `151B_SP26_Competition` on Thunder | SFT training + model merge |
 
-Cross-agent prompts from claude_vscode or claude_dataApp arrive prefixed `[FROM CLAUDE_VS_CODE]` or `[FROM CLAUDE_DATAAPP]`.
+Cross-agent prompts from claude_vscode or claude_dataApp arrive prefixed `[FROM CLAUDE_VSCODE]` or `[FROM CLAUDE_DATAAPP]`. Cross-agent prompts from claude_thunder arrive prefixed `[FROM CLAUDE_THUNDER]`.
 
-Tasks you draft for either execution agent go in a single code block, no preamble. They have their CLAUDE.md auto-loaded.
+Tasks you draft for any execution agent go in a single code block, no preamble. They have their CLAUDE.md auto-loaded.
 
-claude_vscode and claude_dataApp do not talk to each other. Cross-agent coordination goes through you + Rain.
+Execution agents do not talk to each other. Cross-agent coordination goes through you + Rain.
 
 ---
 
@@ -151,12 +146,22 @@ Rain is an undergrad CS student learning SWE through this project. Explain reaso
 
 | Submission | Score | Notes |
 |---|---|---|
-| Run 09 SC-8 V1 (2026-05-13) | 0.614 | ANCHOR / BEST |
-| run09sc8_format_fixed | 0.611 | within noise — "fix" wasn't a real lever |
-| Run 08-v2 v1-baseline | 0.586 | |
-| probe_b_reversed | 0.438 | order-reversal probe, −17.6pp vs Run 09 |
-| Run 10 v3-perslot | 0.424 | per-slot format penalty |
-| Experiment A | 0.420 | perslot format penalty |
+| run14b_v3filtered.csv | 0.646 | BEST — Base SC=8 32K V3 filter |
+| run14b_sc8_v1.csv | 0.639 | Base SC=8 32K |
+| run09sc8_v1_private943.csv | 0.614 | Anchor — Base SC=8 16K |
+| run09sc8_format_fixed.csv | 0.611 | Format fix (noise) |
+| run08v2_v1_private943.csv | 0.586 | Base SC=8 |
+| diagnostic_sub_a.csv | 0.505 | DiagA (R1+R2 consensus) |
+| run09sc8_probe_b_reversed.csv | 0.438 | Reversed order probe |
+| run10_v3perslot_private943.csv | 0.424 | V3 per-slot |
+| expA_run08_perslot_perturbed.csv | 0.420 | Per-slot format |
+| D_05_07_numina_d.csv | 0.310 | DiagD — "numina" is FAKE |
+| diagnostic_sub_c.csv | 0.222 | DiagC |
+| post_filtered_b.csv | 0.151 | DiagB — "post_filtered" is FAKE |
+| f_today_F.csv | 0.137 | DiagF — "today" is FAKE |
+| E_05_13_h100run_e.csv | 0.028 | DiagE — "h100run" is FAKE |
+
+**DECOY NAMING:** Disguised diagnostics use letter prefix+suffix. Middle text is FAKE.
 
 ±5pp 95% CI at n≈283 public sample.
 
@@ -170,9 +175,17 @@ Rain is an undergrad CS student learning SWE through this project. Explain reaso
 - Filter all-teacher-disagree items as noise
 - Trace source preference: Sonnet > GPT-5.4 > GPT-OSS
 - xhigh traces NOT used for student training (too verbose for 4B)
-- Multiple epochs locked; overfitting-encouraged config (r=64, weight_decay=0) first
 - Trained from base Qwen3-4B-Thinking-2507, not any checkpoint
-- Training compute: Thunder Compute H100 PCIe
+
+**Full locked config (training complete):**
+- 8 epochs (save at 4, 6, 8 — NOT 1-2, accuracy valley expected early)
+- r=64, alpha=128, weight_decay=0, all linear modules
+- LR=2e-4, cosine schedule
+- Single shortest-correct teacher trace per item
+- Easy 1×, split-SC 2×, wrong 3× upweight
+- U-tier items EXCLUDED
+- Training: COMPLETE (36 min on Thunder H100)
+- Checkpoint-152 (epoch 4) recommended for inference
 
 ### DataApp prompt strategy
 
@@ -188,8 +201,17 @@ Rain is an undergrad CS student learning SWE through this project. Explain reaso
 - `~` persistent; `/ephemeral` for cacheable big files
 - `tnr stop 0` pauses compute billing
 - vLLM 0.20.2 install required first time
-- Snapshot working environment after setup
+- Snapshot: **adapter_01** (working environment after SFT v3 merge)
 - Never chain DSMLP → Thunder
+
+SSH config (Rain's laptop `~/.ssh/config`):
+```
+Host tnr-0
+    HostName 64.247.196.38
+    Port 30668
+    User ubuntu
+    IdentityFile "C:\Users\donov\.thunder\keys\ws0vj2jp.pem"
+```
 
 ### GRPO Phase 2 (conditional)
 
@@ -231,10 +253,50 @@ Rule: CROSS-CHECK COUNTS WITHIN SESSION. Content-based audits beat file-existenc
 
 ---
 
-## What's Currently Running (snapshot, update as state changes)
+## What's Currently Running
 
-- DataApp Phase 4 batch (275 items, OpenAI Batch API) — running, ETA ~4-8h from submission
-- Competition run14b (SC-8, V1, 32k tokens, private 943) — running on DSMLP
+SFT v3 adapter: TRAINED, not yet deployed to DSMLP for inference.
+TritonAI endpoint: LIVE for base model. LoRA pending.
+GenSelect experiment: DESIGNED, not yet executed.
+Next action: get adapter onto DSMLP and run SC=1 greedy.
+
+---
+
+## TritonAI API Endpoint
+
+- Base URL: https://tritonai-api.ucsd.edu/v1
+- Model: `api-test-qwen-3-4b` (base Qwen3-4B, 64K context)
+- API key: sk-rT2cq501v0ydXxdpnMF4Hw
+- OpenAI-compatible. IT contact: Dominic Feliton.
+- LoRA NOT enabled yet — need Dominic to add `--enable-lora` and load adapter
+- Use for: GenSelect experiments, targeted SC runs on hard items
+
+---
+
+## Back-Solve
+
+Bayesian per-item inference from 12 submissions (2 excluded: format_fixed near-duplicate, reversed probe anti-evidence on 64% of items).
+
+- Tier 1 (≥90% conf): 430 items — lock zone
+- Tier 2 (80–90%): 63 items
+- Tier 3 (60–80%): 198 items
+- Tier 4 (40–60%): 181 items
+- Tier 5 (<40%): 71 items — investigation zone
+
+Known limitations: binary (right/wrong) model assumption mis-specified for multi-class; degenerate low-score submissions (Diag E all-placeholder) act as anti-evidence.
+
+Use tiers as ranking signal only, not calibrated probabilities.
+
+Outputs: `results/unified_answer_sheet.csv`, `results/back_solve_detail.csv`, `results/backsolve_summary.txt`
+
+---
+
+## Google Drive
+
+- Folder: "151B Competition" (ID: `14ntQe56m_ufIPyDk_Cs-sPjSESQ1NRZ8`)
+- claude_vscode has Google Drive MCP access for uploads/reads
+- Key docs: HANDOFF.md (session continuity), Back-Solve Ledger, Strategy & Ideas, Submission Registry, Unified Answer Sheet, Tailor-Made Variant Ledger
+- Update after every major state change
 
 ---
 
