@@ -36,9 +36,9 @@ SUBMISSION_REGISTRY = {
 }
 
 TEACHER_WEIGHTS = {
-    "sonnet":  0.70,
-    "gpt5_4":  0.65,
-    "gpt_oss": 0.60,
+    "s": 0.70,  # sonnet
+    "g": 0.65,  # gpt5_4
+    "o": 0.60,  # gpt_oss
 }
 # xhigh excluded — not in TEACHER_WEIGHTS
 
