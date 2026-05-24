@@ -249,6 +249,8 @@ def main() -> None:
     parser.add_argument("--gpu-util", type=float, default=0.85)
     parser.add_argument("--mcq-format", choices=["letters", "bare"], default="letters",
                         help="letters=A. B. C. (v5/base), bare=no labels (v4 adapter)")
+    parser.add_argument("--thinking-budget", type=int, default=None,
+                        help="Max thinking tokens before forcing </think>. None = unlimited.")
     args = parser.parse_args()
 
     os.makedirs(os.path.dirname(args.output) or ".", exist_ok=True)
@@ -295,12 +297,15 @@ def main() -> None:
     # Use tokenizer to apply chat template manually (consistent with run_adaptive_sc.py)
     tokenizer = llm.get_tokenizer()
 
-    sampling = SamplingParams(
+    sp_kwargs = dict(
         n=args.sc,
         temperature=args.temperature,
         top_p=args.top_p,
         max_tokens=args.max_tokens,
     )
+    if args.thinking_budget is not None:
+        sp_kwargs["thinking_token_budget"] = args.thinking_budget
+    sampling = SamplingParams(**sp_kwargs)
 
     lora_req = None
     if args.mode == "adapter":
