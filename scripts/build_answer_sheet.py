@@ -1,3 +1,4 @@
+# DEPRECATED — replaced by build_answer_sheet_v4.py. Do not use.
 #!/usr/bin/env python3
 """build_answer_sheet.py v3 — All 16 subs + teacher consensus"""
 import argparse, csv, json, math, os, re, sys

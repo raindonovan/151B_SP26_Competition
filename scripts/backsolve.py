@@ -1,3 +1,4 @@
+# DEPRECATED — replaced by build_answer_sheet_v4.py. Do not use.
 #!/usr/bin/env python3
 """
 Bayesian per-item back-solve using all available Kaggle submissions + scores.

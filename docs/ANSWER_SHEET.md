@@ -17,6 +17,18 @@ For each item i:
 
 Teacher weights: Sonnet=0.70, GPT-5.4=0.65, GPT-OSS=0.60, xhigh=EXCLUDED
 
+## Why Score-Weighted Voting
+We chose score-weighted majority voting over Bayesian posterior (v2-v3) 
+and Dawid-Skene EM because:
+- The theoretical gap to optimal is small when source quality varies 
+  significantly (our scores range 0.028-0.646)
+- One unified formula replaces the confusing dual-track (Bayesian + teacher)
+- Easy to maintain and debug
+- Adding new submissions is trivial (one registry line)
+
+Known limitation: correlated submissions (multiple runs from same base 
+model) inflate confidence. Acceptable given our source diversity.
+
 ## Confidence Tiers
 - T1 (≥0.80): High confidence, lock
 - T2 (0.60-0.80): Medium
