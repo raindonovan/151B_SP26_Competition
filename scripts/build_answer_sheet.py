@@ -10,21 +10,6 @@ Takes all Kaggle submission CSVs + teacher consensus, and produces:
 3. validation_report.txt — sanity checks against known Kaggle scores
 
 Methodology:
-#!/usr/bin/env python3
-"""
-build_answer_sheet.py — Unified Answer Sheet Builder
-
-Takes all Kaggle submission CSVs + teacher consensus, and produces:
-1. answer_matrix.json — per-item x per-submission extracted answers
-2. unified_answer_sheet.csv — final best answer per item with 5-tier confidence
-3. validation_report.txt — sanity checks against known Kaggle scores
-
-Methodology:
-  - Score-weighted Bayesian posterior per item per candidate answer
-  - Answer normalization (LaTeX equivalence, whitespace, fraction→decimal)
-  - Teacher consensus (Sonnet/GPT-5.4/GPT-OSS, xhigh EXCLUDED) as bonus signal
-  - 5-tier confidence system
-"""
 
 import argparse
 import csv
