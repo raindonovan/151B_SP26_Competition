@@ -50,7 +50,7 @@ SYSTEM = "Please reason step by step and put your final answer within \\boxed{}.
 # Engine config (mirrors scripts/run_vllm_sc.py)
 DTYPE = "bfloat16"
 GPU_MEMORY_UTILIZATION = 0.85
-MAX_MODEL_LEN = 20480
+MAX_MODEL_LEN = 24576
 
 # Per-pool sampling
 TRAINED_N = 3
@@ -372,13 +372,15 @@ def main():
     print(f"\nUntrained generate total: {time.perf_counter() - t1:.1f}s")
     print(f"Overall: {time.perf_counter() - t0:.1f}s")
 
-    # ---- Persist samples.jsonl ----
+    # ---- Persist samples.jsonl (strip all response text -- already in submission.csv) ----
     with open(samples_path, "w") as f:
         for iid in all_ids:
             r = per_item_results[iid]
-            # samples.jsonl row (slim version of response not included to keep file modest;
-            # full responses are in r["samples"][i]["response"])
             row = {k: v for k, v in r.items() if k != "response"}
+            # Strip response from each sample entry to keep file modest;
+            # the winning trace is already in submission.csv.
+            for s in row.get("samples", []):
+                s.pop("response", None)
             f.write(json.dumps(row, ensure_ascii=False) + "\n")
     print(f"Wrote {samples_path}")
 
