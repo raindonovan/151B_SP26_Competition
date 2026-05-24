@@ -11,6 +11,8 @@ Differences from v4:
   - lora_dropout:        0.0 (was 0.05; zero dropout for max memorization)
   - save_strategy:       "steps" + save_steps=196 (every ~2 epochs)
                           replaces the v4 SelectiveEpochSaveCallback
+  - per_device_train_batch_size: 1 -> 4 (H100 80GB has headroom)
+  - gradient_accumulation_steps: 4 -> 1 (effective batch unchanged at 4)
   - Auto-resume from latest checkpoint in OUTPUT_DIR via get_last_checkpoint.
 """
 
@@ -85,8 +87,8 @@ MAX_SEQ_LENGTH = 5500  # v5 max=3594, p99=2476; keep v4 setting for headroom
 # native step-based saving every 2 epochs.
 TRAINING_CONFIG = {
     "num_train_epochs": 16,
-    "per_device_train_batch_size": 1,
-    "gradient_accumulation_steps": 4,
+    "per_device_train_batch_size": 4,
+    "gradient_accumulation_steps": 1,
     "learning_rate": 2.0e-4,
     "lr_scheduler_type": "linear",
     "weight_decay": 0.0,
