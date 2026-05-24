@@ -32,6 +32,7 @@ SUBMISSION_REGISTRY = {
     "post_filtered_b.csv":              0.151,
     "f_today_F.csv":                    0.137,
     "E_05_13_h100run_e.csv":            0.028,
+    "sftv4_adaptive_rerolled.csv":      0.597,
 }
 
 TEACHER_WEIGHTS = {
