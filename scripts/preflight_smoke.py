@@ -121,7 +121,7 @@ def check_model_load(model: str, adapter_path: str | None, mode: str):
             model=model,
             gpu_memory_utilization=0.85,
             enable_prefix_caching=True,
-            max_model_len=2048 + 4096,
+            max_model_len=8192 + 4096,
             reasoning_parser="deepseek_r1",
             trust_remote_code=True,
             dtype="bfloat16",
@@ -176,7 +176,7 @@ def check_generation(
     lora_req = (LoRARequest("sft_adapter", 1, adapter_path)
                 if mode == "adapter" and adapter_path else None)
 
-    sampling = SamplingParams(n=2, temperature=0.6, top_p=0.95, max_tokens=2048)
+    sampling = SamplingParams(n=2, temperature=0.6, top_p=0.95, max_tokens=8192)
 
     n_pass = 0
     failures = []
@@ -249,11 +249,15 @@ def check_shape_filter() -> bool:
     else:
         print("    [✓] case b: 0 boxes → fallback activated")
 
-    # c) multi-answer item with 2 boxes → REJECTED
-    texts_c = [r"First: \boxed{3}, second: \boxed{7}"]
+    # c) multi-answer item with 2 boxes → REJECTED (pair: one good, one bad)
+    # Use 2 samples so fallback doesn't fire (fallback only fires if ALL are rejected)
+    texts_c = [
+        r"First: \boxed{3}, second: \boxed{7}",  # 2 boxes → should be rejected
+        r"The answer is \boxed{42}",              # 1 box → accepted (prevents fallback)
+    ]
     rej_c, fb_c = apply_shape_filter(texts_c, is_multi_answer=True)
-    if not rej_c[0]:
-        failures.append("case c: 2 boxes on multi-answer should be rejected")
+    if not rej_c[0] or rej_c[1]:
+        failures.append("case c: 2-box multi-answer rejected=[True,False] expected")
     else:
         print("    [✓] case c: 2 boxes on multi-answer → rejected")
 
@@ -327,7 +331,7 @@ def check_adapter_consistency(
     from vllm.lora.request import LoRARequest
 
     lora_req = LoRARequest("sft_adapter", 1, adapter_path) if adapter_path else None
-    sampling = SamplingParams(n=3, temperature=0.6, top_p=0.95, max_tokens=2048)
+    sampling = SamplingParams(n=3, temperature=0.6, top_p=0.95, max_tokens=8192)
 
     n_consistent = 0
     for it in mcq_trained:
