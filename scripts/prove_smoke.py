@@ -51,7 +51,9 @@ from vllm import LLM, SamplingParams  # noqa: E402
 
 
 CALIBRATION_IDS = [31, 39, 52, 59, 62]              # TRAINED, known labels
-GOOD_IDS = [0, 6, 7, 8, 11, 16, 20, 24, 28, 30]    # UNTRAINED, numeric, PROVE targets
+GOOD_IDS = [0, 6, 7, 8, 11, 16, 20, 24, 28, 30,
+            41, 49, 51, 54, 57, 58, 63, 66, 81, 83,
+            97, 105, 110, 112, 116]                 # UNTRAINED, numeric, PROVE targets
 EDGE_IDS = [4, 9, 2, 5, 17]                         # UNTRAINED, hard / multi-answer / MCQ
 
 SYSTEM = "Please reason step by step and put your final answer within \\boxed{}."
