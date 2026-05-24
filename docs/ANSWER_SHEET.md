@@ -27,7 +27,31 @@ and Dawid-Skene EM because:
 - Adding new submissions is trivial (one registry line)
 
 Known limitation: correlated submissions (multiple runs from same base 
-model) inflate confidence. Acceptable given our source diversity.
+model) inflate confidence. Fixed by correlation dampening (see below).
+
+## Correlation Dampening
+Submissions from the same base model are correlated — they tend to agree
+or disagree together, not independently. Without correction, 8 runs from
+the same Qwen3 base count as 8 independent votes, inflating confidence.
+
+Fix: group correlated submissions and apply weight dampening:
+  effective_weight = raw_weight / sqrt(group_size)
+
+Groups:
+- base_qwen3 (8 subs): run14b, run09sc8, run08v2, run10, expA variants
+- diagnostics (6 subs): diagnostic_a/c, D, E, f, post_filtered
+- sft_v3 (1 sub): sftv3_epoch8_sc1 (uncorrelated, no dampening)
+- teachers: treated as independent (different model families)
+
+Why sqrt(n): standard approximation for correlated estimators with
+correlation ρ. At full correlation (ρ=1), effective N=1; at zero (ρ=0),
+effective N=n. sqrt(n) assumes moderate correlation (~0.5), which matches
+empirical submission agreement rates on this dataset.
+
+Excluded from registry:
+- sftv4_adaptive_rerolled.csv: trained on answer sheet labels — circular
+  reasoning confirmed (all 11 new T1 items after adding it were trained
+  items). Its Kaggle score (0.597) is valid signal for other purposes.
 
 ## Confidence Tiers
 - T1 (≥0.80): High confidence, lock

@@ -11,11 +11,42 @@ Output:
 
 import csv
 import json
+import math
 import os
 import re
 from collections import defaultdict
 
+# ── Correlation groups — submissions from same base model get dampened weights ─
+# Dampening: effective_weight = raw_weight / sqrt(group_size)
+# Rationale: correlated sources should not multiply confidence artificially.
+CORRELATION_GROUPS = {
+    "base_qwen3": [
+        "run14b_v3filtered.csv",
+        "run14b_sc8_v1.csv",
+        "run09sc8_v1_private943.csv",
+        "run09sc8_format_fixed.csv",
+        "run08v2_v1_private943.csv",
+        "run10_v3perslot_private943.csv",
+        "expA_run08_perslot_perturbed.csv",
+        "run09sc8_probe_b_reversed.csv",
+    ],
+    "diagnostics": [
+        "diagnostic_sub_a.csv",
+        "diagnostic_sub_c.csv",
+        "D_05_07_numina_d.csv",
+        "E_05_13_h100run_e.csv",
+        "f_today_F.csv",
+        "post_filtered_b.csv",
+    ],
+    "sft_v3": [
+        "sftv3_epoch8_sc1_final.csv",
+    ],
+}
+
 # ── Registry ──────────────────────────────────────────────────────────────────
+# sftv4_adaptive_rerolled.csv EXCLUDED: trained on answer sheet labels —
+# circular reasoning confirmed (all 11 new T1 items after adding it were
+# trained items). Do not re-add.
 SUBMISSION_REGISTRY = {
     "run14b_v3filtered.csv":            0.646,
     "run14b_sc8_v1.csv":                0.639,
@@ -32,7 +63,6 @@ SUBMISSION_REGISTRY = {
     "post_filtered_b.csv":              0.151,
     "f_today_F.csv":                    0.137,
     "E_05_13_h100run_e.csv":            0.028,
-    "sftv4_adaptive_rerolled.csv":      0.597,
 }
 
 TEACHER_WEIGHTS = {
@@ -46,6 +76,13 @@ SUBMISSIONS_DIR = "submissions"
 TEACHER_FILE    = "data/teacher_answers_compact.json"
 OUTPUT_FILE     = "results/answer_sheet/unified_answer_sheet_v4.csv"
 N_ITEMS         = 943
+
+# ── Precompute dampened weights ───────────────────────────────────────────────
+def _dampened_weight(fname: str, raw_weight: float) -> float:
+    for members in CORRELATION_GROUPS.values():
+        if fname in members:
+            return raw_weight / math.sqrt(len(members))
+    return raw_weight  # uncorrelated — no dampening
 
 # ── Normalisation ─────────────────────────────────────────────────────────────
 def normalize(ans: str) -> str:
@@ -63,7 +100,6 @@ def extract_boxed(text: str) -> str:
     matches = list(re.finditer(r"\\boxed\{", text))
     if not matches:
         return normalize(text)  # no box — use raw (placeholder / MCQ letter)
-    # walk from last match to find matching brace
     start = matches[-1].end()
     depth = 1
     i = start
@@ -77,21 +113,24 @@ def extract_boxed(text: str) -> str:
 
 # ── Load all submission CSVs that are in the registry ─────────────────────────
 def load_submissions() -> dict[int, list[tuple[str, float]]]:
-    """Returns {item_id: [(answer, weight), ...]}"""
+    """Returns {item_id: [(answer, dampened_weight), ...]}"""
     data: dict[int, list[tuple[str, float]]] = defaultdict(list)
     found = []
+    print(f"  {'File':<45} {'Raw':>6} {'Damp':>6}")
     for fname, weight in SUBMISSION_REGISTRY.items():
         path = os.path.join(SUBMISSIONS_DIR, fname)
         if not os.path.exists(path):
             print(f"  [WARN] submission not found: {path}")
             continue
+        dampened = _dampened_weight(fname, weight)
+        print(f"  {fname:<45} {weight:>6.3f} {dampened:>6.3f}")
         found.append(fname)
         with open(path, encoding="utf-8") as f:
             for row in csv.DictReader(f):
                 iid = int(row["id"])
                 ans = extract_boxed(row.get("response", "") or "")
                 if ans:
-                    data[iid].append((ans, weight))
+                    data[iid].append((ans, dampened))
     print(f"  Loaded {len(found)} submission CSVs")
     return data
 
@@ -104,7 +143,6 @@ def load_teachers() -> dict[int, list[tuple[str, float]]]:
         return data
     with open(TEACHER_FILE, encoding="utf-8") as f:
         raw = json.load(f)
-    # Expected format: {item_id: {teacher_name: answer_str, ...}, ...}
     for iid_str, teachers in raw.items():
         iid = int(iid_str)
         for teacher, ans in teachers.items():
