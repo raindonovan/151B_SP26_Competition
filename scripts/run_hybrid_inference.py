@@ -6,20 +6,24 @@ TWO MODES:
 
 Usage:
   # Base run (DSMLP A30):
-  python3 scripts/run_hybrid_inference.py \
+  VLLM_USE_V1=0 python3 scripts/run_hybrid_inference.py \
     --mode base \
     --model Qwen/Qwen3-4B-Thinking-2507 \
     --output results/hybrid/base_run.jsonl \
     --max-tokens 32768 --sc 8 --temperature 0.6
 
-  # Adapter run:
-  python3 scripts/run_hybrid_inference.py \
+  # Adapter run (v5 adapter, letter-labelled MCQ):
+  VLLM_USE_V1=0 python3 scripts/run_hybrid_inference.py \
     --mode adapter \
     --model Qwen/Qwen3-4B-Thinking-2507 \
     --adapter-path checkpoints/sft_v4/checkpoint-588 \
     --item-ids results/hybrid/adapter_pass_set.txt \
     --output results/hybrid/adapter_run.jsonl \
     --max-tokens 4096 --sc 3 --temperature 0.6
+
+  # Adapter run (v4 adapter, bare MCQ options):
+  VLLM_USE_V1=0 python3 scripts/run_hybrid_inference.py \
+    --mode adapter --mcq-format bare ...
 """
 
 import os
@@ -37,73 +41,133 @@ SYSTEM_PROMPT = (
 )
 LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-# ── Answer utilities (mirrors build_answer_sheet_v4.py) ───────────────────────
-def normalize_answer(ans: str) -> str:
-    if not ans:
+# ── Answer utilities (mirrors run_adaptive_sc.py) ─────────────────────────────
+def normalize_answer(s: str) -> str:
+    if not s:
         return ""
-    s = ans.strip().strip("$")
-    s = re.sub(r"\\dfrac", r"\\frac", s)
-    s = re.sub(r"\\,|\\;|\\!", "", s)
-    s = re.sub(r"\s*,\s*", ",", s)
-    return s.strip()
+    s = s.strip()
+    if s.startswith("$") and s.endswith("$") and len(s) >= 2:
+        s = s[1:-1].strip()
+    s = s.replace("\\,", " ").replace("\\;", " ").replace("\\ ", " ")
+    s = s.replace("\\quad", " ").replace("\\!", "")
+    s = s.replace("\\dfrac", "\\frac")
+    s = re.sub(r"\s*,\s*", ", ", s)
+    s = re.sub(r"\s+", " ", s).strip()
+    return s
+
+def count_top_level_boxes(text: str) -> int:
+    """Count \\boxed{} occurrences not nested inside another \\boxed{}."""
+    count = 0
+    depth = 0
+    i = 0
+    while i < len(text):
+        if text[i:i + 7] == "\\boxed{":
+            if depth == 0:
+                count += 1
+            depth += 1
+            i += 7
+        elif text[i] == "{" and depth > 0:
+            depth += 1
+            i += 1
+        elif text[i] == "}" and depth > 0:
+            depth -= 1
+            i += 1
+        else:
+            i += 1
+    return count
 
 def extract_last_boxed(text: str) -> str:
-    matches = list(re.finditer(r"\\boxed\{", text))
-    if not matches:
+    """Return the contents of the last \\boxed{...} or ''."""
+    positions = []
+    i = 0
+    while i < len(text):
+        pos = text.find("\\boxed{", i)
+        if pos == -1:
+            break
+        positions.append(pos)
+        i = pos + 7
+    if not positions:
         return ""
-    start = matches[-1].end()
-    depth, i = 1, start
-    while i < len(text) and depth > 0:
-        if text[i] == "{":
+    start = positions[-1] + 7
+    depth, j = 1, start
+    while j < len(text) and depth > 0:
+        if text[j] == "{":
             depth += 1
-        elif text[i] == "}":
+        elif text[j] == "}":
             depth -= 1
-        i += 1
-    return normalize_answer(text[start : i - 1])
+        j += 1
+    return text[start : j - 1].strip() if depth == 0 else ""
 
-# V3 shape filter: reject implausible answers on untrained items
-_SHAPE_PATTERNS = [
-    re.compile(r"^\d{6,}$"),           # very long raw integers
-    re.compile(r"^[A-Z]{5,}$"),        # long uppercase strings
-    re.compile(r"^\s*$"),              # empty
-]
+def count_ans_placeholders(question: str) -> int:
+    n = question.count("[ANS]")
+    return max(n, 1)
 
-def shape_filter(ans: str) -> bool:
-    """Returns True if answer passes (looks plausible)."""
-    for pat in _SHAPE_PATTERNS:
-        if pat.match(ans):
-            return False
-    return True
+def apply_shape_filter(
+    sample_texts: list[str], is_multi_answer: bool
+) -> tuple[list[bool], bool]:
+    """Returns (rejected_flags, fallback_used).
 
-def majority_vote(
-    samples: list[str], apply_shape_filter: bool = True
+    Rejects samples with:
+      - 0 top-level \\boxed{} (no answer given)
+      - >1 top-level \\boxed{} on a multi-answer item
+    Falls back to all-accepted if every sample is rejected.
+    """
+    rejected = []
+    for text in sample_texts:
+        n_boxes = count_top_level_boxes(text)
+        rejected.append(n_boxes == 0 or (is_multi_answer and n_boxes > 1))
+    if all(rejected):
+        return [False] * len(sample_texts), True  # fallback
+    return rejected, False
+
+def majority_vote_filtered(
+    sample_texts: list[str], rejected: list[bool]
 ) -> tuple[str, int, int]:
-    """Returns (voted_answer, votes_for_winner, n_voting)."""
-    answers = [extract_last_boxed(s) for s in samples]
-    valid = [a for a in answers if a]
-    if apply_shape_filter:
-        valid = [a for a in valid if shape_filter(a)]
-    if not valid:
-        return ("", 0, 0)
-    counts = Counter(valid)
-    winner, votes = counts.most_common(1)[0]
-    return winner, votes, len(valid)
+    """Majority over non-rejected samples. Returns (voted_raw, votes, n_voting)."""
+    bucket: Counter = Counter()
+    raw_for: dict[str, str] = {}
+    for text, rej in zip(sample_texts, rejected):
+        if rej:
+            continue
+        ans = extract_last_boxed(text)
+        if not ans:
+            continue
+        norm = normalize_answer(ans)
+        if not norm:
+            continue
+        bucket[norm] += 1
+        raw_for.setdefault(norm, ans)
+    if not bucket:
+        return "", 0, 0
+    winner_norm, votes = bucket.most_common(1)[0]
+    return raw_for[winner_norm], votes, sum(bucket.values())
 
-def pick_response(samples: list[str], voted_answer: str) -> str:
-    """Return full trace of first sample whose boxed answer matches voted."""
-    for s in samples:
-        if extract_last_boxed(s) == voted_answer:
-            return s
-    return samples[0] if samples else ""
+def pick_response(
+    sample_texts: list[str], rejected: list[bool], voted_raw: str
+) -> str:
+    """Full trace of first non-rejected sample matching voted_raw."""
+    voted_norm = normalize_answer(voted_raw)
+    for text, rej in zip(sample_texts, rejected):
+        if rej:
+            continue
+        if normalize_answer(extract_last_boxed(text)) == voted_norm:
+            return text
+    for text, rej in zip(sample_texts, rejected):
+        if not rej:
+            return text
+    return sample_texts[0] if sample_texts else ""
 
 # ── Prompt construction ───────────────────────────────────────────────────────
-def build_user_msg(item: dict) -> str:
+def build_user_msg(item: dict, mcq_format: str = "letters") -> str:
     question = item["question"]
     options = item.get("options")
     if options:
-        opts_text = "\n".join(
-            f"{LETTERS[i]}. {opt}" for i, opt in enumerate(options)
-        )
+        if mcq_format == "letters":
+            opts_text = "\n".join(
+                f"{LETTERS[i]}. {opt}" for i, opt in enumerate(options)
+            )
+        else:  # bare — v4 adapter format
+            opts_text = "\n".join(options)
         return f"{question}\n\nOptions:\n{opts_text}"
     return question
 
@@ -118,7 +182,7 @@ def load_items(item_ids: list[int] | None = None) -> list[dict]:
         return [items[i] for i in item_ids if i in items]
     return [items[i] for i in sorted(items)]
 
-# ── Resume: load already-completed IDs ───────────────────────────────────────
+# ── Resume ────────────────────────────────────────────────────────────────────
 def load_done(output_path: str) -> set[int]:
     done = set()
     if not os.path.exists(output_path):
@@ -132,7 +196,6 @@ def load_done(output_path: str) -> set[int]:
                 pass
     return done
 
-# ── Write one result ──────────────────────────────────────────────────────────
 def write_result(path: str, result: dict) -> None:
     with open(path, "a", encoding="utf-8") as f:
         f.write(json.dumps(result, ensure_ascii=False) + "\n")
@@ -177,39 +240,38 @@ def main() -> None:
     parser.add_argument("--adapter-path", default=None,
                         help="LoRA adapter path (adapter mode only)")
     parser.add_argument("--item-ids", default=None,
-                        help="Path to text file with one item ID per line (adapter mode)")
+                        help="Text file with one item ID per line")
     parser.add_argument("--output", required=True, help="Output JSONL path")
     parser.add_argument("--max-tokens", type=int, default=32768)
     parser.add_argument("--sc", type=int, default=8, help="SC samples per item")
     parser.add_argument("--temperature", type=float, default=0.6)
     parser.add_argument("--top-p", type=float, default=0.95)
     parser.add_argument("--gpu-util", type=float, default=0.85)
+    parser.add_argument("--mcq-format", choices=["letters", "bare"], default="letters",
+                        help="letters=A. B. C. (v5/base), bare=no labels (v4 adapter)")
     args = parser.parse_args()
 
     os.makedirs(os.path.dirname(args.output) or ".", exist_ok=True)
 
-    # Determine item IDs to run
     if args.item_ids:
         with open(args.item_ids) as f:
             target_ids = [int(l.strip()) for l in f if l.strip()]
     else:
-        target_ids = None  # all 943
+        target_ids = None
 
-    # Resume
     done = load_done(args.output)
     print(f"Resuming: found {len(done)} completed items, skipping")
 
-    # Load items
     all_items = load_items(target_ids)
     items = [it for it in all_items if int(it["id"]) not in done]
     total = len(all_items)
-    print(f"Target: {total} items | To run: {len(items)} | SC={args.sc} | max_tokens={args.max_tokens}")
+    print(f"Target: {total} items | To run: {len(items)} | SC={args.sc} | "
+          f"max_tokens={args.max_tokens} | mcq_format={args.mcq_format}")
 
     if not items:
         print("Nothing to do.")
         return
 
-    # Build vLLM engine
     from vllm import LLM, SamplingParams
     from vllm.lora.request import LoRARequest
 
@@ -219,6 +281,8 @@ def main() -> None:
         enable_prefix_caching=True,
         max_model_len=args.max_tokens + 4096,
         reasoning_parser="deepseek_r1",
+        trust_remote_code=True,
+        dtype="bfloat16",
     )
     if args.mode == "adapter":
         if not args.adapter_path:
@@ -227,6 +291,9 @@ def main() -> None:
         llm_kwargs["max_lora_rank"] = 64
 
     llm = LLM(**llm_kwargs)
+
+    # Use tokenizer to apply chat template manually (consistent with run_adaptive_sc.py)
+    tokenizer = llm.get_tokenizer()
 
     sampling = SamplingParams(
         n=args.sc,
@@ -245,21 +312,33 @@ def main() -> None:
     for item in items:
         iid = int(item["id"])
         is_mcq = bool(item.get("options"))
-        user_msg = build_user_msg(item)
+        is_multi = count_ans_placeholders(item.get("question", "")) > 1
+        user_msg = build_user_msg(item, args.mcq_format)
+
         messages = [
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user",   "content": user_msg},
         ]
+        prompt = tokenizer.apply_chat_template(
+            messages, tokenize=False, add_generation_prompt=True
+        )
 
         t0 = time.time()
-        kwargs = {"lora_request": lora_req} if lora_req else {}
-        outputs = llm.chat(messages, sampling_params=sampling, **kwargs)
+        gen_kwargs = {"lora_request": lora_req} if lora_req else {}
+        outputs = llm.generate(prompt, sampling_params=sampling, **gen_kwargs)
         wall = time.time() - t0
 
-        samples = [c.text for c in outputs[0].outputs]
+        sample_texts = [o.text for o in outputs[0].outputs]
+
         apply_filter = args.mode == "base"
-        voted, votes, n_voting = majority_vote(samples, apply_shape_filter=apply_filter)
-        response = pick_response(samples, voted)
+        if apply_filter:
+            rejected, fallback = apply_shape_filter(sample_texts, is_multi)
+        else:
+            rejected = [False] * len(sample_texts)
+            fallback = False
+
+        voted, votes, n_voting = majority_vote_filtered(sample_texts, rejected)
+        response = pick_response(sample_texts, rejected, voted)
 
         result = {
             "id": iid,
@@ -267,8 +346,9 @@ def main() -> None:
             "voted_answer": voted,
             "votes": votes,
             "n_voting": n_voting,
+            "shape_fallback": fallback,
             "response": response,
-            "samples": samples,
+            "samples": sample_texts,
             "wall_seconds": round(wall, 2),
             "timestamp": datetime.now(timezone.utc).isoformat(),
         }
