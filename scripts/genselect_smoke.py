@@ -49,6 +49,27 @@ MAX_MODEL_LEN = 20480
 PRINT_WIDTH = 60  # answer string width when printing
 
 
+def normalize(s):
+    """Normalize an answer string for comparison.
+    Strips outer whitespace and $...$, collapses runs of whitespace,
+    normalizes 'a,b' vs 'a, b' to 'a, b', removes LaTeX spacing macros."""
+    if s is None:
+        return ""
+    s = str(s).strip()
+    # Strip wrapping $...$ math delimiters (one pair)
+    if s.startswith("$") and s.endswith("$") and len(s) >= 2:
+        s = s[1:-1].strip()
+    # Drop LaTeX spacing macros
+    s = s.replace("\\,", " ").replace("\\;", " ").replace("\\ ", " ").replace("\\quad", " ").replace("\\!", "")
+    # \dfrac vs \frac
+    s = s.replace("\\dfrac", "\\frac")
+    # Normalize comma spacing: 'a,b' or 'a , b' -> 'a, b'
+    s = re.sub(r"\s*,\s*", ", ", s)
+    # Collapse all internal whitespace runs to one space
+    s = re.sub(r"\s+", " ", s).strip()
+    return s
+
+
 def extract_boxed(text):
     positions = []
     i = 0
@@ -223,14 +244,17 @@ def main():
 
         for i, (iid, ans_a, ans_b, qt, orient) in enumerate(verify_data):
             verified_raw = extract_boxed(verify_out[i].outputs[0].text)
+            n_verified = normalize(verified_raw)
+            n_a = normalize(ans_a)
+            n_b = normalize(ans_b)
 
             if not verified_raw:
                 verdict = "EMPTY (no box)"
                 verify_empty += 1
-            elif verified_raw == ans_a:
+            elif n_verified == n_a:
                 verdict = "AGREES with majority"
                 verify_agrees_majority += 1
-            elif verified_raw == ans_b:
+            elif n_verified == n_b:
                 verdict = "FLIPS to minority"
                 verify_flips_minority += 1
             else:
