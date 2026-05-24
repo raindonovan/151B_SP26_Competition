@@ -241,10 +241,10 @@ def build_prove_prompt(item, tokenizer):
     return tokenizer.apply_chat_template(msgs, tokenize=False, add_generation_prompt=True)
 
 
-def majority_vote(outputs):
-    """outputs: list of vllm output objects with .outputs[].text
-       Returns (winner, count, n_nonempty)."""
-    answers = [extract_boxed(o.text) for o in outputs]
+def majority_vote(request_output):
+    """request_output: a single vllm RequestOutput (request_output.outputs
+       is the list of n completions). Returns (winner, count, n_nonempty)."""
+    answers = [extract_boxed(o.text) for o in request_output.outputs]
     non_empty = [a for a in answers if a]
     if not non_empty:
         return "", 0, 0
