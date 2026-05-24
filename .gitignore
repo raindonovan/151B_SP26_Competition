@@ -16,7 +16,14 @@ unsloth_compiled_cache/
 # Training artifacts (large)
 training/checkpoints/
 training/**/checkpoints/
-checkpoints/
+checkpoints/*
+# Exception: keep the v4 chosen checkpoint (LoRA adapter) for vLLM enable_lora.
+!checkpoints/sft_v4
+checkpoints/sft_v4/*
+!checkpoints/sft_v4/checkpoint-588
+checkpoints/sft_v4/checkpoint-588/*
+!checkpoints/sft_v4/checkpoint-588/adapter_config.json
+!checkpoints/sft_v4/checkpoint-588/adapter_model.safetensors
 
 # Generated SFT data (regenerable via training/prepare_*.py)
 data/sft/
