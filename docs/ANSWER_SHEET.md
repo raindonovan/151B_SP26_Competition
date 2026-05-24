@@ -1,0 +1,44 @@
+# Answer Sheet Methodology
+
+## Problem
+943 items with withheld gold answers. We infer correct answers using:
+- N Kaggle submissions (currently 16, growing), each with known overall score
+- 3 teacher models with per-item answers (Sonnet, GPT-5.4, GPT-OSS)
+
+## Formula: Score-Weighted Majority Vote
+
+For each item i:
+- Collect all answers from all sources
+- Each source gets weight = its Kaggle score (submissions) or estimated accuracy (teachers)
+- For each unique candidate answer a:
+    score(a) = sum of weights for all sources giving answer a
+- best_answer = argmax score
+- confidence = score(best) / sum(all scores)
+
+Teacher weights: Sonnet=0.70, GPT-5.4=0.65, GPT-OSS=0.60, xhigh=EXCLUDED
+
+## Confidence Tiers
+- T1 (≥0.80): High confidence, lock
+- T2 (0.60-0.80): Medium
+- T3 (0.40-0.60): Low, worth testing
+- T4 (<0.40): Very low, model is guessing
+
+## Answer Matching
+Before comparing: strip whitespace, $, LaTeX spacing (\, \; \quad),
+normalize \dfrac→\frac, normalize comma spacing, collapse whitespace.
+Same normalize_answer() as in voting scripts.
+
+## Workflow After Each Submission
+1. Place CSV in submissions/
+2. Add to SUBMISSION_REGISTRY in build_answer_sheet script
+3. Re-run script
+4. Check tier distribution
+
+## Script
+scripts/build_answer_sheet_v4.py (replaces build_answer_sheet.py)
+
+## History
+- v1 (2026-05-22): 10 subs, simple back-solve
+- v2 (2026-05-23): 12 subs, Bayesian posterior
+- v3 (2026-05-24): 16 subs + teacher, Bayesian + teacher dual-track
+- v4 (2026-05-24): Simplified to score-weighted voting, one unified formula
