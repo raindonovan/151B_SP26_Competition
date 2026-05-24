@@ -372,15 +372,16 @@ def main():
     print(f"\nUntrained generate total: {time.perf_counter() - t1:.1f}s")
     print(f"Overall: {time.perf_counter() - t0:.1f}s")
 
-    # ---- Persist samples.jsonl (strip all response text -- already in submission.csv) ----
+    # ---- Persist samples.jsonl (full per-sample traces preserved) ----
+    # NOTE: large file (~200-500MB) -- full traces are required for downstream
+    # answer-sheet expansion / re-voting.
     with open(samples_path, "w") as f:
         for iid in all_ids:
             r = per_item_results[iid]
+            # Drop the top-level voted "response" (it's redundant with the
+            # corresponding sample's response and with submission.csv);
+            # keep every sample's response intact.
             row = {k: v for k, v in r.items() if k != "response"}
-            # Strip response from each sample entry to keep file modest;
-            # the winning trace is already in submission.csv.
-            for s in row.get("samples", []):
-                s.pop("response", None)
             f.write(json.dumps(row, ensure_ascii=False) + "\n")
     print(f"Wrote {samples_path}")
 
