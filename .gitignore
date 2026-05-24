@@ -2,6 +2,7 @@
 .venv
 data/*
 !data/slices/
+!data/teacher_answers_compact.json
 __pycache__
 LICENSE.ipynb_checkpoints/
 core
