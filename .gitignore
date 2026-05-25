@@ -24,6 +24,13 @@ checkpoints/sft_v4/*
 checkpoints/sft_v4/checkpoint-588/*
 !checkpoints/sft_v4/checkpoint-588/adapter_config.json
 !checkpoints/sft_v4/checkpoint-588/adapter_model.safetensors
+# Exception: v5 chosen checkpoint (epoch 12, won memorization test 20/20).
+!checkpoints/sft_v5
+checkpoints/sft_v5/*
+!checkpoints/sft_v5/checkpoint-1176
+checkpoints/sft_v5/checkpoint-1176/*
+!checkpoints/sft_v5/checkpoint-1176/adapter_config.json
+!checkpoints/sft_v5/checkpoint-1176/adapter_model.safetensors
 
 # Generated SFT data (regenerable via training/prepare_*.py)
 data/sft/
