@@ -1,53 +1,42 @@
-# IMMEDIATE CONTEXT -- current state (2026-05-27 ~01:30 local / ~09:30 UTC)
+# IMMEDIATE_CONTEXT
 
-## Where we are RIGHT NOW
+**Last updated:** 2026-05-26 ~14:00 PT
 
-**Last major event**: tnr-0 25th-snapshot restore complete after SIGKILL phantom-memory recovery (took ~90 min). Identity guardrail (`~/.instance-role`) now established on both Thunder instances. Batched runner code (commit 5442405) on tnr-0's branch. chunk=4 smoke just launched.
+## Right now
+- **Day 2 of 6** in CSE 151B Kaggle math competition
+- **Best Kaggle real-inference:** 0.643 (slot1_minimal_norm)
+- **Best Kaggle diagnostic:** 0.671 (info_4)
+- **All 3 GPU instances active**: tnr-0 (A1+A2), tnr-1 (rescue+NoThinking), A30 DSMLP (adapter v5 smoking)
+- **claude_wolfram** processing PACE batches 4-7 (~30 min remaining)
 
-## Active state
+## What's blocking what
+- Slot 2 submission → Wolfram batches 4-7 completing
+- A30 adapter full launch → smoke confirmation
+- Slot C build → all inference + Wolfram landing (~21:00 PT)
+- Slot D tomorrow → Slot C scores + Trace POC results
 
-- **tnr-0** (NEW instance, 2x A100-80GB, `instance-x528wsl9-main`): Running chunk=4 batched smoke (8 items, SC=16, max_tokens=49152). ETA 10-20 min. GO/NO-GO gate for tnr-1 restart decision.
-- **tnr-1** (original instance, 2x A100-80GB): Still running B2 NoThinking full 943 at serial pace. 43+ items at last check. Plan: kill and restart with batched + `--max-tokens 8192` IF tnr-0 smoke validates.
-- **vscode** (DSMLP): standing down
-- **claude_strategy**: Drive -> repo doc migration in progress
+## Quick facts
+- 943 items on private set
+- Format-aware system prompt (CRITICAL OUTPUT FORMAT + CORRECT/WRONG example) LOCKED
+- 6 items systemically broken in base Qwen (slot1 + run14b both undercount); adapter or Wolfram only
+- 38 PACE computable items have Wolfram canonical incoming
+- 23 non-computable broken items: target for Trace POC tomorrow
 
-## Kaggle slots state
+## Where to find things
+**Drive folder "151B Competition"** (id 14ntQe56m_ufIPyDk_Cs-sPjSESQ1NRZ8):
+- PROJECT_STATE - 2026-05-26 14:00 PT (id 1NuesKNAdUKCqytmx5KWXpG4xudN8pevU)
+- NEXT_ACTIONS - 2026-05-26 14:00 PT (id 1cjcmbIcs_L85lkjWN0ayB4suEl2MS8sj)
+- CLAUDE_STRATEGY_RULES, HANDOFF_PROCEDURE (stable)
+- WOLFRAM_BATCH_NN_RESULTS.md (PACE outputs)
 
-- 2 of 3 slots remaining today (only slot1_minimal_norm = 0.643 used)
-- HOLDING for tomorrow morning's Thunder-derived submissions
+**Repo (main branch):**
+- submissions/slot1_minimal_norm.csv — 0.643 anchor baseline
+- submissions/slot1_reformat.csv — today's Slot 1 (reformat post-processor test)
+- data/candidates_targeted_rescue_61.txt — 61 broken multi-answer IDs
+- results/pace/pace_today.csv — 61 items with PACE classification
+- results/hybrid/tnr-A/ — tnr-0 A1+A2 outputs
+- results/hybrid/tnr-B/ — tnr-1 rescue+NoThinking outputs
+- results/hybrid/dsmlp-A30/ — A30 adapter outputs
 
-## Best scores snapshot
-
-- **Best real inference**: 0.643 (slot1_minimal_norm)
-- Best diagnostic: 0.671 (info_4)
-- run14b real: 0.646 (v3 filter)
-- Adapter v5 vs base: ~3 semantic items regression (near break-even, NOT format-broken)
-
-## Pending decision: restart tnr-1?
-
-After tnr-0 smoke result:
-- **>=2x speedup, clean preemption** -> restart tnr-1 with batched + `--max-tokens 8192` for B2 v2 (saves ~5-8h B2 wallclock)
-- **<1.5x speedup** -> leave tnr-1 alone, accept ~50-66% B2 coverage by morning
-- **Smoke fails** -> debug, possibly lower chunk size to 2
-
-## What I'm waiting on
-
-1. tnr-0 smoke result (~10-20 min ETA)
-2. Then: tnr-1 restart decision
-3. Then: A1 production launch on tnr-0 (~2.5-3.5h)
-4. Then: B2 v2 production launch on tnr-1 (conditional) (~4-5h)
-
-## Doc migration status (5/27)
-
-- [x] `docs/HANDOFF.md` migrated (replaces stale v4.1)
-- [x] `docs/IMMEDIATE_CONTEXT.md` (this doc) -- migrated NOW
-- [x] `docs/MASTER_TODO.md` -- migrated NOW
-- [x] `docs/STRATEGY_IDEAS.md` -- migrated NOW
-- [x] `docs/SUBMISSION_REGISTRY.md` -- migrated NOW
-- [x] `docs/DAY_2_SUBMISSION_QUEUE.md` -- migrated NOW
-
-## If chat dies / context lost
-
-- Read this doc + `docs/HANDOFF.md` + `docs/MASTER_TODO.md`
-- Check `inference/tnr-0-*` and `inference/tnr-1-*` branches via git-mcp
-- Memory entries: #3, #17, #26, #28, #30
+**tnr-1 branch** (inference/tnr-1-20260526T065456Z): full tnr-1 history
+**tnr-0 branch** (inference/tnr-0-20260526T065430Z): full tnr-0 history

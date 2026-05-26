@@ -1,68 +1,66 @@
-# Strategy & Ideas v3 -- 151B Competition
+# STRATEGY_IDEAS
 
-# Last updated: 2026-05-25
-# Purpose: Strategy lineage after SFT v4 regression diagnosis
+**Last updated:** 2026-05-26 ~14:00 PT (mid-Day 2)
 
-> **MIGRATED FROM DRIVE 2026-05-27 -- HISTORICAL CONTEXT.** Captures strategy state on 5/25. For current state see `docs/IMMEDIATE_CONTEXT.md` and `docs/MASTER_TODO.md`. Preserved for the reasoning lineage that led to the current hybrid-inference approach.
+Running log of strategy ideas — validated, failed, queued.
 
-## Current Status (as of 5/25)
+## LOCKED / WORKING
 
-- **Best Kaggle: 0.646** (run14b_v3filtered, base model)
-- **SFT v4: 0.597** (REGRESSION -- diagnosed, fix plan -> led to SFT v5)
-- **Days remaining: ~7**
-- **17 submissions used**
+### Format-aware system prompt with CORRECT/WRONG example
+Drives 4/8 → 8/8 unanimous on multi-value items. Use for ALL inference. Locked in run_hybrid_inference.py via --system-prompt flag.
 
-## Root Cause Analysis (SFT v4 0.597)
+### Sample-level reformat post-processor
+Extract all \boxed{}, top-level comma split, dedupe, take last N, rewrite as single canonical \boxed{a, b, c}. Captured in scripts/reformat_multi_answer.py. 54 multi-answer repairs on slot1.
 
-Three confirmed causes:
+### PACE (Wolfram MCP via Mathematica kernel)
+Validated batch 1: 5/6 HIGH-confidence rescues + 1 MEDIUM. Symbolic verification beats teacher consensus on hard computable items.
 
-1. **Catastrophic forgetting** on 552 untrained items (~1-3pp)
-2. **MCQ prompt format mismatch** -- teacher traces reference letter labels but training used bare options (~1-2pp)
-3. **16K vs 32K token budget** on untrained items (~2.5pp)
+### 4-source ensemble for hard items
+base+format / NoThinking / adapter v5 / Wolfram canonical. Drives Slot C tonight.
 
-Confirmed by 3-LLM research exchange using papers:
-- "SFT Memorizes, RL Generalizes" (arXiv:2501.17161)
-- "RL Fine-Tuning Heals OOD Forgetting in SFT" (arXiv:2509.12235)
-- "Entropy-Adaptive Fine-Tuning" (arXiv:2601.02151)
+### run14b cross-check pattern
+Cheap (2 min) check whether failure is systemic vs config-specific. Skips unnecessary re-runs.
 
-## The Fix: Hybrid Inference (Fix B + Fix C)
+### Multi-agent + Drive-as-handoff
+claude_strategy + vscode + tnr-0 + tnr-1 + claude_wolfram. Drive primary (create-only, new doc per update), repo as backup.
 
-### Fix B: Retrain with letter labels
-- Dataset: data/sft_v5_dataset.jsonl (202 MCQ relabelled)
-- Config: r=64, alpha=128, max memorization
-- -> **DONE 5/25; v5 epoch 12 = checkpoint-1176**
+## QUEUED — TRACE PROJECT (tomorrow)
 
-### Fix C: Adapter switching (two separate runs + splice)
-- Run 1: Base model for untrained items (32K, SC=8 or reuse run14b)
-- Run 2: SFT adapter for trained items ONLY (SC=3)
-- Splice by item ID
+**Goal:** test if Opus 4.7 can reliably read Qwen reasoning + answer and judge correctness. If signal exists, override/tiebreak for Slot D.
 
-### Key Insight: Reuse run14b
-756 of 943 items had strong/medium SC=8 consensus in run14b -- no need to re-run.
-Only re-run: 176 weak items at SC=16 + 391 adapter items at SC=3.
+**Why Opus 4.7 (not xhigh):**
+xhigh failed 16/18 on no-box items with unique wrong answers + extraction errors. Same model = same blind spots as judge. Opus 4.7 is stronger, different training distribution, adds 5th independent signal regardless of judging outcome.
 
-## Expected Outcome (5/25 projection -- see Submission Registry for actuals)
+**PoC design:**
+- 90 items (30 Qwen-correct, 30 Qwen-wrong, 30 uncertain) via teacher consensus + PACE ground truth
+- Independent-solve + judge in single call (two-for-one: also gets 5th teacher answer)
+- Standalone scripts/llm_judge.py using Anthropic SDK directly (no DataApp PAT dependency)
+- Cost: $5-8. Time: ~3h total.
 
-- Untrained items: ~0.67
-- Trained items: ~95% accuracy via memorization
-- Combined: ~0.75-0.78
+**Decision tree:**
+- Regime A (accurate flag + accurate correct): oracle for Slot D, +5-10pp possible
+- Regime B (accurate flag, moderate correct): flag-only, route to Wolfram/manual
+- Regime C (unreliable): drop
 
-**ACTUAL (post-test):** Adapter v5 + run14b splice = 0.639, near break-even with base. v5 NOT format-broken. Real regression ~3 semantic items.
+## QUEUED — Wolfram pass 2 (after confidence map exists)
+Targeted arbitration for confidence-map items where sources disagree 2-2 or 3-1. ~30-50 items, cheap.
 
-## Research Findings
+## FAILED / FALSIFIED
 
-1. Adapter switching eliminates OOD forgetting entirely
-2. r=64 is correct under adapter switching (memorization vault)
-3. Max memorization epoch is correct
-4. Two separate runs safer than dynamic LoRA switching
-5. Route by empirical memorization, not training set membership
-6. Byte-identical prompts between training and inference critical
-7. pace_patch catches wrong labels before they're memorized
+- Multi-answer order swap: 0 items had right values wrong order. Not a lever.
+- Per-slot \boxed{}: -16.2pp.
+- \dfrac → \frac alone: confounded probe, not clean.
+- xhigh on no-box items: worse than cheap teachers. LLM consensus doesn't help.
+- slot1/run14b under-generation: SYSTEMIC. Adapter or Wolfram only paths.
 
-## Competition Constraints (locked)
+## DEFERRED CREATIVE GAMBLES
 
-- Model: Qwen/Qwen3-4B-Thinking-2507
-- 3 submissions/day, 2 final selections
-- Kaggle grader: last `\boxed{}`, string-match
-- Training on private.jsonl: ALLOWED
-- DSMLP A30 24GB (inference), Thunder 2x A100 80GB
+- Multi-round SC (5×3 vs 1×16): EV 10-20%, samples already independent at T=0.6.
+- Prompt-variation shootout: EV 30-40%.
+- Self-critique loop: highest gamble, requires scaffolding.
+
+## OPEN HYPOTHESES
+
+- Does format-aware prompt help single-answer items? Untested.
+- Rate of "right count, wrong values" failures? PACE only catches under-count.
+- For MEDIUM-confidence Wolfram items: which string form does grader accept?
