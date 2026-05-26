@@ -374,4 +374,20 @@ WARNING 05-26 11:22:21 [nixl_utils.py:44] NIXL agent config is not available
 Processed prompts:   0%|          | 0/16 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 16/16 [02:42<00:00, 10.18s/it, est. speed input: 45.89 toks/s, output: 853.13 toks/s]Processed prompts: 100%|██████████| 16/16 [02:42<00:00, 10.18s/it, est. speed input: 45.89 toks/s, output: 853.13 toks/s]Processed prompts: 100%|██████████| 16/16 [02:42<00:00, 10.18s/it, est. speed input: 45.89 toks/s, output: 853.13 toks/s]
    [ 101/128] ID  748 [FRE] voted='B'        (10/16) 162.8s | done=101 avg=339.4s ETA=2.5h
 Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 486.24it/s]
-Processed prompts:   0%|          | 0/16 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:   0%|          | 0/16 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 16/16 [03:20<00:00, 12.55s/it, est. speed input: 28.86 toks/s, output: 449.96 toks/s]Processed prompts: 100%|██████████| 16/16 [03:20<00:00, 12.55s/it, est. speed input: 28.86 toks/s, output: 449.96 toks/s]Processed prompts: 100%|██████████| 16/16 [03:20<00:00, 12.55s/it, est. speed input: 28.86 toks/s, output: 449.96 toks/s]
+   [ 102/128] ID  749 [FRE] voted='(-1)^{n+1}(5n + 9)' (14/16) 200.7s | done=102 avg=338.0s ETA=2.4h
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 392.91it/s]
+Processed prompts:   0%|          | 0/16 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 16/16 [12:25<00:00, 46.61s/it, est. speed input: 5.90 toks/s, output: 517.62 toks/s]Processed prompts: 100%|██████████| 16/16 [12:25<00:00, 46.61s/it, est. speed input: 5.90 toks/s, output: 517.62 toks/s]Processed prompts: 100%|██████████| 16/16 [12:25<00:00, 46.61s/it, est. speed input: 5.90 toks/s, output: 517.62 toks/s]
+Traceback (most recent call last):
+  File "/home/ubuntu/151B_SP26_Competition/scripts/run_hybrid_inference.py", line 452, in <module>
+    main()
+  File "/home/ubuntu/151B_SP26_Competition/scripts/run_hybrid_inference.py", line 441, in main
+    write_result(args.output, result)
+  File "/home/ubuntu/151B_SP26_Competition/scripts/run_hybrid_inference.py", line 215, in write_result
+    f.write(json.dumps(result, ensure_ascii=False) + "\n")
+OSError: [Errno 28] No space left on device
+(EngineCore pid=23590) INFO 05-26 21:11:59 [core.py:1238] Shutdown initiated (timeout=0)
+(EngineCore pid=23590) INFO 05-26 21:11:59 [core.py:1261] Shutdown complete
+(Worker_TP0 pid=23684) INFO 05-26 21:11:59 [multiproc_executor.py:775] Parent process exited, terminating worker queues
+(Worker_TP1 pid=23685) INFO 05-26 21:11:59 [multiproc_executor.py:872] WorkerProc shutting down.
+(Worker_TP0 pid=23684) INFO 05-26 21:11:59 [multiproc_executor.py:872] WorkerProc shutting down.
