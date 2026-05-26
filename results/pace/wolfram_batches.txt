@@ -1,4 +1,46 @@
-=== Batch 2 — 5 items ===
+# Total computable items: 38
+# Batch 1 contains the 6 items already sent inline (full questions now included)
+# Subsequent batches grouped 6 per (final batch may be smaller)
+
+=== Batch 1 — 6 items ===
+
+id=9  expected=2  class=algebra
+question: Solve the equation for $y$:
+8x+6 y F=L
+$\begin{array}{cccc}\hline &  y=& & [ANS] [ANS] \\ \hline \end{array}$
+current_answer (slot1): \dfrac{L - 8x}{6F}
+
+id=435  expected=3  class=statistics
+question: Construct the $99$ \% confidence interval estimate of the population proportion $p$ if the sample size is $n=800$ and the number of successes in the sample is $x=393.$ [ANS] $< p <$ [ANS]
+Which of the following is the correct interpretation for your answer in part (a)? [ANS] A. We can be 99\% confident that the percentage of successes in the population lies in the interval  B. We can be 99\% confident that the percentage of successes in the sample lies in the interval  C. There is a 99\% chance that the percentage of successes in the population lies in the interval  D. None of the above
+current_answer (slot1): 0.4457, 0.5368
+
+id=479  expected=4  class=statistics
+question: Construct both a $90$ \% and a $95$ \% confidence interval for $\beta_1$. $\hat{\beta}_1=42, \ s=7.3, \ SS_{xx}=59, \ n=21$ $90$ \%: [ANS] $\leq \beta_1 \leq$ [ANS]
+$95$ \%: [ANS] $\leq \beta_1 \leq$ [ANS]
+current_answer (slot1): 40.01, 43.99
+
+id=548  expected=2  class=statistics
+question: The selling price of a textbook is \$144.00. If the markup is 20\% of the bookstore's cost, what is the bookstore's cost of the textbook? a) Write an equation to model the problem. Use x to represent the number. Answer: [ANS]
+b) Solve the equation to find the bookstore's cost. (Note: Your answer should be in the form \$ddd.cc. \$ddd.cc.) Answer: [ANS]
+current_answer (slot1): 120.00
+
+id=578  expected=3  class=statistics
+question: A random sample of 49 female cottonmouth snakes yielded a sample mean of 8.31 snakes per litter. Assume that $\sigma=2.4$. a) Use the data provided above to obtain an approximate 95.44\% confidence interval for the mean number of young per litter of all female cottonmouths. Confidence interval: ([ANS], [ANS]).
+b) How confident are you that your interval from part (a) contains the mean number of young per litter of all female cottonmouths? [ANS] \%.
+current_answer (slot1): 95.44
+
+id=787  expected=3  class=calculus
+question: A country's consumption of iron increases 5.7\% per year. Assuming this rate of increase, its demand during the next year will be 8,000,000 tons. The country has 158 years of iron reserves at this rate of consumption.
+(a) How much iron will be used at the end of 13 years? Answer: [ANS] tons (b) How long will the iron reserves last? Answer: [ANS] years (c) If residents of the country can reduce the growth rate of their consumption by 1.1\% per year, how long will the iron reserves last? Answer: [ANS] years
+current_answer (slot1): 47.00
+
+For each, return:
+| id | wolfram_query | wolfram_result | verified_answer | matches_current | confidence | notes |
+
+---
+
+=== Batch 2 — 6 items ===
 
 id=5  expected=5  class=statistics
 question: An experiment is conducted to determine whether there is a differnce among the mean increases in growth produced by five strains (A, B, C, D and E) of growth hormones for plants. The experimental material consists of 20 cuttings of a shrub (all of equal weight), with four cuttings randomly assigned to each of the five different strains. The increases in weight for each cutting along with the sample mean and sample standard deviation of each group are given in the table below.
@@ -10,12 +52,6 @@ It is also given that the overall mean=16.35. Compute the following:
 (d) MSE $=$ [ANS]
 (e) F $=$ [ANS]
 current_answer (slot1): 32.09
-
-id=9  expected=2  class=algebra
-question: Solve the equation for $y$:
-8x+6 y F=L
-$\begin{array}{cccc}\hline &  y=& & [ANS] [ANS] \\ \hline \end{array}$
-current_answer (slot1): \dfrac{L - 8x}{6F}
 
 id=12  expected=2  class=algebra
 question: A barnyard is full of chickens and pigs, and the total number of chicken feet and pig feet is $70$.
@@ -41,13 +77,6 @@ $\begin{array}{ccc}\hline Class & Frequency & Cumulative Frequency \\ \hline [7,
 What is the median of the grouped data? [ANS]
 current_answer (slot1): 27.63
 
-For each, return:
-| id | wolfram_query | wolfram_result | verified_answer | matches_current | confidence | notes |
-
----
-
-=== Batch 3 — 5 items ===
-
 id=192  expected=4  class=statistics
 question: Past experience indicates that the monthly long-distance telephone bill is normally distributed with a mean of 21.01 dollars and a standard deviation of 4 dollars. After an advertising campaign aimed at increasing long-distance telephone usage, a random sample of 25 household's bills was taken. The data (in dollars) is below.
 \begin{array}{cccccccccccccccccccccccc} 23.61 & 24.25 & 25.93 & 18.99 & 19.47 & 23.37 & 23.49 \\ 20.13 & 22.17 & 24.78 & 18.46 & 22.38 & 21.07 & 20.56 \\ 21.18 & 22.5 & 16.22 & 16.62 & 20.51 & 22.46 & 26.99 \\ 21.6 & 19.33 & 21.67 & 28.68 \\ \end{array} Can we conclude at the 3\% significance level that the campaign was successful? Fill in the requested information below.
@@ -61,6 +90,13 @@ id=257  expected=3  class=statistics
 question: a) For 30 randomly selected Rolling Stones concerts, the mean gross earnings is 2.76 million dollars. Assuming a population standard deviation gross earnings of 0.51 million dollars, obtain a 99\% confidence interval for the mean gross earnings of all Rolling Stones concerts (in millions). Confidence interval: ([ANS], [ANS]).
 b) Which of the following is the correct interpretation for your answer in part (a)? [ANS] A. We can be 99\% confident that the mean gross earnings of all Rolling Stones concerts lies in the interval  B. We can be 99\% confident that the mean gross earnings for this sample of 30 Rolling Stones concerts lies in the interval  C. There is a 99\% chance that the mean gross earnings of all Rolling Stones concerts lies in the interval  D. None of the above
 current_answer (slot1): A
+
+For each, return:
+| id | wolfram_query | wolfram_result | verified_answer | matches_current | confidence | notes |
+
+---
+
+=== Batch 3 — 6 items ===
 
 id=353  expected=4  class=algebra
 question: Chicago's average monthly rainfall, $R=f(t)$ inches, is given as a function of the month, $t$, where January is $t=1$, in the table below.
@@ -87,18 +123,6 @@ C. The p-value is [ANS]
 D. Your decision for the hypothesis test: [ANS] A. Do Not Reject $H_0$.  B. Reject $H_1$.  C. Do Not Reject $H_1$.  D. Reject $H_0$.
 current_answer (slot1): \text{A}
 
-For each, return:
-| id | wolfram_query | wolfram_result | verified_answer | matches_current | confidence | notes |
-
----
-
-=== Batch 4 — 5 items ===
-
-id=435  expected=3  class=statistics
-question: Construct the $99$ \% confidence interval estimate of the population proportion $p$ if the sample size is $n=800$ and the number of successes in the sample is $x=393.$ [ANS] $< p <$ [ANS]
-Which of the following is the correct interpretation for your answer in part (a)? [ANS] A. We can be 99\% confident that the percentage of successes in the population lies in the interval  B. We can be 99\% confident that the percentage of successes in the sample lies in the interval  C. There is a 99\% chance that the percentage of successes in the population lies in the interval  D. None of the above
-current_answer (slot1): 0.4457, 0.5368
-
 id=469  expected=10  class=statistics
 question: The area, $A=f(s)$ square feet, of a square wooden deck is a function of the side $s$ feet. Stain that costs \$31.50 will cover 200 square feet of wood.
 (a) Write the formula for $f(s)$. $f(s)=$ [ANS]
@@ -107,11 +131,6 @@ question: The area, $A=f(s)$ square feet, of a square wooden deck is a function 
 Which of the following best explains the meaning of the composite function $g(f(s))$? [ANS] A. The amount of stain to cover a square region of side length $s$ feet.  B. The cost to stain a region of area $A$ square feet.  C. The cost to stain a square region of side length $s$ feet.  D. The function for square feet and cost of stain.
 (d) Evaluate and interpret, giving units. $f(9)=$ [ANS] [ANS] $g(90)=$ [ANS] [ANS] $g(f(11))=$ [ANS] [ANS]
 current_answer (slot1): 19.06
-
-id=479  expected=4  class=statistics
-question: Construct both a $90$ \% and a $95$ \% confidence interval for $\beta_1$. $\hat{\beta}_1=42, \ s=7.3, \ SS_{xx}=59, \ n=21$ $90$ \%: [ANS] $\leq \beta_1 \leq$ [ANS]
-$95$ \%: [ANS] $\leq \beta_1 \leq$ [ANS]
-current_answer (slot1): 40.01, 43.99
 
 id=487  expected=2  class=statistics
 question: A sample of four 35-year-old males is asked about the average number of hours per week that he exercises, and is also given a blood cholesterol test. The data is recorded in the order pairs given below, in the form (Hours Exercising, Cholesterol Level):
@@ -136,7 +155,7 @@ For each, return:
 
 ---
 
-=== Batch 5 — 5 items ===
+=== Batch 4 — 6 items ===
 
 id=499  expected=4  class=statistics
 question: In July 2005, the internet was linked by a global network of about 352.7 million host computers. The number of host computers has been growing approximately exponentially and was about 36.9 million in July 1998.
@@ -154,16 +173,6 @@ question: Assume that the number of bacteria follows an exponential growth model
 Note: webwork usually expects four significant digits so don't round your answers.
 current_answer (slot1): 98.30
 
-id=548  expected=2  class=statistics
-question: The selling price of a textbook is \$144.00. If the markup is 20\% of the bookstore's cost, what is the bookstore's cost of the textbook? a) Write an equation to model the problem. Use x to represent the number. Answer: [ANS]
-b) Solve the equation to find the bookstore's cost. (Note: Your answer should be in the form \$ddd.cc. \$ddd.cc.) Answer: [ANS]
-current_answer (slot1): 120.00
-
-id=578  expected=3  class=statistics
-question: A random sample of 49 female cottonmouth snakes yielded a sample mean of 8.31 snakes per litter. Assume that $\sigma=2.4$. a) Use the data provided above to obtain an approximate 95.44\% confidence interval for the mean number of young per litter of all female cottonmouths. Confidence interval: ([ANS], [ANS]).
-b) How confident are you that your interval from part (a) contains the mean number of young per litter of all female cottonmouths? [ANS] \%.
-current_answer (slot1): 95.44
-
 id=585  expected=5  class=statistics
 question: It is considered quite common to have feet of unequal length. In a sample of 10 healthy college students the right-foot and left-foot lengths are given (in mm). Test the claim that, on average, there is a measurable difference between left and right foot length.
 $\begin{array}{ccccccccccccc}\hline & Length in mm & mean & s \\ \hline Left foot (x) & 267 & 255 & 268 & 253 & 270 & 269 & 273 & 251 & 254 & 265 & 262.5 & 8.27647267862342 \\ \hline Right foot (y) & 271 & 255 & 260 & 255 & 271 & 273 & 272 & 257 & 249 & 265 & 262.8 & 8.70249006510957 \\ \hline d=x-y &-4 & 0 & 8 &-2 &-1 &-4 & 1 &-6 & 5 & 0 &-0.3 & 4.24394994210713 \\ \hline \end{array}$ 4.24394994210713
@@ -172,13 +181,6 @@ $\begin{array}{ccccccccccccc}\hline & Length in mm & mean & s \\ \hline Left foo
 Negative critical value: [ANS]
 Is there sufficient data to support the claim? [ANS] [ANS]
 current_answer (slot1): -0.2235, 2.262, -2.262
-
-For each, return:
-| id | wolfram_query | wolfram_result | verified_answer | matches_current | confidence | notes |
-
----
-
-=== Batch 6 — 5 items ===
 
 id=587  expected=4  class=statistics
 question: This is a problem on interpretation of regression equations which have quadratic terms in explanatory variables.
@@ -208,6 +210,13 @@ $\begin{array}{ccccccccccccccc}\hline & Math SAT Scores & mean & s^2 & s \\ \hli
 (c) Is there sufficient data to support the claim? [ANS] [ANS]
 current_answer (slot1): 3.854, 2.567, \text{Yes}
 
+For each, return:
+| id | wolfram_query | wolfram_result | verified_answer | matches_current | confidence | notes |
+
+---
+
+=== Batch 5 — 6 items ===
+
 id=633  expected=2  class=algebra
 question: (a) What operation on both sides of the equation $7x=56$ isolates the variable on one side? There may be more than one correct answer. [ANS] A. Multiplying by $7$  B. Multiplying by $1/7$  C. Adding $7$  D. Dividing by $7$  E. Dividing by $7x$  F. Dividing by $56$  G. Subtracting $7x$
 (b) Give the solution of the equation $7x=56$. $x=$ [ANS]
@@ -219,13 +228,6 @@ Note: For the next part, your answer should use interval notation. An answer of 
 C. The p-value is [ANS]
 D. Your decision for the hypothesis test: [ANS] A. Do Not Reject $H_1$.  B. Reject $H_0$.  C. Reject $H_1$.  D. Do Not Reject $H_0$.
 current_answer (slot1): D
-
-For each, return:
-| id | wolfram_query | wolfram_result | verified_answer | matches_current | confidence | notes |
-
----
-
-=== Batch 7 — 5 items ===
 
 id=657  expected=8  class=statistics
 question: The purpose of this question is to compare the variability of $\overline{x}_1$ and $\overline{x}_2$ with the variability of $(\overline{x}_1-\overline{x}_2)$.
@@ -261,24 +263,19 @@ Now, with that information, determine whether the length of stay is independent 
 (d) The final conclusion is [ANS] A. There is not sufficient evidence to reject the null hypothesis that the length of stay is independent of retirement.  B. We can reject the null hypothesis that the length of stay is independent of retirement and accept the alternative hypothesis that the two are dependent.
 current_answer (slot1): B
 
+For each, return:
+| id | wolfram_query | wolfram_result | verified_answer | matches_current | confidence | notes |
+
+---
+
+=== Batch 6 — 6 items ===
+
 id=749  expected=6  class=calculus
 question: Consider the sequence 9, 14, 19, 24, 29, 34... Compute the difference between successive terms and enter your answer as a list. (For example, if the sequence were 2, 5, 9, you would enter the comma separated list 3, 4 since 5-2=3 and 9-5=4). The sequence of successive differences is [ANS], which suggests that the original sequence (is/is not) [ANS] growing linearly.
 Consider the sequence 9, 14, 19, 24, 29, 34... Compute the ratio between successive terms and enter your answer as a list. (For example, if the sequence were 2, 5, 9, you would enter the comma separated list 5/2, 9/5). The sequence of successive differences is [ANS], which suggests that the original sequence (is/is not) [ANS] growing exponentially.
 Find a closed formula for the sequence 9, 14, 19, 24, 29, 34... Use $n$ as your index and start with $n=0$, that is, $b_0=9$. $b_n=$ [ANS]
 Find a closed formula for the sequence-9, 14,-19, 24,-29, 34... Use $n$ as your index and start with $n=0$, that is, $c_0=-9$. $c_n=$ [ANS]
 current_answer (slot1): 9 + 5n, (-1)^{n+1}(5n + 9)
-
-For each, return:
-| id | wolfram_query | wolfram_result | verified_answer | matches_current | confidence | notes |
-
----
-
-=== Batch 8 — 5 items ===
-
-id=787  expected=3  class=calculus
-question: A country's consumption of iron increases 5.7\% per year. Assuming this rate of increase, its demand during the next year will be 8,000,000 tons. The country has 158 years of iron reserves at this rate of consumption.
-(a) How much iron will be used at the end of 13 years? Answer: [ANS] tons (b) How long will the iron reserves last? Answer: [ANS] years (c) If residents of the country can reduce the growth rate of their consumption by 1.1\% per year, how long will the iron reserves last? Answer: [ANS] years
-current_answer (slot1): 47.00
 
 id=793  expected=4  class=statistics
 question: A manufacturer of light bulbs advertises that, on average, its long-life bulb will last more than 5300 hours. To test this claim, a statistician took a random sample of 103 bulbs and measured the amount of time until each bulb burned out. The mean lifetime of the sample of bulbs is 5360 hours and has a standard deviation of 450 hours. Can we conclude with 93\% confidence that the claim is true? Fill in the requested information below.
@@ -309,17 +306,17 @@ The t critical value for the 95\% prediction interval is [ANS]. Using the fitted
 Part c) Get the 10 out-of-sample prediction intervals for January to October 2013 from part (b) of which you were asked to enter two intervals. The actual values of the monthly stock returns for American Express are in the following vector ynext=c(0.026364, 0.055335, 0.081897, 0.016943, 0.101428,-0.012572,-0.010393,-0.025476, 0.048978, 0.08293) How many of these observed values (not used in the fitted regression equation) are contained in the corresponding prediction intervals. (The response here is an integer between 0 and 10; theoretically it is close to 9.) [ANS]
 current_answer (slot1): 9
 
+id=917  expected=3  class=statistics
+question: The time in hours for a worker to repair an electrical instrument is a Normally distributed random variable with a mean of $\mu$ and a standard deviation of 50. The repair times for 12 such instruments chosen at random are as follows: $\begin{array}{cccccccccccc}\hline 183 & 222 & 303 & 262 & 178 & 232 & 268 & 201 & 244 & 183 & 201 & 140 \\ \hline \end{array}$
+Part a) Find a 95\% confidence interval for $\mu$. For both sides of the bound, leave your answer with 1 decimal place. ([ANS], [ANS]). Part b) Find the least number of repair times needed to be sampled in order to reduce the width of the confidence interval to below 30 hours. [ANS]
+current_answer (slot1): 43
+
 For each, return:
 | id | wolfram_query | wolfram_result | verified_answer | matches_current | confidence | notes |
 
 ---
 
-=== Batch 9 — 3 items ===
-
-id=917  expected=3  class=statistics
-question: The time in hours for a worker to repair an electrical instrument is a Normally distributed random variable with a mean of $\mu$ and a standard deviation of 50. The repair times for 12 such instruments chosen at random are as follows: $\begin{array}{cccccccccccc}\hline 183 & 222 & 303 & 262 & 178 & 232 & 268 & 201 & 244 & 183 & 201 & 140 \\ \hline \end{array}$
-Part a) Find a 95\% confidence interval for $\mu$. For both sides of the bound, leave your answer with 1 decimal place. ([ANS], [ANS]). Part b) Find the least number of repair times needed to be sampled in order to reduce the width of the confidence interval to below 30 hours. [ANS]
-current_answer (slot1): 43
+=== Batch 7 — 2 items ===
 
 id=924  expected=2  class=statistics
 question: According to one mathematical model, the average life expenctancy for American men born in 1900 was 55 years. Life expectancy has increased by about 0.2 year for each birth year after 1900. If this trend continues, for which birth year will the average life expentancy be 77 years? a) Write an equation to model the problem. Let $t$ represent the number of years after 1900 and let $n$ represent men's life expectancy at that time. For example $t=12$ and $n=57.4$ in the year 1912. Answer: [ANS]
