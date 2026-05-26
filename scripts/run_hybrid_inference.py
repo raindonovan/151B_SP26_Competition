@@ -102,6 +102,20 @@ def count_ans_placeholders(question: str) -> int:
     n = question.count("[ANS]")
     return max(n, 1)
 
+# Per NoThinking paper (arxiv 2504.09858), prefill text closes the auto-opened
+# <think> block with the paper's exact transition sentence to match the model's
+# natural think→answer transition pattern.
+NO_THINKING_PREFILL = "Okay, I think I have finished thinking.\n</think>\n\n"
+
+def maybe_apply_no_thinking_prefill(prompt: str, no_thinking: bool) -> str:
+    """If no_thinking is True, append the NoThinking prefill to the prompt.
+    The chat template for Qwen3-4B-Thinking-2507 always appends `<think>\\n`,
+    so the prefill closes that block immediately. enable_thinking=False is
+    intentionally a no-op on this model per official model card."""
+    if not no_thinking:
+        return prompt
+    return prompt + NO_THINKING_PREFILL
+
 def apply_shape_filter(
     sample_texts: list[str], is_multi_answer: bool
 ) -> tuple[list[bool], bool]:
@@ -251,6 +265,16 @@ def main() -> None:
                         help="letters=A. B. C. (v5/base), bare=no labels (v4 adapter)")
     parser.add_argument("--thinking-budget", type=int, default=None,
                         help="Max thinking tokens before forcing </think>. None = unlimited.")
+    parser.add_argument("--no-thinking", action="store_true",
+                        help="Pass enable_thinking=False to chat template (Qwen NoThinking mode).")
+    parser.add_argument("--top-k", type=int, default=None,
+                        help="Top-k sampling. None = vLLM default.")
+    parser.add_argument("--min-p", type=float, default=None,
+                        help="Min-p sampling. None = vLLM default.")
+    parser.add_argument("--repetition-penalty", type=float, default=None,
+                        help="Repetition penalty. None = vLLM default.")
+    parser.add_argument("--presence-penalty", type=float, default=None,
+                        help="Presence penalty. None = vLLM default.")
     args = parser.parse_args()
 
     os.makedirs(os.path.dirname(args.output) or ".", exist_ok=True)
@@ -305,6 +329,14 @@ def main() -> None:
     )
     if args.thinking_budget is not None:
         sp_kwargs["thinking_token_budget"] = args.thinking_budget
+    if args.top_k is not None:
+        sp_kwargs["top_k"] = args.top_k
+    if args.min_p is not None:
+        sp_kwargs["min_p"] = args.min_p
+    if args.repetition_penalty is not None:
+        sp_kwargs["repetition_penalty"] = args.repetition_penalty
+    if args.presence_penalty is not None:
+        sp_kwargs["presence_penalty"] = args.presence_penalty
     sampling = SamplingParams(**sp_kwargs)
 
     lora_req = None
@@ -327,6 +359,11 @@ def main() -> None:
         prompt = tokenizer.apply_chat_template(
             messages, tokenize=False, add_generation_prompt=True
         )
+        prompt = maybe_apply_no_thinking_prefill(prompt, args.no_thinking)
+        if idx == len(done) and args.no_thinking:
+            # Log the actual prompt sent on the first --no-thinking iteration
+            print(f"--- NO-THINKING PROMPT (item {iid}) last 200 chars ---")
+            print(repr(prompt[-200:]))
 
         t0 = time.time()
         gen_kwargs = {"lora_request": lora_req} if lora_req else {}
