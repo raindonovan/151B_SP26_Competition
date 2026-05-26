@@ -1,15 +1,19 @@
 # Production phase commands
 
-All 8 phases (Instance A: A1, A2; Instance B: B1, B2, B3, B4a, B4b, B5).
-`<TIMESTAMP>` placeholder = `$(date +%Y%m%d_%H%M)` resolved at launch.
+7 active phases (B3 deferred to Day 2). Timestamps resolved at launch via `$(date -u +%Y%m%dT%H%M%SZ)`.
 
 **Ordering:**
-- Instance A: A1 and A2 share the SAME vLLM session (continuous batching) — but the runner spawns a fresh vLLM per invocation. To "share session" you must wrap both into one launch script OR accept the ~40s warmup cost per phase. Mark accordingly.
-- Instance B: B1 → B2 → B3 → B4a → B4b → B5 sequential
+- Instance A: A1 → A2 (each spawns its own vLLM; ~40s warmup per phase is acceptable)
+- Instance B: B1 → B2 → B4a → B4b → B5 sequential
 
 **Conditional:**
-- B2 conditional on B1 promising (Strategy decides after B1 completes)
-- B3 conditional on a canonical genselect entry point (see B3 below — multiple genselect scripts exist; spec is incomplete)
+- **B2** conditional on B1: run B2 ONLY IF B1's NoThinking on the 18 no-box items produces boxed answers on **≥3 of the 18** (vs base thinking 0/18). Otherwise skip B2.
+- **B3** (GenSelect) deferred to Day 2.
+
+**Common preamble for both instances:**
+- The runner creates `os.path.dirname(args.output)` automatically (`scripts/run_hybrid_inference.py:282`), so no explicit `mkdir -p` needed.
+- `HF_HOME=$HOME/hf_cache` set inline on each command to keep model downloads in a known location.
+- All phases use `--tensor-parallel-size 2` for the 2× A100 nodes.
 
 ---
 
@@ -18,11 +22,13 @@ All 8 phases (Instance A: A1, A2; Instance B: B1, B2, B3, B4a, B4b, B5).
 Expected duration: **~2.5 hr**
 
 ```bash
-python3 scripts/run_hybrid_inference.py \
+HF_HOME=$HOME/hf_cache python3 scripts/run_hybrid_inference.py \
   --mode base \
   --model Qwen/Qwen3-4B-Thinking-2507 \
+  --tensor-parallel-size 2 \
   --item-ids data/candidates_sc16_weak_default_128.txt \
-  --output results/hybrid/sc16_weak_default_<TIMESTAMP>.jsonl \
+  --output results/hybrid/tnr-A/sc16_weak_default_$(date -u +%Y%m%dT%H%M%SZ).jsonl \
+  --mcq-format letters \
   --sc 16 \
   --max-tokens 49152 \
   --thinking-budget 24576 \
@@ -32,14 +38,16 @@ python3 scripts/run_hybrid_inference.py \
 
 ## Phase A2 — SC=16 hardest 30 items
 
-Expected duration: **~1.5 hr** (when continuous-batched with A1; standalone adds ~40s warmup)
+Expected duration: **~1.5 hr**
 
 ```bash
-python3 scripts/run_hybrid_inference.py \
+HF_HOME=$HOME/hf_cache python3 scripts/run_hybrid_inference.py \
   --mode base \
   --model Qwen/Qwen3-4B-Thinking-2507 \
+  --tensor-parallel-size 2 \
   --item-ids data/candidates_sc16_hardest30.txt \
-  --output results/hybrid/sc16_weak_hard_<TIMESTAMP>.jsonl \
+  --output results/hybrid/tnr-A/sc16_weak_hard_$(date -u +%Y%m%dT%H%M%SZ).jsonl \
+  --mcq-format letters \
   --sc 16 \
   --max-tokens 81920 \
   --thinking-budget 65536 \
@@ -52,11 +60,13 @@ python3 scripts/run_hybrid_inference.py \
 Expected duration: **~30–45 min**
 
 ```bash
-python3 scripts/run_hybrid_inference.py \
+HF_HOME=$HOME/hf_cache python3 scripts/run_hybrid_inference.py \
   --mode base \
   --model Qwen/Qwen3-4B-Thinking-2507 \
+  --tensor-parallel-size 2 \
   --item-ids data/candidates_nothinking_98.txt \
-  --output results/hybrid/nothinking_probe98_<TIMESTAMP>.jsonl \
+  --output results/hybrid/tnr-B/nothinking_probe98_$(date -u +%Y%m%dT%H%M%SZ).jsonl \
+  --mcq-format letters \
   --no-thinking \
   --sc 8 \
   --max-tokens 5000 \
@@ -64,16 +74,20 @@ python3 scripts/run_hybrid_inference.py \
   --repetition-penalty 1.1
 ```
 
-## Phase B2 — NoThinking full 943 (CONDITIONAL on B1 promising)
+## Phase B2 — NoThinking full 943 (CONDITIONAL)
+
+**RUN B2 ONLY IF** B1's NoThinking on the 18 no-box items produces boxed answers on **≥3 of the 18** (vs base thinking 0/18). Otherwise skip and move to B4a.
 
 Expected duration: **~30–90 min**
 
 ```bash
-python3 scripts/run_hybrid_inference.py \
+HF_HOME=$HOME/hf_cache python3 scripts/run_hybrid_inference.py \
   --mode base \
   --model Qwen/Qwen3-4B-Thinking-2507 \
+  --tensor-parallel-size 2 \
   --item-ids data/private_all_943.txt \
-  --output results/hybrid/nothinking_full943_<TIMESTAMP>.jsonl \
+  --output results/hybrid/tnr-B/nothinking_full943_$(date -u +%Y%m%dT%H%M%SZ).jsonl \
+  --mcq-format letters \
   --no-thinking \
   --sc 4 \
   --max-tokens 5000 \
@@ -90,11 +104,13 @@ B3 (GenSelect) DEFERRED to Day 2. Repo has 6 `scripts/genselect_*` without a cle
 Expected duration: **~20 min**
 
 ```bash
-python3 scripts/run_hybrid_inference.py \
+HF_HOME=$HOME/hf_cache python3 scripts/run_hybrid_inference.py \
   --mode base \
   --model Qwen/Qwen3-4B-Thinking-2507 \
+  --tensor-parallel-size 2 \
   --item-ids data/candidates_pertier_t1to3.txt \
-  --output results/hybrid/pertier_t1to3_<TIMESTAMP>.jsonl \
+  --output results/hybrid/tnr-B/pertier_t1to3_$(date -u +%Y%m%dT%H%M%SZ).jsonl \
+  --mcq-format letters \
   --sc 8 \
   --max-tokens 49152 \
   --thinking-budget 24576 \
@@ -107,11 +123,13 @@ python3 scripts/run_hybrid_inference.py \
 Expected duration: **~30 min**
 
 ```bash
-python3 scripts/run_hybrid_inference.py \
+HF_HOME=$HOME/hf_cache python3 scripts/run_hybrid_inference.py \
   --mode base \
   --model Qwen/Qwen3-4B-Thinking-2507 \
+  --tensor-parallel-size 2 \
   --item-ids data/candidates_pertier_t4.txt \
-  --output results/hybrid/pertier_t4_<TIMESTAMP>.jsonl \
+  --output results/hybrid/tnr-B/pertier_t4_$(date -u +%Y%m%dT%H%M%SZ).jsonl \
+  --mcq-format letters \
   --sc 8 \
   --max-tokens 81920 \
   --thinking-budget 65536 \
@@ -124,11 +142,13 @@ python3 scripts/run_hybrid_inference.py \
 Expected duration: **~15–20 min**
 
 ```bash
-python3 scripts/run_hybrid_inference.py \
+HF_HOME=$HOME/hf_cache python3 scripts/run_hybrid_inference.py \
   --mode base \
   --model Qwen/Qwen3-4B-Thinking-2507 \
+  --tensor-parallel-size 2 \
   --item-ids data/candidates_sc16_weak_158.txt \
-  --output results/hybrid/greedy_weak158_<TIMESTAMP>.jsonl \
+  --output results/hybrid/tnr-B/greedy_weak158_$(date -u +%Y%m%dT%H%M%SZ).jsonl \
+  --mcq-format letters \
   --sc 1 \
   --max-tokens 49152 \
   --thinking-budget 24576 \
@@ -141,7 +161,7 @@ python3 scripts/run_hybrid_inference.py \
 
 ## Per-flag argparse verification
 
-Confirmed via `python3 scripts/run_hybrid_inference.py --help` (after Task 3):
+Confirmed via `python3 scripts/run_hybrid_inference.py --help`:
 
 - `--mode` ✓
 - `--model` ✓
@@ -154,8 +174,9 @@ Confirmed via `python3 scripts/run_hybrid_inference.py --help` (after Task 3):
 - `--gpu-util` ✓
 - `--mcq-format` ✓
 - `--thinking-budget` ✓
-- `--no-thinking` ✓ (new)
-- `--top-k` ✓ (new)
-- `--min-p` ✓ (new)
-- `--repetition-penalty` ✓ (new)
-- `--presence-penalty` ✓ (new — not used in any of the 8 phases, exposed per Task 3)
+- `--no-thinking` ✓
+- `--top-k` ✓
+- `--min-p` ✓
+- `--repetition-penalty` ✓
+- `--presence-penalty` ✓ (exposed but not used in any current phase)
+- `--tensor-parallel-size` ✓

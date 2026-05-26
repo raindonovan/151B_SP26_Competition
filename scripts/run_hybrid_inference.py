@@ -373,7 +373,10 @@ def main() -> None:
         outputs = llm.generate(prompt, sampling_params=sampling, **gen_kwargs)
         wall = time.time() - t0
 
-        sample_texts = [o.text for o in outputs[0].outputs]
+        sample_objs = outputs[0].outputs
+        sample_texts = [o.text for o in sample_objs]
+        sample_n_output_tokens = [len(o.token_ids) for o in sample_objs]
+        sample_extracted = [extract_last_boxed(t) for t in sample_texts]
 
         apply_filter = args.mode == "base"
         if apply_filter:
@@ -394,6 +397,8 @@ def main() -> None:
             "shape_fallback": fallback,
             "response": response,
             "samples": sample_texts,
+            "sample_extracted": sample_extracted,
+            "sample_n_output_tokens": sample_n_output_tokens,
             "wall_seconds": round(wall, 2),
             "timestamp": datetime.now(timezone.utc).isoformat(),
         }
