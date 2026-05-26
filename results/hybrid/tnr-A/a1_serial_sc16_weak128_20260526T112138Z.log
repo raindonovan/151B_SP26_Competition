@@ -71,4 +71,16 @@ WARNING 05-26 11:22:21 [nixl_utils.py:44] NIXL agent config is not available
 (EngineCore pid=23590) INFO 05-26 11:24:41 [vllm.py:840] Asynchronous scheduling is enabled.
 (EngineCore pid=23590) INFO 05-26 11:24:41 [kernel.py:205] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'])
 Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 35.58it/s]
+Processed prompts:   0%|          | 0/16 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 16/16 [04:55<00:00, 18.44s/it, est. speed input: 5.26 toks/s, output: 310.46 toks/s]Processed prompts: 100%|██████████| 16/16 [04:55<00:00, 18.44s/it, est. speed input: 5.26 toks/s, output: 310.46 toks/s]Processed prompts: 100%|██████████| 16/16 [04:55<00:00, 18.44s/it, est. speed input: 5.26 toks/s, output: 310.46 toks/s]
+   [   1/128] ID  105 [FRE] voted='9.11'     (16/16) 295.1s | done=1 avg=295.1s ETA=10.4h
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 602.11it/s]
+Processed prompts:   0%|          | 0/16 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 16/16 [00:49<00:00,  3.08s/it, est. speed input: 29.55 toks/s, output: 372.17 toks/s]Processed prompts: 100%|██████████| 16/16 [00:49<00:00,  3.08s/it, est. speed input: 29.55 toks/s, output: 372.17 toks/s]Processed prompts: 100%|██████████| 16/16 [00:49<00:00,  3.08s/it, est. speed input: 29.55 toks/s, output: 372.17 toks/s]
+   [   2/128] ID  116 [FRE] voted='6'        (16/16) 49.3s | done=2 avg=172.2s ETA=6.0h
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 300.73it/s]
+Processed prompts:   0%|          | 0/16 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 16/16 [00:52<00:00,  3.29s/it, est. speed input: 33.76 toks/s, output: 394.95 toks/s]Processed prompts: 100%|██████████| 16/16 [00:52<00:00,  3.29s/it, est. speed input: 33.76 toks/s, output: 394.95 toks/s]Processed prompts: 100%|██████████| 16/16 [00:52<00:00,  3.29s/it, est. speed input: 33.76 toks/s, output: 394.95 toks/s]
+   [   3/128] ID  122 [FRE] voted='55'       (16/16) 52.6s | done=3 avg=132.3s ETA=4.6h
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 406.66it/s]
+Processed prompts:   0%|          | 0/16 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 16/16 [01:08<00:00,  4.30s/it, est. speed input: 33.23 toks/s, output: 383.38 toks/s]Processed prompts: 100%|██████████| 16/16 [01:08<00:00,  4.30s/it, est. speed input: 33.23 toks/s, output: 383.38 toks/s]Processed prompts: 100%|██████████| 16/16 [01:08<00:00,  4.30s/it, est. speed input: 33.23 toks/s, output: 383.38 toks/s]
+   [   4/128] ID  143 [FRE] voted='(3, 3\\sqrt{3})' (16/16) 68.9s | done=4 avg=116.5s ETA=4.0h
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 377.76it/s]
 Processed prompts:   0%|          | 0/16 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
