@@ -277,6 +277,8 @@ def main() -> None:
                         help="Presence penalty. None = vLLM default.")
     parser.add_argument("--tensor-parallel-size", type=int, default=1,
                         help="Tensor parallel size for multi-GPU vLLM.")
+    parser.add_argument("--system-prompt", type=str, default=None,
+                        help="Override SYSTEM_PROMPT for this run. None = use built-in.")
     args = parser.parse_args()
 
     os.makedirs(os.path.dirname(args.output) or ".", exist_ok=True)
@@ -356,7 +358,7 @@ def main() -> None:
         user_msg = build_user_msg(item, args.mcq_format)
 
         messages = [
-            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "system", "content": args.system_prompt if args.system_prompt else SYSTEM_PROMPT},
             {"role": "user",   "content": user_msg},
         ]
         prompt = tokenizer.apply_chat_template(

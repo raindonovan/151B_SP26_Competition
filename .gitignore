@@ -69,3 +69,6 @@ results/run14b_sc8_v1_private943_tok32k_pp1_v3filtered.jsonl
 
 
 # Submission CSVs tracked via Git LFS (see .gitattributes)
+
+# Per-instance role/identity scratch files (Thunder)
+TNR_1
