@@ -70,4 +70,12 @@ WARNING 05-26 11:13:02 [nixl_utils.py:44] NIXL agent config is not available
 (EngineCore pid=21829) INFO 05-26 11:15:17 [vllm.py:840] Asynchronous scheduling is enabled.
 (EngineCore pid=21829) INFO 05-26 11:15:17 [kernel.py:205] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'])
 Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 32.06it/s]
-Processed prompts:   0%|          | 0/16 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:   0%|          | 0/16 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 16/16 [06:13<00:00, 23.36s/it, est. speed input: 4.15 toks/s, output: 250.43 toks/s]Processed prompts: 100%|██████████| 16/16 [06:13<00:00, 23.36s/it, est. speed input: 4.15 toks/s, output: 250.43 toks/s]Processed prompts: 100%|██████████| 16/16 [06:13<00:00, 23.36s/it, est. speed input: 4.15 toks/s, output: 250.43 toks/s]
+   [   1/1] ID  105 [FRE] voted='9.11'     (16/16) 373.8s | done=1 avg=373.8s ETA=0s
+(EngineCore pid=21829) INFO 05-26 11:21:31 [core.py:1238] Shutdown initiated (timeout=0)
+(EngineCore pid=21829) INFO 05-26 11:21:31 [core.py:1261] Shutdown complete
+(Worker_TP0 pid=21928) INFO 05-26 11:21:31 [multiproc_executor.py:775] Parent process exited, terminating worker queues
+(Worker_TP1 pid=21929) INFO 05-26 11:21:31 [multiproc_executor.py:872] WorkerProc shutting down.
+(Worker_TP0 pid=21928) INFO 05-26 11:21:31 [multiproc_executor.py:872] WorkerProc shutting down.
+
+Done. 1 items written to results/hybrid/tnr-A/preflight_smoke_serial_20260526T111221Z.jsonl
