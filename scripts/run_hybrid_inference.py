@@ -277,6 +277,12 @@ def main() -> None:
                         help="Presence penalty. None = vLLM default.")
     parser.add_argument("--tensor-parallel-size", type=int, default=1,
                         help="Tensor parallel size for multi-GPU vLLM.")
+    parser.add_argument("--batch-size", type=int, default=8,
+                        help="Number of items per llm.generate() call. "
+                             "vLLM continuous-batches across (batch_size * sc) "
+                             "sequences. 1 = legacy per-item behavior. "
+                             "Warning: peak KV = batch_size * sc * max_tokens; "
+                             "at large max_tokens this can OOM.")
     args = parser.parse_args()
 
     os.makedirs(os.path.dirname(args.output) or ".", exist_ok=True)
@@ -349,64 +355,95 @@ def main() -> None:
     timings: list[float] = []
     idx = len(done)
 
-    for item in items:
-        iid = int(item["id"])
-        is_mcq = bool(item.get("options"))
-        is_multi = count_ans_placeholders(item.get("question", "")) > 1
-        user_msg = build_user_msg(item, args.mcq_format)
+    # Chunked dispatch: batch_size items per llm.generate() call.
+    # vLLM continuous-batches across (batch_size * sc) sequences, which lets
+    # short items overlap with the long tail of slow items in the same chunk.
+    # batch_size=1 reproduces the legacy serial behavior.
+    batch_size = max(1, args.batch_size)
+    no_thinking_logged = False
 
-        messages = [
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user",   "content": user_msg},
-        ]
-        prompt = tokenizer.apply_chat_template(
-            messages, tokenize=False, add_generation_prompt=True
-        )
-        prompt = maybe_apply_no_thinking_prefill(prompt, args.no_thinking)
-        if idx == len(done) and args.no_thinking:
-            # Log the actual prompt sent on the first --no-thinking iteration
-            print(f"--- NO-THINKING PROMPT (item {iid}) last 200 chars ---")
-            print(repr(prompt[-200:]))
+    for start in range(0, len(items), batch_size):
+        chunk = items[start:start + batch_size]
 
+        # Build prompts and per-item metadata for this chunk.
+        chunk_meta = []  # list of dicts: iid, is_mcq, is_multi
+        chunk_prompts: list[str] = []
+        for item in chunk:
+            iid = int(item["id"])
+            is_mcq = bool(item.get("options"))
+            is_multi = count_ans_placeholders(item.get("question", "")) > 1
+            user_msg = build_user_msg(item, args.mcq_format)
+
+            messages = [
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user",   "content": user_msg},
+            ]
+            prompt = tokenizer.apply_chat_template(
+                messages, tokenize=False, add_generation_prompt=True
+            )
+            prompt = maybe_apply_no_thinking_prefill(prompt, args.no_thinking)
+            if args.no_thinking and not no_thinking_logged:
+                print(f"--- NO-THINKING PROMPT (item {iid}) last 200 chars ---")
+                print(repr(prompt[-200:]))
+                no_thinking_logged = True
+
+            chunk_meta.append({"iid": iid, "is_mcq": is_mcq, "is_multi": is_multi})
+            chunk_prompts.append(prompt)
+
+        # Single llm.generate() call for the whole chunk so vLLM can
+        # continuous-batch across items.
         t0 = time.time()
         gen_kwargs = {"lora_request": lora_req} if lora_req else {}
-        outputs = llm.generate(prompt, sampling_params=sampling, **gen_kwargs)
-        wall = time.time() - t0
+        chunk_outputs = llm.generate(
+            chunk_prompts, sampling_params=sampling, **gen_kwargs
+        )
+        chunk_wall = time.time() - t0
+        # Per-item wall-seconds is the chunk wall divided across items in the
+        # chunk. This is an approximation — items in the same chunk share the
+        # generate() call, so we cannot recover true per-item time without
+        # instrumenting vLLM internals.
+        per_item_wall = chunk_wall / max(1, len(chunk))
 
-        sample_objs = outputs[0].outputs
-        sample_texts = [o.text for o in sample_objs]
-        sample_n_output_tokens = [len(o.token_ids) for o in sample_objs]
-        sample_extracted = [extract_last_boxed(t) for t in sample_texts]
+        for meta, item_output in zip(chunk_meta, chunk_outputs):
+            iid = meta["iid"]
+            is_mcq = meta["is_mcq"]
+            is_multi = meta["is_multi"]
 
-        apply_filter = args.mode == "base"
-        if apply_filter:
-            rejected, fallback = apply_shape_filter(sample_texts, is_multi)
-        else:
-            rejected = [False] * len(sample_texts)
-            fallback = False
+            sample_objs = item_output.outputs
+            sample_texts = [o.text for o in sample_objs]
+            sample_n_output_tokens = [len(o.token_ids) for o in sample_objs]
+            sample_extracted = [extract_last_boxed(t) for t in sample_texts]
 
-        voted, votes, n_voting = majority_vote_filtered(sample_texts, rejected)
-        response = pick_response(sample_texts, rejected, voted)
+            apply_filter = args.mode == "base"
+            if apply_filter:
+                rejected, fallback = apply_shape_filter(sample_texts, is_multi)
+            else:
+                rejected = [False] * len(sample_texts)
+                fallback = False
 
-        result = {
-            "id": iid,
-            "mode": args.mode,
-            "voted_answer": voted,
-            "votes": votes,
-            "n_voting": n_voting,
-            "shape_fallback": fallback,
-            "response": response,
-            "samples": sample_texts,
-            "sample_extracted": sample_extracted,
-            "sample_n_output_tokens": sample_n_output_tokens,
-            "wall_seconds": round(wall, 2),
-            "timestamp": datetime.now(timezone.utc).isoformat(),
-        }
-        write_result(args.output, result)
+            voted, votes, n_voting = majority_vote_filtered(sample_texts, rejected)
+            response = pick_response(sample_texts, rejected, voted)
 
-        idx += 1
-        timings.append(wall)
-        print_progress(idx, total, iid, is_mcq, voted, votes, n_voting, wall, timings)
+            result = {
+                "id": iid,
+                "mode": args.mode,
+                "voted_answer": voted,
+                "votes": votes,
+                "n_voting": n_voting,
+                "shape_fallback": fallback,
+                "response": response,
+                "samples": sample_texts,
+                "sample_extracted": sample_extracted,
+                "sample_n_output_tokens": sample_n_output_tokens,
+                "wall_seconds": round(per_item_wall, 2),
+                "timestamp": datetime.now(timezone.utc).isoformat(),
+            }
+            write_result(args.output, result)
+
+            idx += 1
+            timings.append(per_item_wall)
+            print_progress(idx, total, iid, is_mcq, voted, votes, n_voting,
+                           per_item_wall, timings)
 
     print(f"\nDone. {idx} items written to {args.output}")
 
