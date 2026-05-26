@@ -161,4 +161,7 @@ WARNING 05-26 11:22:21 [nixl_utils.py:44] NIXL agent config is not available
 Processed prompts:   0%|          | 0/16 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 16/16 [15:23<00:00, 57.73s/it, est. speed input: 2.91 toks/s, output: 391.97 toks/s]Processed prompts: 100%|██████████| 16/16 [15:23<00:00, 57.73s/it, est. speed input: 2.91 toks/s, output: 391.97 toks/s]Processed prompts: 100%|██████████| 16/16 [15:23<00:00, 57.73s/it, est. speed input: 2.91 toks/s, output: 391.97 toks/s]
    [  30/128] ID  347 [MCQ] voted='I'        (4/16) 923.7s | done=30 avg=439.0s ETA=12.0h
 Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 408.64it/s]
+Processed prompts:   0%|          | 0/16 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 16/16 [03:02<00:00, 11.43s/it, est. speed input: 34.56 toks/s, output: 238.14 toks/s]Processed prompts: 100%|██████████| 16/16 [03:02<00:00, 11.43s/it, est. speed input: 34.56 toks/s, output: 238.14 toks/s]Processed prompts: 100%|██████████| 16/16 [03:02<00:00, 11.43s/it, est. speed input: 34.56 toks/s, output: 238.14 toks/s]
+   [  31/128] ID  353 [FRE] voted='\\text{D}' (10/16) 182.9s | done=31 avg=430.8s ETA=11.6h
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 564.05it/s]
 Processed prompts:   0%|          | 0/16 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
