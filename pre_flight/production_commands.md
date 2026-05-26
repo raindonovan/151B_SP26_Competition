@@ -81,17 +81,9 @@ python3 scripts/run_hybrid_inference.py \
   --repetition-penalty 1.1
 ```
 
-## Phase B3 — GenSelect on existing run14b (SPEC INCOMPLETE)
+## Phase B3 — GenSelect — DEFERRED to Day 2
 
-`scripts/genselect_*` scripts exist in the repo:
-- `scripts/genselect_diag.py`
-- `scripts/genselect_phase2.py`
-- `scripts/genselect_pilot.py`
-- `scripts/genselect_poc.py`
-- `scripts/genselect_runner.py`
-- `scripts/genselect_smoke.py`
-
-**Cannot write a canonical CLI for B3 without Strategy specifying which script is the production entry point and its required arguments.** `scripts/genselect_runner.py` is the most likely canonical based on naming, but its CLI signature has not been validated against the B3 task description ("GenSelect on existing run14b SC≤5/8"). Surfaced to Strategy.
+B3 (GenSelect) DEFERRED to Day 2. Repo has 6 `scripts/genselect_*` without a clear canonical production entry point. Will revisit once SC=16 + NoThinking results are in (gives us a basis for which GenSelect variant to use).
 
 ## Phase B4a — Per-tier control T1+T2+T3
 
