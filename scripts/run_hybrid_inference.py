@@ -275,6 +275,8 @@ def main() -> None:
                         help="Repetition penalty. None = vLLM default.")
     parser.add_argument("--presence-penalty", type=float, default=None,
                         help="Presence penalty. None = vLLM default.")
+    parser.add_argument("--tensor-parallel-size", type=int, default=1,
+                        help="Tensor parallel size for multi-GPU vLLM.")
     args = parser.parse_args()
 
     os.makedirs(os.path.dirname(args.output) or ".", exist_ok=True)
@@ -309,6 +311,7 @@ def main() -> None:
         reasoning_parser="deepseek_r1",
         trust_remote_code=True,
         dtype="bfloat16",
+        tensor_parallel_size=args.tensor_parallel_size,
     )
     if args.mode == "adapter":
         if not args.adapter_path:
