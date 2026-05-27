@@ -3,7 +3,7 @@
 **Purpose**: Capture insights from LLM research agents, synthesize across prompts, drive submission decisions. Append-only. Each session gets a dated section.
 
 This sits alongside:
-- `docs/FINDINGS.md` — accumulated knowledge (what we KNOW empirically)
+- `docs/FINDINGS.md` — accumulated knowledge (what we KNOW empirically); the Hendrycks find is at the top
 - `docs/SUBMISSIONS_TODO.md` — action items
 - `docs/RESEARCH.md` (this file) — external research input + synthesis + decisions
 
@@ -15,59 +15,66 @@ This sits alongside:
 - Time pressure: ~2 hours to Kaggle daily-slot reset at session start
 - 5 slots remaining today; final 2 picks at deadline ~2026-06-02
 - Current best: 0.653 real-inference / 0.671 diagnostic; leaderboard #1: 0.770
-- Strategic shift: **research-before-commit**. CSVs in `submissions/` are floors, not commitments.
+- Strategic shift mid-session: **research-before-commit**. CSVs in `submissions/` are floors, not commitments.
 - Base CSVs ready: `track_A_day3_v1`, `track_A_day3_v2`, `track_B_day3_v1`, `track_C_day3_v1` (Slots 1-4); Slot 5 reserved.
 
-### Prompts sent (4 angles, all with same core context, same final ask, same steelman section)
+### 5 Research agents queried
 
-#### Prompt 1 — String Matching & Format Conventions
-**Lens**: Kaggle-style automated math graders, LaTeX dialect equivalence (\dfrac vs \frac, \text{} wrapping), normalization conventions across MATH/GSM8K/AIME/Putnam
-**Academic sources for**: evaluation methodology in math QA datasets, LaTeX rendering ambiguity, published normalization pipelines
-**Status**: SENT — awaiting reply
+| Agent # | Lens | Key insight |
+|---|---|---|
+| 1 | String matching & format conventions | Track C base should move to Slot 1; alternative parallel-track plan |
+| 2 | Test-time inference optimization | Arithmetic: 110-item gap > 71-item override queue. One slot must be format-thesis, not pure overrides |
+| 3 | **Math/logic & creative aggregation** | **🚀 Reverse-engineered Hendrycks `is_equiv` source. The 28pp gap = Hendrycks(Kaggle) vs Minerva(local). \dfrac is non-issue; \text{A} preserved; trailing zeros NOT stripped** |
+| 4 | Math problem format conventions | Multi-slot expansion + MCQ \text{} unwrap. Hit browsing limit. |
+| 5 (Gemini, added) | LaTeX normalization + override execution | Same Hendrycks finding as Agent 3. **Dangerous recommendation: alphabetical sort (would break order, -17.6pp probe-verified)** |
 
-[PASTE LLM RESPONSE HERE]
+### Empirical follow-up: format hypothesis spot-check
 
-#### Prompt 2 — Test-Time Inference Optimization
-**Lens**: test-time compute optimization for ≤7B reasoning models, SC variants, AIMO-2/Numina techniques, GenSelect, format-aware decoding
-**Academic sources for**: inference-time optimization on small reasoning models 2024-2026, published SC variants
-**Status**: SENT — awaiting reply
+Ran spot-check on slot1_reformat (300 MCQ items + 643 free-form):
+- `\text{X}` MCQ wrap: **0 items** — already stripped in our pipeline. DEAD.
+- `\mathbf` wrap: 0 items. DEAD.
+- Trailing period `A.`: 0 items. DEAD.
+- Parenthetical `(A)`: 0 items. DEAD.
+- **Trailing-zero decimals: 53 items** — `0.3750`, `70.00`, `4.000`, `1.160`, `10.50`, etc. **LIVE LEVER.**
 
-[PASTE LLM RESPONSE HERE]
+### Synthesis — what 5 agents AGREE on
 
-#### Prompt 3 — Math/Logic & Creative Aggregation (the math one)
-**Lens**: BEYOND-Bayesian creative algorithmic angles — information-theoretic submission design, differential probing math, ILP/MaxSAT formulation, adversarial back-solve from leaderboard, per-item entropy
-**Academic sources for**: Bayesian experimental design, MaxSAT for combinatorial inference, ILP for binary classification with sparse linear constraints, rank-based inference from aggregate signals
-**Status**: SENT — awaiting reply
+1. **Multi-slot expansion is the dominant fix** — Agents 1, 2, 3, 4, Gemini
+2. **Don't burn a slot on pure format probe** — Agents 1, 2, 3, 4 agree; Gemini disagrees (probe-first)
+3. **Track C base (0.653) should move to Slot 1, not Slot 4** — Agents 1, 2, 3 agree; Gemini puts probe at Slot 1
+4. **Track A vs Track C base A/B is the highest-information single comparison** — Agents 2, 3
+5. **Kaggle grader is Hendrycks-style** — Agents 3, 5 (Gemini) cite source code
 
-[PASTE LLM RESPONSE HERE]
+### Synthesis — DISAGREEMENTS resolved
 
-#### Prompt 4 — Math Problem Format Conventions
-**Lens**: source-corpus identification (WeBWorK vs Putnam vs AIME vs Olympiad), corpus-specific format rules, identifying problem provenance from text
-**Academic sources for**: WeBWorK answer format specifications, Putnam/AIME answer encoding conventions, LaTeX rendering norms
-**Status**: SENT — awaiting reply
+| Disagreement | Resolution | Winner |
+|---|---|---|
+| `\dfrac` standardization? | Hendrycks auto-strips dfrac→frac. **NOT a lever.** | Agent 3 (cited source) |
+| Probe Slot 1 vs leverage Slot 1? | All other agents say leverage. Gemini's EV math is broken (claims 1054pp gain via slot-multiplication that ignores cap at 30pp format-error count). **Leverage.** | Agents 1, 2, 3, 4 |
+| Alphabetical sort multi-answer? | **NO.** We have probe-verified -17.6pp order-reversal penalty. **DO NOT APPLY.** | Empirical evidence beats Gemini |
+| Strip trailing units (`\text{ cm}`)? | Hendrycks already does this when there's trailing space. Don't double-strip aggressively. | Agent 3 |
+| MED tier priority order? | Wolfram MED before Rescue MED (verifier-backed > 2/4 teacher) | Agent 2 |
 
-[PASTE LLM RESPONSE HERE]
+### Slot strategy ideas (decisions table — fill at commit time)
 
-### Synthesis across prompts (fill after all replies in)
+| Slot | Candidate plan A (claude_strategy original) | Candidate plan B (research-informed) | Rationale for B |
+|---|---|---|---|
+| 1 | Track A v1 (slot1_reformat + Wolfram HIGH + rescue HIGH) | **Track C v1 + trailing-zero strip + multi-slot scan** (kitchen sink on 0.653 base) | Front-load best base + only live format lever. Agents 1/2/3 push Track C to Slot 1; spot-check confirms trailing-zeros is real with 53 affected items. |
+| 2 | Track A v2 (+ rescue MED) | **Same kitchen-sink format on Track A** (slot1_reformat 0.646 + same overrides + trailing-zero strip) | Clean base A/B with format normalized. Single highest-info comparison per Agents 2/3. |
+| 3 | Track B v1 (+ Wolfram MED/PARTIAL) | WAIT for Slots 1+2 scores; decide reactively | Don't pre-commit; let base A/B inform |
+| 4 | Track C v1 | WAIT | Reactive |
+| 5 | Reserve | Reserve | Unchanged |
 
-**Common recommendations across LLMs:**
-- 
+### Open questions to send back to agents
+- Agent 1: basis for `\dfrac` standardization claim? Source code or inference?
+- Agent 2: Kaggle = Qwen-Math parser or Hendrycks-style? Resolve via 28pp gap interpretation
+- Agent 3: design offline Hendrycks vs Minerva test; trailing-zero strip safe heuristic
+- Agent 4: WeBWorK vs Putnam vs AIME identification from problem text patterns
+- Gemini: alphabetical sort recommendation conflicts with our probe; EV math derivation
 
-**Conflicting recommendations:**
-- 
+### Decisions taken (FILL AFTER agent replies + Rain go-ahead)
 
-**New ideas not in our current plan:**
-- 
-
-**Format probes worth running:**
-- 
-
-**Information-gain submissions worth running:**
-- 
-
-### Decisions taken on 5 slots
-
-| Slot | File / variant | Rationale | Source (prompt #) |
+| Slot | Submitted file | Kaggle score | Notes |
 |---|---|---|---|
 | 1 |  |  |  |
 | 2 |  |  |  |
@@ -75,21 +82,9 @@ This sits alongside:
 | 4 |  |  |  |
 | 5 |  |  |  |
 
-### Results (fill after Kaggle scores land)
+### Full agent responses
 
-| Slot | Submitted file | Kaggle score | Surprise/expected | Inference for next slot |
-|---|---|---|---|---|
-| 1 |  |  |  |  |
-| 2 |  |  |  |  |
-| 3 |  |  |  |  |
-| 4 |  |  |  |  |
-| 5 |  |  |  |  |
-
-### What we learned (post-session)
-- 
-
-### Carryover to Day 4
-- 
+(Stored separately — pastes were ~8K words combined. See git history of this file or `docs/research/2026-05-27/` if we archive them. For now, key claims and synthesis above.)
 
 ---
 
@@ -99,21 +94,6 @@ This sits alongside:
 
 ---
 
-## Day 5 — TBD
-
-(placeholder)
-
----
-
 ## Past research / thinking — to be consolidated
 
-**TODO**: search repo + Drive for older research/thinking docs (answer sheet methodology, back-solve framework, OPL design, SFT v5/v7 analysis, etc.) and either:
-- Append summaries here (one section per topic), OR
-- Move full docs to `docs/archive/` with index entries here
-
-Candidates to search for:
-- Back-solve methodology (was in Drive as "Back-Solve Mathematical Framework" id 1Cs14P3H2eHKpe1Z0myqG1XikKMoqqIUxfRTbWQ5LDfM — captured in FINDINGS.md)
-- Earlier research session summaries (any "research" or "thinking" titled docs in Drive or repo)
-- W-tier analysis (in `results/w_tier_confidence_analysis.csv`)
-- OPL design docs
-- SFT postmortems
+(TODO from SUBMISSIONS_TODO.md — search repo + Drive for legacy research docs and consolidate or archive)
