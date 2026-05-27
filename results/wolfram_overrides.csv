@@ -1,0 +1,62 @@
+id,batch,override_value,confidence,notes
+0005,B2,"541.3, 63.25, 135.325, 4.2167, 32.09",HIGH,ANOVA 5-tuple; under-count
+0009,B1,"L-8x, 6F",HIGH,2-slot numerator/denominator split; format risk
+0012,B2,"2c + 4p = 70, 11",HIGH,equation+value; string-match risk on equation form
+0068,B2,"-2.857, 6.986, -1.082, 3.707, -3.707, A, -12.647, 6.933",HIGH,8-slot paired t-test; slot1 was completely wrong (5.443)
+0134,B2,"1, 5, 12, 20, 26, 30, 31, 27.63",HIGH,7 cumulative freqs + median; severe under-count
+0192,B2,"1.06, (1.88, infty), 0.1449, A",HIGH,z-test 4-slot; note infty notation
+0257,B2,"2.52, 3.00, A",HIGH,CI + MCQ 3-slot
+0353,B3,"8, C, 5 and 7, D",HIGH,"table lookup; format risk on '5 and 7' vs '5, 7'"
+0385,B3,"A, A, A",HIGH,3-slot sampling design MCQ; all answers A
+0413,B3,"0.89, (1.83, infty), 0.2008, A",HIGH,paired t 4-slot; watch LaTeX \text{A} wrap risk
+0435,B1,"0.4457, 0.5368, A",HIGH,CI bounds + MCQ; under-count missing letter
+0469,B3,"s^2, 0.1575A, 0.1575s^2, C, 81, square feet, 14.175, dollars, 19.0575, dollars",HIGH,10-slot composition; includes units-as-slots
+0479,B1,"40.36, 43.64, 40.01, 43.99",HIGH,90%+95% CI 4-slot; model emitted only 95% bounds
+0487,B3,"-21.1, -0.9636",HIGH,covariance + correlation 2-slot
+0495,B3,"100, 100, 200, 0.255, 5.991, B",HIGH,chi-sq GoF 6-slot
+0499,B4,"36.9, 0.3225, 32.25, 2.149",HIGH,exponential growth 4-slot
+0519,B4,"426.3, 5090, 98.30",HIGH,population model 3-slot
+0548,B1,"1.20x = 144, $120.00",HIGH,equation+value; risk on equation string form
+0578,B1,"7.62, 9.00, 95.44",HIGH,CI+confidence 3-slot
+0585,B4,"-0.2235, 2.262, -2.262, No",PARTIAL,slot 5 unknown (interpretation phrase)
+0587,B4,"B, C, D, E, F, J, C, A, B, B",HIGH,4 sub-parts multi-select; last slot = B (centring effect)
+0591,B4,"1.081, 1.683, 1.819, -0.832, 3.162, -0.322, 4.123, 1.326",HIGH,trig identity expansion 8-slot; note negative slot 4
+0622,B4,"3.854, 2.567, Yes",PARTIAL,slot 4 unknown (interpretation phrase)
+0633,B5,"B, D, 8",HIGH,multi-select + value 3-slot
+0638,B5,"0.15, (-infty, -1.75)U(1.75, infty), 0.88, D",HIGH,proportion z-test 4-slot
+0657,B5,"172.52, 187.48, 172.87, 187.13, 0, 5.167, -10.33, 10.33",HIGH,difference of means 8-slot
+0715,B5,"5, 7, 9, 13, 8.5, 6, 7, 8, 9, 10, 11, 8.5",HIGH,sampling distribution 4-slot (lists as slots); format risk
+0721,B5,"D, A, A",HIGH,3-slot CLT/sampling MCQ
+0748,B5,"222.51, 186.49, 79.43, 66.57, 50.05, 41.95, 31.01, 25.99, 20.79, 3, 11.345, B",HIGH,chi-sq independence 12-slot
+0749,B6,"5, 5, 5, 5, 5, is, 14/9, 19/14, 24/19, 29/24, 34/29, is not, 9+5n, (-1)^(n+1)(5n+9)",PARTIAL,format uncertain; 6 ANS slots but exact slot boundaries unclear
+0787,B1,"148,178,452, 41.55, 46.97",MEDIUM,discrete geometric 3-slot; format ambiguity on units
+0793,B6,"1.35, (1.49, inf), 0.0895, D",HIGH,t-test 4-slot; note 'inf' not 'infty' in notation
+0858,B6,"2.300, 1.691, Yes",PARTIAL,slot 4 unknown (interpretation phrase)
+0886,B6,"A, C",HIGH,2-slot ME scaling + n_req
+0894,B6,"0.008, 1.783, 2.013, -0.091, 0.283, -0.100, 0.272, 10",MEDIUM,"regression PI 8-slot; question hints 9, verified 10"
+0917,B6,"189.8, 246.4, 43",HIGH,CI + n_req 3-slot
+0924,B7,"n = 55 + 0.2t, 2010",HIGH,linear model + year 2-slot
+0929,B7,"5.860, (-0.78, 3.18), A",HIGH,pooled t CI + MCQ 3-slot; nB=11 (13-2 excluded)
+0011,B8,0.939,consensus-only,truncated problem text; verify against source
+0040,B8,D = 800 - 50d,HIGH,missing LHS prefix; Qwen failure=missing-prefix
+0067,B8,"7.6(1.09)^t, 13.9, 5.4",HIGH,exponential growth 3-slot; Qwen under-counted
+0072,B8,"-0.8352, -0.9187, 0.3950, -2.3258, Quadrant IV",HIGH,trig 5-slot; full label required
+0089,B8,\frac{326}{7},HIGH,fraction vs decimal
+0100,B8,\frac{180}{7},HIGH,fraction vs decimal
+0103,B8,8\sqrt{2},HIGH,exact form vs decimal
+0106,B8,\frac{13}{6},HIGH,fraction vs decimal
+0118,B8,\frac{18}{5},HIGH,fraction vs decimal
+0124,B8,H,HIGH,Putnam 2018 A2; Qwen=G missed z=1 edge case
+0167,B8,"Negative, Negative, Positive, Negative",HIGH,words not letters; Qwen failure=letter-vs-word
+0181,B8,A,HIGH,symmetry proof; only symmetric matrix; Qwen=B wrong
+0218,B8,\arcsin\!(\frac{7}{10}),HIGH,exact form vs decimal
+0233,B8,"1.96, -1.96, -5.18, B",HIGH,hypothesis test 4-slot; Qwen under-counted
+0247,B8,"\frac{2409}{65}, \frac{2474}{1+\frac{2409}{65}e^{-0.53t}}, 2473.84",HIGH,logistic 3-slot; Qwen under-counted
+0317,B8,D,HIGH,dataset quirk — D and H identical; only D accepted
+0395,B8,"\frac{85}{3}, -\frac{95}{4}, -\frac{10}{7}",HIGH,rate-of-change fractions
+0454,B8,"1.5, 0.9375",HIGH,GPA trailing zeros
+0496,B8,9.594^\circ,HIGH,bearing; degree symbol required
+0506,B8,J,HIGH,balanced primes MCQ
+0584,B8,"7z, 6w",HIGH,symbolic form; Qwen substituted z=w=1
+0884,B8,g(x)=(x-59)^2+74,HIGH,prefix required; g(x)= form
+0902,B8,"9, 6",HIGH,simplified radical ratio
