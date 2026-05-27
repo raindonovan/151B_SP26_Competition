@@ -139,4 +139,7 @@ WARNING 05-26 23:58:17 [nixl_utils.py:44] NIXL agent config is not available
 Processed prompts:   0%|          | 0/16 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 16/16 [12:58<00:00, 48.69s/it, est. speed input: 19.23 toks/s, output: 363.88 toks/s]Processed prompts: 100%|██████████| 16/16 [12:58<00:00, 48.69s/it, est. speed input: 19.23 toks/s, output: 363.88 toks/s]Processed prompts: 100%|██████████| 16/16 [12:58<00:00, 48.69s/it, est. speed input: 19.23 toks/s, output: 363.88 toks/s]
    [ 124/128] ID  887 [MCQ] voted='I'        (8/16) 779.0s | done=124 avg=384.2s ETA=26m
 Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 527.45it/s]
+Processed prompts:   0%|          | 0/16 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 16/16 [21:46<00:00, 81.68s/it, est. speed input: 2.00 toks/s, output: 304.50 toks/s]Processed prompts: 100%|██████████| 16/16 [21:46<00:00, 81.68s/it, est. speed input: 2.00 toks/s, output: 304.50 toks/s]Processed prompts: 100%|██████████| 16/16 [21:46<00:00, 81.68s/it, est. speed input: 2.00 toks/s, output: 304.50 toks/s]
+   [ 125/128] ID  907 [FRE] voted='56'       (4/16) 1306.8s | done=125 avg=424.3s ETA=21m
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 462.28it/s]
 Processed prompts:   0%|          | 0/16 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
