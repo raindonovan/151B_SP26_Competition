@@ -71,6 +71,17 @@ This is the WHAT-WE-DO doc. For accumulated knowledge, see `docs/FINDINGS.md`.
 - [ ] Specifically check: `results/` directory for analysis CSVs that have stale documentation, any `docs/` files referenced by but not findable, Drive `handoff` folder for older versions
 - [ ] Goal: single source of truth — `FINDINGS.md` for empirical knowledge, `RESEARCH.md` for external research input, `SUBMISSIONS_TODO.md` for active work. Everything else either consolidated or archived.
 
+### MaxSAT/MILP back-solve (Day 4 priority — 3-agent consensus)
+- [ ] Implement MaxSAT/MILP back-solve as Day 4 morning project (~1-2hr implementation)
+- [ ] 24 prior submission scores = 24 linear cardinality constraints over 943 binary correctness variables
+- [ ] + teacher log-priors (clipped to ±3 to avoid over-confident prior dominating) as MaxSAT objective
+- [ ] Use PySAT RC2 (Ignatiev-Morgado-Marques-Silva, MaxSAT Eval 2018/2019 winner) or OR-Tools CP-SAT
+- [ ] Encode score constraints with ±0.01 slack (5 decimal places rounding)
+- [ ] Expected gain: +0.02 to +0.05 over current Bayesian aggregation
+- [ ] Output: MAP labeling + per-item posterior + backbone variables (forced assignments)
+- [ ] **Precedent**: Chikishev & Greenberg LANL Earthquake 1st place (4500 teams) used exact this approach with 245k vars/124k constraints. Our problem is 250x smaller.
+- [ ] **NOT for today** — needs proper implementation, too risky to rush
+
 ## STALE / IGNORE
 
 - docs/IMMEDIATE_CONTEXT.md (Day 2, stale)
