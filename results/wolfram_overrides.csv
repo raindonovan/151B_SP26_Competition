@@ -60,3 +60,8 @@ id,batch,override_value,confidence,notes
 0584,B8,"7z, 6w",HIGH,symbolic form; Qwen substituted z=w=1
 0884,B8,g(x)=(x-59)^2+74,HIGH,prefix required; g(x)= form
 0902,B8,"9, 6",HIGH,simplified radical ratio
+0041,WEBSEARCH,2112,HIGH,IMO 2025 P6 (Matilda tiles). ALL 5 teachers wrong (3986/4048/4048). Free-form.
+0117,WEBSEARCH,B,HIGH,Putnam 2021 A5. Answer = 2020 = option B. All 5 teachers agreed. High confidence.
+0120,WEBSEARCH,8,HIGH,Polya theorem on fixed divisors. 4/5 teachers agreed. Free-form.
+0125,WEBSEARCH,8,PARTIAL,"Putnam 2016 A1. Value=8 confirmed. MCQ letter TBD — options shown were [9,16,5]; 8 in unlisted option. Rain verify letter mapping."
+0141,WEBSEARCH,0,PARTIAL,"Putnam 1989 A-1 base-7 variant. Value=0 confirmed. MCQ letter TBD — options shown were [1,4,5]; 0 in unlisted option. Rain verify letter mapping."
