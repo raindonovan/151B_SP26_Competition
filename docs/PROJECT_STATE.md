@@ -115,3 +115,36 @@ Batch 8: 25 items, 23 overrides ready:
 - [ ] [RAIN] Wolfram Drive cleanup (3 duplicate files to delete_ignore)
 - [ ] [RAIN] MASTER_SHEET 0181 status update (inconclusive → override=A)
 - [ ] [THUNDER] Logprobs in run10 JSONL — gating response-prob SC
+
+## Day 3 Submission Status (~17:30 PT, 3hr submission window remaining)
+
+**5 submissions remaining today** (per Kaggle UI — resets in 3 hours).
+
+### Built and ready
+
+| Slot | File | Base | Changes | Expected | Status |
+|------|------|------|---------|----------|--------|
+| 1 | track_A_day3_v1.csv | slot1_reformat (0.646) | Wolfram HIGH (58) + rescue HIGH (5) | 0.68-0.69 | READY |
+| 2 | track_A_day3_v2.csv | track_A_v1 | + rescue MEDIUM (8) | 0.685-0.70 | READY |
+| 3 | track_B_day3_v1.csv | track_A_v2 | + Wolfram MED/PARTIAL (7) | 0.69-0.71 | READY |
+| 4 | TBD | track_A_v2 or track_B_v1 | TBD based on results | TBD | HOLD |
+| 5 | RESERVE | — | emergency fix or wild card | — | HOLD |
+
+### Download URLs (public repo, no auth needed)
+
+- Slot 1: https://media.githubusercontent.com/media/beepbeeepimajeep/151B_SP26_Competition/main/submissions/track_A_day3_v1.csv
+- Slot 2: https://media.githubusercontent.com/media/beepbeeepimajeep/151B_SP26_Competition/main/submissions/track_A_day3_v2.csv
+- Slot 3: https://media.githubusercontent.com/media/beepbeeepimajeep/151B_SP26_Competition/main/submissions/track_B_day3_v1.csv
+
+### Format-error landscape (from V3 tracker + actual slot1_reformat data)
+
+- Whitespace-only differences (comma vs comma-space): TOLERATED by Kaggle (slot1_reformat scored 0.646 with mixed spacing). Don't chase.
+- `\dfrac` canonical: slot1_reformat uses `\dfrac`; some teachers prefer `\frac`. KEEP `\dfrac` per Kaggle sample_submission.
+- Multi-answer slot count: 82 items have undercount per V3 tracker. Highest-leverage Slot 4 candidate.
+- MCQ value-to-letter: 0 items need this in slot1_reformat (already letter form).
+
+### Key levers still untried
+
+- Top 30 manual format_review picks (Slot 4 candidate — submission_master scope)
+- Multi-answer expansion using teacher consensus for items with [ANS] count > slot1 slot count
+- Adapter v5 spliced into specific items (would need adapter v5 inference output)
