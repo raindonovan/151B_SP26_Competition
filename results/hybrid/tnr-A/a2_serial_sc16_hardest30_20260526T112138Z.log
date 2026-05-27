@@ -99,4 +99,7 @@ WARNING 05-27 02:52:11 [nixl_utils.py:44] NIXL agent config is not available
 Processed prompts:   0%|          | 0/16 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 16/16 [39:42<00:00, 148.89s/it, est. speed input: 0.87 toks/s, output: 249.65 toks/s]Processed prompts: 100%|██████████| 16/16 [39:42<00:00, 148.89s/it, est. speed input: 0.87 toks/s, output: 249.65 toks/s]Processed prompts: 100%|██████████| 16/16 [39:42<00:00, 148.89s/it, est. speed input: 0.87 toks/s, output: 249.65 toks/s]
    [   9/30] ID   54 [FRE] voted='4'        (5/16) 2382.2s | done=9 avg=928.1s ETA=5.4h
 Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 502.01it/s]
+Processed prompts:   0%|          | 0/16 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 16/16 [30:19<00:00, 113.72s/it, est. speed input: 1.62 toks/s, output: 266.96 toks/s]Processed prompts: 100%|██████████| 16/16 [30:19<00:00, 113.72s/it, est. speed input: 1.62 toks/s, output: 266.96 toks/s]Processed prompts: 100%|██████████| 16/16 [30:19<00:00, 113.72s/it, est. speed input: 1.62 toks/s, output: 266.96 toks/s]
+   [  10/30] ID   58 [FRE] voted='31'       (6/16) 1819.5s | done=10 avg=1017.2s ETA=5.7h
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 504.97it/s]
 Processed prompts:   0%|          | 0/16 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
