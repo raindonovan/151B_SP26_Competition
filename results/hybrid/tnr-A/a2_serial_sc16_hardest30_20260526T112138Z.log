@@ -159,4 +159,13 @@ WARNING 05-27 02:52:11 [nixl_utils.py:44] NIXL agent config is not available
 Processed prompts:   0%|          | 0/16 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 16/16 [05:32<00:00, 20.76s/it, est. speed input: 5.68 toks/s, output: 366.54 toks/s]Processed prompts: 100%|██████████| 16/16 [05:32<00:00, 20.76s/it, est. speed input: 5.68 toks/s, output: 366.54 toks/s]Processed prompts: 100%|██████████| 16/16 [05:32<00:00, 20.76s/it, est. speed input: 5.68 toks/s, output: 366.54 toks/s]
    [  29/30] ID  210 [FRE] voted='\\dfrac{2x}{x^2 + 1}' (10/16) 332.2s | done=29 avg=739.2s ETA=12m
 Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 364.12it/s]
-Processed prompts:   0%|          | 0/16 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:   0%|          | 0/16 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 16/16 [05:51<00:00, 21.95s/it, est. speed input: 11.07 toks/s, output: 443.69 toks/s]Processed prompts: 100%|██████████| 16/16 [05:51<00:00, 21.95s/it, est. speed input: 11.07 toks/s, output: 443.69 toks/s]Processed prompts: 100%|██████████| 16/16 [05:51<00:00, 21.95s/it, est. speed input: 11.07 toks/s, output: 443.69 toks/s]
+   [  30/30] ID  225 [FRE] voted='A'        (10/16) 351.3s | done=30 avg=726.2s ETA=0s
+(EngineCore pid=152043) INFO 05-27 08:57:56 [core.py:1238] Shutdown initiated (timeout=0)
+(EngineCore pid=152043) INFO 05-27 08:57:56 [core.py:1261] Shutdown complete
+(Worker_TP0 pid=152151) INFO 05-27 08:57:56 [multiproc_executor.py:775] Parent process exited, terminating worker queues
+(Worker_TP1 pid=152152) INFO 05-27 08:57:56 [multiproc_executor.py:872] WorkerProc shutting down.
+(Worker_TP0 pid=152151) INFO 05-27 08:57:56 [multiproc_executor.py:872] WorkerProc shutting down.
+
+Done. 30 items written to results/hybrid/tnr-A/a2_serial_sc16_hardest30_20260526T112138Z.jsonl
+=== A2 DONE Wed May 27 08:58:03 UTC 2026 ===
