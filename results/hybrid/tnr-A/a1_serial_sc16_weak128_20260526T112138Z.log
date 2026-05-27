@@ -148,4 +148,13 @@ WARNING 05-26 23:58:17 [nixl_utils.py:44] NIXL agent config is not available
 Processed prompts:   0%|          | 0/16 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 16/16 [01:14<00:00,  4.65s/it, est. speed input: 42.80 toks/s, output: 634.39 toks/s]Processed prompts: 100%|██████████| 16/16 [01:14<00:00,  4.65s/it, est. speed input: 42.80 toks/s, output: 634.39 toks/s]Processed prompts: 100%|██████████| 16/16 [01:14<00:00,  4.65s/it, est. speed input: 42.80 toks/s, output: 634.39 toks/s]
    [ 127/128] ID  927 [FRE] voted='\\begin{aligned}\n&1.\\ \\text{False}, \\\\\n&2.\\ \\text{True}, \\\\\n&3.\\ \\text{True}, \\\\\n&4.\\ \\text{True}, \\\\\n&5.\\ \\text{False}, \\\\\n&6.\\ \\text{False}\n\\end{aligned}' (3/8) 74.4s | done=127 avg=395.6s ETA=7m
 Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 292.18it/s]
-Processed prompts:   0%|          | 0/16 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]
+Processed prompts:   0%|          | 0/16 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 16/16 [05:28<00:00, 20.54s/it, est. speed input: 27.32 toks/s, output: 478.81 toks/s]Processed prompts: 100%|██████████| 16/16 [05:28<00:00, 20.54s/it, est. speed input: 27.32 toks/s, output: 478.81 toks/s]Processed prompts: 100%|██████████| 16/16 [05:28<00:00, 20.54s/it, est. speed input: 27.32 toks/s, output: 478.81 toks/s]
+   [ 128/128] ID  934 [MCQ] voted='J'        (9/16) 328.6s | done=128 avg=393.0s ETA=0s
+(EngineCore pid=123486) INFO 05-27 02:51:17 [core.py:1238] Shutdown initiated (timeout=0)
+(EngineCore pid=123486) INFO 05-27 02:51:17 [core.py:1261] Shutdown complete
+(Worker_TP1 pid=123626) INFO 05-27 02:51:17 [multiproc_executor.py:872] WorkerProc shutting down.
+(Worker_TP0 pid=123625) INFO 05-27 02:51:17 [multiproc_executor.py:775] Parent process exited, terminating worker queues
+(Worker_TP0 pid=123625) INFO 05-27 02:51:17 [multiproc_executor.py:872] WorkerProc shutting down.
+
+Done. 128 items written to results/hybrid/tnr-A/a1_serial_sc16_weak128_20260526T112138Z.jsonl
+=== A1 DONE Wed May 27 02:51:26 UTC 2026 ===
