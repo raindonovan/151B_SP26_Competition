@@ -1,69 +1,87 @@
-# Submission Registry v5 — 151B Competition
+# SUBMISSION REGISTRY — Definitive (compiled 2026-05-27)
 
-**Last updated:** 2026-05-26 ~17:00 PT (Day 2 complete, post-Slot-2 result)
-**Purpose:** Complete record of every Kaggle submission
+Source: Kaggle screenshots (Rain, 2026-05-27) + Drive Submission Registry v4 + repo docs/SUBMISSION_REGISTRY.md
 
-> **Day 2 final 2026-05-26**: Slot 1 (slot1_reformat) = 0.646 (+0.3pp). Slot 2 (slot1_wolfram_full_overrides) = 0.653 (+0.7pp, new BEST REAL). Wolfram overrides UNDERPERFORMED expected +2.5-3.2pp — only ~6/38 scored, format-mismatch is the bottleneck.
+## ALL KAGGLE SUBMISSIONS (sorted by score, from screenshots)
 
-## SUBMISSIONS (sorted by score)
+| # | File | Score | Type | Config | Date |
+|---|------|-------|------|--------|------|
+| 1 | info_4_t1lock_sheet_rest.csv | **0.671** | DIAGNOSTIC | T1 run14b, T2-T4 from sheet | 2026-05-25 |
+| 2 | info_2_answersheet_on_uncertain.csv | 0.667 | DIAGNOSTIC | T1+T2 run14b, T3+T4 sheet | 2026-05-25 |
+| 3 | **slot1_wolfram_full_overrides.csv** | **0.653** | REAL | slot1_reformat + 38 Wolfram last-box overrides | 2026-05-26 |
+| 4 | slot1_reformat.csv | 0.646 | REAL | slot1_minimal_norm + reformat (54 multi-answer) | 2026-05-26 |
+| 5 | run14b_v3filtered.csv | 0.646 | REAL | SC=8, 32K, V3 shape filter | 2026-05-23 |
+| 6 | slot3_run14b_nobox_patched.csv | 0.646 | DIAGNOSTIC | 18 no-box patched → 0/18 gain | 2026-05-25 |
+| 7 | slot1_minimal_norm.csv | 0.643 | REAL | minimal LaTeX normalizer | 2026-05-26 |
+| 8 | run14b_sc8_v1.csv | 0.639 | REAL | SC=8, 32K, no filter | 2026-05-23 |
+| 9 | slot1_adapter_v5_plus_run14b_20260525_1623.csv | 0.639 | REAL | adapter v5 + run14b splice | 2026-05-25 |
+| 10 | run09sc8_v1_private943.csv | 0.614 | REAL | V1, SC=8, 16K | 2026-05-13 |
+| 11 | run09sc8_format_fixed.csv | 0.611 | REAL | Run09 + format fix | 2026-05-13 |
+| 12 | sftv4_adaptive_rerolled.csv | 0.597 | REAL | SFT v4, SC=3/16, 16K | 2026-05-24 |
+| 13 | run08v2_v1_private943.csv | 0.586 | REAL | V1, SC=8 (first submission) | 2026-05-06 |
+| 14 | diagnostic_sub_a.csv | 0.505 | DIAGNOSTIC | DiagA | 2026-05-22 |
+| 15 | sftv3_epoch8_sc1_final.csv | 0.452 | REAL | SFT v3, SC=1 | 2026-05-24 |
+| 16 | run09sc8_probe_b_reversed.csv | 0.438 | DIAGNOSTIC | order reversal probe | 2026-05-13 |
+| 17 | run10_v3perslot_private943.csv | 0.424 | DIAGNOSTIC | V3 per-slot format | 2026-05-06 |
+| 18 | expA_run08_perslot_perturbed.csv | 0.420 | DIAGNOSTIC | per-slot format | 2026-05-06 |
+| 19 | D_05_07_numina_d.csv | 0.310 | DIAGNOSTIC | DiagD | 2026-05-22 |
+| 20 | diagnostic_sub_c.csv | 0.222 | DIAGNOSTIC | DiagC | 2026-05-22 |
+| 21 | post_filtered_b.csv | 0.151 | DIAGNOSTIC | DiagB | 2026-05-22 |
+| 22 | f_today_F.csv | 0.137 | DIAGNOSTIC | DiagF | 2026-05-22 |
+| 23 | E_05_13_h100run_e.csv | 0.028 | DIAGNOSTIC | DiagE | 2026-05-22 |
+| 24 | g_epoch8_lora_G.csv | 0.017 | REAL (broken) | SFT v3 epoch 8 | 2026-05-24 |
 
-| # | File | Score | Config | Date |
-|---|---|---|---|---|
-| 1 | info_4_t1lock_sheet_rest.csv | **0.671** | T1 run14b, T2-T4 from sheet — **BEST DIAG** | 2026-05-25 |
-| 2 | info_2_answersheet_on_uncertain.csv | 0.667 | T1+T2 run14b, T3+T4 sheet | 2026-05-25 |
-| 3 | **slot1_wolfram_full_overrides.csv** | **0.653** | slot1_reformat + 38 Wolfram canonical last-box overrides — **BEST REAL** | 2026-05-26 |
-| 4 | slot1_reformat.csv | 0.646 | slot1_minimal_norm + reformat post-processor (Day 2 Slot 1) | 2026-05-26 |
-| 5 | run14b_v3filtered.csv | 0.646 | Base, SC=8, 32K, V3 shape filter | 2026-05-23 |
-| 6 | slot3_run14b_nobox_patched.csv | 0.646 | 18 no-box patched, 0/18 gain | 2026-05-25 |
-| 7 | slot1_minimal_norm.csv | 0.643 | slot1 minimal LaTeX normalizer (prior anchor) | 2026-05-26 |
-| 8 | run14b_sc8_v1.csv | 0.639 | Base, SC=8, 32K, no filter | 2026-05-23 |
-| 9 | slot1_adapter_v5_plus_run14b_20260525.csv | 0.639 | adapter_v5 + run14b splice | 2026-05-25 |
-| 10 | run09sc8_v1_private943.csv | 0.614 | Base, V1, SC=8, 16K | 2026-05-13 |
-| 11 | run09sc8_format_fixed.csv | 0.611 | Run09 + format fix | 2026-05-13 |
-| 12 | sftv4_adaptive_rerolled.csv | 0.597 | SFT v4, SC=3/16, 16K | 2026-05-24 |
-| 13 | run08v2_v1_private943.csv | 0.586 | Base, V1, SC=8 | 2026-05-06 |
-| 14 | diagnostic_sub_a.csv | 0.505 | DiagA | 2026-05-22 |
-| 15 | sftv3_epoch8_sc1_final.csv | 0.452 | SFT v3, SC=1, MCQ bug | 2026-05-24 |
-| 16 | run09sc8_probe_b_reversed.csv | 0.438 | Order reversal probe | 2026-05-13 |
-| 17 | run10_v3perslot_private943.csv | 0.424 | V3 per-slot | 2026-05-06 |
-| 18 | expA_run08_perslot_perturbed.csv | 0.420 | Per-slot format | 2026-05-06 |
-| 19 | D_05_07_numina_d.csv | 0.310 | DiagD | 2026-05-22 |
-| 20 | diagnostic_sub_c.csv | 0.222 | DiagC | 2026-05-22 |
-| 21 | post_filtered_b.csv | 0.151 | DiagB | 2026-05-22 |
-| 22 | f_today_F.csv | 0.137 | DiagF | 2026-05-22 |
-| 23 | E_05_13_h100run_e.csv | 0.028 | DiagE | 2026-05-22 |
-| 24 | g_epoch8_lora_G.csv | 0.017 | SFT v3 epoch 8 (broken) | 2026-05-24 |
+Total submitted: 24 (+ 2 failed g_epoch8 uploads shown as Error in Kaggle)
 
-## NOT SUBMITTED TODAY (declined candidates)
-- slotA_slot1_dfrac_only.csv: confounded probe (dfrac + \\left/\\right both changed; can't isolate). SKIPPED.
-- slot1_reformat_plus_b2_plus_sheet.csv: redundant with slot1_reformat (only 1 extra B2 override). Cleaner version submitted instead.
+## FILES IN REPO BUT NEVER SUBMITTED TO KAGGLE
 
-## LOCKED LEVERS (per memory #9 rule 4 — immediate lock-in on score impact)
+These exist in `submissions/` but are NOT in the Kaggle screenshots:
 
-- **Reformat post-processor**: +0.3pp stable (slot1_reformat=0.646 vs slot1_minimal_norm=0.643). Stack in all future base files. Don't re-probe alone.
-- **Wolfram canonical last-box overrides**: +0.7pp measured (slot1_wolfram_full_overrides=0.653 vs slot1_reformat=0.646). UNDERPERFORMED expected +2.5-3.2pp by ~3-4x — only ~6 of 38 overrides scored. Format-mismatch (parens, commas, "infty" vs "\\infty", LaTeX wrapping) is the bottleneck. Stack but probe format variants for 32 non-scoring items in Day 3.
-- **Minimal LaTeX normalizer**: +0.4pp (slot1_minimal_norm=0.643 vs slot1=0.639). Stack.
-- **32K vs 16K token budget**: +2.5pp (run14b vs run09). Default 32K+ for all inference.
-- **V3 shape filter**: +0.7pp at SC=8. Apply post-vote.
-- **Format-aware system prompt**: validated in smoke (4/8 → 8/8 unanimous on 5-value items). Kaggle-scale measurement pending.
+| File | Status | Notes |
+|------|--------|-------|
+| info_1_teacher_on_uncertain.csv | Prepared, never submitted | Was queued but skipped |
+| info_3_full_answersheet.csv | Prepared, never submitted | Full sheet submission, never sent |
+| slot1_reformat_plus_b2_plus_sheet.csv | Prepared, skipped | Redundant with slot1_reformat |
+| slotA_slot1_dfrac_only.csv | Prepared, skipped | Confounded probe |
+| sftv4_adaptive_rerolled.csv | Submitted (0.597) but EXCLUDED from answer sheet | Circular: trained on sheet labels |
 
-## KEY FINDINGS
+## FILES IN KAGGLE BUT NOT IN REPO
 
-- Answer sheet beats run14b on T3+T4 (~+2.1pp) and marginally on T2 (~+0.4pp)
-- Real-inference best: slot1_wolfram_full_overrides = 0.653 (Day 2 Slot 2, +0.7pp over slot1_reformat = 0.646)
-- Format losses: per-slot \\boxed{} -16.2pp; order reversal -17.6pp
-- 18 no-box items: 0/18 sheet patches scored on Kaggle
-- 32K beats 16K (+2.5pp); V3 shape filter +0.7pp
-- run14b cross-check (2026-05-26): same 6 items under-generate in slot1 AND run14b → systemic, not config
+| File | Score | Action needed |
+|------|-------|--------------|
+| slot1_wolfram_full_overrides.csv | 0.653 | ✅ Rain provided CSV — ready to commit |
+| g_epoch8_lora_G.csv | 0.017 | Low priority — broken submission |
 
-## ANSWER SHEET NOTES
+## ANSWER SHEET SCRIPT
 
-- SFT submissions EXCLUDED (circular reasoning)
-- info_2 + info_4 EXCLUDED (swapped items ARE the sheet's answers — circular)
-- Correlated base-model submissions dampened by weight/sqrt(group_size)
-- Script: scripts/build_answer_sheet_v5_1.py
-- v5.1 sheet has 575 T1+T2 items
+The answer sheet builder has gone through iterations. They're all in `scripts/`:
+- `build_answer_sheet.py` — original (v1)
+- `build_answer_sheet_v4.py` — score-weighted voting (current memory reference)
+- `build_answer_sheet_v5.py` — adds numeric clustering (frac/decimal equivalence)
+- `build_answer_sheet_v5_1.py` — adds xhigh recovery (**latest**)
 
-## NEXT SUBMISSIONS PLAN
+**⚠️ ALL versions have the same stale 15-entry SUBMISSION_REGISTRY.** Missing 9 submissions with known scores.
 
-See Drive NEXT_ACTIONS (latest) for tomorrow's Slot C/D/E plan.
+The answer sheet output lives at `results/answer_sheet/unified_answer_sheet_v5_1.csv`.
+
+## LOCKED LEVERS (Kaggle-validated deltas)
+
+| Lever | Delta | Evidence |
+|-------|-------|---------|
+| 32K vs 16K token budget | +2.5pp | run14b vs run09 |
+| V3 shape filter | +0.7pp | run14b_v3filtered vs run14b_sc8 |
+| Minimal LaTeX normalizer | +0.4pp | slot1_minimal_norm vs run14b_sc8 |
+| Reformat post-processor | +0.3pp | slot1_reformat vs slot1_minimal_norm |
+| Wolfram canonical overrides | +0.7pp | slot1_wolfram vs slot1_reformat |
+| Per-slot \boxed{} format | −16.2pp | run10 vs run08v2 |
+| Answer order reversal | −17.6pp | probe_b vs run09 |
+| Answer sheet on T3+T4 | +2.1pp | info_2 vs run14b |
+
+## DRIVE DOCS TO MIGRATE (deprecated, content captured here)
+
+- "Submission Registry v4" (id: 1wt74-l34t...) — most detailed, has per-submission postmortem
+- "Submission Registry v3" (id: 1oQKGS03m...) — 18 submissions
+- "Submission Registry v2" (id: 10bayVPnN...) — 17 submissions  
+- "Submission Registry" (id: 1xIhTFy00...) — original 12, has decoy name explanations
+- "Unified Answer Sheet" (id: 1MIa_921M...) — original methodology doc
+- "Back-Solve Mathematical Framework" (id: 1Cs14P3H2...) — Bayesian formula
