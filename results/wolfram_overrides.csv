@@ -63,5 +63,5 @@ id,batch,override_value,confidence,notes
 0041,WEBSEARCH,2112,HIGH,IMO 2025 P6 (Matilda tiles). ALL 5 teachers wrong (3986/4048/4048). Free-form.
 0117,WEBSEARCH,B,HIGH,Putnam 2021 A5. Answer = 2020 = option B. All 5 teachers agreed. High confidence.
 0120,WEBSEARCH,8,HIGH,Polya theorem on fixed divisors. 4/5 teachers agreed. Free-form.
-0125,WEBSEARCH,8,PARTIAL,"Putnam 2016 A1. Value=8 confirmed. MCQ letter TBD — options shown were [9,16,5]; 8 in unlisted option. Rain verify letter mapping."
-0141,WEBSEARCH,0,PARTIAL,"Putnam 1989 A-1 base-7 variant. Value=0 confirmed. MCQ letter TBD — options shown were [1,4,5]; 0 in unlisted option. Rain verify letter mapping."
+0125,WEBSEARCH,G,HIGH,Putnam 2016 A1; value=8 confirmed; MCQ option G (index 6 of 10 options)
+0141,WEBSEARCH,0,DISPUTED,"Putnam 1989 A-1 base-7 variant: math gives 0 primes but 0 is NOT in MCQ options (A-H: 1,4,5,7,6,8,2,3). Web search match likely wrong. DO NOT APPLY."
