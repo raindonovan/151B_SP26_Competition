@@ -65,3 +65,20 @@ Legacy: Drive handoff folder `1lkRmVmCUOEfTnwGLRr3kI4SBYuFAe6kv` — read-only r
 - tnr-0: `instance-x528wsl9-main`, Thunder ID 0
 - tnr-1: `instance-q6b81cqp-main`, Thunder ID 1
 - OPL embeddings: tnr-0 local ONLY — LFS migration needed before deletion
+
+## NEW (Day 3): LFS file handling — global rule
+
+If you cannot read a file via the standard contents API because it is LFS-tracked or too large:
+- DO NOT skim, skip, or "work around" by partially reading. NEVER make decisions on partial data.
+- USE the LFS download URL: the contents API's `download_url` field for any file (even LFS pointer) returns a `media.githubusercontent.com/media/{owner}/{repo}/{branch}/{path}` URL. Fetching that URL with your PAT in the Authorization header returns the FULL content.
+- Pattern (bash_tool):
+  ```python
+  req = urllib.request.Request(f"https://api.github.com/repos/{REPO}/contents/{PATH}", headers=HEADERS)
+  with urllib.request.urlopen(req) as r:
+      info = json.load(r)
+  req = urllib.request.Request(info["download_url"], headers={"Authorization": f"Bearer {PAT}"})
+  with urllib.request.urlopen(req) as r:
+      content = r.read().decode("utf-8")
+  ```
+- If that fails, delegate to tnr-0 or vscode (they have the file locally via `git lfs pull`).
+- If you genuinely can't get the file, FLAG it explicitly to Rain — never silently work around it.
