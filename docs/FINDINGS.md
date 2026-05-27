@@ -7,6 +7,53 @@ This is the WHAT-WE-KNOW doc. For action items, see `docs/SUBMISSIONS_TODO.md`.
 
 ---
 
+## ⚡ THE HENDRYCKS GRADER FIND (2026-05-27, validated via source-code review)
+
+**Agent 3 in our Day 3 research round reverse-engineered the Hendrycks `is_equiv` grader and confirmed it matches Kaggle's behavior.** The 28pp local-Kaggle gap is the empirical signature of:
+- **Kaggle grader ≈ Hendrycks `is_equiv`** (pure post-normalization string match)
+- **Local judger.py ≈ Minerva `normalize_final_answer`** (sympy-based, much more lenient)
+
+### What Hendrycks AUTO-NORMALIZES (don't fix these — they don't matter):
+| Transform | Effect | Implication |
+|---|---|---|
+| `replace("dfrac","frac")` | `\dfrac ≡ \frac` | **The \dfrac debate is RESOLVED. Don't waste a slot on it.** |
+| `replace("tfrac","frac")` | `\tfrac ≡ \frac` | Same |
+| `replace("\left","")`, `replace("\right","")` | bracket scalers stripped | Don't worry about `\left(` vs `(` |
+| `replace("^\circ","")`, `replace("^{\circ}","")` | degree symbols stripped | Don't worry about degrees |
+| `replace(" ","")` (global) | ALL whitespace stripped | Multi-answer comma spacing doesn't matter; `"a, b"` ≡ `"a,b"` |
+| `replace("\!","")` | thin-space stripped | |
+| `replace("\$","")` | escaped `$` stripped | |
+| `replace("\%","")` | escaped `%` stripped | |
+| `_remove_right_units` | strips `\text{ unit}` ONLY with trailing space | Critical — `\text{A}` (no space) is PRESERVED verbatim |
+| `_fix_sqrt` | `\sqrt3 ≡ \sqrt{3}` | |
+| `_fix_fracs` | `\frac12 ≡ \frac{1}{2}` | |
+| `_fix_a_slash_b` | `3/5 ≡ \frac{3}{5}` (pure ints only) | |
+| `x=` stripping iff `len(LHS) ≤ 2` | `D=8 → 8`, `x=5 → 5` | Single-letter prefixes auto-stripped |
+
+### What Hendrycks does NOT normalize (THESE ARE OUR LEVERS):
+| Failure mode | Current state | Lever |
+|---|---|---|
+| `\text{A}` vs `A` (MCQ wrap) | Our slot1_reformat has 0 items (already stripped) | DEAD |
+| **Trailing zeros: `1.50 ≠ 1.5`, `70.00 ≠ 70`** | **53 items in slot1_reformat have trailing-zero decimals** | **LIVE — strip in next slot** |
+| `\mathbf{2}` vs `2` | 0 items | DEAD |
+| `100,000` vs `100000` | unaudited | likely minor |
+| `3/5` vs `0.6` (fraction vs decimal) | Never normalized | Items where teacher and Qwen disagree only on form |
+| `5.` vs `5` (trailing period) | 0 MCQ items | DEAD |
+| **Multi-slot under-count** (Qwen emits last slot only) | **79% of B1-7 audit items** | **LIVE — primary lever, already in slot1_reformat for some, not all** |
+
+### Strategic implications
+1. **Trailing-zero strip on free-form decimals is the highest-confidence untested format lever.** 53 items affected. Apply in next slot.
+2. **Multi-slot expansion is the dominant lever (79% of failures).** Already partially in slot1_reformat (collapses adjacent `\boxed{}`s). The expansion case — where Qwen text mentions multiple answers but only boxes the last — is harder; needs teacher consensus to fill.
+3. **`\dfrac` / `\left` / `^\circ` / whitespace concerns are RESOLVED — don't burn a slot on them.**
+4. **The base submissions that scored 0.646 and 0.653 have trailing-zero items in them.** If gold matches Hendrycks behavior strictly, we're losing 0-10 items to this. Strip-and-test is the cheapest hypothesis.
+
+### Sources
+- Hendrycks `is_equiv` source: `github.com/hendrycks/math/blob/main/modeling/math_equivalence.py`
+- Minerva `normalize_final_answer` source: `lm-evaluation-harness/lm_eval/tasks/minerva_math/utils.py`
+- AIMO-3 (Nov 2025) chose 5-digit-integer keys specifically to dodge LaTeX equivalence pain; CSE 151B's multi-modal answer choice implies canonical grader (Hendrycks), not custom-lenient.
+
+---
+
 ## 1. The Math (formal problem statement)
 
 The Kaggle competition is a **two-stage prediction problem**:
