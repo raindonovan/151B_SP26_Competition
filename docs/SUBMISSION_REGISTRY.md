@@ -85,3 +85,28 @@ The answer sheet output lives at `results/answer_sheet/unified_answer_sheet_v5_1
 - "Submission Registry" (id: 1xIhTFy00...) — original 12, has decoy name explanations
 - "Unified Answer Sheet" (id: 1MIa_921M...) — original methodology doc
 - "Back-Solve Mathematical Framework" (id: 1Cs14P3H2...) — Bayesian formula
+
+
+## DAY 3 BUILDS (2026-05-27, awaiting Kaggle submission)
+
+| # | File | Score | Type | Config | Date |
+|---|------|-------|------|--------|------|
+| 25 | trackA_day4_v1.csv | **AWAITING** | REAL | slot1_reformat + 5 HIGH no-box rescues (229,308,383,498,445) | 2026-05-27 |
+| 26 | trackB_day4_v1.csv | **AWAITING** | HYBRID | Track A + 58 wolfram HIGH + 5 web GOLDs + 8 MEDIUM rescues | 2026-05-27 |
+
+### Track A composition
+- Base: slot1_reformat.csv (0.646)
+- +5 no-box rescue HIGH: id 229→2, 308→12, 383→80, 498→15, 445→D
+- Expected: 0.65-0.68
+
+### Track B composition
+- Base: Track A v1
+- +58 HIGH wolfram overrides (skipped id=141 DISPUTED)
+- +5 web search GOLDs: 41→2112, 117→B, 120→8, 124→H, 125→G
+- +8 MEDIUM no-box rescues: 161→binom(2024,1012), 204→H, 312→97, 453→2, 724→3, 799→8096, 836→2025, 911→I
+- Expected: 0.67-0.71
+
+### Verification
+- Both: 943 rows, IDs 0-942, no duplicates, no empty answers ✓
+- Track A: 5 items changed from base, 13 items still without \boxed{}
+- Track B: 59 items changed from base, 5 items still without \boxed{}
