@@ -65,6 +65,12 @@ This is the WHAT-WE-DO doc. For accumulated knowledge, see `docs/FINDINGS.md`.
 - [ ] [RAIN] SC=20 hybrid + DeepSeek-R1 5th teacher green-light (still parked)
 - [ ] [TECH] LFS migration for OPL embeddings before tnr-0 deletion
 
+### Post-submission consolidation (after Day 3 submissions land)
+- [ ] Search repo + Drive for past research / thinking docs on: answer sheet methodology, back-solve framework, OPL design, SFT v5/v7 postmortems, W-tier analysis, earlier strategy notes
+- [ ] For each found: either consolidate summary into `docs/RESEARCH.md` (under "Past research") or move full doc to `docs/archive/` with index entry
+- [ ] Specifically check: `results/` directory for analysis CSVs that have stale documentation, any `docs/` files referenced by but not findable, Drive `handoff` folder for older versions
+- [ ] Goal: single source of truth — `FINDINGS.md` for empirical knowledge, `RESEARCH.md` for external research input, `SUBMISSIONS_TODO.md` for active work. Everything else either consolidated or archived.
+
 ## STALE / IGNORE
 
 - docs/IMMEDIATE_CONTEXT.md (Day 2, stale)
