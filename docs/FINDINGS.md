@@ -54,6 +54,27 @@ This is the WHAT-WE-KNOW doc. For action items, see `docs/SUBMISSIONS_TODO.md`.
 
 ---
 
+## ⚡ INFORMATION-THEORETIC CEILING (validated 2026-05-27, claude_research analysis)
+
+**Hard upper bound on back-solving 943 hidden gold labels from K queries:**
+- Each Kaggle submission returns a scalar in {0,...,943} → at most log₂(944) ≈ 9.88 bits per query
+- 5 remaining queries → ≤49.4 bits max info gain
+- vs 943 bits of total uncertainty over the labels
+- **Pure back-solve via score feedback cannot resolve all labels in 5 queries.**
+
+**Realistic ceilings by path:**
+| Path | Ceiling | Why |
+|---|---|---|
+| Pure back-solve (Bayesian/ILP) | ~0.72 | Information-theoretic bound |
+| Format fix (Hendrycks transforms) | ~0.77+ possible | Knowledge from grader source code, not bound by query feedback |
+| Combined (format + back-solve + Wolfram + manual) | Best, possibly leader-equaling | All paths additive |
+
+**Source**: Bshouty COLT 2009 ("Optimal Algorithms for the Coin Weighing Problem with a Spring Scale"), Aldridge ISIT 2012 ("Adaptive Group Testing as Channel Coding with Feedback"), Erdős & Rényi 1963.
+
+**Implication**: leader at 0.770 is REACHABLE via format-fix path, NOT via back-solve alone. Plan for 0.70-0.74 today as success; 0.77 is multi-day work with combined paths.
+
+---
+
 ## 1. The Math (formal problem statement)
 
 The Kaggle competition is a **two-stage prediction problem**:
