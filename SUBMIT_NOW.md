@@ -1,46 +1,55 @@
-# SUBMIT NOW — Day 3 Kaggle Submission URLs
+# SUBMIT NOW — Day 3 Kaggle Submissions (5 slots)
 
-**Sequence**: Submit Slot 1 → wait for Kaggle score → submit Slot 2 → continue.
+**Sequence**: Submit Slots 1→5 in order. Each one's score informs the next slot's strategy.
 
 ---
 
-## Slot 1: Kitchen-sink Track C WITH trailing-zero strip
-**Click to download CSV:**
-
+## Slot 1: Kitchen sink WITH trailing-zero strip
 https://raw.githubusercontent.com/beepbeeepimajeep/151B_SP26_Competition/main/submissions/slot1_kitchen_sink_C.csv
 
-Fallback if above doesn't work:
-https://media.githubusercontent.com/media/beepbeeepimajeep/151B_SP26_Competition/main/submissions/slot1_kitchen_sink_C.csv
-
-**Expected**: 0.70–0.74 if trailing-zero strip helps.
+**Tests**: baseline kitchen-sink (78 overrides + trailing-zero strip). Expected 0.70-0.74 if strip helps.
 
 ---
 
-## Slot 2: Kitchen-sink WITHOUT trailing-zero strip (the probe)
-**Click to download CSV:**
-
+## Slot 2: Kitchen sink WITHOUT strip (probe)
 https://raw.githubusercontent.com/beepbeeepimajeep/151B_SP26_Competition/main/submissions/slot2_no_trailing_zero_strip.csv
 
-Fallback:
-https://media.githubusercontent.com/media/beepbeeepimajeep/151B_SP26_Competition/main/submissions/slot2_no_trailing_zero_strip.csv
-
-**Expected**: differs from Slot 1 by ±0.5–3pp on the 102 trailing-zero items.
+**Tests**: isolates trailing-zero strip impact (102 items). Slot 1 − Slot 2 = strip effect.
 
 ---
 
-## What to do
-1. Click Slot 1 URL → browser downloads `slot1_kitchen_sink_C.csv`
-2. Upload to Kaggle → report score
-3. Click Slot 2 URL → browser downloads `slot2_no_trailing_zero_strip.csv`
-4. Upload to Kaggle → report score
-5. **Slot 3-5 reactive based on Slot 1 vs Slot 2 delta**:
-   - If Slot 1 > Slot 2: trailing-zero strip helps → Slot 3 = drop Rescue MED to isolate that tier
-   - If Slot 2 > Slot 1: strip hurts → Slot 3 = use Slot 2 base, drop Rescue MED
-   - If equal: strip is neutral → Slot 3 = test something else
+## Slot 3: Kitchen sink MINUS Rescue MED (8 items reverted)
+https://raw.githubusercontent.com/beepbeeepimajeep/151B_SP26_Competition/main/submissions/slot3_minus_rescue_med.csv
+
+**Tests**: isolates Rescue MED tier (items 161, 204, 312, 453, 724, 799, 836, 911 — 2/4 teacher agreement). Slot 1 − Slot 3 = Rescue MED net effect.
+
+---
+
+## Slot 4: Kitchen sink MINUS Wolfram MED (7 items reverted)
+https://raw.githubusercontent.com/beepbeeepimajeep/151B_SP26_Competition/main/submissions/slot4_minus_wolfram_med.csv
+
+**Tests**: isolates Wolfram MED/PARTIAL tier. Slot 1 − Slot 4 = Wolfram MED net effect.
+
+---
+
+## Slot 5: Kitchen sink MINUS ALL MED (15 items reverted)
+https://raw.githubusercontent.com/beepbeeepimajeep/151B_SP26_Competition/main/submissions/slot5_minus_all_med.csv
+
+**Tests**: combined MED impact. Slot 1 − Slot 5 = total MED tier value. Sanity check: should ≈ (Slot 1 − Slot 3) + (Slot 1 − Slot 4) if tiers are independent.
+
+---
+
+## Decision matrix (after all 5 land)
+
+After Kaggle returns all 5 scores, the deltas tell us:
+- **Strip impact** = Slot 1 − Slot 2 (positive = keep strip)
+- **Rescue MED value** = Slot 1 − Slot 3 (positive = MED helps)
+- **Wolfram MED value** = Slot 1 − Slot 4 (positive = MED helps)
+- **All MED value** = Slot 1 − Slot 5 (cross-check)
+
+For final 2 picks (deadline ~2026-06-02), use whichever submission scored highest, plus the kitchen-sink variant whose ablations showed all tiers net-positive.
 
 ## Verification (already done)
-- Both files differ on exactly 102 rows (trailing-zero affected items)
-- All 78 overrides applied to both (id=41=2112, id=124=H, id=181=A, all Rescue HIGH/MED)
-- Hendrycks bug fixes applied: `\boxed `-space neutralization + two-pass trailing-zero regex
-- Slot 1 SHA prefix: 6e2276b9
-- Slot 2 SHA prefix: 1ae705c2
+- All 5 files differ from each other in expected ways
+- id=41=2112 (IMO 2025 P6 confirmed)
+- Hendrycks bug fixes applied to all 5
