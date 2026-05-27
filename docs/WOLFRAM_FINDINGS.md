@@ -1,0 +1,74 @@
+# Wolfram Verification — Findings (migrated from Drive)
+
+**Migrated**: 2026-05-27 ~17:50 PT from Drive doc `10lKzVdUUXhErH3C4y65rCikaGwkQuBCj`
+**Original maintainer**: wolfmaster + claude_strategy
+**Status**: Cumulative cross-batch findings. Append-only.
+
+## Coverage snapshot
+- Total dataset: 943 items
+- Wolfram coverage: 63 items (~6.7%) across Batches 1-8
+- B1-B7 (38 items): 33 HIGH overrides, 2 MED, 3 inconclusive (interpretation-MCQ truncation)
+- B8 (25 items): 23 HIGH overrides (incl. 0181 by symmetry argument), 1 no-op, 1 inconclusive (0570 synthetic)
+- W-tier remaining high-leverage: ~186 items (174 Qwen-vs-teacher disagreements + 67 teacher splits, with overlap)
+
+## Finding 1 — Qwen's math is right far more often than its strings
+**56% of Batch 8 items (14/25) had Qwen mathematically correct but format-mismatched** against Kaggle's string matcher. The dominant failure is encoding, not arithmetic.
+
+**B1-7 audit reinforces this dramatically**: 79% (30/38) of B1-7 items are pure under-count where math reasoning was correct.
+
+## Finding 2 — Qwen failure-mode taxonomy (7 modes)
+1. **Multi-slot under-count** — collapses N-slot answer to last slot. Dominant in B1-7 (30/38). Severity up to 12→1 (item 0748).
+  - 1a. Multi-select MCQ collapse — single letter when multi-letter required (0633, 0587, 0721)
+2. **Decimal/fraction format mismatch** — math right, decimal form fails string-match (0089, 0100, 0106, 0118, 0218, 0395, 0454 all B8)
+3. **Symbolic-constant substitution** — plugs numeric values for unspecified constants (0584)
+4. **Missing prefix/label/unit** — no `D=`, no `Quadrant`, no `^\circ` (0040, 0072, 0496, 0167)
+5. **Multi-option equivalence trap** — multiple options encode same math, Kaggle accepts only one (0317)
+6. **Genuine arithmetic error** — small numeric mistake (0506, 0068)
+  - 6a. "All of the above" sub-MCQ trap — Qwen picks one true statement instead of D (0721)
+7. **LaTeX text-wrap** — model wraps single-letter MCQ as `\text{A}` or `\text{Yes}` (0413, 0622). Kaggle behavior with `\text{}` wrappers UNVERIFIED.
+
+## Finding 3 — Dataset quality issues
+- **0317**: dataset bug — options D and H are mathematically equivalent
+- **0011**: truncated problem text in private.jsonl
+- **0585, 0622, 0858**: trailing [ANS] for interpretation-MCQ with options MISSING from question text. Likely dataset prep dropped MCQ-option text for an entire problem class. 7.9% prevalence in B1-7.
+- **0894**: question hint says "theoretically close to 9" but verified count = 10
+
+## Finding 4 — Structural verification trick for MCQ matrix problems
+For matrix-answer MCQs, distractor options often have structural violations:
+- Similarity matrices MUST be symmetric (r_ij = r_ji)
+- Distance matrices satisfy triangle inequality
+- Correlation matrices are positive semi-definite
+
+**Item 0181**: only option A is symmetric of 10 candidates. Symmetry-by-elimination resolves in seconds without computing the formula.
+
+## Finding 5 — Wolfram capability boundaries
+- **HIGH**: arithmetic, algebra, calculus, closed-form statistics, trig, geometry, classical math results (Putnam), number theory (OEIS), linear algebra
+- **MED**: multi-canonical-form items (fraction vs decimal), truncated text, interpretation-MCQ trailing slots
+- **LOW**: synthetic OEIS-style sequences not in OEIS (0570), Chinese-textbook non-standard formulas, source-text dependent
+
+## Finding 6 — Computability estimate for full 943
+- ~700-750 likely computable to HIGH confidence (~74-80% of dataset)
+- ~80-100 synthetic/textbook/source-dependent → LOW solution but HIGH learning yield
+- ~30-50 genuinely uncomputable
+
+## Finding 8 — Multi-slot under-count is the DOMINANT failure
+**30/38 (79%) of B1-7 items are pure multi-slot under-count.** Qwen's math is right; it emits only the last 1-2 slots of an N-slot answer.
+
+**Implications**:
+- Highest-leverage post-processing lever in the dataset is slot-counting / multi-slot reconstruction
+- B1-7 is statistics-heavy (~80%); pattern may be domain-specific
+- 0 items in B1-7 were AGREE-only — every covered item produced an actionable override
+
+## Finding 9 — "Interpretation MCQ" dataset truncation class
+0585, 0622, 0858: trailing [ANS] for interpretation-MCQ after Yes/No conclusion, but options absent. Hypothesis: dataset prep dropped MCQ-option text for an entire problem class.
+
+## Finding 10 — LaTeX text-wrap risk for MCQ letters
+0413 emitted `\text{A}`; 0622 emitted `\text{Yes}`. Kaggle behavior with `\text{}` wrappers UNVERIFIED — worth empirical probe.
+
+## Open questions
+- Exact Kaggle string-matching rules (whitespace, `\text{}` wrappers, trailing zeros, `^\circ` vs `°`)
+- 0587 multi-select format: comma-sep vs concatenated vs sub-boxes
+- 0894 borderline integer: submit both `9` and `10`
+- 0715 list-inside-slot ordering: natural enumeration vs sorted
+- Whether 0317-style duplicate-option bugs exist elsewhere
+- Whether 0585/0622/0858-style interpretation-truncation exists elsewhere
