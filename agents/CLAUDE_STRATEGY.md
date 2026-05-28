@@ -331,6 +331,14 @@ Next action: get adapter onto DSMLP and run SC=1 greedy.
 
 ## Back-Solve
 
+> 🚨 **RED ALERT (2026-05-28): this whole section rests on a FALSE premise.** It assumed Kaggle score =
+> correct/943. Actually the score is accuracy on a fixed ~283-item public slice (~30% of private); the other
+> ~660 are hidden until the deadline. Back-solve can only ever inform the ~283 slice items (and we don't know
+> which), so the per-item answers and the confidence tiers below are **unreliable, especially off-slice.**
+> See `submission/RED_ALERT_LB_SUBSET.md`. **THE LENS:** a submission score = relative quality on an unknown
+> ~283 slice + nothing reliable about the rest; final ranking is the full 943, so slice-tuned override
+> submissions risk shaking DOWN. Prefer robust picks. Trust teacher/Wolfram/SC gold over back-solve.
+
 Bayesian per-item inference from 12 submissions (2 excluded: format_fixed near-duplicate, reversed probe anti-evidence on 64% of items).
 
 - Tier 1 (≥90% conf): 430 items — lock zone
