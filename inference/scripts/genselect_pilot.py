@@ -5,11 +5,11 @@ Uses exact v1-baseline system prompts from scripts/prompts.py.
 """
 
 from openai import OpenAI
-import json, time, csv, sys
+import json, time, csv, sys, os
 
 client = OpenAI(
     base_url="https://tritonai-api.ucsd.edu/v1",
-    api_key="sk-rT2cq501v0ydXxdpnMF4Hw"
+    api_key=os.environ.get("TRITONAI_API_KEY", "")  # was hardcoded; rotated 2026-05-28
 )
 
 # v1-baseline prompts (verbatim from scripts/prompts.py)

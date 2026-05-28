@@ -5,13 +5,14 @@ Helps decide if today's slowdown is due to concurrency contention,
 KV-cache pre-allocation on max_tokens, or general endpoint degradation.
 """
 import json
+import os
 import sys
 import time
 from concurrent.futures import ThreadPoolExecutor
 from openai import OpenAI
 
 API_BASE = "https://tritonai-api.ucsd.edu/v1"
-API_KEY  = "sk-rT2cq501v0ydXxdpnMF4Hw"
+API_KEY  = os.environ.get("TRITONAI_API_KEY", "")  # was hardcoded; rotated 2026-05-28
 MODEL    = "api-test-qwen-3-4b"
 
 SYS_FREE = (

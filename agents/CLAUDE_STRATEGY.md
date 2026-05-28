@@ -322,7 +322,7 @@ Next action: get adapter onto DSMLP and run SC=1 greedy.
 
 - Base URL: https://tritonai-api.ucsd.edu/v1
 - Model: `api-test-qwen-3-4b` (base Qwen3-4B, 64K context)
-- API key: sk-rT2cq501v0ydXxdpnMF4Hw
+- API key: [REDACTED 2026-05-28 — was leaked in public repo; MUST be rotated UCSD-side. Scripts now read env var TRITONAI_API_KEY.]
 - OpenAI-compatible. IT contact: Dominic Feliton.
 - LoRA NOT enabled yet — need Dominic to add `--enable-lora` and load adapter
 - Use for: GenSelect experiments, targeted SC runs on hard items

@@ -24,7 +24,7 @@ from openai import OpenAI
 
 # ── Config ────────────────────────────────────────────────────────────────────
 API_BASE  = "https://tritonai-api.ucsd.edu/v1"
-API_KEY   = "sk-rT2cq501v0ydXxdpnMF4Hw"
+API_KEY   = os.environ.get("TRITONAI_API_KEY", "")  # was hardcoded; rotated 2026-05-28
 MODEL     = "api-test-qwen-3-4b"
 N_SAMPLES = 16
 MAX_TOKENS = 32768
