@@ -1,0 +1,120 @@
+item_id,best_answer,teacher_consensus,format_flags
+15,"8, NONE","8,NONE",format_only_diff_teacher
+30,"2944, 664","2944,664",format_only_diff_teacher
+31,"-3, 42","-3,42",format_only_diff_teacher
+42,"No, Yes, A","No,Yes,A",format_only_diff_teacher
+44,"True, True, True, False","True,True,True,False",format_only_diff_teacher
+52,"231, 385","231,385",format_only_diff_teacher
+56,"D, D, A","D,D,A",format_only_diff_teacher
+60,"C, A","C,A",format_only_diff_teacher
+62,"-15, 192, 0","-15,192,0",format_only_diff_teacher
+65,"-\dfrac{6}{7}, \dfrac{2}{7}","-\frac{6}{7},\frac{2}{7}",format_only_diff_teacher
+76,"-4, -11, 3, 33, -32, 9, -14, -13","-4,-11,3,33,-32,9,-14,-13",format_only_diff_teacher
+84,"-4, 5, -11","-4,5,-11",format_only_diff_teacher
+87,"OBSERVATION, OBSERVATION, EXPERIMENT","OBSERVATION,OBSERVATION,EXPERIMENT",format_only_diff_teacher
+90,7n + 1,7n+1,format_only_diff_teacher
+97,"0, 4, 4","0,4,4",format_only_diff_teacher
+99,"-6, 12, -6","-6,12,-6",format_only_diff_teacher
+101,"C, C, A, C","C,C,A,C",format_only_diff_teacher
+108,"72, 12x","72,12x",format_only_diff_teacher
+110,"3, 9","3,9",format_only_diff_teacher
+116,"30, 6","30,6",format_only_diff_teacher
+119,"A, C, B, D","A,C,B,D",format_only_diff_teacher
+128,\dfrac{y - 3}{y + 3},\frac{y-3}{y+3},format_only_diff_teacher
+139,"201, \dfrac{1}{n(n+1)}","201,\frac{1}{n(n+1)}",format_only_diff_teacher
+158,"A, C","A,C",format_only_diff_teacher
+159,"0.07, 0.007, 0.0007","0.07,0.007,0.0007",format_only_diff_teacher
+163,"9, -5, 4","9,-5,4",format_only_diff_teacher
+176,\frac{p - 6k - m}{8},\frac{p-6k-m}{8},format_only_diff_teacher
+179,"29, 3, 21, 1, 21, 4, 19, 4, 23, 3","29,3,21,1,21,4,19,4,23,3",format_only_diff_teacher
+185,"T, F, T, F, T","T,F,T,F,T",format_only_diff_teacher
+189,850a + 1200r = 35000,850a+1200r=35000,format_only_diff_teacher
+191,"D, A, C, B, E","D,A,C,B,E",format_only_diff_teacher
+197,"3, 4","3,4",format_only_diff_teacher
+236,"6e, -6","6e,-6",format_only_diff_teacher
+238,"-61, 61, 62","-61,61,62",format_only_diff_teacher
+256,"-30, 30","-30,30",format_only_diff_teacher
+260,"-22, 8","-22,8",format_only_diff_teacher
+265,"A, D","A,D",format_only_diff_teacher
+268,"4450, 14","4450,14",format_only_diff_teacher
+289,"4, 9","4,9",format_only_diff_teacher
+292,-2 - \sqrt{3},-2-\sqrt{3},format_only_diff_teacher
+299,"18805.7, \text{no}","18805.7,no",format_only_diff_teacher
+314,"7, -8, -4","7,-8,-4",format_only_diff_teacher
+315,"B, B, A","B,B,A",format_only_diff_teacher
+323,"[10, 12), [-8, -6), [10, 18), [-16, -6)","[10,12),[-8,-6),[10,18),[-16,-6)",format_only_diff_teacher
+326,"0.67, 0.36, 0.06","0.67,0.36,0.06",format_only_diff_teacher
+332,"778, 624","778,624",format_only_diff_teacher
+333,"54, 62","54,62",format_only_diff_teacher
+342,"negative, positive, negative, positive, positive","negative,positive,negative,positive,positive",format_only_diff_teacher
+343,"D, A, C, B, E","D,A,C,B,E",format_only_diff_teacher
+350,"11100, 11001, 1100111, 1101110, 101001101, 101010100","11100,11001,1100111,1101110,101001101,101010100",format_only_diff_teacher
+361,180 - 7x,180-7x,format_only_diff_teacher
+362,(6x - 5y)(6x + 5y),(6x-5y)(6x+5y),format_only_diff_teacher
+364,"Y, N, Y, N","Y,N,Y,N",format_only_diff_teacher
+367,"60.3, 46.3, 53.3","60.3^\circ,46.3^\circ,53.3^\circ",format_only_diff_teacher
+368,"C, D, D, E","C,D,D,E",format_only_diff_teacher
+396,"(-\text{inf}, 5), (-3, 5]","(-inf,5),(-3,5]",format_only_diff_teacher
+412,\dfrac{4\sqrt{78} - 35}{72},\frac{4\sqrt{78}-35}{72},format_only_diff_teacher
+424,"\text{parameter}, \text{parameter}, \text{statistic}, \text{statistic}","parameter,parameter,statistic,statistic",format_only_diff_teacher
+428,"43, 55","43,55",format_only_diff_teacher
+431,"5, 42","5,42",format_only_diff_teacher
+460,"F, F, T, T, T, T, F","F,F,T,T,T,T,F",format_only_diff_teacher
+462,"-7, 8","-7,8",format_only_diff_teacher
+473,"[-7, -3]","[-7,-3]",format_only_diff_teacher
+477,"A, C","A,C",format_only_diff_teacher
+504,"-\dfrac{3}{2}, -\dfrac{3\sqrt{3}}{2}","-\frac{3}{2},-\frac{3\sqrt{3}}{2}",format_only_diff_teacher
+512,64p^2 + 64p + 16,64p^2+64p+16,format_only_diff_teacher
+516,"7, -11, 4, 0","7,-11,4,0",format_only_diff_teacher
+543,"\$1.43, \$0.54","\1.43,\0.54",format_only_diff_teacher
+546,"92, 126, 146, 72, 172","92,126,146,72,172",format_only_diff_teacher
+560,"C, A, A","C,A,A",format_only_diff_teacher
+565,"-7.006, -7.06, -7.6","-7.006,-7.06,-7.6",format_only_diff_teacher
+567,"A, A","A,A",format_only_diff_teacher
+568,"-10, 3","-10,3",format_only_diff_teacher
+572,"8, -6, 6, 8","8,-6,6,8",format_only_diff_teacher
+603,"C, A, B","C,A,B",format_only_diff_teacher
+612,"68, 81","68,81",format_only_diff_teacher
+615,"14, 9","14,9",format_only_diff_teacher
+621,153 - k,153-k,format_only_diff_teacher
+625,5(x + 2)(x + 3),5(x+2)(x+3),format_only_diff_teacher
+628,"76, 75.7, 75.67, 75.673","76,75.7,75.67,75.673",format_only_diff_teacher
+630,"71.981, 564.365","71.981,564.365",format_only_diff_teacher
+637,"A, B, F, C, D, E","A,B,F,C,D,E",format_only_diff_teacher
+645,129n - 11500,129n-11500,format_only_diff_teacher
+654,"\sqrt{19}, 2, 2, 2","\sqrt{19},2,2,2",format_only_diff_teacher
+664,"\dfrac{83}{100}, \dfrac{83}{99}","\frac{83}{100},\frac{83}{99}",format_only_diff_teacher
+674,8x + 7,8x+7,format_only_diff_teacher
+689,"45, 43","45,43",format_only_diff_teacher
+699,"6, 3","6,3",format_only_diff_teacher
+707,"5200, 2600","5200,2600",format_only_diff_teacher
+713,"-3, \text{not real}","-3,not real",backsolve_disagree|format_only_diff_teacher
+726,"7, 48","7,48",format_only_diff_teacher
+733,"68, 247, 97, 17","68,247,97,17",format_only_diff_teacher
+738,"A, C, A, A","A,C,A,A",format_only_diff_teacher
+744,"26.875, 32.1875","26.875,32.1875",format_only_diff_teacher
+746,"17417, 30856, 808694, 103863, 876259, 924095, 21108","17417,30856,808694,103863,876259,924095,21108",format_only_diff_teacher
+754,60x^2 + 65x,60x^2+65x,format_only_diff_teacher
+764,\dfrac{(a + b)(a - b)^4}{c^5},\frac{(a+b)(a-b)^4}{c^5},format_only_diff_teacher
+773,\dfrac{3a - 14}{3},\frac{3a-14}{3},format_only_diff_teacher
+774,"24, 28, 33, 39, 42","24,28,33,39,42",format_only_diff_teacher
+780,3t^{14} + 6t^{12} + 9t^{10},3t^{14}+6t^{12}+9t^{10},format_only_diff_teacher
+789,"8, 8, -8, -8","8,8,-8,-8",format_only_diff_teacher
+795,"450, 2, 6","450,2,6",format_only_diff_teacher
+813,"A, C","A,C",format_only_diff_teacher
+821,"C, A, A, A","C,A,A,A",format_only_diff_teacher
+846,"3, 1, 2, 3, -2","3,1,2,3,-2",format_only_diff_teacher
+849,4(n + 1),4(n+1),format_only_diff_teacher
+855,"20000, 2000","20000,2000",format_only_diff_teacher
+859,"1, 2, 2, 4","1,2,2,4",format_only_diff_teacher
+882,"1200, 3600","1200,3600",format_only_diff_teacher
+886,"A, C","A,C",format_only_diff_teacher
+889,"5, 4y","5,4y",format_only_diff_teacher
+893,"A, C","A,C",format_only_diff_teacher
+900,"1200, 3600","1200,3600",format_only_diff_teacher
+902,"3, 2","3,2",format_only_diff_teacher
+903,"A, C","A,C",format_only_diff_teacher
+905,"B, C","B,C",format_only_diff_teacher
+910,"1134, 16","1134,16",format_only_diff_teacher
+931,"3, -3","3,-3",format_only_diff_teacher
+941,"A, C, A, A, B, C","A,C,A,A,B,C",format_only_diff_teacher
