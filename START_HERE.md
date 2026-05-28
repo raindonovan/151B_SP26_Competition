@@ -1,52 +1,106 @@
 # START HERE — Central Node Entry Point
 
-**You are claude_strategy: the CENTRAL operating node, not a strategy-meeting-only assistant.**
+**You are claude_strategy: the CENTRAL operating node.**
 
-You hold the full picture, make decisions, organize the repo, audit work, and delegate execution. Workers (claude_vscode on DSMLP, claude_dataApp, tnr-0/tnr-1 on Thunder) EXECUTE. You + Rain do the central work: decide, organize, analyze. Spawn workers for mechanical/parallel execution only.
+You hold the full picture, make decisions, organize the repo, audit work, and delegate execution. Workers (claude_vscode on DSMLP, tnr-0/tnr-1 on Thunder) EXECUTE. You + Rain do the central work: decide, organize, analyze.
+
+---
 
 ## READ ORDER (new central session)
 
-1. **This file** — identity + read order + load-bearing corrections
-2. **`playbook/SESSION_HANDOFF.md`** — current state, schedule, crux, levers (THE live plan)
-3. **`CLAUDE_STRATEGY.md`** — operating manual (identity, role, agent setup). ⚠️ STALE in places — see corrections below.
-4. **Memory** — auto-loads (protocols, tools, state). 30 entries.
-5. **Canonical docs** — `docs/FINDINGS.md`, `docs/WOLFRAM_FINDINGS.md`, `docs/TODO.md`, `runs/README.md`, `search/README.md`
+1. **This file** — identity, read order, load-bearing corrections, repo map
+2. **`strategy/SESSION_HANDOFF.md`** — current state, schedule, priority stack (THE live plan)
+3. **`agents/CLAUDE_STRATEGY.md`** — operating contract (identity, role, tools, agent setup). ⚠️ Has stale Day-1/2 sections — see corrections table below.
+4. **Memory** — auto-loads (~30 entries: protocols, tools, locked decisions, state)
+5. **`strategy/TODO.md`** — current priorities
 
-## ⚠️ LOAD-BEARING CORRECTIONS to CLAUDE_STRATEGY.md (it's Day 1-2 vintage)
+---
 
-CLAUDE_STRATEGY.md is the operating contract but predates key findings. A new central Claude must override these:
+## REPO STRUCTURE (current — reorganized Day 5, verified Day 6)
+
+```
+START_HERE.md          # this file — entry point
+README.md              # public-facing project readme
+README_SUBMISSION.md   # Gradescope code-submission readme
+COMPETITION.md         # competition rules / format reference
+CLAUDE.md              # claude_vscode (DSMLP execution agent) contract
+judger.py utils.py     # local grader + helpers (judger has ~28pp Kaggle gap)
+
+agents/                # per-agent contracts: CLAUDE_STRATEGY, CLAUDE_VSCODE, CLAUDE_THUNDER (+ README)
+strategy/              # SESSION_HANDOFF, TODO, LEVERS, TIERS, FINDINGS, RESEARCH, README
+data/                  # answer_sheet/, search/{wolfram,pace,opl,search_app,teachers},
+                       #   system_prompts/, slices/, candidate lists, tracker CSVs, sft datasets
+inference/             # scripts/, results/ (raw run JSONLs), runs/ (per-run analysis+findings),
+                       #   adapters/{sft_v1_postmortem,sft_v3,sft_v4,sft_v5}, training logs
+postprocessing/        # scripts/, format_review/, results/, FINDINGS, TODO, README
+submission/            # csvs/ (29 graded), scripts/ (answer-sheet + splice builders),
+                       #   REGISTRY.md (all scores), INTEGRITY_REPORT.md, README
+infrastructure/        # scripts/, pre_flight/ (audit + production_commands), logs/
+checkpoints/           # sft_v4 / sft_v5 adapter weights (LFS)
+report/ research/      # milestone report assets; research prompts/notes
+archive/               # superseded handoffs, strategy, design, research, docs, session logs,
+                       #   submissions_never_sent/
+tests/                 # grader-normalization, truncation, no-thinking-prefill tests
+```
+
+**Path migration (old START_HERE → current):**
+`playbook/` → `strategy/` · root `CLAUDE_STRATEGY.md` → `agents/CLAUDE_STRATEGY.md` ·
+`docs/FINDINGS.md` → `strategy/FINDINGS.md` · `docs/WOLFRAM_FINDINGS.md` → `data/search/wolfram/FINDINGS.md` ·
+`docs/TODO.md` → `strategy/TODO.md` · `runs/` → `inference/runs/` · `search/` → `data/search/` ·
+raw outputs → `inference/results/`
+
+---
+
+## CURRENT STATE (Day 6, 2026-05-28)
+
+- **Best inference-only**: 0.646 (run14b, SC=8 32K, V3 filter)
+- **Best with overrides**: 0.692 (slot1_kitchen_sink_C, 78 overrides)
+- **Best diagnostic**: 0.671 (info_4_t1lock_sheet_rest)
+- **Leader**: 0.85
+- **Submission budget**: 5/day in final week (NOT 3 — that was the normal-period rate). 29 graded so far.
+- **Deadlines**: Gradescope code Sun 5/31 · Kaggle final 2 picks ~6/02
+- **MODE**: REPO HYGIENE / DATA ORGANIZATION (no analysis, no inference, no research until Rain switches gears)
+
+---
+
+## ⚠️ LOAD-BEARING CORRECTIONS to agents/CLAUDE_STRATEGY.md (Day-1/2 vintage)
 
 | CLAUDE_STRATEGY.md says | CORRECTION (newer, authoritative) |
 |---|---|
-| Grader "extracts from ALL boxed{}" | **WRONG. Grader extracts ONLY the LAST \boxed{} (Hendrycks is_equiv finding, verified). See docs/FINDINGS.md.** |
-| Comms via Chrome MCP | **Now: git-mcp (READ, 45 tools) + GitHub PAT for WRITES via bash/API (git-mcp write 403s). Chrome MCP not in use.** |
-| TritonAI endpoint available for GenSelect | **Rules FORBID external API + separate models + TIR at inference. TritonAI can't be used at inference time. ⚠️ Also: that file leaks an API key in a PUBLIC repo — flag to Rain to rotate.** |
-| "~9 days to deadline" | **~5 days. Kaggle ~6/02, Gradescope code Sun 5/31.** |
-| GenSelect "designed, not executed" | **RUN. Failed via candidate-truncation bug. See runs/selection/genselect_poc/.** |
-| Google Drive active | **DEPRECATED, read-only legacy. All docs in repo.** |
-| Back-solve tiers (Tier 1 ≥90% etc.) | **Superseded by canonical T1-T5+T0 naming. See playbook/TIERS.md.** |
-| Best score 0.646 | Inference-only still 0.646 (run14b). With overrides 0.692 (Day 3). Overrides OFF-TABLE until Day 7. |
+| Grader "extracts from ALL boxed{}" | Two findings coexist in repo — RECONCILE before trusting either (see Open Hygiene Items). Treat single `\boxed{a, b, c}` as canonical multi-answer format; per-slot `\boxed{a}\boxed{b}` cost −16.2pp; reversed order −17.6pp. |
+| Comms via Chrome MCP | Now: git clone+pull (read) + GitHub PAT via bash (write). git-mcp read works (45 tools); git-mcp write 403s. Chrome MCP not in use. |
+| TritonAI endpoint usable for GenSelect | Rules FORBID external API + separate models + TIR at inference. TritonAI cannot be used at inference time. 🔴 Also leaks an API key in a PUBLIC repo — ROTATE. |
+| "~9 days to deadline" | Days, not weeks. Gradescope 5/31, Kaggle ~6/02. |
+| GenSelect "designed, not executed" | RAN; failed via candidate-truncation bug. See inference/runs/selection/genselect_poc/. |
+| Google Drive active | DEPRECATED, read-only legacy. All docs live in repo. |
+| Back-solve tiers (Tier 1 ≥90% …) | Superseded by canonical T1–T5+T0 naming. See strategy/TIERS.md. |
+| Submission history table | Superseded by submission/REGISTRY.md (29 graded, definitive). |
 
-## THE CRUX (why we keep circling) — see SESSION_HANDOFF.md
+---
 
-5 SEARCH gold sources (Wolfram/PACE/OPL/search-app/teachers) → 2 conversion mechanisms (override [Day 7 only], targeted-memo SFT) + 1 NEW third path:
+## 🔴 SECURITY FLAGS FOR RAIN
 
-**⭐ Cross-Run Oracle Harvest**: for each item, take best-guess answer; if ANY inference run ever produced it, use that inference-produced version. Rules-legal (came from our inference), uses existing data. THE rules-clean conversion path. Build this list Thursday — it answers "what would we score?"
+1. `agents/CLAUDE_STRATEGY.md` contains a TritonAI API key (`sk-rT2…`) in a PUBLIC repo. Scrubbing HEAD does not un-leak it — **rotate the key** on UCSD's side. Then scrub from file.
+2. GitHub PAT must NEVER be committed. It is passed in chat at session start only.
+3. Audit repo for any other committed secrets before final public submission.
 
-## REPO STRUCTURE (reorganized Day 4)
+---
 
-```
-runs/      inference/adapter/selection experiments (analysis; raw data stays in results/)
-search/    gold harvesting: wolfram/ pace/ opl/ search_app/ teachers/[stub-link]
-playbook/  strategy only: SESSION_HANDOFF, LEVERS, FINDINGS, TODO, TIERS, RESEARCH, README
-docs/      canonical: TODO, FINDINGS, WOLFRAM_FINDINGS, etc.
-results/   raw run outputs
-```
+## REPO-ORGANIZATION ACCEPTANCE CRITERIA (Day 6 goal)
 
-## #1 TASK NEXT SESSION
+The repo is "organized" when each of these is answerable from a single canonical place
+(blueprint + canonical homes tracked in strategy/TODO.md and strategy/FINDINGS.md):
 
-**Full repo read** (not yet done): DESIGN.md, experiments.md (87KB), prompt_engineering_research.md (71KB), HANDOFF.md, sft/v3/, sft/v4/, report/, research/. Populate TODO run folders. Surface floating gold. Then Thursday milking sequence (SESSION_HANDOFF.md).
+1. Kaggle-graded correct answers per question
+2. Everything we know about each question
+3. Most-confident answer per question
+4. Every inference run's answer per question
+5. What each inference run tested + what it told us
+6. Grader's expected format (general + per-question)
+7. Point of every run + what we learned
+8. Point of every submission + what we learned
+9. Goal/role of each daily-5 submission slot
+10. What every adapter was trained on
+11. What every adapter output
 
-## SECURITY FLAG FOR RAIN
-
-`CLAUDE_STRATEGY.md` contains a TritonAI API key in a PUBLIC repo. Rotate it. Audit repo for other secrets (PAT should NEVER be committed — it lives in memory/Drive only).
+Until all 11 map cleanly: organization is the only agenda.
