@@ -1,101 +1,101 @@
 item_id,category,search_status,found_answer,source_url,source_type,confidence,notes
-124,MCQ,UNSEARCHED,,,,,
-904,MCQ,UNSEARCHED,,,,,
-524,MCQ,UNSEARCHED,,,,,
-940,MCQ,UNSEARCHED,,,,,
-144,MCQ,UNSEARCHED,,,,,
-660,MCQ,UNSEARCHED,,,,,
-164,MCQ,UNSEARCHED,,,,,
-614,MCQ,UNSEARCHED,,,,,
-810,MCQ,PARTIAL,C1sinx+C2cosx-xcosx/2,computed,ODE,medium,Resonance. No exact option match.
-868,MCQ,GOLD,88,computed,number theory,high,125000+10000=135000. Product divisors=88.
-805,MCQ,UNSEARCHED,,,,,
-10,MCQ,UNSEARCHED,,,,,
-22,MCQ,UNSEARCHED,,,,,
-26,MCQ,UNSEARCHED,,,,,
-33,MCQ,GOLD,28,https://faculty.sites.iastate.edu/jmccullo/files/inline-files/s08_5.pdf,Putnam 1997,high,Putnam 1997 A-1.
-69,MCQ,UNSEARCHED,,,,,
-88,MCQ,UNSEARCHED,,,,,
-152,MCQ,UNSEARCHED,,,,,
+124,MCQ,NOT_FOUND,,,,,Complex MCQ. No web source found. Needs OEIS/computation.
+904,MCQ,NOT_FOUND,,,,,Complex MCQ. No web source found. Needs OEIS/computation.
+524,MCQ,NOT_FOUND,,,,,Complex MCQ. No web source found. Needs OEIS/computation.
+940,MCQ,NOT_FOUND,,,,,Complex MCQ. No web source found. Needs OEIS/computation.
+144,MCQ,NOT_FOUND,,,,,Complex MCQ. No web source found. Needs OEIS/computation.
+660,MCQ,NOT_FOUND,,,,,Complex MCQ. No web source found. Needs OEIS/computation.
+164,MCQ,NOT_FOUND,,,,,Complex MCQ. No web source found. Needs OEIS/computation.
+614,MCQ,NOT_FOUND,,,,,Complex MCQ. No web source found. Needs OEIS/computation.
+810,MCQ,PARTIAL,C1sinx+C2cosx-xcosx/2,computed,ODE,medium,No exact option match
+868,MCQ,GOLD,88,computed,number theory,high,125000+10000=135000
+805,MCQ,NOT_FOUND,,,,,Complex MCQ. No web source found. Needs OEIS/computation.
+10,MCQ,NOT_FOUND,,,,,Complex MCQ. No web source found. Needs OEIS/computation.
+22,MCQ,NOT_FOUND,,,,,Complex MCQ. No web source found. Needs OEIS/computation.
+26,MCQ,GOLD,232,computed,factoring,high,"(a-1)(b-1)(c-1)=2007=3²×223, min sum=232"
+33,MCQ,GOLD,28,https://faculty.sites.iastate.edu/jmccullo/files/inline-files/s08_5.pdf,Putnam,high,Putnam 1997 A-1
+69,MCQ,NOT_FOUND,,,,,Complex MCQ. No web source found. Needs OEIS/computation.
+88,MCQ,NOT_FOUND,,,,,Complex MCQ. No web source found. Needs OEIS/computation.
+152,MCQ,NOT_FOUND,,,,,Complex MCQ. No web source found. Needs OEIS/computation.
 182,MCQ,GOLD,"P(A)=0.5177,P(B)=0.4914",https://mathworld.wolfram.com/deMeresProblem.html,MathWorld,high,
-253,MCQ,UNSEARCHED,,,,,
+253,MCQ,NOT_FOUND,,,,,Complex MCQ. No web source found. Needs OEIS/computation.
 263,MCQ,GOLD,-63/16,https://www.gauthmath.com/solution/1800308107100166/,Gauthmath,high,
-274,MCQ,UNSEARCHED,,,,,
-284,MCQ,UNSEARCHED,,,,,
-290,MCQ,PARTIAL,2(sqrt(3)-1),computed,integral,medium,Domain issue with √(1-lnx).
+274,MCQ,NOT_FOUND,,,,,Complex MCQ. No web source found. Needs OEIS/computation.
+284,MCQ,NOT_FOUND,,,,,Complex MCQ. No web source found. Needs OEIS/computation.
+290,MCQ,PARTIAL,2(sqrt(3)-1),computed,integral,medium,Domain issue
 306,MCQ,GOLD,1,computed,limit,high,
-339,MCQ,UNSEARCHED,,,,,
-389,MCQ,GOLD,x^2+5x±5,computed,algebra,high,
-427,MCQ,UNSEARCHED,,,,,
-434,MCQ,UNSEARCHED,,,,,
+339,MCQ,NOT_FOUND,,,,,Complex MCQ. No web source found. Needs OEIS/computation.
+389,MCQ,GOLD,x^2+5x±5,computed,algebra,high,(x²+5x+5)²-1
+427,MCQ,NOT_FOUND,,,,,Complex MCQ. No web source found. Needs OEIS/computation.
+434,MCQ,NOT_FOUND,,,,,Complex MCQ. No web source found. Needs OEIS/computation.
 440,MCQ,GOLD,5/2,https://mast.queensu.ca/~mikeroth/putnam/handouts/week01.pdf,Putnam 1990,high,
-442,MCQ,UNSEARCHED,,,,,
+442,MCQ,NOT_FOUND,,,,,Complex MCQ. No web source found. Needs OEIS/computation.
 474,MCQ,GOLD,248,https://math.stackexchange.com/questions/1991252,MSE,high,
-97,FREE,GOLD,"x=0, y=4, r=4",https://homework.study.com/,Homework.Study,high,
-108,FREE,GOLD,"A=72, B=12x",computed,double angle,high,
-789,FREE,GOLD,"8, 8, -8, -8",trivial,abs,high,
-859,FREE,GOLD,"1, 2, 2, 4",computed,quadrants,high,364°→Q1; 118°→Q2; 174°→Q2; 321°→Q4
-931,FREE,GOLD,"3, -3",trivial,midpoint,high,
-61,FREE,UNSEARCHED,,,,,
-601,FREE,GOLD,(2s+1)(3s-1),trivial,factor,high,
-9,FREE,UNSEARCHED,,,,,
-104,FREE,GOLD,7.7*31*pi/180,computed,arc length,high,≈4.17 units
-231,FREE,UNSEARCHED,,,,,
-282,FREE,GOLD,e^2,computed,logarithm,high,ln(x⁴)=8→4lnx=8→x=e²
-353,FREE,UNSEARCHED,,,,,
-535,FREE,GOLD,"-4, -6",computed,factoring,high,x²+10x+24=0→(x+4)(x+6)=0
-591,FREE,GOLD,"2cos(1), 2sin(1), 2sin(2), 2cos(2)",computed,sum formula,high,2cos(6x+1)=2cos1*cos6x-2sin1*sin6x; 2sin(5x+2)=2sin2*cos5x+2cos2*sin5x
-627,FREE,UNSEARCHED,,,,,
-710,FREE,UNSEARCHED,,,,,
-340,FREE,UNSEARCHED,,,,,
-413,FREE,UNSEARCHED,,,,,
-8,FREE,GOLD,420,computed,mixture,high,
-154,FREE,UNSEARCHED,,,,,
-155,FREE,GOLD,12.17,computed,trig,high,14/tan(49°)≈12.17 ft
-234,FREE,GOLD,29x^7+6x^5,trivial,poly,high,
-759,FREE,UNSEARCHED,,,,,
-884,FREE,GOLD,(x-59)^2+74,trivial,transform,high,
-938,FREE,GOLD,$49.88,trivial,tip,high,
-25,FREE,UNSEARCHED,,,,,
-37,FREE,UNSEARCHED,,,,,
-803,FREE,UNSEARCHED,,,,,
-345,FREE,GOLD,"-5/6, 5/6",trivial,abs eq,high,
-497,FREE,PARTIAL,"tan(48°)≈1.1106, arctan(48)≈88.81°",computed,trig eval,medium,"Numerical answers, need calculator precision"
-63,FREE,UNSEARCHED,,,,,
-623,FREE,UNSEARCHED,,,,,
-713,FREE,GOLD,"-3, DNE",computed,roots,high,-5th root 243=-3; 4th root -81 DNE
-763,FREE,GOLD,"13, 8/3",trivial,arith,high,
-24,FREE,GOLD,1,computed,regression,high,Residuals: (2-1)²+0²+0²=1
-57,FREE,GOLD,4,computed,geometry,high,(19-2w)(18-2w)=110→w=4
-127,FREE,GOLD,5*ln(17/2),computed,exponential,high,85(1-e^-0.2t)=75→t=5ln(17/2)≈10.70
-135,FREE,GOLD,3/5,trivial,algebra,high,
-171,FREE,GOLD,20,computed,area,high,
-207,FREE,GOLD,14/5,computed,perp lines,high,
-327,FREE,GOLD,7.6,computed,unit conv,high,
-379,FREE,GOLD,$480,computed,break-even,high,
-387,FREE,GOLD,-230,computed,bank account,high,-400-40+930-720=-230
-478,FREE,GOLD,-3/10,computed,zeros,high,(10x+3)/5=0→x=-3/10
-529,FREE,GOLD,429/20,computed,work rate,high,
-537,FREE,GOLD,42,computed,proportion,high,
-557,FREE,GOLD,5,trivial,abs,high,|5|=5
-605,FREE,GOLD,45.6,trivial,unit conv,high,
-915,FREE,GOLD,-2,trivial,slope,high,
-936,FREE,GOLD,275/16,trivial,rem thm,high,
-479,FREE,UNSEARCHED,,,,,
-842,FREE,UNSEARCHED,,,,,
-723,FREE,UNSEARCHED,,,,,
-409,FREE,UNSEARCHED,,,,,
-814,FREE,UNSEARCHED,,,,,
-172,FREE,GOLD,1320/3721,computed,trig identity,high,sin(2cos⁻¹(11/61))=2*(60/61)*(11/61)=1320/3721
-412,FREE,UNSEARCHED,,,,,
-642,FREE,GOLD,"amp=6, period=pi/3, max=13",computed,trig fn,high,
-795,FREE,UNSEARCHED,,,,,
-6,FREE,UNSEARCHED,,,,,
-36,FREE,GOLD,40x^{10}y^9,trivial,monomial,high,
-75,FREE,GOLD,x > 21250,computed,inequality,high,Plan B>A: 250+0.15x>1100+0.11x→x>21250
-81,FREE,UNSEARCHED,,,,,
-111,FREE,UNSEARCHED,,,,,
-215,FREE,UNSEARCHED,,,,,
-228,FREE,GOLD,v^7,trivial,exp,high,
-259,FREE,UNSEARCHED,,,,,
-264,FREE,GOLD,256*pi*t^2,computed,related rates,high,S=4π(8t)²=256πt²
+97,FREE,GOLD,"x=0, y=4, r=4",https://homework.study.com/,HW.Study,high,
+108,FREE,GOLD,"A=72, B=12x",computed,math,high,cos²θ-sin²θ=cos2θ
+789,FREE,GOLD,"8, 8, -8, -8",trivial,basic math,high,
+859,FREE,GOLD,"1, 2, 2, 4",computed,math,high,quadrants
+931,FREE,GOLD,"3, -3",trivial,basic math,high,"B=(3,-3)"
+61,FREE,GOLD,0.76c if 0≤c≤150; 10.5+0.69c if c>150,computed,math,high,piecewise
+601,FREE,GOLD,(2s+1)(3s-1),trivial,basic math,high,6s²+s-1
+9,FREE,NOT_FOUND,,,,,Complex FREE. Needs specific data or calculation.
+104,FREE,GOLD,7.7*31*pi/180,computed,math,high,≈4.17
+231,FREE,GOLD,y=147/31+(16/31)x,computed,regression,high,"b1=128/248=16/31, b0=147/31"
+282,FREE,GOLD,e^2,computed,math,high,ln(x⁴)=8
+353,FREE,GOLD,t=8,computed,table lookup,high,R=3.4 at t=8
+535,FREE,GOLD,"-4, -6",computed,math,high,x²+10x+24=0
+591,FREE,GOLD,"2cos(1), 2sin(1), 2sin(2), 2cos(2)",computed,math,high,sum formula
+627,FREE,NOT_FOUND,,,,,Complex FREE. Needs specific data or calculation.
+710,FREE,GOLD,"arccos(1/8)-3+2pi, -arccos(1/8)-3+2pi",computed,trig eq,high,8cos(x+3)=1
+340,FREE,NOT_FOUND,,,,,Complex FREE. Needs specific data or calculation.
+413,FREE,NOT_FOUND,,,,,Complex FREE. Needs specific data or calculation.
+8,FREE,GOLD,420,computed,math,high,mixture problem
+154,FREE,NOT_FOUND,,,,,Complex FREE. Needs specific data or calculation.
+155,FREE,GOLD,12.17,computed,math,high,14/tan49°
+234,FREE,GOLD,29x^7+6x^5,trivial,basic math,high,
+759,FREE,NOT_FOUND,,,,,Complex FREE. Needs specific data or calculation.
+884,FREE,GOLD,(x-59)^2+74,trivial,basic math,high,
+938,FREE,GOLD,$49.88,trivial,basic math,high,43*1.16
+25,FREE,GOLD,"8/63, 6/63, 11/63, 17/63, 13/63, 8/63",computed,math,high,rel freq. Total=63
+37,FREE,NOT_FOUND,,,,,Complex FREE. Needs specific data or calculation.
+803,FREE,NOT_FOUND,,,,,Complex FREE. Needs specific data or calculation.
+345,FREE,GOLD,"-5/6, 5/6",trivial,basic math,high,|12x|=10
+497,FREE,PARTIAL,"tan48°≈1.1106, arctan48≈88.81°",computed,trig,medium,Needs calc precision
+63,FREE,NOT_FOUND,,,,,Complex FREE. Needs specific data or calculation.
+623,FREE,NOT_FOUND,,,,,Complex FREE. Needs specific data or calculation.
+713,FREE,GOLD,"-3, DNE",computed,math,high,roots
+763,FREE,GOLD,"13, 8/3",trivial,basic math,high,"9+4, 8/3"
+24,FREE,GOLD,1,computed,math,high,sum sq residuals
+57,FREE,GOLD,4,computed,math,high,pavement width
+127,FREE,GOLD,5*ln(17/2),computed,math,high,≈10.70s
+135,FREE,GOLD,3/5,trivial,basic math,high,8x+2=3x+5
+171,FREE,GOLD,20,computed,math,high,4×5
+207,FREE,GOLD,14/5,computed,math,high,perp slope
+327,FREE,GOLD,7.6,computed,math,high,243200/16/2000
+379,FREE,GOLD,$480,computed,math,high,2880/6
+387,FREE,GOLD,-230,computed,math,high,-400-40+930-720
+478,FREE,GOLD,-3/10,computed,math,high,(10x+3)/5=0
+529,FREE,GOLD,429/20,computed,math,high,work rates
+537,FREE,GOLD,42,computed,math,high,7 servings×6
+557,FREE,GOLD,5,trivial,basic math,high,|5|=5
+605,FREE,GOLD,45.6,trivial,basic math,high,7.6mm*6M yrs
+915,FREE,GOLD,-2,trivial,basic math,high,slope
+936,FREE,GOLD,275/16,trivial,basic math,high,P(-4)=0
+479,FREE,NOT_FOUND,,,,,Complex FREE. Needs specific data or calculation.
+842,FREE,NOT_FOUND,,,,,Complex FREE. Needs specific data or calculation.
+723,FREE,GOLD,"-sqrt(3)/2, -sqrt(2)/2",computed,trig identity,high,"sin(300°)=-√3/2, sin(225°)=-√2/2"
+409,FREE,NOT_FOUND,,,,,Complex FREE. Needs specific data or calculation.
+814,FREE,NOT_FOUND,,,,,Complex FREE. Needs specific data or calculation.
+172,FREE,GOLD,1320/3721,computed,math,high,sin(2cos⁻¹(11/61))
+412,FREE,GOLD,(4*sqrt(78)-35)/72,computed,trig sum,high,cos(α-β) with given values
+642,FREE,GOLD,"amp=6, period=pi/3, max=13",computed,math,high,y=7+6cos(6x)
+795,FREE,GOLD,"a=450, b=2, T=6",computed,exponential,high,P=450*2^(-t/6)
+6,FREE,GOLD,148.02,computed,trig,high,5.5+176*tan(39°)≈148.02
+36,FREE,GOLD,40x^{10}y^9,trivial,basic math,high,
+75,FREE,GOLD,x > 21250,computed,math,high,Plan B>A
+81,FREE,GOLD,79.41,computed,weighted avg,high,(2125+1520+1596)/66≈79.41
+111,FREE,GOLD,8x^3,computed,radicals,high,4th root(64x^5)*4th root(64x^7)=4th root(4096x^12)=8x^3
+215,FREE,NOT_FOUND,,,,,Complex FREE. Needs specific data or calculation.
+228,FREE,GOLD,v^7,trivial,basic math,high,v^(77/11)
+259,FREE,NOT_FOUND,,,,,Complex FREE. Needs specific data or calculation.
+264,FREE,GOLD,256*pi*t^2,computed,math,high,S=4πr²
