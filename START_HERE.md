@@ -9,10 +9,11 @@ You hold the full picture, make decisions, organize the repo, audit work, and de
 ## READ ORDER (new central session)
 
 1. **This file** — identity, read order, load-bearing corrections, repo map
-2. **`strategy/SESSION_HANDOFF.md`** — current state, schedule, priority stack (THE live plan)
-3. **`agents/CLAUDE_STRATEGY.md`** — operating contract (identity, role, tools, agent setup). ⚠️ Has stale Day-1/2 sections — see corrections table below.
-4. **Memory** — auto-loads (~30 entries: protocols, tools, locked decisions, state)
-5. **`strategy/TODO.md`** — current priorities
+2. **`PIPELINE.md`** — ⭐ THE BLUEPRINT. The 4-phase pipeline (pre-inference → inference → post-inference → grading) is the backbone every file/folder/artifact hangs on. Read this to know where anything belongs.
+3. **`strategy/SESSION_HANDOFF.md`** — current state, schedule, priority stack (THE live plan)
+4. **`agents/CLAUDE_STRATEGY.md`** — operating contract (identity, role, tools, agent setup). ⚠️ Has stale Day-1/2 sections — see corrections table below.
+5. **Memory** — auto-loads (~24 entries: protocols, tools, locked decisions, state)
+6. **`strategy/TODO.md`** — current priorities
 
 ---
 
