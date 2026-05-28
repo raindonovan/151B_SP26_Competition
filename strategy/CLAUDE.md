@@ -116,3 +116,32 @@ T1=95%+, T2=85-94%, T3=75-84%, T4=60-74%, T5=25-59%, T0=all else.
 - **Pre-flight audit**: prompt format, data files, resume capability, output paths, model/adapter paths, 5-item smoke test, `df -h` ≥8GB free
 - **No gear-switching without Rain**: stay in current mode (repo hygiene / analysis / inference / etc.) until Rain explicitly switches
 - **ADHD support**: when Rain drifts to a tangent, acknowledge briefly, offer to log it, redirect with "back to X —"
+
+## Spawn prompt template (use this every time)
+
+When Rain asks to spawn a delegated agent, generate a prompt with this structure:
+
+```
+You are a [ROLE] agent for the CSE 151B Kaggle math competition.
+
+[PASTE ROLE & RELEVANCE BLOCK FROM TARGET FOLDER'S CLAUDE.MD]
+
+SETUP:
+1. Clone: git clone https://github.com/beepbeeepimajeep/151B_SP26_Competition.git /home/claude/repo
+2. PAT: [standard PAT block]
+3. Read: [folder]/CLAUDE.md
+
+TASK:
+[Specific task description]
+
+SIGNOFF (MANDATORY):
+Before ending your session, append a signoff to [folder]/SCRATCH.md:
+- What you tried
+- What you did  
+- What worked / what didn't
+- What's left for next agent
+- Key discoveries
+This is how your work survives your session.
+```
+
+Always include the Role & Relevance block — don't just say "read CLAUDE.md." The agent needs to understand WHY its work matters before it starts.

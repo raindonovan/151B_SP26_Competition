@@ -70,3 +70,36 @@ Gold set → Inference → Compare to gold → YES: post-process → submit
                                         ↑___________________________________↓ iterate
 ```
 See `strategy/TEST_PIPELINE.md` for the full north star.
+
+## Standard Operating Procedure — Agent Lifecycle (LOCKED)
+
+### Spawning a delegated agent
+Every spawn prompt MUST include:
+1. **Setup block**: clone repo, configure PAT, set git identity
+2. **Role & Relevance block**: copied from the target folder's CLAUDE.md (what is this phase, why it matters, techniques, inputs/outputs, key lever)
+3. **Specific task**: what exactly the agent should do this session
+4. **Read order**: which docs to read first (always starts with folder's CLAUDE.md)
+5. **Signoff instruction**: "Before ending your session, append a signoff to SCRATCH.md in your working folder"
+
+### Agent signoff (MANDATORY)
+Before ending a session or being told to stop, every agent MUST append to the `SCRATCH.md` in its working folder:
+```
+---
+## Agent signoff — [agent_name] — [date]
+### What I tried
+- (list of approaches attempted)
+### What I did
+- (list of concrete actions taken, files created/modified)
+### What worked
+- (successes, key results)
+### What didn't work
+- (failures, dead ends, things that need different approach)
+### What's left
+- (unfinished tasks, next steps for whoever picks this up)
+### Key discoveries
+- (anything surprising, format rules, data issues, strategic insights)
+```
+This is the agent's legacy — the next agent or Rain reads this to avoid repeating work and to build on discoveries.
+
+### Why this matters
+Without signoffs, findings die with the session. Without Role & Relevance in the prompt, agents don't understand WHY their work matters. Both are non-negotiable.
