@@ -79,3 +79,11 @@ degenerate-output detection.** Full analysis in the sibling doc.
 - Piazza: Anthony Tong 2026-05-09 (no fraction/decimal normalization); Ruijia Niu 2026-05-05 (modeling rules).
 - Probes: `submission/REGISTRY.md` (#5 reversed −17.6pp; per-slot subs −16.2pp).
 - Local code: `/judger.py`; official scoring: `/starter_code_cse151b_comp.ipynb` (cells 11, 22).
+
+## 9. Submission format (cross-phase — see also COMPETITION.md pre-inference)
+The submission CSV is the boundary object the post-processor emits and the grader consumes, so its format is
+documented in BOTH pre-inference (`COMPETITION.md`) and here (grading). Canonical exemplar:
+`data/sample_submission.csv` (5 rows, header `id,response`, each a full raw Qwen trace ending in `\boxed{}`).
+- Row = `id,response`; `response` = COMPLETE raw model output (all CoT/thinking), CSV-escaped (inner quotes `""`).
+- Every `private.jsonl` id needs a row. Final answer is extracted from the trace by the grader (§2 above).
+- The exemplar mixes `\frac` and `\dfrac` → reconfirms `\dfrac` is normalized away (§4).

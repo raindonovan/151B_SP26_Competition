@@ -42,14 +42,15 @@ Total bundle 1.27 MB. License: **CC BY-NC-SA 4.0**.
 ## ⚠️ Eval surfaces — DO NOT confuse these three
 1. **`public.jsonl` (1126)** — synthetic dev data, retired. NOT the leaderboard.
 2. **Public leaderboard** — accuracy on **~30% of the PRIVATE set (≈283 of 943 items)**, real gold, live during the comp.
-   → **±5pp 95% CI at n≈283**: score deltas under ~1pp are within noise. Treat tiny "lever" gains skeptically.
+   → **±~5pp 95% CI at n≈283**, and **1 question ≈ 0.35pp** (1/283). So observed deltas translate to item counts:
+   +0.3pp ≈ <1 question · +0.7pp ≈ 2 · +2.5pp ≈ 7 · +4.9pp ≈ 14. Sub-1pp "levers" are at/below the resolution
+   of a single question — treat them as noise, not signal.
 3. **Full private (943)** — final ranking, revealed only after the deadline.
 
-## ⚠️⚠️ DISCREPANCY TO RESOLVE — submission limit
-The official description says: **"Submissions are unlimited throughout the competition."**
-This CONTRADICTS our working ops assumption (5/day in the final week; memory #1). If submissions are truly
-unlimited, the "every submission is gold / 5-slot budget" framing collapses and we can probe freely.
-**Rain to confirm against the actual Kaggle submit UI before we plan the endgame.** Until then, treat as OPEN.
+## Submission limit (RESOLVED 2026-05-28)
+The description's wording — "Submissions are unlimited throughout the competition" — is INACCURATE.
+Actual limit, confirmed by Rain against the Kaggle submit UI: **5 submissions/day until the end of the
+competition.** Plan the endgame on 5/day; each submission remains a deliberate hypothesis.
 
 ## Submission format
 CSV, one row per `private.jsonl` id:
