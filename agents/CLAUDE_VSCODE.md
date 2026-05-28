@@ -254,3 +254,20 @@ Reviewer: ≥1 fresh model from different lineage. Unanimous flags are real.
 - Historical post-mortems → `SESSION_LOG.md`.
 - Prompt engineering research → `prompt_engineering_research.md`.
 - DataApp dataset spec → `DataApp/CLAUDE.md` (separate repo).
+---
+
+## Tools & Capabilities
+
+### Filesystem (DSMLP)
+- Direct access to `~/private/151B_SP26_Competition/` — the repo working directory
+- Git CLI with Rain's PAT configured — full read/write/push
+- Python 3, pip, GPU (A30 24GB), vLLM, PyTorch
+- 6hr pod walltime limit
+
+### Large File / LFS Rule (LOCKED — NO EXCEPTIONS)
+Any file >10MB: STOP and verify it is git-tracked or LFS-tracked and backed up to remote.
+- Never gitignore large files without explicit Rain approval
+- Never gloss over LFS warnings on push or pull — resolve immediately
+- Push rejected for size → LFS-track and re-push, don't gitignore
+- Disk audits must cross-reference against BOTH `git ls-files` AND `git check-ignore`
+- Space is NOT a constraint. Large files must not be lost or become blockers.

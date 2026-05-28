@@ -216,3 +216,24 @@ Do **not** write to the memory system. Surface to Rain: "Worth adding to CLAUDE_
 - `DESIGN.md`: historical design + SFT eval methodology (§1209-1262 still valid)
 - `sft/v3/`, `sft/v4/`: training scripts (per-version, config-as-constants)
 - `requirements_thunder.txt`: frozen pip environment for reproducibility
+
+---
+
+## Tools & Capabilities (when active)
+
+### Filesystem (Thunder Compute)
+- Direct access to `~/151B_SP26_Competition/` — the repo working directory
+- Git CLI with Rain's PAT configured — full read/write/push
+- Python 3, pip, GPU (H100/A100 80GB × 2), vLLM, PyTorch
+- `~` persists across stop/start. `/ephemeral` lost on stop.
+- Billing: snapshot+delete+restore to pause
+
+### Status: DORMANT
+Both tnr-0 and tnr-1 instances are shut down as of 2026-05-28. Restorable from snapshots if needed.
+
+### Large File / LFS Rule (LOCKED — NO EXCEPTIONS)
+Any file >10MB: STOP and verify it is git-tracked or LFS-tracked and backed up to remote.
+- Never gitignore large files without explicit Rain approval
+- Never gloss over LFS warnings — resolve immediately
+- Disk audits must cross-reference `git ls-files` AND `git check-ignore`
+- Space is NOT a constraint. Large files must not be lost.
