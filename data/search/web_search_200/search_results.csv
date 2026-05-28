@@ -14,8 +14,8 @@ item_id,category,search_status,found_answer,source_url,source_type,confidence,no
 47,MCQ,UNSEARCHED,,,,85.4,
 53,MCQ,UNSEARCHED,,,,85.4,
 73,MCQ,UNSEARCHED,,,,85.4,
-80,MCQ,UNSEARCHED,,,,85.4,
-85,MCQ,UNSEARCHED,,,,85.4,
+80,MCQ,GOLD,\frac{\sqrt{3}}{12},computed,computation,85.4,"sqrt(108)=6sqrt(3), 2sqrt(12)=4sqrt(3), 2sqrt(27)=6sqrt(3). Denom=16sqrt(3). 4/(16sqrt(3))=sqrt(3)/12. Matches option."
+85,MCQ,GOLD,3,computed,computation,85.4,Pigeonhole: ceil(1000/365)=3. Matches option.
 92,MCQ,UNSEARCHED,,,,85.4,
 107,MCQ,UNSEARCHED,,,,85.4,
 109,MCQ,UNSEARCHED,,,,85.4,
@@ -26,21 +26,21 @@ item_id,category,search_status,found_answer,source_url,source_type,confidence,no
 150,MCQ,UNSEARCHED,,,,85.4,
 183,MCQ,UNSEARCHED,,,,85.4,
 186,MCQ,UNSEARCHED,,,,85.4,
-200,MCQ,UNSEARCHED,,,,85.4,
+200,MCQ,GOLD,463,https://artofproblemsolving.com/wiki/index.php/1999_AIME_Problems/Problem_14,AoPS,85.4,1999 AIME I Problem 14. Brocard point. m+n=463 confirmed on AoPS and Cheenta.
 212,MCQ,UNSEARCHED,,,,85.4,
-241,MCQ,UNSEARCHED,,,,85.4,
+241,MCQ,GOLD,533,computed,computation,85.4,"S(n,k)=log_k(n) telescopes. Integer when n=k^j. Count pairs: 498+21+6+3+2+1+1+1=533. Matches option. Similar to 2001 AIME II."
 249,MCQ,UNSEARCHED,,,,85.4,
 254,MCQ,UNSEARCHED,,,,85.4,
-99,FREE,UNSEARCHED,,,,89.93,
+99,FREE,GOLD,"-6, 12, -6",computed,computation,89.93,"-|3-9|=-6, |-3-9|=12, -1*|9-3|=-6."
 185,FREE,UNSEARCHED,,,,89.93,
 567,FREE,UNSEARCHED,,,,89.93,
 516,FREE,UNSEARCHED,,,,89.85,
 437,FREE,UNSEARCHED,,,,89.65,
 480,FREE,UNSEARCHED,,,,89.49,
-20,FREE,UNSEARCHED,,,,89.31,
-137,FREE,UNSEARCHED,,,,89.31,
-174,FREE,UNSEARCHED,,,,89.31,
-346,FREE,UNSEARCHED,,,,89.31,
+20,FREE,GOLD,"Mean=228, Median=229, Mode=250",computed,computation,89.31,"Mean=1824/8=228, Median=(216+242)/2=229, Mode=250 (appears twice)."
+137,FREE,GOLD,"2/13, 2/1",computed,computation,89.31,"36/234=2/13, 208/104=2."
+174,FREE,GOLD,"7, 7/8",computed,computation,89.31,"sqrt(49)=7, sqrt(49/64)=7/8."
+346,FREE,GOLD,"0.7, 0.07, 0.007",computed,computation,89.31,Simple division.
 380,FREE,UNSEARCHED,,,,89.31,
 461,FREE,UNSEARCHED,,,,89.31,
 576,FREE,UNSEARCHED,,,,89.31,
@@ -48,41 +48,41 @@ item_id,category,search_status,found_answer,source_url,source_type,confidence,no
 794,FREE,UNSEARCHED,,,,89.31,
 872,FREE,UNSEARCHED,,,,89.31,
 920,FREE,UNSEARCHED,,,,89.21,
-15,FREE,UNSEARCHED,,,,87.98,
-31,FREE,UNSEARCHED,,,,87.98,
-42,FREE,UNSEARCHED,,,,87.98,
-52,FREE,UNSEARCHED,,,,87.98,
-56,FREE,UNSEARCHED,,,,87.98,
-60,FREE,UNSEARCHED,,,,87.98,
-62,FREE,UNSEARCHED,,,,87.98,
-76,FREE,UNSEARCHED,,,,87.98,
-84,FREE,UNSEARCHED,,,,87.98,
-87,FREE,UNSEARCHED,,,,87.98,
-101,FREE,UNSEARCHED,,,,87.98,
-116,FREE,UNSEARCHED,,,,87.98,
-119,FREE,UNSEARCHED,,,,87.98,
-139,FREE,UNSEARCHED,,,,87.98,
-158,FREE,UNSEARCHED,,,,87.98,
-159,FREE,UNSEARCHED,,,,87.98,
-163,FREE,UNSEARCHED,,,,87.98,
-179,FREE,UNSEARCHED,,,,87.98,
-191,FREE,UNSEARCHED,,,,87.98,
-197,FREE,UNSEARCHED,,,,87.98,
-236,FREE,UNSEARCHED,,,,87.98,
-238,FREE,UNSEARCHED,,,,87.98,
-246,FREE,UNSEARCHED,,,,87.98,
+15,FREE,GOLD,"8, NONE",computed,computation,87.98,"f(x)=x^8+4 is degree 8 polynomial. g(x)=8^x+4 is exponential, not polynomial (NONE)."
+31,FREE,GOLD,"-3, 42",computed,computation,87.98,"6/(-2)=-3, (-126)/(-3)=42."
+42,FREE,GOLD,"No, Yes",computed,computation,87.98,p=0.095. At 5%: 0.095>0.05 fail to reject (No). At 10%: 0.095<0.10 reject (Yes).
+52,FREE,GOLD,"231, 385",computed,computation,87.98,"3/8*616=231 oz alcohol, 5/8*616=385 oz acid."
+56,FREE,GOLD,B,computed,computation,87.98,Hours studying is explanatory variable → horizontal axis.
+60,FREE,GOLD,B,computed,computation,87.98,The variable under consideration is age.
+62,FREE,GOLD,"-15, 192, 0",computed,computation,87.98,"(-1)*(-5)*(-3)=-15, 6*(-8)*(-4)=192, (-89)*(-62)*0=0."
+76,FREE,GOLD,"-4, -11, 3, 33, -32, 9, -14, -13",computed,computation,87.98,Simple integer subtraction.
+84,FREE,GOLD,"-4, 5, -11",computed,computation,87.98,"4-8=-4, 8-3=5, 3-14=-11."
+87,FREE,GOLD,"OBSERVATION, OBSERVATION, EXPERIMENT",computed,computation,87.98,"(a) classifying=observing, (b) completed courses=observing, (c) placebo=intervention=experiment."
+101,FREE,GOLD,C,computed,computation,87.98,Rejecting a true null hypothesis = Type I error.
+116,FREE,GOLD,"30, 6",computed,computation,87.98,"downstream=36km/h, upstream=24km/h. boat=(36+24)/2=30, current=(36-24)/2=6."
+119,FREE,GOLD,"A, C, B, D",computed,computation,87.98,"QII=x<0,y>0. QIII=x<0,y<0. y=0 is x-axis. x=0 is y-axis."
+139,FREE,GOLD,"A=201, B=1/(n*(n+1))",computed,computation,87.98,Telescoping sum 1/(n(n+1)) from n=1 to 201.
+158,FREE,GOLD,A,computed,computation,87.98,Relative frequency distribution shows fraction of total in each class.
+159,FREE,GOLD,"0.07, 0.007, 0.0007",computed,computation,87.98,"7%=0.07, 0.7%=0.007, 0.07%=0.0007."
+163,FREE,GOLD,"A=9, B=-5, C=4",computed,computation,87.98,"(x-5)(x+4)^2-(x-5)^2(x+4) = (x-5)(x+4)(9) = 9(x-5)(x+4). So A=9, B=-5, C=4."
+179,FREE,GOLD,"29 r3, 21 r1, 21 r4",computed,computation,87.98,"177/6=29r3, 127/6=21r1, 151/7=21r4."
+191,FREE,GOLD,"D, A, C, B, E",computed,computation,87.98,"0=neither pos/neg, pi=irrational, 17/12=rational, -17=integer, 12=natural."
+197,FREE,GOLD,"3, 4",computed,computation,87.98,8x^2-56x+115≤19 → (x-3)(x-4)≤0 → between 3 and 4 thousand pens.
+236,FREE,GOLD,"k=6e, p=-6",computed,computation,87.98,"6*e*s^(-3-3)=6e*s^(-6). Power function with k=6e, p=-6."
+238,FREE,GOLD,"f(x)=-61, g(x)=61, h(x)=62",computed,computation,87.98,Partial fractions: (x^2+61)/(x^2(x+1)) = -61/x + 61/x^2 + 62/(x+1).
+246,FREE,GOLD,"25, 23, 17, 23, 19",computed,computation,87.98,"125/5=25, 138/6=23, 119/7=17, 184/8=23, 152/8=19."
 256,FREE,UNSEARCHED,,,,87.98,
-260,FREE,UNSEARCHED,,,,87.98,
-265,FREE,UNSEARCHED,,,,87.98,
-268,FREE,UNSEARCHED,,,,87.98,
-289,FREE,UNSEARCHED,,,,87.98,
-296,FREE,UNSEARCHED,,,,87.98,
-314,FREE,UNSEARCHED,,,,87.98,
-315,FREE,UNSEARCHED,,,,87.98,
-323,FREE,UNSEARCHED,,,,87.98,
-326,FREE,UNSEARCHED,,,,87.98,
-332,FREE,UNSEARCHED,,,,87.98,
-333,FREE,UNSEARCHED,,,,87.98,
+260,FREE,GOLD,"-22, 8",computed,computation,87.98,"-12-6-4=-22, 8+17-17=8."
+265,FREE,GOLD,A,computed,computation,87.98,Mode is the only measure meaningful for nominal data.
+268,FREE,GOLD,4450,computed,computation,87.98,550+300*13=4450 dollars.
+289,FREE,GOLD,"4, 9",computed,computation,87.98,P=12W-8. 40≤12W-8≤100 → 4≤W≤9.
+296,FREE,GOLD,"w=45, A=180, B=270",computed,computation,87.98,4w^2-1260w+48600=0 → w=45. Factory=(270-90)x(360-90)=180x270.
+314,FREE,GOLD,"7, -8, -4",computed,computation,87.98,"(-28)/(-4)=7, 40/(-5)=-8, (-24)/6=-4."
+315,FREE,GOLD,B,computed,computation,87.98,Telephone directory sample excludes segments of population = undercoverage.
+323,FREE,GOLD,"[10,12), [-8,-6)",computed,computation,87.98,"floor(x/2)=5 → [10,12). floor(x/2)=-4 → [-8,-6)."
+326,FREE,GOLD,"0.67, 0.36, 0.06",computed,computation,87.98,Simple fraction to decimal.
+332,FREE,GOLD,"778, 624",computed,computation,87.98,"1100001010_2=778, 1001110000_2=624."
+333,FREE,GOLD,"54, 62",computed,computation,87.98,"f(6)=8*6+6=54, f(7)=8*7+6=62."
 343,FREE,UNSEARCHED,,,,87.98,
 350,FREE,UNSEARCHED,,,,87.98,
 364,FREE,UNSEARCHED,,,,87.98,
