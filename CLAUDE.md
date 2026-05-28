@@ -39,6 +39,9 @@ EXPECTED_ROLE="your-role"; [ "$(cat ~/.instance-role 2>/dev/null)" = "$EXPECTED_
 - Never delete inference data without explicit approval
 - All canonical data lives in the repo, not local-only
 
+### SCRATCH.md — low-friction capture
+Every operational folder has a `SCRATCH.md`. When you discover something interesting but don't know where to put it — dump it in the SCRATCH.md of whatever folder you're working in. Rain sorts later. Don't overthink placement. Don't skip recording it.
+
 ### Prompt delivery
 - One prompt at a time across all agents
 - Paste-ready in one fenced block
