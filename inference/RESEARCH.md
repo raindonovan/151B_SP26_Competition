@@ -32,3 +32,13 @@
 
 ## See also
 - `strategy/INFERENCE_TECHNIQUES.md` — full tried-vs-untried inventory
+
+### Multi-agent prompt dive (May 9)
+
+**Source**: research/prompts/2026-05-09_dive_v1.md (19KB full doc).
+**Key findings**:
+- Top AIMO teams use minimal prompts (1-2 sentences). Elaborate system prompts hurt more than help on math reasoning.
+- Qwen3-Thinking vendor recommends: T=0.6, TopP=0.95, TopK=20 (matches our locked config).
+- DeepSeek-R1 says NO system prompt at all.
+- Production prompts from winning teams are embarrassingly simple — the model's training does the heavy lifting.
+- Prompt engineering research at archive/research/prompt_engineering_research.md (70KB, UNMINED) may contain additional prompt-lever findings.

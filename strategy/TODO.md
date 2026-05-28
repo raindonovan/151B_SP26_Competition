@@ -79,3 +79,15 @@
 - [ ] R2: Single-model judge prompt design for math BoN selection
 - [ ] R3: Targeted memorization SFT precedents
 - [ ] R4: GenSelect with full-length candidates (NVIDIA NemoSkills AIMO-2 winner)
+
+## Backlog mining (from strategy/TIME_MACHINE_BACKLOG.md)
+
+**TIER 1 — richest unmined docs, START HERE:**
+- [ ] **archive/research/prompt_engineering_research.md** (70KB, 896L) — UNMINED. Prompt-lever research; V0–V4 prompts trace back here. → inference prompt levers + strategy.
+- [ ] **archive/design/experiments.md** (85KB, 928L) — partially mined. Run-by-run experiment log incl. failures. Only judger/public + Insights 6–7 pulled. → RUN_REGISTRY + knowledge layer.
+- [ ] **archive/session_logs/SESSION_LOG.md** (14KB) — UNMINED. Chronological log opening on v1 3-arm SFT FAILURE. Dense failure postmortems. → RUN_REGISTRY / adapters.
+- [ ] **archive/design/DESIGN.md** (68KB) — partially mined. Design rationale, Piazza rulings, SFT paths, data-filtering. Only §4.4/§5.1 grepped. → RULES + INFERENCE + STRATEGY.
+
+**Priority flags**: prompt_engineering_research.md (70KB) and experiments.md (85KB) are HIGH-PRIORITY unmined — together they're 155KB of raw knowledge that could contain format rules, run findings, and failure modes we haven't captured.
+
+**Full backlog**: See strategy/TIME_MACHINE_BACKLOG.md for Tiers 2-5.
