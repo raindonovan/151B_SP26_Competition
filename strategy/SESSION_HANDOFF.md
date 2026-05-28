@@ -1,95 +1,72 @@
-# SESSION HANDOFF — READ THIS FIRST (new chat entry point)
+# SESSION HANDOFF — Day 5 Evening (2026-05-28)
 
-**Last updated**: 2026-05-28 (Day 4 EOD). Supersedes `docs/STRATEGY_DAY4_LOCKED.md` for current state.
-**Read order for new session**: this file → `runs/README.md` → `search/README.md` → `playbook/LEVERS.md` → `playbook/FINDINGS.md` → memory.
+## You are claude_strategy = CENTRAL NODE
+Read `agents/CLAUDE_STRATEGY.md` for your full tools list and operating rules.
 
-## WHERE WE ARE
+## Session Start Checklist
+1. Clone repo: `git clone https://github.com/beepbeeepimajeep/151B_SP26_Competition.git /home/claude/repo`
+2. Ask Rain for PAT: "I need the GitHub PAT to push directly."
+3. Read this file + `agents/CLAUDE_STRATEGY.md` + memory
+4. Check `strategy/TODO.md` for priorities
 
-- Best inference-only: **0.646** (run14b, SC=8, 32K tokens) — our ceiling on pure inference
-- Best with overrides: 0.692 (Day 3 kitchen sink) — overrides OFF-TABLE until Day 7
-- Leader: 0.85
-- Submissions: ~12 remaining, 3/day. **5 available right now.**
-- Gradescope code due Sun 5/31. Kaggle final ~6/02.
+## Current State
+- **Best inference-only**: 0.646 (slot1_reformat, run14b SC=8 32K)
+- **Best with overrides**: 0.692 (kitchen_sink_C, 78 overrides)
+- **Leader**: 0.85
+- **Deadline**: Sun 5/31 (Gradescope code + Kaggle final picks)
+- **Submissions used**: 29 of ~45 total (3/day). ~12 remaining.
+- **CURRENT KAGGLE PICKS ARE WRONG**: 0.438 + 0.420 selected. CHANGE BEFORE DEADLINE.
 
-## THE BRUTAL TRUTH (accept it, then beat it)
+## What was done Day 5
+- Full repo reorganization into pipeline structure (agents/ strategy/ data/ inference/ postprocessing/ submission/ archive/ infrastructure/)
+- Full data audits: DSMLP clean, Thunder tnr-0 clean, tnr-1 clean (kill both)
+- 4 critical inference JSONLs LFS-tracked (586MB, f231f1a)
+- 29/29 submission CSVs verified + definitive REGISTRY.md with all Kaggle scores
+- Agent configs updated with tools, LFS rule, full read protocol
+- Direct push via PAT + bash_tool established (breakthrough — no more vscode relay for writes)
+- Checkpoint stubs committed for untracked weights (paper trail for report)
+- Gold findings from repo read captured (see below)
 
-Every inference lever after run14b gave ~0. The only thing that moved inference was 16K→32K tokens (+2.5pp). Qwen's raw capability caps ~0.65 here. All gains to 0.692 were overrides.
-
-**Rain's mandate**: this is NOT acceptable as the final word. We have tons of data, poorly organized. Organize it, then MILK every pp from what we have before any new inference/SFT.
-
-## THE CRUX (why we keep circling)
-
-We have 5 SEARCH sources for gold answers (Wolfram, PACE, OPL, search-app, teachers). They ALL funnel through 2 conversion mechanisms to become points:
-1. Override CSV (validated 88%, OFF-TABLE until Day 7)
-2. Targeted-Memo SFT (rules-legal, must strawman/research first)
-
-Plus a THIRD path discovered this session:
-
-## ⭐ THE THIRD PATH — Cross-Run Oracle Harvest (Rain's insight, HIGHEST PRIORITY)
-
-**For each item: take our best-guess answer (even 51% confidence from answer-sheet/SEARCH). Check if ANY inference run ever produced that answer. If yes → use that inference-produced version with its exact formatting/config. It came from OUR inference = RULES-LEGAL, NOT an override.**
-
-This pools oracle@N across ALL runs (run09, run14b, nothinking_943, hardest30, sft_v4, sft_v5, V0-V4 — every sample we have), not just one run's 8. Uses existing data, no new inference. **This is the rules-clean way to convert the answer sheet into points before Day 7.**
-
-Rain's question to answer: "what would we score if we built that list?" → BUILD IT. This is Thursday's main milking task.
-
-## THE SCHEDULE (Rain, locked 2026-05-28)
-
-- **Rest of Day 4 (Wed)**: repo organization + data analysis + collection
-- **Thursday**: milk every datapoint for best INFERENCE-ONLY score (Cross-Run Oracle Harvest + generic multi-slot expander + oracle@8)
-- **Friday**: gold-answer data collection (SEARCH). Final strategy decision (SFT/GRPO/whatever).
-- **Saturday**: SFT roll-of-the-dice (or whatever Friday's strategy meeting decides)
-- **Sunday**: final submission
-
-## THE LEVERS (full detail in playbook/LEVERS.md)
-
-RULES-EXCLUDED: TIR (tool-aug gen), PRM (external model). Both dead.
-
-ALIVE, ranked for the milking phase:
-1. **Cross-Run Oracle Harvest** (NEW) — pool all run samples, select best-guess matches. Rules-legal. Existing data. HIGHEST PRIORITY Thursday.
-2. **Generic Multi-Slot Expander** (NEW) — read Qwen's OWN reasoning text, fix under-counted \boxed{} (e.g. emitted 2 slots, question wants 6). Post-processing, NOT override. Attacks the 79% format-failure mode. Rules-clean.
-3. **oracle@8 on run14b** — diagnostic: does the 8-sample pool contain right answers? Tells us if selection (GenSelect) is worth it.
-4. **GenSelect re-run** — Qwen judging Qwen (rules-legal). Fix the truncation bug first + smoke test.
-5. **Hard-item SC + NoThinking 943 analysis** — free data already computed.
-6. **Targeted-Memo SFT** (Lever 6) — Saturday roll-of-dice candidate. Strawman first.
-
-## REPO STRUCTURE (reorganized this session)
-
+## Repo Structure (post-reorg)
 ```
-runs/                  ← inference/adapter/selection experiments (analysis, not raw data)
-  adapters/  (sft_v1_3arm, sft_v3, sft_v4, sft_v5[DONE])
-  inference/ (run14b_sc8_32k, nothinking_943, hardest30_sc16)
-  selection/ (genselect_poc[DONE])
-search/                ← ground-truth answer harvesting
-  wolfram/  pace/  opl/[DONE]  search_app/  teachers/[stub-link]
-playbook/              ← strategy/plan only (README, TODO, FINDINGS, LEVERS, RESEARCH, TIERS)
-docs/                  ← canonical project docs (TODO, FINDINGS, WOLFRAM_FINDINGS, etc.)
-results/               ← raw run outputs (data stays here; analysis goes in runs/)
+START_HERE.md          # Entry point (NEEDS UPDATE — still has old paths)
+agents/                # CLAUDE_VSCODE.md, CLAUDE_STRATEGY.md, CLAUDE_THUNDER.md
+strategy/              # SESSION_HANDOFF (this), TODO, LEVERS, TIERS, FINDINGS, RESEARCH
+data/                  # answer_sheet/, search/{wolfram,pace,opl,search_app,teachers}, system_prompts/
+inference/             # scripts/, results/, runs/, adapters/{sft_v1-v5}, training/
+postprocessing/        # scripts/, format_review/, FINDINGS, TODO
+submission/            # csvs/ (29 files), scripts/, REGISTRY.md, INTEGRITY_REPORT.md
+archive/               # handoffs/, strategy/, design/, research/, docs/, session_logs/, submissions_never_sent/
+infrastructure/        # scripts/, pre_flight/, logs/
 ```
 
-Naming: descriptive names, NO codes (no more F5/P1/W2).
+## Gold Findings from Day 5 Repo Read
+1. **Public dataset matching (NuminaMath 860K + MATH 12.5K)** = highest-EV play not yet started (from STRATEGY_0_85.md)
+2. **~310 items wrong despite \boxed{}** — ceiling from fixing WRONG answers >> format fixes or no-box rescue
+3. **Trailing-zero strip PROVEN NEUTRAL** — Day 3 Slots 1 vs 2 both 0.692
+4. **MED tier = +0.3pp** — kitchen sink (0.692) vs minus-all-MED (0.689)
+5. **format_aware_v1.txt** already implements V2 bookend addressing grader's last-\boxed{} behavior
+6. **TIR is KILLED by rules** — STRATEGY_0_85 Day 6 TIR plan is dead
+7. **Cross-Run Oracle Harvest UNLOCKED** — all inference JSONLs now on GitHub via LFS
 
-## NEXT-SESSION TASK #1 — FULL REPO READ (not yet done, Rain flagged twice)
+## Priority Stack (next session)
+1. **UPDATE START_HERE.md** with post-reorg paths (still points to old structure)
+2. **Update strategy/TODO.md** with comprehensive priorities
+3. **Cross-Run Oracle Harvest** — build oracle matrix from 12+ inference runs (which items did ANY run get right?)
+4. **Post-processor buildout** — multi-slot expander on 51 undercount items
+5. **Public dataset matching** — NuminaMath/MATH semantic search for verified answers
+6. **Gradescope code submission** — single run_inference() entry point
+7. **CHANGE KAGGLE FINAL PICKS** — currently 0.438 + 0.420, should be 0.692 + next best
 
-claude_strategy has NOT read every file. UNREAD and possibly gold-bearing:
-`DESIGN.md` (69KB), `experiments.md` (87KB), `prompt_engineering_research.md` (71KB), `HANDOFF.md` (32KB), `papers.md`, `variants_and_prompts.md`, `sft/v3/`, `sft/v4/`, `report/`, `research/`, `tests/`, `data/`, `pre_flight/`.
+## Key Files to Read
+- `agents/CLAUDE_STRATEGY.md` — your operating contract (UPDATED Day 5 with tools)
+- `strategy/LEVERS.md` — active levers
+- `strategy/TIERS.md` — T1-T5 confidence tiers
+- `submission/REGISTRY.md` — all 29 submissions with scores
+- `postprocessing/TODO.md` — post-processing levers
+- `infrastructure/pre_flight/production_commands.md` — exact inference configs
 
-Read everything. Populate the TODO run folders. Surface floating gold. Rain: "I HAVE A FEELING DOCS CONTAINING GOLD ARE FLOATING AROUND EVERYWHERE." Trust that instinct.
-
-## THURSDAY MILKING SEQUENCE (after full read)
-
-1. Build Cross-Run Oracle Harvest list — for each item, best-guess answer + did any run produce it
-2. Generic multi-slot expander on Qwen's own text → submit one slot
-3. oracle@8 on run14b → decide GenSelect worth
-4. Score NoThinking 943 standalone → one slot, free diagnostic
-5. Map T1-T5 answer-sheet coverage → know Day 7 override ammo
-
-## OPEN DECISIONS FOR RAIN
-
-1. Confirm Cross-Run Oracle Harvest as Thursday's #1 milking task
-2. Strawman Targeted-Memo SFT before Saturday commit
-3. Could exhausting all SEARCH get answer sheet to ~0.9? (Rain estimate, ~2 days harvest) — likely yes for the SHEET, but conversion still needs override (Day 7) or SFT. Inference-only won't reach 0.9.
-
-## ADAPTER HISTORY NOTE
-
-v1 (3-arm catastrophe, not submitted) → v3 (0.452) → v4 (0.597, composition UNREAD) → v5 (~0.646 break-even, 87% T1-easy training). No v2, no v6. "v7" = planned next (naming skips v6 — investigate). v5 kept as adapter, NO merge. Targeted-Memo SFT (Lever 6) is DIFFERENT from v5 because it would train on items Qwen gets WRONG, not the 87% easy items — BUT confirm via full read that we didn't already try this.
+## Compute Status
+- **DSMLP**: Active, A30 24GB, clean
+- **Thunder tnr-0**: KILL (audited, clean)
+- **Thunder tnr-1**: KILL (audited, stashes droppable)
