@@ -67,7 +67,7 @@ raw outputs → `inference/results/`
 
 | CLAUDE_STRATEGY.md says | CORRECTION (newer, authoritative) |
 |---|---|
-| Grader "extracts from ALL boxed{}" | Two findings coexist in repo — RECONCILE before trusting either (see Open Hygiene Items). Treat single `\boxed{a, b, c}` as canonical multi-answer format; per-slot `\boxed{a}\boxed{b}` cost −16.2pp; reversed order −17.6pp. |
+| Grader "extracts from ALL boxed{}" | RESOLVED (Day 6): WRONG. Kaggle grader = Hendrycks `is_equiv`, confirmed by source-code review (postprocessing/FINDINGS.md F1) → extracts ONLY the **last** `\boxed{}`. Memory/SESSION_HANDOFF were right. Canonical multi-answer = single `\boxed{a, b, c}` (per-slot −16.2pp; reversed order −17.6pp; multi-slot under-count = 79% of failures). Local judger.py uses "last contiguous group" (more lenient) — a source of the 28pp local↔Kaggle gap. agents/CLAUDE_STRATEGY.md still states the wrong claim — surfaced to Rain for correction. |
 | Comms via Chrome MCP | Now: git clone+pull (read) + GitHub PAT via bash (write). git-mcp read works (45 tools); git-mcp write 403s. Chrome MCP not in use. |
 | TritonAI endpoint usable for GenSelect | Rules FORBID external API + separate models + TIR at inference. TritonAI cannot be used at inference time. 🔴 Also leaks an API key in a PUBLIC repo — ROTATE. |
 | "~9 days to deadline" | Days, not weeks. Gradescope 5/31, Kaggle ~6/02. |
