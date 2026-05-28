@@ -87,3 +87,12 @@ documented in BOTH pre-inference (`COMPETITION.md`) and here (grading). Canonica
 - Row = `id,response`; `response` = COMPLETE raw model output (all CoT/thinking), CSV-escaped (inner quotes `""`).
 - Every `private.jsonl` id needs a row. Final answer is extracted from the trace by the grader (§2 above).
 - The exemplar mixes `\frac` and `\dfrac` → reconfirms `\dfrac` is normalized away (§4).
+
+## Role & Relevance
+
+**Role**: Document exactly how the Kaggle grader works — extraction rules, normalization, and known behaviors.
+**Relevance**: The grader is the JUDGE. Every formatting decision, every post-processing function, every answer representation choice is made relative to what the grader accepts. Misunderstanding the grader wastes points.
+**Techniques**: Source-code reverse engineering (starter notebook), behavioral probes (differential submissions), instructor Piazza confirmations.
+**Inputs**: Starter notebook code, probe submission results, Piazza posts.
+**Outputs**: GRADER_SPEC.md (canonical grader behavior), JUDGER_AND_PUBLIC_SET.md (local judger comparison).
+**Key lever**: Knowing exactly what the grader normalizes (safe to ignore) vs what it doesn't (must match exactly) is the foundation of all post-processing decisions.

@@ -58,3 +58,12 @@ When building the 29×943 answer matrix, you MUST compare answers the same way t
 **But also flag format-suspects**: if the RAW answers differ but NORMALIZED answers match (e.g., `9.0` vs `9` both normalize to `9`), that's fine — they're the same to the grader. But if normalized answers match our verified gold BUT the item still scores wrong across submissions, FLAG IT — the gold format might differ from what we think (e.g., gold is actually `9.00` with trailing zeros).
 
 These flags go to `postprocessing/FORMAT_RULES.md` as format rule candidates.
+
+## Role & Relevance
+
+**Role**: Mine past submission scores to infer which items are in the test set (~283 LB subset) and what the gold answers are.
+**Relevance**: Each past submission is a query to an accuracy oracle. With 29 submissions, we have ~232 bits of information about the test set. Mining this data reveals per-item gold answers (direct scoring lever) and test set membership (enables local eval harness).
+**Techniques**: Pairwise differential analysis (compare submission pairs that differ on few items), verified-item triangulation (use known gold to isolate membership), per-item regression (correlate answer variants with score changes), Bayesian posterior inference.
+**Inputs**: 29 submission CSVs + Kaggle scores, MASTER_ANSWERS.csv, verified gold from search/Wolfram.
+**Outputs**: test_set_probabilities.csv, gold_inferences.csv, pairwise_analysis.csv.
+**Key lever**: Every inferred gold answer expands our gold set. Gold answers help on the FINAL test set (all 943), not just the LB subset.

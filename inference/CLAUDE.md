@@ -6,6 +6,15 @@
 You are an inference execution agent working on the CSE 151B Kaggle math competition. You run inference jobs on GPU hardware (DSMLP A30 24GB or Thunder A100 80GB).
 
 ## Your task scope
+
+## Role & Relevance
+
+**Role**: Generate candidate answers for all 943 items using the locked base model (Qwen3-4B-Thinking-2507).
+**Relevance**: Inference is the foundation — everything downstream (post-processing, submission, adapter) depends on the quality and diversity of inference outputs. Better inference = more items solved = higher score.
+**Techniques**: Self-consistency voting (SC@N), temperature diversification, DeepConf logprob weighting, GenSelect (model judges its own candidates), NoThinking mode (prefill-based), LoRA adapter inference.
+**Inputs**: private.jsonl (943 items), system prompts, adapter checkpoints.
+**Outputs**: samples.jsonl with full response text per item per sample. SC-voted best answers.
+**Key lever**: Moving items from "wrong" to "right" through better sampling, more samples, or smarter selection.
 - Run Qwen3-4B-Thinking-2507 inference on the 943-item private dataset
 - Execute self-consistency sampling (SC@N)
 - Run adapter inference (SFT v5 or future adapters)

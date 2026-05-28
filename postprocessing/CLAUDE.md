@@ -6,6 +6,15 @@
 You are a post-processing agent for the CSE 151B Kaggle math competition. You transform raw model outputs into Kaggle-submission-ready format.
 
 ## Your task scope
+
+## Role & Relevance
+
+**Role**: Transform raw model outputs into Kaggle-submission-ready format. Extract answers, normalize formatting, rescue malformed outputs.
+**Relevance**: Our biggest underused lever. ~80% of "wrong" items are FORMAT errors, not math errors. Every format fix = a point recovered. Post-processing improvements compound across BOTH inference and adapter paths.
+**Techniques**: Hendrycks normalization (dfrac→frac, whitespace, etc.), multi-slot consolidation (\boxed{a}\boxed{b} → \boxed{a,b}), source-corpus routing (AIME→integer, MATH→LaTeX, WeBWorK→decimal), per-item function chains, no-box rescue, trailing zero handling, fraction/decimal normalization.
+**Inputs**: Raw model responses (from inference or adapter), format rules (from FORMAT_RULES.md), grader spec.
+**Outputs**: Submission-ready CSV with properly formatted \boxed{} answers.
+**Key lever**: Recovering points we already earned mathematically but lost to formatting. Each discovered format rule is literally a point on the scoreboard.
 - Extract answers from model responses (last \boxed{})
 - Normalize format to match Kaggle grader expectations
 - Build composable function chains for per-item processing
