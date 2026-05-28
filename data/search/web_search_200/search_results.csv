@@ -6,26 +6,26 @@ item_id,category,search_status,found_answer,source_url,source_type,confidence,no
 597,MCQ,UNSEARCHED,,,,87.33,
 930,MCQ,UNSEARCHED,,,,87.33,
 141,MCQ,UNSEARCHED,,,,85.56,
-1,MCQ,UNSEARCHED,,,,85.4,
+1,MCQ,GOLD,Unchanged,computed,computation,85.4,Scaling all weights by same factor does not change weighted mean.
 13,MCQ,UNSEARCHED,,,,85.4,
 23,MCQ,UNSEARCHED,,,,85.4,
-34,MCQ,UNSEARCHED,,,,85.4,
+34,MCQ,GOLD,20 is an outlier.,computed,computation,85.4,IQR=6. Upper fence=Q3+1.5*IQR=19.5. Max=20>19.5 → 20 is outlier. Min=3>Q1-1.5*IQR=-4.5 → not outlier.
 38,MCQ,UNSEARCHED,,,,85.4,
-47,MCQ,UNSEARCHED,,,,85.4,
+47,MCQ,GOLD,"1,2,4",computed,computation,85.4,"3^1-1=2 div 2. 3^2-1=8 div 4. 3^4-1=80 div 16. m=1,2,4. Matches option."
 53,MCQ,UNSEARCHED,,,,85.4,
-73,MCQ,UNSEARCHED,,,,85.4,
+73,MCQ,GOLD,"f(u,v) = 1/(2π) * 1/(1+v²) * e^(-u/2), u>0",computed,computation,85.4,"U=chi^2(2)=Exp(1/2), V=Cauchy. Independent. Matches option 5."
 80,MCQ,GOLD,\frac{\sqrt{3}}{12},computed,computation,85.4,"sqrt(108)=6sqrt(3), 2sqrt(12)=4sqrt(3), 2sqrt(27)=6sqrt(3). Denom=16sqrt(3). 4/(16sqrt(3))=sqrt(3)/12. Matches option."
 85,MCQ,GOLD,3,computed,computation,85.4,Pigeonhole: ceil(1000/365)=3. Matches option.
-92,MCQ,UNSEARCHED,,,,85.4,
-107,MCQ,UNSEARCHED,,,,85.4,
-109,MCQ,UNSEARCHED,,,,85.4,
-123,MCQ,UNSEARCHED,,,,85.4,
+92,MCQ,GOLD,1/m - 1/(m+n) + 1/(m+2n) - ...,computed,computation,85.4,Geometric series expansion: I = sum_{k=0}^∞ (-1)^k/(m+kn). Matches option 5.
+107,MCQ,GOLD,"(1/13, -1/13)",computed,computation,85.4,"Reflect A(2,3) over y=-x to get A'(-3,-2). Line A'→(5,3) intersects x+y=0 at (1/13,-1/13)."
+109,MCQ,GOLD,"4,2; 1,1,5; 1,-1,3",computed,computation,85.4,"Matrix (a): λ=4,2. (b): trace=7,det=5→λ=1,1,5. (c): trace=3,det=-3→λ=1,-1,3. Matches option B."
+123,MCQ,GOLD,x²cos(y) + y²cos(x) + C,computed,computation,85.4,Exact differential: F = x²cos(y) + y²cos(x) + C. Matches option 7.
 146,MCQ,UNSEARCHED,,,,85.4,
 147,MCQ,UNSEARCHED,,,,85.4,
 148,MCQ,UNSEARCHED,,,,85.4,
 150,MCQ,UNSEARCHED,,,,85.4,
 183,MCQ,UNSEARCHED,,,,85.4,
-186,MCQ,UNSEARCHED,,,,85.4,
+186,MCQ,GOLD,3 m/s,computed,computation,85.4,a=v → v dv/dx=v → dv/dx=1 → v=x+C. v(1)=1 → C=0. v(3)=3.
 200,MCQ,GOLD,463,https://artofproblemsolving.com/wiki/index.php/1999_AIME_Problems/Problem_14,AoPS,85.4,1999 AIME I Problem 14. Brocard point. m+n=463 confirmed on AoPS and Cheenta.
 212,MCQ,UNSEARCHED,,,,85.4,
 241,MCQ,GOLD,533,computed,computation,85.4,"S(n,k)=log_k(n) telescopes. Integer when n=k^j. Count pairs: 498+21+6+3+2+1+1+1=533. Matches option. Similar to 2001 AIME II."
@@ -33,21 +33,21 @@ item_id,category,search_status,found_answer,source_url,source_type,confidence,no
 254,MCQ,UNSEARCHED,,,,85.4,
 99,FREE,GOLD,"-6, 12, -6",computed,computation,89.93,"-|3-9|=-6, |-3-9|=12, -1*|9-3|=-6."
 185,FREE,UNSEARCHED,,,,89.93,
-567,FREE,UNSEARCHED,,,,89.93,
-516,FREE,UNSEARCHED,,,,89.85,
-437,FREE,UNSEARCHED,,,,89.65,
-480,FREE,UNSEARCHED,,,,89.49,
+567,FREE,GOLD,A,computed,computation,89.93,Intervals in frequency distribution should NOT overlap.
+516,FREE,GOLD,"coefficients: 7,-11,4; result: 0",computed,computation,89.85,"7-11+4=0, so 7j-11j+4j=0."
+437,FREE,GOLD,"76.37, 79.63",computed,computation,89.65,"95% CI: 78 ± 1.96*(17/sqrt(420)) = 78 ± 1.63 → (76.37, 79.63)."
+480,FREE,GOLD,2.5,computed,computation,89.49,h=-|7.5-5|+5=-2.5+5=2.5 ft.
 20,FREE,GOLD,"Mean=228, Median=229, Mode=250",computed,computation,89.31,"Mean=1824/8=228, Median=(216+242)/2=229, Mode=250 (appears twice)."
 137,FREE,GOLD,"2/13, 2/1",computed,computation,89.31,"36/234=2/13, 208/104=2."
 174,FREE,GOLD,"7, 7/8",computed,computation,89.31,"sqrt(49)=7, sqrt(49/64)=7/8."
 346,FREE,GOLD,"0.7, 0.07, 0.007",computed,computation,89.31,Simple division.
-380,FREE,UNSEARCHED,,,,89.31,
-461,FREE,UNSEARCHED,,,,89.31,
-576,FREE,UNSEARCHED,,,,89.31,
-671,FREE,UNSEARCHED,,,,89.31,
+380,FREE,GOLD,"0.075, 0.239, 32000, 16710, 38000, 0.00248, 52000",computed,computation,89.31,Standard metric conversions.
+461,FREE,GOLD,2,computed,computation,89.31,Range rule of thumb: std dev ≈ range/4 = 8/4 = 2.
+576,FREE,GOLD,"Sadie=2.5, Mable=0.5",computed,computation,89.31,"6m^2+7m-5=0 → m=1/2. Mable=0.5 day, Sadie=2.5 days."
+671,FREE,GOLD,"1.71, 113.2",computed,computation,89.31,"5.7*0.3=1.71, 56.6/0.5=113.2."
 794,FREE,UNSEARCHED,,,,89.31,
-872,FREE,UNSEARCHED,,,,89.31,
-920,FREE,UNSEARCHED,,,,89.21,
+872,FREE,GOLD,infinity,computed,computation,89.31,"As t→-∞, t^2→∞, so t^2+5→∞."
+920,FREE,GOLD,1008,computed,computation,89.21,1-9: 9 digits. 10-99: 180 digits. 100-372: 819 digits. Total=1008.
 15,FREE,GOLD,"8, NONE",computed,computation,87.98,"f(x)=x^8+4 is degree 8 polynomial. g(x)=8^x+4 is exponential, not polynomial (NONE)."
 31,FREE,GOLD,"-3, 42",computed,computation,87.98,"6/(-2)=-3, (-126)/(-3)=42."
 42,FREE,GOLD,"No, Yes",computed,computation,87.98,p=0.095. At 5%: 0.095>0.05 fail to reject (No). At 10%: 0.095<0.10 reject (Yes).
@@ -71,7 +71,7 @@ item_id,category,search_status,found_answer,source_url,source_type,confidence,no
 236,FREE,GOLD,"k=6e, p=-6",computed,computation,87.98,"6*e*s^(-3-3)=6e*s^(-6). Power function with k=6e, p=-6."
 238,FREE,GOLD,"f(x)=-61, g(x)=61, h(x)=62",computed,computation,87.98,Partial fractions: (x^2+61)/(x^2(x+1)) = -61/x + 61/x^2 + 62/(x+1).
 246,FREE,GOLD,"25, 23, 17, 23, 19",computed,computation,87.98,"125/5=25, 138/6=23, 119/7=17, 184/8=23, 152/8=19."
-256,FREE,UNSEARCHED,,,,87.98,
+256,FREE,GOLD,"A=-30, B=30",computed,computation,87.98,"6(5-5x)=30-30x, so A=-30, B=30."
 260,FREE,GOLD,"-22, 8",computed,computation,87.98,"-12-6-4=-22, 8+17-17=8."
 265,FREE,GOLD,A,computed,computation,87.98,Mode is the only measure meaningful for nominal data.
 268,FREE,GOLD,4450,computed,computation,87.98,550+300*13=4450 dollars.
@@ -84,18 +84,18 @@ item_id,category,search_status,found_answer,source_url,source_type,confidence,no
 332,FREE,GOLD,"778, 624",computed,computation,87.98,"1100001010_2=778, 1001110000_2=624."
 333,FREE,GOLD,"54, 62",computed,computation,87.98,"f(6)=8*6+6=54, f(7)=8*7+6=62."
 343,FREE,UNSEARCHED,,,,87.98,
-350,FREE,UNSEARCHED,,,,87.98,
-364,FREE,UNSEARCHED,,,,87.98,
-368,FREE,UNSEARCHED,,,,87.98,
-428,FREE,UNSEARCHED,,,,87.98,
-431,FREE,UNSEARCHED,,,,87.98,
-460,FREE,UNSEARCHED,,,,87.98,
-462,FREE,UNSEARCHED,,,,87.98,
-477,FREE,UNSEARCHED,,,,87.98,
-530,FREE,UNSEARCHED,,,,87.98,
-546,FREE,UNSEARCHED,,,,87.98,
-560,FREE,UNSEARCHED,,,,87.98,
-565,FREE,UNSEARCHED,,,,87.98,
-568,FREE,UNSEARCHED,,,,87.98,
-572,FREE,UNSEARCHED,,,,87.98,
-603,FREE,UNSEARCHED,,,,87.98,
+350,FREE,GOLD,"11100, 11001, 1100111",computed,computation,87.98,"28=11100, 25=11001, 103=1100111 in binary."
+364,FREE,GOLD,"Y, N, Y, N",computed,computation,87.98,1/(n^2+6) always defined=Y. 1/(n^2-25) undefined at ±5=N. sqrt(n^2+6) always defined=Y. ±n not a function=N.
+368,FREE,GOLD,B or C,computed,computation,87.98,f(5)=17 means 17 people eating at 5:05 PM.
+428,FREE,GOLD,43/55,computed,computation,87.98,(8/55)÷(8/43) = 43/55.
+431,FREE,GOLD,"m=5, p=42",computed,computation,87.98,Change of base: log_11(42)/log_11(5) = log_5(42).
+460,FREE,GOLD,"F, F",computed,computation,87.98,Difference of integers can be negative (not natural). Quotient not always integer.
+462,FREE,GOLD,"a=-7, b=8",computed,computation,87.98,"56-x^2+x≥0 → (x-8)(x+7)≤0 → [-7,8]."
+477,FREE,GOLD,A,computed,computation,87.98,Leading questions bias responses and must be avoided.
+530,FREE,GOLD,8/9,computed,computation,87.98,16/18 = 8/9.
+546,FREE,GOLD,"92, 126, 146, 72, 172",computed,computation,87.98,Simple multiplication by 2.
+560,FREE,GOLD,C,computed,computation,87.98,"Standardized variable = mean 0, std dev 1."
+565,FREE,GOLD,"-7.006, -7.06, -7.6",computed,computation,87.98,-7.006 > -7.06 > -7.6.
+568,FREE,GOLD,"-10, 3",computed,computation,87.98,"-4+(-6)=-10, -6+9=3."
+572,FREE,GOLD,8+(-6)+6=8,computed,computation,87.98,8-6+6=8 yards net gain.
+603,FREE,GOLD,C,computed,computation,87.98,Median is least affected by extreme outliers.
