@@ -1,4 +1,26 @@
 item_id,category,confidence,question_preview
+797,MCQ,89.21,"$\triangle ABC$ has $AB=3$ , $BC=2007$ , and $CA=2008$ . Point $E$ is on $AC$ such that $\angle ABE="
+223,MCQ,87.33,We now define an algorithm: The definition of a(n) is the elliptic divisibility sequence associated 
+377,MCQ,87.33,"Find the largest prime factor of the smallest positive integer $n$ such that $r_1, r_2, \ldots , r_{"
+471,MCQ,87.33,"In triangle $ABC,$ $BC=9.$ Points $P$ and $Q$ are located on $BC$ such that $BP=PQ=2,$ $QC=5.$ The c"
+597,MCQ,87.33,$ABC$ is a triangle with integer side lengths. Extend $\overline{AC}$ beyond $C$ to point $D$ such t
+930,MCQ,87.33,Given the n-order determinant $D \!=\! \left| \! \begin{array} {c c c c c} {{{1}}} & {{{2}}} & {{{3}
+141,MCQ,85.56,"Consider all positive integers written in base 7, are alternating 1's and 0's, beginning and ending "
+13,MCQ,85.4,"Solve the integral: $$ \int \frac{ 6 }{ \cos(-4 \cdot x)^7 \cdot \sin(4 \cdot x) } \, dx $$"
+23,MCQ,85.4,"The distance between points $A$ and $B$ is 5 km. Person A walks from $A$ towards $B$, while Person B"
+38,MCQ,85.4,"Calculate the following products: $$ \int_{C} \frac{d z} {( z-1 )^{2} ( z^{2}+1 )}, C_{1} x^{2}+y^{2"
+53,MCQ,85.4,A bird is lost in a 3 by 3 by 3 cubical maze. The bird flies from room to room going to adjoining ro
+146,MCQ,85.4,"Find the integral: $$ \int \frac{ 4 \cdot x^2+25 \cdot x+7 }{ \sqrt{x^2+8 \cdot x} } \, dx $$"
+147,MCQ,85.4,Compute the volume of the solid formed by rotating about the x-axis the area bounded by the axes and
+148,MCQ,85.4,"The composite Poisson process is defined as $$\left|Y_{i}=\sum_{n=1}^{x_{i}}\xi_{n},\quad t\geqslant"
+150,MCQ,85.4,"The cubic best square approximation polynomial of $f(x)=\mathrm{e}^{x}$ on $\left[-1, 1\right]$ is _"
+183,MCQ,85.4,"Solve the integral: $$ \int \frac{ 1 }{ \sin(x)^5 } \, dx $$"
+212,MCQ,85.4,Assuming the different arrival times of a given renewal counting process follow an exponential distr
+249,MCQ,85.4,"Using the series expansion for the function $(1+x)^m$, calculate approximately $\sqrt[4]{15}$ with a"
+254,MCQ,85.4,Let $C$ be a smooth projective curve over $\mathbb{C}$ and $\omega_{C}^{\otimes2}$ the square of its
+185,FREE,89.93,Determine which of the following statements are true and which are false. Enter the T or F in front 
+794,FREE,89.31,"Your teacher is trying to encourage her students to read more books. For the current 9-weeks period,"
+343,FREE,87.98,Match the verbal descriptions with the given polynomials. You need to use all polynomials and all de
 0,FREE,50.0,Use the order of operations to simplify: a) $[13-(11-11)]-[8-(5-6)]=$ [ANS] b) $4 \cdot 3-2+2 \cdot 
 2,FREE,50.0,"According to a recent marketing campaign, $120$ drinkers of either Diet Coke or Diet Pepsi participa"
 3,MCQ,50.0,"It is known that there are two types of fish in the pond, in a ratio of 7:3. If one fish is randomly"
@@ -77,25 +99,3 @@ item_id,category,confidence,question_preview
 128,FREE,50.0,$(y^2-9)$ Perform the indicated operation. Note that the denominators are the same. Simplify the res
 129,FREE,50.0,Write each equation in polar coordinates. Express as a function of $\small{t}$. Assume that $\small{
 130,FREE,50.0,Use the properties of exponents to simplify the following ${r^{16}}\cdot{r^{13}}\cdot{r^{13}}=$ [ANS
-131,FREE,50.0,"Physicians at a clinic gave what they thought were drugs to $950$ asthma, ulcer, and herpes patients"
-132,FREE,50.0,It’s given that $1 \text{mile}=5280 \text{feet}$ and $1 \text{yard}=3 \text{feet}$. Do the following
-133,FREE,50.0,"If $\theta=\frac {5 \pi} {3}$, then $\sin (\theta)$ equals [ANS] $\cos (\theta)$ equals [ANS] $\tan "
-134,FREE,50.0,"Given the following table, compute the median of the grouped data. $\begin{array}{ccc}\hline Class &"
-136,FREE,50.0,The percent frequency of a class is computed by: [ANS] A. multiplying the relative frequency by 100 
-138,FREE,50.0,"When an aircraft takes off, it accelerates until it reaches its takeoff speed $V$. In doing so it us"
-140,FREE,50.0,Gregory and Lesley are participating in a summer reading program. Gregory reads $45$ pages every day
-142,FREE,50.0,List the elements of the set \lbrace x | x \mbox{is a natural number between 6 and 12} \rbrace. Sepa
-143,FREE,50.0,"Convert from polar to rectangular coordinates: $\mathbf{(a)}\quad(8,\frac{3\pi}{2})\quad\Rightarrow_"
-145,FREE,50.0,Suppose that $M$ is the function that computes how many miles are in $x$ feet. Find the algebraic ru
-149,FREE,50.0,An airplane is flying at the height of ${10.8\ {\rm km}}$. The airplane can see both City 1 and City
-151,FREE,50.0,Evaluate the expression: ${48\div(8)6=}$ [ANS]
-153,MCQ,50.0,Transform the following quadratic form into its standard form using the method of completing the squ
-156,MCQ,50.0,What are the eigenroots of the following matrices? $$ \left( \begin{matrix} {{{1}}} & {{{-2}}} & {{{
-157,FREE,50.0,A weight on a vertical spring is given an initial downward velocity of 5 cm/sec from a point 7 cm ab
-160,FREE,50.0,Fill in the missing blank and determine the appropriate property illustrated: $1 \times$ [ANS] $=\fr
-161,FREE,50.0,"Let \( A \) be a set of 2025 positive real numbers. For a subset \( T \subseteq A \), define \( M_T "
-162,MCQ,50.0,"We now define an algorithm: The definition of a(n) is: Triangle with subscripts (1,1),(2,1),(1,2),(3"
-165,MCQ,50.0,Let $\mathrm{F}$ be the set $$ A = {\frac{0.6}{u_{1}}} + {\frac{0.8}{u_{2}}} + {\frac{1}{u_{3}}} + {
-166,FREE,50.0,"The area covered by a marsh, $A$, starts at $175$ acres and drops by a factor of $\dfrac{1}{4}$ each"
-167,FREE,50.0,Determine whether each of the following expressions is Positive or Negative. $\sin(271^\circ)$ [ANS]
-168,FREE,50.0,"A choral conductor has 1301 singers in her choir, some of them are professional singers. The conduct"
