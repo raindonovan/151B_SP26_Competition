@@ -42,3 +42,19 @@ For each item: group submissions by answer, compute avg score per group. Items i
 ## Read first
 - This file, submission/REGISTRY.md, data/MASTER_ANSWERS.csv
 - submission/BACKSOLVE_RESEARCH.md, grading/GRADER_SPEC.md, root CLAUDE.md
+
+## AMBER ALERT: Format-aware comparison (CRITICAL)
+
+When building the 29×943 answer matrix, you MUST compare answers the same way the Kaggle grader does. This means applying Hendrycks _strip_string normalization BEFORE comparison.
+
+**The problem**: submission 14 might have `\boxed{9.0}` and submission 2 might have `\boxed{9}`. If you compare raw strings, these look "different." But if the grader normalizes trailing zeros, they're IDENTICAL to Kaggle — and any score difference between submissions 14 and 2 has NOTHING to do with this item.
+
+**What to do**:
+1. Extract last `\boxed{}` content from each submission response
+2. Apply Hendrycks normalization (strip whitespace, dfrac→frac, \left/\right removal, etc.)
+3. THEN compare. Two answers are "same" only if their normalized forms match.
+4. See `grading/GRADER_SPEC.md` Section 4 for exact normalization rules.
+
+**But also flag format-suspects**: if the RAW answers differ but NORMALIZED answers match (e.g., `9.0` vs `9` both normalize to `9`), that's fine — they're the same to the grader. But if normalized answers match our verified gold BUT the item still scores wrong across submissions, FLAG IT — the gold format might differ from what we think (e.g., gold is actually `9.00` with trailing zeros).
+
+These flags go to `postprocessing/FORMAT_RULES.md` as format rule candidates.
