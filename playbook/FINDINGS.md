@@ -1,51 +1,70 @@
 # PLAYBOOK FINDINGS
 
-**Updated**: 2026-05-28 (Day 4 start)
-**Note**: Findings specific to the 0.85 push. Competition-wide findings remain in `docs/FINDINGS.md`.
+**Updated**: 2026-05-28 Day 4 EOD
+**Note**: Findings specific to the 0.85 push. Competition-wide findings remain in `docs/FINDINGS.md`. Per-run findings live in `playbook/runs/<run_name>/findings.md`.
 
-## F1 — Total gain from all post-processing/normalization/overrides combined: +4.9pp
+## F1 — Inference-only base is ~0.646. Combined gains from format/post-processing/overrides reached 0.692 (Day 3). The +4.9pp gross gain includes Wolfram overrides — NOT inference-only.
 
-From base inference 0.643 (slot1_minimal_norm) to current best 0.692 (slot1/2 kitchen-sink, Day 3) = +4.9pp gross.
+Corrected from earlier F1: the 0.692 figure conflates inference improvements with override-applied submissions. Inference-only (slot1_reformat) is 0.646.
 
-Breakdown:
-- Minimal normalizer: +0.4pp
-- Reformat (multi-answer): +0.3pp
-- Wolfram full overrides (~38 items): +0.7pp
-- Day 3 kitchen sink (~71 more overrides + Hendrycks transforms): +3.9pp
-- TOTAL: +4.9pp over 3 days
+| Type | Score | Δ from base inference |
+|---|---|---|
+| Real inference, no normalization | ~0.643 (slot1_minimal_norm) | baseline |
+| Real inference + multi-answer reformat | 0.646 (slot1_reformat) | +0.3pp |
+| Real inference + reformat + Wolfram overrides | 0.653 (slot1_wolfram_full_overrides) | +0.7pp |
+| Real inference + Day 3 kitchen sink (71 overrides + Hendrycks transforms) | 0.692 (slot1/slot2) | +4.9pp **with overrides** |
 
-**Implication**: incremental gains from format tricks are SMALL. We've extracted most of the easy juice. The leader at 0.85 has a structural advantage we haven't replicated. To close the gap, we need a single lever worth +10pp+, not five more format tweaks worth +0.3pp each.
+**Inference-only honest read: we're at 0.646. Overrides add another +4.6pp on top.** The leader at 0.85 sits +15.8pp above slot1_reformat and +20.4pp above raw base. Format tricks alone won't close this.
 
-## F2 — OPL is answer-sheet gold for ~30-40 items, NOT training gold
+## F2 — OPL is answer-sheet gold for ~30-40 items, not training gold
 
-OPL match analysis (results/opl_match/candidates.csv, 2057 rows):
-- 39 items have OK-status (clean concrete answer extracted from OPL .pg file)
-- All 39 disagree with current Qwen submission
-- 1 item has HIGH-bucket similarity match (id=15, sim=0.9055, OPL says "0")
-- 844 items match parameterized templates — would require solving with our specific values (heavy lift)
-
-**Conclusion**: OPL is best understood as a SOURCE OF ANSWER-SHEET CANDIDATES (T2-T3 tier), not as training data. The earlier "+5-12pp" projection was inherited speculation; actual realized value is **+3-4pp** if all 39 OK items are correctly overridden.
-
-**Secondary value**: OPL provides a CLASSIFICATION signal (what kind of math is this question testing?) which CAN improve routing to Wolfram or to teacher LLMs. But that secondary value is not directly scorable.
+See `playbook/runs/opl_run/findings.md` for full analysis. Headline:
+- 39 OK-status items with clean concrete OPL answers, all disagree with Qwen
+- Realistic projection +3.6pp (lower) to +10-12pp (upper, with layering)
+- Earlier "+5-12pp" projection was inherited speculation
+- NOT training gold (no CoT traces)
 
 ## F3 — The "memorization 20/20" SFT v5 test was measuring the wrong thing
 
-`scripts/memo_test_v5.py` tested whether v5 adapter could reproduce its TRAINING items. It got 20/20 on items that were IN the 391-item training set. This is MEMORIZATION, not generalization.
+See `playbook/runs/sft_v5_run/findings.md`. Headline:
+- The 20 test items were IN the v5 training set → memorization, not generalization
+- Real test-set performance was near break-even with base
+- **Discipline correction**: held-out validation set required before any future SFT is declared viable
 
-The v5 adapter on REAL inference (the 943-item private set, items the model has never seen) is essentially break-even with base inference. The 20/20 score told us nothing about test-set performance.
+## F4 — Wolfram says 79% of "wrong" items are format/multi-slot issues, not arithmetic errors
 
-**Implication**: don't trust "memorization confirms training worked" as evidence of model improvement. Need to evaluate on held-out items.
+From `docs/WOLFRAM_FINDINGS.md`:
+- 79% of B1-7 items are multi-slot under-count (Qwen emits last 1-2 slots of N-slot answer)
+- 56% of B8 items: Qwen math correct, format wrong
+- 700-750 of 943 items are HIGH-computable
+- **Multi-slot expansion lever (Lever 5) attacks the dominant failure mode**
 
-## F4 — Genuine arithmetic errors vs format errors: roughly 21% vs 79% (B1-7 Wolfram audit)
+## F5 — RAIN'S INSIGHT: Targeted Memorization SFT (NEW LEVER 6)
 
-From Wolfram findings: 79% of items Qwen gets "wrong" are format/multi-slot issues with correct math. 21% are genuine arithmetic errors.
+If memorization on training items is reliable, that capability IS useful — for specific items we KNOW Qwen gets wrong.
 
-**Implication**:
-- Format-fix levers cap at +21-25pp (the 79% pool)
-- We've extracted +5pp of that already
-- Remaining ceiling: +15-20pp from format alone IF we crack multi-slot expansion
-- TIR addresses the 21% genuine-arithmetic items (and produces cleaner format on the rest)
+**The play**: train SFT adapter on 200-300 verified-wrong items. Use selectively at inference (only for items the adapter was trained on, or with confidence routing).
 
-## F5 — Submissions are SCARCE now (updated Day 3)
+**Differs from v1/v4/v5**: scope is narrower (memorize specific items), success metric is clearer (does it produce the verified answer for THOSE items), generalization is not claimed.
 
-Earlier framing of "non-scarce" is dead. 5 days × 3/day = 15 submissions remaining, each must test a deliberate hypothesis. At deadline: 2 final picks.
+**Rules check**: SFT is explicitly permitted. Selective routing at inference is single-model technique. ALLOWED.
+
+See `playbook/LEVERS.md` Lever 6 + `playbook/runs/sft_v5_run/findings.md` for full reasoning.
+
+## F6 — Rules constraints (locked 2026-05-28)
+
+Re-read of competition description revealed:
+- **TIR / code interpreters / tool-augmented generation EXPLICITLY EXCLUDED at inference time**
+- **External model calls EXCLUDED** (including separate PRM model)
+- SFT, RL, prompt engineering, self-consistency all permitted
+
+**Implications**:
+- Lever 1 (TIR) is KILLED
+- PRM-half of Lever 3 is KILLED
+- Levers 2, 3 (GenSelect), 4, 5, 6 all rules-permitted
+
+**Hardcoded overrides are gray zone** — technically allowed by strict read, probably violate spirit. Off-table until Day 7 per Rain.
+
+## F7 — Submission scarcity
+
+5 days × 3/day = ~12 submissions remaining. Each must test a deliberate hypothesis. At deadline: 2 final picks.
