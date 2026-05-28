@@ -1,57 +1,81 @@
-# PLAYBOOK TODO
+# TODO — Day 6 (2026-05-28)
 
-**Updated**: 2026-05-28 Day 4 EOD
-**Note**: PLAYBOOK-specific TODO for the 0.85 push. Canonical project TODO at `docs/TODO.md`.
+**Mode**: Repo hygiene / strategy. NO analysis/inference until Rain switches gears.
 
-## THIS SESSION (immediate)
+## Immediate (this session)
 
-Per Rain's 5-priority directive: organize docs + analyze unanalyzed + squeeze every 0.01pp from existing repo (NO new inferences, NO new builds).
+### Strategy & docs
+- [x] Create test pipeline north star (TEST_PIPELINE.md)
+- [x] Create strategy/CLAUDE.md (heart of claude_strategy)
+- [x] Create per-folder CLAUDE.md files (inference, postprocessing, submission, data/search)
+- [x] Create submission/GLOBAL_STRATEGY.md
+- [x] Create submission/BACKSOLVE_RESEARCH.md
+- [x] Create strategy/INFERENCE_TECHNIQUES.md (tried vs untried)
+- [x] Create strategy/POST_PROCESSING_TECHNIQUES.md (implemented vs planned)
+- [x] Create research/FORMAT_CONVENTIONS.md
+- [x] Update SESSION_HANDOFF.md for Day 6
+- [x] Update this TODO.md
+- [ ] Update root CLAUDE.md with PAT-first protocol
+- [ ] Update agents/CLAUDE_STRATEGY.md to point to strategy/CLAUDE.md
 
-- [x] Restructure playbook/runs/ to one-folder-per-run with findings.md inside
-- [x] Move OPL findings into `playbook/runs/opl_run/`
-- [x] Move GenSelect findings into `playbook/runs/genselect_poc_run/`
-- [x] Move SFT v5 findings + Rain's targeted-memorization insight into `playbook/runs/sft_v5_run/`
-- [x] Delete `playbook/POSTMORTEMS.md` (replaced by per-run findings)
-- [x] Rename `docs/SUBMISSIONS_TODO.md` → `docs/TODO.md` (canonical)
-- [x] Update LEVERS.md with rules constraints (TIR killed, PRM killed, Lever 6 added)
-- [ ] Update memory with rules constraints
-- [ ] Begin analysis of one unanalyzed run from the backlog (next session)
+### Data artifacts (Day 6 acceptance criteria)
+- [ ] **ANSWER_SHEET**: Run build_answer_sheet_v6.py, commit output CSV (currently MISSING)
+- [ ] **MASTER_ITEM_TABLE**: Reconcile master_tracker 1039 rows vs 943 items in private.jsonl
+- [ ] **RUN_ANSWER_MATRIX**: Items × runs cross-tab (which items did EACH run get right?)
+- [ ] **RUN_REGISTRY**: Canonical list of ALL inference runs with metadata
+- [ ] **GRADER_SPEC**: Already exists at grading/GRADER_SPEC.md — verify up to date
+- [ ] **ADAPTER_REGISTRY**: Catalog all adapters (v3, v4, v5) with status and location
 
-## P0 — Day 5 morning (cheap free-info on existing data, no new inference)
+### Run folder hygiene
+- [ ] Confirm every run folder has an analysis doc (even if stub)
+- [ ] Inventory ALL unanalyzed runs (NoThinking, Hardest-30, GenSelect PoC)
+- [ ] Review analyzed runs for completeness
 
-- [ ] **Oracle@8 analysis on run14b** — for each of 943 items, does ANY of the 8 SC samples match gold proxy? Tells us ceiling for Lever 3 (selection).
-- [ ] **Score NoThinking SC=8 full-943 standalone** via Kaggle slot — free diagnostic anchor (45MB exists, never scored)
-- [ ] **Analyze hardest-30 SC=16 results** (`results/hybrid/tnr-A/`) — check if any new correct answers we don't have
-- [ ] **Re-analyze GenSelect PoC** — count items where correct was in pool but selector picked wrong + truncation correlation
-- [ ] **Build multi-slot expander** from `results/undercount_candidates.csv` 51 use_teacher items — apply to existing submission for one Kaggle test
+## Core questions (MUST ANSWER — requires data artifacts first)
 
-## P1 — Day 5-6 (squeeze remaining juice from existing data)
+- [ ] **Q1**: What questions have we inferred correctly? (needs RUN_ANSWER_MATRIX)
+- [ ] **Q2**: What answers are T1/Gold/90%+ confidence? (needs ANSWER_SHEET output)
+- [ ] **Q3**: What can we infer right but need format fixing? (needs Q1 + grader analysis)
+- [ ] **Q4**: What gold answers can't be answered through inference? (needs Q1, these are adapter candidates)
 
-- [ ] Map answer sheet T-tier coverage across 943 items (using new T1-T5 naming)
-- [ ] Identify items that have HIGH-T answers but Qwen is wrong — these are the override-target pool for Day 7
-- [ ] Compute "what would Pick A score be" if we trust T1+T2 answer sheet on items where Qwen disagrees (without applying — diagnostic only)
-- [ ] Confirm sft/v4 trace composition (currently unknown — read sft/v4/ folder)
+## After switching gears (Rain decides when)
 
-## P2 — Day 6-7 (commit one big lever)
+### Post-processing (MAJOR LEVER — do before adapter)
+- [ ] Implement comma-in-numbers stripping
+- [ ] Implement unit word removal (Minerva word list)
+- [ ] Implement source-corpus routing (AIME→integer, MATH→LaTeX, WeBWorK→decimal)
+- [ ] Build per-item function chain architecture
+- [ ] Test post-processing on gold set items
 
-- [ ] Decide between Lever 6 (Targeted Memo SFT) vs Lever 3 (GenSelect re-run) based on P0/P1 findings
-- [ ] Execute chosen lever
-- [ ] Submit best result + Pick B with overrides
+### Inference (GPU work — can run autonomously)
+- [ ] Analyze NoThinking SC=8 results
+- [ ] Analyze Hardest-30 SC=16 results
+- [ ] Re-analyze GenSelect PoC (truncation correlation)
+- [ ] Oracle@8 analysis on run14b (ceiling for selection techniques)
+- [ ] Spec DeepConf@SC32 run (can run 2 days on Thunder)
 
-## P3 — Final submission
+### Submissions
+- [ ] **CHANGE KAGGLE PICKS** to 0.692 + next best (URGENT — before 5/31)
+- [ ] Submit Track A v1 baseline (when ready)
+- [ ] Design first oracle mining differential pair
 
-- [ ] Code submission to Gradescope by Sun 2026-05-31
-- [ ] Final 2 Kaggle picks by ~2026-06-02
+### Adapter (BONUS — only if time after post-processing)
+- [ ] Answer Q4 (what items can't inference solve?)
+- [ ] Build training set from Q4 items with verified gold
+- [ ] Train QLoRA v7 (targeted memorization)
+- [ ] Test: does adapter reproduce training items?
+- [ ] Test: does adapter degrade held-out items?
 
-## RESEARCH QUEUE (held — Rain to approve dispatch)
+### Code submission (due 2026-05-31)
+- [ ] Single run_inference() entry point
+- [ ] Fine-tuned models on HF Hub
+- [ ] Public GitHub repo + README
+- [ ] All group members on Gradescope
 
-- [x] ~~R1 (TIR feasibility)~~ — KILLED by rules
-- [ ] R2 — REVISED: skip PRM (rules) → ask about "single-model judge prompt design for math BoN selection"
-- [ ] R3 — Targeted Memorization SFT precedents: who has trained adapters on small held-out datasets and used them selectively at inference?
-- [ ] R4 — GenSelect with full-length candidates: implementation patterns from NVIDIA NemoSkills AIMO-2 winner
-
-## OPEN QUESTIONS FOR RAIN
-
-1. Is multi-slot expansion using `undercount_candidates.csv` teacher consensus considered an "override" (off-table until Day 7) or "post-processing" (allowed)?
-2. Approve Lever 6 (Targeted Memorization SFT) scoping work?
-3. Approve dispatch of R3/R4 research prompts (R1 dead, R2 revised)?
+## Research queue
+- [x] Format conventions research (deep research session)
+- [x] Log-loss oracle paper (1707.01825) → documented in BACKSOLVE_RESEARCH.md
+- [x] DeepConf identification (Fu et al. 2508.15260)
+- [ ] R2: Single-model judge prompt design for math BoN selection
+- [ ] R3: Targeted memorization SFT precedents
+- [ ] R4: GenSelect with full-length candidates (NVIDIA NemoSkills AIMO-2 winner)

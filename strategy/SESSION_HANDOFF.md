@@ -1,72 +1,80 @@
-# SESSION HANDOFF — Day 5 Evening (2026-05-28)
+# SESSION HANDOFF — Day 6 Morning (2026-05-28)
 
 ## You are claude_strategy = CENTRAL NODE
-Read `agents/CLAUDE_STRATEGY.md` for your full tools list and operating rules.
+Read `strategy/CLAUDE.md` for your full operating contract.
 
-## Session Start Checklist
+## Session start checklist
 1. Clone repo: `git clone https://github.com/beepbeeepimajeep/151B_SP26_Competition.git /home/claude/repo`
 2. Ask Rain for PAT: "I need the GitHub PAT to push directly."
-3. Read this file + `agents/CLAUDE_STRATEGY.md` + memory
+3. Read this file + `strategy/CLAUDE.md` + memory
 4. Check `strategy/TODO.md` for priorities
 
-## Current State
+## Current state
 - **Best inference-only**: 0.646 (slot1_reformat, run14b SC=8 32K)
 - **Best with overrides**: 0.692 (kitchen_sink_C, 78 overrides)
-- **Leader**: 0.85
-- **Deadline**: Sun 5/31 (Gradescope code + Kaggle final picks)
-- **Submissions used**: 29 of ~45 total (3/day). ~12 remaining.
+- **Leader**: 0.85 (gap: 15.8pp from inference, 20.4pp from base)
+- **Deadline**: ~2026-06-02 (Kaggle final picks) / 2026-05-31 (Gradescope code)
+- **Submissions remaining**: ~20 (5/day final week)
 - **CURRENT KAGGLE PICKS ARE WRONG**: 0.438 + 0.420 selected. CHANGE BEFORE DEADLINE.
 
-## What was done Day 5
-- Full repo reorganization into pipeline structure (agents/ strategy/ data/ inference/ postprocessing/ submission/ archive/ infrastructure/)
-- Full data audits: DSMLP clean, Thunder tnr-0 clean, tnr-1 clean (kill both)
-- 4 critical inference JSONLs LFS-tracked (586MB, f231f1a)
-- 29/29 submission CSVs verified + definitive REGISTRY.md with all Kaggle scores
-- Agent configs updated with tools, LFS rule, full read protocol
-- Direct push via PAT + bash_tool established (breakthrough — no more vscode relay for writes)
-- Checkpoint stubs committed for untracked weights (paper trail for report)
-- Gold findings from repo read captured (see below)
-
-## Repo Structure (post-reorg)
+## North star: TEST PIPELINE
+See `strategy/TEST_PIPELINE.md` for the full architecture.
 ```
-START_HERE.md          # Entry point (NEEDS UPDATE — still has old paths)
-agents/                # CLAUDE_VSCODE.md, CLAUDE_STRATEGY.md, CLAUDE_THUNDER.md
-strategy/              # SESSION_HANDOFF (this), TODO, LEVERS, TIERS, FINDINGS, RESEARCH
-data/                  # answer_sheet/, search/{wolfram,pace,opl,search_app,teachers}, system_prompts/
-inference/             # scripts/, results/, runs/, adapters/{sft_v1-v5}, training/
-postprocessing/        # scripts/, format_review/, FINDINGS, TODO
-submission/            # csvs/ (29 files), scripts/, REGISTRY.md, INTEGRITY_REPORT.md
-archive/               # handoffs/, strategy/, design/, research/, docs/, session_logs/, submissions_never_sent/
-infrastructure/        # scripts/, pre_flight/, logs/
+Gold set → Inference → Compare → YES: post-proc → submit
+                                → NO: adapter → post-proc → submit
+                                → Kaggle score → back-solve → iterate
 ```
 
-## Gold Findings from Day 5 Repo Read
-1. **Public dataset matching (NuminaMath 860K + MATH 12.5K)** = highest-EV play not yet started (from STRATEGY_0_85.md)
-2. **~310 items wrong despite \boxed{}** — ceiling from fixing WRONG answers >> format fixes or no-box rescue
-3. **Trailing-zero strip PROVEN NEUTRAL** — Day 3 Slots 1 vs 2 both 0.692
-4. **MED tier = +0.3pp** — kitchen sink (0.692) vs minus-all-MED (0.689)
-5. **format_aware_v1.txt** already implements V2 bookend addressing grader's last-\boxed{} behavior
-6. **TIR is KILLED by rules** — STRATEGY_0_85 Day 6 TIR plan is dead
-7. **Cross-Run Oracle Harvest UNLOCKED** — all inference JSONLs now on GitHub via LFS
+## What was done Day 5 (repo hygiene)
+- Full repo reorganization into pipeline structure
+- 29 submissions verified + definitive REGISTRY.md
+- 4 critical inference JSONLs LFS-tracked (586MB)
+- Data audits on DSMLP/Thunder — both Thunder instances flagged KILL
+- Direct push via PAT + bash established
 
-## Priority Stack (next session)
-1. **UPDATE START_HERE.md** with post-reorg paths (still points to old structure)
-2. **Update strategy/TODO.md** with comprehensive priorities
-3. **Cross-Run Oracle Harvest** — build oracle matrix from 12+ inference runs (which items did ANY run get right?)
-4. **Post-processor buildout** — multi-slot expander on 51 undercount items
-5. **Public dataset matching** — NuminaMath/MATH semantic search for verified answers
-6. **Gradescope code submission** — single run_inference() entry point
-7. **CHANGE KAGGLE FINAL PICKS** — currently 0.438 + 0.420, should be 0.692 + next best
+## What was done Day 6 morning (this session)
+- **Test pipeline concept** established as north star (diagram + TEST_PIPELINE.md)
+- **Submission strategy** locked (oracle mining > pipeline validation > final picks)
+- **Adapter format decision** locked (adapter = correctness only, post-proc = format)
+- **Per-folder CLAUDE.md** architecture created for delegated agent workflow
+- **Inference techniques inventory** built (tried vs untried, unanalyzed data flagged)
+- **Post-processing techniques inventory** built (implemented vs known-but-not-implemented)
+- **Back-solve research** documented (log-loss oracle paper + our differential approach)
+- **Format conventions research** summarized from deep research session
+- **DeepConf** identified as the logprob-weighted SC technique Rain was remembering
+- **Core questions** defined (Q1-Q4: what's correct, what's gold, what needs format fix, what's adapter material)
 
-## Key Files to Read
-- `agents/CLAUDE_STRATEGY.md` — your operating contract (UPDATED Day 5 with tools)
-- `strategy/LEVERS.md` — active levers
-- `strategy/TIERS.md` — T1-T5 confidence tiers
-- `submission/REGISTRY.md` — all 29 submissions with scores
-- `postprocessing/TODO.md` — post-processing levers
-- `infrastructure/pre_flight/production_commands.md` — exact inference configs
+## Key strategic decisions (locked Day 6)
 
-## Compute Status
+1. **Post-processing is the major lever before adapter.** Inference → post-processing → adapter (if time).
+2. **Adapter format is relaxed.** Just needs to produce something resembling an answer. Post-proc handles format.
+3. **Submissions are for oracle mining first.** Back-solve is resurrected as first-class lever.
+4. **Per-folder CLAUDE.md** enables delegated agent workflow. Spawn new chat, point to folder, go to work.
+5. **Source-corpus routing** is the highest-EV post-processing improvement (attacks 80% format-loss).
+
+## Priority stack (this session, Day 6)
+
+We are in **repo hygiene / strategy mode**. NO analysis/inference/research until Rain switches gears.
+
+1. ✅ Create strategy docs (CLAUDE.md, TEST_PIPELINE.md, technique inventories)
+2. ✅ Create per-folder CLAUDE.mds
+3. ✅ Document submission strategy
+4. ⬜ Update TODO.md with comprehensive Day 6 priorities
+5. ⬜ Build MASTER_ITEM_TABLE (reconcile 1039 vs 943 rows)
+6. ⬜ Run build_answer_sheet_v6.py → commit output
+7. ⬜ Confirm every run folder has analysis doc (even stub)
+8. ⬜ Answer Core Questions Q1-Q4
+
+## Compute status
 - **DSMLP**: Active, A30 24GB, clean
-- **Thunder tnr-0**: KILL (audited, clean)
-- **Thunder tnr-1**: KILL (audited, stashes droppable)
+- **Thunder tnr-0**: FLAGGED KILL (audited, clean)
+- **Thunder tnr-1**: FLAGGED KILL (audited, clean)
+
+## Key files to read
+- `strategy/CLAUDE.md` — your operating contract
+- `strategy/TEST_PIPELINE.md` — the north star
+- `strategy/INFERENCE_TECHNIQUES.md` — tried vs untried techniques
+- `strategy/POST_PROCESSING_TECHNIQUES.md` — format normalization inventory
+- `submission/GLOBAL_STRATEGY.md` — submission allocation plan
+- `submission/REGISTRY.md` — all 29 past submissions
+- `grading/GRADER_SPEC.md` — grader behavior

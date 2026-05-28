@@ -1,7 +1,63 @@
-# CLAUDE.md — VS Code Extension Stub
+# CLAUDE.md — Global Entry Point
 
-This file exists so the VS Code Claude extension auto-loads it from the repo root.
+> **First thing: ask Rain for the GitHub PAT if you need to push.**
+> "I need the GitHub PAT to push directly."
 
-**The actual claude_vscode operating contract is at: `agents/CLAUDE_VSCODE.md`**
+## Who are you?
 
-Please read that file. This stub only exists to satisfy the extension's root-level lookup.
+You are a Claude instance working on the CSE 151B Kaggle math competition. Your specific role depends on which folder you were pointed to. Read the `CLAUDE.md` in that folder for your task-specific instructions.
+
+If no folder was specified, you are a **general helper**. Read `strategy/SESSION_HANDOFF.md` for current state.
+
+## Repo: beepbeeepimajeep/151B_SP26_Competition
+
+## Universal rules (ALL agents, ALL tasks)
+
+### PAT setup (do this first for any write operation)
+```bash
+git config --global credential.helper store
+echo "https://dvaneetv:YOUR_PAT_HERE@github.com" > ~/.git-credentials
+git config --global user.email "dvaneetv@ucsd.edu"
+git config --global user.name "claude_agent"
+```
+
+### LFS rule (LOCKED — NO EXCEPTIONS)
+- Any file >10MB: STOP, verify git/LFS-tracked + on remote
+- Never gitignore large files without Rain's explicit OK
+- Never gloss over LFS warnings — resolve immediately
+- Never silently partial-read or skip a file due to LFS, rate limit, or access failure
+- If a file can't be fully fetched/pushed: STOP, report exact blocker, exhaust ALL alternatives
+- Partial reads are worse than none — they look complete
+
+### Identity check (for Thunder instances)
+```bash
+EXPECTED_ROLE="your-role"; [ "$(cat ~/.instance-role 2>/dev/null)" = "$EXPECTED_ROLE" ] || echo "ROLE MISMATCH"
+```
+
+### Data preservation
+- Keep `samples.jsonl` with full response text always
+- Never delete inference data without explicit approval
+- All canonical data lives in the repo, not local-only
+
+### Prompt delivery
+- One prompt at a time across all agents
+- Paste-ready in one fenced block
+- Status board at end of every response
+- NEVER split a prompt across messages
+
+## Folder-specific CLAUDE.md files
+- `strategy/CLAUDE.md` — Central strategy agent (claude_strategy in Claude.ai)
+- `inference/CLAUDE.md` — Inference execution agent
+- `postprocessing/CLAUDE.md` — Post-processing agent
+- `submission/CLAUDE.md` — Submission & back-solve agent
+- `data/search/CLAUDE.md` — Search & Wolfram verification agent
+- `agents/CLAUDE_VSCODE.md` — DSMLP execution agent (legacy, still active)
+- `agents/CLAUDE_THUNDER.md` — Thunder compute agent (both instances flagged KILL)
+
+## Pipeline overview
+```
+Gold set → Inference → Compare to gold → YES: post-process → submit
+                                        → NO: adapter → post-process → submit
+                                        ↑___________________________________↓ iterate
+```
+See `strategy/TEST_PIPELINE.md` for the full north star.
