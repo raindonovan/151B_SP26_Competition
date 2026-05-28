@@ -73,3 +73,17 @@ The adapter's job is mathematical correctness only. Post-processing handles form
 3. Post-processing is the highest-leverage lever we haven't fully exploited
 
 Priority: inference → post-processing → adapter (bonus if time)
+
+## Terminology (LOCKED)
+
+- **test set** = the ~283-item LB subset Kaggle scores submissions on. Fixed but unknown. Used during competition for leaderboard scoring.
+- **FINAL test set** = all 943 items. Used at deadline for final ranking. This is what matters.
+- **gold set** = items where we have verified correct answers (from search, Wolfram, teachers, back-solve). Our local ground truth.
+- **gold answer** = a verified correct answer for a specific item.
+- **format rule** = a discovered fact about how a specific item's gold is encoded (e.g., trailing zeros, fraction vs decimal). Each rule = a point recovered.
+
+## Diagram
+
+The test pipeline diagram was rendered as an inline SVG in the Day 6 claude_strategy chat session. The original PIPELINE.md at repo root has a mermaid flowchart of the repo-level pipeline (pre-inference → inference → post-inference → submission). The TEST_PIPELINE described here extends that with the feedback loop (submit → back-solve → iterate).
+
+See also: `PIPELINE.md` (repo root) for the repo organization blueprint and Rain's hand-drawn diagram (`pipeline_diagram.jpeg`).

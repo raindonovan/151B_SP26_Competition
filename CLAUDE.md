@@ -34,6 +34,12 @@ git config --global user.name "claude_agent"
 EXPECTED_ROLE="your-role"; [ "$(cat ~/.instance-role 2>/dev/null)" = "$EXPECTED_ROLE" ] || echo "ROLE MISMATCH"
 ```
 
+### Terminology (LOCKED — all agents use these consistently)
+- **test set** = the ~283-item LB subset Kaggle scores on (unknown, fixed)
+- **FINAL test set** = all 943 items (used for final ranking at deadline)
+- **gold set** = items with verified correct answers (search, Wolfram, teachers, back-solve)
+- **format rule** = discovered fact about how a specific item's gold is encoded
+
 ### Data preservation
 - Keep `samples.jsonl` with full response text always
 - Never delete inference data without explicit approval
