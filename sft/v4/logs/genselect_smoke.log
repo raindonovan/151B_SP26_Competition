@@ -1,232 +1,0 @@
-INFO 05-24 08:25:36 [utils.py:233] non-default args: {'trust_remote_code': True, 'dtype': 'bfloat16', 'max_model_len': 20480, 'enable_prefix_caching': True, 'gpu_memory_utilization': 0.85, 'disable_log_stats': True, 'reasoning_parser': 'deepseek_r1', 'model': 'sft_v4_epoch6_merged'}
-WARNING 05-24 08:25:36 [envs.py:1830] Unknown vLLM environment variable detected: VLLM_USE_V1
-INFO 05-24 08:25:37 [model.py:555] Resolved architecture: Qwen3ForCausalLM
-INFO 05-24 08:25:37 [model.py:1680] Using max model len 20480
-INFO 05-24 08:25:37 [scheduler.py:239] Chunked prefill is enabled with max_num_batched_tokens=16384.
-INFO 05-24 08:25:37 [vllm.py:840] Asynchronous scheduling is enabled.
-INFO 05-24 08:25:37 [kernel.py:205] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'])
-WARNING 05-24 08:25:38 [system_utils.py:157] We must use the `spawn` multiprocessing start method. Overriding VLLM_WORKER_MULTIPROC_METHOD to 'spawn'. See https://docs.vllm.ai/en/latest/usage/troubleshooting.html#python-multiprocessing for more information. Reasons: CUDA is initialized
-(EngineCore pid=349426) INFO 05-24 08:25:47 [core.py:109] Initializing a V1 LLM engine (v0.20.2) with config: model='sft_v4_epoch6_merged', speculative_config=None, tokenizer='sft_v4_epoch6_merged', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=20480, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=False, quantization=None, quantization_config=None, enforce_eager=False, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='deepseek_r1', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False), seed=0, served_model_name=sft_v4_epoch6_merged, enable_prefix_caching=True, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.VLLM_COMPILE: 3>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['none'], 'ir_enable_torch_wrap': True, 'splitting_ops': ['vllm::unified_attention_with_output', 'vllm::unified_mla_attention_with_output', 'vllm::mamba_mixer2', 'vllm::mamba_mixer', 'vllm::short_conv', 'vllm::linear_attention', 'vllm::plamo2_mamba_mixer', 'vllm::gdn_attention_core', 'vllm::gdn_attention_core_xpu', 'vllm::olmo_hybrid_gdn_full_forward', 'vllm::kda_attention', 'vllm::sparse_attn_indexer', 'vllm::rocm_aiter_sparse_attn_indexer', 'vllm::deepseek_v4_attention', 'vllm::unified_kv_cache_update', 'vllm::unified_mla_kv_cache_update'], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'compile_sizes': [], 'compile_ranges_endpoints': [16384], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'size_asserts': False, 'alignment_asserts': False, 'scalar_asserts': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.FULL_AND_PIECEWISE: (2, 1)>, 'cudagraph_num_of_warmups': 1, 'cudagraph_capture_sizes': [1, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 248, 256, 272, 288, 304, 320, 336, 352, 368, 384, 400, 416, 432, 448, 464, 480, 496, 512], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': False, 'fuse_act_quant': False, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False}, 'max_cudagraph_capture_size': 512, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': False, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['native']), enable_flashinfer_autotune=True, moe_backend='auto')
-(EngineCore pid=349426) INFO 05-24 08:25:48 [nixl_utils.py:20] Setting UCX_RCACHE_MAX_UNRELEASED to '1024' to avoid a rare memory leak in UCX when using NIXL.
-(EngineCore pid=349426) WARNING 05-24 08:25:48 [nixl_utils.py:34] NIXL is not available
-(EngineCore pid=349426) WARNING 05-24 08:25:48 [nixl_utils.py:44] NIXL agent config is not available
-(EngineCore pid=349426) INFO 05-24 08:25:48 [parallel_state.py:1402] world_size=1 rank=0 local_rank=0 distributed_init_method=tcp://10.240.154.158:37913 backend=nccl
-(EngineCore pid=349426) INFO 05-24 08:25:50 [parallel_state.py:1715] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank N/A, EPLB rank N/A
-(EngineCore pid=349426) INFO 05-24 08:25:51 [gpu_model_runner.py:4777] Starting to load model sft_v4_epoch6_merged...
-(EngineCore pid=349426) INFO 05-24 08:25:52 [cuda.py:368] Using FLASH_ATTN attention backend out of potential backends: ['FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN', 'FLEX_ATTENTION'].
-(EngineCore pid=349426) INFO 05-24 08:25:52 [flash_attn.py:646] Using FlashAttention version 3
-(EngineCore pid=349426) INFO 05-24 08:25:52 [weight_utils.py:904] Filesystem type for checkpoints: OVERLAY. Checkpoint size: 7.49 GiB. Available RAM: 28.96 GiB.
-(EngineCore pid=349426) INFO 05-24 08:25:52 [weight_utils.py:927] Auto-prefetch is disabled because the filesystem (OVERLAY) is not a recognized network FS (NFS/Lustre). If you want to force prefetching, start vLLM with --safetensors-load-strategy=prefetch.
-(EngineCore pid=349426) Loading safetensors checkpoint shards:   0% Completed | 0/1 [00:00<?, ?it/s]
-(EngineCore pid=349426) Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:04<00:00,  4.36s/it]
-(EngineCore pid=349426) Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:04<00:00,  4.36s/it]
-(EngineCore pid=349426) 
-(EngineCore pid=349426) INFO 05-24 08:25:57 [default_loader.py:384] Loading weights took 4.68 seconds
-(EngineCore pid=349426) INFO 05-24 08:25:57 [gpu_model_runner.py:4879] Model loading took 7.61 GiB memory and 5.425162 seconds
-(EngineCore pid=349426) INFO 05-24 08:26:04 [backends.py:1069] Using cache directory: /home/ubuntu/.cache/vllm/torch_compile_cache/4093e17ec1/rank_0_0/backbone for vLLM's torch.compile
-(EngineCore pid=349426) INFO 05-24 08:26:04 [backends.py:1128] Dynamo bytecode transform time: 6.48 s
-(EngineCore pid=349426) INFO 05-24 08:26:13 [backends.py:376] Cache the graph of compile range (1, 16384) for later use
-(EngineCore pid=349426) INFO 05-24 08:26:19 [backends.py:391] Compiling a graph for compile range (1, 16384) takes 14.35 s
-(EngineCore pid=349426) INFO 05-24 08:26:22 [decorators.py:668] saved AOT compiled function to /home/ubuntu/.cache/vllm/torch_compile_cache/torch_aot_compile/999c10ee2f8f7df997688eab8f957a82c70d81d50886dae3e9d1aede89c0df44/rank_0_0/model
-(EngineCore pid=349426) INFO 05-24 08:26:22 [monitor.py:53] torch.compile took 24.39 s in total
-(EngineCore pid=349426) INFO 05-24 08:26:25 [monitor.py:81] Initial profiling/warmup run took 2.62 s
-(EngineCore pid=349426) INFO 05-24 08:26:32 [gpu_model_runner.py:5963] Profiling CUDA graph memory: PIECEWISE=51 (largest=512), FULL=51 (largest=512)
-(EngineCore pid=349426) INFO 05-24 08:26:35 [gpu_model_runner.py:6042] Estimated CUDA graph memory: 14.76 GiB total
-(EngineCore pid=349426) INFO 05-24 08:26:35 [gpu_worker.py:440] Available KV cache memory: 38.37 GiB
-(EngineCore pid=349426) INFO 05-24 08:26:35 [gpu_worker.py:455] CUDA graph memory profiling is enabled (default since v0.21.0). The current --gpu-memory-utilization=0.8500 is equivalent to --gpu-memory-utilization=0.6636 without CUDA graph memory profiling. To maintain the same effective KV cache size as before, increase --gpu-memory-utilization to 1.0000. To disable, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0.
-(EngineCore pid=349426) INFO 05-24 08:26:35 [kv_cache_utils.py:1708] GPU KV cache size: 279,376 tokens
-(EngineCore pid=349426) INFO 05-24 08:26:35 [kv_cache_utils.py:1709] Maximum concurrency for 20,480 tokens per request: 13.64x
-(EngineCore pid=349426) 2026-05-24 08:26:35,627 - INFO - autotuner.py:457 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
-(EngineCore pid=349426) 2026-05-24 08:26:35,659 - INFO - autotuner.py:466 - flashinfer.jit: [Autotuner]: Autotuning process ends
-(EngineCore pid=349426) Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   0%|          | 0/51 [00:00<?, ?it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   2%|▏         | 1/51 [00:00<00:12,  3.95it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   4%|▍         | 2/51 [00:00<00:12,  4.04it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   6%|▌         | 3/51 [00:00<00:12,  3.93it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   8%|▊         | 4/51 [00:01<00:12,  3.91it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  10%|▉         | 5/51 [00:01<00:11,  3.91it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  12%|█▏        | 6/51 [00:01<00:11,  3.82it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  14%|█▎        | 7/51 [00:01<00:11,  3.83it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  16%|█▌        | 8/51 [00:02<00:11,  3.87it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  18%|█▊        | 9/51 [00:02<00:11,  3.75it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  20%|█▉        | 10/51 [00:02<00:10,  3.85it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  22%|██▏       | 11/51 [00:02<00:10,  3.92it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  24%|██▎       | 12/51 [00:03<00:09,  3.93it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  25%|██▌       | 13/51 [00:03<00:09,  3.90it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  27%|██▋       | 14/51 [00:03<00:09,  3.87it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  29%|██▉       | 15/51 [00:03<00:09,  3.86it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  31%|███▏      | 16/51 [00:04<00:09,  3.83it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  33%|███▎      | 17/51 [00:04<00:09,  3.71it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  35%|███▌      | 18/51 [00:04<00:08,  3.74it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  37%|███▋      | 19/51 [00:04<00:08,  3.78it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  39%|███▉      | 20/51 [00:05<00:08,  3.84it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  41%|████      | 21/51 [00:05<00:07,  3.85it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  43%|████▎     | 22/51 [00:05<00:07,  3.80it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  45%|████▌     | 23/51 [00:05<00:07,  3.77it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  47%|████▋     | 24/51 [00:06<00:07,  3.82it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  49%|████▉     | 25/51 [00:06<00:06,  3.79it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  51%|█████     | 26/51 [00:06<00:06,  3.79it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  53%|█████▎    | 27/51 [00:07<00:06,  3.85it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  55%|█████▍    | 28/51 [00:07<00:05,  3.88it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  57%|█████▋    | 29/51 [00:07<00:05,  3.92it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  59%|█████▉    | 30/51 [00:07<00:05,  3.84it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  61%|██████    | 31/51 [00:08<00:05,  3.85it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  63%|██████▎   | 32/51 [00:08<00:04,  3.83it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  65%|██████▍   | 33/51 [00:08<00:04,  3.78it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  67%|██████▋   | 34/51 [00:08<00:04,  3.79it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  69%|██████▊   | 35/51 [00:09<00:04,  3.86it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  71%|███████   | 36/51 [00:09<00:03,  3.86it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  73%|███████▎  | 37/51 [00:09<00:03,  3.92it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  75%|███████▍  | 38/51 [00:09<00:03,  3.94it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  76%|███████▋  | 39/51 [00:10<00:03,  3.87it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  78%|███████▊  | 40/51 [00:10<00:02,  3.91it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  80%|████████  | 41/51 [00:10<00:02,  3.86it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  82%|████████▏ | 42/51 [00:10<00:02,  3.83it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  84%|████████▍ | 43/51 [00:11<00:02,  3.82it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  86%|████████▋ | 44/51 [00:11<00:01,  3.72it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  88%|████████▊ | 45/51 [00:11<00:01,  3.67it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  90%|█████████ | 46/51 [00:12<00:01,  3.71it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  92%|█████████▏| 47/51 [00:12<00:01,  3.73it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  94%|█████████▍| 48/51 [00:12<00:00,  3.70it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  96%|█████████▌| 49/51 [00:12<00:00,  3.73it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  98%|█████████▊| 50/51 [00:13<00:00,  3.73it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 51/51 [00:13<00:00,  3.63it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 51/51 [00:13<00:00,  3.81it/s]
-(EngineCore pid=349426) Capturing CUDA graphs (decode, FULL):   0%|          | 0/51 [00:00<?, ?it/s]Capturing CUDA graphs (decode, FULL):   2%|▏         | 1/51 [00:00<00:16,  3.12it/s]Capturing CUDA graphs (decode, FULL):   4%|▍         | 2/51 [00:00<00:15,  3.14it/s]Capturing CUDA graphs (decode, FULL):   6%|▌         | 3/51 [00:00<00:15,  3.08it/s]Capturing CUDA graphs (decode, FULL):   8%|▊         | 4/51 [00:01<00:15,  3.02it/s]Capturing CUDA graphs (decode, FULL):  10%|▉         | 5/51 [00:01<00:14,  3.07it/s]Capturing CUDA graphs (decode, FULL):  12%|█▏        | 6/51 [00:01<00:14,  3.05it/s]Capturing CUDA graphs (decode, FULL):  14%|█▎        | 7/51 [00:02<00:14,  3.07it/s]Capturing CUDA graphs (decode, FULL):  16%|█▌        | 8/51 [00:02<00:13,  3.12it/s]Capturing CUDA graphs (decode, FULL):  18%|█▊        | 9/51 [00:02<00:13,  3.15it/s]Capturing CUDA graphs (decode, FULL):  20%|█▉        | 10/51 [00:03<00:12,  3.18it/s]Capturing CUDA graphs (decode, FULL):  22%|██▏       | 11/51 [00:03<00:12,  3.17it/s]Capturing CUDA graphs (decode, FULL):  24%|██▎       | 12/51 [00:03<00:12,  3.15it/s]Capturing CUDA graphs (decode, FULL):  25%|██▌       | 13/51 [00:04<00:12,  3.16it/s]Capturing CUDA graphs (decode, FULL):  27%|██▋       | 14/51 [00:04<00:11,  3.10it/s]Capturing CUDA graphs (decode, FULL):  29%|██▉       | 15/51 [00:04<00:11,  3.04it/s]Capturing CUDA graphs (decode, FULL):  31%|███▏      | 16/51 [00:05<00:11,  3.04it/s]Capturing CUDA graphs (decode, FULL):  33%|███▎      | 17/51 [00:05<00:11,  3.00it/s]Capturing CUDA graphs (decode, FULL):  35%|███▌      | 18/51 [00:05<00:11,  2.99it/s]Capturing CUDA graphs (decode, FULL):  37%|███▋      | 19/51 [00:06<00:10,  3.02it/s]Capturing CUDA graphs (decode, FULL):  39%|███▉      | 20/51 [00:06<00:10,  3.01it/s]Capturing CUDA graphs (decode, FULL):  41%|████      | 21/51 [00:06<00:10,  2.99it/s]Capturing CUDA graphs (decode, FULL):  43%|████▎     | 22/51 [00:07<00:09,  3.03it/s]Capturing CUDA graphs (decode, FULL):  45%|████▌     | 23/51 [00:07<00:09,  3.03it/s]Capturing CUDA graphs (decode, FULL):  47%|████▋     | 24/51 [00:07<00:08,  3.02it/s]Capturing CUDA graphs (decode, FULL):  49%|████▉     | 25/51 [00:08<00:08,  3.05it/s]Capturing CUDA graphs (decode, FULL):  51%|█████     | 26/51 [00:08<00:08,  3.05it/s]Capturing CUDA graphs (decode, FULL):  53%|█████▎    | 27/51 [00:08<00:07,  3.02it/s]Capturing CUDA graphs (decode, FULL):  55%|█████▍    | 28/51 [00:09<00:07,  3.02it/s]Capturing CUDA graphs (decode, FULL):  57%|█████▋    | 29/51 [00:09<00:07,  3.05it/s]Capturing CUDA graphs (decode, FULL):  59%|█████▉    | 30/51 [00:09<00:06,  3.02it/s]Capturing CUDA graphs (decode, FULL):  61%|██████    | 31/51 [00:10<00:06,  3.01it/s]Capturing CUDA graphs (decode, FULL):  63%|██████▎   | 32/51 [00:10<00:06,  2.98it/s]Capturing CUDA graphs (decode, FULL):  65%|██████▍   | 33/51 [00:10<00:06,  2.99it/s]Capturing CUDA graphs (decode, FULL):  67%|██████▋   | 34/51 [00:11<00:05,  3.01it/s]Capturing CUDA graphs (decode, FULL):  69%|██████▊   | 35/51 [00:11<00:05,  3.03it/s]Capturing CUDA graphs (decode, FULL):  71%|███████   | 36/51 [00:11<00:04,  3.09it/s]Capturing CUDA graphs (decode, FULL):  73%|███████▎  | 37/51 [00:12<00:04,  3.14it/s]Capturing CUDA graphs (decode, FULL):  75%|███████▍  | 38/51 [00:12<00:04,  3.12it/s]Capturing CUDA graphs (decode, FULL):  76%|███████▋  | 39/51 [00:12<00:03,  3.07it/s]Capturing CUDA graphs (decode, FULL):  78%|███████▊  | 40/51 [00:13<00:03,  3.05it/s]Capturing CUDA graphs (decode, FULL):  80%|████████  | 41/51 [00:13<00:03,  3.06it/s]Capturing CUDA graphs (decode, FULL):  82%|████████▏ | 42/51 [00:13<00:02,  3.02it/s]Capturing CUDA graphs (decode, FULL):  84%|████████▍ | 43/51 [00:14<00:02,  3.00it/s]Capturing CUDA graphs (decode, FULL):  86%|████████▋ | 44/51 [00:14<00:02,  3.00it/s]Capturing CUDA graphs (decode, FULL):  88%|████████▊ | 45/51 [00:14<00:01,  3.05it/s]Capturing CUDA graphs (decode, FULL):  90%|█████████ | 46/51 [00:15<00:01,  3.04it/s]Capturing CUDA graphs (decode, FULL):  92%|█████████▏| 47/51 [00:15<00:01,  3.07it/s]Capturing CUDA graphs (decode, FULL):  94%|█████████▍| 48/51 [00:15<00:00,  3.08it/s]Capturing CUDA graphs (decode, FULL):  96%|█████████▌| 49/51 [00:16<00:00,  3.04it/s]Capturing CUDA graphs (decode, FULL):  98%|█████████▊| 50/51 [00:16<00:00,  3.05it/s]Capturing CUDA graphs (decode, FULL): 100%|██████████| 51/51 [00:16<00:00,  3.04it/s]Capturing CUDA graphs (decode, FULL): 100%|██████████| 51/51 [00:16<00:00,  3.05it/s]
-(EngineCore pid=349426) INFO 05-24 08:27:07 [gpu_model_runner.py:6133] Graph capturing finished in 31 secs, took 0.39 GiB
-(EngineCore pid=349426) INFO 05-24 08:27:07 [gpu_worker.py:599] CUDA graph pool memory: 0.39 GiB (actual), 14.76 GiB (estimated), difference: 14.37 GiB (3716.7%).
-(EngineCore pid=349426) INFO 05-24 08:27:07 [core.py:299] init engine (profile, create kv cache, warmup model) took 69.23 s (compilation: 24.39 s)
-(EngineCore pid=349426) INFO 05-24 08:27:09 [vllm.py:840] Asynchronous scheduling is enabled.
-(EngineCore pid=349426) INFO 05-24 08:27:09 [kernel.py:205] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'])
-============================================================
-PHASE 1: SC=16 (8xT=0.6 + 8xT=1.0)
-============================================================
-Generating 8 samples at T=0.6...
-Rendering prompts:   0%|          | 0/12 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 12/12 [00:00<00:00, 608.09it/s]
-Processed prompts:   0%|          | 0/96 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts:   8%|▊         | 8/96 [00:05<01:02,  1.41it/s, est. speed input: 137.95 toks/s, output: 63.69 toks/s]Processed prompts:  17%|█▋        | 16/96 [00:06<00:28,  2.77it/s, est. speed input: 217.83 toks/s, output: 227.96 toks/s]Processed prompts:  25%|██▌       | 24/96 [00:07<00:17,  4.11it/s, est. speed input: 334.46 toks/s, output: 395.49 toks/s]Processed prompts:  33%|███▎      | 32/96 [00:08<00:13,  4.79it/s, est. speed input: 504.83 toks/s, output: 605.13 toks/s]Processed prompts:  42%|████▏     | 40/96 [00:12<00:17,  3.18it/s, est. speed input: 589.51 toks/s, output: 715.47 toks/s]Processed prompts:  50%|█████     | 48/96 [00:17<00:20,  2.34it/s, est. speed input: 483.82 toks/s, output: 838.58 toks/s]Processed prompts:  58%|█████▊    | 56/96 [00:18<00:12,  3.32it/s, est. speed input: 536.69 toks/s, output: 1130.40 toks/s]Processed prompts:  67%|██████▋   | 64/96 [00:20<00:09,  3.29it/s, est. speed input: 527.55 toks/s, output: 1444.29 toks/s]Processed prompts:  75%|███████▌  | 72/96 [00:29<00:12,  1.87it/s, est. speed input: 420.37 toks/s, output: 1381.06 toks/s]Processed prompts:  83%|████████▎ | 80/96 [00:34<00:09,  1.77it/s, est. speed input: 433.27 toks/s, output: 1556.03 toks/s]Processed prompts:  92%|█████████▏| 88/96 [01:59<00:29,  3.66s/it, est. speed input: 132.12 toks/s, output: 907.79 toks/s] Processed prompts: 100%|██████████| 96/96 [02:32<00:00,  3.79s/it, est. speed input: 110.57 toks/s, output: 1121.64 toks/s]Processed prompts: 100%|██████████| 96/96 [02:32<00:00,  3.79s/it, est. speed input: 110.57 toks/s, output: 1121.64 toks/s]Processed prompts: 100%|██████████| 96/96 [02:32<00:00,  1.59s/it, est. speed input: 110.57 toks/s, output: 1121.64 toks/s]
-Generating 8 samples at T=1.0...
-Rendering prompts:   0%|          | 0/12 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 12/12 [00:00<00:00, 1305.79it/s]
-Processed prompts:   0%|          | 0/96 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts:   8%|▊         | 8/96 [00:00<00:10,  8.35it/s, est. speed input: 817.85 toks/s, output: 393.27 toks/s]Processed prompts:  17%|█▋        | 16/96 [00:02<00:11,  7.14it/s, est. speed input: 656.96 toks/s, output: 720.36 toks/s]Processed prompts:  33%|███▎      | 32/96 [00:03<00:06,  9.36it/s, est. speed input: 1222.35 toks/s, output: 1419.74 toks/s]Processed prompts:  42%|████▏     | 40/96 [00:08<00:14,  3.93it/s, est. speed input: 666.09 toks/s, output: 1007.01 toks/s] Processed prompts:  50%|█████     | 48/96 [00:10<00:12,  3.91it/s, est. speed input: 832.41 toks/s, output: 1222.47 toks/s]Processed prompts:  58%|█████▊    | 56/96 [00:28<00:35,  1.14it/s, est. speed input: 340.77 toks/s, output: 883.92 toks/s] Processed prompts:  67%|██████▋   | 64/96 [00:32<00:24,  1.30it/s, est. speed input: 336.38 toks/s, output: 1142.12 toks/s]Processed prompts:  75%|███████▌  | 72/96 [00:43<00:22,  1.06it/s, est. speed input: 312.92 toks/s, output: 1072.03 toks/s]Processed prompts:  83%|████████▎ | 80/96 [00:49<00:13,  1.15it/s, est. speed input: 300.08 toks/s, output: 1293.84 toks/s]Processed prompts:  92%|█████████▏| 88/96 [01:55<00:24,  3.10s/it, est. speed input: 137.02 toks/s, output: 1007.47 toks/s]Processed prompts: 100%|██████████| 96/96 [02:35<00:00,  3.67s/it, est. speed input: 108.43 toks/s, output: 1217.57 toks/s]Processed prompts: 100%|██████████| 96/96 [02:35<00:00,  3.67s/it, est. speed input: 108.43 toks/s, output: 1217.57 toks/s]Processed prompts: 100%|██████████| 96/96 [02:35<00:00,  1.62s/it, est. speed input: 108.43 toks/s, output: 1217.57 toks/s]
-
-============================================================
-PHASE 2: VOTE ANALYSIS
-============================================================
-
-ID  17 [MCQ] winner='C' votes=12/15 (80%) trunc=1 nobox=1
-  Low-T:  {'C': 7, '7': 1}
-  High-T: {'C': 5, '11': 1, 'G': 1}
-
-ID  22 [MCQ] winner='G' votes=9/16 (56%) trunc=0 nobox=0
-  Low-T:  {'G': 6, 'C': 1, 'D': 1}
-  High-T: {'G': 3, 'D': 2, '39': 1}
-
-ID  18 [MCQ] winner='H' votes=16/16 (100%) trunc=0 nobox=0
-  Low-T:  {'H': 8}
-  High-T: {'H': 8}
-
-ID  19 [MCQ] winner='D' votes=8/15 (53%) trunc=1 nobox=1
-  Low-T:  {'A': 2, 'D': 2, 'E': 2}
-  High-T: {'D': 6, 'A': 1, 'B': 1}
-  TEMP DISAGREE: low='A' high='D'
-
-ID  25 [FREE] winner='0.1212,0.0909,0.1667,0.2576,0.1970,0.1212,8,14,25,42,55,63' votes=10/16 (62%) trunc=0 nobox=0
-  Low-T:  {'0.1212,0.0909,0.1667,0.2576,0.1970,0.1212,8,14,25,42,55,63': 6, '0.1212,0.0909,0.1667,0.2576,0.1970,0.1212,8,14,25,42,55,66': 2}
-  High-T: {'0.1212,0.0909,0.1667,0.2576,0.1970,0.1212,8,14,25,42,55,63': 4, '0.1212,0.0909,0.1667,0.2576,0.1970,0.1212,8,14,25,42,55,66': 3, '\\frac{4}{33},\\frac{1}{11},\\frac{1}{6},\\frac{17}{66},\\frac{13}{66},\\frac{4}{33},8,14,25,42,55,66': 1}
-  MINORITY CHALLENGE: '0.1212,0.0909,0.1667,0.2576,0.1970,0.1212,8,14,25,42,55,66' has 5 votes
-
-ID  30 [FREE] winner='625,141' votes=3/16 (19%) trunc=0 nobox=0
-  Low-T:  {'2944,656': 1, '2944,666': 1, '2944,654': 1}
-  High-T: {'625,141': 2, '3371, 767': 1, '2943,666': 1}
-  TEMP DISAGREE: low='2944,656' high='625,141'
-  DEEP SPLIT: no answer above 50%
-
-ID   2 [FREE] winner='-1.46, 1.645, A' votes=6/16 (38%) trunc=0 nobox=0
-  Low-T:  {'-1.46,\\,1.645,\\,A': 5, '-1.46, 1.645, A': 2, '-0.0122, 1.645, A': 1}
-  High-T: {'-1.46, 1.645, A': 4, '-1.462,1.645,A': 1, '-1.46,1.645,A': 1}
-  TEMP DISAGREE: low='-1.46,\,1.645,\,A' high='-1.46, 1.645, A'
-  MINORITY CHALLENGE: '-1.46,\,1.645,\,A' has 5 votes
-  DEEP SPLIT: no answer above 50%
-
-ID   4 [FREE] winner='-\dfrac{7}{\sqrt{149}},\dfrac{10}{\sqrt{149}},-\dfrac{7}{10}' votes=16/16 (100%) trunc=0 nobox=0
-  Low-T:  {'-\\dfrac{7}{\\sqrt{149}},\\dfrac{10}{\\sqrt{149}},-\\dfrac{7}{10}': 8}
-  High-T: {'-\\dfrac{7}{\\sqrt{149}},\\dfrac{10}{\\sqrt{149}},-\\dfrac{7}{10}': 8}
-
-ID   6 [FREE] winner='148.02' votes=4/16 (25%) trunc=0 nobox=0
-  Low-T:  {'148.02': 4, '147.93': 2, '142.53': 1}
-  High-T: {'148.03': 4, '147.93': 1, '142.52': 1}
-  TEMP DISAGREE: low='148.02' high='148.03'
-  MINORITY CHALLENGE: '148.03' has 4 votes
-  DEEP SPLIT: no answer above 50%
-
-ID   7 [FREE] winner='56' votes=2/16 (12%) trunc=0 nobox=0
-  Low-T:  {'56': 2, '\\dfrac{3267}{28}': 1, '2H_{15}': 1}
-  High-T: {'\\dfrac{28535}{52918}': 1, '\\dfrac{135}{14}': 1, '4725': 1}
-  TEMP DISAGREE: low='56' high='\dfrac{28535}{52918}'
-  DEEP SPLIT: no answer above 50%
-
-ID  11 [FREE] winner='0.95' votes=3/16 (19%) trunc=0 nobox=0
-  Low-T:  {'0.928': 2, '1.3226': 1, '1.3230': 1}
-  High-T: {'0.95': 2, '0.96': 1, '0.9391': 1}
-  TEMP DISAGREE: low='0.928' high='0.95'
-  DEEP SPLIT: no answer above 50%
-
-ID  16 [FREE] winner='1001' votes=11/16 (69%) trunc=0 nobox=0
-  Low-T:  {'1001': 6, '501': 2}
-  High-T: {'1001': 5, '336': 1, '9': 1}
-
-============================================================
-PHASE 3: GENSELECT VERIFICATION (6 items)
-============================================================
-Running greedy verification on 6 items...
-Rendering prompts:   0%|          | 0/6 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 6/6 [00:00<00:00, 1159.23it/s]
-Processed prompts:   0%|          | 0/6 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts:  17%|█▋        | 1/6 [00:02<00:11,  2.27s/it, est. speed input: 99.47 toks/s, output: 136.43 toks/s]Processed prompts:  33%|███▎      | 2/6 [00:02<00:04,  1.05s/it, est. speed input: 227.52 toks/s, output: 262.68 toks/s]Processed prompts:  50%|█████     | 3/6 [00:02<00:02,  1.28it/s, est. speed input: 266.01 toks/s, output: 361.75 toks/s]Processed prompts:  67%|██████▋   | 4/6 [00:03<00:01,  1.28it/s, est. speed input: 365.26 toks/s, output: 427.25 toks/s]Processed prompts:  83%|████████▎ | 5/6 [00:14<00:04,  4.37s/it, est. speed input: 121.57 toks/s, output: 258.65 toks/s]Processed prompts: 100%|██████████| 6/6 [00:21<00:00,  5.23s/it, est. speed input: 92.85 toks/s, output: 325.11 toks/s] Processed prompts: 100%|██████████| 6/6 [00:21<00:00,  5.23s/it, est. speed input: 92.85 toks/s, output: 325.11 toks/s]Processed prompts: 100%|██████████| 6/6 [00:21<00:00,  3.56s/it, est. speed input: 92.85 toks/s, output: 325.11 toks/s]
-
-  ID 25 [FREE]:
-    Orientation:  minority_first  (majority shown as B)
-    Majority:     '0.1212,0.0909,0.1667,0.2576,0.1970,0.1212,8,14,25,42,55,63' (10 votes)
-    Minority:     '0.1212,0.0909,0.1667,0.2576,0.1970,0.1212,8,14,25,42,55,66' (5 votes)
-    Verified:     'B'
-    Verdict:      THIRD ANSWER
-    Trace preview: **Total students:** 8 + 6 + 11 + 17 + 13 + 8 = 63
-
-**Relative Frequencies:**
-- Below 50: 8/63 ≈ 0.1212
-- 50-59: 6/63 ≈ 0.0909
-- 60-69: 11/63 ≈ 0.1667
-- 70-79: 17/63 ≈ 0.2576
-- 80-89: 13/63 ≈ 0.1970
-- ...
-
-  ID 30 [FREE]:
-    Orientation:  minority_first  (majority shown as B)
-    Majority:     '625,141' (3 votes)
-    Minority:     '2944,656' (1 votes)
-    Verified:     '625,141'
-    Verdict:      AGREES with majority
-    Trace preview: We need to find the sample size for estimating a proportion with 97% confidence and 2 percentage point margin of error.
-
-**Formula:** n = p(1-p)/E²
-
-**(a) No information available** — use p = 0.5 (mos...
-
-  ID 2 [FREE]:
-    Orientation:  majority_first  (majority shown as A)
-    Majority:     '-1.46, 1.645, A' (6 votes)
-    Minority:     '-1.46,\,1.645,\,A' (5 votes)
-    Verified:     '-1.46,\,1.645,\,A'
-    Verdict:      AGREES with majority
-    Trace preview: We need to test if more than half of all participants will select Diet Pepsi, i.e., H₁: p > 0.5.
-
-**Test Statistic:**
-- n = 120, x = 52, p̂ = 52/120 = 0.4333
-- H₀: p = 0.5, so p₀ = 0.5
-- Standard erro...
-
-  ID 6 [FREE]:
-    Orientation:  majority_first  (majority shown as A)
-    Majority:     '148.02' (4 votes)
-    Minority:     '148.03' (4 votes)
-    Verified:     'A'
-    Verdict:      THIRD ANSWER
-    Trace preview: Height = 176 × tan(39°)
-
-tan(39°) ≈ 0.809784
-
-Height ≈ 176 × 0.809784 ≈ 142.520... 
-
-Wait, let me recalculate more carefully:
-176 × 0.809784 = 142.520... 
-
-Hmm, but let me check if the problem means s...
-
-  ID 7 [FREE]:
-    Orientation:  minority_first  (majority shown as B)
-    Majority:     '56' (2 votes)
-    Minority:     '\dfrac{3267}{28}' (1 votes)
-    Verified:     'B'
-    Verdict:      THIRD ANSWER
-    Trace preview: We have a circle with 45 arcs, each of length 1. Snakes occupy contiguous arcs. Initially, 15 snakes each occupy 1 arc (every third arc: positions 1, 4, 7, ..., 43).
-
-Each second, each snake independe...
-
-  ID 11 [FREE]:
-    Orientation:  majority_first  (majority shown as A)
-    Majority:     '0.95' (3 votes)
-    Minority:     '0.928' (2 votes)
-    Verified:     '1.326'
-    Verdict:      THIRD ANSWER
-    Trace preview: The residual standard deviation is:
-
-$$s_e = \sqrt{\frac{1}{n-2}\sum_{i=1}^n e_i^2}$$
-
-where $\sum e_i^2 = \sum(y_i - \hat{\beta}_0 - \hat{\beta}_1 x_i)^2$.
-
-**Key identity:** In simple linear regress...
-
-  Verification summary:
-    Agrees with majority: 2
-    Flips to minority:    0
-    Third answer:         4
-    Empty (no box):       0
-    Verdict: FullGen adds value
-
-============================================================
-FINAL SUMMARY
-============================================================
-  Clear majority (>=75%): 3/12
-  Medium agreement (50-75%): 4/12
-  Split (<50%): 5/12
-  GenSelect candidates (minority >=4): 6/12
-
-  RECOMMENDATION:
-  -> Use FullGen. 6 items benefit from verification.
-(EngineCore pid=349426) INFO 05-24 08:32:38 [core.py:1238] Shutdown initiated (timeout=0)
-(EngineCore pid=349426) INFO 05-24 08:32:38 [core.py:1261] Shutdown complete
-[rank0]:[W524 08:32:39.896074255 ProcessGroupNCCL.cpp:1575] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())

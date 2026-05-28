@@ -1,0 +1,20 @@
+=== VALIDATION (non-diagnostic submissions only) ===
+
+  WARN run14b_v3filtered                          Kaggle=0.646 Agree=700/923 Pred=0.742 D=+0.096
+  WARN run14b_sc8_v1                              Kaggle=0.639 Agree=676/922 Pred=0.717 D=+0.078
+  PASS run09sc8_v1_private943                     Kaggle=0.614 Agree=592/847 Pred=0.628 D=+0.014
+  PASS run09sc8_format_fixed                      Kaggle=0.611 Agree=606/849 Pred=0.643 D=+0.032
+  PASS run08v2_v1_private943                      Kaggle=0.586 Agree=548/826 Pred=0.581 D=-0.005
+  WARN sftv3_epoch8_sc1_final                     Kaggle=0.452 Agree=372/942 Pred=0.394 D=-0.058
+  PASS run09sc8_probe_b_reversed                  Kaggle=0.438 Agree=415/847 Pred=0.440 D=+0.002
+  PASS run10_v3perslot_private943                 Kaggle=0.424 Agree=369/834 Pred=0.391 D=-0.033
+  PASS expA_run08_perslot_perturbed               Kaggle=0.420 Agree=402/823 Pred=0.426 D=+0.006
+
+Tiers:
+  T1: 256 (27.1%)
+  T2: 214 (22.7%)
+  T3: 171 (18.1%)
+  T4: 145 (15.4%)
+  T5: 157 (16.6%)
+
+Teacher: {'False': 531, 'True': 412}

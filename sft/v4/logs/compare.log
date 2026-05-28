@@ -1,57 +1,0 @@
-Checkpoints: ['checkpoint-392', 'checkpoint-588', 'checkpoint-784']
-Test items: MCQ=[1, 3, 10, 13, 23] FREE=[14, 15, 31, 39, 42]
-
-============================================================
-TESTING: checkpoint-392
-============================================================
-Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
-[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
-Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   0%|          | 1/398 [00:00<03:20,  1.98it/s]Loading weights:   1%|          | 2/398 [00:01<04:01,  1.64it/s]Loading weights:   1%|          | 4/398 [00:01<01:53,  3.47it/s]Loading weights:  29%|██▊       | 114/398 [00:01<00:01, 149.57it/s]Loading weights:  39%|███▉      | 155/398 [00:01<00:01, 169.76it/s]Loading weights:  48%|████▊     | 190/398 [00:01<00:01, 175.13it/s]Loading weights:  56%|█████▋    | 224/398 [00:01<00:00, 189.93it/s]Loading weights:  65%|██████▍   | 257/398 [00:02<00:00, 214.53it/s]Loading weights:  72%|███████▏  | 286/398 [00:02<00:00, 230.01it/s]Loading weights:  79%|███████▉  | 315/398 [00:02<00:00, 218.21it/s]Loading weights:  87%|████████▋ | 345/398 [00:02<00:00, 218.66it/s]Loading weights:  93%|█████████▎| 370/398 [00:02<00:00, 221.61it/s]Loading weights:  99%|█████████▉| 395/398 [00:02<00:00, 227.06it/s]Loading weights: 100%|██████████| 398/398 [00:02<00:00, 147.49it/s]
-  ✓ ID    1 [MCQ] sft='A' train='A' fmt=BAD
-  ✓ ID    3 [MCQ] sft='B' train='B' fmt=BAD
-  ✓ ID   10 [MCQ] sft='I' train='I' fmt=BAD
-  ✗ ID   13 [MCQ] sft='' train='C' fmt=BAD
-  ✓ ID   23 [MCQ] sft='H' train='H' fmt=BAD
-  ✓ ID   14 [FREE] sft='\dfrac{\ln(35)}{\ln(3)}' train='\dfrac{\ln(35)}{\ln(3)}' fmt=BAD
-  ✓ ID   15 [FREE] sft='8,NONE' train='8,NONE' fmt=BAD
-  ✓ ID   31 [FREE] sft='-3,42' train='-3,42' fmt=BAD
-  ✓ ID   39 [FREE] sft='475' train='475' fmt=BAD
-  ✓ ID   42 [FREE] sft='No, Yes, A' train='No, Yes, A' fmt=BAD
-
-  RESULT: MCQ=4/5 FREE=5/5 FORMAT=0/10
-
-============================================================
-TESTING: checkpoint-588
-============================================================
-Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   0%|          | 1/398 [00:01<10:17,  1.55s/it]Loading weights:   1%|          | 3/398 [00:01<03:21,  1.96it/s]Loading weights:  29%|██▉       | 115/398 [00:01<00:02, 106.52it/s]Loading weights:  41%|████      | 164/398 [00:02<00:01, 136.26it/s]Loading weights:  51%|█████▏    | 204/398 [00:02<00:01, 154.92it/s]Loading weights:  60%|█████▉    | 238/398 [00:02<00:00, 172.28it/s]Loading weights:  68%|██████▊   | 269/398 [00:02<00:00, 192.78it/s]Loading weights:  75%|███████▌  | 299/398 [00:02<00:00, 211.32it/s]Loading weights:  83%|████████▎ | 329/398 [00:02<00:00, 227.38it/s]Loading weights:  90%|█████████ | 359/398 [00:02<00:00, 229.08it/s]Loading weights:  97%|█████████▋| 388/398 [00:03<00:00, 233.18it/s]Loading weights: 100%|██████████| 398/398 [00:03<00:00, 131.03it/s]
-  ✓ ID    1 [MCQ] sft='A' train='A' fmt=BAD
-  ✓ ID    3 [MCQ] sft='B' train='B' fmt=BAD
-  ✓ ID   10 [MCQ] sft='I' train='I' fmt=BAD
-  ✓ ID   13 [MCQ] sft='C' train='C' fmt=BAD
-  ✓ ID   23 [MCQ] sft='H' train='H' fmt=BAD
-  ✓ ID   14 [FREE] sft='\dfrac{\ln(35)}{\ln(3)}' train='\dfrac{\ln(35)}{\ln(3)}' fmt=BAD
-  ✓ ID   15 [FREE] sft='8,NONE' train='8,NONE' fmt=BAD
-  ✓ ID   31 [FREE] sft='-3,42' train='-3,42' fmt=BAD
-  ✓ ID   39 [FREE] sft='475' train='475' fmt=BAD
-  ✓ ID   42 [FREE] sft='No, Yes, A' train='No, Yes, A' fmt=BAD
-
-  RESULT: MCQ=5/5 FREE=5/5 FORMAT=0/10
-
-============================================================
-TESTING: checkpoint-784
-============================================================
-Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   0%|          | 1/398 [00:00<03:00,  2.20it/s]Loading weights:   1%|          | 2/398 [00:00<01:48,  3.63it/s]Loading weights:   1%|          | 3/398 [00:01<02:53,  2.27it/s]Loading weights:  48%|████▊     | 190/398 [00:01<00:00, 237.92it/s]Loading weights:  64%|██████▍   | 254/398 [00:01<00:00, 260.89it/s]Loading weights:  77%|███████▋  | 307/398 [00:01<00:00, 266.98it/s]Loading weights:  88%|████████▊ | 352/398 [00:01<00:00, 265.50it/s]Loading weights:  98%|█████████▊| 391/398 [00:02<00:00, 262.31it/s]Loading weights: 100%|██████████| 398/398 [00:02<00:00, 192.43it/s]
-  ✓ ID    1 [MCQ] sft='A' train='A' fmt=BAD
-  ✓ ID    3 [MCQ] sft='B' train='B' fmt=BAD
-  ✓ ID   10 [MCQ] sft='I' train='I' fmt=BAD
-  ✓ ID   13 [MCQ] sft='C' train='C' fmt=BAD
-  ✓ ID   23 [MCQ] sft='H' train='H' fmt=BAD
-  ✓ ID   14 [FREE] sft='\dfrac{\ln(35)}{\ln(3)}' train='\dfrac{\ln(35)}{\ln(3)}' fmt=BAD
-  ✓ ID   15 [FREE] sft='8,NONE' train='8,NONE' fmt=BAD
-  ✓ ID   31 [FREE] sft='-3,42' train='-3,42' fmt=BAD
-  ✓ ID   39 [FREE] sft='475' train='475' fmt=BAD
-  ✓ ID   42 [FREE] sft='No, Yes, A' train='No, Yes, A' fmt=BAD
-
-  RESULT: MCQ=5/5 FREE=5/5 FORMAT=0/10
-
-=== PICK EARLIEST EPOCH WITH MCQ >= 4/5 ===

@@ -1,50 +1,0 @@
-Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
-[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
-================================================================================
-SFT v3 Training - Qwen3-4B-Thinking
-================================================================================
-Loaded 594 training examples from sft_v3_dataset_final.jsonl
-Items with </think> tag: 594/594
-Items with \boxed{} tag: 594/594
-
-Dataset size: 594
-Loading model: Qwen/Qwen3-4B-Thinking-2507
-Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   0%|          | 1/398 [00:02<16:21,  2.47s/it]Loading weights:   1%|          | 3/398 [00:06<14:59,  2.28s/it]Loading weights:   1%|          | 4/398 [00:07<11:07,  1.69s/it]Loading weights:  45%|████▌     | 181/398 [00:07<00:04, 48.72it/s]Loading weights:  53%|█████▎    | 210/398 [00:08<00:04, 46.79it/s]Loading weights:  58%|█████▊    | 230/398 [00:09<00:04, 39.95it/s]Loading weights:  61%|██████▏   | 244/398 [00:09<00:04, 37.68it/s]Loading weights:  64%|██████▍   | 255/398 [00:10<00:04, 34.08it/s]Loading weights:  66%|██████▌   | 263/398 [00:10<00:04, 28.58it/s]Loading weights:  68%|██████▊   | 269/398 [00:11<00:04, 26.47it/s]Loading weights:  69%|██████▉   | 275/398 [00:11<00:04, 27.48it/s]Loading weights:  70%|███████   | 280/398 [00:12<00:05, 22.19it/s]Loading weights:  73%|███████▎  | 289/398 [00:12<00:04, 22.91it/s]Loading weights:  75%|███████▍  | 298/398 [00:12<00:03, 27.11it/s]Loading weights:  76%|███████▌  | 302/398 [00:12<00:04, 22.25it/s]Loading weights:  78%|███████▊  | 311/398 [00:13<00:04, 18.45it/s]Loading weights:  81%|████████  | 322/398 [00:13<00:03, 24.93it/s]Loading weights:  82%|████████▏ | 326/398 [00:14<00:03, 21.22it/s]Loading weights:  84%|████████▎ | 333/398 [00:14<00:03, 19.63it/s]Loading weights:  86%|████████▋ | 344/398 [00:14<00:02, 23.68it/s]Loading weights:  87%|████████▋ | 347/398 [00:15<00:02, 20.93it/s]Loading weights:  88%|████████▊ | 352/398 [00:15<00:01, 23.85it/s]Loading weights:  89%|████████▉ | 355/398 [00:15<00:02, 18.88it/s]Loading weights:  90%|████████▉ | 358/398 [00:15<00:01, 20.07it/s]Loading weights:  92%|█████████▏| 366/398 [00:15<00:01, 20.56it/s]Loading weights:  95%|█████████▍| 377/398 [00:16<00:01, 18.03it/s]Loading weights:  95%|█████████▌| 380/398 [00:16<00:00, 18.87it/s]Loading weights:  98%|█████████▊| 390/398 [00:17<00:00, 24.84it/s]Loading weights: 100%|██████████| 398/398 [00:17<00:00, 23.38it/s]
-[transformers] warmup_ratio is deprecated and will be removed in v5.2. Use `warmup_steps` instead.
-
-=== LoRA Configuration ===
-trainable params: 132,120,576 || all params: 4,154,588,672 || trainable%: 3.1801
-
-=== Training Configuration ===
-Epochs: 8
-Batch size: 2
-Gradient accumulation: 8
-Effective batch size: 16
-Learning rate: 0.0002
-Warmup ratio: 0.05
-Weight decay: 0.01
-Max sequence length: 4096
-
-=== Loss Configuration ===
-Using AssistantOnlyCollator (response_template: '<|im_start|>assistant')
-Template token IDs: [151644, 77091]
-Loss computed on assistant tokens only
-Tokenizing train dataset:   0%|          | 0/594 [00:00<?, ? examples/s]Tokenizing train dataset:  10%|█         | 61/594 [00:00<00:00, 593.87 examples/s]Tokenizing train dataset:  23%|██▎       | 139/594 [00:00<00:00, 693.03 examples/s]Tokenizing train dataset:  36%|███▋      | 216/594 [00:00<00:00, 722.67 examples/s]Tokenizing train dataset:  50%|█████     | 297/594 [00:00<00:00, 753.26 examples/s]Tokenizing train dataset:  64%|██████▎   | 378/594 [00:00<00:00, 771.33 examples/s]Tokenizing train dataset:  77%|███████▋  | 456/594 [00:00<00:00, 771.34 examples/s]Tokenizing train dataset:  95%|█████████▌| 565/594 [00:00<00:00, 751.11 examples/s]Tokenizing train dataset: 100%|██████████| 594/594 [00:00<00:00, 702.64 examples/s]
-Truncating train dataset:   0%|          | 0/594 [00:00<?, ? examples/s]Truncating train dataset: 100%|██████████| 594/594 [00:00<00:00, 93973.17 examples/s]
-[transformers] The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None, 'pad_token_id': 151643}.
-
-=== Starting Training ===
-Total training steps: 296
-Warmup steps: ~14
-Checkpoints will be saved every epoch to: ./checkpoints/sft_v3
-
-  0%|          | 0/2 [00:00<?, ?it/s] 50%|█████     | 1/2 [00:13<00:13, 13.32s/it]100%|██████████| 2/2 [00:21<00:00, 10.14s/it]                                             100%|██████████| 2/2 [00:52<00:00, 10.14s/it]100%|██████████| 2/2 [00:52<00:00, 26.24s/it]
-{'train_runtime': '52.49', 'train_samples_per_second': '0.61', 'train_steps_per_second': '0.038', 'train_loss': '0.9486', 'entropy': '0.461', 'num_tokens': '1.133e+04', 'mean_token_accuracy': '0.8446', 'epoch': '0.05387'}
-
-Training complete! Final model saved to ./checkpoints/sft_v3/final
-
-=== NEXT STEPS ===
-1. Run smoke test on epoch-1 checkpoint
-2. Generate on R1/R2 items for each checkpoint
-3. Select best checkpoint by no-box rate + teacher agreement
-4. Merge adapter and run full inference

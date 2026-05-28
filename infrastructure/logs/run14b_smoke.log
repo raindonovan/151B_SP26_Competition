@@ -1,0 +1,324 @@
+scripts/run14b_smoke_launcher.sh: line 42: results/run14b_smoke_10.jsonl: No such file or directory
+[2026-05-14T19:20:47Z] run14b smoke started. (0/10 lines already done).
+[2026-05-14T19:20:47Z] libcudart.so.13 OK.
+[2026-05-14T19:20:48Z] GPU free memory: 23 GiB (24164 MiB). Threshold: 18 GiB.
+[2026-05-14T19:20:48Z] Starting run14b smoke (first 10 items).
+Variant 'V0_baseline' applied: {'prompt_version': 'v1-baseline', 'max_new_tokens': 32768, 'presence_penalty': 1.0, 'n_samples': 8, 'temperature': 0.6, 'top_p': 0.95, 'top_k': 20, 'min_p': 0.0, 'repetition_penalty': 1.0, 'temperature_ladder': None, 'shape_filter': False}
+Loaded 10 questions [0:10] from private.jsonl
+INFO 05-14 12:21:05 [utils.py:233] non-default args: {'trust_remote_code': True, 'dtype': 'bfloat16', 'max_model_len': 36864, 'enable_prefix_caching': True, 'gpu_memory_utilization': 0.85, 'disable_log_stats': True, 'reasoning_parser': 'deepseek_r1', 'model': 'Qwen/Qwen3-4B-Thinking-2507'}
+WARNING 05-14 12:21:05 [envs.py:1830] Unknown vLLM environment variable detected: VLLM_USE_V1
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+INFO 05-14 12:21:06 [model.py:555] Resolved architecture: Qwen3ForCausalLM
+INFO 05-14 12:21:06 [model.py:1680] Using max model len 36864
+INFO 05-14 12:21:06 [scheduler.py:239] Chunked prefill is enabled with max_num_batched_tokens=8192.
+INFO 05-14 12:21:06 [vllm.py:840] Asynchronous scheduling is enabled.
+INFO 05-14 12:21:06 [kernel.py:205] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'])
+(EngineCore pid=9172) INFO 05-14 12:21:10 [core.py:109] Initializing a V1 LLM engine (v0.20.2) with config: model='Qwen/Qwen3-4B-Thinking-2507', speculative_config=None, tokenizer='Qwen/Qwen3-4B-Thinking-2507', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=36864, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=False, quantization=None, quantization_config=None, enforce_eager=False, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='deepseek_r1', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False), seed=0, served_model_name=Qwen/Qwen3-4B-Thinking-2507, enable_prefix_caching=True, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.VLLM_COMPILE: 3>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['none'], 'ir_enable_torch_wrap': True, 'splitting_ops': ['vllm::unified_attention_with_output', 'vllm::unified_mla_attention_with_output', 'vllm::mamba_mixer2', 'vllm::mamba_mixer', 'vllm::short_conv', 'vllm::linear_attention', 'vllm::plamo2_mamba_mixer', 'vllm::gdn_attention_core', 'vllm::gdn_attention_core_xpu', 'vllm::olmo_hybrid_gdn_full_forward', 'vllm::kda_attention', 'vllm::sparse_attn_indexer', 'vllm::rocm_aiter_sparse_attn_indexer', 'vllm::deepseek_v4_attention', 'vllm::unified_kv_cache_update', 'vllm::unified_mla_kv_cache_update'], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'compile_sizes': [], 'compile_ranges_endpoints': [8192], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'size_asserts': False, 'alignment_asserts': False, 'scalar_asserts': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.FULL_AND_PIECEWISE: (2, 1)>, 'cudagraph_num_of_warmups': 1, 'cudagraph_capture_sizes': [1, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 248, 256, 272, 288, 304, 320, 336, 352, 368, 384, 400, 416, 432, 448, 464, 480, 496, 512], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': False, 'fuse_act_quant': False, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False}, 'max_cudagraph_capture_size': 512, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': False, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['native']), enable_flashinfer_autotune=True, moe_backend='auto')
+(EngineCore pid=9172) INFO 05-14 12:21:10 [nixl_utils.py:20] Setting UCX_RCACHE_MAX_UNRELEASED to '1024' to avoid a rare memory leak in UCX when using NIXL.
+(EngineCore pid=9172) WARNING 05-14 12:21:10 [nixl_utils.py:34] NIXL is not available
+(EngineCore pid=9172) WARNING 05-14 12:21:10 [nixl_utils.py:44] NIXL agent config is not available
+(EngineCore pid=9172) INFO 05-14 12:21:11 [parallel_state.py:1402] world_size=1 rank=0 local_rank=0 distributed_init_method=tcp://10.41.159.6:54895 backend=nccl
+(EngineCore pid=9172) INFO 05-14 12:21:11 [parallel_state.py:1715] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank N/A, EPLB rank N/A
+(EngineCore pid=9172) INFO 05-14 12:21:12 [gpu_model_runner.py:4777] Starting to load model Qwen/Qwen3-4B-Thinking-2507...
+(EngineCore pid=9172) INFO 05-14 12:21:13 [cuda.py:368] Using FLASH_ATTN attention backend out of potential backends: ['FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN', 'FLEX_ATTENTION'].
+(EngineCore pid=9172) INFO 05-14 12:21:13 [flash_attn.py:646] Using FlashAttention version 2
+(EngineCore pid=9172) <frozen importlib._bootstrap_external>:1325: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+(EngineCore pid=9172) <frozen importlib._bootstrap_external>:1325: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+(EngineCore pid=9172) INFO 05-14 12:21:14 [weight_utils.py:904] Filesystem type for checkpoints: OVERLAY. Checkpoint size: 7.49 GiB. Available RAM: 484.21 GiB.
+(EngineCore pid=9172) INFO 05-14 12:21:14 [weight_utils.py:927] Auto-prefetch is disabled because the filesystem (OVERLAY) is not a recognized network FS (NFS/Lustre). If you want to force prefetching, start vLLM with --safetensors-load-strategy=prefetch.
+(EngineCore pid=9172) Loading safetensors checkpoint shards:   0% Completed | 0/3 [00:00<?, ?it/s]
+(EngineCore pid=9172) Loading safetensors checkpoint shards:  33% Completed | 1/3 [00:00<00:00,  2.05it/s]
+(EngineCore pid=9172) Loading safetensors checkpoint shards:  67% Completed | 2/3 [00:01<00:00,  1.49it/s]
+(EngineCore pid=9172) Loading safetensors checkpoint shards: 100% Completed | 3/3 [00:01<00:00,  1.91it/s]
+(EngineCore pid=9172) Loading safetensors checkpoint shards: 100% Completed | 3/3 [00:01<00:00,  1.84it/s]
+(EngineCore pid=9172) 
+(EngineCore pid=9172) INFO 05-14 12:21:15 [default_loader.py:384] Loading weights took 1.65 seconds
+(EngineCore pid=9172) INFO 05-14 12:21:16 [gpu_model_runner.py:4879] Model loading took 7.61 GiB memory and 3.079889 seconds
+(EngineCore pid=9172) INFO 05-14 12:21:19 [backends.py:1069] Using cache directory: /tmp/xdg-cache/vllm/torch_compile_cache/218cde3ed2/rank_0_0/backbone for vLLM's torch.compile
+(EngineCore pid=9172) INFO 05-14 12:21:19 [backends.py:1128] Dynamo bytecode transform time: 2.72 s
+(EngineCore pid=9172) INFO 05-14 12:21:21 [backends.py:290] Directly load the compiled graph(s) for compile range (1, 8192) from the cache, took 0.964 s
+(EngineCore pid=9172) INFO 05-14 12:21:21 [decorators.py:305] Directly load AOT compilation from path /tmp/xdg-cache/vllm/torch_compile_cache/torch_aot_compile/40a859c85ce9184918ffcf5ed569105ba80d196b23b4fb5f96818a2561c46cac/rank_0_0/model
+(EngineCore pid=9172) INFO 05-14 12:21:21 [monitor.py:53] torch.compile took 4.36 s in total
+(EngineCore pid=9172) INFO 05-14 12:21:21 [monitor.py:81] Initial profiling/warmup run took 0.28 s
+(EngineCore pid=9172) INFO 05-14 12:21:22 [gpu_model_runner.py:5963] Profiling CUDA graph memory: PIECEWISE=51 (largest=512), FULL=35 (largest=256)
+(EngineCore pid=9172) INFO 05-14 12:21:23 [gpu_model_runner.py:6042] Estimated CUDA graph memory: 0.51 GiB total
+(EngineCore pid=9172) INFO 05-14 12:21:23 [gpu_worker.py:440] Available KV cache memory: 11.25 GiB
+(EngineCore pid=9172) INFO 05-14 12:21:23 [gpu_worker.py:455] CUDA graph memory profiling is enabled (default since v0.21.0). The current --gpu-memory-utilization=0.8500 is equivalent to --gpu-memory-utilization=0.8283 without CUDA graph memory profiling. To maintain the same effective KV cache size as before, increase --gpu-memory-utilization to 0.8717. To disable, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0.
+(EngineCore pid=9172) INFO 05-14 12:21:23 [kv_cache_utils.py:1708] GPU KV cache size: 81,888 tokens
+(EngineCore pid=9172) INFO 05-14 12:21:23 [kv_cache_utils.py:1709] Maximum concurrency for 36,864 tokens per request: 2.22x
+(EngineCore pid=9172) Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   0%|          | 0/51 [00:00<?, ?it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   4%|▍         | 2/51 [00:00<00:02, 17.90it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   8%|▊         | 4/51 [00:00<00:02, 18.00it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  12%|█▏        | 6/51 [00:00<00:02, 17.80it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  16%|█▌        | 8/51 [00:00<00:02, 17.09it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  20%|█▉        | 10/51 [00:00<00:02, 17.93it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  24%|██▎       | 12/51 [00:00<00:02, 18.47it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  29%|██▉       | 15/51 [00:00<00:01, 19.17it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  35%|███▌      | 18/51 [00:00<00:01, 20.32it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  41%|████      | 21/51 [00:01<00:01, 21.31it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  47%|████▋     | 24/51 [00:01<00:01, 22.08it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  53%|█████▎    | 27/51 [00:01<00:01, 22.67it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  59%|█████▉    | 30/51 [00:01<00:00, 23.21it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  65%|██████▍   | 33/51 [00:01<00:00, 24.01it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  71%|███████   | 36/51 [00:01<00:00, 25.15it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  76%|███████▋  | 39/51 [00:01<00:00, 25.48it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  82%|████████▏ | 42/51 [00:01<00:00, 26.29it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  90%|█████████ | 46/51 [00:02<00:00, 27.93it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  98%|█████████▊| 50/51 [00:02<00:00, 29.19it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 51/51 [00:02<00:00, 23.39it/s]
+(EngineCore pid=9172) Capturing CUDA graphs (decode, FULL):   0%|          | 0/35 [00:00<?, ?it/s]Capturing CUDA graphs (decode, FULL):   9%|▊         | 3/35 [00:00<00:01, 23.22it/s]Capturing CUDA graphs (decode, FULL):  17%|█▋        | 6/35 [00:00<00:01, 23.81it/s]Capturing CUDA graphs (decode, FULL):  26%|██▌       | 9/35 [00:00<00:01, 23.33it/s]Capturing CUDA graphs (decode, FULL):  34%|███▍      | 12/35 [00:00<00:00, 23.99it/s]Capturing CUDA graphs (decode, FULL):  43%|████▎     | 15/35 [00:00<00:00, 24.48it/s]Capturing CUDA graphs (decode, FULL):  51%|█████▏    | 18/35 [00:00<00:00, 25.79it/s]Capturing CUDA graphs (decode, FULL):  63%|██████▎   | 22/35 [00:00<00:00, 27.63it/s]Capturing CUDA graphs (decode, FULL):  74%|███████▍  | 26/35 [00:00<00:00, 29.27it/s]Capturing CUDA graphs (decode, FULL):  86%|████████▌ | 30/35 [00:01<00:00, 30.51it/s]Capturing CUDA graphs (decode, FULL):  97%|█████████▋| 34/35 [00:01<00:00, 31.36it/s]Capturing CUDA graphs (decode, FULL): 100%|██████████| 35/35 [00:01<00:00, 28.09it/s]
+(EngineCore pid=9172) INFO 05-14 12:21:28 [gpu_model_runner.py:6133] Graph capturing finished in 4 secs, took 0.51 GiB
+(EngineCore pid=9172) INFO 05-14 12:21:28 [gpu_worker.py:599] CUDA graph pool memory: 0.51 GiB (actual), 0.51 GiB (estimated), difference: 0.0 GiB (0.8%).
+(EngineCore pid=9172) INFO 05-14 12:21:28 [core.py:299] init engine (profile, create kv cache, warmup model) took 11.80 s (compilation: 4.36 s)
+(EngineCore pid=9172) INFO 05-14 12:21:28 [kernel.py:205] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'])
+Generating 8 samples × 10 prompts (max_new_tokens=32768, one generate() call per question)...
+V0_baseline:   0%|          | 0/10 [00:00<?, ?q/s]V0_baseline:   0%|          | 0/10 [00:00<?, ?q/s]
+Traceback (most recent call last):
+  File "/home/dvaneetv/private/151B_SP26_Competition/scripts/run_vllm_sc.py", line 622, in <module>
+    main()
+    ~~~~^^
+  File "/home/dvaneetv/private/151B_SP26_Competition/scripts/run_vllm_sc.py", line 495, in main
+    gold = item["answer"]
+           ~~~~^^^^^^^^^^
+KeyError: 'answer'
+(EngineCore pid=9172) INFO 05-14 12:21:28 [core.py:1238] Shutdown initiated (timeout=0)
+(EngineCore pid=9172) INFO 05-14 12:21:28 [core.py:1261] Shutdown complete
+[2026-05-14T19:21:30Z] run14b smoke done (0/10 lines).
+[2026-05-14T19:21:30Z] Check: wall time <5min/item AND cutoffs_per_sample/(0*8) <50% to proceed.
+scripts/run14b_smoke_launcher.sh: line 42: results/run14b_smoke_10.jsonl: No such file or directory
+[2026-05-14T19:52:10Z] run14b smoke started. (0/10 lines already done).
+[2026-05-14T19:52:10Z] libcudart.so.13 OK.
+[2026-05-14T19:52:10Z] GPU free memory: 23 GiB (24164 MiB). Threshold: 18 GiB.
+[2026-05-14T19:52:10Z] Starting run14b smoke (first 10 items).
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Variant 'V0_baseline' applied: {'prompt_version': 'v1-baseline', 'max_new_tokens': 32768, 'presence_penalty': 1.0, 'n_samples': 8, 'temperature': 0.6, 'top_p': 0.95, 'top_k': 20, 'min_p': 0.0, 'repetition_penalty': 1.0, 'temperature_ladder': None, 'shape_filter': False}
+Loaded 10 questions [0:10] from private.jsonl
+INFO 05-14 12:52:26 [utils.py:233] non-default args: {'trust_remote_code': True, 'dtype': 'bfloat16', 'max_model_len': 36864, 'enable_prefix_caching': True, 'gpu_memory_utilization': 0.85, 'disable_log_stats': True, 'reasoning_parser': 'deepseek_r1', 'model': 'Qwen/Qwen3-4B-Thinking-2507'}
+WARNING 05-14 12:52:26 [envs.py:1830] Unknown vLLM environment variable detected: VLLM_USE_V1
+INFO 05-14 12:52:27 [model.py:555] Resolved architecture: Qwen3ForCausalLM
+INFO 05-14 12:52:27 [model.py:1680] Using max model len 36864
+INFO 05-14 12:52:27 [scheduler.py:239] Chunked prefill is enabled with max_num_batched_tokens=8192.
+INFO 05-14 12:52:27 [vllm.py:840] Asynchronous scheduling is enabled.
+INFO 05-14 12:52:27 [kernel.py:205] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'])
+(EngineCore pid=12922) INFO 05-14 12:52:31 [core.py:109] Initializing a V1 LLM engine (v0.20.2) with config: model='Qwen/Qwen3-4B-Thinking-2507', speculative_config=None, tokenizer='Qwen/Qwen3-4B-Thinking-2507', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=36864, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=False, quantization=None, quantization_config=None, enforce_eager=False, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='deepseek_r1', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False), seed=0, served_model_name=Qwen/Qwen3-4B-Thinking-2507, enable_prefix_caching=True, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.VLLM_COMPILE: 3>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['none'], 'ir_enable_torch_wrap': True, 'splitting_ops': ['vllm::unified_attention_with_output', 'vllm::unified_mla_attention_with_output', 'vllm::mamba_mixer2', 'vllm::mamba_mixer', 'vllm::short_conv', 'vllm::linear_attention', 'vllm::plamo2_mamba_mixer', 'vllm::gdn_attention_core', 'vllm::gdn_attention_core_xpu', 'vllm::olmo_hybrid_gdn_full_forward', 'vllm::kda_attention', 'vllm::sparse_attn_indexer', 'vllm::rocm_aiter_sparse_attn_indexer', 'vllm::deepseek_v4_attention', 'vllm::unified_kv_cache_update', 'vllm::unified_mla_kv_cache_update'], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'compile_sizes': [], 'compile_ranges_endpoints': [8192], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'size_asserts': False, 'alignment_asserts': False, 'scalar_asserts': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.FULL_AND_PIECEWISE: (2, 1)>, 'cudagraph_num_of_warmups': 1, 'cudagraph_capture_sizes': [1, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 248, 256, 272, 288, 304, 320, 336, 352, 368, 384, 400, 416, 432, 448, 464, 480, 496, 512], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': False, 'fuse_act_quant': False, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False}, 'max_cudagraph_capture_size': 512, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': False, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['native']), enable_flashinfer_autotune=True, moe_backend='auto')
+(EngineCore pid=12922) INFO 05-14 12:52:31 [nixl_utils.py:20] Setting UCX_RCACHE_MAX_UNRELEASED to '1024' to avoid a rare memory leak in UCX when using NIXL.
+(EngineCore pid=12922) WARNING 05-14 12:52:31 [nixl_utils.py:34] NIXL is not available
+(EngineCore pid=12922) WARNING 05-14 12:52:31 [nixl_utils.py:44] NIXL agent config is not available
+(EngineCore pid=12922) INFO 05-14 12:52:32 [parallel_state.py:1402] world_size=1 rank=0 local_rank=0 distributed_init_method=tcp://10.41.159.6:56981 backend=nccl
+(EngineCore pid=12922) INFO 05-14 12:52:32 [parallel_state.py:1715] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank N/A, EPLB rank N/A
+(EngineCore pid=12922) INFO 05-14 12:52:33 [gpu_model_runner.py:4777] Starting to load model Qwen/Qwen3-4B-Thinking-2507...
+(EngineCore pid=12922) INFO 05-14 12:52:33 [cuda.py:368] Using FLASH_ATTN attention backend out of potential backends: ['FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN', 'FLEX_ATTENTION'].
+(EngineCore pid=12922) INFO 05-14 12:52:33 [flash_attn.py:646] Using FlashAttention version 2
+(EngineCore pid=12922) <frozen importlib._bootstrap_external>:1325: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+(EngineCore pid=12922) <frozen importlib._bootstrap_external>:1325: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+(EngineCore pid=12922) INFO 05-14 12:52:34 [weight_utils.py:904] Filesystem type for checkpoints: OVERLAY. Checkpoint size: 7.49 GiB. Available RAM: 478.24 GiB.
+(EngineCore pid=12922) INFO 05-14 12:52:34 [weight_utils.py:927] Auto-prefetch is disabled because the filesystem (OVERLAY) is not a recognized network FS (NFS/Lustre). If you want to force prefetching, start vLLM with --safetensors-load-strategy=prefetch.
+(EngineCore pid=12922) Loading safetensors checkpoint shards:   0% Completed | 0/3 [00:00<?, ?it/s]
+(EngineCore pid=12922) Loading safetensors checkpoint shards:  33% Completed | 1/3 [00:00<00:00,  2.06it/s]
+(EngineCore pid=12922) Loading safetensors checkpoint shards:  67% Completed | 2/3 [00:01<00:00,  1.78it/s]
+(EngineCore pid=12922) Loading safetensors checkpoint shards: 100% Completed | 3/3 [00:01<00:00,  2.64it/s]
+(EngineCore pid=12922) Loading safetensors checkpoint shards: 100% Completed | 3/3 [00:01<00:00,  2.38it/s]
+(EngineCore pid=12922) 
+(EngineCore pid=12922) INFO 05-14 12:52:35 [default_loader.py:384] Loading weights took 1.27 seconds
+(EngineCore pid=12922) INFO 05-14 12:52:36 [gpu_model_runner.py:4879] Model loading took 7.61 GiB memory and 2.380591 seconds
+(EngineCore pid=12922) INFO 05-14 12:52:39 [backends.py:1069] Using cache directory: /tmp/xdg-cache/vllm/torch_compile_cache/218cde3ed2/rank_0_0/backbone for vLLM's torch.compile
+(EngineCore pid=12922) INFO 05-14 12:52:39 [backends.py:1128] Dynamo bytecode transform time: 2.75 s
+(EngineCore pid=12922) INFO 05-14 12:52:41 [backends.py:290] Directly load the compiled graph(s) for compile range (1, 8192) from the cache, took 0.959 s
+(EngineCore pid=12922) INFO 05-14 12:52:41 [decorators.py:305] Directly load AOT compilation from path /tmp/xdg-cache/vllm/torch_compile_cache/torch_aot_compile/40a859c85ce9184918ffcf5ed569105ba80d196b23b4fb5f96818a2561c46cac/rank_0_0/model
+(EngineCore pid=12922) INFO 05-14 12:52:41 [monitor.py:53] torch.compile took 4.40 s in total
+(EngineCore pid=12922) INFO 05-14 12:52:41 [monitor.py:81] Initial profiling/warmup run took 0.31 s
+(EngineCore pid=12922) INFO 05-14 12:52:42 [gpu_model_runner.py:5963] Profiling CUDA graph memory: PIECEWISE=51 (largest=512), FULL=35 (largest=256)
+(EngineCore pid=12922) INFO 05-14 12:52:43 [gpu_model_runner.py:6042] Estimated CUDA graph memory: 0.51 GiB total
+(EngineCore pid=12922) INFO 05-14 12:52:44 [gpu_worker.py:440] Available KV cache memory: 11.25 GiB
+(EngineCore pid=12922) INFO 05-14 12:52:44 [gpu_worker.py:455] CUDA graph memory profiling is enabled (default since v0.21.0). The current --gpu-memory-utilization=0.8500 is equivalent to --gpu-memory-utilization=0.8283 without CUDA graph memory profiling. To maintain the same effective KV cache size as before, increase --gpu-memory-utilization to 0.8717. To disable, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0.
+(EngineCore pid=12922) INFO 05-14 12:52:44 [kv_cache_utils.py:1708] GPU KV cache size: 81,888 tokens
+(EngineCore pid=12922) INFO 05-14 12:52:44 [kv_cache_utils.py:1709] Maximum concurrency for 36,864 tokens per request: 2.22x
+(EngineCore pid=12922) Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   0%|          | 0/51 [00:00<?, ?it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   4%|▍         | 2/51 [00:00<00:02, 17.54it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   8%|▊         | 4/51 [00:00<00:02, 17.58it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  12%|█▏        | 6/51 [00:00<00:02, 17.43it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  16%|█▌        | 8/51 [00:00<00:02, 17.38it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  20%|█▉        | 10/51 [00:00<00:02, 17.99it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  24%|██▎       | 12/51 [00:00<00:02, 18.44it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  27%|██▋       | 14/51 [00:00<00:01, 18.91it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  33%|███▎      | 17/51 [00:00<00:01, 19.74it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  39%|███▉      | 20/51 [00:01<00:01, 20.86it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  45%|████▌     | 23/51 [00:01<00:01, 21.07it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  51%|█████     | 26/51 [00:01<00:01, 21.67it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  57%|█████▋    | 29/51 [00:01<00:00, 22.18it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  63%|██████▎   | 32/51 [00:01<00:00, 22.61it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  69%|██████▊   | 35/51 [00:01<00:00, 23.86it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  75%|███████▍  | 38/51 [00:01<00:00, 24.21it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  80%|████████  | 41/51 [00:01<00:00, 25.08it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  86%|████████▋ | 44/51 [00:02<00:00, 26.21it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  92%|█████████▏| 47/51 [00:02<00:00, 27.24it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 51/51 [00:02<00:00, 27.35it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 51/51 [00:02<00:00, 22.64it/s]
+(EngineCore pid=12922) Capturing CUDA graphs (decode, FULL):   0%|          | 0/35 [00:00<?, ?it/s]Capturing CUDA graphs (decode, FULL):   9%|▊         | 3/35 [00:00<00:01, 22.74it/s]Capturing CUDA graphs (decode, FULL):  17%|█▋        | 6/35 [00:00<00:01, 23.21it/s]Capturing CUDA graphs (decode, FULL):  26%|██▌       | 9/35 [00:00<00:01, 23.35it/s]Capturing CUDA graphs (decode, FULL):  34%|███▍      | 12/35 [00:00<00:00, 23.69it/s]Capturing CUDA graphs (decode, FULL):  43%|████▎     | 15/35 [00:00<00:00, 24.05it/s]Capturing CUDA graphs (decode, FULL):  51%|█████▏    | 18/35 [00:00<00:00, 25.17it/s]Capturing CUDA graphs (decode, FULL):  60%|██████    | 21/35 [00:00<00:00, 26.51it/s]Capturing CUDA graphs (decode, FULL):  69%|██████▊   | 24/35 [00:00<00:00, 26.46it/s]Capturing CUDA graphs (decode, FULL):  80%|████████  | 28/35 [00:01<00:00, 28.28it/s]Capturing CUDA graphs (decode, FULL):  91%|█████████▏| 32/35 [00:01<00:00, 29.55it/s]Capturing CUDA graphs (decode, FULL): 100%|██████████| 35/35 [00:01<00:00, 26.98it/s]
+(EngineCore pid=12922) INFO 05-14 12:52:48 [gpu_model_runner.py:6133] Graph capturing finished in 4 secs, took 0.51 GiB
+(EngineCore pid=12922) INFO 05-14 12:52:48 [gpu_worker.py:599] CUDA graph pool memory: 0.51 GiB (actual), 0.51 GiB (estimated), difference: 0.0 GiB (0.8%).
+(EngineCore pid=12922) INFO 05-14 12:52:48 [core.py:299] init engine (profile, create kv cache, warmup model) took 12.15 s (compilation: 4.40 s)
+(EngineCore pid=12922) INFO 05-14 12:52:49 [kernel.py:205] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'])
+Generating 8 samples × 10 prompts (max_new_tokens=32768, one generate() call per question)...
+V0_baseline:   0%|          | 0/10 [00:00<?, ?q/s]
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s][ARendering prompts: 100%|██████████| 1/1 [00:00<00:00, 46.89it/s]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [00:31<00:00,  3.96s/it, est. speed input: 34.81 toks/s, output: 359.62 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [00:31<00:00,  3.96s/it, est. speed input: 34.81 toks/s, output: 359.62 toks/s][AProcessed prompts: 100%|██████████| 8/8 [00:31<00:00,  3.96s/it, est. speed input: 34.81 toks/s, output: 359.62 toks/s]
+V0_baseline:   0%|          | 0/10 [00:31<?, ?q/s, agree=1.00, id=0, ok=0, s=32, voted=4, 16]  [1/10] id=0  correct=False  agree=1.00  voted='4, 16'  32s
+V0_baseline:  10%|█         | 1/10 [00:31<04:45, 31.74s/q, agree=1.00, id=0, ok=0, s=32, voted=4, 16]
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s][ARendering prompts: 100%|██████████| 1/1 [00:00<00:00, 713.07it/s]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [01:22<00:00, 10.30s/it, est. speed input: 14.37 toks/s, output: 407.65 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [01:22<00:00, 10.30s/it, est. speed input: 14.37 toks/s, output: 407.65 toks/s][AProcessed prompts: 100%|██████████| 8/8 [01:22<00:00, 10.30s/it, est. speed input: 14.37 toks/s, output: 407.65 toks/s]
+V0_baseline:  10%|█         | 1/10 [01:54<04:45, 31.74s/q, agree=1.00, id=1, ok=0, s=82, voted=A]      [2/10] id=1  correct=False  agree=1.00  voted='A'  82s
+V0_baseline:  20%|██        | 2/10 [01:54<08:12, 61.56s/q, agree=1.00, id=1, ok=0, s=82, voted=A]
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s][ARendering prompts: 100%|██████████| 1/1 [00:00<00:00, 622.95it/s]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [01:14<00:00,  9.37s/it, est. speed input: 31.37 toks/s, output: 394.15 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [01:14<00:00,  9.37s/it, est. speed input: 31.37 toks/s, output: 394.15 toks/s][AProcessed prompts: 100%|██████████| 8/8 [01:14<00:00,  9.37s/it, est. speed input: 31.37 toks/s, output: 394.15 toks/s]
+V0_baseline:  20%|██        | 2/10 [03:09<08:12, 61.56s/q, agree=0.50, id=2, ok=0, s=75, voted=-1.460, 1.64]  [3/10] id=2  correct=False  agree=0.50  voted='-1.460, 1.645, A'  75s
+V0_baseline:  30%|███       | 3/10 [03:09<07:53, 67.69s/q, agree=0.50, id=2, ok=0, s=75, voted=-1.460, 1.64]
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s][ARendering prompts: 100%|██████████| 1/1 [00:00<00:00, 559.91it/s]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A(EngineCore pid=12922) INFO 05-14 12:56:24 [core.py:1238] Shutdown initiated (timeout=0)
+(EngineCore pid=12922) INFO 05-14 12:56:24 [core.py:1243] Aborting 8 requests
+(EngineCore pid=12922) INFO 05-14 12:56:24 [core.py:1261] Shutdown complete
+scripts/run14b_smoke_launcher.sh: line 42: results/run14b_smoke_10.jsonl: No such file or directory
+[2026-05-14T19:59:38Z] run14b smoke started. (0/10 lines already done).
+[2026-05-14T19:59:38Z] libcudart.so.13 OK.
+[2026-05-14T19:59:38Z] GPU free memory: 23 GiB (24164 MiB). Threshold: 18 GiB.
+[2026-05-14T19:59:38Z] Starting run14b smoke (first 10 items).
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Variant 'V0_baseline' applied: {'prompt_version': 'v1-baseline', 'max_new_tokens': 32768, 'presence_penalty': 1.0, 'n_samples': 8, 'temperature': 0.6, 'top_p': 0.95, 'top_k': 20, 'min_p': 0.0, 'repetition_penalty': 1.0, 'temperature_ladder': None, 'shape_filter': False}
+Loaded 10 questions [0:10] from private.jsonl
+INFO 05-14 12:59:56 [utils.py:233] non-default args: {'trust_remote_code': True, 'dtype': 'bfloat16', 'max_model_len': 36864, 'enable_prefix_caching': True, 'gpu_memory_utilization': 0.85, 'disable_log_stats': True, 'reasoning_parser': 'deepseek_r1', 'model': 'Qwen/Qwen3-4B-Thinking-2507'}
+WARNING 05-14 12:59:56 [envs.py:1830] Unknown vLLM environment variable detected: VLLM_USE_V1
+INFO 05-14 12:59:57 [model.py:555] Resolved architecture: Qwen3ForCausalLM
+INFO 05-14 12:59:57 [model.py:1680] Using max model len 36864
+INFO 05-14 12:59:57 [scheduler.py:239] Chunked prefill is enabled with max_num_batched_tokens=8192.
+INFO 05-14 12:59:57 [vllm.py:840] Asynchronous scheduling is enabled.
+INFO 05-14 12:59:57 [kernel.py:205] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'])
+(EngineCore pid=14035) INFO 05-14 13:00:01 [core.py:109] Initializing a V1 LLM engine (v0.20.2) with config: model='Qwen/Qwen3-4B-Thinking-2507', speculative_config=None, tokenizer='Qwen/Qwen3-4B-Thinking-2507', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=36864, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=False, quantization=None, quantization_config=None, enforce_eager=False, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='deepseek_r1', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False), seed=0, served_model_name=Qwen/Qwen3-4B-Thinking-2507, enable_prefix_caching=True, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.VLLM_COMPILE: 3>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['none'], 'ir_enable_torch_wrap': True, 'splitting_ops': ['vllm::unified_attention_with_output', 'vllm::unified_mla_attention_with_output', 'vllm::mamba_mixer2', 'vllm::mamba_mixer', 'vllm::short_conv', 'vllm::linear_attention', 'vllm::plamo2_mamba_mixer', 'vllm::gdn_attention_core', 'vllm::gdn_attention_core_xpu', 'vllm::olmo_hybrid_gdn_full_forward', 'vllm::kda_attention', 'vllm::sparse_attn_indexer', 'vllm::rocm_aiter_sparse_attn_indexer', 'vllm::deepseek_v4_attention', 'vllm::unified_kv_cache_update', 'vllm::unified_mla_kv_cache_update'], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'compile_sizes': [], 'compile_ranges_endpoints': [8192], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'size_asserts': False, 'alignment_asserts': False, 'scalar_asserts': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.FULL_AND_PIECEWISE: (2, 1)>, 'cudagraph_num_of_warmups': 1, 'cudagraph_capture_sizes': [1, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 248, 256, 272, 288, 304, 320, 336, 352, 368, 384, 400, 416, 432, 448, 464, 480, 496, 512], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': False, 'fuse_act_quant': False, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False}, 'max_cudagraph_capture_size': 512, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': False, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['native']), enable_flashinfer_autotune=True, moe_backend='auto')
+(EngineCore pid=14035) INFO 05-14 13:00:01 [nixl_utils.py:20] Setting UCX_RCACHE_MAX_UNRELEASED to '1024' to avoid a rare memory leak in UCX when using NIXL.
+(EngineCore pid=14035) WARNING 05-14 13:00:01 [nixl_utils.py:34] NIXL is not available
+(EngineCore pid=14035) WARNING 05-14 13:00:01 [nixl_utils.py:44] NIXL agent config is not available
+(EngineCore pid=14035) INFO 05-14 13:00:02 [parallel_state.py:1402] world_size=1 rank=0 local_rank=0 distributed_init_method=tcp://10.41.159.6:49667 backend=nccl
+(EngineCore pid=14035) INFO 05-14 13:00:02 [parallel_state.py:1715] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank N/A, EPLB rank N/A
+(EngineCore pid=14035) INFO 05-14 13:00:03 [gpu_model_runner.py:4777] Starting to load model Qwen/Qwen3-4B-Thinking-2507...
+(EngineCore pid=14035) INFO 05-14 13:00:03 [cuda.py:368] Using FLASH_ATTN attention backend out of potential backends: ['FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN', 'FLEX_ATTENTION'].
+(EngineCore pid=14035) INFO 05-14 13:00:03 [flash_attn.py:646] Using FlashAttention version 2
+(EngineCore pid=14035) <frozen importlib._bootstrap_external>:1325: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+(EngineCore pid=14035) <frozen importlib._bootstrap_external>:1325: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+(EngineCore pid=14035) INFO 05-14 13:00:04 [weight_utils.py:904] Filesystem type for checkpoints: OVERLAY. Checkpoint size: 7.49 GiB. Available RAM: 478.26 GiB.
+(EngineCore pid=14035) INFO 05-14 13:00:04 [weight_utils.py:927] Auto-prefetch is disabled because the filesystem (OVERLAY) is not a recognized network FS (NFS/Lustre). If you want to force prefetching, start vLLM with --safetensors-load-strategy=prefetch.
+(EngineCore pid=14035) Loading safetensors checkpoint shards:   0% Completed | 0/3 [00:00<?, ?it/s]
+(EngineCore pid=14035) Loading safetensors checkpoint shards:  33% Completed | 1/3 [00:00<00:00,  2.10it/s]
+(EngineCore pid=14035) Loading safetensors checkpoint shards:  67% Completed | 2/3 [00:01<00:00,  1.79it/s]
+(EngineCore pid=14035) Loading safetensors checkpoint shards: 100% Completed | 3/3 [00:01<00:00,  2.66it/s]
+(EngineCore pid=14035) Loading safetensors checkpoint shards: 100% Completed | 3/3 [00:01<00:00,  2.40it/s]
+(EngineCore pid=14035) 
+(EngineCore pid=14035) INFO 05-14 13:00:05 [default_loader.py:384] Loading weights took 1.26 seconds
+(EngineCore pid=14035) INFO 05-14 13:00:06 [gpu_model_runner.py:4879] Model loading took 7.61 GiB memory and 2.306030 seconds
+(EngineCore pid=14035) INFO 05-14 13:00:09 [backends.py:1069] Using cache directory: /tmp/xdg-cache/vllm/torch_compile_cache/218cde3ed2/rank_0_0/backbone for vLLM's torch.compile
+(EngineCore pid=14035) INFO 05-14 13:00:09 [backends.py:1128] Dynamo bytecode transform time: 2.72 s
+(EngineCore pid=14035) INFO 05-14 13:00:11 [backends.py:290] Directly load the compiled graph(s) for compile range (1, 8192) from the cache, took 0.955 s
+(EngineCore pid=14035) INFO 05-14 13:00:11 [decorators.py:305] Directly load AOT compilation from path /tmp/xdg-cache/vllm/torch_compile_cache/torch_aot_compile/40a859c85ce9184918ffcf5ed569105ba80d196b23b4fb5f96818a2561c46cac/rank_0_0/model
+(EngineCore pid=14035) INFO 05-14 13:00:11 [monitor.py:53] torch.compile took 4.35 s in total
+(EngineCore pid=14035) INFO 05-14 13:00:11 [monitor.py:81] Initial profiling/warmup run took 0.30 s
+(EngineCore pid=14035) INFO 05-14 13:00:12 [gpu_model_runner.py:5963] Profiling CUDA graph memory: PIECEWISE=51 (largest=512), FULL=35 (largest=256)
+(EngineCore pid=14035) INFO 05-14 13:00:13 [gpu_model_runner.py:6042] Estimated CUDA graph memory: 0.51 GiB total
+(EngineCore pid=14035) INFO 05-14 13:00:14 [gpu_worker.py:440] Available KV cache memory: 11.25 GiB
+(EngineCore pid=14035) INFO 05-14 13:00:14 [gpu_worker.py:455] CUDA graph memory profiling is enabled (default since v0.21.0). The current --gpu-memory-utilization=0.8500 is equivalent to --gpu-memory-utilization=0.8283 without CUDA graph memory profiling. To maintain the same effective KV cache size as before, increase --gpu-memory-utilization to 0.8717. To disable, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0.
+(EngineCore pid=14035) INFO 05-14 13:00:14 [kv_cache_utils.py:1708] GPU KV cache size: 81,888 tokens
+(EngineCore pid=14035) INFO 05-14 13:00:14 [kv_cache_utils.py:1709] Maximum concurrency for 36,864 tokens per request: 2.22x
+(EngineCore pid=14035) Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   0%|          | 0/51 [00:00<?, ?it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   4%|▍         | 2/51 [00:00<00:02, 17.69it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   8%|▊         | 4/51 [00:00<00:02, 17.74it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  12%|█▏        | 6/51 [00:00<00:02, 17.65it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  16%|█▌        | 8/51 [00:00<00:02, 17.61it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  20%|█▉        | 10/51 [00:00<00:02, 18.33it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  24%|██▎       | 12/51 [00:00<00:02, 18.80it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  29%|██▉       | 15/51 [00:00<00:01, 19.41it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  35%|███▌      | 18/51 [00:00<00:01, 20.38it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  41%|████      | 21/51 [00:01<00:01, 21.37it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  47%|████▋     | 24/51 [00:01<00:01, 22.12it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  53%|█████▎    | 27/51 [00:01<00:01, 22.64it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  59%|█████▉    | 30/51 [00:01<00:00, 22.98it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  65%|██████▍   | 33/51 [00:01<00:00, 23.67it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  71%|███████   | 36/51 [00:01<00:00, 24.81it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  76%|███████▋  | 39/51 [00:01<00:00, 25.09it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  82%|████████▏ | 42/51 [00:01<00:00, 26.02it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  90%|█████████ | 46/51 [00:02<00:00, 27.60it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  98%|█████████▊| 50/51 [00:02<00:00, 28.74it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 51/51 [00:02<00:00, 23.24it/s]
+(EngineCore pid=14035) Capturing CUDA graphs (decode, FULL):   0%|          | 0/35 [00:00<?, ?it/s]Capturing CUDA graphs (decode, FULL):   9%|▊         | 3/35 [00:00<00:01, 22.94it/s]Capturing CUDA graphs (decode, FULL):  17%|█▋        | 6/35 [00:00<00:01, 23.50it/s]Capturing CUDA graphs (decode, FULL):  26%|██▌       | 9/35 [00:00<00:01, 23.62it/s]Capturing CUDA graphs (decode, FULL):  34%|███▍      | 12/35 [00:00<00:00, 24.00it/s]Capturing CUDA graphs (decode, FULL):  43%|████▎     | 15/35 [00:00<00:00, 24.42it/s]Capturing CUDA graphs (decode, FULL):  51%|█████▏    | 18/35 [00:00<00:00, 25.58it/s]Capturing CUDA graphs (decode, FULL):  63%|██████▎   | 22/35 [00:00<00:00, 27.24it/s]Capturing CUDA graphs (decode, FULL):  74%|███████▍  | 26/35 [00:00<00:00, 28.84it/s]Capturing CUDA graphs (decode, FULL):  86%|████████▌ | 30/35 [00:01<00:00, 30.24it/s]Capturing CUDA graphs (decode, FULL):  97%|█████████▋| 34/35 [00:01<00:00, 31.00it/s]Capturing CUDA graphs (decode, FULL): 100%|██████████| 35/35 [00:01<00:00, 27.83it/s]
+(EngineCore pid=14035) INFO 05-14 13:00:18 [gpu_model_runner.py:6133] Graph capturing finished in 4 secs, took 0.51 GiB
+(EngineCore pid=14035) INFO 05-14 13:00:18 [gpu_worker.py:599] CUDA graph pool memory: 0.51 GiB (actual), 0.51 GiB (estimated), difference: 0.0 GiB (0.8%).
+(EngineCore pid=14035) INFO 05-14 13:00:18 [core.py:299] init engine (profile, create kv cache, warmup model) took 11.90 s (compilation: 4.35 s)
+(EngineCore pid=14035) INFO 05-14 13:00:18 [kernel.py:205] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'])
+Generating 8 samples × 10 prompts (max_new_tokens=32768, one generate() call per question)...
+V0_baseline:   0%|          | 0/10 [00:00<?, ?q/s]
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s][ARendering prompts: 100%|██████████| 1/1 [00:00<00:00, 47.50it/s]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [00:22<00:00,  2.85s/it, est. speed input: 48.39 toks/s, output: 499.87 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [00:22<00:00,  2.85s/it, est. speed input: 48.39 toks/s, output: 499.87 toks/s][AProcessed prompts: 100%|██████████| 8/8 [00:22<00:00,  2.85s/it, est. speed input: 48.39 toks/s, output: 499.87 toks/s]
+V0_baseline:   0%|          | 0/10 [00:22<?, ?q/s, agree=1.00, id=0, ok=0, s=23, voted=4, 16]  [1/10] id=0  correct=False  agree=1.00  voted='4, 16'  23s
+V0_baseline:  10%|█         | 1/10 [00:22<03:25, 22.85s/q, agree=1.00, id=0, ok=0, s=23, voted=4, 16]
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s][ARendering prompts: 100%|██████████| 1/1 [00:00<00:00, 432.58it/s]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [01:32<00:00, 11.56s/it, est. speed input: 12.81 toks/s, output: 394.00 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [01:32<00:00, 11.56s/it, est. speed input: 12.81 toks/s, output: 394.00 toks/s][AProcessed prompts: 100%|██████████| 8/8 [01:32<00:00, 11.56s/it, est. speed input: 12.81 toks/s, output: 394.00 toks/s]
+V0_baseline:  10%|█         | 1/10 [01:55<03:25, 22.85s/q, agree=1.00, id=1, ok=0, s=92, voted=A]      [2/10] id=1  correct=False  agree=1.00  voted='A'  92s
+V0_baseline:  20%|██        | 2/10 [01:55<08:30, 63.79s/q, agree=1.00, id=1, ok=0, s=92, voted=A]
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s][ARendering prompts: 100%|██████████| 1/1 [00:00<00:00, 340.09it/s]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [01:21<00:00, 10.19s/it, est. speed input: 28.84 toks/s, output: 400.87 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [01:21<00:00, 10.19s/it, est. speed input: 28.84 toks/s, output: 400.87 toks/s][AProcessed prompts: 100%|██████████| 8/8 [01:21<00:00, 10.19s/it, est. speed input: 28.84 toks/s, output: 400.87 toks/s]
+V0_baseline:  20%|██        | 2/10 [03:16<08:30, 63.79s/q, agree=0.25, id=2, ok=0, s=82, voted=-1.460, 1.64]  [3/10] id=2  correct=False  agree=0.25  voted='-1.460, 1.645, A'  82s
+V0_baseline:  30%|███       | 3/10 [03:16<08:23, 71.91s/q, agree=0.25, id=2, ok=0, s=82, voted=-1.460, 1.64]
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s][ARendering prompts: 100%|██████████| 1/1 [00:00<00:00, 478.31it/s]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [01:55<00:00, 14.49s/it, est. speed input: 12.14 toks/s, output: 354.13 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [01:55<00:00, 14.49s/it, est. speed input: 12.14 toks/s, output: 354.13 toks/s][AProcessed prompts: 100%|██████████| 8/8 [01:55<00:00, 14.49s/it, est. speed input: 12.14 toks/s, output: 354.13 toks/s]
+V0_baseline:  30%|███       | 3/10 [05:12<08:23, 71.91s/q, agree=1.00, id=3, ok=0, s=116, voted=B]            [4/10] id=3  correct=False  agree=1.00  voted='B'  116s
+V0_baseline:  40%|████      | 4/10 [05:12<08:55, 89.29s/q, agree=1.00, id=3, ok=0, s=116, voted=B]
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s][ARendering prompts: 100%|██████████| 1/1 [00:00<00:00, 946.15it/s]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [01:51<00:00, 13.92s/it, est. speed input: 9.99 toks/s, output: 364.30 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [01:51<00:00, 13.92s/it, est. speed input: 9.99 toks/s, output: 364.30 toks/s][AProcessed prompts: 100%|██████████| 8/8 [01:51<00:00, 13.92s/it, est. speed input: 9.99 toks/s, output: 364.30 toks/s]
+V0_baseline:  40%|████      | 4/10 [07:04<08:55, 89.29s/q, agree=0.50, id=4, ok=0, s=111, voted=-0.5734, 0.8]  [5/10] id=4  correct=False  agree=0.50  voted='-0.5734, 0.8192, -0.7000'  111s
+V0_baseline:  50%|█████     | 5/10 [07:04<08:06, 97.24s/q, agree=0.50, id=4, ok=0, s=111, voted=-0.5734, 0.8]
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s][ARendering prompts: 100%|██████████| 1/1 [00:00<00:00, 311.77it/s]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [17:51<00:00, 133.90s/it, est. speed input: 3.46 toks/s, output: 97.56 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [17:51<00:00, 133.90s/it, est. speed input: 3.46 toks/s, output: 97.56 toks/s][AProcessed prompts: 100%|██████████| 8/8 [17:51<00:00, 133.91s/it, est. speed input: 3.46 toks/s, output: 97.56 toks/s]
+V0_baseline:  50%|█████     | 5/10 [24:55<08:06, 97.24s/q, agree=0.50, id=5, ok=0, s=1071, voted=541.3, 63.25]  [6/10] id=5  correct=False  agree=0.50  voted='541.3, 63.25, 135.3, 4.217, 32.09'  1071s
+V0_baseline:  60%|██████    | 6/10 [24:55<28:33, 428.42s/q, agree=0.50, id=5, ok=0, s=1071, voted=541.3, 63.25]
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s][ARendering prompts: 100%|██████████| 1/1 [00:00<00:00, 483.10it/s]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [00:59<00:00,  7.48s/it, est. speed input: 25.14 toks/s, output: 413.13 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [00:59<00:00,  7.48s/it, est. speed input: 25.14 toks/s, output: 413.13 toks/s][AProcessed prompts: 100%|██████████| 8/8 [00:59<00:00,  7.48s/it, est. speed input: 25.14 toks/s, output: 413.13 toks/s]
+V0_baseline:  60%|██████    | 6/10 [25:55<28:33, 428.42s/q, agree=1.00, id=6, ok=0, s=60, voted=148.02]          [7/10] id=6  correct=False  agree=1.00  voted='148.02'  60s
+V0_baseline:  70%|███████   | 7/10 [25:55<15:23, 307.92s/q, agree=1.00, id=6, ok=0, s=60, voted=148.02]
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s][ARendering prompts: 100%|██████████| 1/1 [00:00<00:00, 684.34it/s]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [1:27:23<00:00, 655.39s/it, est. speed input: 0.31 toks/s, output: 46.75 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [1:27:23<00:00, 655.39s/it, est. speed input: 0.31 toks/s, output: 46.75 toks/s][AProcessed prompts: 100%|██████████| 8/8 [1:27:23<00:00, 655.39s/it, est. speed input: 0.31 toks/s, output: 46.75 toks/s]
+V0_baseline:  70%|███████   | 7/10 [1:53:18<15:23, 307.92s/q, agree=0.38, id=7, ok=0, s=5243, voted=56]  [8/10] id=7  correct=False  agree=0.38  voted='56'  5243s
+V0_baseline:  80%|████████  | 8/10 [1:53:18<1:02:38, 1879.07s/q, agree=0.38, id=7, ok=0, s=5243, voted=56]
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s][ARendering prompts: 100%|██████████| 1/1 [00:00<00:00, 887.87it/s]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [00:53<00:00,  6.71s/it, est. speed input: 18.48 toks/s, output: 336.09 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [00:53<00:00,  6.71s/it, est. speed input: 18.48 toks/s, output: 336.09 toks/s][AProcessed prompts: 100%|██████████| 8/8 [00:53<00:00,  6.71s/it, est. speed input: 18.48 toks/s, output: 336.09 toks/s]
+V0_baseline:  80%|████████  | 8/10 [1:54:12<1:02:38, 1879.07s/q, agree=0.62, id=8, ok=0, s=54, voted=420]   [9/10] id=8  correct=False  agree=0.62  voted='420'  54s
+V0_baseline:  90%|█████████ | 9/10 [1:54:12<21:48, 1308.43s/q, agree=0.62, id=8, ok=0, s=54, voted=420]  
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s][ARendering prompts: 100%|██████████| 1/1 [00:00<00:00, 695.00it/s]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [01:01<00:00,  7.70s/it, est. speed input: 17.15 toks/s, output: 371.13 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [01:01<00:00,  7.70s/it, est. speed input: 17.15 toks/s, output: 371.13 toks/s][AProcessed prompts: 100%|██████████| 8/8 [01:01<00:00,  7.70s/it, est. speed input: 17.15 toks/s, output: 371.13 toks/s]
+V0_baseline:  90%|█████████ | 9/10 [1:55:13<21:48, 1308.43s/q, agree=1.00, id=9, ok=0, s=62, voted=\frac{L - 8x]  [10/10] id=9  correct=False  agree=1.00  voted='\\frac{L - 8x}{6F}'  62s
+V0_baseline: 100%|██████████| 10/10 [1:55:13<00:00, 923.51s/q, agree=1.00, id=9, ok=0, s=62, voted=\frac{L - 8x]V0_baseline: 100%|██████████| 10/10 [1:55:13<00:00, 691.37s/q, agree=1.00, id=9, ok=0, s=62, voted=\frac{L - 8x](EngineCore pid=14035) INFO 05-14 14:55:33 [core.py:1238] Shutdown initiated (timeout=0)
+(EngineCore pid=14035) INFO 05-14 14:55:33 [core.py:1261] Shutdown complete
+
+
+────────────────────────────────────────────────────────────
+Run ID            : run14b_smoke_10
+Prompt            : v1-baseline
+N samples         : 8
+Output            : results/run14b_smoke_10.jsonl
+Summary           : results/run14b_smoke_10.summary.json
+Questions         : 10  (mcq=2, free=8)
+Overall accuracy  : 0.0%  (0/10)
+MCQ accuracy      : 0.0%  (0/2)
+Free accuracy     : 0.0%  (0/8)
+Runtime (session) : 6913.7 s
+Unanimous         : 5/10
+Tie-broken        : 2/10
+Vote != sample 1  : 2/10  (how often SC changed the call)
+Agreement-rate p25/50/75 : 0.500 / 1.000 / 1.000
+────────────────────────────────────────────────────────────
+[2026-05-14T21:55:35Z] run14b smoke done (10/10 lines).
+[2026-05-14T21:55:35Z] Check: wall time <5min/item AND cutoffs_per_sample/(10*8) <50% to proceed.
+[2026-05-15T17:35:57Z] run14b smoke started. (10/10 lines already done).
+[2026-05-15T17:35:57Z] libcudart.so.13 OK.
+[2026-05-15T17:35:57Z] GPU free memory: 44 GiB (45468 MiB). Threshold: 18 GiB.
+[2026-05-15T17:35:57Z] Starting run14b smoke (first 10 items).
+Variant 'V0_baseline' applied: {'prompt_version': 'v1-baseline', 'max_new_tokens': 32768, 'presence_penalty': 1.0, 'n_samples': 8, 'temperature': 0.6, 'top_p': 0.95, 'top_k': 20, 'min_p': 0.0, 'repetition_penalty': 1.0, 'temperature_ladder': None, 'shape_filter': False}
+Resume: 10 completed questions found in results/run14b_smoke_10.jsonl
+Loaded 10 questions [0:10] from private.jsonl
+Skipping 10 already-completed; 0 remaining
+All questions already completed — writing summary and exiting.
+
+────────────────────────────────────────────────────────────
+Run ID            : run14b_smoke_10
+Prompt            : v1-baseline
+N samples         : 8
+Output            : results/run14b_smoke_10.jsonl
+Summary           : results/run14b_smoke_10.summary.json
+Questions         : 10  (mcq=2, free=8)
+Overall accuracy  : 0.0%  (0/10)
+MCQ accuracy      : 0.0%  (0/2)
+Free accuracy     : 0.0%  (0/8)
+Unanimous         : 5/10
+Tie-broken        : 2/10
+Vote != sample 1  : 2/10  (how often SC changed the call)
+Agreement-rate p25/50/75 : 0.500 / 1.000 / 1.000
+────────────────────────────────────────────────────────────
+[2026-05-15T17:36:42Z] run14b smoke done (10/10 lines).
+[2026-05-15T17:36:42Z] Check: wall time <5min/item AND cutoffs_per_sample/(10*8) <50% to proceed.

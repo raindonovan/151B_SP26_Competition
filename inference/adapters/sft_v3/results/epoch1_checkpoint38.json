@@ -1,0 +1,122 @@
+[
+  {
+    "item_id": "0185",
+    "tier": "R1/R2",
+    "checks": {
+      "has_think_close": true,
+      "has_boxed": true,
+      "think_before_boxed": true,
+      "no_degenerate_repetition": true,
+      "reasonable_length": true
+    },
+    "response": "1. On $[-\\pi/2,\\pi/2]$, $\\sin(x)$ is continuous and attains its maximum value of $1$ at $x=\\pi/2$. So **T**.\n\n2. On $(-\\pi/2,\\pi/2)$, $\\sin(x)$ is continuous and approaches $1$ as $x\\to(\\pi/2)^-$, but never actually reaches $1$. So **F**.\n\n3. On $[-3,3]$, $f(x)=x^2$ is continuous and attains its minimum value of $0$ at $x=0$. So **T**.\n\n4. On $(-\\pi/2,\\pi/2)$, $\\sin(x)$ is continuous and approaches $-1$ as $x\\to(-\\pi/2)^+$, but never actually reaches $-1$. So **F**.\n\n5. On $(-3,3)$, $f(x)=x^2$ is continuous and approaches $0$ as $x\\to 0$, but never actually reaches $0$ (since $0$ is in the interior and is attained). Wait\u2014$0$ is in $(-3,3)$, so $f(0)=0$ does produce the smallest output value. So **T**.\n\nActually, rechecking: $0$ is in $(-3,3)$, so $f(0)=0$ is attained. Therefore, the minimum value $0$ is achieved. So **T**.\n\nVerifying: $1=T$, $2=F$, $3=T$, $4=F$, $5=T$.\n</think>\n\n\\boxed{T,F,T,F,T}"
+  },
+  {
+    "item_id": "0040",
+    "tier": "W2",
+    "checks": {
+      "has_think_close": true,
+      "has_boxed": true,
+      "think_before_boxed": true,
+      "no_degenerate_repetition": true,
+      "reasonable_length": false
+    },
+    "response": "D = 800 - 50d\n</think>\n\n\\boxed{D=800-50d}"
+  },
+  {
+    "item_id": "0433",
+    "tier": "R1/R2",
+    "checks": {
+      "has_think_close": true,
+      "has_boxed": true,
+      "think_before_boxed": true,
+      "no_degenerate_repetition": true,
+      "reasonable_length": true
+    },
+    "response": "We need to express cos 3\u03b8 in terms of sin \u03b8 and cos \u03b8.\n\nUse the triple-angle formula:\ncos 3\u03b8 = 4cos\u00b3\u03b8 - 3cos \u03b8\n\nThis is already in terms of cos \u03b8 only. However, the problem says \"in terms of sin \u03b8 and cos \u03b8\" \u2013 the expression 4cos\u00b3\u03b8 - 3cos \u03b8 does contain only cos \u03b8, which is one of the trig functions mentioned.\n\nLet me check the answer choices:\nA. 4sin\u00b3\u03b8 - 3sin \u03b8\nB. 4cos\u00b3\u03b8 - 3cos \u03b8\nC. 4sin\u00b3\u03b8 - 3cos \u03b8\nD. 4cos\u00b3\u03b8 - 3sin \u03b8\n\nThe correct expression is B. 4cos\u00b3\u03b8 - 3cos \u03b8.\n</think>\n\n\\boxed{B}"
+  },
+  {
+    "item_id": "0385",
+    "tier": "R1/R2",
+    "checks": {
+      "has_think_close": true,
+      "has_boxed": true,
+      "think_before_boxed": true,
+      "no_degenerate_repetition": true,
+      "reasonable_length": true
+    },
+    "response": "(a) Stratified random sampling: divided into strata (men and women), then SRS within each stratum. \u2192 A\n\n(b) Same as (a): divided into strata (males and females), SRS within each stratum. \u2192 A\n\n(c) The correct definition of an SRS requires that every possible set of n units has equal probability. Option A states exactly that. Option B describes a sampling method that does not guarantee every set of n units has equal probability (e.g., systematic sampling with n=100 may not select every group of 100 units with equal probability). Option C describes a broader class of sampling methods (probability sampling). So the best answer is A.\n\nVerification: 3 answers in order (a), (b), (c).\n</think>\n\n\\boxed{A,A,A}"
+  },
+  {
+    "item_id": "0352",
+    "tier": "R1/R2",
+    "checks": {
+      "has_think_close": true,
+      "has_boxed": true,
+      "think_before_boxed": true,
+      "no_degenerate_repetition": true,
+      "reasonable_length": false
+    },
+    "response": "The distance between two numbers on the number line is |401 - 333| = |68| = 68.\n</think>\n\n\\boxed{68}"
+  },
+  {
+    "item_id": "0219",
+    "tier": "R1/R2",
+    "checks": {
+      "has_think_close": true,
+      "has_boxed": true,
+      "think_before_boxed": true,
+      "no_degenerate_repetition": true,
+      "reasonable_length": true
+    },
+    "response": "Let the slower cyclist's speed be \\(r\\) mi/h. Then the faster cyclist's speed is \\(3r\\) mi/h.\n\nTogether they close the gap at \\(r+3r=4r\\) mi/h.\n\nAt 3 hours, they meet:\n\\[\n4r \\cdot 3 = 108\n\\]\n\\[\n12r = 108\n\\]\n\\[\nr = 9\n\\]\n\nSo the faster cyclist's speed is \\(3r = 27\\) mi/h.\n</think>\n\n\\boxed{27}"
+  },
+  {
+    "item_id": "0171",
+    "tier": "W2",
+    "checks": {
+      "has_think_close": true,
+      "has_boxed": true,
+      "think_before_boxed": true,
+      "no_degenerate_repetition": true,
+      "reasonable_length": false
+    },
+    "response": "The region is a rectangle with width 7-3=4 and height 7-2=5.\n\nArea = 4 \u00d7 5 = 20\n</think>\n\n\\boxed{20}"
+  },
+  {
+    "item_id": "0890",
+    "tier": "R1/R2",
+    "checks": {
+      "has_think_close": true,
+      "has_boxed": true,
+      "think_before_boxed": true,
+      "no_degenerate_repetition": true,
+      "reasonable_length": true
+    },
+    "response": "We need to answer 4 questions about the study design.\n\n**(a)** The study investigator assigned different amounts of exposure to advertisements (30-second vs. 90-second ads, shown 1, 3, or 5 times). This is an experiment.\n\n**(b)** The subjects are the people studied: the 60 students.\n\n**(c)** The response variable is what was measured: craving for Sub-U-Like on a scale of 0 to 10.\n\n**(d)** Treatments: 2 ad lengths \u00d7 3 repetition counts = 6 treatments.\n\nVerifying there are exactly 4 answers in order: (a), (b), (c), (d).\n</think>\n\n\\boxed{A,A,C,6}"
+  },
+  {
+    "item_id": "0142",
+    "tier": "R1/R2",
+    "checks": {
+      "has_think_close": true,
+      "has_boxed": true,
+      "think_before_boxed": true,
+      "no_degenerate_repetition": true,
+      "reasonable_length": false
+    },
+    "response": "The natural numbers between 6 and 12 are 7, 8, 9, 10, 11.\n</think>\n\n\\boxed{7,8,9,10,11}"
+  },
+  {
+    "item_id": "0698",
+    "tier": "R1/R2",
+    "checks": {
+      "has_think_close": true,
+      "has_boxed": true,
+      "think_before_boxed": true,
+      "no_degenerate_repetition": true,
+      "reasonable_length": true
+    },
+    "response": "We need to calculate 7.6 \u00d7 (-6.7).\n\nWe know 76 \u00d7 67 = 5092.\n\n7.6 \u00d7 6.7 = 76 \u00d7 67 \u00d7 (1/10) \u00d7 (1/10) = 5092 \u00d7 (1/100) = 50.92\n\nSo 7.6 \u00d7 (-6.7) = -50.92\n</think>\n\n\\boxed{-50.92}"
+  }
+]

@@ -1,0 +1,290 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Variant 'V1_counting_top' applied: {'prompt_version': 'v2-counting-top', 'max_new_tokens': 32768, 'presence_penalty': 1.0, 'n_samples': 8, 'temperature': 0.6, 'top_p': 0.95, 'top_k': 20, 'min_p': 0.0, 'repetition_penalty': 1.0, 'temperature_ladder': None, 'shape_filter': False}
+Resume: 41 completed questions found in results/V1_counting_top_fixed50_v1.jsonl
+Loaded 50 questions from slice 'fixed_50_v1' (data/slices/fixed_50_v1.json) over /home/dvaneetv/private/151B_SP26_Competition/data/public.jsonl
+Skipping 41 already-completed; 9 remaining
+INFO 05-12 20:29:15 [utils.py:233] non-default args: {'trust_remote_code': True, 'dtype': 'bfloat16', 'max_model_len': 36864, 'enable_prefix_caching': True, 'gpu_memory_utilization': 0.85, 'disable_log_stats': True, 'reasoning_parser': 'deepseek_r1', 'model': 'Qwen/Qwen3-4B-Thinking-2507'}
+WARNING 05-12 20:29:15 [envs.py:1830] Unknown vLLM environment variable detected: VLLM_USE_V1
+INFO 05-12 20:29:16 [model.py:555] Resolved architecture: Qwen3ForCausalLM
+INFO 05-12 20:29:16 [model.py:1680] Using max model len 36864
+INFO 05-12 20:29:16 [scheduler.py:239] Chunked prefill is enabled with max_num_batched_tokens=8192.
+INFO 05-12 20:29:16 [vllm.py:840] Asynchronous scheduling is enabled.
+INFO 05-12 20:29:16 [kernel.py:205] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'])
+(EngineCore pid=2535) INFO 05-12 20:29:20 [core.py:109] Initializing a V1 LLM engine (v0.20.2) with config: model='Qwen/Qwen3-4B-Thinking-2507', speculative_config=None, tokenizer='Qwen/Qwen3-4B-Thinking-2507', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=36864, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=False, quantization=None, quantization_config=None, enforce_eager=False, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='deepseek_r1', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False), seed=0, served_model_name=Qwen/Qwen3-4B-Thinking-2507, enable_prefix_caching=True, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.VLLM_COMPILE: 3>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['none'], 'ir_enable_torch_wrap': True, 'splitting_ops': ['vllm::unified_attention_with_output', 'vllm::unified_mla_attention_with_output', 'vllm::mamba_mixer2', 'vllm::mamba_mixer', 'vllm::short_conv', 'vllm::linear_attention', 'vllm::plamo2_mamba_mixer', 'vllm::gdn_attention_core', 'vllm::gdn_attention_core_xpu', 'vllm::olmo_hybrid_gdn_full_forward', 'vllm::kda_attention', 'vllm::sparse_attn_indexer', 'vllm::rocm_aiter_sparse_attn_indexer', 'vllm::deepseek_v4_attention', 'vllm::unified_kv_cache_update', 'vllm::unified_mla_kv_cache_update'], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'compile_sizes': [], 'compile_ranges_endpoints': [8192], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'size_asserts': False, 'alignment_asserts': False, 'scalar_asserts': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.FULL_AND_PIECEWISE: (2, 1)>, 'cudagraph_num_of_warmups': 1, 'cudagraph_capture_sizes': [1, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 248, 256, 272, 288, 304, 320, 336, 352, 368, 384, 400, 416, 432, 448, 464, 480, 496, 512], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': False, 'fuse_act_quant': False, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False}, 'max_cudagraph_capture_size': 512, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': False, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['native']), enable_flashinfer_autotune=True, moe_backend='auto')
+(EngineCore pid=2535) INFO 05-12 20:29:20 [nixl_utils.py:20] Setting UCX_RCACHE_MAX_UNRELEASED to '1024' to avoid a rare memory leak in UCX when using NIXL.
+(EngineCore pid=2535) WARNING 05-12 20:29:20 [nixl_utils.py:34] NIXL is not available
+(EngineCore pid=2535) WARNING 05-12 20:29:20 [nixl_utils.py:44] NIXL agent config is not available
+(EngineCore pid=2535) INFO 05-12 20:29:21 [parallel_state.py:1402] world_size=1 rank=0 local_rank=0 distributed_init_method=tcp://10.35.184.9:50157 backend=nccl
+(EngineCore pid=2535) INFO 05-12 20:29:21 [parallel_state.py:1715] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank N/A, EPLB rank N/A
+(EngineCore pid=2535) ERROR 05-12 20:29:21 [core.py:1136] EngineCore failed to start.
+(EngineCore pid=2535) ERROR 05-12 20:29:21 [core.py:1136] Traceback (most recent call last):
+(EngineCore pid=2535) ERROR 05-12 20:29:21 [core.py:1136]   File "/home/dvaneetv/private/.local/lib/python3.13/site-packages/vllm/v1/engine/core.py", line 1110, in run_engine_core
+(EngineCore pid=2535) ERROR 05-12 20:29:21 [core.py:1136]     engine_core = EngineCoreProc(*args, engine_index=dp_rank, **kwargs)
+(EngineCore pid=2535) ERROR 05-12 20:29:21 [core.py:1136]   File "/home/dvaneetv/private/.local/lib/python3.13/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=2535) ERROR 05-12 20:29:21 [core.py:1136]     return func(*args, **kwargs)
+(EngineCore pid=2535) ERROR 05-12 20:29:21 [core.py:1136]   File "/home/dvaneetv/private/.local/lib/python3.13/site-packages/vllm/v1/engine/core.py", line 876, in __init__
+(EngineCore pid=2535) ERROR 05-12 20:29:21 [core.py:1136]     super().__init__(
+(EngineCore pid=2535) ERROR 05-12 20:29:21 [core.py:1136]     ~~~~~~~~~~~~~~~~^
+(EngineCore pid=2535) ERROR 05-12 20:29:21 [core.py:1136]         vllm_config,
+(EngineCore pid=2535) ERROR 05-12 20:29:21 [core.py:1136]         ^^^^^^^^^^^^
+(EngineCore pid=2535) ERROR 05-12 20:29:21 [core.py:1136]     ...<3 lines>...
+(EngineCore pid=2535) ERROR 05-12 20:29:21 [core.py:1136]         internal_dp_balancing,
+(EngineCore pid=2535) ERROR 05-12 20:29:21 [core.py:1136]         ^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=2535) ERROR 05-12 20:29:21 [core.py:1136]     )
+(EngineCore pid=2535) ERROR 05-12 20:29:21 [core.py:1136]     ^
+(EngineCore pid=2535) ERROR 05-12 20:29:21 [core.py:1136]   File "/home/dvaneetv/private/.local/lib/python3.13/site-packages/vllm/v1/engine/core.py", line 118, in __init__
+(EngineCore pid=2535) ERROR 05-12 20:29:21 [core.py:1136]     self.model_executor = executor_class(vllm_config)
+(EngineCore pid=2535) ERROR 05-12 20:29:21 [core.py:1136]                           ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+(EngineCore pid=2535) ERROR 05-12 20:29:21 [core.py:1136]   File "/home/dvaneetv/private/.local/lib/python3.13/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=2535) ERROR 05-12 20:29:21 [core.py:1136]     return func(*args, **kwargs)
+(EngineCore pid=2535) ERROR 05-12 20:29:21 [core.py:1136]   File "/home/dvaneetv/private/.local/lib/python3.13/site-packages/vllm/v1/executor/abstract.py", line 109, in __init__
+(EngineCore pid=2535) ERROR 05-12 20:29:21 [core.py:1136]     self._init_executor()
+(EngineCore pid=2535) ERROR 05-12 20:29:21 [core.py:1136]     ~~~~~~~~~~~~~~~~~~~^^
+(EngineCore pid=2535) ERROR 05-12 20:29:21 [core.py:1136]   File "/home/dvaneetv/private/.local/lib/python3.13/site-packages/vllm/v1/executor/uniproc_executor.py", line 47, in _init_executor
+(EngineCore pid=2535) ERROR 05-12 20:29:21 [core.py:1136]     self.driver_worker.init_device()
+(EngineCore pid=2535) ERROR 05-12 20:29:21 [core.py:1136]     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+(EngineCore pid=2535) ERROR 05-12 20:29:21 [core.py:1136]   File "/home/dvaneetv/private/.local/lib/python3.13/site-packages/vllm/v1/worker/worker_base.py", line 317, in init_device
+(EngineCore pid=2535) ERROR 05-12 20:29:21 [core.py:1136]     self.worker.init_device()  # type: ignore
+(EngineCore pid=2535) ERROR 05-12 20:29:21 [core.py:1136]     ~~~~~~~~~~~~~~~~~~~~~~~^^
+(EngineCore pid=2535) ERROR 05-12 20:29:21 [core.py:1136]   File "/home/dvaneetv/private/.local/lib/python3.13/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=2535) ERROR 05-12 20:29:21 [core.py:1136]     return func(*args, **kwargs)
+(EngineCore pid=2535) ERROR 05-12 20:29:21 [core.py:1136]   File "/home/dvaneetv/private/.local/lib/python3.13/site-packages/vllm/v1/worker/gpu_worker.py", line 283, in init_device
+(EngineCore pid=2535) ERROR 05-12 20:29:21 [core.py:1136]     self.requested_memory = request_memory(init_snapshot, self.cache_config)
+(EngineCore pid=2535) ERROR 05-12 20:29:21 [core.py:1136]                             ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=2535) ERROR 05-12 20:29:21 [core.py:1136]   File "/home/dvaneetv/private/.local/lib/python3.13/site-packages/vllm/v1/worker/utils.py", line 413, in request_memory
+(EngineCore pid=2535) ERROR 05-12 20:29:21 [core.py:1136]     raise ValueError(
+(EngineCore pid=2535) ERROR 05-12 20:29:21 [core.py:1136]     ...<7 lines>...
+(EngineCore pid=2535) ERROR 05-12 20:29:21 [core.py:1136]     )
+(EngineCore pid=2535) ERROR 05-12 20:29:21 [core.py:1136] ValueError: Free memory on device cuda:0 (3.22/23.62 GiB) on startup is less than desired GPU memory utilization (0.85, 20.08 GiB). Decrease GPU memory utilization or reduce GPU memory used by other processes.
+(EngineCore pid=2535) Process EngineCore:
+(EngineCore pid=2535) Traceback (most recent call last):
+(EngineCore pid=2535)   File "/opt/conda/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+(EngineCore pid=2535)     self.run()
+(EngineCore pid=2535)     ~~~~~~~~^^
+(EngineCore pid=2535)   File "/opt/conda/lib/python3.13/multiprocessing/process.py", line 108, in run
+(EngineCore pid=2535)     self._target(*self._args, **self._kwargs)
+(EngineCore pid=2535)     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=2535)   File "/home/dvaneetv/private/.local/lib/python3.13/site-packages/vllm/v1/engine/core.py", line 1140, in run_engine_core
+(EngineCore pid=2535)     raise e
+(EngineCore pid=2535)   File "/home/dvaneetv/private/.local/lib/python3.13/site-packages/vllm/v1/engine/core.py", line 1110, in run_engine_core
+(EngineCore pid=2535)     engine_core = EngineCoreProc(*args, engine_index=dp_rank, **kwargs)
+(EngineCore pid=2535)   File "/home/dvaneetv/private/.local/lib/python3.13/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=2535)     return func(*args, **kwargs)
+(EngineCore pid=2535)   File "/home/dvaneetv/private/.local/lib/python3.13/site-packages/vllm/v1/engine/core.py", line 876, in __init__
+(EngineCore pid=2535)     super().__init__(
+(EngineCore pid=2535)     ~~~~~~~~~~~~~~~~^
+(EngineCore pid=2535)         vllm_config,
+(EngineCore pid=2535)         ^^^^^^^^^^^^
+(EngineCore pid=2535)     ...<3 lines>...
+(EngineCore pid=2535)         internal_dp_balancing,
+(EngineCore pid=2535)         ^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=2535)     )
+(EngineCore pid=2535)     ^
+(EngineCore pid=2535)   File "/home/dvaneetv/private/.local/lib/python3.13/site-packages/vllm/v1/engine/core.py", line 118, in __init__
+(EngineCore pid=2535)     self.model_executor = executor_class(vllm_config)
+(EngineCore pid=2535)                           ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+(EngineCore pid=2535)   File "/home/dvaneetv/private/.local/lib/python3.13/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=2535)     return func(*args, **kwargs)
+(EngineCore pid=2535)   File "/home/dvaneetv/private/.local/lib/python3.13/site-packages/vllm/v1/executor/abstract.py", line 109, in __init__
+(EngineCore pid=2535)     self._init_executor()
+(EngineCore pid=2535)     ~~~~~~~~~~~~~~~~~~~^^
+(EngineCore pid=2535)   File "/home/dvaneetv/private/.local/lib/python3.13/site-packages/vllm/v1/executor/uniproc_executor.py", line 47, in _init_executor
+(EngineCore pid=2535)     self.driver_worker.init_device()
+(EngineCore pid=2535)     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+(EngineCore pid=2535)   File "/home/dvaneetv/private/.local/lib/python3.13/site-packages/vllm/v1/worker/worker_base.py", line 317, in init_device
+(EngineCore pid=2535)     self.worker.init_device()  # type: ignore
+(EngineCore pid=2535)     ~~~~~~~~~~~~~~~~~~~~~~~^^
+(EngineCore pid=2535)   File "/home/dvaneetv/private/.local/lib/python3.13/site-packages/vllm/tracing/otel.py", line 178, in sync_wrapper
+(EngineCore pid=2535)     return func(*args, **kwargs)
+(EngineCore pid=2535)   File "/home/dvaneetv/private/.local/lib/python3.13/site-packages/vllm/v1/worker/gpu_worker.py", line 283, in init_device
+(EngineCore pid=2535)     self.requested_memory = request_memory(init_snapshot, self.cache_config)
+(EngineCore pid=2535)                             ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore pid=2535)   File "/home/dvaneetv/private/.local/lib/python3.13/site-packages/vllm/v1/worker/utils.py", line 413, in request_memory
+(EngineCore pid=2535)     raise ValueError(
+(EngineCore pid=2535)     ...<7 lines>...
+(EngineCore pid=2535)     )
+(EngineCore pid=2535) ValueError: Free memory on device cuda:0 (3.22/23.62 GiB) on startup is less than desired GPU memory utilization (0.85, 20.08 GiB). Decrease GPU memory utilization or reduce GPU memory used by other processes.
+Traceback (most recent call last):
+  File "/home/dvaneetv/private/151B_SP26_Competition/scripts/run_vllm_sc.py", line 516, in <module>
+    main()
+    ~~~~^^
+  File "/home/dvaneetv/private/151B_SP26_Competition/scripts/run_vllm_sc.py", line 397, in main
+    llm = LLM(
+        model=MODEL_ID,
+    ...<5 lines>...
+        reasoning_parser="deepseek_r1",
+    )
+  File "/home/dvaneetv/private/.local/lib/python3.13/site-packages/vllm/entrypoints/llm.py", line 381, in __init__
+    self.llm_engine = LLMEngine.from_engine_args(
+                      ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        engine_args=engine_args, usage_cProcessed prompts: 100%|██████████| 8/8 [04:59<00:00, 37.43s/it, est. speed input: 7.67 toks/s, output: 172.31 toks/s]Processed prompts: 100%|██████████| 8/8 [04:59<00:00, 37.43s/it, est. speed input: 7.67 toks/s, output: 172.31 toks/s]Processed prompts: 100%|██████████| 8/8 [04:59<00:00, 37.43s/it, est. speed input: 7.67 toks/s, output: 172.31 toks/s]
+  [42/50] id=893  correct=True  agree=0.88  voted='A, A'  299s
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 623.78it/s]
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 8/8 [01:17<00:00,  9.65s/it, est. speed input: 15.33 toks/s, output: 144.87 toks/s]Processed prompts: 100%|██████████| 8/8 [01:17<00:00,  9.65s/it, est. speed input: 15.33 toks/s, output: 144.87 toks/s]Processed prompts: 100%|██████████| 8/8 [01:17<00:00,  9.65s/it, est. speed input: 15.33 toks/s, output: 144.87 toks/s]
+  [43/50] id=922  correct=True  agree=0.62  voted='32'  77s
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 619.27it/s]
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 8/8 [00:09<00:00,  1.15s/it, est. speed input: 140.25 toks/s, output: 304.24 toks/s]Processed prompts: 100%|██████████| 8/8 [00:09<00:00,  1.15s/it, est. speed input: 140.25 toks/s, output: 304.24 toks/s]Processed prompts: 100%|██████████| 8/8 [00:09<00:00,  1.15s/it, est. speed input: 140.25 toks/s, output: 304.24 toks/s]
+  [44/50] id=936  correct=False  agree=1.00  voted='20'  9s
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 951.31it/s]
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 8/8 [02:20<00:00, 17.62s/it, est. speed input: 9.93 toks/s, output: 206.13 toks/s]Processed prompts: 100%|██████████| 8/8 [02:20<00:00, 17.62s/it, est. speed input: 9.93 toks/s, output: 206.13 toks/s]Processed prompts: 100%|██████████| 8/8 [02:20<00:00, 17.62s/it, est. speed input: 9.93 toks/s, output: 206.13 toks/s]
+  [45/50] id=960  correct=True  agree=1.00  voted='480, 4800, 48000'  141s
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 529.32it/s]
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Variant 'V1_counting_top' applied: {'prompt_version': 'v2-counting-top', 'max_new_tokens': 32768, 'presence_penalty': 1.0, 'n_samples': 8, 'temperature': 0.6, 'top_p': 0.95, 'top_k': 20, 'min_p': 0.0, 'repetition_penalty': 1.0, 'temperature_ladder': None, 'shape_filter': False}
+Resume: 45 completed questions found in results/V1_counting_top_fixed50_v1.jsonl
+Loaded 50 questions from slice 'fixed_50_v1' (data/slices/fixed_50_v1.json) over /home/dvaneetv/private/151B_SP26_Competition/data/public.jsonl
+Skipping 45 already-completed; 5 remaining
+INFO 05-12 20:46:03 [utils.py:233] non-default args: {'trust_remote_code': True, 'dtype': 'bfloat16', 'max_model_len': 36864, 'enable_prefix_caching': True, 'gpu_memory_utilization': 0.85, 'disable_log_stats': True, 'reasoning_parser': 'deepseek_r1', 'model': 'Qwen/Qwen3-4B-Thinking-2507'}
+WARNING 05-12 20:46:03 [envs.py:1830] Unknown vLLM environment variable detected: VLLM_USE_V1
+INFO 05-12 20:46:21 [nixl_utils.py:20] Setting UCX_RCACHE_MAX_UNRELEASED to '1024' to avoid a rare memory leak in UCX when using NIXL.
+WARNING 05-12 20:46:21 [nixl_utils.py:34] NIXL is not available
+WARNING 05-12 20:46:21 [nixl_utils.py:44] NIXL agent config is not available
+INFO 05-12 20:46:21 [model.py:555] Resolved architecture: Qwen3ForCausalLM
+INFO 05-12 20:46:21 [model.py:1680] Using max model len 36864
+INFO 05-12 20:46:21 [scheduler.py:239] Chunked prefill is enabled with max_num_batched_tokens=8192.
+INFO 05-12 20:46:21 [vllm.py:840] Asynchronous scheduling is enabled.
+INFO 05-12 20:46:21 [kernel.py:205] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'])
+(EngineCore pid=1109) INFO 05-12 20:46:23 [core.py:109] Initializing a V1 LLM engine (v0.20.2) with config: model='Qwen/Qwen3-4B-Thinking-2507', speculative_config=None, tokenizer='Qwen/Qwen3-4B-Thinking-2507', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=36864, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=False, quantization=None, quantization_config=None, enforce_eager=False, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='deepseek_r1', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False), seed=0, served_model_name=Qwen/Qwen3-4B-Thinking-2507, enable_prefix_caching=True, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.VLLM_COMPILE: 3>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['none'], 'ir_enable_torch_wrap': True, 'splitting_ops': ['vllm::unified_attention_with_output', 'vllm::unified_mla_attention_with_output', 'vllm::mamba_mixer2', 'vllm::mamba_mixer', 'vllm::short_conv', 'vllm::linear_attention', 'vllm::plamo2_mamba_mixer', 'vllm::gdn_attention_core', 'vllm::gdn_attention_core_xpu', 'vllm::olmo_hybrid_gdn_full_forward', 'vllm::kda_attention', 'vllm::sparse_attn_indexer', 'vllm::rocm_aiter_sparse_attn_indexer', 'vllm::deepseek_v4_attention', 'vllm::unified_kv_cache_update', 'vllm::unified_mla_kv_cache_update'], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'compile_sizes': [], 'compile_ranges_endpoints': [8192], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'size_asserts': False, 'alignment_asserts': False, 'scalar_asserts': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.FULL_AND_PIECEWISE: (2, 1)>, 'cudagraph_num_of_warmups': 1, 'cudagraph_capture_sizes': [1, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 248, 256, 272, 288, 304, 320, 336, 352, 368, 384, 400, 416, 432, 448, 464, 480, 496, 512], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': False, 'fuse_act_quant': False, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False}, 'max_cudagraph_capture_size': 512, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': False, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['native']), enable_flashinfer_autotune=True, moe_backend='auto')
+(EngineCore pid=1109) INFO 05-12 20:46:23 [parallel_state.py:1402] world_size=1 rank=0 local_rank=0 distributed_init_method=tcp://10.35.184.18:44255 backend=nccl
+(EngineCore pid=1109) INFO 05-12 20:46:23 [parallel_state.py:1715] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank N/A, EPLB rank N/A
+(EngineCore pid=1109) INFO 05-12 20:46:24 [gpu_model_runner.py:4777] Starting to load model Qwen/Qwen3-4B-Thinking-2507...
+(EngineCore pid=1109) Failed to get device capability: SM 12.x requires CUDA >= 12.9.
+(EngineCore pid=1109) Failed to get device capability: SM 12.x requires CUDA >= 12.9.
+(EngineCore pid=1109) INFO 05-12 20:46:24 [cuda.py:368] Using FLASH_ATTN attention backend out of potential backends: ['FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN', 'FLEX_ATTENTION'].
+(EngineCore pid=1109) INFO 05-12 20:46:24 [flash_attn.py:646] Using FlashAttention version 2
+(EngineCore pid=1109) <frozen importlib._bootstrap_external>:1325: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+(EngineCore pid=1109) <frozen importlib._bootstrap_external>:1325: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+(EngineCore pid=1109) INFO 05-12 20:46:33 [weight_utils.py:615] Time spent downloading weights for Qwen/Qwen3-4B-Thinking-2507: 7.673896 seconds
+(EngineCore pid=1109) INFO 05-12 20:46:33 [weight_utils.py:904] Filesystem type for checkpoints: OVERLAY. Checkpoint size: 7.49 GiB. Available RAM: 490.13 GiB.
+(EngineCore pid=1109) INFO 05-12 20:46:33 [weight_utils.py:927] Auto-prefetch is disabled because the filesystem (OVERLAY) is not a recognized network FS (NFS/Lustre). If you want to force prefetching, start vLLM with --safetensors-load-strategy=prefetch.
+(EngineCore pid=1109) Loading safetensors checkpoint shards:   0% Completed | 0/3 [00:00<?, ?it/s]
+(EngineCore pid=1109) Loading safetensors checkpoint shards:  33% Completed | 1/3 [00:00<00:00,  2.98it/s]
+(EngineCore pid=1109) Loading safetensors checkpoint shards:  67% Completed | 2/3 [00:00<00:00,  3.01it/s]
+(EngineCore pid=1109) Loading safetensors checkpoint shards: 100% Completed | 3/3 [00:00<00:00,  4.37it/s]
+(EngineCore pid=1109) 
+(EngineCore pid=1109) INFO 05-12 20:46:34 [default_loader.py:384] Loading weights took 0.69 seconds
+(EngineCore pid=1109) INFO 05-12 20:46:34 [gpu_model_runner.py:4879] Model loading took 7.61 GiB memory and 9.402130 seconds
+(EngineCore pid=1109) INFO 05-12 20:46:40 [backends.py:1069] Using cache directory: /tmp/xdg-cache/vllm/torch_compile_cache/06552f283f/rank_0_0/backbone for vLLM's torch.compile
+(EngineCore pid=1109) INFO 05-12 20:46:40 [backends.py:1128] Dynamo bytecode transform time: 5.82 s
+(EngineCore pid=1109) [rank0]:W0512 20:46:42.320000 1109 site-packages/torch/_inductor/utils.py:1731] Not enough SMs to use max_autotune_gemm mode
+(EngineCore pid=1109) INFO 05-12 20:46:47 [backends.py:376] Cache the graph of compile range (1, 8192) for later use
+(EngineCore pid=1109) INFO 05-12 20:46:52 [backends.py:391] Compiling a graph for compile range (1, 8192) takes 10.91 s
+(EngineCore pid=1109) INFO 05-12 20:46:56 [decorators.py:668] saved AOT compiled function to /tmp/xdg-cache/vllm/torch_compile_cache/torch_aot_compile/40a859c85ce9184918ffcf5ed569105ba80d196b23b4fb5f96818a2561c46cac/rank_0_0/model
+(EngineCore pid=1109) INFO 05-12 20:46:56 [monitor.py:53] torch.compile took 21.25 s in total
+(EngineCore pid=1109) INFO 05-12 20:46:58 [monitor.py:81] Initial profiling/warmup run took 1.78 s
+(EngineCore pid=1109) INFO 05-12 20:47:04 [gpu_model_runner.py:5963] Profiling CUDA graph memory: PIECEWISE=51 (largest=512), FULL=35 (largest=256)
+(EngineCore pid=1109) INFO 05-12 20:47:05 [gpu_model_runner.py:6042] Estimated CUDA graph memory: 0.35 GiB total
+(EngineCore pid=1109) INFO 05-12 20:47:06 [gpu_worker.py:440] Available KV cache memory: 11.2 GiB
+(EngineCore pid=1109) INFO 05-12 20:47:06 [gpu_worker.py:455] CUDA graph memory profiling is enabled (default since v0.21.0). The current --gpu-memory-utilization=0.8500 is equivalent to --gpu-memory-utilization=0.8353 without CUDA graph memory profiling. To maintain the same effective KV cache size as before, increase --gpu-memory-utilization to 0.8647. To disable, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0.
+(EngineCore pid=1109) INFO 05-12 20:47:06 [kv_cache_utils.py:1708] GPU KV cache size: 81,552 tokens
+(EngineCore pid=1109) INFO 05-12 20:47:06 [kv_cache_utils.py:1709] Maximum concurrency for 36,864 tokens per request: 2.21x
+(EngineCore pid=1109) 2026-05-12 20:47:06,243 - INFO - autotuner.py:457 - flashinfer.jit: [Autotuner]: Autotuning process starts ...
+(EngineCore pid=1109) 2026-05-12 20:47:06,256 - INFO - autotuner.py:466 - flashinfer.jit: [Autotuner]: Autotuning process ends
+(EngineCore pid=1109) Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   0%|          | 0/51 [00:00<?, ?it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   4%|▍         | 2/51 [00:00<00:03, 15.32it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   8%|▊         | 4/51 [00:00<00:03, 15.48it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  12%|█▏        | 6/51 [00:00<00:02, 15.62it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  16%|█▌        | 8/51 [00:00<00:02, 15.61it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  20%|█▉        | 10/51 [00:00<00:02, 16.08it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  24%|██▎       | 12/51 [00:00<00:02, 16.46it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  27%|██▋       | 14/51 [00:00<00:02, 16.84it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  31%|███▏      | 16/51 [00:00<00:02, 17.11it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  37%|███▋      | 19/51 [00:01<00:01, 18.41it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  43%|████▎     | 22/51 [00:01<00:01, 19.26it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  49%|████▉     | 25/51 [00:01<00:01, 19.76it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  55%|█████▍    | 28/51 [00:01<00:01, 20.22it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  61%|██████    | 31/51 [00:01<00:00, 20.16it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  67%|██████▋   | 34/51 [00:01<00:00, 20.43it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  73%|███████▎  | 37/51 [00:02<00:00, 19.79it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  78%|███████▊  | 40/51 [00:02<00:00, 20.37it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  84%|████████▍ | 43/51 [00:02<00:00, 20.85it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  90%|█████████ | 46/51 [00:02<00:00, 21.46it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  96%|█████████▌| 49/51 [00:02<00:00, 22.38it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 51/51 [00:02<00:00, 19.40it/s]
+(EngineCore pid=1109) Capturing CUDA graphs (decode, FULL):   0%|          | 0/35 [00:00<?, ?it/s]Capturing CUDA graphs (decode, FULL):   6%|▌         | 2/35 [00:00<00:01, 18.99it/s]Capturing CUDA graphs (decode, FULL):  11%|█▏        | 4/35 [00:00<00:01, 19.54it/s]Capturing CUDA graphs (decode, FULL):  20%|██        | 7/35 [00:00<00:01, 20.03it/s]Capturing CUDA graphs (decode, FULL):  29%|██▊       | 10/35 [00:00<00:01, 20.26it/s]Capturing CUDA graphs (decode, FULL):  37%|███▋      | 13/35 [00:00<00:01, 20.54it/s]Capturing CUDA graphs (decode, FULL):  46%|████▌     | 16/35 [00:00<00:00, 20.61it/s]Capturing CUDA graphs (decode, FULL):  54%|█████▍    | 19/35 [00:00<00:00, 21.13it/s]Capturing CUDA graphs (decode, FULL):  63%|██████▎   | 22/35 [00:01<00:00, 21.64it/s]Capturing CUDA graphs (decode, FULL):  71%|███████▏  | 25/35 [00:01<00:00, 22.13it/s]Capturing CUDA graphs (decode, FULL):  80%|████████  | 28/35 [00:01<00:00, 22.72it/s]Capturing CUDA graphs (decode, FULL):  89%|████████▊ | 31/35 [00:01<00:00, 23.72it/s]Capturing CUDA graphs (decode, FULL):  97%|█████████▋| 34/35 [00:01<00:00, 24.96it/s]Capturing CUDA graphs (decode, FULL): 100%|██████████| 35/35 [00:01<00:00, 22.44it/s]
+(EngineCore pid=1109) INFO 05-12 20:47:11 [gpu_model_runner.py:6133] Graph capturing finished in 5 secs, took 0.39 GiB
+(EngineCore pid=1109) INFO 05-12 20:47:11 [gpu_worker.py:599] CUDA graph pool memory: 0.39 GiB (actual), 0.35 GiB (estimated), difference: 0.04 GiB (11.4%).
+(EngineCore pid=1109) INFO 05-12 20:47:11 [core.py:299] init engine (profile, create kv cache, warmup model) took 36.91 s (compilation: 21.25 s)
+(EngineCore pid=1109) INFO 05-12 20:47:12 [kernel.py:205] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'])
+Generating 8 samples × 5 prompts (max_new_tokens=32768, one generate() call per question)...
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 29.14it/s]
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 8/8 [13:48<00:00, 103.58s/it, est. speed input: 2.10 toks/s, output: 124.92 toks/s]Processed prompts: 100%|██████████| 8/8 [13:48<00:00, 103.58s/it, est. speed input: 2.10 toks/s, output: 124.92 toks/s]Processed prompts: 100%|██████████| 8/8 [13:48<00:00, 103.58s/it, est. speed input: 2.10 toks/s, output: 124.92 toks/s]
+  [46/50] id=974  correct=True  agree=1.00  voted='G'  829s
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 533.29it/s]
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 8/8 [02:36<00:00, 19.53s/it, est. speed input: 12.19 toks/s, output: 223.33 toks/s]Processed prompts: 100%|██████████| 8/8 [02:36<00:00, 19.53s/it, est. speed input: 12.19 toks/s, output: 223.33 toks/s]Processed prompts: 100%|██████████| 8/8 [02:36<00:00, 19.53s/it, est. speed input: 12.19 toks/s, output: 223.33 toks/s]
+  [47/50] id=1023  correct=True  agree=1.00  voted='C'  156s
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 598.42it/s]
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 8/8 [1:21:03<00:00, 607.98s/it, est. speed input: 0.44 toks/s, output: 52.98 toks/s]Processed prompts: 100%|██████████| 8/8 [1:21:03<00:00, 607.98s/it, est. speed input: 0.44 toks/s, output: 52.98 toks/s]Processed prompts: 100%|██████████| 8/8 [1:21:03<00:00, 607.98s/it, est. speed input: 0.44 toks/s, output: 52.98 toks/s]
+  [48/50] id=1040  correct=False  agree=0.25  voted='1'  4864s
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 877.29it/s]
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 8/8 [02:07<00:00, 15.97s/it, est. speed input: 11.59 toks/s, output: 242.62 toks/s]Processed prompts: 100%|██████████| 8/8 [02:07<00:00, 15.97s/it, est. speed input: 11.59 toks/s, output: 242.62 toks/s]Processed prompts: 100%|██████████| 8/8 [02:07<00:00, 15.97s/it, est. speed input: 11.59 toks/s, output: 242.62 toks/s]
+  [49/50] id=1078  correct=False  agree=0.75  voted='B, C, D'  128s
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s]Rendering prompts: 100%|██████████| 1/1 [00:00<00:00, 813.64it/s]
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s]Processed prompts: 100%|██████████| 8/8 [03:02<00:00, 22.87s/it, est. speed input: 9.05 toks/s, output: 183.74 toks/s]Processed prompts: 100%|██████████| 8/8 [03:02<00:00, 22.87s/it, est. speed input: 9.05 toks/s, output: 183.74 toks/s]Processed prompts: 100%|██████████| 8/8 [03:02<00:00, 22.87s/it, est. speed input: 9.05 toks/s, output: 183.74 toks/s]
+  [50/50] id=1081  correct=True  agree=0.75  voted='8000, 62'  183s
+(EngineCore pid=1109) INFO 05-12 22:29:52 [core.py:1238] Shutdown initiated (timeout=0)
+(EngineCore pid=1109) INFO 05-12 22:29:52 [core.py:1261] Shutdown complete
+
+────────────────────────────────────────────────────────────
+Run ID            : V1_counting_top_fixed50_v1
+Slice             : fixed_50_v1  (data/slices/fixed_50_v1.json)
+Prompt            : v2-counting-top
+N samples         : 8
+Output            : results/V1_counting_top_fixed50_v1.jsonl
+Summary           : results/V1_counting_top_fixed50_v1.summary.json
+Questions         : 50  (mcq=17, free=33)
+Overall accuracy  : 72.0%  (36/50)
+MCQ accuracy      : 88.2%  (15/17)
+Free accuracy     : 63.6%  (21/33)
+Runtime (session) : 6159.6 s
+Unanimous         : 27/50
+Tie-broken        : 4/50
+Vote != sample 1  : 10/50  (how often SC changed the call)
+Agreement-rate p25/50/75 : 0.750 / 1.000 / 1.000
+────────────────────────────────────────────────────────────
+Variant 'V1_counting_top' applied: {'prompt_version': 'v2-counting-top', 'max_new_tokens': 32768, 'presence_penalty': 1.0, 'n_samples': 8, 'temperature': 0.6, 'top_p': 0.95, 'top_k': 20, 'min_p': 0.0, 'repetition_penalty': 1.0, 'temperature_ladder': None, 'shape_filter': False}
+Resume: 50 completed questions found in results/V1_counting_top_fixed50_v1.jsonl
+Loaded 50 questions from slice 'fixed_50_v1' (data/slices/fixed_50_v1.json) over /home/dvaneetv/private/151B_SP26_Competition/data/public.jsonl
+Skipping 50 already-completed; 0 remaining
+All questions already completed — writing summary and exiting.
+
+────────────────────────────────────────────────────────────
+Run ID            : V1_counting_top_fixed50_v1
+Slice             : fixed_50_v1  (data/slices/fixed_50_v1.json)
+Prompt            : v2-counting-top
+N samples         : 8
+Output            : results/V1_counting_top_fixed50_v1.jsonl
+Summary           : results/V1_counting_top_fixed50_v1.summary.json
+Questions         : 50  (mcq=17, free=33)
+Overall accuracy  : 72.0%  (36/50)
+MCQ accuracy      : 88.2%  (15/17)
+Free accuracy     : 63.6%  (21/33)
+Unanimous         : 27/50
+Tie-broken        : 4/50
+Vote != sample 1  : 10/50  (how often SC changed the call)
+Agreement-rate p25/50/75 : 0.750 / 1.000 / 1.000
+────────────────────────────────────────────────────────────
+Variant 'V1_counting_top' applied: {'prompt_version': 'v2-counting-top', 'max_new_tokens': 32768, 'presence_penalty': 1.0, 'n_samples': 8, 'temperature': 0.6, 'top_p': 0.95, 'top_k': 20, 'min_p': 0.0, 'repetition_penalty': 1.0, 'temperature_ladder': None, 'shape_filter': False}
+Resume: 50 completed questions found in results/V1_counting_top_fixed50_v1.jsonl
+Loaded 50 questions from slice 'fixed_50_v1' (data/slices/fixed_50_v1.json) over /home/dvaneetv/private/151B_SP26_Competition/data/public.jsonl
+Skipping 50 already-completed; 0 remaining
+All questions already completed — writing summary and exiting.
+
+────────────────────────────────────────────────────────────
+Run ID            : V1_counting_top_fixed50_v1
+Slice             : fixed_50_v1  (data/slices/fixed_50_v1.json)
+Prompt            : v2-counting-top
+N samples         : 8
+Output            : results/V1_counting_top_fixed50_v1.jsonl
+Summary           : results/V1_counting_top_fixed50_v1.summary.json
+Questions         : 50  (mcq=17, free=33)
+Overall accuracy  : 72.0%  (36/50)
+MCQ accuracy      : 88.2%  (15/17)
+Free accuracy     : 63.6%  (21/33)
+Unanimous         : 27/50
+Tie-broken        : 4/50
+Vote != sample 1  : 10/50  (how often SC changed the call)
+Agreement-rate p25/50/75 : 0.750 / 1.000 / 1.000
+────────────────────────────────────────────────────────────
+Variant 'V1_counting_top' applied: {'prompt_version': 'v2-counting-top', 'max_new_tokens': 32768, 'presence_penalty': 1.0, 'n_samples': 8, 'temperature': 0.6, 'top_p': 0.95, 'top_k': 20, 'min_p': 0.0, 'repetition_penalty': 1.0, 'temperature_ladder': None, 'shape_filter': False}
+Resume: 50 completed questions found in results/V1_counting_top_fixed50_v1.jsonl
+Loaded 50 questions from slice 'fixed_50_v1' (data/slices/fixed_50_v1.json) over /home/dvaneetv/private/151B_SP26_Competition/data/public.jsonl
+Skipping 50 already-completed; 0 remaining
+All questions already completed — writing summary and exiting.
+
+────────────────────────────────────────────────────────────
+Run ID            : V1_counting_top_fixed50_v1
+Slice             : fixed_50_v1  (data/slices/fixed_50_v1.json)
+Prompt            : v2-counting-top
+N samples         : 8
+Output            : results/V1_counting_top_fixed50_v1.jsonl
+Summary           : results/V1_counting_top_fixed50_v1.summary.json
+Questions         : 50  (mcq=17, free=33)
+Overall accuracy  : 72.0%  (36/50)
+MCQ accuracy      : 88.2%  (15/17)
+Free accuracy     : 63.6%  (21/33)
+Unanimous         : 27/50
+Tie-broken        : 4/50
+Vote != sample 1  : 10/50  (how often SC changed the call)
+Agreement-rate p25/50/75 : 0.750 / 1.000 / 1.000
+────────────────────────────────────────────────────────────

@@ -63,9 +63,10 @@ milestone_report.log
 
 # Tunnel binaries (regenerable)
 vscode_cli.tar.gz
-results/run14b_sc8_v1_private943_tok32k_pp1.jsonl
-results/run14b_sc8_v1_private943_tok32k_pp1.BACKUP_*.jsonl
-results/run14b_sc8_v1_private943_tok32k_pp1_v3filtered.jsonl
+inference/results/run14b_sc8_v1_private943_tok32k_pp1.jsonl
+inference/results/run14b_sc8_v1_private943_tok32k_pp1.BACKUP_*.jsonl
+inference/results/run14b_sc8_v1_private943_tok32k_pp1_v3filtered.jsonl
 
 
 # Submission CSVs tracked via Git LFS (see .gitattributes)
+inference/results/run09sc8_v1_private943_tok16384.jsonl

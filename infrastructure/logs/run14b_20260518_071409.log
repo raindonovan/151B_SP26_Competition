@@ -1,0 +1,207 @@
+[2026-05-18T14:14:09Z] run14b launcher started. (399/943 lines already done).
+[2026-05-18T14:14:09Z] === GPU Health Check ===
+[2026-05-18T14:14:09Z] libcudart.so.13 OK.
+[2026-05-18T14:14:09Z] No stale EngineCore found.
+[2026-05-18T14:14:09Z] GPU free memory: 23 GiB (24164 MiB). Threshold: 18 GiB.
+[2026-05-18T14:14:09Z] GPU ready.
+[2026-05-18T14:14:09Z] Starting run14b.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Variant 'V0_baseline' applied: {'prompt_version': 'v1-baseline', 'max_new_tokens': 32768, 'presence_penalty': 1.0, 'n_samples': 8, 'temperature': 0.6, 'top_p': 0.95, 'top_k': 20, 'min_p': 0.0, 'repetition_penalty': 1.0, 'temperature_ladder': None, 'shape_filter': False}
+Resume: 399 completed questions found in results/run14b_sc8_v1_private943_tok32k_pp1.jsonl
+Loaded 943 questions [0:943] from private.jsonl
+Skipping 399 already-completed; 544 remaining
+INFO 05-18 07:14:32 [utils.py:233] non-default args: {'trust_remote_code': True, 'dtype': 'bfloat16', 'max_model_len': 36864, 'enable_prefix_caching': True, 'gpu_memory_utilization': 0.85, 'disable_log_stats': True, 'reasoning_parser': 'deepseek_r1', 'model': 'Qwen/Qwen3-4B-Thinking-2507'}
+WARNING 05-18 07:14:32 [envs.py:1830] Unknown vLLM environment variable detected: VLLM_USE_V1
+INFO 05-18 07:14:53 [nixl_utils.py:20] Setting UCX_RCACHE_MAX_UNRELEASED to '1024' to avoid a rare memory leak in UCX when using NIXL.
+WARNING 05-18 07:14:53 [nixl_utils.py:34] NIXL is not available
+WARNING 05-18 07:14:53 [nixl_utils.py:44] NIXL agent config is not available
+INFO 05-18 07:14:53 [model.py:555] Resolved architecture: Qwen3ForCausalLM
+INFO 05-18 07:14:53 [model.py:1680] Using max model len 36864
+INFO 05-18 07:14:53 [scheduler.py:239] Chunked prefill is enabled with max_num_batched_tokens=8192.
+INFO 05-18 07:14:53 [vllm.py:840] Asynchronous scheduling is enabled.
+INFO 05-18 07:14:53 [kernel.py:205] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'])
+(EngineCore pid=453) INFO 05-18 07:14:55 [core.py:109] Initializing a V1 LLM engine (v0.20.2) with config: model='Qwen/Qwen3-4B-Thinking-2507', speculative_config=None, tokenizer='Qwen/Qwen3-4B-Thinking-2507', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=True, dtype=torch.bfloat16, max_seq_len=36864, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=False, quantization=None, quantization_config=None, enforce_eager=False, enable_return_routed_experts=False, kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='deepseek_r1', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, kv_cache_metrics=False, kv_cache_metrics_sample=0.01, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False), seed=0, served_model_name=Qwen/Qwen3-4B-Thinking-2507, enable_prefix_caching=True, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.VLLM_COMPILE: 3>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['none'], 'ir_enable_torch_wrap': True, 'splitting_ops': ['vllm::unified_attention_with_output', 'vllm::unified_mla_attention_with_output', 'vllm::mamba_mixer2', 'vllm::mamba_mixer', 'vllm::short_conv', 'vllm::linear_attention', 'vllm::plamo2_mamba_mixer', 'vllm::gdn_attention_core', 'vllm::gdn_attention_core_xpu', 'vllm::olmo_hybrid_gdn_full_forward', 'vllm::kda_attention', 'vllm::sparse_attn_indexer', 'vllm::rocm_aiter_sparse_attn_indexer', 'vllm::deepseek_v4_attention', 'vllm::unified_kv_cache_update', 'vllm::unified_mla_kv_cache_update'], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'compile_sizes': [], 'compile_ranges_endpoints': [8192], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'size_asserts': False, 'alignment_asserts': False, 'scalar_asserts': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.FULL_AND_PIECEWISE: (2, 1)>, 'cudagraph_num_of_warmups': 1, 'cudagraph_capture_sizes': [1, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 248, 256, 272, 288, 304, 320, 336, 352, 368, 384, 400, 416, 432, 448, 464, 480, 496, 512], 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': False, 'fuse_act_quant': False, 'fuse_attn_quant': False, 'enable_sp': False, 'fuse_gemm_comms': False, 'fuse_allreduce_rms': False}, 'max_cudagraph_capture_size': 512, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': False, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['native']), enable_flashinfer_autotune=True, moe_backend='auto')
+(EngineCore pid=453) INFO 05-18 07:14:55 [parallel_state.py:1402] world_size=1 rank=0 local_rank=0 distributed_init_method=tcp://10.39.28.72:33941 backend=nccl
+(EngineCore pid=453) INFO 05-18 07:14:55 [parallel_state.py:1715] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, EP rank N/A, EPLB rank N/A
+(EngineCore pid=453) INFO 05-18 07:14:56 [gpu_model_runner.py:4777] Starting to load model Qwen/Qwen3-4B-Thinking-2507...
+(EngineCore pid=453) INFO 05-18 07:14:57 [cuda.py:368] Using FLASH_ATTN attention backend out of potential backends: ['FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN', 'FLEX_ATTENTION'].
+(EngineCore pid=453) INFO 05-18 07:14:57 [flash_attn.py:646] Using FlashAttention version 2
+(EngineCore pid=453) <frozen importlib._bootstrap_external>:1325: FutureWarning: The cuda.cudart module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.runtime module instead.
+(EngineCore pid=453) <frozen importlib._bootstrap_external>:1325: FutureWarning: The cuda.nvrtc module is deprecated and will be removed in a future release, please switch to use the cuda.bindings.nvrtc module instead.
+(EngineCore pid=453) INFO 05-18 07:15:06 [weight_utils.py:615] Time spent downloading weights for Qwen/Qwen3-4B-Thinking-2507: 9.034528 seconds
+(EngineCore pid=453) INFO 05-18 07:15:07 [weight_utils.py:904] Filesystem type for checkpoints: OVERLAY. Checkpoint size: 7.49 GiB. Available RAM: 488.54 GiB.
+(EngineCore pid=453) INFO 05-18 07:15:07 [weight_utils.py:927] Auto-prefetch is disabled because the filesystem (OVERLAY) is not a recognized network FS (NFS/Lustre). If you want to force prefetching, start vLLM with --safetensors-load-strategy=prefetch.
+(EngineCore pid=453) Loading safetensors checkpoint shards:   0% Completed | 0/3 [00:00<?, ?it/s]
+(EngineCore pid=453) Loading safetensors checkpoint shards:  33% Completed | 1/3 [00:00<00:00,  2.06it/s]
+(EngineCore pid=453) Loading safetensors checkpoint shards:  67% Completed | 2/3 [00:01<00:00,  1.77it/s]
+(EngineCore pid=453) Loading safetensors checkpoint shards: 100% Completed | 3/3 [00:01<00:00,  2.63it/s]
+(EngineCore pid=453) Loading safetensors checkpoint shards: 100% Completed | 3/3 [00:01<00:00,  2.37it/s]
+(EngineCore pid=453) 
+(EngineCore pid=453) INFO 05-18 07:15:08 [default_loader.py:384] Loading weights took 1.27 seconds
+(EngineCore pid=453) INFO 05-18 07:15:09 [gpu_model_runner.py:4879] Model loading took 7.61 GiB memory and 11.439043 seconds
+(EngineCore pid=453) INFO 05-18 07:15:15 [backends.py:1069] Using cache directory: /tmp/xdg-cache/vllm/torch_compile_cache/218cde3ed2/rank_0_0/backbone for vLLM's torch.compile
+(EngineCore pid=453) INFO 05-18 07:15:15 [backends.py:1128] Dynamo bytecode transform time: 5.81 s
+(EngineCore pid=453) [rank0]:W0518 07:15:16.652000 453 site-packages/torch/_inductor/utils.py:1731] Not enough SMs to use max_autotune_gemm mode
+(EngineCore pid=453) INFO 05-18 07:15:21 [backends.py:376] Cache the graph of compile range (1, 8192) for later use
+(EngineCore pid=453) INFO 05-18 07:15:26 [backends.py:391] Compiling a graph for compile range (1, 8192) takes 10.20 s
+(EngineCore pid=453) INFO 05-18 07:15:29 [decorators.py:668] saved AOT compiled function to /tmp/xdg-cache/vllm/torch_compile_cache/torch_aot_compile/40a859c85ce9184918ffcf5ed569105ba80d196b23b4fb5f96818a2561c46cac/rank_0_0/model
+(EngineCore pid=453) INFO 05-18 07:15:29 [monitor.py:53] torch.compile took 20.50 s in total
+(EngineCore pid=453) INFO 05-18 07:15:31 [monitor.py:81] Initial profiling/warmup run took 1.40 s
+(EngineCore pid=453) INFO 05-18 07:15:37 [gpu_model_runner.py:5963] Profiling CUDA graph memory: PIECEWISE=51 (largest=512), FULL=35 (largest=256)
+(EngineCore pid=453) INFO 05-18 07:15:39 [gpu_model_runner.py:6042] Estimated CUDA graph memory: 0.51 GiB total
+(EngineCore pid=453) INFO 05-18 07:15:40 [gpu_worker.py:440] Available KV cache memory: 11.04 GiB
+(EngineCore pid=453) INFO 05-18 07:15:40 [gpu_worker.py:455] CUDA graph memory profiling is enabled (default since v0.21.0). The current --gpu-memory-utilization=0.8500 is equivalent to --gpu-memory-utilization=0.8283 without CUDA graph memory profiling. To maintain the same effective KV cache size as before, increase --gpu-memory-utilization to 0.8717. To disable, set VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=0.
+(EngineCore pid=453) INFO 05-18 07:15:40 [kv_cache_utils.py:1708] GPU KV cache size: 80,368 tokens
+(EngineCore pid=453) INFO 05-18 07:15:40 [kv_cache_utils.py:1709] Maximum concurrency for 36,864 tokens per request: 2.18x
+(EngineCore pid=453) Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   0%|          | 0/51 [00:00<?, ?it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   4%|▍         | 2/51 [00:00<00:03, 13.61it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   8%|▊         | 4/51 [00:00<00:03, 13.83it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  12%|█▏        | 6/51 [00:00<00:02, 15.50it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  16%|█▌        | 8/51 [00:00<00:02, 16.40it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  22%|██▏       | 11/51 [00:00<00:02, 17.93it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  27%|██▋       | 14/51 [00:00<00:01, 18.98it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  33%|███▎      | 17/51 [00:00<00:01, 19.92it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  39%|███▉      | 20/51 [00:01<00:01, 21.17it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  45%|████▌     | 23/51 [00:01<00:01, 21.97it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  51%|█████     | 26/51 [00:01<00:01, 22.54it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  57%|█████▋    | 29/51 [00:01<00:00, 23.10it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  63%|██████▎   | 32/51 [00:01<00:00, 23.58it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  69%|██████▊   | 35/51 [00:01<00:00, 24.93it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  75%|███████▍  | 38/51 [00:01<00:00, 25.44it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  80%|████████  | 41/51 [00:01<00:00, 26.61it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  88%|████████▊ | 45/51 [00:02<00:00, 28.08it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  96%|█████████▌| 49/51 [00:02<00:00, 29.29it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 51/51 [00:02<00:00, 23.15it/s]
+(EngineCore pid=453) Capturing CUDA graphs (decode, FULL):   0%|          | 0/35 [00:00<?, ?it/s]Capturing CUDA graphs (decode, FULL):   9%|▊         | 3/35 [00:00<00:01, 23.78it/s]Capturing CUDA graphs (decode, FULL):  17%|█▋        | 6/35 [00:00<00:01, 24.15it/s]Capturing CUDA graphs (decode, FULL):  26%|██▌       | 9/35 [00:00<00:01, 24.21it/s]Capturing CUDA graphs (decode, FULL):  34%|███▍      | 12/35 [00:00<00:00, 24.59it/s]Capturing CUDA graphs (decode, FULL):  43%|████▎     | 15/35 [00:00<00:00, 25.03it/s]Capturing CUDA graphs (decode, FULL):  51%|█████▏    | 18/35 [00:00<00:00, 26.31it/s]Capturing CUDA graphs (decode, FULL):  63%|██████▎   | 22/35 [00:00<00:00, 28.15it/s]Capturing CUDA graphs (decode, FULL):  74%|███████▍  | 26/35 [00:00<00:00, 29.81it/s]Capturing CUDA graphs (decode, FULL):  86%|████████▌ | 30/35 [00:01<00:00, 31.52it/s]Capturing CUDA graphs (decode, FULL):  97%|█████████▋| 34/35 [00:01<00:00, 32.81it/s]Capturing CUDA graphs (decode, FULL): 100%|██████████| 35/35 [00:01<00:00, 28.96it/s]
+(EngineCore pid=453) INFO 05-18 07:15:44 [gpu_model_runner.py:6133] Graph capturing finished in 4 secs, took 0.51 GiB
+(EngineCore pid=453) INFO 05-18 07:15:44 [gpu_worker.py:599] CUDA graph pool memory: 0.51 GiB (actual), 0.51 GiB (estimated), difference: 0.0 GiB (0.8%).
+(EngineCore pid=453) INFO 05-18 07:15:44 [core.py:299] init engine (profile, create kv cache, warmup model) took 35.64 s (compilation: 20.50 s)
+(EngineCore pid=453) INFO 05-18 07:15:45 [kernel.py:205] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['native'])
+Generating 8 samples × 544 prompts (max_new_tokens=32768, one generate() call per question)...
+V0_baseline:   0%|          | 0/544 [00:00<?, ?q/s]
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s][ARendering prompts: 100%|██████████| 1/1 [00:00<00:00, 31.75it/s]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [07:29<00:00, 56.13s/it, est. speed input: 3.53 toks/s, output: 165.38 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [07:29<00:00, 56.13s/it, est. speed input: 3.53 toks/s, output: 165.38 toks/s][AProcessed prompts: 100%|██████████| 8/8 [07:29<00:00, 56.13s/it, est. speed input: 3.53 toks/s, output: 165.38 toks/s]
+V0_baseline:   0%|          | 0/544 [07:29<?, ?q/s, agree=1.00, id=399, ok=0, s=449, voted=E]  [400/943] id=399  correct=False  agree=1.00  voted='E'  449s
+V0_baseline:   0%|          | 1/544 [07:29<67:44:28, 449.11s/q, agree=1.00, id=399, ok=0, s=449, voted=E]
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s][ARendering prompts: 100%|██████████| 1/1 [00:00<00:00, 646.77it/s]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [01:19<00:00,  9.94s/it, est. speed input: 29.07 toks/s, output: 397.51 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [01:19<00:00,  9.94s/it, est. speed input: 29.07 toks/s, output: 397.51 toks/s][AProcessed prompts: 100%|██████████| 8/8 [01:19<00:00,  9.94s/it, est. speed input: 29.07 toks/s, output: 397.51 toks/s]
+V0_baseline:   0%|          | 1/544 [08:48<67:44:28, 449.11s/q, agree=1.00, id=400, ok=0, s=80, voted=E]   [401/943] id=400  correct=False  agree=1.00  voted='E'  80s
+V0_baseline:   0%|          | 2/544 [08:48<34:53:14, 231.72s/q, agree=1.00, id=400, ok=0, s=80, voted=E]
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s][ARendering prompts: 100%|██████████| 1/1 [00:00<00:00, 462.90it/s]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [01:18<00:00,  9.79s/it, est. speed input: 15.01 toks/s, output: 380.50 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [01:18<00:00,  9.79s/it, est. speed input: 15.01 toks/s, output: 380.50 toks/s][AProcessed prompts: 100%|██████████| 8/8 [01:18<00:00,  9.80s/it, est. speed input: 15.01 toks/s, output: 380.50 toks/s]
+V0_baseline:   0%|          | 2/544 [10:07<34:53:14, 231.72s/q, agree=1.00, id=401, ok=0, s=78, voted=143.2, 240.0]  [402/943] id=401  correct=False  agree=1.00  voted='143.2, 240.0, 52.52, -135.0'  78s
+V0_baseline:   1%|          | 3/544 [10:07<24:18:00, 161.70s/q, agree=1.00, id=401, ok=0, s=78, voted=143.2, 240.0]
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s][ARendering prompts: 100%|██████████| 1/1 [00:00<00:00, 329.30it/s]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [02:32<00:00, 19.02s/it, est. speed input: 29.07 toks/s, output: 297.12 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [02:32<00:00, 19.02s/it, est. speed input: 29.07 toks/s, output: 297.12 toks/s][AProcessed prompts: 100%|██████████| 8/8 [02:32<00:00, 19.02s/it, est. speed input: 29.07 toks/s, output: 297.12 toks/s]
+V0_baseline:   1%|          | 3/544 [12:39<24:18:00, 161.70s/q, agree=1.00, id=402, ok=0, s=152, voted=J]            [403/943] id=402  correct=False  agree=1.00  voted='J'  152s
+V0_baseline:   1%|          | 4/544 [12:39<23:41:30, 157.95s/q, agree=1.00, id=402, ok=0, s=152, voted=J]
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s][ARendering prompts: 100%|██████████| 1/1 [00:00<00:00, 311.54it/s]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [08:59<00:00, 67.41s/it, est. speed input: 15.22 toks/s, output: 145.04 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [08:59<00:00, 67.41s/it, est. speed input: 15.22 toks/s, output: 145.04 toks/s][AProcessed prompts: 100%|██████████| 8/8 [08:59<00:00, 67.41s/it, est. speed input: 15.22 toks/s, output: 145.04 toks/s]
+V0_baseline:   1%|          | 4/544 [21:38<23:41:30, 157.95s/q, agree=0.50, id=403, ok=0, s=539, voted=J]  [404/943] id=403  correct=False  agree=0.50  voted='J'  539s
+V0_baseline:   1%|          | 5/544 [21:38<44:14:14, 295.46s/q, agree=0.50, id=403, ok=0, s=539, voted=J]
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s][ARendering prompts: 100%|██████████| 1/1 [00:00<00:00, 754.91it/s]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [00:31<00:00,  3.95s/it, est. speed input: 61.72 toks/s, output: 486.90 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [00:31<00:00,  3.95s/it, est. speed input: 61.72 toks/s, output: 486.90 toks/s][AProcessed prompts: 100%|██████████| 8/8 [00:31<00:00,  3.95s/it, est. speed input: 61.72 toks/s, output: 486.90 toks/s]
+V0_baseline:   1%|          | 5/544 [22:10<44:14:14, 295.46s/q, agree=1.00, id=404, ok=0, s=32, voted=52.00]  [405/943] id=404  correct=False  agree=1.00  voted='52.00'  32s
+V0_baseline:   1%|          | 6/544 [22:10<30:44:59, 205.76s/q, agree=1.00, id=404, ok=0, s=32, voted=52.00]
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s][ARendering prompts: 100%|██████████| 1/1 [00:00<00:00, 435.14it/s]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [20:42<00:00, 155.35s/it, est. speed input: 7.96 toks/s, output: 105.45 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [20:42<00:00, 155.35s/it, est. speed input: 7.96 toks/s, output: 105.45 toks/s][AProcessed prompts: 100%|██████████| 8/8 [20:42<00:00, 155.36s/it, est. speed input: 7.96 toks/s, output: 105.45 toks/s]
+V0_baseline:   1%|          | 6/544 [42:53<30:44:59, 205.76s/q, agree=0.75, id=405, ok=0, s=1243, voted=H]    [406/943] id=405  correct=False  agree=0.75  voted='H'  1243s
+V0_baseline:   1%|▏         | 7/544 [42:53<81:16:02, 544.81s/q, agree=0.75, id=405, ok=0, s=1243, voted=H]
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s][ARendering prompts: 100%|██████████| 1/1 [00:00<00:00, 989.92it/s]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [02:14<00:00, 16.85s/it, est. speed input: 7.60 toks/s, output: 315.38 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [02:14<00:00, 16.85s/it, est. speed input: 7.60 toks/s, output: 315.38 toks/s][AProcessed prompts: 100%|██████████| 8/8 [02:14<00:00, 16.85s/it, est. speed input: 7.60 toks/s, output: 315.38 toks/s]
+V0_baseline:   1%|▏         | 7/544 [45:07<81:16:02, 544.81s/q, agree=1.00, id=406, ok=0, s=135, voted=-7]  [407/943] id=406  correct=False  agree=1.00  voted='-7'  135s
+V0_baseline:   1%|▏         | 8/544 [45:07<61:40:51, 414.28s/q, agree=1.00, id=406, ok=0, s=135, voted=-7]
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s][ARendering prompts: 100%|██████████| 1/1 [00:00<00:00, 502.61it/s]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [02:09<00:00, 16.25s/it, est. speed input: 13.42 toks/s, output: 340.70 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [02:09<00:00, 16.25s/it, est. speed input: 13.42 toks/s, output: 340.70 toks/s][AProcessed prompts: 100%|██████████| 8/8 [02:09<00:00, 16.25s/it, est. speed input: 13.42 toks/s, output: 340.70 toks/s]
+V0_baseline:   1%|▏         | 8/544 [47:17<61:40:51, 414.28s/q, agree=1.00, id=407, ok=0, s=130, voted=C]   [408/943] id=407  correct=False  agree=1.00  voted='C'  130s
+V0_baseline:   2%|▏         | 9/544 [47:17<48:21:30, 325.40s/q, agree=1.00, id=407, ok=0, s=130, voted=C]
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s][ARendering prompts: 100%|██████████| 1/1 [00:00<00:00, 459.60it/s]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [08:16<00:00, 62.07s/it, est. speed input: 4.14 toks/s, output: 154.90 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [08:16<00:00, 62.07s/it, est. speed input: 4.14 toks/s, output: 154.90 toks/s][AProcessed prompts: 100%|██████████| 8/8 [08:16<00:00, 62.07s/it, est. speed input: 4.14 toks/s, output: 154.90 toks/s]
+V0_baseline:   2%|▏         | 9/544 [55:34<48:21:30, 325.40s/q, agree=1.00, id=408, ok=0, s=497, voted=\frac{5816}{]  [409/943] id=408  correct=False  agree=1.00  voted='\\frac{5816}{9999}, \\frac{3017}{99990}, \\frac{574}{999}, \\frac{653}{9990}, \\frac{428}{999}'  497s
+V0_baseline:   2%|▏         | 10/544 [55:34<56:06:21, 378.24s/q, agree=1.00, id=408, ok=0, s=497, voted=\frac{5816}{]
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s][ARendering prompts: 100%|██████████| 1/1 [00:00<00:00, 507.78it/s]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [28:57<00:00, 217.23s/it, est. speed input: 0.84 toks/s, output: 91.51 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [28:57<00:00, 217.23s/it, est. speed input: 0.84 toks/s, output: 91.51 toks/s][AProcessed prompts: 100%|██████████| 8/8 [28:57<00:00, 217.23s/it, est. speed input: 0.84 toks/s, output: 91.51 toks/s]
+V0_baseline:   2%|▏         | 10/544 [1:24:32<56:06:21, 378.24s/q, agree=0.12, id=409, ok=0, s=1738, voted=(-0.02462, 4]  [410/943] id=409  correct=False  agree=0.12  voted='(-0.02462, 4.239)'  1738s
+V0_baseline:   2%|▏         | 11/544 [1:24:32<117:37:39, 794.48s/q, agree=0.12, id=409, ok=0, s=1738, voted=(-0.02462, 4]
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s][ARendering prompts: 100%|██████████| 1/1 [00:00<00:00, 539.25it/s]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [00:39<00:00,  4.88s/it, est. speed input: 26.65 toks/s, output: 349.37 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [00:39<00:00,  4.88s/it, est. speed input: 26.65 toks/s, output: 349.37 toks/s][AProcessed prompts: 100%|██████████| 8/8 [00:39<00:00,  4.88s/it, est. speed input: 26.65 toks/s, output: 349.37 toks/s]
+V0_baseline:   2%|▏         | 11/544 [1:25:11<117:37:39, 794.48s/q, agree=0.62, id=410, ok=0, s=39, voted=45.00, 4.000]    [411/943] id=410  correct=False  agree=0.62  voted='45.00, 4.000'  39s
+V0_baseline:   2%|▏         | 12/544 [1:25:11<83:26:41, 564.67s/q, agree=0.62, id=410, ok=0, s=39, voted=45.00, 4.000] 
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s][ARendering prompts: 100%|██████████| 1/1 [00:00<00:00, 694.42it/s]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [01:22<00:00, 10.34s/it, est. speed input: 11.12 toks/s, output: 403.69 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [01:22<00:00, 10.34s/it, est. speed input: 11.12 toks/s, output: 403.69 toks/s][AProcessed prompts: 100%|██████████| 8/8 [01:22<00:00, 10.34s/it, est. speed input: 11.12 toks/s, output: 403.69 toks/s]
+V0_baseline:   2%|▏         | 12/544 [1:26:34<83:26:41, 564.67s/q, agree=1.00, id=411, ok=0, s=83, voted=27.37]         [412/943] id=411  correct=False  agree=1.00  voted='27.37'  83s
+V0_baseline:   2%|▏         | 13/544 [1:26:34<61:45:16, 418.68s/q, agree=1.00, id=411, ok=0, s=83, voted=27.37]
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s][ARendering prompts: 100%|██████████| 1/1 [00:00<00:00, 638.21it/s]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [03:19<00:00, 24.92s/it, est. speed input: 6.78 toks/s, output: 260.82 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [03:19<00:00, 24.92s/it, est. speed input: 6.78 toks/s, output: 260.82 toks/s][AProcessed prompts: 100%|██████████| 8/8 [03:19<00:00, 24.92s/it, est. speed input: 6.78 toks/s, output: 260.82 toks/s]
+V0_baseline:   2%|▏         | 13/544 [1:29:53<61:45:16, 418.68s/q, agree=1.00, id=412, ok=0, s=199, voted=\frac{4\sqrt]  [413/943] id=412  correct=False  agree=1.00  voted='\\frac{4\\sqrt{78} - 35}{72}'  199s
+V0_baseline:   3%|▎         | 14/544 [1:29:53<51:53:03, 352.42s/q, agree=1.00, id=412, ok=0, s=199, voted=\frac{4\sqrt]
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s][ARendering prompts: 100%|██████████| 1/1 [00:00<00:00, 549.57it/s]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [08:15<00:00, 61.91s/it, est. speed input: 8.75 toks/s, output: 160.64 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [08:15<00:00, 61.91s/it, est. speed input: 8.75 toks/s, output: 160.64 toks/s][AProcessed prompts: 100%|██████████| 8/8 [08:15<00:00, 61.91s/it, est. speed input: 8.75 toks/s, output: 160.64 toks/s]
+V0_baseline:   3%|▎         | 14/544 [1:38:09<51:53:03, 352.42s/q, agree=0.38, id=413, ok=0, s=495, voted=A]             [414/943] id=413  correct=False  agree=0.38  voted='A'  495s
+V0_baseline:   3%|▎         | 15/544 [1:38:09<58:06:55, 395.49s/q, agree=0.38, id=413, ok=0, s=495, voted=A]
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s][ARendering prompts: 100%|██████████| 1/1 [00:00<00:00, 423.97it/s]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [03:05<00:00, 23.21s/it, est. speed input: 25.76 toks/s, output: 264.78 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [03:05<00:00, 23.21s/it, est. speed input: 25.76 toks/s, output: 264.78 toks/s][AProcessed prompts: 100%|██████████| 8/8 [03:05<00:00, 23.21s/it, est. speed input: 25.76 toks/s, output: 264.78 toks/s]
+V0_baseline:   3%|▎         | 15/544 [1:41:14<58:06:55, 395.49s/q, agree=1.00, id=414, ok=0, s=186, voted=I]  [415/943] id=414  correct=False  agree=1.00  voted='I'  186s
+V0_baseline:   3%|▎         | 16/544 [1:41:14<48:44:36, 332.34s/q, agree=1.00, id=414, ok=0, s=186, voted=I]
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s][ARendering prompts: 100%|██████████| 1/1 [00:00<00:00, 430.49it/s]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [01:57<00:00, 14.73s/it, est. speed input: 22.20 toks/s, output: 303.43 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [01:57<00:00, 14.73s/it, est. speed input: 22.20 toks/s, output: 303.43 toks/s][AProcessed prompts: 100%|██████████| 8/8 [01:57<00:00, 14.73s/it, est. speed input: 22.20 toks/s, output: 303.43 toks/s]
+V0_baseline:   3%|▎         | 16/544 [1:43:12<48:44:36, 332.34s/q, agree=0.50, id=415, ok=0, s=118, voted=\sqrt{\frac{]  [416/943] id=415  correct=False  agree=0.50  voted='\\sqrt{\\frac{A}{6}}, A, ( \\frac{A}{6} )^{3/2}, A'  118s
+V0_baseline:   3%|▎         | 17/544 [1:43:12<39:12:34, 267.85s/q, agree=0.50, id=415, ok=0, s=118, voted=\sqrt{\frac{]
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s][ARendering prompts: 100%|██████████| 1/1 [00:00<00:00, 970.68it/s]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [00:45<00:00,  5.63s/it, est. speed input: 22.74 toks/s, output: 292.79 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [00:45<00:00,  5.63s/it, est. speed input: 22.74 toks/s, output: 292.79 toks/s][AProcessed prompts: 100%|██████████| 8/8 [00:45<00:00,  5.63s/it, est. speed input: 22.74 toks/s, output: 292.79 toks/s]
+V0_baseline:   3%|▎         | 17/544 [1:43:57<39:12:34, 267.85s/q, agree=0.62, id=416, ok=0, s=45, voted=\frac{11}{16]   [417/943] id=416  correct=False  agree=0.62  voted='\\frac{11}{16}'  45s
+V0_baseline:   3%|▎         | 18/544 [1:43:57<29:21:11, 200.90s/q, agree=0.62, id=416, ok=0, s=45, voted=\frac{11}{16]
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s][ARendering prompts: 100%|██████████| 1/1 [00:00<00:00, 538.91it/s]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [09:14<00:00, 69.36s/it, est. speed input: 2.72 toks/s, output: 149.92 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [09:14<00:00, 69.36s/it, est. speed input: 2.72 toks/s, output: 149.92 toks/s][AProcessed prompts: 100%|██████████| 8/8 [09:14<00:00, 69.36s/it, est. speed input: 2.72 toks/s, output: 149.92 toks/s]
+V0_baseline:   3%|▎         | 18/544 [1:53:12<29:21:11, 200.90s/q, agree=0.25, id=417, ok=0, s=555, voted=1.006, 0.967]  [418/943] id=417  correct=False  agree=0.25  voted='1.006, 0.9675, 28, 29.10, 1.039'  555s
+V0_baseline:   3%|▎         | 19/544 [1:53:12<44:48:11, 307.22s/q, agree=0.25, id=417, ok=0, s=555, voted=1.006, 0.967]
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s][ARendering prompts: 100%|██████████| 1/1 [00:00<00:00, 459.90it/s]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [03:07<00:00, 23.50s/it, est. speed input: 9.83 toks/s, output: 252.86 toks/s][A
+Processed prompts: 100%|██████████| 8/8 [03:07<00:00, 23.50s/it, est. speed input: 9.83 toks/s, output: 252.86 toks/s][AProcessed prompts: 100%|██████████| 8/8 [03:07<00:00, 23.50s/it, est. speed input: 9.83 toks/s, output: 252.86 toks/s]
+V0_baseline:   3%|▎         | 19/544 [1:56:20<44:48:11, 307.22s/q, agree=0.25, id=418, ok=0, s=188, voted=B]             [419/943] id=418  correct=False  agree=0.25  voted='B'  188s
+V0_baseline:   4%|▎         | 20/544 [1:56:20<39:30:27, 271.43s/q, agree=0.25, id=418, ok=0, s=188, voted=B]
+Rendering prompts:   0%|          | 0/1 [00:00<?, ?it/s][ARendering prompts: 100%|██████████| 1/1 [00:00<00:00, 441.23it/s]
+
+Processed prompts:   0%|          | 0/8 [00:00<?, ?it/s, est. speed input: 0.00 toks/s, output: 0.00 toks/s][Ascripts/run14b_launcher.sh: line 29:   155 Killed                  python3 scripts/run_vllm_sc.py --run-id run14b_sc8_v1_private943_tok32k_pp1 --variant V0_baseline --data-path private.jsonl --data-end 943 --max-new-tokens 32768 --max-model-len 36864 --output "$OUTPUT"
+[2026-05-18T16:58:02Z] run14b done (419/943 lines).
