@@ -24,3 +24,35 @@ Drop anything here. Rain will sort it later.
 
 **Killed**: Lever 1 (TIR) — rules. PRM-half of Lever 3 — rules.
 **Key insight**: Lever 5 (post-processing) is highest-feasibility quick win. Lever 6 (targeted memo SFT) is highest-EV among rules-permitted techniques.
+
+---
+
+## SIGNOFF — claude_librarian (2026-05-28)
+
+**What I tried**: All 10 pennies from the repo organization task.
+
+**What I did**:
+- Penny 1: Extracted 63 trailing-zero items from master_item_tracker.csv (FINDINGS said 53; regex found 63 — likely a slightly broader match). Added full table to postprocessing/FORMAT_RULES.md.
+- Penny 2: Extracted 119 format_only_diff_teacher items (FINDINGS said 117; actual flag count 119). Created postprocessing/format_candidates_117.csv. Noted in postprocessing/SCRATCH.md.
+- Penny 3: Verified undercount_candidates.csv exists (82 rows vs 110 flagged — gap of 28). Added undercount category to FORMAT_RULES.md + SCRATCH.md.
+- Penny 4: Added OPL 39 OK-status summary to data/search/SCRATCH.md.
+- Penny 5: Added info-theoretic ceiling to submission/SCRATCH.md.
+- Penny 6: Added TIME_MACHINE_BACKLOG Tier 1 items to strategy/TODO.md.
+- Penny 7: Added lever rankings cross-ref to strategy/SCRATCH.md.
+- Penny 8: Added 5 no-box rescue items (4 HIGH + 1 MEDIUM) to FORMAT_RULES.md.
+- Penny 9: Added prompt dive summary to inference/RESEARCH.md.
+- Penny 10: Added Day 3 research SOP to research/SCRATCH.md.
+
+**What worked**: All 10 pennies completed and committed in 2 commits. Data extraction via Python was clean.
+
+**What didn't**: Minor count discrepancies — FINDINGS says 53 trailing-zero but regex finds 63; FINDINGS says 117 format-only-diff but flag count is 119; undercount CSV has 82 of 110 flagged items. These gaps should be investigated but don't block the routing.
+
+**What's left for next agent**:
+- The 28-item gap in undercount (110 flagged vs 82 in CSV) needs resolution.
+- The 63 vs 53 trailing-zero count should be reconciled (may be different filter criteria).
+- TIME_MACHINE_BACKLOG Tier 1 docs (prompt_engineering_research.md 70KB, experiments.md 85KB) are flagged but UNMINED — someone needs to actually mine them.
+- FORMAT_RULES.md "Discovered rules" table is still empty (the trailing-zero items are in a new section, not the original table — that table needs specific per-item verified format rules).
+
+**Key discoveries**:
+- The format_candidates_117.csv is the single highest-value post-processing input — 119 items where math is right but format is wrong. Pure mechanical wins.
+- master_item_tracker.csv has 1039 rows but private.jsonl has 943 items — the 96-item surplus is still unreconciled (noted in TODO.md already).
