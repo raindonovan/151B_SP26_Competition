@@ -1,0 +1,101 @@
+item_id,category,confidence,question_preview
+0,FREE,50.0,Use the order of operations to simplify: a) $[13-(11-11)]-[8-(5-6)]=$ [ANS] b) $4 \cdot 3-2+2 \cdot 
+2,FREE,50.0,"According to a recent marketing campaign, $120$ drinkers of either Diet Coke or Diet Pepsi participa"
+3,MCQ,50.0,"It is known that there are two types of fish in the pond, in a ratio of 7:3. If one fish is randomly"
+4,FREE,50.0,"If the point (10,-7) is on the terminal side of the angle $\theta$ in standard position, $\sin (\the"
+5,FREE,50.0,An experiment is conducted to determine whether there is a differnce among the mean increases in gro
+7,FREE,50.0,"The circumference of a circle is divided into $45$ arcs, each of length $1$. Initially, there are $1"
+11,FREE,50.0,"Consider simple linear regression with $n$ pairs of numbers $x_i,y_i$. Let ${\hat\beta}_0+{\hat\beta"
+12,FREE,50.0,"A barnyard is full of chickens and pigs, and the total number of chicken feet and pig feet is $70$. "
+14,FREE,50.0,Use logarithms to find an EXACT solution to the equation below. $7 \cdot 3^t=245$ $t=$ [ANS] (do NOT
+16,FREE,50.0,"Rose and Brunno play the game on a board shaped like a regular 1001-gon. Initially, all vertices of "
+17,MCQ,50.0,"Let $a_0=1$, $a_1=2$, and $a_n=4a_{n-1}-a_{n-2}$ for $n\geq 2$. Find the least odd prime factor of $"
+18,MCQ,50.0,Dani has 45 marbles. She has 5 times as many marbles as Joe has. How many marbles does Joe have?
+19,MCQ,50.0,"Consider the sequence defined by $j_0=1$, $j_1=2$, and $j_c=4j_{c-1}-j_{c-2}$ for $c\geq 2$. Determi"
+21,FREE,50.0,"The average life expectancy in the United States, $L$, has been rising steadily over the past few de"
+27,FREE,50.0,"Solve the following equations in the interval [0,2 $\pi$]. Note: Give the answer as a multiple of $\"
+28,FREE,50.0,a) In a dictionary 16 pages are 1 millimeter thick. To find the thickness of 1120 pages we must (1) 
+29,FREE,50.0,"A mixture of 60 liters of paint is 25\% red tint, 30\% yellow tint and 45\% water. 8 liters of yello"
+30,FREE,50.0,"College officials want to estimate the percentage of students who carry a gun, knife, or other such "
+32,FREE,50.0,"The distance between $(4,-3)$ and $(-6,-4)$ is [ANS] The midpoint of the line segment that joins the"
+35,FREE,50.0,Applying a horizontal stretch by a factor of $p$ (where $p$ is a constant such that $p >1$) to $h (x
+39,FREE,50.0,One piece of paper is approximately $17$ millimeters in thickness. A stack of paper is $8075$ millim
+40,FREE,50.0,A homing pigeon starts 800 miles from home and flies 50 miles toward home each day. Express the dist
+41,FREE,50.0,Consider a $2025 \times 2025$ grid of unit squares. Matilda wishes to place on the grid some rectang
+43,FREE,50.0,Use half angle formulas to fill in the blanks in the identity below: $(\sin(7x))^4$=[ANS] $-\frac{1}
+44,FREE,50.0,"Select True or False, depending on whether the corresponding statement is true or false. [ANS] 1. Fo"
+45,MCQ,50.0,We now define an algorithm: The definition of a(n) is the sequence where a(n) represents the number 
+46,FREE,50.0,A random sample of $100$ observations from a population with standard deviation $20.3575072960673$ y
+48,FREE,50.0,Rewrite the exponential equation $e^{-2} \approx 0.135$ in equivalent logarithmic form. There may be
+49,FREE,50.0,Assume you are using a significance level of $\alpha=0.05$ to test the claim that $\mu < 17$ and tha
+50,FREE,50.0,An apple contains 140 calories and 3 g of fiber. A banana contains 150 calories and 4 g of fiber. Se
+51,FREE,50.0,"Using the multiplication table, compute $651 _{8} \times 32 _{8}$ $\begin{array}{cccccccc}\hline \ti"
+54,FREE,50.0,"Let $P$ be a polygon formed by the edges of an infinite chessboard, which does not intersect itself."
+55,FREE,50.0,"Write an equation for $y$ in terms of $x$ if $y$ is proportional to the fourth power of $x$, and $y="
+58,FREE,50.0,Let $\mathbb{Z}_{>0}$ denote the set of positive integers. Let $f : \mathbb{Z}_{>0} \rightarrow \mat
+59,FREE,50.0,Evaluate the numerical expression $343^\frac{2}{3}.$ Answer: [ANS] Note: You cannot use any operatio
+64,FREE,50.0,A population of animals oscillates sinusoidally between a low of 500 on January 1 and a high of 1200
+65,FREE,50.0,"Multiply: (Note: If necessary, use fractions not decimals.) a) $\frac{3}{7}(-2)=$ [ANS] b) $\frac{2}"
+66,FREE,50.0,"A pilot flies in a straight path for 1 hour and 30 min. She then makes a course correction, heading "
+67,FREE,50.0,"In the year 2004, a total of 7.6 million passengers took a cruise vacation. The global cruise indust"
+68,FREE,50.0,Suppose you want to test the claim the paired sample data given below come from a population for whi
+70,FREE,50.0,"A school just won a grant, and decided to spend ${{\textstyle\frac{5}{8}}}$ of the grant to purchase"
+71,FREE,50.0,You are working on a new temperature scale that will unify the earth. After some thought you decide 
+72,FREE,50.0,"If $\sin(A)=0.55$ and $\cos(A) < 0$, determine: $\cos(A)=$ [ANS] $\sin(2A)=$ [ANS] $\cos(2A)=$ [ANS]"
+74,FREE,50.0,"To test the efficacy of a new cholesterol-lowering medication, 10 people are selected at random. Eac"
+77,FREE,50.0,A study of human development showed two types of movies to a group of children. Crackers were availa
+78,MCQ,50.0,"If distance of the origin from the plane passing through the point $(2,2,1)$ and $(9,3,6)$ and perpe"
+79,FREE,50.0,"Add these together: ${3+\frac{4}{7}}$ When needed, use an improper fraction in your answer. Don’t us"
+82,FREE,50.0,"There are several sections of statistics, some in the morning (AM) and some in the afternoon (PM). W"
+83,FREE,50.0,"Let $n > 1$ be an integer. In a configuration of an $n \times n$ board, each of the $n^2$ cells cont"
+86,FREE,50.0,"A gym charges members ${\$35}$ for a registration fee, and then ${\$32}$ per month. You became a mem"
+89,FREE,50.0,"Initially, you have lost 20,000 dollars in the stock market and you continue to lose 350 dollars per"
+90,FREE,50.0,Find the nth term of the arithmetic sequence whose initial term is $8$ and common difference is $7$.
+91,MCQ,50.0,We now define an algorithm: The definition of a(n) is numbers n such that there are no carries when 
+93,FREE,50.0,Consider a bee (denoted by X ) in a rectangular honeycomb as seen below:  |  | $1$ | $2$ | $3$ | $4$
+94,MCQ,50.0,"The option that represents the area of the plane figure enclosed by ( x = 1 - {y^2},;x = 0 ) is"
+95,FREE,50.0,Let $\triangle A B C$ be an isosceles triangle with $A B=A C$. Let $D$ be a point on the circumcircl
+96,FREE,50.0,"A baby was born $2$ years ago. In these $2$ years, the baby grew $13.6$ pounds. The baby’s current w"
+98,MCQ,50.0,"A deck of playing cards has 52 cards, and each shuffle changes the order of the cards, which is a pe"
+100,FREE,50.0,"A jeweler has five rings, each weighing $18$ grams, made of an alloy of $10$ \% silver and $90$ \% g"
+102,MCQ,50.0,"Let $C \subset\mathbb{P}^{3}$ be a smooth, irreducible, nondegenerate curve of degree $4$\ What is t"
+103,FREE,50.0,"If the distance from the town of Bree to Weathertop is 16 miles on a 45 degree upward slope, what is"
+105,FREE,50.0,A sample of weights (in pounds) for six 12-year-olds is given below: 93 \quad 84 \quad 81 \quad 94 \
+106,FREE,50.0,"After robbing a bank in Dodge City, a robber gallops off at 13 mi/h. 30 minutes later, the marshall "
+110,FREE,50.0,"A national park records data regarding the total fox population $F$ over a 12 month period, where $t"
+112,FREE,50.0,"The intersection between a plane and a cube is a convex pentagon $ABCDE$ satisfying $AB = BC = 10$, "
+113,FREE,50.0,If $x+4=5 \sin(\theta)$ for $0 < \theta < \pi/2$ express $\cos(2\theta)$ in terms of $x$. $\cos(2\th
+114,MCQ,50.0,"Given $k$ as an integer and $a \ne \pi \cdot k$, evaluate $P=\cos(a) \cdot \cos(2 \cdot a) \cdot \co"
+115,FREE,50.0,A theater manager graphed weekly profits as a function of the number of patrons and found that the r
+117,MCQ,50.0,Consider the set $V$ containing all integers $e$ between 1 and 2021 (inclusive) that are coprime to 
+118,FREE,50.0,You can paint a certain room in 9 hours. Your brother can do it in 6 hours. How long does it take th
+120,FREE,50.0,"Let $n$ be a positive integer and $p$ be a prime. In terms of $n$ and $p$, let $k(n,p)$ be the large"
+121,FREE,50.0,"Fabrienne is working to pass a local measure, and she needs to collect a total of $108$ signatures i"
+122,FREE,50.0,"On average, a restaurant uses ${35.6\ {\rm lb}}$ of vegetable oil per day. Fill in blanks. Question "
+125,MCQ,50.0,Determine the smallest positive integer $l$ such that for any polynomial $x(x)$ with integer coeffic
+126,FREE,50.0,"According to a survey, $6.6\%$ of a city’s residents are native Americans. The last Census found tha"
+128,FREE,50.0,$(y^2-9)$ Perform the indicated operation. Note that the denominators are the same. Simplify the res
+129,FREE,50.0,Write each equation in polar coordinates. Express as a function of $\small{t}$. Assume that $\small{
+130,FREE,50.0,Use the properties of exponents to simplify the following ${r^{16}}\cdot{r^{13}}\cdot{r^{13}}=$ [ANS
+131,FREE,50.0,"Physicians at a clinic gave what they thought were drugs to $950$ asthma, ulcer, and herpes patients"
+132,FREE,50.0,It’s given that $1 \text{mile}=5280 \text{feet}$ and $1 \text{yard}=3 \text{feet}$. Do the following
+133,FREE,50.0,"If $\theta=\frac {5 \pi} {3}$, then $\sin (\theta)$ equals [ANS] $\cos (\theta)$ equals [ANS] $\tan "
+134,FREE,50.0,"Given the following table, compute the median of the grouped data. $\begin{array}{ccc}\hline Class &"
+136,FREE,50.0,The percent frequency of a class is computed by: [ANS] A. multiplying the relative frequency by 100 
+138,FREE,50.0,"When an aircraft takes off, it accelerates until it reaches its takeoff speed $V$. In doing so it us"
+140,FREE,50.0,Gregory and Lesley are participating in a summer reading program. Gregory reads $45$ pages every day
+142,FREE,50.0,List the elements of the set \lbrace x | x \mbox{is a natural number between 6 and 12} \rbrace. Sepa
+143,FREE,50.0,"Convert from polar to rectangular coordinates: $\mathbf{(a)}\quad(8,\frac{3\pi}{2})\quad\Rightarrow_"
+145,FREE,50.0,Suppose that $M$ is the function that computes how many miles are in $x$ feet. Find the algebraic ru
+149,FREE,50.0,An airplane is flying at the height of ${10.8\ {\rm km}}$. The airplane can see both City 1 and City
+151,FREE,50.0,Evaluate the expression: ${48\div(8)6=}$ [ANS]
+153,MCQ,50.0,Transform the following quadratic form into its standard form using the method of completing the squ
+156,MCQ,50.0,What are the eigenroots of the following matrices? $$ \left( \begin{matrix} {{{1}}} & {{{-2}}} & {{{
+157,FREE,50.0,A weight on a vertical spring is given an initial downward velocity of 5 cm/sec from a point 7 cm ab
+160,FREE,50.0,Fill in the missing blank and determine the appropriate property illustrated: $1 \times$ [ANS] $=\fr
+161,FREE,50.0,"Let \( A \) be a set of 2025 positive real numbers. For a subset \( T \subseteq A \), define \( M_T "
+162,MCQ,50.0,"We now define an algorithm: The definition of a(n) is: Triangle with subscripts (1,1),(2,1),(1,2),(3"
+165,MCQ,50.0,Let $\mathrm{F}$ be the set $$ A = {\frac{0.6}{u_{1}}} + {\frac{0.8}{u_{2}}} + {\frac{1}{u_{3}}} + {
+166,FREE,50.0,"The area covered by a marsh, $A$, starts at $175$ acres and drops by a factor of $\dfrac{1}{4}$ each"
+167,FREE,50.0,Determine whether each of the following expressions is Positive or Negative. $\sin(271^\circ)$ [ANS]
+168,FREE,50.0,"A choral conductor has 1301 singers in her choir, some of them are professional singers. The conduct"
