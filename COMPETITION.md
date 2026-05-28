@@ -1,88 +1,77 @@
-# CSE 151B — Competition Reference
+# COMPETITION — Everything We Know (canonical)
+
+**Pipeline phase:** PRE-INFERENCE (the spec + inputs we're given). See `/PIPELINE.md`.
+**Scope:** competition rules, eval, data format, submission format, the official files, Piazza staff
+rulings, and the recovered sample submission. For HOW answers are scored, see `grading/GRADER_SPEC.md`.
+**Source:** Kaggle competition page (captured 2026-05-28, "4 days to go") + Piazza.
+
+---
 
 ## Overview
-Improve mathematical reasoning of `Qwen/Qwen3-4B-Thinking-2507` using only model-intrinsic methods. No external APIs or tool-augmented generation permitted at inference time.
+Improve the math reasoning of `Qwen/Qwen3-4B-Thinking-2507` using only **model-intrinsic** methods.
+Unified accuracy across high-school → graduate math, free-form + MCQ, equally weighted.
+**No external model calls, API access, code interpreters, or tool-augmented generation at inference time.**
 
-Evaluated on **unified accuracy**: total correct / total questions, equally weighted across all benchmarks. Problems span high-school to graduate level math.
+## Allowed vs forbidden methods
+- ✅ Prompt engineering (CoT, few-shot, self-consistency, progressive-hint, etc.)
+- ✅ Supervised fine-tuning (LoRA, QLoRA, full) on any publicly available training data
+- ✅ Reinforcement learning (GRPO, DPO, outcome-based reward modeling)
+- ❌ External APIs, separate model calls, code interpreters/calculators, tool-aug generation — at inference time
+- **Model constraint:** must use `Qwen/Qwen3-4B-Thinking-2507` for final generation (may be trained). No alternatives.
 
----
-
-## Allowed Methods
-1. **Prompt engineering** — chain-of-thought, few-shot, self-consistency, progressive-hint prompting, etc.
-2. **Supervised fine-tuning** — LoRA, QLoRA, or full fine-tuning on any publicly available data
-3. **Reinforcement learning** — GRPO, DPO, outcome-based reward modeling, etc.
-
-**Not permitted:** external model calls, API access, code interpreters, calculators at inference time.
-
----
-
-## Model Constraint
-- **Required model:** `Qwen/Qwen3-4B-Thinking-2507`
-- May be further trained with the above methods
-- No alternative models allowed for final response generation
-
----
-
-## Dataset Format
-Problems are in JSONL format (one JSON object per line).
-
-### Data Fields
+## Data format
 | Field | Description |
 |---|---|
-| `id` | Unique integer identifier |
-| `question` | Problem statement in LaTeX. Free-form uses `[ANS]` placeholders |
-| `answer` | List of strings (free-form) or single capital letter (MCQ) |
-| `options` | (MCQ only) List of candidate answer choices in LaTeX |
+| `id` | unique integer |
+| `question` | LaTeX problem; free-form uses `[ANS]` placeholders (one per expected answer) |
+| `answer` | list of strings (free-form, one per `[ANS]`) OR single capital letter (MCQ) |
+| `options` | (MCQ only) candidate choices in LaTeX |
 
-### Question Types
+- **Free-form single:** `{"question":"...$\\frac{1}{(-8)^{-3}}=$ [ANS]...","answer":["-512"],"id":4}`
+- **Free-form multi:** `{"answer":["41","35","16"],...}` — **ALL sub-answers must be correct** to score.
+- **MCQ:** `{"options":[...],"answer":"C",...}` — selected letter must match exactly.
 
-**Free-form (single answer):**
-```json
-{"question": "...$\\frac{1}{(-8)^{-3}}=$ [ANS]...", "answer": ["-512"], "id": 4}
-```
+## The three official files (`data/` + root)
+| File | Items | Gold? | Notes |
+|---|---|---|---|
+| `private.jsonl` (root) | 943 | withheld | the Kaggle test set; final ranking surface |
+| `data/public.jsonl` | 1126 | yes (embedded) | **LLM-synthetic, ~10% gold errors — RETIRED as eval surface** (dev only). See grading/JUDGER_AND_PUBLIC_SET.md |
+| `data/sample_submission.csv` | 5 example rows | — | **format example** (recovered 2026-05-28). See below. |
+Total bundle 1.27 MB. License: **CC BY-NC-SA 4.0**.
 
-**Free-form (multiple answers):**
-```json
-{"question": "...f(3)= [ANS]\\n(b) f(-3)= [ANS]...", "answer": ["41", "35", "16"], "id": 2}
-```
+## ⚠️ Eval surfaces — DO NOT confuse these three
+1. **`public.jsonl` (1126)** — synthetic dev data, retired. NOT the leaderboard.
+2. **Public leaderboard** — accuracy on **~30% of the PRIVATE set (≈283 of 943 items)**, real gold, live during the comp.
+   → **±5pp 95% CI at n≈283**: score deltas under ~1pp are within noise. Treat tiny "lever" gains skeptically.
+3. **Full private (943)** — final ranking, revealed only after the deadline.
 
-**Multiple-choice:**
-```json
-{"question": "...", "options": ["...", "..."], "answer": "C", "id": 1}
-```
+## ⚠️⚠️ DISCREPANCY TO RESOLVE — submission limit
+The official description says: **"Submissions are unlimited throughout the competition."**
+This CONTRADICTS our working ops assumption (5/day in the final week; memory #1). If submissions are truly
+unlimited, the "every submission is gold / 5-slot budget" framing collapses and we can probe freely.
+**Rain to confirm against the actual Kaggle submit UI before we plan the endgame.** Until then, treat as OPEN.
 
-### Data Splits
-- **Public set:** Ground truth provided — use for development and validation
-- **Private set:** No answers — used for leaderboard and final ranking (~30% revealed during competition)
-
----
-
-## Scoring
-- **Metric:** Unified accuracy = correct / total, equal weight per question
-- **Free-form:** ALL sub-answers must be correct for a question to count
-- **MCQ:** Selected letter must match ground truth exactly
-- Final ranking uses full private test set revealed after deadline
-
----
-
-## Submission Format
-CSV file with predictions for every problem in `private.jsonl`.
-
+## Submission format
+CSV, one row per `private.jsonl` id:
 ```
 id,response
 0,"[full reasoning trace] ... The answer is \boxed{42}"
 1,"[full reasoning trace] ... \boxed{580, 660, 80}"
 ```
+- `response` = the COMPLETE raw model output (all CoT/thinking tokens). Final answer is extracted during eval.
+- CSV-quote/escape properly (inner quotes as `""`). Every id must have a row.
 
-### Rules
-- `response` must be the **complete raw model output** including all chain-of-thought/thinking tokens
-- Properly quote and escape the response field (standard CSV double-quoting, inner quotes as `""`)
-- Every `id` in `private.jsonl` must have a row
-- Final answer is extracted from the response trace during evaluation
+## Sample submission (recovered — `data/sample_submission.csv`)
+5 example rows (id 0–4), header `id,response`. Each is a **full Qwen reasoning trace ending in `\boxed{}`** —
+demonstrating the expected raw-trace format. Clearly generated by base Qwen (contains its tell-tale
+"This is a complex or challenging question..." preamble). Uses **both `\frac` and `\dfrac`** → confirms `\dfrac`
+is NOT specially canonical (Hendrycks normalizes `\dfrac`→`\frac`; see GRADER_SPEC §4).
 
----
+## Piazza staff rulings (authoritative)
+- **Ruijia Niu, 2026-05-05:** "You can use any method to modify your model, as long as you start with the required
+  Qwen3-4B-Thinking-2507 model." → distillation/SFT from a Qwen-derived teacher is APPROVED.
+- **Anthony Tong, 2026-05-09:** the Kaggle grader does NOT normalize fraction vs decimal forms (no server-side
+  sympy). → corroborates Hendrycks `is_equiv`; see grading/GRADER_SPEC.md.
 
-## Starter Code
-Repository: `https://github.com/brooksniu/151B_SP26_Competition`
-Local path (RunPod): `/workspace/151B_SP26_Competition`
-Local path (DataHub): `/home/dvaneetv/151B_SP26_Competition`
+## Starter code
+Official: `https://github.com/brooksniu/151B_SP26_Competition` (refer to its notebook for data loading).
