@@ -68,3 +68,28 @@ Re-read of competition description revealed:
 ## F7 — Submission scarcity
 
 5 days × 3/day = ~12 submissions remaining. Each must test a deliberate hypothesis. At deadline: 2 final picks.
+
+---
+
+## F8 — Day-6 archaeology: recovered gold (index → target phase-homes)
+
+Deep-read of the early archive (`DESIGN.md`, `experiments.md`, `V0_V4_SUMMARY.md`, `milestone_report.tex`,
+`data/FINDINGS.md`, `HANDOFF_v2.3.md`). What was recovered and where it should live:
+
+- **GRADING — DONE, homed:** full Hendrycks normalization table + Minerva-vs-Hendrycks 28pp framing + Piazza
+  confirmations → `grading/GRADER_SPEC.md`, `grading/JUDGER_AND_PUBLIC_SET.md`. (Was buried in `data/FINDINGS.md`.)
+- **INFERENCE → RUN_REGISTRY / RUN_ANSWER_MATRIX (held):** V0–V4 variant runs on the fixed_50 slice EXIST as
+  result JSONLs (V0 baseline 0.614; V1 counting-prefix; V2 bookend = MathIF "repeat trick", cited strongest fix;
+  V3 shape-filter +0.7pp → became run14b_v3filtered; V4 temp-ladder). ⚠️ `V0_V4_SUMMARY.md` says "V1–V4 planned,
+  not run" — STALE; the run files exist. Early SC runs (run05/06/07 on fixed_50; run08/09 on private943; run14b)
+  hold per-item SC samples = oracle-harvest material. V1 counting-prefix reportedly never promoted to full 943.
+- **KNOWLEDGE LAYER → MASTER_ITEM_TABLE (held):** master_item_tracker V3 flags (backsolve_disagree 269,
+  disagree_teacher 233, format_only_diff 117, undercount 110, mcq_not_letter 16); dataset item bugs
+  (0011/0317/0570/0585/0622/0858/0894/0141); 18 no-box items + forced-suffix rescue results.
+- **STRATEGY → LEVERS / endgame:** information-theoretic back-solve ceiling (≤~49 bits over 5 queries vs 943 bits
+  of label uncertainty → pure score-feedback back-solve cannot resolve all labels; the format-fix path is the
+  higher ceiling); validated-lever lift table (multi-answer +0.3 · minimal-norm +0.4 · V3 +0.7 · 32K-vs-16K +2.5 ·
+  answer-sheet on T3+T4 +2.1).
+- **RULES (Piazza, authoritative):** Ruijia Niu 2026-05-05 — "any method to modify your model, as long as you start
+  with the required Qwen3-4B-Thinking-2507" (distillation/SFT approved). Anthony Tong 2026-05-09 — grader does not
+  normalize fraction vs decimal (corroborates Hendrycks). → belongs in a rules home.
