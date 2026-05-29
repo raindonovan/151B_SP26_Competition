@@ -1,8 +1,37 @@
 # OPL Run — Findings
 
-## Headline
+## Headline (Day 7 update — after teacher-consensus join)
 
-**OPL is answer-sheet gold for ~30-40 items at T2-T3 confidence. NOT training gold. NOT +5-12pp.**
+**OPL OK-bucket is mostly false-positive text matches. Of 39 OK items, 0 align with 3/3 teacher consensus. Realistic override value: probably <1pp on Kaggle LB, not the earlier +3-4pp estimate.**
+
+## Day 7: OPL × teacher-consensus join (NEW)
+
+Ran `data/search/opl/join_with_teachers.py` over the 39 OK-status items × 3 teachers (sonnet, gpt-4, oss) in `data/MASTER_ANSWERS.csv`. Results in `data/search/opl/findings_join.csv`.
+
+| Classification | Count | Meaning |
+|---|---|---|
+| **T1-promoted** (3/3 teachers AND OPL agree) | **0** | The bucket we hoped to find — zero items |
+| **OPL-disagrees** (3/3 teachers agree, OPL says something different) | **25** | Teachers unanimous, OPL likely wrong-problem match |
+| **Split-teacher** (teachers not unanimous, OPL is tiebreaker candidate) | **14** | Of secondary interest; OPL evidence still suspect per id=15 spot-check |
+
+### Spot-check: id=15 (highest similarity = 0.9055)
+
+- **Our question**: *"Are the functions below polynomials? ... $f(x)=x^{8}+4$ has degree [ANS] ..."*
+- **Teacher consensus + sheet_best**: `8,NONE` (3/3 teachers agree, sheet tier=2)
+- **OPL match path**: `OpenProblemLibrary/LoyolaChicago/Precalc/Chap9Sec2/Q01.pg`
+- **OPL extracted answers**: `0`, `1`
+- **Verdict**: OPL matched a completely different precalc problem on textual similarity alone. The 0.9055 score reflects shared phrasing ("enter the answer", "function below"), not problem equivalence.
+
+If even the **highest**-similarity match is a false positive, the lower-similarity 38 are almost certainly worse.
+
+### Implication for submission strategy
+
+- OPL bulk-override is now **disconfirmed** as a high-value lever. The earlier +3-4pp estimate in this doc was a ceiling that assumed parameter equality; the join shows that ceiling is unreachable in the OK-bucket as-extracted.
+- **Pick B aggressive** (conservative + T1-promoted OPL): degenerates to == Pick B conservative, since the T1-promoted set is empty.
+- **Split-teacher bucket (14 items)** could in principle be a tiebreaker source, but the id=15 spot-check makes us doubt OPL evidence quality here too. Recommendation: do NOT use OPL split-teacher overrides in any submission until per-item spot-checks confirm semantic match (not just text-similarity match).
+- Salvage value remaining: OPL as a **classification/routing signal** for what kind of math each question is (per "What OPL IS" below).
+
+## Earlier findings (pre-join, kept for traceability)
 
 ## Bucket distribution (from candidates.csv, 2057 rows analyzed)
 

@@ -2,12 +2,12 @@
 
 > Read this FIRST when resuming a claude_strategy chat. Detailed findings live in their canonical homes; this is the index.
 
-**Last updated**: 2026-05-28 (end of Day 6 — handing off to fresh chat after tool-set degradation)
+**Last updated**: 2026-05-29 (Day 7 — fresh chat, picks corrected to 0.713, OPL join + Pick B candidates built)
 
 ## TL;DR — Where we are
 
-- **Score: 0.706** is current best (slot4_undercount_expand). New high.
-- **Picks must be changed**: Kaggle currently has 0.438 / 0.420 selected. Update to 0.706.
+- **Score: 0.713** is current best (`submission/29_05/csvs/undercount_plus_frac.csv`, commit 58d742c). New high. Confirmed via 29_05 Build 1 — exact match to additivity prediction (frac +0.7pp on slot4_undercount_expand 0.706 base = 0.713).
+- **Picks must be changed**: Kaggle currently has 0.438 / 0.420 selected. Pick A = `undercount_plus_frac.csv` (0.713). Pick B = TBD (in build, see below).
 - **F7 (postprocessing/FINDINGS.md) PROVEN**: tier-1 items are graded wrong on format. Fraction-fix submission gained +2/283 with pure decimal→fraction change. Post-processing is the major lever.
 - **MCQ override bug**: appending `\boxed{LETTER}` is a NO-OP — grader extracts FIRST `\boxed{LETTER}`. All past MCQ overrides were silently ignored. Fix is prepend / full-replace.
 - **Search-gold bulk overlay = harmful (-2.1pp)** but root cause was format application errors (added labels, collapsed multi-answers), not bad content. Normalized search-gold is untested.
@@ -22,14 +22,11 @@ This is the operational unlock. See `strategy/HOW_WE_KNOW_CORRECTNESS.md` for th
 
 ## Pending tasks (in priority order)
 
-1. **Push a0cb626 if unpushed** — contains SECURITY.md, CLAUDE.md (CREDENTIALS+GOLD rules), strategy/HOW_WE_KNOW_CORRECTNESS.md, data/ANSWER_SHEET_SCHEMA.md. Check `git log origin/main..HEAD`.
-2. **Spawn claude_wolf_01** — bootstrap wolfram/ directory + run batch 01 (25 items per batch). Spawn prompt drafted in chat history. Wolfram only 66/943 verified (~7%); ~700 are computable. Wide-open lever.
+1. **Lock Pick A on Kaggle UI** — select `submission/29_05/csvs/undercount_plus_frac.csv` (0.713) as Pick A. Manual step for Rain.
+2. **Pick B decision** — `submission/29_05/csvs/undercount_frac_mcq.csv` is built but expected ~0.710 (below Pick A's 0.713). Probe mcq_prepend_fix in isolation against 0.713 base with one daily slot to confirm it's net-positive before locking; otherwise Pick B = `undercount_plus_frac.csv` (same as Pick A — fine as a tie-with-self fallback) or another lever stack TBD.
 3. **Compute qwen_cross_config_agree column** — free T1 expander, runs locally. Spec in `data/ANSWER_SHEET_SCHEMA.md`. Could expand T1 from ~90 to ~250+ overnight.
 4. **Run the T1 inference scan** — Bucket A / Bucket B classification.
-5. **Build the 2-3 confirmed-lever submissions** (using daily slots):
-   - `undercount_plus_frac` (built; expected ~0.713) — Pick A material
-   - `mcq_prepend_fix` (built; +~1pp expected on 16 INVALID MCQ items)
-   - `search_gold_NORMALIZED` (untested; tests corrected hypothesis)
+5. **Spawn claude_wolf_01** — bootstrap wolfram/ directory + run batch 01 (25 items per batch). Wolfram only 66/943 verified (~7%); ~700 are computable. Wide-open lever.
 
 ## Submission budget
 
@@ -68,6 +65,12 @@ Opus 4.7 chat UI has a **"Code" chip** at the bottom of the message input. When 
 
 ## Recent session signoff
 
+### Day 7 (2026-05-29, claude_strategy — fresh chat with bash_tool)
+- Verified tools (bash, git read/write capability), confirmed a0cb626 + 255c70d both on origin/main — SECURITY/CREDENTIALS/GOLD/keystone/answer-sheet all live.
+- **Corrected the headline**: best score is 0.713 (29_05 Build 1: undercount_plus_frac), NOT 0.706 as the prior handoff stated. SESSION_HANDOFF.md was stale — drafted before the 29_05 build landed at 03:43 UTC. Trail of evidence: `submission/29_05/SCORES.md`, commit 58d742c. Pick A locked to `undercount_plus_frac.csv`.
+- **OPL 39-item analysis**: ran the OPL × teacher-consensus join on the 39 OK-status candidates. See `data/search/opl/findings_join.csv` and updated `data/search/opl/findings.md` for classification counts (T1-promoted / OPL-disagrees / split-teacher).
+- **Pick B candidate built**: `submission/29_05/csvs/undercount_frac_mcq.csv` = undercount + frac + 16 MCQ-prepend-fix overlays (clean disjoint union, no merge conflicts). Build script: `submission/29_05/scripts/build_undercount_frac_mcq.py`. **Expected ~0.710** under additivity, since 29_05 Build 2 showed mcq_prepend_fix alone loses 1 slice item net on slot4 base. Likely NOT a Pick-B improvement over the pure-frac 0.713. Recommendation: probe the mcq_prepend_fix lever in isolation against the 0.713 base with one daily slot before committing it to Pick B. The earlier OPL-based "additional +3-4pp" stack was not built — Day-7 join showed 0 T1-promoted items (see OPL findings.md).
+
 ### Day 6 (2026-05-28, claude_strategy)
 - Documented F7 (tier-1 graded wrong on format) with the fraction-fix smoking gun
 - Wrote HOW_WE_KNOW_CORRECTNESS.md (the keystone mental model)
@@ -81,6 +84,7 @@ Opus 4.7 chat UI has a **"Code" chip** at the bottom of the message input. When 
 - Mid-session tool-set degraded (bash_tool dropped); transitioning to fresh chat with Code enabled
 
 ### What's left for next claude_strategy
-- Verify tools, read this doc + CLAUDE.md + SECURITY.md + HOW_WE_KNOW_CORRECTNESS.md + AMBER_ALERT.md + F7 in postprocessing/FINDINGS.md
-- Confirm a0cb626 pushed (or push it)
-- Pick up the wolf-agent spawn and the inference-run scan
+- Pick B submission probe: use one daily slot to confirm MCQ-prepend-fix as a lever (it's currently believed-good from one 29_05 Build-2 score-move signal, not confirmed as net-positive).
+- Spec the remaining ~12 format-probe slots: which Tier-3 NORMALIZATION_RULES.md rules to test against each daily slot.
+- Spawn the wolf-agent for wolfram batch 01 (the high-leverage bootstrap).
+- Run the T1 inference scan once `qwen_cross_config_agree` is computed.

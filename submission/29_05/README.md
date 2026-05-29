@@ -124,3 +124,21 @@ This is the first time we've empirically measured fusion-vs-raw-teacher on MCQ. 
 ## Upload order (suggested, parallel is fine)
 
 Both builds independent. Any order. Recommended: undercount_plus_frac.csv first (highest expected delta + most evidentially grounded), then mcq_prepend_fix.csv (lower confidence but tests AMBER #3 fix).
+
+---
+
+## Day 7 addendum (2026-05-29) — Pick B candidate
+
+### undercount_frac_mcq.csv (BUILT, NOT YET SUBMITTED)
+
+**Recipe**: `undercount_plus_frac.csv` (0.713) + 16 MCQ-prepend-fix overrides from `mcq_prepend_fix.csv`. The 8 frac IDs and 16 MCQ IDs share zero items, so the merge is a clean union → 24 total IDs differ from the `slot4_undercount_expand` base.
+
+Build script: `submission/29_05/scripts/build_undercount_frac_mcq.py`.
+
+**Expected score**: ~0.710. The 29_05 Build-2 result (mcq_prepend_fix alone on slot4 base = 0.703, −1 slice item net) suggests this stack will land at 0.713 + (−0.003) = ~0.710 under additivity, NOT a Pick-B improvement over the 0.713 pure-frac stack. Of the 16 MCQ overrides, only 6 were real letter flips; those netted −1 slice item.
+
+**Recommendation**: do NOT submit this as Pick B yet. Either use a daily slot to probe the mcq_prepend_fix lever in isolation against the 0.713 base (to confirm whether it's net-positive on top of frac), or keep Pick B as the pure `undercount_plus_frac.csv` until a better candidate emerges.
+
+### OPL-based Pick B candidate — NOT BUILT (intentional)
+
+An earlier framing called for stacking T1-promoted OPL items on top of the three-lever build for an additional +3-4pp ceiling. The Day-7 OPL × teacher-consensus join (`data/search/opl/findings_join.csv`, `data/search/opl/findings.md`) found **0 T1-promoted items** in the OPL OK-bucket — the OK-bucket is mostly false-positive text matches (smoking gun: id=15 at sim=0.9055 matched a different problem entirely). OPL bulk-override is empirically disconfirmed as a high-value lever. No OPL-based stack built.
