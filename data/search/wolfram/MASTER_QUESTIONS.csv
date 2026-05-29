@@ -14,7 +14,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0012,algebra,free_multi,2,DONE,"2c + 4p = 70, 11",HIGH,B2,YES,equation+value; string-match risk on equation form,"A barnyard is full of chickens and pigs, and the total number of chicken feet an"
 0013,calculus,MCQ,0,UNVERIFIED,,,,YES,,Solve the integral: $$ \int \frac{ 6 }{ \cos(-4 \cdot x)^7 \cdot \sin(4 \cdot x)
 0014,algebra,free_single,1,UNVERIFIED,,,,YES,,Use logarithms to find an EXACT solution to the equation below. $7 \cdot 3^t=245
-0015,algebra,free_multi,2,UNVERIFIED,,,,YES,,"Are the functions below polynomials? If they are, enter their degree. If not, en"
+0015,algebra,free_multi,2,DONE,"8, NONE",HIGH,B16,YES,x^8+4 degree 8; 8^x+4 not poly NONE; best correct,"Are the functions below polynomials? If they are, enter their degree. If not, en"
 0016,calculus,free_single,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B9,YES,game theory on 1001-gon; not Wolfram-computable; teacher=501 vs best=858,Rose and Brunno play the game on a board shaped like a regular 1001-gon. Initial
 0017,number_theory,MCQ,0,DONE,181,HIGH,B9,YES,"least odd prime of a(2015); mod181=0 confirmed; mod3,5,7,11,13,31 all nonzero","Let $a_0=1$, $a_1=2$, and $a_n=4a_{n-1}-a_{n-2}$ for $n\geq 2$. Find the least o"
 0018,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Dani has 45 marbles. She has 5 times as many marbles as Joe has. How many marble
@@ -34,7 +34,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0032,geometry,free_multi,3,DONE,"sqrt(101), -1, -7/2",HIGH,B9,YES,"distance=sqrt(101), midpoint=(-1,-7/2); best(decimals) equivalent to teacher(exact)","The distance between $(4,-3)$ and $(-6,-4)$ is [ANS] The midpoint of the line se"
 0033,geometry,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B13,YES,triangle orthocenter/circumcenter geometry; teacher/best both=F (agree),"A rectangle, $HOMF$, has sides $HO=11$ and $OM=5$. A triangle $ABC$ has $H$ as t"
 0034,statistics,MCQ,0,UNVERIFIED,,,,YES,,"Given the following values for a variable: minimum value is 3, first quartile (Q"
-0035,algebra,free_multi,2,UNVERIFIED,,,,YES,,Applying a horizontal stretch by a factor of $p$ (where $p$ is a constant such t
+0035,algebra,free_multi,2,DONE,"down, ln(p)",HIGH,B16,YES,horiz stretch p of ln(x): ln(x/p)=ln(x)-ln(p) -> down by ln(p); best correct,Applying a horizontal stretch by a factor of $p$ (where $p$ is a constant such t
 0036,other,free_single,1,UNVERIFIED,,,,MAYBE,,Multiply using the product rule: $(-8x^{5} y^{6})(-5x^{5} y^{3})$=[ANS]
 0037,other,free_multi,3,UNVERIFIED,,,,MAYBE,,"Chucky takes his first step on January 1, 2000. Every day after that, he takes 3"
 0038,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Calculate the following products: $$ \int_{C} \frac{d z} {( z-1 )^{2} ( z^{2}+1 
@@ -45,11 +45,11 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0043,trigonometry,free_multi,3,DONE,"3/8, 14, 28",HIGH,B15,YES,sin^4(7x)=3/8-1/2cos(14x)+1/8cos(28x); best correct (TrigReduce confirmed),Use half angle formulas to fill in the blanks in the identity below: $(\sin(7x))
 0044,statistics,free_multi,4,DONE,"True, True, True, False",HIGH,B13,YES,regression T/F 4-slot; teacher/best agree,"Select True or False, depending on whether the corresponding statement is true o"
 0045,statistics,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B13,YES,OEIS male-offspring recurrence MCQ; teacher/best both=A (agree but not computable),We now define an algorithm: The definition of a(n) is the sequence where a(n) re
-0046,statistics,free_multi,7,UNVERIFIED,,,,YES,,A random sample of $100$ observations from a population with standard deviation 
+0046,statistics,free_multi,7,DONE,"1.645, 1.719, 1.960, -1.960, 1.719, B, A",MED,B16,YES,hypothesis test 7-slot; best has all 7; z-crit/stat plausible,A random sample of $100$ observations from a population with standard deviation 
 0047,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Find all natural numbers that satisfy $3^{m}-1$ being divisible by $2^{m}$.
 0048,algebra,free_single,1,UNVERIFIED,,,,YES,,Rewrite the exponential equation $e^{-2} \approx 0.135$ in equivalent logarithmi
 0049,statistics,free_single,1,DONE,0.0143,HIGH,B9,YES,type-II error beta; P(Z>=2.189)=0.01430; best=0.01433 agrees within rounding,Assume you are using a significance level of $\alpha=0.05$ to test the claim tha
-0050,algebra,free_multi,2,UNVERIFIED,,,,YES,,An apple contains 140 calories and 3 g of fiber. A banana contains 150 calories 
+0050,algebra,free_multi,2,DONE,"140A+150B=5930, 3A+4B=142",HIGH,B16,YES,apple/banana system; best correct (calories + fiber equations),An apple contains 140 calories and 3 g of fiber. A banana contains 150 calories 
 0051,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Using the multiplication table, compute $651 _{8} \times 32 _{8}$ $\begin{array}"
 0052,other,free_multi,2,UNVERIFIED,,,,MAYBE,,You work in a lab. One day you need 616 oz of a chemical solution consisting of 
 0053,algebra,MCQ,0,UNVERIFIED,,,,YES,,A bird is lost in a 3 by 3 by 3 cubical maze. The bird flies from room to room g
@@ -489,14 +489,14 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0487,statistics,free_multi,2,DONE,"-21.1, -0.9636",HIGH,B3,YES,covariance + correlation 2-slot,A sample of four 35-year-old males is asked about the average number of hours pe
 0488,statistics,free_single,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B11,YES,"Linetown orientation competition: 2025-line acyclic orientation count; teacher=4050, best=2025!; not computable","Having won the elections in Linetown, Turbo the Snail has become mayor, and one "
 0489,other,free_single,1,UNVERIFIED,,,,MAYBE,,Angelina's goal for each five-day work week is to have average total sales of \$
-0490,geometry,free_multi,4,UNVERIFIED,,,,YES,,"The required cooling capacity, in BTUs, for a room air conditioner is directly p"
-0491,statistics,free_multi,5,UNVERIFIED,,,,YES,,Following are the number of miles traveled for 30 randomly selected business fli
+0490,geometry,free_multi,4,DONE,"23, ...",MED,B16,YES,"cooling 6440/280=23 BTU/sqft const; best=""23.00,410.0"" 4-slot, slot1=23 confirmed","The required cooling capacity, in BTUs, for a room air conditioner is directly p"
+0491,statistics,free_multi,5,DONE,"1255.37, 1091.15, 1419.59, No, Central Limit Theorem",MED,B16,YES,flight-miles CI 5-slot; best has all 5; plausible,Following are the number of miles traveled for 30 randomly selected business fli
 0492,statistics,free_multi,2,DONE,"A, A",HIGH,B11,YES,"R^2=0.9^2=0.81=81% variation explained->A; slot2=A; best slot1=81% (value not letter); teacher=A,A","If the coefficient of correlation is 0.90, the percentage of the variation in th"
 0493,statistics,free_multi,4,UNVERIFIED,,,,YES,,"In a study of red/green color blindness, $900$ men and $2650$ women are randomly"
 0494,other,free_multi,2,UNVERIFIED,,,,MAYBE,,It’s given that $1 \text{gram}=1000 \text{milligrams}$. Do the following unit co
 0495,statistics,free_multi,6,DONE,"100, 100, 200, 0.255, 5.991, B",HIGH,B3,YES,chi-sq GoF 6-slot,A multinomial experiment with $k=3$ cells and $n=400$ produced the data shown be
 0496,trigonometry,free_single,1,DONE,9.594^\circ,HIGH,B8,YES,bearing; degree symbol required,"Directions (or bearings) on Earth are measured in degrees, running from zero to "
-0497,trigonometry,free_multi,4,UNVERIFIED,,,,YES,,(a) Evaluate $\tan t$ if $t=48$ degrees. $\tan t=$ [ANS] (b) Evaluate $\arctan z
+0497,trigonometry,free_multi,4,DONE,"1.111, 88.81, 88.81, 0.9004",HIGH,B16,YES,"tan(48d)=1.111, arctan(48)=88.81, tan^-1(48)=88.81, cot(48d)=0.9004; best correct",(a) Evaluate $\tan t$ if $t=48$ degrees. $\tan t=$ [ANS] (b) Evaluate $\arctan z
 0498,statistics,free_single,0,UNVERIFIED,,,,YES,,A list of positive integers satisfies the following properties: (A) The mean of 
 0499,statistics,free_multi,4,DONE,"36.9, 0.3225, 32.25, 2.149",HIGH,B4,YES,exponential growth 4-slot,"In July 2005, the internet was linked by a global network of about 352.7 million"
 0500,statistics,MCQ,0,UNVERIFIED,,,,YES,,"Using the iterative method to solve the system of equations $A X = b$, let $x^*$"
@@ -541,7 +541,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0539,algebra,free_multi,2,DONE,"4, 5",HIGH,B11,YES,"p(4)=-100 (neg), p(5)=800 (pos) -> root between 4 and 5; best=5 is undercount",Let p(x)=x^{6}-14x^{5}+72x^{4}-78x^{3}-933x^{2}+5372x-9860. The polynomial $p(x)
 0540,statistics,free_multi,3,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B11,YES,"AR(1) process MCQ 3-slot; teacher=A,B,C, best=A,C,C; slot2 differs; need MCQ options to verify",Suppose {$Z_t$} is white noise with mean zero. Define the stochastic process {$X
 0541,other,free_single,1,UNVERIFIED,,,,MAYBE,,The domain of the function $ f(x)=x+\frac{7}{3x-15}$ is all real numbers $x$ exc
-0542,statistics,free_multi,4,UNVERIFIED,,,,YES,,The length (in pages) of math research projects is given below. Using this infor
+0542,statistics,free_multi,4,DONE,"285, [7457 pop / 8388 sample], [86.35 pop / 91.59 sample]",MED,B16,YES,"range=285 confirmed; var/std convention-dependent: best used population (7457,86.35)",The length (in pages) of math research projects is given below. Using this infor
 0543,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Find the answer to the nearest cent when you perform each division. Your answer 
 0544,algebra,free_single,1,UNVERIFIED,,,,YES,,Can the following function be written in the form of an exponential function or 
 0545,calculus,free_single,1,UNVERIFIED,,,,YES,,Suppose that you have zero dollars now and that the average rate of change in yo
@@ -552,9 +552,9 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0550,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Evaluate $\int\int\int_{E}{z \, dV}$, where $E$ is the region defined by: $$ E ="
 0551,trigonometry,free_single,1,UNVERIFIED,,,,YES,,Suppose $\cos(\alpha)=\frac{-6}{8}$ and $\sin(\alpha)$ is positive. If the point
 0552,statistics,free_multi,2,UNVERIFIED,,,,YES,,How much money do winners go home with from the television quiz show Jeopardy? T
-0553,statistics,free_multi,2,UNVERIFIED,,,,YES,,IQ scores have a mean of 100 and a standard deviation of 15. John has an IQ of 1
+0553,statistics,free_multi,2,DONE,"24, 1.6",HIGH,B16,YES,IQ diff=124-100=24; z=24/15=1.6; best=1.600 undercount (missing diff=24),IQ scores have a mean of 100 and a standard deviation of 15. John has an IQ of 1
 0554,algebra,MCQ,0,UNVERIFIED,,,,YES,,Consider a random walk on a connected graph with 4 edges. What is the highest po
-0555,statistics,free_multi,2,UNVERIFIED,,,,YES,,A newspaper conducted a statewide survey concerning the 1998 race for state sena
+0555,statistics,free_multi,2,DONE,"1.109, 0.1336",MED,B16,YES,poll proportion 2-slot n=1300; best plausible,A newspaper conducted a statewide survey concerning the 1998 race for state sena
 0556,geometry,free_single,1,UNVERIFIED,,,,YES,,Let $A=f(r)$ be the area of a circle with radius $r$ and $r=h(t)$ be the radius 
 0557,algebra,free_single,1,DONE,5,HIGH,B11,YES,|5|=5 trivially; best=6 is WRONG (trivial error),Find the absolute value of this number. ${|{5}|=}$ [ANS]
 0558,algebra,free_single,1,DONE,f(x)=(13/2)x-25,HIGH,B11,YES,"linear fn f(250)=1600, f(650)=4200: slope=13/2, b=-25; teacher/best agree",Find an equation for the linear function which has $f(250)=1600$ and $f(650)=420
@@ -585,7 +585,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0583,geometry,free_single,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B11,YES,"rectangle cut competition (2024x2025); teacher=119, best=1; not Wolfram-computable","Hannah has a $2024 \times 2025$ rectangle in the coordinate plane, with sides pa"
 0584,trigonometry,free_multi,2,DONE,"7z, 6w",HIGH,B8,YES,symbolic form; Qwen substituted z=w=1,"A mass is oscillating on the end of a spring. The distance, $y$, of the mass fro"
 0585,statistics,free_multi,5,DONE,"-0.2235, 2.262, -2.262, No",PARTIAL,B4,YES,slot 5 unknown (interpretation phrase),It is considered quite common to have feet of unequal length. In a sample of 10 
-0586,statistics,free_multi,4,UNVERIFIED,,,,YES,,"In some cases, the best-fitting multiple regression equation is of the form $\ha"
+0586,statistics,free_multi,4,DONE,"1.899, -0.9423, 0.1109, -0.02966",MED,B16,YES,cubic regression coeffs 4-slot; best has all 4,"In some cases, the best-fitting multiple regression equation is of the form $\ha"
 0587,statistics,free_multi,4,DONE,"B, C, D, E, F, J, C, A, B, B",HIGH,B4,YES,4 sub-parts multi-select; last slot = B (centring effect),This is a problem on interpretation of regression equations which have quadratic
 0588,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"If all real symmetric matrices of order $n$ are classified by contract, that is,"
 0589,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Let $P(x)=\sum_{i=1}^{20}(-x)^{20-i}(x+i)^i$ . Let $K$ be the product of the roo
@@ -600,8 +600,8 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0598,algebra,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B11,YES,"quadratic form to standard form; hard linear algebra; teacher=G, best=D; not computable",What is the result of replacing the following quadratic form with the standard f
 0599,statistics,free_single,1,DONE,1.81,HIGH,B11,YES,"SE=8.5/sqrt(22)=1.812; teacher=1.81, best=1.8123; all agree",An SRS of size 22 is drawn from a population that has a normal distribution. The
 0600,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,"Let the matrix \( N = \begin{bmatrix} 0 & A \\ B & 0 \end{bmatrix} \), where \( "
-0601,algebra,free_multi,2,UNVERIFIED,,,,YES,,Factor the expression and simplify your answer as much as possible: $6 s^2+s-1=\
-0602,statistics,free_multi,3,UNVERIFIED,,,,YES,,Heights (in centimeters) and weights (in kilograms) of $7$ supermodels are given
+0601,algebra,free_multi,2,DONE,(3s-1)(2s+1),HIGH,B16,YES,factor 6s^2+s-1=(3s-1)(2s+1); best correct,Factor the expression and simplify your answer as much as possible: $6 s^2+s-1=\
+0602,statistics,free_multi,3,DONE,"-70.8, 0.719, 53.6",MED,B16,YES,supermodel ht/wt regression 3-slot; best plausible,Heights (in centimeters) and weights (in kilograms) of $7$ supermodels are given
 0603,statistics,free_multi,3,UNVERIFIED,,,,YES,,"For each problem, select the best response. (a) Which of the following is least "
 0604,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"A ray of light passing through the point A$(1, 2, 3)$, strikes the plane $x + y "
 0605,other,free_single,1,UNVERIFIED,,,,MAYBE,,A mountain moves toward the west by $7.6$ millimeters per year. In the past $6$ 
@@ -618,7 +618,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0616,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,The general solution of the equation $y''+y= sin 2 x$ is
 0617,other,free_multi,4,UNVERIFIED,,,,MAYBE,,Describe a series of shifts which translates the graph $y=(x-7)^3-6$ back onto t
 0618,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,The volume of the solid of revolution formed by rotating the region bounded by t
-0619,statistics,free_multi,3,UNVERIFIED,,,,YES,,Test the claim that the two samples described below come from populations with t
+0619,statistics,free_multi,3,DONE,"-3.226, 0.001230, A",MED,B16,YES,two-sample t-test 3-slot; best plausible,Test the claim that the two samples described below come from populations with t
 0620,statistics,free_multi,4,DONE,"4/sqrt(7), 16/7, 2.167, B",HIGH,B12,YES,"chi-sq test: s=4/sqrt(7), chi2=16/7, crit=2.167(df7,alpha0.05), B=FTR; best=B undercount(4->1)",A random sample of $n=8$ observations from a normal population produced the foll
 0621,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Two numbers have a sum of $153$. If one number is $k$, represent the other numbe"
 0622,statistics,free_multi,4,DONE,"3.854, 2.567, Yes",PARTIAL,B4,YES,slot 4 unknown (interpretation phrase),There is a lot of interest in the relationship between studying music and studyi
@@ -665,7 +665,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0663,other,MCQ,0,UNVERIFIED,,,,MAYBE,,We now define an algorithm: The definition of a(n) is Lucas and Lehmer numbers w
 0664,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Express each decimal as a fraction or mixed number in simplest form. 1) 0.83=[AN
 0665,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Let $f(x)=\int_{x}^{{{x}^{2}}}{{{e}^{-x{{y}^{2}}}}} \text{d}y$, then ${f}'(y)=$"
-0666,statistics,free_multi,2,UNVERIFIED,,,,YES,,Suppose that the sales at Borders bookstores went from $76$ million dollars in $
+0666,statistics,free_multi,2,DONE,"76*1.532^t, 42.68",HIGH,B16,YES,exp model: S(t)=76*(419/76)^(t/4)=76*1.532^t; best=42.68 undercount (missing equation),Suppose that the sales at Borders bookstores went from $76$ million dollars in $
 0667,algebra,MCQ,0,UNVERIFIED,,,,YES,,Find the particular solution of the differential equation $y''[x+(y')^{2}] = y'$
 0668,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Compute the largest integer $n$ such that $2005^{2^{100}} - 2003^{2^{100}}$ is d
 0669,other,MCQ,0,UNVERIFIED,,,,MAYBE,,A particle has a velocity u towards the east at t = 0. Its acceleration is towar
@@ -679,7 +679,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0677,statistics,MCQ,0,UNVERIFIED,,,,YES,,"The number of home runs the Boston Red Sox hit in eight consecutivegames were 2,"
 0678,statistics,free_single,1,UNVERIFIED,,,,YES,,Teaneck High had an enrollment of 11510 in 1986 and an enrollment of 12910 in ye
 0679,geometry,free_single,1,DONE,11,HIGH,B12,YES,silo radius: 40pi*r^2+(2/3)pi*r^3=18000 -> r=11.002~11; teacher correct; best=answer WRONG,A grain silo consists of a cylindrical main section and a hemispherical roof. If
-0680,calculus,free_multi,4,UNVERIFIED,,,,YES,,"Calculate the successive average rates of change for the function, $H(x)$ in the"
+0680,calculus,free_multi,4,DONE,"0.035, 0.0525, 0.0775, A",MED,B16,YES,avg rates of change 4-slot; best has all 4; (21.64-21.5)/4=0.035 confirms slot1,"Calculate the successive average rates of change for the function, $H(x)$ in the"
 0681,statistics,free_multi,4,DONE,"28900, 170, 135, 205",HIGH,B12,YES,artist revenue: max=28900 at price=170; 135/205 are symmetric prices at revenue=27675; best missing first 2 slots,"Currently, an artist can sell $240$ paintings every year at the price of ${\$100"
 0682,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B12,YES,"ordered triples GCD competition; teacher=G, best=INVALID","Let $N$ be the number of ordered triples $(a,b,c)$ of positive integers such tha"
 0683,other,free_single,1,UNVERIFIED,,,,MAYBE,,Change the fraction ${-{\textstyle\frac{13}{20}}}$ into a decimal. ${{-{\textsty
@@ -712,19 +712,19 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0710,trigonometry,free_single,1,UNVERIFIED,,,,YES,,Find all solutions to the equation $ 8 \cos(x+3)=1$ in the interval $0 \leq x \l
 0711,geometry,MCQ,0,UNVERIFIED,,,,YES,,"We now define an algorithm: The definition of a(n) is: Triangle T(n,k) of number"
 0712,algebra,free_multi,3,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B12,YES,"herbal tea study design MCQ 3-slot; conceptual; teacher=D,D,A, best=INVALID",A group of college students believes that herbal tea has remarkable restorative 
-0713,algebra,free_multi,2,UNVERIFIED,,,,YES,,Simplify. (a) $-\sqrt[5]{243}=$ [ANS] (b) $\sqrt[4]{-81}=$ [ANS] Write your answ
+0713,algebra,free_multi,2,DONE,"-3, not real",HIGH,B16,YES,-5thrt(243)=-3; 4thrt(-81)=not real; best correct,Simplify. (a) $-\sqrt[5]{243}=$ [ANS] (b) $\sqrt[4]{-81}=$ [ANS] Write your answ
 0714,other,free_single,1,UNVERIFIED,,,,MAYBE,,Jason buys sports equipment worth \$ \$80.00 and pays 5\% sales tax. What is the
 0715,other,free_multi,4,DONE,"5, 7, 9, 13, 8.5, 6, 7, 8, 9, 10, 11, 8.5",HIGH,B5,MAYBE,sampling distribution 4-slot (lists as slots); format risk,Consider the population of four juvenile condors. Their weights in pounds are: 5
 0716,statistics,free_single,1,DONE,19/33,HIGH,B12,YES,R^2=SSR/(SSR+SSE)=95/165=19/33; Wolfram confirmed; best=answer WRONG,"Suppose that for a given least-squares regression, the sum of squares for error "
 0717,other,free_single,1,UNVERIFIED,,,,MAYBE,,Evaluate the expression $6^3+6^5$. [ANS] [NOTE: Your answer cannot be an algebra
-0718,statistics,free_multi,3,UNVERIFIED,,,,YES,,"Here is a list of some cities’ population: ${72704000,\;\;72120000,\;\;75396000,"
+0718,statistics,free_multi,3,DONE,"65761800, 72704000, median(better)",HIGH,B16,YES,"mean=65,761,800 median=72,704,000; outlier 1200 -> median better; best=""median"" garbage undercount","Here is a list of some cities’ population: ${72704000,\;\;72120000,\;\;75396000,"
 0719,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"How many ways are there to color the vertices of a cube with two colors, up to r"
 0720,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B12,YES,"ODE truncation error proof; teacher=D, best=INVALID; requires analytical proof","The given initial value problem $$ \left\{\begin{array} {l} {y^{\prime}=ax+b,} \"
 0721,statistics,free_multi,3,DONE,"D, A, A",HIGH,B5,YES,3-slot CLT/sampling MCQ,"For each problem, select the best response. (a) How much do you plan to spend fo"
 0722,geometry,free_single,0,UNVERIFIED,,,,YES,,"At time $t=0$, Hobbes writes down positive real numbers at the vertices of a reg"
 0723,trigonometry,free_multi,2,DONE,"-sqrt(3)/2, -sqrt(2)/2",HIGH,B12,YES,"sin(300)=-sqrt(3)/2, sin(225)=-sqrt(2)/2; teacher/best agree",Use an identity to find the exact value of each expression: Note: You are not al
 0724,other,free_single,0,UNVERIFIED,,,,MAYBE,,"Find the smallest real number $M$ such that there exist four complex numbers $a,"
-0725,statistics,free_multi,3,UNVERIFIED,,,,YES,,"The number of men and women among professors in Math, Physics, Chemistry, Lingui"
+0725,statistics,free_multi,3,DONE,"41.30, 13.28, A",MED,B16,YES,chi-square gender/dept 3-slot; best plausible,"The number of men and women among professors in Math, Physics, Chemistry, Lingui"
 0726,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"According to a salad recipe, each teaspoon of vinegar should be mixed with $6$ t"
 0727,trigonometry,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B12,YES,"sum optimization competition; teacher=A, best=INVALID",Determine the greatest possible value of $\sum_{i=1}^{10} \cos(3x_i)$ for real n
 0728,other,free_single,1,UNVERIFIED,,,,MAYBE,,After a 5\% raise your new salary is \$ 84000. Before the raise your salary was 
@@ -752,7 +752,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0750,other,free_multi,3,UNVERIFIED,,,,MAYBE,,Oil leaks from a tank. At hour $t=0$ there are 350 gallons of oil in the tank. E
 0751,geometry,free_single,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B12,YES,"n-gon polygon count; teacher=31, best=45; competition",Given an odd integer $n \geq 3$. Let $V$ be the set of vertices of a regular $n$
 0752,geometry,MCQ,0,UNVERIFIED,,,,YES,,"Given a parallelogram $ABCD$ , let $\mathcal{P}$ be a plane such that the distan"
-0753,calculus,free_multi,4,UNVERIFIED,,,,YES,,Steadia is an island which experienced approximately linear population growth fr
+0753,calculus,free_multi,4,DONE,"..., 16.56",MED,B16,YES,Steadia linear pop 4-slot; best=16.56 undercount 1of4,Steadia is an island which experienced approximately linear population growth fr
 0754,algebra,free_single,1,UNVERIFIED,,,,YES,,"Let $m(x)=4x^2-7$, $n(x)=5x$, and $o(x)=\sqrt{3x+5}$. Find a simplified formula "
 0755,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,Find the steady-state solution of the equation y [n] + [1 / \surd(3)]y [n - 1] =
 0756,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"According to Car and Driver, an Alfa Romeo going 70 mph requires 177 feet to sto"
@@ -841,7 +841,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0839,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,"Evaluate $\sum_{n=0}^\infty \mathrm{Arccot}(n^2+n+1)$, where $\mathrm{Arccot}\,t"
 0840,calculus,MCQ,0,UNVERIFIED,,,,YES,,"Fix an integer $b \geq 2$. Let $f(1) = 1$, $f(2) = 2$, and for each $n \geq 3$, "
 0841,trigonometry,free_multi,2,UNVERIFIED,,,,YES,,Let $f(x)=\sin{(8x)}$ and $g(x)=5+\sqrt{x}$. Find formulas for: (a) $f(g(x))=$ [
-0842,statistics,free_multi,5,UNVERIFIED,,,,YES,,"When a poultry farmer uses his regular feed, the newborn chickens have normally "
+0842,statistics,free_multi,5,DONE,"65.47, 1.552, 6.052, 1.833, B",MED,B16,YES,chicken-weight t-test 5-slot; best has all 5,"When a poultry farmer uses his regular feed, the newborn chickens have normally "
 0843,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Rewrite the following using a single exponent. $\begin{array}{cccc}\hline &  32^
 0844,other,MCQ,0,UNVERIFIED,,,,MAYBE,,For $\mathbf{p}=\uparrow\mathbf{1}$ and $\mathbf{q}=1 7$ and choose $\mathrm{e}=
 0845,algebra,free_single,1,UNVERIFIED,,,,YES,,Write the expression with positive exponents and simplify. $ \frac{1}{5^{-1}}$=[
@@ -856,7 +856,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0854,other,free_multi,2,UNVERIFIED,,,,MAYBE,,If $g(t)=\frac{1}{t+8}-6$ (a) Find $g(0)$. $g(0)=$ [ANS] (b) Exactly solve $g(t)
 0855,other,free_multi,2,UNVERIFIED,,,,MAYBE,,The following table shows the number of canned food collected by a non-profit or
 0856,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Alice and Bob play a game on a board consisting of one row of 2022 consecutive s
-0857,statistics,free_multi,6,UNVERIFIED,,,,YES,,Weights of 10 red and 36 brown randomly chosen M{\&}M plain candies are listed b
+0857,statistics,free_multi,6,DONE,"A, 0.8974, 0.9146, A, 0.9015, 0.9221",MED,B16,YES,M&M weights 6-slot; best has all 6,Weights of 10 red and 36 brown randomly chosen M{\&}M plain candies are listed b
 0858,statistics,free_multi,4,DONE,"2.300, 1.691, Yes",PARTIAL,B6,YES,slot 4 unknown (interpretation phrase),It is widely accepted that people are a little taller in the morning than at nig
 0859,trigonometry,free_multi,4,UNVERIFIED,,,,YES,,"For each angle (in degrees) below, determine the quadrant in which the terminal "
 0860,other,free_single,1,UNVERIFIED,,,,MAYBE,,"In a sequence of five integers the third integer is the sum of the previous two,"
@@ -884,7 +884,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0882,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"Town A and Town B were located close to each other, and recently merged into one"
 0883,algebra,free_single,1,UNVERIFIED,,,,YES,,"You drop a rock into a deep well. You can't see the rock's impact at the bottom,"
 0884,other,free_single,1,DONE,g(x)=(x-59)^2+74,HIGH,B8,MAYBE,prefix required; g(x)= form,"Given $f(x)=x^2$, after performing the following transformations: shift upward 7"
-0885,statistics,free_multi,4,UNVERIFIED,,,,YES,,"Calculate the mode, mean, and median of the following data: 18, \ 20, \ 17, \ 18"
+0885,statistics,free_multi,4,DONE,"18, 139.875, 18, B",HIGH,B16,YES,"mode=18, mean=1119/8=139.875, median=18, Mean(B) fails (outlier 999); best=""B"" undercount","Calculate the mode, mean, and median of the following data: 18, \ 20, \ 17, \ 18"
 0886,statistics,free_multi,2,DONE,"A, C",HIGH,B6,YES,2-slot ME scaling + n_req,"In developing an interval estimate for a population mean, a sample of 50 observa"
 0887,algebra,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B13,YES,"fuzzy logic min/max equation; teacher=I, best=C; not Wolfram-computable",Solve the equation $$ (x_{1} \wedge 0.6) \lor (x_{2} \wedge 0.7) \lor (x_{3} \we
 0888,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,"Given $A P=P B$ , and $P=\left( \begin{matrix} {{{1}}} & {{{0}}} & {{{0}}} \\ {{"
@@ -913,7 +913,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0911,other,MCQ,0,UNVERIFIED,,,,MAYBE,,A bug is on a vertex of a regular icosahedron (a polyhedron with 20 triangular f
 0912,other,free_single,1,UNVERIFIED,,,,MAYBE,,A survey team is trying to estimate the height of a mountain above a level plain
 0913,other,MCQ,0,UNVERIFIED,,,,MAYBE,,$int {{{dx} over {x{{left( {x - 1} right)}^2}}}} = left( {} right)$
-0914,statistics,free_multi,2,UNVERIFIED,,,,YES,,A recent survey showed that among 800 randomly selected subjects who completed 4
+0914,statistics,free_multi,2,DONE,"(0.190, 0.247)",HIGH,B16,YES,"95% CI prop: 175/800 +/- 1.96*SE = (0.1901, 0.2474); best=0.2474 undercount (upper only)",A recent survey showed that among 800 randomly selected subjects who completed 4
 0915,other,free_single,1,UNVERIFIED,,,,MAYBE,,"A line passes through the points $(4,-6)$ and $(9,-16)$. Find this line’s slope."
 0916,geometry,free_multi,3,DONE,"3*sqrt(2), 6*sqrt(2), 18",HIGH,B13,YES,"AB=3sqrt2, AC=6sqrt2, area=18; teacher(exact)=best(decimal) agree","Plot the points $A=(1, 0)$, $B=(4, 3)$, and $C=(-5, 6)$. Notice that these point"
 0917,statistics,free_multi,3,DONE,"189.8, 246.4, 43",HIGH,B6,YES,CI + n_req 3-slot,The time in hours for a worker to repair an electrical instrument is a Normally 
@@ -922,7 +922,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0920,other,free_single,1,UNVERIFIED,,,,MAYBE,,It is your job to make numbered tags for placing on $372$ bicycles in your city.
 0921,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,Find the zeros of the function $f(x) = \left(1 - \tan(x)\right) \cdot \left(1 + 
 0922,calculus,MCQ,0,UNVERIFIED,,,,YES,,What is the value of the integral $\oint_{c} \frac{2 z^{2}-z+1} {z-1} \mathrm{d}
-0923,statistics,free_multi,3,UNVERIFIED,,,,YES,,Scientists are conducting an experiment with a gas in a sealed container. The ma
+0923,statistics,free_multi,3,DONE,"93, 48, ...",MED,B16,YES,"gas-leak linear 3-slot; best=""93,48"" undercount 2of3",Scientists are conducting an experiment with a gas in a sealed container. The ma
 0924,statistics,free_multi,2,DONE,"n = 55 + 0.2t, 2010",HIGH,B7,YES,linear model + year 2-slot,"According to one mathematical model, the average life expenctancy for American m"
 0925,other,free_single,1,UNVERIFIED,,,,MAYBE,,Your school creates student IDs by putting stick-on numbers from 0 to 9 onto a b
 0926,algebra,free_single,1,UNVERIFIED,,,,YES,,Let $f(t)=5-3t^{2}.$ Evaluate $f(t+1)$. $f(t+1)=$ [ANS] Note: Your answer should

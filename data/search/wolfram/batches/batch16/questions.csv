@@ -1,0 +1,77 @@
+id,subject,type,n_ans_slots,best_answer,teacher_consensus,question
+0490,geometry,free_multi,4,"23.00, 410.0",,"The required cooling capacity, in BTUs, for a room air conditioner is directly proportional to the area of the room being cooled. A room of $280$ square feet requires an air conditioner whose cooling capacity is $6440$ BTUs.
+(a) What is the constant of proportionality, and what are its units? [ANS] [ANS]
+(b) If an air conditioner has a cooling capacity of $9430$ BTUs, how large a room can it cool? [ANS] [ANS]"
+0491,statistics,free_multi,5,"1255.37,\ 1091.15,\ 1419.59,\ \text{No},\ \text{Central Limit Theorem}",,"Following are the number of miles traveled for 30 randomly selected business flights within the United States during 1999. 1707, 1435, 1486, 1656, 976, 1027, 1401, 1418, 1095, 1282, 1554, 925, 1316, 1180, 1129, 1197, 1316, 704, 755, 1129, 1316, 1758, 1231, 1010, 1248, 1928, 2098, 942, 534, 908 a) Use the data to obtain a point estimate for the population mean number of miles traveled per business flight, $\mu$, in 1999. Note: The sum of the data is 37661. $\bar{x}=$ [ANS]
+b) Determine a 95.44\% confidence interval for the population mean number of miles traveled per business flight in 1999. Assume that $\sigma=450$ miles. Confidence interval: ([ANS], [ANS]). c) Must the number of miles traveled per business flight in 1999 be exactly normally distributed for the confidence interval that you"
+0497,trigonometry,free_multi,4,"1.111, 88.81, 88.81, 0.9004",,"(a) Evaluate $\tan t$ if $t=48$ degrees. $\tan t=$ [ANS]
+(b) Evaluate $\arctan z$ if $z=48$. $\arctan z=$ [ANS] degrees (c) Evaluate $\tan^{-1} b$ if $b=48$. $\tan^{-1} b=$ [ANS] degrees (d) Evaluate $(\tan \beta)^{-1}$ if $\beta=48$ degrees. $(\tan \beta) ^{-1}=$ [ANS]"
+0542,statistics,free_multi,4,"285.0, 7457, 86.35",,"The length (in pages) of math research projects is given below. Using this information, calculate the range, variance, and standard deviation.
+27, \ 21, \ 26, \ 31, \ 21, \ 36, \ 23, \ 14, \ 299 range $=$ [ANS]
+variance $=$ [ANS]
+standard deviation $=$ [ANS]
+The lack of what property of the standard deviation accounts for its sensitivity to the one data value that is significantly larger than the other ones? [ANS] A. Resistance  B. Decreasing property  C. All of the above"
+0553,statistics,free_multi,2,1.600,,"IQ scores have a mean of 100 and a standard deviation of 15. John has an IQ of 124. What is the difference between John's IQ and the mean? [ANS]
+Convert John's IQ score to a z score: [ANS]"
+0555,statistics,free_multi,2,"1.109, 0.1336",,"A newspaper conducted a statewide survey concerning the 1998 race for state senator. The newspaper took a SRS of $n=1300$ registered voters and found that 670 would vote for the Republican candidate. Let $p$ represent the proportion of registered voters in the state who would vote for the Republican candidate. We test $H_0: p=.50$ $H_a: p >.50$
+(a) What is the $z$-statistic for this test? [ANS]
+(b) What is the P-value of the test? [ANS]"
+0586,statistics,free_multi,4,"1.899,-0.9423,0.1109,-0.02966",,"In some cases, the best-fitting multiple regression equation is of the form $\hat{y}=b_0+b_1x+b_2x^2+b_3x^3.$ The graph of such an equation is called a cubic. Using the data set given below, and letting $x_1=x,$ $x_2=x^2,$ and $x_3=x^3,$ find the multiple regression equation for the cubic that best fits the given data. \begin{array}{c|ccccccc} x &-8 &-6 &-3 & 1 & 2 & 5 & 9 \cr \hline y & 31.8 & 17.8 & 6.6 & 1.1 & 0.2 &-3.8 &-19.2 \end{array} The equation is $\hat{y}=$ [ANS] $+$ [ANS] $x+$ [ANS] $x^2+$ [ANS] $x^3.$"
+0601,algebra,free_multi,2,(3s - 1)(2s + 1),,"Factor the expression and simplify your answer as much as possible:
+$6 s^2+s-1=\big($ [ANS] $\big) \big($ [ANS] $\big)$"
+0602,statistics,free_multi,3,"-70.8, 0.719, 53.6",,"Heights (in centimeters) and weights (in kilograms) of $7$ supermodels are given below. Find the regression equation, letting the first variable be the independent $(x)$ variable, and predict the weight of a supermodel who is $173$ cm tall. \begin{array}{c|ccccccc} \mbox{Height} & 168 & 174 & 174 & 172 & 176 & 176 & 178 \cr \hline \mbox{Weight} & 50 & 54 & 55 & 53 & 54 & 56 & 58 \cr \end{array} The regression equation is $\hat{y}=$ [ANS] $+$ [ANS] $x.$ The best predicted weight of a supermodel who is $173$ cm tall is [ANS]."
+0619,statistics,free_multi,3,"-3.226, 0.001230, A",,"Test the claim that the two samples described below come from populations with the same mean. Assume that the samples are independent simple random samples. Use a significance level of $0.03$. Sample 1: $n_1=88, \ \overline{x}_1=16, \ s_1=2$. Sample 2: $n_2=79, \ \overline{x}_2=17, \ s_2=2$. The test statistic is [ANS]
+The P-Value is [ANS]
+The conclusion is [ANS] A. There is sufficient evidence to warrant rejection of the claim that the two populations have the same mean.  B. There is not sufficient evidence to warrant rejection of the claim that the two populations have the same mean."
+0666,statistics,free_multi,2,42.68,,"Suppose that the sales at Borders bookstores went from $76$ million dollars in $1991$ to $419$ million dollars in $1995$. Find an exponential function to model the sales (in millions of dollars) as a function of years, $t$, since $1991$. sales=[ANS] million dollars What is the continuous percent growth rate, per year, of sales? continuous growth rate=[ANS] percent
+(Enter your answer as a percent, not a fraction.)"
+0680,calculus,free_multi,4,"0.035, 0.0525, 0.0775, \text{A}",,"Calculate the successive average rates of change for the function, $H(x)$ in the table below.
+$\begin{array}{ccccc}\hline x & 12 & 16 & 20 & 24 \\ \hline H(x) & 21.5 & 21.64 & 21.85 & 22.16 \\ \hline \end{array}$
+(a) The average rate of change over the interval $12 \leq x \leq 16$ is [ANS]
+(Retain at least 3 decimal places in your answer.) (Retain at least 3 decimal places in your answer.) (b) The average rate of change over the interval $16 \leq x \leq 20$ is [ANS]
+(Retain at least 3 decimal places in your answer.) (Retain at least 3 decimal places in your answer.) (c) The average rate of change over the interval $20 \leq x \leq 24$ is [ANS]
+(Retain at least 3 decimal places in your answer.) (Retain at least 3 decimal places in your answer.) (d) Based your answers for the rates of change,"
+0713,algebra,free_multi,2,"-3, \text{not real}","-3,not real","Simplify.
+(a) $-\sqrt[5]{243}=$ [ANS]
+(b) $\sqrt[4]{-81}=$ [ANS]
+Write your answer using radical notation if necessary or write not real if the answer is not a real number. "
+0718,statistics,free_multi,3,median,,"Here is a list of some cities’ population:
+${72704000,\;\;72120000,\;\;75396000,\;\;1200,\;\;75305000,\;\;71261000,\;\;71130000,\;\;74547000,\;\;79392000}$ The mean of these cities’ population is [ANS]. The median of these cities’ population is [ANS]. Which number, mean or median, is a better way to represent these cities’ population? [ANS]"
+0725,statistics,free_multi,3,"41.30, 13.28, \text{A}",,"The number of men and women among professors in Math, Physics, Chemistry, Linguistics, and English departments of a certain college were counted, and the results are shown in the table below. $\begin{array}{cccccc}\hline Dept. & Math & Physics & Chemistry & Linguistics & English \\ \hline Men & 50 & 77 & 29 & 20 & 31 \\ \hline Women & 3 & 3 & 3 & 3 & 21 \\ \hline \end{array}$ Test the claim that the gender of a professor is independent of the department. Use the significance level $\alpha=0.01$ The test statistic is $\chi^2=$ [ANS]
+The critical value is $\chi^2=$ [ANS]
+Is there sufficient evidence to warrant the rejection of the claim that the gender of a professor is independent of the department? [ANS] A. Yes  B. No"
+0753,calculus,free_multi,4,16.56,,"Steadia is an island which experienced approximately linear population growth from 1950 to 2000. On the other hand, Randomian has experienced some turmoil more recently and did not experience linear nor near-linear growth.
+$\begin{array}{ccccccc}\hline Year & 1950 & 1960 & 1970 & 1980 & 1990 & 2000 \\ \hline Pop. of country A & 7.7 & 10.1 & 12.7 & 15.1 & 17.3 & 20 \\ \hline Pop. of country B & 8.3 & 10.5 & 12.3 & 13.9 & 13.4 & 20.1 \\ \hline \end{array}$
+a) The table above gives the population of these two countries, in millions. Does country A or country B represent the population of Steadia? Enter just the letter of the country in the blank (A or B). [ANS]
+b) What is the approximate rate of change of the linear function? [ANS]
+c) What does the rate of change in your answer to (b) represe"
+0842,statistics,free_multi,5,"65.47, 1.552, 6.052, 1.833, B",,"When a poultry farmer uses his regular feed, the newborn chickens have normally distributed weights with a mean of $62.5$ oz. In an experiment with an enriched feed mixture, ten chickens are born with the following weights (in ounces). 66.7, \ 62.7, \ 65, \ 65.3, \ 68.7, \ 64.6, \ 64.6, \ 65.6, \ 65.5, \ 66 Use the $\alpha=0.05$ significance level to test the claim that the mean weight is higher with the enriched feed.
+(a) The sample mean is $\overline{x}=$ [ANS]
+(b) The sample standard deviation is $s=$ [ANS]
+(c) The test statistic is $t=$ [ANS]
+(d) The critical value is $t^*=$ [ANS]
+(e) The conclusion is [ANS] A. There is not sufficient evidence to support the claim that with the enriched feed, the mean weight is greater than 62.5.  B. There is sufficient evidence to support the claim th"
+0857,statistics,free_multi,6,"A,\ 0.8974,\ 0.9146,\ A,\ 0.9015,\ 0.9221",,"Weights of 10 red and 36 brown randomly chosen M{\&}M plain candies are listed below. Red: $\begin{array}{lllll} 0.897& 0.924& 0.874& 0.912& 0.909 \cr 0.913& 0.891& 0.907& 0.913& 0.92 \end{array}$ Brown: $\begin{array}{llllll} 0.898& 0.856& 0.9& 0.867& 0.93& 0.955 \cr 0.875& 0.913& 0.93& 0.923& 0.966& 0.915 \cr 0.928& 0.866& 0.889& 0.872& 0.857& 0.985 \cr 0.931& 0.876& 0.902& 0.904& 0.936& 0.92 \cr 0.912& 0.909& 0.871& 0.902& 0.905& 0.914 \cr 0.858& 1.001& 0.92& 0.988& 0.921& 0.931 \end{array}$ 1. $\ $ To construct a 90\% confidence interval for the mean weight of red M{\&}M plain candies, you have to use [ANS] A. The t distribution with 9 degrees of freedom  B. The t distribution with 10 degrees of freedom  C. The normal distribution  D. The t distribution with 11 degrees of freedom  E. N"
+0885,statistics,free_multi,4,B,,"Calculate the mode, mean, and median of the following data:
+18, \ 20, \ 17, \ 18, \ 17, \ 999, \ 18, \ 12 Mode=[ANS]
+Mean=[ANS]
+Median=[ANS]
+Which measure of center does not work well here? [ANS] A. Median  B. Mean  C. Mode  D. All of the above"
+0914,statistics,free_multi,2,0.2474,,"A recent survey showed that among 800 randomly selected subjects who completed 4 years of college, 175 smoke and 625 do not smoke. Determine a 95\% confidence interval for the true proportion of the given population that smokes. 95\% CI: [ANS] to [ANS]"
+0923,statistics,free_multi,3,"93.00, 48.00",,"Scientists are conducting an experiment with a gas in a sealed container. The mass of the gas is measured, and the scientists realize that the gas is leaking over time in a linear way. Its mass is leaking by $6.2$ grams per minute. Eight minutes since the experiment started, the remaining gas had a mass of $248$ grams. Let $x$ be the number of minutes that have passed since the experiment started, and let $y$ be the mass of the gas in grams at that moment. Use a linear equation to model the weight of the gas over time.
+This line’s slope-intercept equation is [ANS].
+$33$ minutes after the experiment started, there would be [ANS] grams of gas left.
+If a linear model continues to be accurate, [ANS] minutes since the experiment started, all gas in the container will be gone."
+0015,algebra,free_multi,2,"8, NONE","8,NONE","Are the functions below polynomials? If they are, enter their degree. If not, enter NONE. $f(x)=x^{8}+4$ has degree [ANS]
+$g(x)=8^x+4$ has degree [ANS]"
+0035,algebra,free_multi,2,"\text{down}, \ln p",,Applying a horizontal stretch by a factor of $p$ (where $p$ is a constant such that $p >1$) to $h (x)=\ln x$ is equivalent to applying what shift to $h$? Give both the direction and the amount of the shift (in terms of $p$). Answer: This is equivalent to applying a shift [ANS] by [ANS] units.
+0046,statistics,free_multi,7,"1.645, 1.719, 1.960, -1.960, 1.719, B, A",,"A random sample of $100$ observations from a population with standard deviation $20.3575072960673$ yielded a sample mean of $93.5$.
+(a) $\ $ Given that the null hypothesis is $\mu=90$ and the alternative hypothesis is $\mu > 90$ using $\alpha=.05$, find the following: (i) $\ $ critical $z$ score $\ $ [ANS]
+(ii) $\ $ test statistic $=$ [ANS]
+(b) $\ $ Given that the null hypothesis is $\mu=90$ and the alternative hypothesis is $\mu \ne 90$ using $\alpha=.05$, find the following: (i) $\ $ the positive critical $z$ score $\ $ [ANS]
+(ii) $\ $ the negative critical $z$ score $\ $ [ANS]
+(iii) $\ $ test statistic $=$ [ANS]
+The conclusion from part (a) is: [ANS] A. There is insufficient evidence to reject the null hypothesis  B. Reject the null hypothesis  C. None of the above
+The conclusion from p"
+0050,algebra,free_multi,2,"140A + 150B = 5930, 3A + 4B = 142",,"An apple contains 140 calories and 3 g of fiber. A banana contains 150 calories and 4 g of fiber. Set up a system of equations that could be solved to determine the number of apples ($A$) and bananas ($B$) that should be eaten to obtain 5930 calories and 142 g of fiber. Equation 1: [ANS]
+Equation 2: [ANS]"

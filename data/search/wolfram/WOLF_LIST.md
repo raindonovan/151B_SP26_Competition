@@ -244,3 +244,28 @@
 | 0467 | B15 | MED | 0.02667w+0.03333, 100<=w<=220, 0<=C<=6, 4.967 | calories-weight linear 4-slot; best has all 4; slope/do |
 | 0468 | B15 | MED | ?, 0.8816 | astronaut orientation stat 2-slot; best=0.8816 undercou |
 | 0470 | B15 | HIGH | 1.96, 2.201, 2.326, 2.718, 2.576, 3.106 | z/t for 95/98/99% CI df=11; best="2.576,3.106" undercou |
+| 0490 | B16 | MED | 23, ... | cooling 6440/280=23 BTU/sqft const; best="23.00,410.0"  |
+| 0491 | B16 | MED | 1255.37, 1091.15, 1419.59, No, Central Limit Theorem | flight-miles CI 5-slot; best has all 5; plausible |
+| 0497 | B16 | HIGH | 1.111, 88.81, 88.81, 0.9004 | tan(48d)=1.111, arctan(48)=88.81, tan^-1(48)=88.81, cot |
+| 0542 | B16 | MED | 285, [7457 pop / 8388 sample], [86.35 pop / 91.59 sampl | range=285 confirmed; var/std convention-dependent: best |
+| 0553 | B16 | HIGH | 24, 1.6 | IQ diff=124-100=24; z=24/15=1.6; best=1.600 undercount  |
+| 0555 | B16 | MED | 1.109, 0.1336 | poll proportion 2-slot n=1300; best plausible |
+| 0586 | B16 | MED | 1.899, -0.9423, 0.1109, -0.02966 | cubic regression coeffs 4-slot; best has all 4 |
+| 0601 | B16 | HIGH | (3s-1)(2s+1) | factor 6s^2+s-1=(3s-1)(2s+1); best correct |
+| 0602 | B16 | MED | -70.8, 0.719, 53.6 | supermodel ht/wt regression 3-slot; best plausible |
+| 0619 | B16 | MED | -3.226, 0.001230, A | two-sample t-test 3-slot; best plausible |
+| 0666 | B16 | HIGH | 76*1.532^t, 42.68 | exp model: S(t)=76*(419/76)^(t/4)=76*1.532^t; best=42.6 |
+| 0680 | B16 | MED | 0.035, 0.0525, 0.0775, A | avg rates of change 4-slot; best has all 4; (21.64-21.5 |
+| 0713 | B16 | HIGH | -3, not real | -5thrt(243)=-3; 4thrt(-81)=not real; best correct |
+| 0718 | B16 | HIGH | 65761800, 72704000, median(better) | mean=65,761,800 median=72,704,000; outlier 1200 -> medi |
+| 0725 | B16 | MED | 41.30, 13.28, A | chi-square gender/dept 3-slot; best plausible |
+| 0753 | B16 | MED | ..., 16.56 | Steadia linear pop 4-slot; best=16.56 undercount 1of4 |
+| 0842 | B16 | MED | 65.47, 1.552, 6.052, 1.833, B | chicken-weight t-test 5-slot; best has all 5 |
+| 0857 | B16 | MED | A, 0.8974, 0.9146, A, 0.9015, 0.9221 | M&M weights 6-slot; best has all 6 |
+| 0885 | B16 | HIGH | 18, 139.875, 18, B | mode=18, mean=1119/8=139.875, median=18, Mean(B) fails  |
+| 0914 | B16 | HIGH | (0.190, 0.247) | 95% CI prop: 175/800 +/- 1.96*SE = (0.1901, 0.2474); be |
+| 0923 | B16 | MED | 93, 48, ... | gas-leak linear 3-slot; best="93,48" undercount 2of3 |
+| 0015 | B16 | HIGH | 8, NONE | x^8+4 degree 8; 8^x+4 not poly NONE; best correct |
+| 0035 | B16 | HIGH | down, ln(p) | horiz stretch p of ln(x): ln(x/p)=ln(x)-ln(p) -> down b |
+| 0046 | B16 | MED | 1.645, 1.719, 1.960, -1.960, 1.719, B, A | hypothesis test 7-slot; best has all 7; z-crit/stat pla |
+| 0050 | B16 | HIGH | 140A+150B=5930, 3A+4B=142 | apple/banana system; best correct (calories + fiber equ |

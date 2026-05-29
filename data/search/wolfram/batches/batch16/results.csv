@@ -1,0 +1,26 @@
+id,subject,type,n_ans_slots,wolfram_answer,confidence,computable,notes
+0490,algebra,free_multi,4,"23, ...",MED,YES,"cooling 6440/280=23 BTU/sqft const; best=""23.00,410.0"" 4-slot, slot1=23 confirmed"
+0491,statistics,free_multi,5,"1255.37, 1091.15, 1419.59, No, Central Limit Theorem",MED,YES,flight-miles CI 5-slot; best has all 5; plausible
+0497,trigonometry,free_multi,4,"1.111, 88.81, 88.81, 0.9004",HIGH,YES,"tan(48d)=1.111, arctan(48)=88.81, tan^-1(48)=88.81, cot(48d)=0.9004; best correct"
+0542,statistics,free_multi,4,"285, [7457 pop / 8388 sample], [86.35 pop / 91.59 sample]",MED,YES,"range=285 confirmed; var/std convention-dependent: best used population (7457,86.35)"
+0553,statistics,free_multi,2,"24, 1.6",HIGH,YES,IQ diff=124-100=24; z=24/15=1.6; best=1.600 undercount (missing diff=24)
+0555,statistics,free_multi,2,"1.109, 0.1336",MED,YES,poll proportion 2-slot n=1300; best plausible
+0586,statistics,free_multi,4,"1.899, -0.9423, 0.1109, -0.02966",MED,YES,cubic regression coeffs 4-slot; best has all 4
+0601,algebra,free_multi,2,(3s-1)(2s+1),HIGH,YES,factor 6s^2+s-1=(3s-1)(2s+1); best correct
+0602,statistics,free_multi,3,"-70.8, 0.719, 53.6",MED,YES,supermodel ht/wt regression 3-slot; best plausible
+0619,statistics,free_multi,3,"-3.226, 0.001230, A",MED,YES,two-sample t-test 3-slot; best plausible
+0666,algebra,free_multi,2,"76*1.532^t, 42.68",HIGH,YES,exp model: S(t)=76*(419/76)^(t/4)=76*1.532^t; best=42.68 undercount (missing equation)
+0680,calculus,free_multi,4,"0.035, 0.0525, 0.0775, A",MED,YES,avg rates of change 4-slot; best has all 4; (21.64-21.5)/4=0.035 confirms slot1
+0713,algebra,free_multi,2,"-3, not real",HIGH,YES,-5thrt(243)=-3; 4thrt(-81)=not real; best correct
+0718,statistics,free_multi,3,"65761800, 72704000, median(better)",HIGH,YES,"mean=65,761,800 median=72,704,000; outlier 1200 -> median better; best=""median"" garbage undercount"
+0725,statistics,free_multi,3,"41.30, 13.28, A",MED,YES,chi-square gender/dept 3-slot; best plausible
+0753,statistics,free_multi,4,"..., 16.56",MED,YES,Steadia linear pop 4-slot; best=16.56 undercount 1of4
+0842,statistics,free_multi,5,"65.47, 1.552, 6.052, 1.833, B",MED,YES,chicken-weight t-test 5-slot; best has all 5
+0857,statistics,free_multi,6,"A, 0.8974, 0.9146, A, 0.9015, 0.9221",MED,YES,M&M weights 6-slot; best has all 6
+0885,statistics,free_multi,4,"18, 139.875, 18, B",HIGH,YES,"mode=18, mean=1119/8=139.875, median=18, Mean(B) fails (outlier 999); best=""B"" undercount"
+0914,statistics,free_multi,2,"(0.190, 0.247)",HIGH,YES,"95% CI prop: 175/800 +/- 1.96*SE = (0.1901, 0.2474); best=0.2474 undercount (upper only)"
+0923,statistics,free_multi,3,"93, 48, ...",MED,YES,"gas-leak linear 3-slot; best=""93,48"" undercount 2of3"
+0015,algebra,free_multi,2,"8, NONE",HIGH,YES,x^8+4 degree 8; 8^x+4 not poly NONE; best correct
+0035,algebra,free_multi,2,"down, ln(p)",HIGH,YES,horiz stretch p of ln(x): ln(x/p)=ln(x)-ln(p) -> down by ln(p); best correct
+0046,statistics,free_multi,7,"1.645, 1.719, 1.960, -1.960, 1.719, B, A",MED,YES,hypothesis test 7-slot; best has all 7; z-crit/stat plausible
+0050,algebra,free_multi,2,"140A+150B=5930, 3A+4B=142",HIGH,YES,apple/banana system; best correct (calories + fiber equations)

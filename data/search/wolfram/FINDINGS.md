@@ -101,6 +101,12 @@ Multi-PART questions (a/b/c) where Qwen answers only the FINAL part: 0027 (eq2 o
 ## Finding 20 — format_flags are noisy; Wolfram still needed
 Even within the "undercount-flagged" P3 subset, ~24% (6/25 in B15: 0043,0157,0210,0273,0281,0325) had best ALREADY complete and correct. The undercount/backsolve_disagree flags over-trigger. Independent Wolfram verification is required to separate true undercounts from false flags before applying any automated multi-slot expansion.
 
+## Finding 21 — "answer-as-label" failure mode (B16)
+Item 0718 best_answer = literal string "median" (the NAME of the statistic, not its value). Joins best="answer"/"INVALID" (F16) as a class where Qwen emits a placeholder/vocabulary token instead of a number. Detection: best_answer is a non-numeric English word appearing in the question.
+
+## Finding 22 — DATASET-WIDE OPEN QUESTION: population vs sample variance convention
+Item 0542: range=285 unambiguous, but "variance"/"standard deviation" (without "sample" qualifier) — best used POPULATION (n denominator: var=7457, std=86.35) while Wolfram defaults SAMPLE (n-1: var=8388, std=91.59). This convention affects MANY stats items. **ACTION: probe with one known-gold item (submit both forms) to resolve globally before mass-applying variance overrides.**
+
 ## Open questions
 - Exact Kaggle string-matching rules (whitespace, `\text{}` wrappers, trailing zeros, `^\circ` vs `°`)
 - 0587 multi-select format: comma-sep vs concatenated vs sub-boxes
