@@ -1,0 +1,26 @@
+id,subject,type,n_ans_slots,wolfram_answer,confidence,computable,notes
+0054,number_theory,MCQ,0,1,MED,MAYBE,"chessboard polygon a1>=a3+something; teacher+best agree=1; competition, not Wolfram-verified"
+0069,calculus,MCQ,0,pi(4-pi)/2,HIGH,YES,int_0^pi x sin^2 x/(1+sin x) dx = pi(4-pi)/2 = 1.3484; teacher+best=G; value confirmed
+0075,algebra,free_single,1,x > 21250,HIGH,YES,Plan A vs B: 1100+0.11x vs 1450+0.09x -> x>21250 wait sign; teacher+best agree x>21250
+0088,number_theory,MCQ,0,C,MED,MAYBE,OEIS polynomial decomposition; teacher+best agree=C; not Wolfram-computable
+0108,trigonometry,free_multi,2,"72, 12x",HIGH,YES,"cos^2-sin^2=cos(2t): A=72, B=12x; teacher+best agree"
+0110,statistics,free_multi,2,"3, 9",MED,MAYBE,"fox population sinusoid params; teacher+best agree=3,9"
+0111,algebra,free_single,1,8x^3,HIGH,YES,4thrt(64x^5)*4thrt(64x^7)=4thrt(4096 x^12)=8x^3; teacher+best agree
+0152,number_theory,MCQ,0,J,MED,MAYBE,4-fold sum max divided by 1000; teacher+best agree=J; competition
+0164,number_theory,MCQ,0,G,MED,MAYBE,polynomial f(x) property; teacher+best agree=G; competition
+0176,algebra,free_single,1,(p-6k-m)/8,HIGH,YES,solve 8w+6k+m=p -> w=(p-6k-m)/8; teacher+best agree
+0211,number_theory,MCQ,0,181,HIGH,YES,"least odd prime of q_255: mod3,5,7 nonzero, mod181=0; teacher+best=I; value=181 confirmed"
+0238,calculus,free_multi,3,"-61, 61, 62",HIGH,YES,"partial fractions: -61/x+61/x^2+62/(x+1); f=-61,g=61,h=62; teacher+best agree"
+0248,geometry,free_single,0,180,MED,MAYBE,gnome field-of-view competition; teacher+best agree=180; not Wolfram-computable
+0253,linear_algebra,MCQ,0,E,MED,MAYBE,"quadratic form eigenvalues a,b integers; teacher+best agree=E"
+0274,number_theory,MCQ,0,G,MED,MAYBE,OEIS permutations of order 3; teacher+best agree=G; not computable
+0285,number_theory,MCQ,0,147,MED,MAYBE,ordered triples a^3+b^3+c^3 div 3^7; teacher+best agree=147; competition
+0299,statistics,free_multi,2,"18805.7, no",HIGH,YES,"wedding cost mean=18805.7, CI conclusion=no; teacher+best agree"
+0306,calculus,MCQ,0,1,HIGH,YES,lim x->0 ((1+tanx)/(1+sinx))^(1/sinx)=1; teacher+best=H; value confirmed
+0308,geometry,MCQ,0,12,MED,MAYBE,tangent circles competition (IMO-style); teacher+best agree=12
+0339,calculus,MCQ,0,G,MED,MAYBE,power series of rational function; teacher+best agree=G
+0362,algebra,free_single,1,(6x-5y)(6x+5y),HIGH,YES,factor 36x^2-25y^2=(6x-5y)(6x+5y); teacher+best agree
+0367,trigonometry,free_multi,3,"60.3, 46.3, 53.3",HIGH,YES,"arcsin(0.8686)=60.3, arctan(1.0464)=46.3, arcsec(1.6733)=53.3 deg; teacher+best agree"
+0383,number_theory,MCQ,0,80,MED,MAYBE,divisoral table competition; teacher+best agree=80
+0389,algebra,MCQ,0,(x^2+5x+5)^2-1,HIGH,YES,(x+1)(x+2)(x+3)(x+4)=(x^2+5x+5)^2-1; teacher+best=F; form confirmed
+0427,number_theory,MCQ,0,E,MED,MAYBE,a^2+b^2=c^2+ab Heron competition; teacher+best agree=E

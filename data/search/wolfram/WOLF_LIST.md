@@ -194,3 +194,28 @@
 | 0042 | B13 | HIGH | No, Yes, A | P=0.095: a)5% No, b)10% Yes, c)A; teacher/best agree |
 | 0044 | B13 | HIGH | True, True, True, False | regression T/F 4-slot; teacher/best agree |
 | 0045 | B13 | INCONCLUSIVE | INCONCLUSIVE | OEIS male-offspring recurrence MCQ; teacher/best both=A |
+| 0054 | B14 | MED | 1 | chessboard polygon a1>=a3+something; teacher+best agree |
+| 0069 | B14 | HIGH | pi(4-pi)/2 | int_0^pi x sin^2 x/(1+sin x) dx = pi(4-pi)/2 = 1.3484;  |
+| 0075 | B14 | HIGH | x > 21250 | Plan A vs B: 1100+0.11x vs 1450+0.09x -> x>21250 wait s |
+| 0088 | B14 | MED | C | OEIS polynomial decomposition; teacher+best agree=C; no |
+| 0108 | B14 | HIGH | 72, 12x | cos^2-sin^2=cos(2t): A=72, B=12x; teacher+best agree |
+| 0110 | B14 | MED | 3, 9 | fox population sinusoid params; teacher+best agree=3,9 |
+| 0111 | B14 | HIGH | 8x^3 | 4thrt(64x^5)*4thrt(64x^7)=4thrt(4096 x^12)=8x^3; teache |
+| 0152 | B14 | MED | J | 4-fold sum max divided by 1000; teacher+best agree=J; c |
+| 0164 | B14 | MED | G | polynomial f(x) property; teacher+best agree=G; competi |
+| 0176 | B14 | HIGH | (p-6k-m)/8 | solve 8w+6k+m=p -> w=(p-6k-m)/8; teacher+best agree |
+| 0211 | B14 | HIGH | 181 | least odd prime of q_255: mod3,5,7 nonzero, mod181=0; t |
+| 0238 | B14 | HIGH | -61, 61, 62 | partial fractions: -61/x+61/x^2+62/(x+1); f=-61,g=61,h= |
+| 0248 | B14 | MED | 180 | gnome field-of-view competition; teacher+best agree=180 |
+| 0253 | B14 | MED | E | quadratic form eigenvalues a,b integers; teacher+best a |
+| 0274 | B14 | MED | G | OEIS permutations of order 3; teacher+best agree=G; not |
+| 0285 | B14 | MED | 147 | ordered triples a^3+b^3+c^3 div 3^7; teacher+best agree |
+| 0299 | B14 | HIGH | 18805.7, no | wedding cost mean=18805.7, CI conclusion=no; teacher+be |
+| 0306 | B14 | HIGH | 1 | lim x->0 ((1+tanx)/(1+sinx))^(1/sinx)=1; teacher+best=H |
+| 0308 | B14 | MED | 12 | tangent circles competition (IMO-style); teacher+best a |
+| 0339 | B14 | MED | G | power series of rational function; teacher+best agree=G |
+| 0362 | B14 | HIGH | (6x-5y)(6x+5y) | factor 36x^2-25y^2=(6x-5y)(6x+5y); teacher+best agree |
+| 0367 | B14 | HIGH | 60.3, 46.3, 53.3 | arcsin(0.8686)=60.3, arctan(1.0464)=46.3, arcsec(1.6733 |
+| 0383 | B14 | MED | 80 | divisoral table competition; teacher+best agree=80 |
+| 0389 | B14 | HIGH | (x^2+5x+5)^2-1 | (x+1)(x+2)(x+3)(x+4)=(x^2+5x+5)^2-1; teacher+best=F; fo |
+| 0427 | B14 | MED | E | a^2+b^2=c^2+ab Heron competition; teacher+best agree=E |

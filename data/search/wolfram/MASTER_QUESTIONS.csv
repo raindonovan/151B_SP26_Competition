@@ -53,7 +53,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0051,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Using the multiplication table, compute $651 _{8} \times 32 _{8}$ $\begin{array}"
 0052,other,free_multi,2,UNVERIFIED,,,,MAYBE,,You work in a lab. One day you need 616 oz of a chemical solution consisting of 
 0053,algebra,MCQ,0,UNVERIFIED,,,,YES,,A bird is lost in a 3 by 3 by 3 cubical maze. The bird flies from room to room g
-0054,geometry,free_single,0,UNVERIFIED,,,,YES,,"Let $P$ be a polygon formed by the edges of an infinite chessboard, which does n"
+0054,geometry,free_single,0,DONE,1,MED,B14,YES,"chessboard polygon a1>=a3+something; teacher+best agree=1; competition, not Wolfram-verified","Let $P$ be a polygon formed by the edges of an infinite chessboard, which does n"
 0055,algebra,free_single,1,UNVERIFIED,,,,YES,,Write an equation for $y$ in terms of $x$ if $y$ is proportional to the fourth p
 0056,statistics,free_multi,3,UNVERIFIED,,,,YES,,"For each problem, select the best response. (a) Can one predict a student's scor"
 0057,other,free_single,1,UNVERIFIED,,,,MAYBE,,"A rectangular plot, 19 ft by 18 ft, is to be used for a garden. It is decided to"
@@ -68,13 +68,13 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0066,other,free_single,1,UNVERIFIED,,,,MAYBE,,A pilot flies in a straight path for 1 hour and 30 min. She then makes a course 
 0067,other,free_multi,3,DONE,"7.6(1.09)^t, 13.9, 5.4",HIGH,B8,MAYBE,exponential growth 3-slot; Qwen under-counted,"In the year 2004, a total of 7.6 million passengers took a cruise vacation. The "
 0068,statistics,free_multi,8,DONE,"-2.857, 6.986, -1.082, 3.707, -3.707, A, -12.647, 6.933",HIGH,B2,YES,8-slot paired t-test; slot1 was completely wrong (5.443),Suppose you want to test the claim the paired sample data given below come from 
-0069,calculus,MCQ,0,UNVERIFIED,,,,YES,,"The function $f(x)=\frac{x \sin^2 x}{1+\sin x}$, then the integral $\int_0^{\pi}"
+0069,calculus,MCQ,0,DONE,pi(4-pi)/2,HIGH,B14,YES,int_0^pi x sin^2 x/(1+sin x) dx = pi(4-pi)/2 = 1.3484; teacher+best=G; value confirmed,"The function $f(x)=\frac{x \sin^2 x}{1+\sin x}$, then the integral $\int_0^{\pi}"
 0070,other,free_single,1,UNVERIFIED,,,,MAYBE,,"A school just won a grant, and decided to spend ${{\textstyle\frac{5}{8}}}$ of t"
 0071,other,free_multi,2,UNVERIFIED,,,,MAYBE,,You are working on a new temperature scale that will unify the earth. After some
 0072,trigonometry,free_multi,5,DONE,"-0.8352, -0.9187, 0.3950, -2.3258, Quadrant IV",HIGH,B8,YES,trig 5-slot; full label required,"If $\sin(A)=0.55$ and $\cos(A) < 0$, determine: $\cos(A)=$ [ANS] $\sin(2A)=$ [AN"
 0073,statistics,MCQ,0,UNVERIFIED,,,,YES,,"Given $X \sim N(0, 1), Y \sim N(0, 1)$ and they are independent. Let $U = X^{2} "
 0074,statistics,free_single,1,UNVERIFIED,,,,YES,,"To test the efficacy of a new cholesterol-lowering medication, 10 people are sel"
-0075,algebra,free_single,1,UNVERIFIED,,,,YES,,Mike can be paid in one of two ways based on the amount of merchandise he sells:
+0075,algebra,free_single,1,DONE,x > 21250,HIGH,B14,YES,Plan A vs B: 1100+0.11x vs 1450+0.09x -> x>21250 wait sign; teacher+best agree x>21250,Mike can be paid in one of two ways based on the amount of merchandise he sells:
 0076,other,free_multi,8,UNVERIFIED,,,,MAYBE,,6-10=[ANS].-6-5=[ANS].-9-(-12)=[ANS]. 20-(-13)=[ANS].-18-14=[ANS].-18-(-27)=[ANS
 0077,statistics,free_multi,3,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B9,YES,"study-design MCQ 3-slot; conceptual; not Wolfram-verifiable; teacher=C,D,A vs best=A",A study of human development showed two types of movies to a group of children. 
 0078,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"If distance of the origin from the plane passing through the point $(2,2,1)$ and"
@@ -87,7 +87,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0085,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"In a group of 1000 people, at least how many people have to share the same birth"
 0086,other,free_single,1,UNVERIFIED,,,,MAYBE,,"A gym charges members ${\$35}$ for a registration fee, and then ${\$32}$ per mon"
 0087,other,free_multi,3,UNVERIFIED,,,,MAYBE,,Determine whether the follow descriptions correspond to an observational study o
-0088,algebra,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is the number of possible dec
+0088,algebra,MCQ,0,DONE,C,MED,B14,YES,OEIS polynomial decomposition; teacher+best agree=C; not Wolfram-computable,We now define an algorithm: The definition of a(n) is the number of possible dec
 0089,other,free_single,1,DONE,\frac{326}{7},HIGH,B8,MAYBE,fraction vs decimal,"Initially, you have lost 20,000 dollars in the stock market and you continue to "
 0090,other,free_single,1,UNVERIFIED,,,,MAYBE,,Find the nth term of the arithmetic sequence whose initial term is $8$ and commo
 0091,other,MCQ,0,UNVERIFIED,,,,MAYBE,,We now define an algorithm: The definition of a(n) is numbers n such that there 
@@ -107,10 +107,10 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0105,statistics,free_multi,2,DONE,"24, 9.114",HIGH,B9,YES,range=24 ssd=9.114 confirmed; teacher/best agree,A sample of weights (in pounds) for six 12-year-olds is given below: 93 \quad 84
 0106,other,free_single,1,DONE,\frac{13}{6},HIGH,B8,MAYBE,fraction vs decimal,"After robbing a bank in Dodge City, a robber gallops off at 13 mi/h. 30 minutes "
 0107,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"A ray of light passing through the point $A\left( 2,3 \right)$ reflected at a po"
-0108,trigonometry,free_multi,2,UNVERIFIED,,,,YES,,Using a double-angle or half-angle formula to simplify the given expressions. (a
+0108,trigonometry,free_multi,2,DONE,"72, 12x",HIGH,B14,YES,"cos^2-sin^2=cos(2t): A=72, B=12x; teacher+best agree",Using a double-angle or half-angle formula to simplify the given expressions. (a
 0109,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,Find theeigenvaluesof matrices (a)\vert31\vert \vert13\vert (b)\vert221\vert \ve
-0110,algebra,free_multi,2,UNVERIFIED,,,,YES,,A national park records data regarding the total fox population $F$ over a 12 mo
-0111,algebra,free_single,1,UNVERIFIED,,,,YES,,Simplify the following expression as much as possible. Assume that all variables
+0110,algebra,free_multi,2,DONE,"3, 9",MED,B14,YES,"fox population sinusoid params; teacher+best agree=3,9",A national park records data regarding the total fox population $F$ over a 12 mo
+0111,algebra,free_single,1,DONE,8x^3,HIGH,B14,YES,4thrt(64x^5)*4thrt(64x^7)=4thrt(4096 x^12)=8x^3; teacher+best agree,Simplify the following expression as much as possible. Assume that all variables
 0112,geometry,free_single,0,UNVERIFIED,,,,YES,,The intersection between a plane and a cube is a convex pentagon $ABCDE$ satisfy
 0113,trigonometry,free_single,1,DONE,(-2x^2-16x-7)/25,HIGH,B9,YES,cos(2theta) trig-sub; equiv to (25-2(x+4)^2)/25; teacher/best equivalent,If $x+4=5 \sin(\theta)$ for $0 < \theta < \pi/2$ express $\cos(2\theta)$ in term
 0114,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,"Given $k$ as an integer and $a \ne \pi \cdot k$, evaluate $P=\cos(a) \cdot \cos("
@@ -151,7 +151,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0149,other,free_single,1,UNVERIFIED,,,,MAYBE,,An airplane is flying at the height of ${10.8\ {\rm km}}$. The airplane can see 
 0150,algebra,MCQ,0,UNVERIFIED,,,,YES,,The cubic best square approximation polynomial of $f(x)=\mathrm{e}^{x}$ on $\lef
 0151,other,free_single,1,UNVERIFIED,,,,MAYBE,,Evaluate the expression: ${48\div(8)6=}$ [ANS]
-0152,number_theory,MCQ,0,UNVERIFIED,,,,YES,,Find the remainder when $$\sum_{a=0}^8 \sum_{b=0}^8 \sum_{c=0}^8 \sum_{d=0}^8 \m
+0152,number_theory,MCQ,0,DONE,J,MED,B14,YES,4-fold sum max divided by 1000; teacher+best agree=J; competition,Find the remainder when $$\sum_{a=0}^8 \sum_{b=0}^8 \sum_{c=0}^8 \sum_{d=0}^8 \m
 0153,algebra,MCQ,0,UNVERIFIED,,,,YES,,Transform the following quadratic form into its standard form using the method o
 0154,geometry,free_single,1,DONE,18.75,HIGH,B9,YES,paint cost: 488sqft/100*$3.75=$18.75; teacher/best agree,John's room is shaped like a box. It has a flat ceiling that is a rectangle that
 0155,other,free_single,1,UNVERIFIED,,,,MAYBE,,A guy wire needs to be installed to support a pole. The end of the wire on the p
@@ -163,7 +163,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0161,statistics,free_single,0,UNVERIFIED,,,,YES,,Let \( A \) be a set of 2025 positive real numbers. For a subset \( T \subseteq 
 0162,geometry,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is: Triangle with subscripts 
 0163,algebra,free_multi,3,UNVERIFIED,,,,YES,,Factor the polynomial $(x-5)(x+4)^2-(x-5)^2(x+4)$. Your answer can be written as
-0164,number_theory,MCQ,0,UNVERIFIED,,,,YES,,Function $f(x)$ is a polynomial defined by the equation $$\begin{align*} f(x) & 
+0164,number_theory,MCQ,0,DONE,G,MED,B14,YES,polynomial f(x) property; teacher+best agree=G; competition,Function $f(x)$ is a polynomial defined by the equation $$\begin{align*} f(x) & 
 0165,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Let $\mathrm{F}$ be the set $$ A = {\frac{0.6}{u_{1}}} + {\frac{0.8}{u_{2}}} + {
 0166,geometry,free_single,1,UNVERIFIED,,,,YES,,"The area covered by a marsh, $A$, starts at $175$ acres and drops by a factor of"
 0167,trigonometry,free_multi,4,DONE,"Negative, Negative, Positive, Negative",HIGH,B8,YES,words not letters; Qwen failure=letter-vs-word,Determine whether each of the following expressions is Positive or Negative. $\s
@@ -175,7 +175,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0173,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Let $S = \{5^ k | k \in Z, 0 \le k \le 2004\}$ . Given that $5^{2004} = 5443 ..."
 0174,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Consider the function $H$ defined by $H(x)={\sqrt{x}}$. Evaluate the following: 
 0175,number_theory,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is the least common multiple 
-0176,algebra,free_single,1,UNVERIFIED,,,,YES,,Solve the following equation for $w$: 8 w+6 k+m=p. $w=$ [ANS]
+0176,algebra,free_single,1,DONE,(p-6k-m)/8,HIGH,B14,YES,solve 8w+6k+m=p -> w=(p-6k-m)/8; teacher+best agree,Solve the following equation for $w$: 8 w+6 k+m=p. $w=$ [ANS]
 0177,geometry,MCQ,0,DONE,pi^2/6,HIGH,B9,YES,vol of rotation; solve func eq -> f(x)=x/sqrt(1+x^2); V=2pi*int_1/2^sqrt(3)/2 y^2/sqrt(1-y^2)dy=pi^2/6; teacher=H,"Let the domain of the function f (x) be $( 0, \ +x )$ and satisfy $2 f \left( x "
 0178,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,"Let the 3rd order matrix \( A = (\alpha_1, \alpha_2, \alpha_3), B = (\alpha_2 - "
 0179,number_theory,free_multi,10,UNVERIFIED,,,,YES,,When you divide 177 by 6 the quotient is [ANS] and the remainder is [ANS] When y
@@ -210,7 +210,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0208,trigonometry,free_multi,2,DONE,"16.2, 720/(49*pi)",HIGH,B9,YES,"r1=81/5=16.2, r2=720/(49pi); teacher/best agree (81/5=16.2)",The radius of the circle with a central angle of 5 radians that intercepts an ar
 0209,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"In prokaryotes, translation of mRNA messages into proteins is most often initiat"
 0210,trigonometry,free_multi,2,UNVERIFIED,,,,YES,,a) Find $\tan\left(\sin^{-1}(\frac {4}{7})+\cos^{-1}(\frac {4}{8})\right)$=[ANS]
-0211,number_theory,MCQ,0,UNVERIFIED,,,,YES,,"Consider the sequence defined by $q_0=1$, $q_1=2$, and $q_d=4q_{d-1}-q_{d-2}$ fo"
+0211,number_theory,MCQ,0,DONE,181,HIGH,B14,YES,"least odd prime of q_255: mod3,5,7 nonzero, mod181=0; teacher+best=I; value=181 confirmed","Consider the sequence defined by $q_0=1$, $q_1=2$, and $q_d=4q_{d-1}-q_{d-2}$ fo"
 0212,statistics,MCQ,0,UNVERIFIED,,,,YES,,Assuming the different arrival times of a given renewal counting process follow 
 0213,other,free_single,1,UNVERIFIED,,,,MAYBE,,A trail’s total length is ${{\textstyle\frac{43}{72}}}$ of a mile. It has two le
 0214,number_theory,free_multi,4,DONE,"11, F, 10, T",HIGH,B10,YES,"primality check: floor(sqrt(121))=11 (F, not prime), floor(sqrt(107))=10 (T, is prime); best slot3=7 is wrong (bound not highest prime)",Here you are asked first the highest divisor to check. Answer that with a number
@@ -237,7 +237,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0235,number_theory,MCQ,0,UNVERIFIED,,,,YES,,"A card deck consists of $32$ cards. On each card, a different subset of $$$S = \"
 0236,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Is the function $ T(s)=\left(6 s^{-3} \right) \left(e s^{-3} \right)$ a power fu
 0237,other,free_single,1,UNVERIFIED,,,,MAYBE,,"A company’s stock value (per share) dropped by ${\$2.80}$, and its current value"
-0238,algebra,free_multi,3,UNVERIFIED,,,,YES,,The partial fraction decomposition of $ \frac{x^2+61}{x^3+x^2}$ can be written i
+0238,algebra,free_multi,3,DONE,"-61, 61, 62",HIGH,B14,YES,"partial fractions: -61/x+61/x^2+62/(x+1); f=-61,g=61,h=62; teacher+best agree",The partial fraction decomposition of $ \frac{x^2+61}{x^3+x^2}$ can be written i
 0239,statistics,free_multi,2,UNVERIFIED,,,,YES,,A sample of 12 measurements has a mean of 35 and a standard deviation of 3.75. S
 0240,trigonometry,free_multi,3,DONE,"12, 4.9, 3.3",HIGH,B10,YES,"spring oscillation: period=12s, midline=4.9ft, amplitude=3.3ft; teacher/best agree",The table below gives the height $h=f(t)$ in feet of a weight on a spring where 
 0241,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Denote $$$S(n,k)=\log_{k}\frac{2}{1}+\log_{k}\frac{3}{2}+...+\log_{k}\frac{n-1}{"
@@ -247,12 +247,12 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0245,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Lily loves sports. Every week, she practices $70$ minutes of basketball, $75$ mi"
 0246,other,free_multi,5,UNVERIFIED,,,,MAYBE,,125 $\div$ 5=[ANS] 138 $\div$ 6=[ANS] 119 $\div$ 7=[ANS] 184 $\div$ 8=[ANS] 152 
 0247,other,free_multi,3,DONE,"\frac{2409}{65}, \frac{2474}{1+\frac{2409}{65}e^{-0.53t}}, 2473.84",HIGH,B8,MAYBE,logistic 3-slot; Qwen under-counted,"The town of Sickville, with a population of 2474 is exposed to the Blue Moon Vir"
-0248,linear_algebra,free_single,0,UNVERIFIED,,,,YES,,"Let $\alpha$ be a real number satisfying $0 < \alpha < 180$. For Leo's birthday,"
+0248,linear_algebra,free_single,0,DONE,180,MED,B14,YES,gnome field-of-view competition; teacher+best agree=180; not Wolfram-computable,"Let $\alpha$ be a real number satisfying $0 < \alpha < 180$. For Leo's birthday,"
 0249,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Using the series expansion for the function $(1+x)^m$, calculate approximately $"
 0250,other,free_single,0,UNVERIFIED,,,,MAYBE,,"Let $S$ be the set of all strings of length $15$ formed from five $1$s, $2$s, an"
 0251,other,free_single,1,UNVERIFIED,,,,MAYBE,,The percentage change from 3.3 inches to 9 inches (to 1 decimal place) is [ANS]
 0252,statistics,free_single,1,UNVERIFIED,,,,YES,,What are the three conditions required for 0ne-way ANOVA? [ANS] A. normal popula
-0253,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,"Let the quadratic form \( f(x_1,x_2,x_3) = ax_2^2 -4x_1x_2+2bx_1x_3+ 4x_2x_3 \) "
+0253,linear_algebra,MCQ,0,DONE,E,MED,B14,YES,"quadratic form eigenvalues a,b integers; teacher+best agree=E","Let the quadratic form \( f(x_1,x_2,x_3) = ax_2^2 -4x_1x_2+2bx_1x_3+ 4x_2x_3 \) "
 0254,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Let $C$ be a smooth projective curve over $\mathbb{C}$ and $\omega_{C}^{\otimes2
 0255,geometry,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B10,YES,"OEIS tiling 4x2n L-tetrominoes for n=15..24; Wolfram cannot compute; teacher=E, best=H",We now define an algorithm: The definition of a(n) is: Number of tilings of a 4 
 0256,other,free_multi,2,UNVERIFIED,,,,MAYBE,,The basic idea of manipulating algebraic expressions is that they obey the same 
@@ -273,7 +273,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0271,algebra,free_single,1,DONE,"-4, 0, 4",HIGH,B10,YES,"4a^6=64a^4 -> 4a^4(a^2-16)=0 -> a=-4,0,4; best=4 is severe undercount",Solve the equation for $a$: 4 a^6=64 a^4 $a=$ [ANS] Help: Separate multiple answ
 0272,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,"If $\tan(\theta) = \sqrt{x^2 - 1}$, find $\sec(\theta) + \tan(\theta)$."
 0273,trigonometry,free_multi,3,UNVERIFIED,,,,YES,,Write each expression in terms of sines and/or cosines and then simplify. $\frac
-0274,number_theory,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is the number of permutations
+0274,number_theory,MCQ,0,DONE,G,MED,B14,YES,OEIS permutations of order 3; teacher+best agree=G; not computable,We now define an algorithm: The definition of a(n) is the number of permutations
 0275,other,free_single,0,UNVERIFIED,,,,MAYBE,,Bugs Bunny wants to choose a number $k$ such that every collection of $k$ consec
 0276,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Find the $x$-and $y$-intercepts of $f(x)=7 \log_{7}\left(8x-4\right)+21$. Write 
 0277,geometry,free_single,1,UNVERIFIED,,,,YES,,"The average salary of a government worker is $\$44{,}232.00$ per year. Given tha"
@@ -284,7 +284,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0282,algebra,free_single,1,UNVERIFIED,,,,YES,,Solve for $\small{x}$ without using a calculating utility. Enter your answer as 
 0283,statistics,free_single,1,UNVERIFIED,,,,YES,,Target heart rate for moderate exercise is $50\%$ to $70\%$ of maximum heart rat
 0284,geometry,MCQ,0,UNVERIFIED,,,,YES,,Find the area of the region bounded by $|x - |y|| + |y - |x|| + |y| = 9$ in the 
-0285,number_theory,free_single,0,UNVERIFIED,,,,YES,,"Let $N$ denote the numbers of ordered triples of positive integers $(a, b, c)$ s"
+0285,number_theory,free_single,0,DONE,147,MED,B14,YES,ordered triples a^3+b^3+c^3 div 3^7; teacher+best agree=147; competition,"Let $N$ denote the numbers of ordered triples of positive integers $(a, b, c)$ s"
 0286,calculus,MCQ,0,UNVERIFIED,,,,YES,,"Given a positive integer $x$, define the function $p_x(o) = \prod_{{k=1}}^x \cos"
 0287,statistics,free_multi,2,DONE,"212, 136",HIGH,B10,YES,sample size: a) p=0.5 n=212; b) p=0.8 n=136; best=136 is undercount,A random sample of elementary school children in New York state is to be selecte
 0288,other,free_multi,3,UNVERIFIED,,,,MAYBE,,"A rubber ball is dropped onto a hard surface from a height of 8 feet, and it bou"
@@ -298,16 +298,16 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0296,linear_algebra,free_multi,3,DONE,"45, 180, 270",HIGH,B10,YES,"lawn width=45, factory=180x270; teacher/best agree (values same, teacher has units)",A factory is to be built on a lot measuring 270 ft by 360 ft. A local building c
 0297,statistics,free_multi,4,UNVERIFIED,,,,YES,,A machine that produces ball bearings is set so that the average diameter is 0.5
 0298,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Set $A$ , $B$ is two events, and $P \ (A) = 0. 6, P (B) = 0. 7$. Request: (1) Un"
-0299,statistics,free_multi,2,UNVERIFIED,,,,YES,,A random sample of 20 U.S. weddings yielded the following data on wedding costs 
+0299,statistics,free_multi,2,DONE,"18805.7, no",HIGH,B14,YES,"wedding cost mean=18805.7, CI conclusion=no; teacher+best agree",A random sample of 20 U.S. weddings yielded the following data on wedding costs 
 0300,other,free_single,1,UNVERIFIED,,,,MAYBE,,The freshman class at a major university contains $5655$ students. This was a $1
 0301,statistics,free_multi,2,DONE,"0.878, 57.2",HIGH,B10,YES,logistic: pi(43)=0.878; dist at pi=0.6: x=57.2; best slot1=0.877 slightly wrong (3sf: 0.87761->0.878),Suppose the probability $\pi(x)$ of reaching a target (such as getting a ball be
 0302,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"$p$ , $q$ , and $r$ are positive real numbers such that $$$p^2 + pq + q^2 = 211$"
 0303,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Evaluate$$\lceil\sqrt{5}\rceil + \lceil\sqrt{6}\rceil + \lceil\sqrt{7}\rceil + \
 0304,calculus,MCQ,0,UNVERIFIED,,,,YES,,Calculate the following curve integral using the residue theorem $ointlimits_{|z
 0305,number_theory,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is: Let n be a positive integ
-0306,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,$$\lim_{x\rightarrow 0}\left ( \frac{1+tan x}{1+sinx} \right )^{cosecx}=$$
+0306,trigonometry,MCQ,0,DONE,1,HIGH,B14,YES,lim x->0 ((1+tanx)/(1+sinx))^(1/sinx)=1; teacher+best=H; value confirmed,$$\lim_{x\rightarrow 0}\left ( \frac{1+tan x}{1+sinx} \right )^{cosecx}=$$
 0307,other,free_single,1,UNVERIFIED,,,,MAYBE,,Add the following and express your answer as a single fraction. No decimals or m
-0308,geometry,free_single,0,UNVERIFIED,,,,YES,,"Let $\triangle A B C$ be an acute triangle with circumcircle $\omega_{1}$, and l"
+0308,geometry,free_single,0,DONE,12,MED,B14,YES,tangent circles competition (IMO-style); teacher+best agree=12,"Let $\triangle A B C$ be an acute triangle with circumcircle $\omega_{1}$, and l"
 0309,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Do the following problem. Round numbers to the thousands place first, and then d"
 0310,other,free_multi,3,UNVERIFIED,,,,MAYBE,,(a) Put the expression $5x k+4 k+6-11x$ into the form $b+m x$. [ANS] $+\Big($ [A
 0311,other,free_single,1,UNVERIFIED,,,,MAYBE,,The 1906 San Francisco earthquake had a magnitude of 8.3 on the Richter scale. A
@@ -338,7 +338,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0336,other,MCQ,0,UNVERIFIED,,,,MAYBE,,The integer 8871870642308873326043363 is the $1 3^{t h}$ power of an integer $n$
 0337,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,Suppose the rank of $\left( \begin{matrix} {{{a}}} \\ {{{3}}} \\ {{{1}}} \\ \end
 0338,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Determine the symmetries (if any) of the graphs of the given relations. (a) $7 y
-0339,calculus,MCQ,0,UNVERIFIED,,,,YES,,"The power series expansion of $f ( \, z \, )={\frac{4 z^{2} \!+\! 3 0 z \!+\! 6 "
+0339,calculus,MCQ,0,DONE,G,MED,B14,YES,power series of rational function; teacher+best agree=G,"The power series expansion of $f ( \, z \, )={\frac{4 z^{2} \!+\! 3 0 z \!+\! 6 "
 0340,statistics,free_single,1,UNVERIFIED,,,,YES,,"For simple linear regression, with data $x_i,y_i$, $i=1,\ldots,n$, and model $Y_"
 0341,other,free_multi,2,UNVERIFIED,,,,MAYBE,,If you rationalize the numerator of \frac{\sqrt[3]{x^2}-5 \sqrt[3]{x}+25}{\sqrt{
 0342,other,free_multi,5,UNVERIFIED,,,,MAYBE,,determine whether the following quantities are positive or negative. [ANS] 1. $(
@@ -361,12 +361,12 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0359,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"If $\operatorname*{lim}_{x\to0}\left(1-kx\right)^{\frac{2}{x}}=2$, what is the n"
 0360,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Sum the series \[\sum_{m=1}^\infty \sum_{n=1}^\infty \frac{m^2 n}{3^m(n3^m+m3^n)
 0361,other,free_single,1,UNVERIFIED,,,,MAYBE,,Two angles are supplementary if the sum of their measures is $180^{\circ}$. If t
-0362,algebra,free_single,1,UNVERIFIED,,,,YES,,Factor the difference of squares: $36x^{2}-25y^{2}=$ [ANS]
+0362,algebra,free_single,1,DONE,(6x-5y)(6x+5y),HIGH,B14,YES,factor 36x^2-25y^2=(6x-5y)(6x+5y); teacher+best agree,Factor the difference of squares: $36x^{2}-25y^{2}=$ [ANS]
 0363,other,free_multi,3,UNVERIFIED,,,,MAYBE,,"Suppose $y$, the number of cases of a disease, is reduced by 11\% per year. (a) "
 0364,other,free_multi,4,UNVERIFIED,,,,MAYBE,,"Determine whether f is a function from $\mathbb{Z}$ to $\mathbb{R}$. Enter ""Y"" f"
 0365,geometry,free_single,1,UNVERIFIED,,,,YES,,Use a graphing calculator to decide which viewing rectangle (A)-(D) produces the
 0366,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,"Let the matrix $A=( \alpha_{_1}, \alpha_{_2}, \alpha_{_3}, \alpha_{_4} )$ , wher"
-0367,trigonometry,free_multi,3,UNVERIFIED,,,,YES,,Determine each to 1 decimal place: $\sin(\alpha)=0.868632$ implies $\alpha \ $ [
+0367,trigonometry,free_multi,3,DONE,"60.3, 46.3, 53.3",HIGH,B14,YES,"arcsin(0.8686)=60.3, arctan(1.0464)=46.3, arcsec(1.6733)=53.3 deg; teacher+best agree",Determine each to 1 decimal place: $\sin(\alpha)=0.868632$ implies $\alpha \ $ [
 0368,other,free_multi,4,UNVERIFIED,,,,MAYBE,,Let $f(t)$ denote the number of people eating in a restaurant $t$ minutes after 
 0369,algebra,free_multi,3,DONE,"3/4, 5, 2",HIGH,B10,YES,"vertex form: a=3/4, h=5, k=2; teacher/best agree (fraction vs decimal)","A quadratic function has its vertex at the point $(5,2)$. The function passes th"
 0370,trigonometry,free_multi,2,UNVERIFIED,,,,YES,,Find amplitude and midline of the function $y=10 \cos{(5x)}-5$ (a) The midline i
@@ -382,13 +382,13 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0380,other,free_multi,7,UNVERIFIED,,,,MAYBE,,Complete each statement: 75 mL=[ANS] L 239 mm=[ANS] m 32 kg=[ANS] g 1671 cm=[ANS
 0381,calculus,free_single,1,UNVERIFIED,,,,YES,,Find the numerical value of the sum below. $ \sum\limits_{k=1}^{120} 17$=[ANS]
 0382,linear_algebra,free_multi,2,DONE,"187/18, 55/9",HIGH,B10,YES,"room dims: l=187/18~10.39m, w=55/9~6.11m; teacher/best agree (exact vs decimal)","A rectangular room is $1.7$ times as long as it is wide, and its perimeter is $3"
-0383,number_theory,free_single,0,UNVERIFIED,,,,YES,,We call a $n \times n$ table filled with positive integers \emph{divisoral} if i
+0383,number_theory,free_single,0,DONE,80,MED,B14,YES,divisoral table competition; teacher+best agree=80,We call a $n \times n$ table filled with positive integers \emph{divisoral} if i
 0384,algebra,free_single,1,UNVERIFIED,,,,YES,,Find the exact solution to the equation below. (Do not give a decimal approximat
 0385,statistics,free_multi,3,DONE,"A, A, A",HIGH,B3,YES,3-slot sampling design MCQ; all answers A,"For each problem, select the best response. (a) In order to take a sample of 120"
 0386,geometry,free_single,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B10,YES,"combinatorics/geometry problem; teacher=3, best=5; not Wolfram-computable","There are $n$ parallel lines on a plane, and there is a set $S$ of distinct poin"
 0387,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Consider the following scenario in which you study your bank account. On Jan. 1,"
 0388,other,free_multi,5,UNVERIFIED,,,,MAYBE,,Consider a population of coyotes whose intristic growth rate is 9.1\% and whose 
-0389,algebra,MCQ,0,UNVERIFIED,,,,YES,,Express the polynomial $( x+1 ) ( x+2 ) ( x+3 ) ( x+4 )$ as a perfect square for
+0389,algebra,MCQ,0,DONE,(x^2+5x+5)^2-1,HIGH,B14,YES,(x+1)(x+2)(x+3)(x+4)=(x^2+5x+5)^2-1; teacher+best=F; form confirmed,Express the polynomial $( x+1 ) ( x+2 ) ( x+3 ) ( x+4 )$ as a perfect square for
 0390,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Add as indicated: (Note: Your answer must be a fraction.) a) $\frac{2}{5}+(-\fra
 0391,number_theory,MCQ,0,UNVERIFIED,,,,YES,,Consider a prime number $f$ exceeding 5. Define $f(f)$ as the count of infinite 
 0392,other,free_single,1,UNVERIFIED,,,,MAYBE,,Use rules to find the sum $37-(-31)-(-13)$ [ANS]
@@ -426,7 +426,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0424,other,free_multi,4,UNVERIFIED,,,,MAYBE,,"Identify each quantity as a parameter or statistic. Write ""parameter"" or ""statis"
 0425,other,free_single,1,UNVERIFIED,,,,MAYBE,,Evaluate the expression \frac{\sqrt{343}}{\sqrt{7}} Your answer is [ANS]
 0426,other,free_single,1,UNVERIFIED,,,,MAYBE,,"In a group of healthy cows and chickens, the number of legs is 22 more than twic"
-0427,number_theory,MCQ,0,UNVERIFIED,,,,YES,,"Let $a$ , $b$ , and $c$ be positive real numbers such that $a^2+b^2=c^2+ab$ and "
+0427,number_theory,MCQ,0,DONE,E,MED,B14,YES,a^2+b^2=c^2+ab Heron competition; teacher+best agree=E,"Let $a$ , $b$ , and $c$ be positive real numbers such that $a^2+b^2=c^2+ab$ and "
 0428,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"Divide the fractions, and reduce your answer. \frac{8}{55}\div\frac{8}{43} The r"
 0429,other,free_single,1,UNVERIFIED,,,,MAYBE,,Libby had a ten-dollar bill. Then she spent \$ 2.95 at a store. How much money d
 0430,calculus,MCQ,0,UNVERIFIED,,,,YES,,Evaluate the limit: $$ \lim_{x \to 0}\left(\frac{ \ln\left(1+x+x^2\right)+\ln\le
