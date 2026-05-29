@@ -28,7 +28,7 @@ sys.path.insert(0, str(REPO_ROOT))
 import torch  # noqa: E402
 import transformers  # noqa: E402
 import vllm  # noqa: E402
-from judger import Judger  # noqa: E402
+from grading.judger import Judger  # noqa: E402
 from scripts.prompts import (  # noqa: E402
     PROMPTS,
     USER_PREFIX_MULTI,

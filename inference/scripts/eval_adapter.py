@@ -57,7 +57,7 @@ print(f"  {len(items)} items")
 # --- Load Judger ---
 print(f"[{time.strftime('%H:%M:%S')}] Loading judger.py...")
 sys.path.insert(0, "/workspace/151B_SP26_Competition")
-from judger import Judger
+from grading.judger import Judger
 judger = Judger()
 
 # --- Load math_verify ---
