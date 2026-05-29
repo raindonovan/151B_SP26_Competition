@@ -103,3 +103,20 @@ This is the agent's legacy — the next agent or Rain reads this to avoid repeat
 
 ### Why this matters
 Without signoffs, findings die with the session. Without Role & Relevance in the prompt, agents don't understand WHY their work matters. Both are non-negotiable.
+
+## CREDENTIALS RULE (LOCKED 2026-05-28)
+
+Never include a PAT, API key, password, or any credential in a chat prompt, spawn prompt, or committed file. See `SECURITY.md` for the credential setup pattern (per-runtime `~/.git-credentials`). When generating a spawn prompt, the SETUP block must say: "Credentials are pre-configured in ~/.git-credentials by Rain. If git push fails with auth error, REPORT to Rain — do NOT request a PAT in chat." If a future Claude (including me, claude_strategy) starts to embed a PAT in a prompt: STOP. That's a violation.
+
+## GOLD-RULE (LOCKED SOP)
+
+Anything labeled GOLD — a confirmed lever, a discovered format rule, an empirical finding, a ground-truth signal — must be documented in its canonical home the same session it's discovered. Folder map:
+
+- Format / grader rules → `postprocessing/FINDINGS.md` (also update `NORMALIZATION_RULES.md` tier)
+- Verified Wolfram answers → `data/search/wolfram/WOLF_LIST.md` and `MASTER_QUESTIONS.csv`
+- Inference-config wins (per-run, per-config) → `inference/FINDINGS.md`
+- Confirmed submission levers (with score-delta evidence) → `submission/REGISTRY.md`
+- Conceptual gold (mental models, principles) → `strategy/HOW_WE_KNOW_CORRECTNESS.md` or a new strategy doc
+- Cross-cutting / "I don't know where this goes" → the relevant folder's `SCRATCH.md` (Rain sorts later)
+
+Agents that discover gold but don't document it have failed their session. Every spawn prompt closes with: "if you find gold, file it per GOLD-RULE before signing off."
