@@ -10,7 +10,7 @@
 
 Note: Higher INCONCLUSIVE rate due to competition problems in this batch (0443, 0450, 0488, 0501, 0540, 0583, 0598).
 
-## Actionable overrides (Wolfram confirms teacher, best wrong)
+## Discrepancies (verified answer differs from sheet best)
 
 | ID | Wolfram answer | Best (wrong) | Issue |
 |----|---------------|--------------|-------|
@@ -23,7 +23,7 @@ Note: Higher INCONCLUSIVE rate due to competition problems in this batch (0443, 
 | 0557 | 5 | 6 | TRIVIAL WRONG: |5| = 5, not 6 |
 | 0608 | B, A, A, 1981 | 1981 | 4-slot collapsed to last value |
 
-**8 actionable overrides**.
+**8 discrepancies**.
 
 ## Teacher/best equivalences
 - 0447, 0508, 0535, 0558, 0593, 0599, 0607: teacher/best agree (different notation)

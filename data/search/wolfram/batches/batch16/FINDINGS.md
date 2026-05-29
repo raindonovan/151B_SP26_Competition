@@ -8,7 +8,7 @@
 - MED: 14/25 (56%) — multi-slot present & plausible
 - INCONCLUSIVE: 0/25
 
-## Actionable undercount overrides (7)
+## Undercount discrepancies (7)
 
 | ID | Full answer | Best (undercount) | Missing |
 |----|-------------|-------------------|---------|
@@ -39,5 +39,5 @@ Item 0718 best_answer is literally the string "median" — Qwen output the NAME 
 ### Finding B16-2 — P3 stats convention question (population vs sample variance)
 0542 surfaces a likely dataset-wide convention question: when a problem says "variance"/"standard deviation" without "sample", does gold use n or n-1 denominator? This affects MANY stats items. Recommend a targeted probe (submit both forms for one known item) to resolve globally.
 
-### Finding B16-3 — P3 hit rate stabilizing at ~28-40% override
-B15: 10/25 overrides. B16: 7/25 overrides. P3 override rate ~30%, consistently higher than P2 (0%). The MED items (multi-slot already filled) are mostly correct — the value is in the sheet, just unverified. P3's actionable yield is the undercount subset.
+### Finding B16-3 — P3 hit rate stabilizing at ~28-40% discrepancy
+B15: 10/25 discrepancies. B16: 7/25 discrepancies. P3 discrepancy rate ~30%, consistently higher than P2 (0%). The MED items (multi-slot already filled) are mostly correct — the value is in the sheet, just unverified. P3's actionable yield is the undercount subset.

@@ -10,7 +10,7 @@
 
 Note: INCONCLUSIVE rate climbed to 48% — this batch is heavily loaded with OEIS algorithms, competition problems, and conceptual MCQs that Wolfram cannot directly compute.
 
-## Actionable overrides (Wolfram confirms teacher, best wrong)
+## Discrepancies (verified answer differs from sheet best)
 
 | ID | Wolfram answer | Best (wrong) | Issue |
 |----|---------------|--------------|-------|
@@ -21,7 +21,7 @@ Note: INCONCLUSIVE rate climbed to 48% — this batch is heavily loaded with OEI
 | 0684 | -1.55 | "answer" | completely wrong — critical z |
 | 0716 | 19/33 | "answer" | completely wrong — R² formula |
 
-**6 actionable overrides**.
+**6 discrepancies**.
 
 ## Teacher/best equivalences
 - 0642, 0704, 0723, 0762: teacher/best agree (notation differences only)

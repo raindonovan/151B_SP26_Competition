@@ -7,7 +7,7 @@
 - HIGH: 22/25 (88%)
 - INCONCLUSIVE: 3/25 (12%)
 
-## Actionable overrides (Wolfram confirms teacher, best wrong)
+## Discrepancies (verified answer differs from sheet best)
 
 | ID | Wolfram answer | Best (wrong) | Issue |
 |----|---------------|--------------|-------|
@@ -22,7 +22,7 @@
 | 0411 | 392*pi/45 | 39246 | completely wrong — 27.37 units, not 39246 |
 | 0437 | 76.37, 79.63 | 79.63 | undercount — only upper bound given |
 
-**10 actionable overrides** — all HIGH confidence.
+**10 discrepancies** — all HIGH confidence.
 
 ## Teacher/best equivalences (no action needed)
 - 0240: teacher/best agree (same values, best adds units)

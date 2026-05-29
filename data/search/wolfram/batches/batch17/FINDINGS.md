@@ -8,7 +8,7 @@
 - MED: 14/25 (56%) — multi-slot present, plausible, complex (R-output, MCQ-matching)
 - INCONCLUSIVE: 0/25
 
-## ZERO undercount overrides
+## ZERO discrepancies
 As predicted (Finding 20): unflagged P3 items have best_answer already complete. All 11 HIGH items had best CORRECT. The format_flags correctly identified that these don't need multi-slot expansion. This is pure verification anchoring.
 
 ## Wolfram/hand-verified correct (HIGH)
@@ -32,7 +32,7 @@ As predicted (Finding 20): unflagged P3 items have best_answer already complete.
 ## New findings
 
 ### Finding B17-1 — Unflagged P3 is verification-only (confirms F20)
-The undercount/disagree format_flags are a RELIABLE filter: flagged P3 → ~30% overrides (B15-16); unflagged P3 → 0% overrides (B17). Recommendation for remaining sweep: unflagged items are lower-priority — they confirm existing correct answers rather than fixing wrong ones. If time-constrained, skip unflagged P3 and move to P4/P5 flagged items.
+The undercount/disagree format_flags are a RELIABLE filter: flagged P3 → ~30% discrepancies (B15-16); unflagged P3 → 0% discrepancies (B17). Recommendation for remaining sweep: unflagged items are lower-priority — they confirm existing correct answers rather than fixing wrong ones. If time-constrained, skip unflagged P3 and move to P4/P5 flagged items.
 
 ### Finding B17-2 — HIGH-confidence anchors are accumulating well
 259 DONE items now. The HIGH subset (Wolfram-verified, ~190 items) forms a strong gold-test-set core. Many B17 HIGH items are clean closed-form (trig values, factoring, conversions) ideal for the local test harness.

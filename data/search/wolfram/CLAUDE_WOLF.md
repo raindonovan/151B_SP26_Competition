@@ -4,6 +4,16 @@
 **Role**: Wolfram Alpha MCP verification — the ONLY independent (non-LLM) source we have.
 **Status**: Phase 2 active — batch09 is next.
 
+## Terminology (LOCKED — do not call findings "overrides")
+This agent produces, per item, a **verified answer** + confidence. That answer is the answer; it has standing on its own. We then *observe* how it relates to the sheet's current `best_answer`:
+- **match** — verified answer agrees with the sheet (confirmation; promotes the item toward gold). Matches are valuable, not "no-ops."
+- **discrepancy** — verified answer differs from the sheet (the sheet's value is wrong there). We report it; we do NOT "override" anything.
+- **inconclusive** — Wolfram couldn't solve it.
+
+Why not "override": (1) it falsely frames the stale sheet value as the thing with standing and our solved answer as displacing it — backwards; (2) it overstates our authority — we are a verification *source*, and whether a discrepancy is acted on is the data/submission agent's call when aggregating all evidence.
+
+**Note — the OTHER, legitimate sense of "override":** the inference pipeline (`inference/scripts/run_inference.py`, reading `wolfram_overrides.csv`, column `override_value`) literally *overrides* the model's last `\boxed{}` output with the verified value. There, "override" correctly names an *action on model output*. That file/schema is load-bearing and documented in the gradescope submission — do NOT rename it. Keep "override" for the pipeline action; use match/discrepancy for verification findings.
+
 ## Quick state
 - Total dataset: 943 items
 - Legacy verified (B1-B8 + WEBSEARCH): 65 DONE, 1 DISPUTED (0141)

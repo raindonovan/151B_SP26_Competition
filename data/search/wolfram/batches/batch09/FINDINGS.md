@@ -8,7 +8,7 @@
 - MED: 1/25 (4%)
 - INCONCLUSIVE: 3/25 (12%)
 
-## Actionable overrides (Wolfram disagrees with best, teacher is correct)
+## Discrepancies (verified answer differs from sheet best)
 
 | ID | Wolfram | Best (wrong) | Issue |
 |----|---------|--------------|-------|
@@ -22,7 +22,7 @@
 | 0188 | 60, 60, 60 | 61 | wrong mean + undercount (3→1 slots) |
 | 0196 | 14.7447, 10.3244, 35 | 15 | severe undercount (3→1) + arithmetic error |
 
-**9 actionable overrides** — all HIGH confidence.
+**9 discrepancies** — all HIGH confidence.
 
 ## Teacher/best equivalences (no action needed)
 - 0002: best=-1.461 vs teacher=-1.46 (same, rounding)

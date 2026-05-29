@@ -8,7 +8,7 @@
 - MED: 1/25 (4%)
 - INCONCLUSIVE: 6/25 (24%)
 
-## Actionable overrides (Wolfram confirms teacher, best wrong)
+## Discrepancies (verified answer differs from sheet best)
 
 | ID | Wolfram answer | Best (wrong) | Issue |
 |----|---------------|--------------|-------|
@@ -19,7 +19,7 @@
 | 0872 | infinity, 0 | INVALID | inference failure — basic limits |
 | 0936 | 275/16 | 27517 | digit-concat error (275/16 → "27517") |
 
-**6 actionable overrides**.
+**6 discrepancies**.
 
 ## Teacher/best equivalences
 - 0781, 0818, 0830, 0851, 0880, 0916: teacher/best agree (exact vs decimal)
@@ -45,7 +45,7 @@ All three: Qwen's correct fractional/radical answer rendered as concatenated dig
 Items 0785, 0896, 0927: Qwen emits 0/1 (binary) where the expected format is False/True (words). The VALUES are correct (0=False, 1=True). Pure format mismatch — post-processing should map binary→words for these. This is distinct from undercount.
 
 ### Finding B13-3 — P2 items (teacher-split) have higher agreement rate
-7 P2 items (0010,0022,0030,0033,0042,0044,0045): most have teacher AND best already agreeing. P2 bucket is genuinely lower-leverage than P1 for finding overrides, but higher-confidence for verification (fewer competition problems). Recommend continuing P2/P3 for verification anchoring rather than override-hunting.
+7 P2 items (0010,0022,0030,0033,0042,0044,0045): most have teacher AND best already agreeing. P2 bucket is genuinely lower-leverage than P1 for finding discrepancies, but higher-confidence for verification (fewer competition problems). Recommend continuing P2/P3 for verification anchoring rather than finding discrepancies.
 
 ### Finding B13-4 — "INVALID" best_answer = inference failure, not format
-Items 0790, 0872: best="INVALID" means Qwen produced no parseable answer. These are NOT format issues — they're complete inference failures. Wolfram easily solved both (standard-form expansion, basic limits). Any item with best="INVALID" or best="answer" should be flagged for direct Wolfram/teacher override.
+Items 0790, 0872: best="INVALID" means Qwen produced no parseable answer. These are NOT format issues — they're complete inference failures. Wolfram easily solved both (standard-form expansion, basic limits). Any item with best="INVALID" or best="answer" should be flagged for a direct correction from the verified answer.

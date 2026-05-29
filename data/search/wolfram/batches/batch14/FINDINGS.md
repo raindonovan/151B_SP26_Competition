@@ -9,9 +9,9 @@
 - INCONCLUSIVE: 0/25
 
 ## Key structural difference from P1 batches
-**ALL 25 items had teacher == best already agreeing.** This is the defining feature of the P2 bucket: these are items where teachers split (2/3 majority) but the best_answer and the teacher consensus still landed on the same value. There are NO actionable overrides in this batch — the value is already correct in the sheet.
+**ALL 25 items had teacher == best already agreeing.** This is the defining feature of the P2 bucket: these are items where teachers split (2/3 majority) but the best_answer and the teacher consensus still landed on the same value. There are NO discrepancies in this batch — the value is already correct in the sheet.
 
-P2's role is therefore **verification anchoring**, not override-hunting:
+P2's role is therefore **verification anchoring**, not finding discrepancies:
 - HIGH items: Wolfram provides independent 3rd confirmation → near-certain gold
 - MED items: teacher+best agree but Wolfram can't verify (competition) → strong but not independent
 
@@ -36,7 +36,7 @@ P2's role is therefore **verification anchoring**, not override-hunting:
 
 ## New findings
 
-### Finding B14-1 — P2 bucket has ZERO actionable overrides
+### Finding B14-1 — P2 bucket has ZERO discrepancies
 Confirms Finding 17: P2 (teacher-split) items where best already matches teacher consensus need no correction. The split was resolved correctly in sheet construction. P2 is pure verification value.
 
 ### Finding B14-2 — Recurrence family a_n=4a_{n-1}-a_{n-2} appears 3× with answer 181

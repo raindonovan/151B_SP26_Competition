@@ -7,8 +7,8 @@
 ## Coverage snapshot
 - Total dataset: 943 items
 - Wolfram coverage: 63 items (~6.7%) across Batches 1-8
-- B1-B7 (38 items): 33 HIGH overrides, 2 MED, 3 inconclusive (interpretation-MCQ truncation)
-- B8 (25 items): 23 HIGH overrides (incl. 0181 by symmetry argument), 1 no-op, 1 inconclusive (0570 synthetic)
+- B1-B7 (38 items): 33 HIGH discrepancies, 2 MED, 3 inconclusive (interpretation-MCQ truncation)
+- B8 (25 items): 23 HIGH discrepancies (incl. 0181 by symmetry argument), 1 no-op, 1 inconclusive (0570 synthetic)
 - W-tier remaining high-leverage: ~186 items (174 Qwen-vs-teacher disagreements + 67 teacher splits, with overlap)
 
 ## Finding 1 — Qwen's math is right far more often than its strings
@@ -57,7 +57,7 @@ For matrix-answer MCQs, distractor options often have structural violations:
 **Implications**:
 - Highest-leverage post-processing lever in the dataset is slot-counting / multi-slot reconstruction
 - B1-7 is statistics-heavy (~80%); pattern may be domain-specific
-- 0 items in B1-7 were AGREE-only — every covered item produced an actionable override
+- 0 items in B1-7 were AGREE-only — every covered item produced an discrepancy
 
 ## Finding 9 — "Interpretation MCQ" dataset truncation class
 0585, 0622, 0858: trailing [ANS] for interpretation-MCQ after Yes/No conclusion, but options absent. Hypothesis: dataset prep dropped MCQ-option text for an entire problem class.
@@ -66,7 +66,7 @@ For matrix-answer MCQs, distractor options often have structural violations:
 0413 emitted `\text{A}`; 0622 emitted `\text{Yes}`. Kaggle behavior with `\text{}` wrappers UNVERIFIED — worth empirical probe.
 
 ## Finding 11 — Multi-slot undercount is domain-independent (B9 confirmation)
-B9 confirms multi-slot undercount across algebra, statistics, trig, and geometry — not just statistics as seen in B1-7. 9 of 22 HIGH items had actionable best-answer overrides, all undercount or arithmetic error. Wolfram query tip: `statistics {data}` works; `mean, median, mode of {data}` often fails.
+B9 confirms multi-slot undercount across algebra, statistics, trig, and geometry — not just statistics as seen in B1-7. 9 of 22 HIGH items had best-answer discrepancies, all undercount or arithmetic error. Wolfram query tip: `statistics {data}` works; `mean, median, mode of {data}` often fails.
 
 ## Finding 12 — Wolfram modular recurrence syntax confirmed
 For linear recurrence mod p: `Mod[LinearRecurrence[{P,-Q},{a0,a1},N][[-1]], p]` works and returns exact result. Used to confirm 181|a(2015) for item 0017 (least odd prime of a_n sequence). Also verified mod 13, 31 ≠ 0.
@@ -85,15 +85,15 @@ Qwen sometimes flattens a correct fraction/radical answer into a concatenated di
 Qwen emits 0/1 (binary) where gold expects False/True (words). Confirmed: 0785, 0896, 0927 (also 0.000/1.000 float variant). Values correct (0=False, 1=True), pure format mismatch. Post-processing should map binary→words for T/F items.
 
 ## Finding 16 — best="INVALID"/"answer" = inference failure, not format
-Items with best_answer literally "INVALID" or "answer" represent complete inference failures (no parseable output), NOT format issues. Wolfram easily solves these (e.g. 0790 standard-form, 0872 basic limits, 0679 silo radius, 0684 critical z, 0716 R²). Flag all such items for direct Wolfram/teacher override.
+Items with best_answer literally "INVALID" or "answer" represent complete inference failures (no parseable output), NOT format issues. Wolfram easily solves these (e.g. 0790 standard-form, 0872 basic limits, 0679 silo radius, 0684 critical z, 0716 R²). Flag all such items for a direct correction from the verified answer.
 
 ## Finding 17 — P-bucket leverage profile (from B9-B13)
-- P1 (Qwen-vs-teacher disagree): ~33% INCONCLUSIVE (loaded with competition/OEIS problems where both guessed wrong), but high override yield (~32% actionable) when computable.
-- P2 (teacher-split): higher teacher/best agreement, fewer competition problems → better for verification anchoring than override-hunting.
+- P1 (Qwen-vs-teacher disagree): ~33% INCONCLUSIVE (loaded with competition/OEIS problems where both guessed wrong), but high discrepancy yield (~32% actionable) when computable.
+- P2 (teacher-split): higher teacher/best agreement, fewer competition problems → better for verification anchoring than finding discrepancies.
 - OEIS algorithm MCQs ("given a(n) definition, compute y_list") are systematically INCONCLUSIVE — Wolfram cannot compute arbitrary OEIS sequences at given indices.
 
-## Finding 18 — P3 bucket validated as the override-rich vein (B15)
-P3 (multi-answer computable, ~108 items) yielded 10 actionable undercount overrides in 25 items (40%) vs 0 in P2/B14. Confirms Finding 17: multi-slot undercount is the dominant recoverable failure, and P3 is where it concentrates. **Recommend prioritizing P3 over remaining P2 for override-hunting.**
+## Finding 18 — P3 bucket validated as the discrepancy-rich vein (B15)
+P3 (multi-answer computable, ~108 items) yielded 10 undercount discrepancies in 25 items (40%) vs 0 in P2/B14. Confirms Finding 17: multi-slot undercount is the dominant recoverable failure, and P3 is where it concentrates. **Recommend prioritizing P3 over remaining P2 for finding discrepancies.**
 
 ## Finding 19 — Undercount mode = "drop earlier sub-parts" (B15)
 Multi-PART questions (a/b/c) where Qwen answers only the FINAL part: 0027 (eq2 only), 0262 (part c only), 0470 (99% CI only, 4 of 6 slots dropped). Same as Horner (0505) and division (0444) undercounts. Post-processing lever: count sub-part markers (a/b/c, multiple [ANS]) and verify equal answer count. Worst case so far: 0470 dropped 4 of 6 slots.
@@ -105,7 +105,7 @@ Even within the "undercount-flagged" P3 subset, ~24% (6/25 in B15: 0043,0157,021
 Item 0718 best_answer = literal string "median" (the NAME of the statistic, not its value). Joins best="answer"/"INVALID" (F16) as a class where Qwen emits a placeholder/vocabulary token instead of a number. Detection: best_answer is a non-numeric English word appearing in the question.
 
 ## Finding 22 — DATASET-WIDE OPEN QUESTION: population vs sample variance convention
-Item 0542: range=285 unambiguous, but "variance"/"standard deviation" (without "sample" qualifier) — best used POPULATION (n denominator: var=7457, std=86.35) while Wolfram defaults SAMPLE (n-1: var=8388, std=91.59). This convention affects MANY stats items. **ACTION: probe with one known-gold item (submit both forms) to resolve globally before mass-applying variance overrides.**
+Item 0542: range=285 unambiguous, but "variance"/"standard deviation" (without "sample" qualifier) — best used POPULATION (n denominator: var=7457, std=86.35) while Wolfram defaults SAMPLE (n-1: var=8388, std=91.59). This convention affects MANY stats items. **ACTION: probe with one known-gold item (submit both forms) to resolve globally before mass-applying variance corrections.**
 
 ## Open questions
 - Exact Kaggle string-matching rules (whitespace, `\text{}` wrappers, trailing zeros, `^\circ` vs `°`)

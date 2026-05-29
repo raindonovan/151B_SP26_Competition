@@ -12,7 +12,7 @@ Subject distribution: statistics=163, algebra=124, trig=71, geometry=62, number_
 
 Priority queue: 118 P1 (disagreement+computable), 59 P2 (teacher split), 108 P3 (multi-slot), 219 P4 (single-slot), 372 P5 (other).
 
-Note: DISPUTED item is 0141 (Putnam 1989 A-1 base-7 variant — math gives 0, but 0 not in MCQ options A-H). Do not apply this override.
+Note: DISPUTED item is 0141 (Putnam 1989 A-1 base-7 variant — math gives 0, but 0 not in MCQ options A-H). Do not apply this value (disputed).
 
 Batch09 targets are all P1 (Qwen disagrees with teacher + computable subject). Starting with items 0000, 0002, 0004...
 
@@ -37,7 +37,7 @@ Pattern: INCONCLUSIVE rate rising as P1 queue exhausted competition-heavy items.
 
 ### Key cumulative observations
 
-Multi-slot undercount continues across ALL subjects (not just stats). Every batch had 8-10 actionable overrides. OEIS algorithm MCQs are systematically INCONCLUSIVE — Wolfram can't compute a(n) for arbitrary OEIS sequences. Competition problems in P1 bucket where both Qwen and teacher guessed wrongly cannot be verified. New failure mode found: 0557 |5|=6 (trivial arithmetic error, off-by-1).
+Multi-slot undercount continues across ALL subjects (not just stats). Every batch had 8-10 discrepancies. OEIS algorithm MCQs are systematically INCONCLUSIVE — Wolfram can't compute a(n) for arbitrary OEIS sequences. Competition problems in P1 bucket where both Qwen and teacher guessed wrongly cannot be verified. New failure mode found: 0557 |5|=6 (trivial arithmetic error, off-by-1).
 
 Wolfram query patterns that work:
 - `statistics {data}` for mean/std
@@ -62,18 +62,18 @@ B9, B10, B11, B12, B13, B14, B15, B16, B17 — 225 items total (9 batches)
 - This session DONE: ~194 (from 75 of P1 + P2 + P3 buckets)
 
 ### Key strategic discovery (LOCKED in TODO.md + FINDINGS 17-22)
-**format_flags are a reliable override filter:**
-- FLAGGED items (undercount/disagree) → ~30% actionable overrides
-- UNFLAGGED items → ~0% overrides (verification-only)
-- P1 (Qwen-vs-teacher disagree): high override but ~33% INCONCLUSIVE (competition/OEIS)
-- P2 (teacher-split): 0 overrides (best already matches consensus)
-- P3 flagged (B15-16): 17 overrides in 50 items
-- P3 unflagged (B17): 0 overrides in 25 items
+**format_flags are a reliable discrepancy filter:**
+- FLAGGED items (undercount/disagree) → ~30% discrepancies
+- UNFLAGGED items → ~0% discrepancies (verification-only)
+- P1 (Qwen-vs-teacher disagree): high discrepancy but ~33% INCONCLUSIVE (competition/OEIS)
+- P2 (teacher-split): 0 discrepancies (best already matches consensus)
+- P3 flagged (B15-16): 17 discrepancies in 50 items
+- P3 unflagged (B17): 0 discrepancies in 25 items
 
 ### New failure modes found this session
 - F14: digit-concatenation (0313 -2√14/15→"-21414", 0411, 0936) — SYSTEMATIC, PP-recoverable
 - F15: T/F binary-vs-word (0785,0896,0927: 0/1 vs False/True)
-- F16/F21: best="INVALID"/"answer"/word = inference failure, direct override
+- F16/F21: best="INVALID"/"answer"/word = inference failure, direct correction
 - F19: undercount = "drop earlier sub-parts" (answer only final part of a/b/c)
 - F22: OPEN — population vs sample variance convention (0542), needs Kaggle probe
 
@@ -81,12 +81,12 @@ B9, B10, B11, B12, B13, B14, B15, B16, B17 — 225 items total (9 batches)
 a_n=4a(n-1)-a(n-2) appears in 0017, 0606, 0211 — all least-odd-prime=181.
 
 ### What's left / next session
-- batch18 QUEUED: 22 flagged single-slot items (override candidates) + 3 unflagged
+- batch18 QUEUED: 22 flagged single-slot items (discrepancy candidates) + 3 unflagged
 - Then unflagged P3/P4 (verification), P5 (mostly INCONCLUSIVE competition/OEIS)
-- ACTION: resolve variance convention (F22) before mass variance overrides
-- 652 items still UNVERIFIED but the high-value override veins (all flagged P1+P3-multi) are largely mined
+- ACTION: resolve variance convention (F22) before mass variance corrections
+- 652 items still UNVERIFIED but the high-value discrepancy veins (all flagged P1+P3-multi) are largely mined
 
 ### Recommendation
-The actionable-override work is mostly done. Remaining batches are verification-anchoring
+The discrepancy work is mostly done. Remaining batches are verification-anchoring
 (unflagged) or low-yield (P5 competition). Next session: clear batch18 (last flagged vein),
 then decide whether full coverage is worth it vs. focusing on the F22 variance probe.

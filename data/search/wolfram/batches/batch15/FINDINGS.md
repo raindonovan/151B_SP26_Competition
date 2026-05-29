@@ -8,10 +8,10 @@
 - MED: 11/25 (44%) — multi-slot present & plausible, not each-slot independently verified
 - INCONCLUSIVE: 0/25
 
-## STRATEGY VALIDATION: P3 is the rich override bucket
-**10 actionable undercount overrides** in this batch (vs 0 in P2/B14). Confirms Finding 17 prediction: P3 (multi-answer computable) has the highest override yield because multi-slot undercount is the dominant failure mode.
+## STRATEGY VALIDATION: P3 is the discrepancy-rich bucket
+**10 undercount discrepancies** in this batch (vs 0 in P2/B14). Confirms Finding 17 prediction: P3 (multi-answer computable) has the highest discrepancy yield because multi-slot undercount is the dominant failure mode.
 
-## Actionable undercount overrides (Wolfram full answer vs collapsed best)
+## Undercount discrepancies (verified full answer vs collapsed sheet best)
 
 | ID | Full Wolfram answer | Best (undercount) | Missing |
 |----|---------------------|-------------------|---------|
