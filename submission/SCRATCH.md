@@ -135,3 +135,23 @@ The fusion already absorbed teachers upstream (via answer sheet routing). Overri
 **Statistical caveat:** 6 flips → ~1.8 slice items affected → net −1 is small signal, within noise. Can't rule out "teachers equal to kitchen_sink on MCQ", only "teachers not clearly better".
 
 Updated 29_05/SCORES.md with the corrected framing.
+
+---
+
+## CORRECTION (2026-05-28, claude_strategy): search-gold "harmful" verdict is WRONG AS STATED
+
+Line-by-line diff of slot2_search_gold_overlay.csv vs base revealed the -2.1pp was a FORMAT-APPLICATION error, not bad content:
+- id 20: base `228, 229, 250` → search `Mean=228, Median=229, Mode=250` (added labels grader can't strip)
+- id 56: base `D,D,A` → search `B` (collapsed 3 answers to 1)
+- id 60: base `C,A` → search `B` (collapsed 2 to 1)
+- id 97: base `0, 4, 4` → search `x=0, y=4, r=4` (added variable prefixes)
+- id 101: base `C,C,A,C` → search `C` (collapsed 4 to 1)
+- id 104: base `4.166` → search `7.7*31*pi/180` (unevaluated expression)
+- id 42: base `No, Yes, A` → search `No, Yes` (dropped a slot)
+- id 108: base `72, 12x` → search `A=72, B=12x` (added labels)
+
+The search GOLD answers were applied RAW. Many carried labels (Mean=, x=, A=), collapsed multi-answer items to single values, or were unevaluated expressions. Hendrycks strips none of that.
+
+CORRECTED VERDICT: "search gold applied raw is harmful; search gold normalized (strip labels, preserve multi-answer structure, skip unevaluated/collapsed) is UNTESTED and may help."
+
+This is a textbook "we thought X failed but the format application broke it" error. Confirmed via AWS Bedrock RLFT best-practices: labeled/embedded answers require normalization stripping before strict grading.
