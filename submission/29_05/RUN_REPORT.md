@@ -136,17 +136,24 @@
 
 ## 3. Results
 
-### To be filled in when Kaggle returns scores
+### Kaggle scores returned
 
 | Build | CSV | Score | Δ vs 0.706 | Slice items net |
 |-------|-----|-------|------------|-----------------|
-| 1 | undercount_plus_frac.csv | ___ | ___ | ___ |
-| 2 | mcq_prepend_fix.csv | ___ | ___ | ___ |
+| 1 | undercount_plus_frac.csv | **0.713** 🏆 | **+0.007** | **+2** |
+| 2 | mcq_prepend_fix.csv | 0.703 | **−0.003** | **−1** |
 
-### Pre-upload predictions (for calibration tracking)
+### Pre-upload predictions vs actual
 
-- **Build 1:** Predicted 0.713 (+0.007). Reasoning: slot 1 alone gained +0.007 on kitchen base; the 8 items are disjoint from slot 4's changes; full additivity expected.
-- **Build 2:** Predicted 0.713 (+0.007). Reasoning: 16 items × 0.30 slice = ~5 in slice; teacher MCQ consensus at ~30-50% conditional yield = +1-3 slice items → +0.4-1.1pp.
+- **Build 1:** Predicted 0.713 → Actual 0.713 🎯 **EXACT MATCH**. The additivity model was correct.
+- **Build 2:** Predicted 0.713 → Actual 0.703 (off by −0.010). Teacher MCQ consensus reliability was over-estimated.
+
+### Implications
+
+- **NEW BEST overall: 0.713** (undercount_plus_frac.csv, sub #35 in registry)
+- **Slot 1 (frac) + Slot 4 (undercount) are FULLY ADDITIVE** — proven empirically
+- **Teacher MCQ consensus is WEAK evidence** — multi-slot teacher consensus and decimal→fraction teacher consensus are STRONG, but single-letter MCQ teacher consensus does NOT reliably beat Qwen. Evidence-source ranking must split by task type.
+- **MCQ full-replace mechanism WORKS** — Build 2 score moved (was not silent no-op like 25_08 Slot 3), confirming the AMBER #3 fix is mechanically correct. The negative delta is a real measurement of teacher-MCQ value, not a bug.
 
 ---
 

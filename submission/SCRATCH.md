@@ -99,3 +99,23 @@ Built two new CSVs from the 0.706 base (`submission/25_08/csvs/slot4_undercount_
 ### Files for Rain to upload
 - `submission/csvs/undercount_plus_frac.csv` (943 rows, 13.96 MB)
 - `submission/csvs/mcq_prepend_fix.csv` (943 rows, 13.33 MB)
+
+## 29_05 Kaggle scores received (2026-05-28 late evening)
+
+Build 1 (undercount_plus_frac): **0.713** 🏆 (+0.007 vs 0.706 base) — EXACT match to prediction. NEW BEST.
+Build 2 (mcq_prepend_fix): 0.703 (-0.003 vs 0.706) — full-replace mechanism works (score moved); teacher MCQ consensus net-harmful.
+
+**Critical empirical learnings:**
+1. Slot 1 + Slot 4 levers are FULLY ADDITIVE (predicted +0.007, observed +0.007 exactly)
+2. MCQ full-replace mechanism WORKS — but teacher MCQ consensus is weak. Evidence-source ranking must split by task type:
+   - STRONG: teacher consensus on multi-slot, decimal→fraction (slot 4, slot 1)
+   - WEAK: teacher consensus on single-letter MCQ (this build)
+3. The "INVALID MCQ" framing from CLAUDE_STRATEGIES was misleading; items were already fixed by kitchen_sink overrides upstream of slot 4 base.
+
+**Promote undercount_plus_frac.csv to new BEST (0.713). Pick A candidate locked.**
+
+**Strategic implications:**
+- DROP TODO #17 (expand MCQ overrides) — empirical evidence rejects this lever
+- HIGH PRIORITY: TODO #8 (more undercount candidates) + #9 (more frac candidates) — both confirmed additive and replicable
+
+Updated: 29_05/SCORES.md, 29_05/RUN_REPORT.md, REGISTRY.md (now 36 entries), this SCRATCH.

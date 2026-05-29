@@ -1,11 +1,13 @@
 # Submission Registry — Definitive (from Kaggle screenshots 2026-05-28)
 
-34 successful submissions + 2 errors = 36 total attempts.
+36 successful submissions + 2 errors = 38 total attempts.
 
 | # | Repo CSV | Score | What it tested |
 |---|---|---|---|
+| 36 | 29_05/mcq_prepend_fix.csv | 0.703 | 16 MCQ items full-replace with teacher majority letter (NET HARMFUL: teachers weak on MCQ) |
+| 35 | 29_05/undercount_plus_frac.csv | **0.713** | **Slot 4 + Slot 1 additive stack — NEW BEST** |
 | 34 | 25_08/slot5_combined_all.csv | 0.696 | All 4 overlays stacked (frac+search+mcq+undercount) |
-| 33 | 25_08/slot4_undercount_expand.csv | **0.706** | **Undercount expansion (51 items) — NEW BEST** |
+| 33 | 25_08/slot4_undercount_expand.csv | 0.706 | Undercount expansion (51 items) — previous best |
 | 32 | 25_08/slot3_mcq_teacher_override.csv | 0.692 | MCQ teacher override (no-op: append-bug, AMBER #3) |
 | 31 | 25_08/slot2_search_gold_overlay.csv | 0.671 | 116 web-search GOLD overlay (NET HARMFUL) |
 | 30 | 25_08/slot1_frac_override.csv | 0.699 | 8 decimal→fraction conversions (HENDRYCKS CONFIRMED) |
@@ -41,15 +43,18 @@
 | 1 | run08v2_v1_private943.csv | 0.586 | First submission |
 
 ## Key findings
-- **NEW BEST: 0.706 from slot4_undercount_expand** (+1.4pp over previous best 0.692)
-- **Undercount expansion CONFIRMED as dominant lever** (+4 slice items from 51 changes)
-- **Hendrycks-prefers-fractions CONFIRMED** (+2 slice items from 8 decimal→fraction)
-- **Bulk search-gold overlay is NET HARMFUL** (−6 slice items from 116 changes) — needs source-quality stratification
-- **MCQ append-to-end mechanism BROKEN** (AMBER #3 confirmed: Slot 3 was exact no-op)
+- **NEW BEST: 0.713 from undercount_plus_frac** (+2.1pp over kitchen_sink 0.692)
+- **Slot 1 (frac) and Slot 4 (undercount) levers are FULLY ADDITIVE** — proven by exact prediction match in #35
+- **Teacher MCQ consensus is WEAK evidence** — 16-item full-replace override scored −0.003 (NET HARMFUL); contrast with multi-slot teacher consensus which is STRONG
+- **MCQ full-replace mechanism WORKS** — #36 score moved (not silent no-op), confirming GRADER_SPEC §3 fix is correct
+- **Undercount expansion CONFIRMED as dominant lever** (+4 slice items from 51 changes in #33)
+- **Hendrycks-prefers-fractions CONFIRMED** (+2 slice items from 8 decimal→fraction in #30, replicated in #35)
+- **Bulk search-gold overlay is NET HARMFUL** (−6 slice items from 116 changes in #31) — agent-self-computed answers labeled as GOLD
+- **MCQ append-to-end mechanism BROKEN** (AMBER #3 confirmed: #32 was exact no-op)
 - Strip neutral: #26 = #25 (both 0.692) — strip neither helps nor hurts
 - MED = +0.3pp: #26 (0.692) vs #27/#29 (0.689)
-- Order matters: #4 (0.614) vs #5 (0.438) = -17.6pp
-- CURRENT PICKS ARE WRONG: 0.438 + 0.420 selected — CHANGE BEFORE 5/31
+- Order matters: #4 (0.614) vs #5 (0.438) = −17.6pp
+- CURRENT PICKS ARE WRONG: 0.438 + 0.420 selected — CHANGE to 0.713 + something diverse BEFORE 5/31
 
 ## Naming mismatches (Kaggle vs Repo)
 - slot1_kitchen_sink_CCCCCC → slot1_kitchen_sink_C.csv
