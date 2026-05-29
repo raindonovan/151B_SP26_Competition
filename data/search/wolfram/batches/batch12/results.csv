@@ -1,0 +1,26 @@
+id,subject,type,n_ans_slots,wolfram_answer,confidence,computable,notes
+0610,calculus,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,"complex plane perimeter; competition; teacher=4pi, best=8pi/3+2sqrt(3)"
+0620,statistics,free_multi,4,"4/sqrt(7), 16/7, 2.167, B",HIGH,YES,"chi-sq test: s=4/sqrt(7), chi2=16/7, crit=2.167(df7,alpha0.05), B=FTR; best=B undercount(4->1)"
+0642,trigonometry,free_multi,3,"6, pi/3, 13",HIGH,YES,"y=7+6cos(6x): amp=6, period=2pi/6=pi/3, max=7+6=13; teacher/best agree"
+0646,calculus,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,"Taylor error bound MCQ; teacher=A, best=J; not computed"
+0647,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,"OEIS period-of-reciprocal MCQ; teacher=J, best=B"
+0655,algebra,free_single,1,S = 0.85*L,HIGH,YES,15% discount: S=0.85L; trivial; best=1 is completely wrong
+0675,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,"OEIS Hurwitz-Radon MCQ; teacher=B, best=INVALID"
+0676,statistics,free_multi,3,"D, A, A",MED,MAYBE,study design MCQ 3-slot; teacher correct; best=A (1 of 3 slots); conceptual
+0679,geometry,free_single,1,11,HIGH,YES,silo radius: 40pi*r^2+(2/3)pi*r^3=18000 -> r=11.002~11; teacher correct; best=answer WRONG
+0681,algebra,free_multi,4,"28900, 170, 135, 205",HIGH,YES,artist revenue: max=28900 at price=170; 135/205 are symmetric prices at revenue=27675; best missing first 2 slots
+0682,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,"ordered triples GCD competition; teacher=G, best=INVALID"
+0684,statistics,free_single,1,-1.55,HIGH,YES,critical z left-tail alpha=0.06: InvNorm(0.06)=-1.555; teacher=-1.55; best=answer WRONG
+0690,calculus,MCQ,0,5.2340,HIGH,YES,log_pi(400)=ln(400)/ln(pi)=5.2340; value confirmed; MCQ letter H (teacher); best=G
+0695,calculus,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,"infinitesimals comparison; teacher=E, best=INVALID; not Wolfram-computable"
+0696,algebra,free_multi,2,"x+8, -81",HIGH,YES,"complete square: x^2+16x-17=(x+8)^2-81; teacher=""x+8,-81"", best=""-8,-81"" (h value vs expression)"
+0700,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,"reciprocity sum competition; teacher=F, best=A; not Wolfram-computable"
+0704,statistics,free_multi,3,"3.652, 1.645, B",HIGH,YES,proportion z-test 3-slot; teacher/best agree (minor rounding: 3.65 vs 3.652)
+0712,statistics,free_multi,3,INCONCLUSIVE,INCONCLUSIVE,NO,"herbal tea study design MCQ 3-slot; conceptual; teacher=D,D,A, best=INVALID"
+0716,statistics,free_single,1,19/33,HIGH,YES,R^2=SSR/(SSR+SSE)=95/165=19/33; Wolfram confirmed; best=answer WRONG
+0720,calculus,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,"ODE truncation error proof; teacher=D, best=INVALID; requires analytical proof"
+0723,trigonometry,free_multi,2,"-sqrt(3)/2, -sqrt(2)/2",HIGH,YES,"sin(300)=-sqrt(3)/2, sin(225)=-sqrt(2)/2; teacher/best agree"
+0727,calculus,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,"sum optimization competition; teacher=A, best=INVALID"
+0751,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,"n-gon polygon count; teacher=31, best=45; competition"
+0762,algebra,free_single,1,2x(55x+21),HIGH,YES,8x*7x+6x*8x+7*6x+x*6x=110x^2+42x=2x(55x+21); teacher/best agree (factored vs expanded)
+0772,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,"OEIS bell-ringing MCQ; teacher=H, best=J"

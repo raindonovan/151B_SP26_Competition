@@ -1,0 +1,57 @@
+id,subject,type,n_ans_slots,best_answer,teacher_consensus,question
+0610,geometry,free_single,0,\frac{8\pi}{3}+2\sqrt3,4\pi,Let $R$ be the region in the complex plane enclosed by the curve $f(\theta)=e^{i \theta}+e^{2 i \theta}+\frac{1}{3} e^{3 i \theta}$ for $0 \leq$ $\theta \leq 2 \pi$. Compute the perimeter of $R$.
+0620,statistics,free_multi,4,B,"\frac{4}{\sqrt7},\frac{16}{7},2.167,B","A random sample of $n=8$ observations from a normal population produced the following measurements: $\begin{array}{llllllll} 7& 3& 3& 5& 5& 3& 4& 6 \cr \end{array}$ Do the data provide sufficient evidence to indicate that $\sigma^2 < 7$? Use $\alpha=0.05$, and compute the following:
+(a) $\ $ sample standard deviation $s=$ [ANS]
+(b) $\ $ test statistic $\chi^2=$ [ANS]
+(c) $\ $ critical $\chi^2_{\alpha}=$ [ANS]
+The final conclusion is [ANS] A. We can reject the null hypothesis that $\sigma^2=7$ in favor of the alternative $\sigma^2 < 7$.  B. There is not sufficient evidence to reject the null hypothesis that $\sigma^2 \geq 7$."
+0642,trigonometry,free_multi,3,"6.000, 1.047, 13.00","6,\frac{\pi}{3},13","Consider the function $y=7+6 \cos(6x)$.
+(a) What is its amplitude? [ANS]. (b) What is its period? [ANS]. (c) Sketch its graph and use your sketch to determine the largest value the graph takes. Largest value=[ANS]."
+0646,calculus,MCQ,0,J,A,"Find a ""reasonable"" upper-bound on the error in approximating $f(x) = (x-1) \cdot \ln(x-1)$ by its 3rd order Taylor polynomial $P_{3}(x)$ about $a=2$ valid for all values of $x$ such that $|x-2| \le 0.3$."
+0647,number_theory,MCQ,0,B,J,"We now define an algorithm: The definition of a(n) is: Periods of reciprocals of integers that are coprime with 10. Given the input x_list (a series of values): [61, 62, 63, 64, 65, 66, 67, 68, 69, 70], determine the corresponding output sequence y_list."
+0655,algebra,free_single,1,1,S = 0.85L,A store is offering a 15\% discount on all items. Write an equation relating the sale price $S$ for an item to its list price $L$. [ANS]
+0675,geometry,MCQ,0,INVALID,B,"We now define an algorithm: The definition of a(n) is given by the Hurwitz-Radon function evaluated at powers of 2. This function is significant in various areas of number theory and algebra, particularly in the context of quadratic forms and Clifford algebras. Given the input x_list (a series of values): [53, 54, 55, 56, 57, 58, 59, 60, 61, 62], determine the corresponding output sequence y_list."
+0676,algebra,free_multi,3,A,"D,A,A","One hundred volunteers who suffer from severe depression are available for a study. Fifty are selected at random and are given a new drug that is thought to be particularly effective in treating severe depression. The other fifty are given an existing drug for treating severe depression. A psychiatrist evaluates the symptoms of all volunteers after four weeks in order to determine if there has been substantial improvement in the severity of the depression.
+(a) Suppose the volunteers were first divided into men and women, and then half of the men were randomly assigned to the new drug and half of the women were assigned to the new drug. The remaining volunteers received the other drug. This would be an example of [ANS] A. a matched pairs design.  B. confounding. The effects of gender will b"
+0679,geometry,free_single,1,answer,11,"A grain silo consists of a cylindrical main section and a hemispherical roof. If the total volume of the silo (including the part inside the roof section) is 18000 $\textrm{ft}^3$ and the cylindrical part is 40 ft tall, what is the radius of the silo?
+Note: The following formulas may be useful:
+\mbox{Volume of a Cylinder}=\pi r^2 h \mbox{Volume of a Sphere}=\frac{4}{3} \pi r^3 Radius $=$ [ANS] ft"
+0681,statistics,free_multi,4,"135, 205","28900,170,135,205","Currently, an artist can sell $240$ paintings every year at the price of ${\$100.00}$ per painting. Each time he raises the price per painting by ${\$5.00}$, he sells $5$ fewer paintings every year. Assume the artist will raise the price per painting $x$ times. The current price per painting is ${\$100.00}$. After raising the price $x$ times, each time by ${\$5.00}$, the new price per painting will become $100+5x$ dollars. Currently he sells $240$ paintings per year. It’s given that he will sell $5$ fewer paintings each time he raises the price. After raising the price per painting $x$ times, he will sell $240-5x$ paintings every year. The artist’s income can be calculated by multiplying the number of paintings sold with price per painting. If he raises the price per painting $x$ times, hi"
+0682,number_theory,MCQ,0,INVALID,G,"Let $N$ be the number of ordered triples $(a,b,c)$ of positive integers such that $\gcd(a,b,c)=1$ and all of
+$$$\frac{2020 a}b,\,\frac {2021b}c,\,\frac{2022c}{a}$$$
+are integers. Find the remainder when $N$ is divided by 1000."
+0684,statistics,free_single,1,answer,-1.55,Find the critical $z$ value for a left-tailed test using a significance level of $\alpha=0.06.$ [ANS]
+0690,algebra,MCQ,0,G,H,"Use common logarithms or natural logarithms and a calculator to evaluate to
+four decimal places.
+$$\log _{\pi} 400$$"
+0695,trigonometry,MCQ,0,INVALID,E,"Arrange the infinitesimal quantities $\alpha=\sqrt{1+x^{2}}-\cos x \, \quad\beta=\int_{0}^{1 n ( 1-x^{2} )} \sin t \mathrm{d} t \, \quad\gamma=\mathrm{a r c s i n x}-\mathrm{x}$ at $x \to0$ so that after them is the infinitesimal of the previous order,What is the correct order of $\alpha, \beta, \gamma$ ?"
+0696,algebra,free_multi,2,"-8, -81","x+8,-81",Complete the square by writing $-17+16x+x^2$ in the form $(x-h)^2+k$. Note: the numbers $h$ and $k$ can be positive or negative. $-17+16x+x^2=\big($ [ANS] $\big)^2+$ [ANS]
+0700,number_theory,MCQ,0,A,F,"Let $p$ and $q$ be two coprime positive integers.
+What is
+$$
+\sum_{0 < x < \frac{q} {2}} \left[ \frac{p} {q} x \right] + \sum_{0 < y < \frac{q} {2}} \left[ \frac{q} {p} y \right]
+?$$"
+0704,statistics,free_multi,3,"3.652, 1.645, B","3.65,1.645,B","A new cream that advertises that it can reduce wrinkles and improve skin was subject to a recent study. A sample of $63$ women over the age of 50 used the new cream for 6 months. Of those $63$ women, $46$ of them reported skin improvement(as judged by a dermatologist). Is this evidence that the cream will improve the skin of more than $50$ \% of women over the age of 50? Test using $\alpha=0.05$.
+(a) Test statistic: $z=$ [ANS]
+(b) Critical Value: $z*=$ [ANS]
+(c) The final conclusion is [ANS] A. There is not sufficient evidence to reject the null hypothesis that $p=0.5$. That is, there is not sufficient evidence to reject that the cream can improve the skin of more than $50$ \% of women over 50.  B. We can reject the null hypothesis that $p=0.5$ and accept that $p > 0.5$. That is, the cream"
+0712,algebra,free_multi,3,INVALID,"D,D,A","A group of college students believes that herbal tea has remarkable restorative powers. To test their theory, they make weekly visits to a local nursing home, visiting with residents, talking with them, and serving them herbal tea. After several months, many of the residents are more cheerful and healthy.
+(a) Which of the following may be correctly concluded from this study? [ANS] A. The results of the study are not convincing because only a local nursing home was used and only for a few months.  B. There is some evidence that herbal tea may improve one's emotional state. The results would be completely convincing if a scientist had conducted the study rather than a group of college students.  C. Herbal tea does improve one's emotional state, at least for the residents of nursing homes.  D"
+0716,statistics,free_single,1,answer,\frac{19}{33},"Suppose that for a given least-squares regression, the sum of squares for error is 70 and the sum of squares for regression is 95. Find the coefficient of determination. Coefficient of Determination=[ANS]"
+0720,number_theory,MCQ,0,INVALID,D,"The given initial value problem
+$$
+\left\{\begin{array} {l} {y^{\prime}=ax+b,} \\ {y(0)=0} \\ \end{array} \right.
+$$
+has the exact solution $y(x)=\frac{a}{2}x^{2}+bx$. Prove that the global truncation error of the approximate solution $y_n$ obtained using the Euler method with step size $h$ is ()."
+0723,trigonometry,free_multi,2,"-\dfrac{\sqrt{3}}{2}, -\dfrac{\sqrt{2}}{2}","-\frac{\sqrt3}{2},-\frac{\sqrt2}{2}","Use an identity to find the exact value of each expression: Note: You are not allowed to use decimals in your answer. $\sin(187^\circ) \cos(113^\circ)+\cos(187^\circ) \sin(113^\circ)$=[ANS]
+$\sin(388^\circ) \cos(163^\circ)-\cos(388^\circ) \sin(163^\circ)$=[ANS]"
+0727,trigonometry,MCQ,0,INVALID,A,"Determine the greatest possible value of $\sum_{i=1}^{10} \cos(3x_i)$ for real numbers $x_1,x_2,\dots,x_{10}$ satisfying $\sum_{i=1}^{10} \cos(x_i) = 0$."
+0751,geometry,free_single,0,45,31,"Given an odd integer $n \geq 3$. Let $V$ be the set of vertices of a regular $n$-gon, and $P$ be the set of all regular polygons formed by points in $V$. For instance, when $n=15$, $P$ consists of $1$ regular $15$-gon, $3$ regular pentagons, and $5$ regular triangles.
+
+Initially, all points in $V$ are uncolored. Two players, $A$ and $B$, play a game where they take turns coloring an uncolored point, with player $A$ starting and coloring points red, and player $B$ coloring points blue. The game ends when all points are colored. A regular polygon in $P$ is called $\textit{good}$ if it has more red points than blue points.
+
+Let $K(n)$ be the largest positive integer $k$ such that no matter how player $B$ plays, player $A$ can ensure that there are at least $k$ $\textit{good}$ polygons.
+
+Find "
+0762,algebra,free_single,1,110x^2 + 42x,2x(55x+21),"Write the expression $(8x)(7x)+(6x) (8x)+7 (6x)+x(6x)$ in a simpler form, if possible. If it is not possible to simplify, re-write the given expression. [ANS]"
+0772,number_theory,MCQ,0,J,H,"We now define an algorithm: The definition of a(n) is the sequence generated by the positions of bell 1 (the treble bell) in the n-th permutation of the Plain Bob Minimus change-ringing method, a traditional sequence of permutations in bell-ringing that covers all permutations of {1,2,3,4} with a period of 24. Given the input x_list (a series of values): [90, 91, 92, 93, 94, 95, 96, 97, 98, 99], determine the corresponding output sequence y_list."

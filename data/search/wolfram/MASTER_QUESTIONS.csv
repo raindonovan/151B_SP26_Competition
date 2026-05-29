@@ -609,7 +609,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0607,geometry,free_multi,18,DONE,"0, 0, 4, 0, 0, 14, 6, 6, 20, -6, -6, 0, -4, -4, 10, -4, -4, -12",HIGH,B11,YES,"sphere centers 18-slot; teacher/best agree (same values, different format)",What center should a sphere of radius 4 have so that it sits on the xy plane wit
 0608,trigonometry,free_multi,4,DONE,"B, A, A, 1981",HIGH,B11,YES,"time-vs-year: B(not fn), A(fn), A(record meaning), 1981; best=1981 is undercount (only slot4)","Since Roger Bannister broke the 4-minute mile on May 6, 1954, the record has bee"
 0609,other,free_single,1,UNVERIFIED,,,,MAYBE,,A convertible and a minivan leave a highway junction at the same time. The conve
-0610,geometry,free_single,0,UNVERIFIED,,,,YES,,Let $R$ be the region in the complex plane enclosed by the curve $f(\theta)=e^{i
+0610,geometry,free_single,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B12,YES,"complex plane perimeter; competition; teacher=4pi, best=8pi/3+2sqrt(3)",Let $R$ be the region in the complex plane enclosed by the curve $f(\theta)=e^{i
 0611,statistics,free_single,1,UNVERIFIED,,,,YES,,A regression line using 33 observations produced SSR=140 and SSE=57. Determine t
 0612,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Write the following rational number in simplest form: $\frac{24560172}{29255499}
 0613,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,"What is the expression for $\beta$ being linearly represented by $\alpha_{1}, \a"
@@ -619,7 +619,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0617,other,free_multi,4,UNVERIFIED,,,,MAYBE,,Describe a series of shifts which translates the graph $y=(x-7)^3-6$ back onto t
 0618,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,The volume of the solid of revolution formed by rotating the region bounded by t
 0619,statistics,free_multi,3,UNVERIFIED,,,,YES,,Test the claim that the two samples described below come from populations with t
-0620,statistics,free_multi,4,UNVERIFIED,,,,YES,,A random sample of $n=8$ observations from a normal population produced the foll
+0620,statistics,free_multi,4,DONE,"4/sqrt(7), 16/7, 2.167, B",HIGH,B12,YES,"chi-sq test: s=4/sqrt(7), chi2=16/7, crit=2.167(df7,alpha0.05), B=FTR; best=B undercount(4->1)",A random sample of $n=8$ observations from a normal population produced the foll
 0621,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Two numbers have a sum of $153$. If one number is $k$, represent the other numbe"
 0622,statistics,free_multi,4,DONE,"3.854, 2.567, Yes",PARTIAL,B4,YES,slot 4 unknown (interpretation phrase),There is a lot of interest in the relationship between studying music and studyi
 0623,other,free_multi,6,UNVERIFIED,,,,MAYBE,,"Now that we have looked at the Gauss Trick, we would like to see why it works. M"
@@ -641,12 +641,12 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0639,statistics,free_single,1,UNVERIFIED,,,,YES,,Suppose you calculate a 99\% confidence interval of 14.51 to 21.16. Determine th
 0640,other,MCQ,0,UNVERIFIED,,,,MAYBE,,What is the coefficient of $x^3y^{13}$ in $\left(\frac 12x + y\right)^{17}$ ?
 0641,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Estimate the product by rounding each of the given values to the nearest tenth. 
-0642,trigonometry,free_multi,3,UNVERIFIED,,,,YES,,Consider the function $y=7+6 \cos(6x)$. (a) What is its amplitude? [ANS]. (b) Wh
+0642,trigonometry,free_multi,3,DONE,"6, pi/3, 13",HIGH,B12,YES,"y=7+6cos(6x): amp=6, period=2pi/6=pi/3, max=7+6=13; teacher/best agree",Consider the function $y=7+6 \cos(6x)$. (a) What is its amplitude? [ANS]. (b) Wh
 0643,other,free_multi,5,UNVERIFIED,,,,MAYBE,,Are the following statements true or false? [ANS] 1. If $f$ and $h$ are reciproc
 0644,number_theory,MCQ,0,UNVERIFIED,,,,YES,,"How many positive integers $n\le 2010$ satisfy $\phi (n)|n$ , where $ \phi (n)$ "
 0645,other,free_single,1,UNVERIFIED,,,,MAYBE,,"A flight costs \$11,500 to operate, regardless of the number of passengers. Each"
-0646,calculus,MCQ,0,UNVERIFIED,,,,YES,,"Find a ""reasonable"" upper-bound on the error in approximating $f(x) = (x-1) \cdo"
-0647,number_theory,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is: Periods of reciprocals of
+0646,calculus,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B12,YES,"Taylor error bound MCQ; teacher=A, best=J; not computed","Find a ""reasonable"" upper-bound on the error in approximating $f(x) = (x-1) \cdo"
+0647,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B12,YES,"OEIS period-of-reciprocal MCQ; teacher=J, best=B",We now define an algorithm: The definition of a(n) is: Periods of reciprocals of
 0648,algebra,free_multi,2,UNVERIFIED,,,,YES,,"A manufacturer pays its assembly line workers \$11.51 per hour. In addition, wor"
 0649,other,free_single,0,UNVERIFIED,,,,MAYBE,,"Let $n$ be a positive integer. Given an $n\times n$ board, the unit cell in the "
 0650,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Let $f(x) = \mathrm{e}^{x}$. On the interval $\left[ 0, 1 \right]$, provide a ta"
@@ -654,7 +654,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0652,other,free_single,0,UNVERIFIED,,,,MAYBE,,"Let $G$ be a finite abelian group. There is a magic box $T$. At any point, an el"
 0653,algebra,free_multi,3,UNVERIFIED,,,,YES,,Nicotine leaves the body at a constant rate. At a time of $4$ hours after smokin
 0654,algebra,free_multi,4,UNVERIFIED,,,,YES,,"Find $\small{f(12), f(-7), f(\pi), \;\mbox{and}\; f(-7.1)}$ for: \small{f(x)=\be"
-0655,algebra,free_single,1,UNVERIFIED,,,,YES,,A store is offering a 15\% discount on all items. Write an equation relating the
+0655,algebra,free_single,1,DONE,S = 0.85*L,HIGH,B12,YES,15% discount: S=0.85L; trivial; best=1 is completely wrong,A store is offering a 15\% discount on all items. Write an equation relating the
 0656,algebra,free_single,1,UNVERIFIED,,,,YES,,Enter a quadratic polynomial which has roots at 5/6 and 3. [ANS]
 0657,statistics,free_multi,8,DONE,"172.52, 187.48, 172.87, 187.13, 0, 5.167, -10.33, 10.33",HIGH,B5,YES,difference of means 8-slot,The purpose of this question is to compare the variability of $\overline{x}_1$ a
 0658,algebra,MCQ,0,UNVERIFIED,,,,YES,,Let $f(x) = 4x^3 + 2x^2 + x + 1$. Try to find a polynomial $P_2(x)$ of degree no
@@ -674,36 +674,36 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0672,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Evaluate $L=\lim_{(x,y) \to (-1,1)}\left(\frac{ x \cdot y \cdot (x+y)-5 \cdot y "
 0673,number_theory,free_single,0,UNVERIFIED,,,,YES,,"Consider a $2025\times 2025$ board where we identify the squares with pairs $(i,"
 0674,statistics,free_single,1,UNVERIFIED,,,,YES,,"Add the two binomials, making sure to simplify your answer as much as possible. "
-0675,geometry,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is given by the Hurwitz-Radon
-0676,algebra,free_multi,3,UNVERIFIED,,,,YES,,One hundred volunteers who suffer from severe depression are available for a stu
+0675,geometry,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B12,YES,"OEIS Hurwitz-Radon MCQ; teacher=B, best=INVALID",We now define an algorithm: The definition of a(n) is given by the Hurwitz-Radon
+0676,algebra,free_multi,3,DONE,"D, A, A",MED,B12,YES,study design MCQ 3-slot; teacher correct; best=A (1 of 3 slots); conceptual,One hundred volunteers who suffer from severe depression are available for a stu
 0677,statistics,MCQ,0,UNVERIFIED,,,,YES,,"The number of home runs the Boston Red Sox hit in eight consecutivegames were 2,"
 0678,statistics,free_single,1,UNVERIFIED,,,,YES,,Teaneck High had an enrollment of 11510 in 1986 and an enrollment of 12910 in ye
-0679,geometry,free_single,1,UNVERIFIED,,,,YES,,A grain silo consists of a cylindrical main section and a hemispherical roof. If
+0679,geometry,free_single,1,DONE,11,HIGH,B12,YES,silo radius: 40pi*r^2+(2/3)pi*r^3=18000 -> r=11.002~11; teacher correct; best=answer WRONG,A grain silo consists of a cylindrical main section and a hemispherical roof. If
 0680,calculus,free_multi,4,UNVERIFIED,,,,YES,,"Calculate the successive average rates of change for the function, $H(x)$ in the"
-0681,statistics,free_multi,4,UNVERIFIED,,,,YES,,"Currently, an artist can sell $240$ paintings every year at the price of ${\$100"
-0682,number_theory,MCQ,0,UNVERIFIED,,,,YES,,"Let $N$ be the number of ordered triples $(a,b,c)$ of positive integers such tha"
+0681,statistics,free_multi,4,DONE,"28900, 170, 135, 205",HIGH,B12,YES,artist revenue: max=28900 at price=170; 135/205 are symmetric prices at revenue=27675; best missing first 2 slots,"Currently, an artist can sell $240$ paintings every year at the price of ${\$100"
+0682,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B12,YES,"ordered triples GCD competition; teacher=G, best=INVALID","Let $N$ be the number of ordered triples $(a,b,c)$ of positive integers such tha"
 0683,other,free_single,1,UNVERIFIED,,,,MAYBE,,Change the fraction ${-{\textstyle\frac{13}{20}}}$ into a decimal. ${{-{\textsty
-0684,statistics,free_single,1,UNVERIFIED,,,,YES,,Find the critical $z$ value for a left-tailed test using a significance level of
+0684,statistics,free_single,1,DONE,-1.55,HIGH,B12,YES,critical z left-tail alpha=0.06: InvNorm(0.06)=-1.555; teacher=-1.55; best=answer WRONG,Find the critical $z$ value for a left-tailed test using a significance level of
 0685,other,free_single,1,UNVERIFIED,,,,MAYBE,,In which of the following scenarios will conducting a paired $t$-test for means 
 0686,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"If a real number x is chosen at random in the interval [0, 3] and a real number "
 0687,algebra,free_single,1,UNVERIFIED,,,,YES,,A construction company must pay a fine for completing a job late. The company us
 0688,other,free_single,0,UNVERIFIED,,,,MAYBE,,"In Mexico, there live $n$ Mexicans, some pairs of which know each other. They de"
 0689,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"During a one-month promotional campaign, Tiger Films gave either a free DVD rent"
-0690,algebra,MCQ,0,UNVERIFIED,,,,YES,,Use common logarithms or natural logarithms and a calculator to evaluate to four
+0690,algebra,MCQ,0,DONE,5.2340,HIGH,B12,YES,log_pi(400)=ln(400)/ln(pi)=5.2340; value confirmed; MCQ letter H (teacher); best=G,Use common logarithms or natural logarithms and a calculator to evaluate to four
 0691,statistics,free_single,1,UNVERIFIED,,,,YES,,How many rounds of golf do those physicians who play golf play per year? A surve
 0692,trigonometry,free_single,1,UNVERIFIED,,,,YES,,Find the positive value of $x$ which satisfies $x=3.8 \cos(x)$. Give the answer 
 0693,other,free_multi,3,UNVERIFIED,,,,MAYBE,,Let $y=f(x)$ be a periodic function whose values are given below. Find the perio
 0694,other,free_multi,4,UNVERIFIED,,,,MAYBE,,"Bea T. Howen, a sophomore college student, lost her scholarship after receiving "
-0695,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,"Arrange the infinitesimal quantities $\alpha=\sqrt{1+x^{2}}-\cos x \, \quad\beta"
-0696,algebra,free_multi,2,UNVERIFIED,,,,YES,,Complete the square by writing $-17+16x+x^2$ in the form $(x-h)^2+k$. Note: the 
+0695,trigonometry,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B12,YES,"infinitesimals comparison; teacher=E, best=INVALID; not Wolfram-computable","Arrange the infinitesimal quantities $\alpha=\sqrt{1+x^{2}}-\cos x \, \quad\beta"
+0696,algebra,free_multi,2,DONE,"x+8, -81",HIGH,B12,YES,"complete square: x^2+16x-17=(x+8)^2-81; teacher=""x+8,-81"", best=""-8,-81"" (h value vs expression)",Complete the square by writing $-17+16x+x^2$ in the form $(x-h)^2+k$. Note: the 
 0697,other,free_single,1,UNVERIFIED,,,,MAYBE,,Suppose $r$ varies directly with $t$ and that $r=30$ when $t=5$. What is the val
 0698,other,free_single,1,UNVERIFIED,,,,MAYBE,,It’s give that $76\cdot67=5092$. Use this fact to calculate the following: ${7.6
 0699,other,free_multi,2,UNVERIFIED,,,,MAYBE,,The expression x^{3}\left(\frac{1}{7} x^{4}\right)(42x^{-10}) equals $c/x^e$ whe
-0700,number_theory,MCQ,0,UNVERIFIED,,,,YES,,Let $p$ and $q$ be two coprime positive integers. What is $$ \sum_{0 < x < \frac
+0700,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B12,YES,"reciprocity sum competition; teacher=F, best=A; not Wolfram-computable",Let $p$ and $q$ be two coprime positive integers. What is $$ \sum_{0 < x < \frac
 0701,other,free_single,1,UNVERIFIED,,,,MAYBE,,You are flying in an open plane at an altitude of 7744 feet and you drop a Coca 
 0702,algebra,free_single,1,UNVERIFIED,,,,YES,,Perform the operation (-u^4-2 u^3-u^2-5 u-5)+(-2 u^3+4 u^2-u-3) and combine line
 0703,calculus,MCQ,0,UNVERIFIED,,,,YES,,"Compute the integral: $$ \int \frac{ 6 }{ \sin(3 \cdot x)^6 } \, dx $$"
-0704,statistics,free_multi,3,UNVERIFIED,,,,YES,,A new cream that advertises that it can reduce wrinkles and improve skin was sub
+0704,statistics,free_multi,3,DONE,"3.652, 1.645, B",HIGH,B12,YES,proportion z-test 3-slot; teacher/best agree (minor rounding: 3.65 vs 3.652),A new cream that advertises that it can reduce wrinkles and improve skin was sub
 0705,other,free_multi,4,UNVERIFIED,,,,MAYBE,,"Select True or False, depending on whether the corresponding statement is true o"
 0706,other,free_single,1,UNVERIFIED,,,,MAYBE,,Find this expression’s value. Round your answer to two or more decimal places. $
 0707,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"A man invests his savings in two accounts, one paying 6 percent and the other pa"
@@ -711,22 +711,22 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0709,number_theory,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is the period length of the s
 0710,trigonometry,free_single,1,UNVERIFIED,,,,YES,,Find all solutions to the equation $ 8 \cos(x+3)=1$ in the interval $0 \leq x \l
 0711,geometry,MCQ,0,UNVERIFIED,,,,YES,,"We now define an algorithm: The definition of a(n) is: Triangle T(n,k) of number"
-0712,algebra,free_multi,3,UNVERIFIED,,,,YES,,A group of college students believes that herbal tea has remarkable restorative 
+0712,algebra,free_multi,3,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B12,YES,"herbal tea study design MCQ 3-slot; conceptual; teacher=D,D,A, best=INVALID",A group of college students believes that herbal tea has remarkable restorative 
 0713,algebra,free_multi,2,UNVERIFIED,,,,YES,,Simplify. (a) $-\sqrt[5]{243}=$ [ANS] (b) $\sqrt[4]{-81}=$ [ANS] Write your answ
 0714,other,free_single,1,UNVERIFIED,,,,MAYBE,,Jason buys sports equipment worth \$ \$80.00 and pays 5\% sales tax. What is the
 0715,other,free_multi,4,DONE,"5, 7, 9, 13, 8.5, 6, 7, 8, 9, 10, 11, 8.5",HIGH,B5,MAYBE,sampling distribution 4-slot (lists as slots); format risk,Consider the population of four juvenile condors. Their weights in pounds are: 5
-0716,statistics,free_single,1,UNVERIFIED,,,,YES,,"Suppose that for a given least-squares regression, the sum of squares for error "
+0716,statistics,free_single,1,DONE,19/33,HIGH,B12,YES,R^2=SSR/(SSR+SSE)=95/165=19/33; Wolfram confirmed; best=answer WRONG,"Suppose that for a given least-squares regression, the sum of squares for error "
 0717,other,free_single,1,UNVERIFIED,,,,MAYBE,,Evaluate the expression $6^3+6^5$. [ANS] [NOTE: Your answer cannot be an algebra
 0718,statistics,free_multi,3,UNVERIFIED,,,,YES,,"Here is a list of some cities’ population: ${72704000,\;\;72120000,\;\;75396000,"
 0719,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"How many ways are there to color the vertices of a cube with two colors, up to r"
-0720,number_theory,MCQ,0,UNVERIFIED,,,,YES,,"The given initial value problem $$ \left\{\begin{array} {l} {y^{\prime}=ax+b,} \"
+0720,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B12,YES,"ODE truncation error proof; teacher=D, best=INVALID; requires analytical proof","The given initial value problem $$ \left\{\begin{array} {l} {y^{\prime}=ax+b,} \"
 0721,statistics,free_multi,3,DONE,"D, A, A",HIGH,B5,YES,3-slot CLT/sampling MCQ,"For each problem, select the best response. (a) How much do you plan to spend fo"
 0722,geometry,free_single,0,UNVERIFIED,,,,YES,,"At time $t=0$, Hobbes writes down positive real numbers at the vertices of a reg"
-0723,trigonometry,free_multi,2,UNVERIFIED,,,,YES,,Use an identity to find the exact value of each expression: Note: You are not al
+0723,trigonometry,free_multi,2,DONE,"-sqrt(3)/2, -sqrt(2)/2",HIGH,B12,YES,"sin(300)=-sqrt(3)/2, sin(225)=-sqrt(2)/2; teacher/best agree",Use an identity to find the exact value of each expression: Note: You are not al
 0724,other,free_single,0,UNVERIFIED,,,,MAYBE,,"Find the smallest real number $M$ such that there exist four complex numbers $a,"
 0725,statistics,free_multi,3,UNVERIFIED,,,,YES,,"The number of men and women among professors in Math, Physics, Chemistry, Lingui"
 0726,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"According to a salad recipe, each teaspoon of vinegar should be mixed with $6$ t"
-0727,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,Determine the greatest possible value of $\sum_{i=1}^{10} \cos(3x_i)$ for real n
+0727,trigonometry,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B12,YES,"sum optimization competition; teacher=A, best=INVALID",Determine the greatest possible value of $\sum_{i=1}^{10} \cos(3x_i)$ for real n
 0728,other,free_single,1,UNVERIFIED,,,,MAYBE,,After a 5\% raise your new salary is \$ 84000. Before the raise your salary was 
 0729,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,Consider matrix $A=\left( \begin{matrix} {{{2}}} & {{{5}}} & {{{0}}} & {{{0}}} \
 0730,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Evaluate $L=\lim_{P(x,y) \to P(m+n,m-n)}\left(\frac{ x^2-m \cdot x-x \cdot y+m \"
@@ -750,7 +750,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0748,statistics,free_multi,12,DONE,"222.51, 186.49, 79.43, 66.57, 50.05, 41.95, 31.01, 25.99, 20.79, 3, 11.345, B",HIGH,B5,YES,chi-sq independence 12-slot,"It has been suggusted that the highest priority of retirees is travel. Thus, a s"
 0749,algebra,free_multi,6,DONE,"5, 5, 5, 5, 5, is, 14/9, 19/14, 24/19, 29/24, 34/29, is not, 9+5n, (-1)^(n+1)(5n+9)",PARTIAL,B6,YES,format uncertain; 6 ANS slots but exact slot boundaries unclear,"Consider the sequence 9, 14, 19, 24, 29, 34... Compute the difference between su"
 0750,other,free_multi,3,UNVERIFIED,,,,MAYBE,,Oil leaks from a tank. At hour $t=0$ there are 350 gallons of oil in the tank. E
-0751,geometry,free_single,0,UNVERIFIED,,,,YES,,Given an odd integer $n \geq 3$. Let $V$ be the set of vertices of a regular $n$
+0751,geometry,free_single,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B12,YES,"n-gon polygon count; teacher=31, best=45; competition",Given an odd integer $n \geq 3$. Let $V$ be the set of vertices of a regular $n$
 0752,geometry,MCQ,0,UNVERIFIED,,,,YES,,"Given a parallelogram $ABCD$ , let $\mathcal{P}$ be a plane such that the distan"
 0753,calculus,free_multi,4,UNVERIFIED,,,,YES,,Steadia is an island which experienced approximately linear population growth fr
 0754,algebra,free_single,1,UNVERIFIED,,,,YES,,"Let $m(x)=4x^2-7$, $n(x)=5x$, and $o(x)=\sqrt{3x+5}$. Find a simplified formula "
@@ -761,7 +761,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0759,statistics,free_single,1,UNVERIFIED,,,,YES,,Altough in general you cannot know the sampling distribution of the sample mean 
 0760,calculus,MCQ,0,UNVERIFIED,,,,YES,,Find the sum of the series $\sum_{n=1}^\infty \frac{ x^{4 \cdot n-1} }{ 4 \cdot 
 0761,other,free_single,1,UNVERIFIED,,,,MAYBE,,"The current value $f(n)$ is five times the previous value, plus four. Find a rec"
-0762,algebra,free_single,1,UNVERIFIED,,,,YES,,"Write the expression $(8x)(7x)+(6x) (8x)+7 (6x)+x(6x)$ in a simpler form, if pos"
+0762,algebra,free_single,1,DONE,2x(55x+21),HIGH,B12,YES,8x*7x+6x*8x+7*6x+x*6x=110x^2+42x=2x(55x+21); teacher/best agree (factored vs expanded),"Write the expression $(8x)(7x)+(6x) (8x)+7 (6x)+x(6x)$ in a simpler form, if pos"
 0763,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Write a numerical expression for each verbal phrase. nine added to four [ANS] ei
 0764,algebra,free_single,1,UNVERIFIED,,,,YES,,Rewrite the expression \ln (a+b)+4 \ln (a-b)-5 \ln c as a single logarithm $\ln 
 0765,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Mr. Cleary's class and Ms. Ntuala's class go to use the computer lab. There are 
@@ -771,7 +771,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0769,trigonometry,free_single,1,UNVERIFIED,,,,YES,,An angle of $9 \pi$ radians can be converted to an angle of [ANS] degrees.
 0770,other,free_multi,10,UNVERIFIED,,,,MAYBE,,"For each of the following, find the base $b$ if the graph of $y=b^x$ contains th"
 0771,trigonometry,free_single,1,UNVERIFIED,,,,YES,,Find the exact value as fraction (not a decimal approximation). $ \sec\left(\fra
-0772,number_theory,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is the sequence generated by 
+0772,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B12,YES,"OEIS bell-ringing MCQ; teacher=H, best=J",We now define an algorithm: The definition of a(n) is the sequence generated by 
 0773,other,free_single,1,UNVERIFIED,,,,MAYBE,,Express the average age of three sisters in the terms of the age $a$ of the firs
 0774,statistics,free_multi,5,UNVERIFIED,,,,YES,,"Find the five-number summary for the following 10 values: 31,\ 28,\ 32,\ 26,\ 42"
 0775,trigonometry,free_single,1,UNVERIFIED,,,,YES,,Find the equation of a sine wave that is obtained by shifting the graph of $y=\s

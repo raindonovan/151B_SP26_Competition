@@ -144,3 +144,28 @@
 | 0606 | B11 | HIGH | 181 | least odd prime of y_25 (same recurrence as 0017); y_25 |
 | 0607 | B11 | HIGH | 0, 0, 4, 0, 0, 14, 6, 6, 20, -6, -6, 0, -4, -4, 10, -4, | sphere centers 18-slot; teacher/best agree (same values |
 | 0608 | B11 | HIGH | B, A, A, 1981 | time-vs-year: B(not fn), A(fn), A(record meaning), 1981 |
+| 0610 | B12 | INCONCLUSIVE | INCONCLUSIVE | complex plane perimeter; competition; teacher=4pi, best |
+| 0620 | B12 | HIGH | 4/sqrt(7), 16/7, 2.167, B | chi-sq test: s=4/sqrt(7), chi2=16/7, crit=2.167(df7,alp |
+| 0642 | B12 | HIGH | 6, pi/3, 13 | y=7+6cos(6x): amp=6, period=2pi/6=pi/3, max=7+6=13; tea |
+| 0646 | B12 | INCONCLUSIVE | INCONCLUSIVE | Taylor error bound MCQ; teacher=A, best=J; not computed |
+| 0647 | B12 | INCONCLUSIVE | INCONCLUSIVE | OEIS period-of-reciprocal MCQ; teacher=J, best=B |
+| 0655 | B12 | HIGH | S = 0.85*L | 15% discount: S=0.85L; trivial; best=1 is completely wr |
+| 0675 | B12 | INCONCLUSIVE | INCONCLUSIVE | OEIS Hurwitz-Radon MCQ; teacher=B, best=INVALID |
+| 0676 | B12 | MED | D, A, A | study design MCQ 3-slot; teacher correct; best=A (1 of  |
+| 0679 | B12 | HIGH | 11 | silo radius: 40pi*r^2+(2/3)pi*r^3=18000 -> r=11.002~11; |
+| 0681 | B12 | HIGH | 28900, 170, 135, 205 | artist revenue: max=28900 at price=170; 135/205 are sym |
+| 0682 | B12 | INCONCLUSIVE | INCONCLUSIVE | ordered triples GCD competition; teacher=G, best=INVALI |
+| 0684 | B12 | HIGH | -1.55 | critical z left-tail alpha=0.06: InvNorm(0.06)=-1.555;  |
+| 0690 | B12 | HIGH | 5.2340 | log_pi(400)=ln(400)/ln(pi)=5.2340; value confirmed; MCQ |
+| 0695 | B12 | INCONCLUSIVE | INCONCLUSIVE | infinitesimals comparison; teacher=E, best=INVALID; not |
+| 0696 | B12 | HIGH | x+8, -81 | complete square: x^2+16x-17=(x+8)^2-81; teacher="x+8,-8 |
+| 0700 | B12 | INCONCLUSIVE | INCONCLUSIVE | reciprocity sum competition; teacher=F, best=A; not Wol |
+| 0704 | B12 | HIGH | 3.652, 1.645, B | proportion z-test 3-slot; teacher/best agree (minor rou |
+| 0712 | B12 | INCONCLUSIVE | INCONCLUSIVE | herbal tea study design MCQ 3-slot; conceptual; teacher |
+| 0716 | B12 | HIGH | 19/33 | R^2=SSR/(SSR+SSE)=95/165=19/33; Wolfram confirmed; best |
+| 0720 | B12 | INCONCLUSIVE | INCONCLUSIVE | ODE truncation error proof; teacher=D, best=INVALID; re |
+| 0723 | B12 | HIGH | -sqrt(3)/2, -sqrt(2)/2 | sin(300)=-sqrt(3)/2, sin(225)=-sqrt(2)/2; teacher/best  |
+| 0727 | B12 | INCONCLUSIVE | INCONCLUSIVE | sum optimization competition; teacher=A, best=INVALID |
+| 0751 | B12 | INCONCLUSIVE | INCONCLUSIVE | n-gon polygon count; teacher=31, best=45; competition |
+| 0762 | B12 | HIGH | 2x(55x+21) | 8x*7x+6x*8x+7*6x+x*6x=110x^2+42x=2x(55x+21); teacher/be |
+| 0772 | B12 | INCONCLUSIVE | INCONCLUSIVE | OEIS bell-ringing MCQ; teacher=H, best=J |
