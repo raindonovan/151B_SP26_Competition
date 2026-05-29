@@ -50,3 +50,43 @@ Wolfram query patterns that work:
 
 ### What's left for next run
 18 remaining P1 items (see TODO.md batch13), then P2 (59 teacher-split), P3 (108 multi-answer). ~777 UNVERIFIED. P2 should have better Wolfram hit rate than P1 since P2 items are mostly stats/math where teachers disagreed, not competition problems.
+
+---
+## Agent signoff — claude_wolf (claude_vscode) — 2026-05-29 (session 2 extended)
+
+### Batches this session
+B9, B10, B11, B12, B13, B14, B15, B16, B17 — 225 items total (9 batches)
+
+### Totals
+- DONE: 259 | INCONCLUSIVE: 31 | DISPUTED: 1 | UNVERIFIED: 652
+- This session DONE: ~194 (from 75 of P1 + P2 + P3 buckets)
+
+### Key strategic discovery (LOCKED in TODO.md + FINDINGS 17-22)
+**format_flags are a reliable override filter:**
+- FLAGGED items (undercount/disagree) → ~30% actionable overrides
+- UNFLAGGED items → ~0% overrides (verification-only)
+- P1 (Qwen-vs-teacher disagree): high override but ~33% INCONCLUSIVE (competition/OEIS)
+- P2 (teacher-split): 0 overrides (best already matches consensus)
+- P3 flagged (B15-16): 17 overrides in 50 items
+- P3 unflagged (B17): 0 overrides in 25 items
+
+### New failure modes found this session
+- F14: digit-concatenation (0313 -2√14/15→"-21414", 0411, 0936) — SYSTEMATIC, PP-recoverable
+- F15: T/F binary-vs-word (0785,0896,0927: 0/1 vs False/True)
+- F16/F21: best="INVALID"/"answer"/word = inference failure, direct override
+- F19: undercount = "drop earlier sub-parts" (answer only final part of a/b/c)
+- F22: OPEN — population vs sample variance convention (0542), needs Kaggle probe
+
+### Recurrence template found
+a_n=4a(n-1)-a(n-2) appears in 0017, 0606, 0211 — all least-odd-prime=181.
+
+### What's left / next session
+- batch18 QUEUED: 22 flagged single-slot items (override candidates) + 3 unflagged
+- Then unflagged P3/P4 (verification), P5 (mostly INCONCLUSIVE competition/OEIS)
+- ACTION: resolve variance convention (F22) before mass variance overrides
+- 652 items still UNVERIFIED but the high-value override veins (all flagged P1+P3-multi) are largely mined
+
+### Recommendation
+The actionable-override work is mostly done. Remaining batches are verification-anchoring
+(unflagged) or low-yield (P5 competition). Next session: clear batch18 (last flagged vein),
+then decide whether full coverage is worth it vs. focusing on the F22 variance probe.

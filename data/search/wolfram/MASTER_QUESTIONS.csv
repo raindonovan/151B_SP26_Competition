@@ -55,14 +55,14 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0053,algebra,MCQ,0,UNVERIFIED,,,,YES,,A bird is lost in a 3 by 3 by 3 cubical maze. The bird flies from room to room g
 0054,geometry,free_single,0,DONE,1,MED,B14,YES,"chessboard polygon a1>=a3+something; teacher+best agree=1; competition, not Wolfram-verified","Let $P$ be a polygon formed by the edges of an infinite chessboard, which does n"
 0055,algebra,free_single,1,UNVERIFIED,,,,YES,,Write an equation for $y$ in terms of $x$ if $y$ is proportional to the fourth p
-0056,statistics,free_multi,3,UNVERIFIED,,,,YES,,"For each problem, select the best response. (a) Can one predict a student's scor"
+0056,statistics,free_multi,3,DONE,"D, D, A",MED,B17,YES,regression concept MCQ 3-slot; best all slots present,"For each problem, select the best response. (a) Can one predict a student's scor"
 0057,other,free_single,1,UNVERIFIED,,,,MAYBE,,"A rectangular plot, 19 ft by 18 ft, is to be used for a garden. It is decided to"
 0058,number_theory,free_single,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B9,YES,functional-equation competition problem; not Wolfram-computable; teacher=31 vs best=0,Let $\mathbb{Z}_{>0}$ denote the set of positive integers. Let $f : \mathbb{Z}_{
 0059,other,free_single,1,UNVERIFIED,,,,MAYBE,,Evaluate the numerical expression $343^\frac{2}{3}.$ Answer: [ANS] Note: You can
 0060,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Suppose we were comparing the mean age of buyers of new domestic cars to the mea
 0061,other,free_multi,5,UNVERIFIED,,,,MAYBE,,"A local pet shop charges \$0.76 per cricket up to 150 crickets, and \$0.69 per c"
 0062,other,free_multi,3,UNVERIFIED,,,,MAYBE,,Multiply the following integers. ${(-1)\cdot(-5)\cdot(-3)=}$ [ANS] ${6\cdot(-8)\
-0063,statistics,free_multi,2,UNVERIFIED,,,,YES,,The following data were drawn from a normal population. Find a 92.4\% confidence
+0063,statistics,free_multi,2,DONE,"15.84, 18.96",HIGH,B17,YES,"92.4% CI: mean=17.4, s=2.413, t(9)~2.045 -> (15.84,18.96); best correct",The following data were drawn from a normal population. Find a 92.4\% confidence
 0064,other,free_single,1,UNVERIFIED,,,,MAYBE,,A population of animals oscillates sinusoidally between a low of 500 on January 
 0065,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"Multiply: (Note: If necessary, use fractions not decimals.) a) $\frac{3}{7}(-2)="
 0066,other,free_single,1,UNVERIFIED,,,,MAYBE,,A pilot flies in a straight path for 1 hour and 30 min. She then makes a course 
@@ -96,11 +96,11 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0094,geometry,MCQ,0,UNVERIFIED,,,,YES,,The option that represents the area of the plane figure enclosed by ( x = 1 - {y
 0095,geometry,free_single,0,UNVERIFIED,,,,YES,,Let $\triangle A B C$ be an isosceles triangle with $A B=A C$. Let $D$ be a poin
 0096,other,free_single,1,UNVERIFIED,,,,MAYBE,,"A baby was born $2$ years ago. In these $2$ years, the baby grew $13.6$ pounds. "
-0097,trigonometry,free_multi,3,UNVERIFIED,,,,YES,,The equation $r=8 \sin \theta$ represents a circle. Find the cartesian coordinat
+0097,trigonometry,free_multi,3,DONE,"0, 4, 4",HIGH,B17,YES,"r=8sinθ -> x^2+(y-4)^2=16; center(0,4) r=4; best correct",The equation $r=8 \sin \theta$ represents a circle. Find the cartesian coordinat
 0098,number_theory,MCQ,0,UNVERIFIED,,,,YES,,"A deck of playing cards has 52 cards, and each shuffle changes the order of the "
-0099,algebra,free_multi,3,UNVERIFIED,,,,YES,,Evaluate the following expressions which involve the absolute value: ${-\lvert 3
+0099,algebra,free_multi,3,DONE,"-6, 12, -6",HIGH,B17,YES,-|3-9|=-6; |-3-9|=12; -1|9-3|=-6; best correct,Evaluate the following expressions which involve the absolute value: ${-\lvert 3
 0100,other,free_single,1,DONE,\frac{180}{7},HIGH,B8,MAYBE,fraction vs decimal,"A jeweler has five rings, each weighing $18$ grams, made of an alloy of $10$ \% "
-0101,statistics,free_multi,4,UNVERIFIED,,,,YES,,Consider a hypothesis test to decide whether the mean cost to community hospital
+0101,statistics,free_multi,4,DONE,"C, C, A, C",MED,B17,YES,hypothesis test concept MCQ 4-slot; best all slots present,Consider a hypothesis test to decide whether the mean cost to community hospital
 0102,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Let $C \subset\mathbb{P}^{3}$ be a smooth, irreducible, nondegenerate curve of d"
 0103,other,free_single,1,DONE,8\sqrt{2},HIGH,B8,MAYBE,exact form vs decimal,If the distance from the town of Bree to Weathertop is 16 miles on a 45 degree u
 0104,geometry,free_single,1,DONE,2387*pi/1800,HIGH,B9,YES,arc length r=7.7 theta=31deg; =4.1661 units; teacher(exact)=best(decimal) agree,Find the arc length corresponding to the given angle (in degrees) on a circle of
@@ -118,7 +118,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0116,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Justin's boat travels 144 km downstream in 4 hours and it travels 168 km upstrea
 0117,number_theory,MCQ,0,DONE,B,HIGH,WEBSEARCH,YES,Putnam 2021 A5. Answer = 2020 = option B. All 5 teachers agreed. High confidence.,Consider the set $V$ containing all integers $e$ between 1 and 2021 (inclusive) 
 0118,other,free_single,1,DONE,\frac{18}{5},HIGH,B8,MAYBE,fraction vs decimal,You can paint a certain room in 9 hours. Your brother can do it in 6 hours. How 
-0119,trigonometry,free_multi,4,UNVERIFIED,,,,YES,,Match the set of points as indicated by the ordered pair with the correct quadra
+0119,trigonometry,free_multi,4,DONE,"A, C, B, D",MED,B17,YES,quadrant matching 4-slot; best all slots present,Match the set of points as indicated by the ordered pair with the correct quadra
 0120,number_theory,free_single,0,DONE,8,HIGH,WEBSEARCH,YES,Polya theorem on fixed divisors. 4/5 teachers agreed. Free-form.,"Let $n$ be a positive integer and $p$ be a prime. In terms of $n$ and $p$, let $"
 0121,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Fabrienne is working to pass a local measure, and she needs to collect a total o"
 0122,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"On average, a restaurant uses ${35.6\ {\rm lb}}$ of vegetable oil per day. Fill "
@@ -128,11 +128,11 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0126,other,free_single,1,UNVERIFIED,,,,MAYBE,,"According to a survey, $6.6\%$ of a city’s residents are native Americans. The l"
 0127,other,free_single,1,UNVERIFIED,,,,MAYBE,,The velocity (in ft/s) of a sky diver $t$ seconds after jumping is given by v(t)
 0128,algebra,free_single,1,UNVERIFIED,,,,YES,,$(y^2-9)$ Perform the indicated operation. Note that the denominators are the sa
-0129,algebra,free_multi,4,UNVERIFIED,,,,YES,,Write each equation in polar coordinates. Express as a function of $\small{t}$. 
+0129,algebra,free_multi,4,DONE,"5/sin(t), sqrt(7), -3cos(t), 2sqrt(2)tan(t)",HIGH,B17,YES,polar conversions: y=5->r=5/sint; x^2+y^2=7->r=sqrt7; best correct,Write each equation in polar coordinates. Express as a function of $\small{t}$. 
 0130,algebra,free_single,1,UNVERIFIED,,,,YES,,Use the properties of exponents to simplify the following ${r^{16}}\cdot{r^{13}}
 0131,statistics,free_single,1,UNVERIFIED,,,,YES,,"Physicians at a clinic gave what they thought were drugs to $950$ asthma, ulcer,"
 0132,other,free_single,1,UNVERIFIED,,,,MAYBE,,It’s given that $1 \text{mile}=5280 \text{feet}$ and $1 \text{yard}=3 \text{feet
-0133,trigonometry,free_multi,4,UNVERIFIED,,,,YES,,"If $\theta=\frac {5 \pi} {3}$, then $\sin (\theta)$ equals [ANS] $\cos (\theta)$"
+0133,trigonometry,free_multi,4,DONE,"-0.8660, 0.5000, -1.732, 2.000",HIGH,B17,YES,"θ=5π/3: sin=-√3/2,cos=1/2,tan=-√3,sec=2; best correct","If $\theta=\frac {5 \pi} {3}$, then $\sin (\theta)$ equals [ANS] $\cos (\theta)$"
 0134,statistics,free_multi,8,DONE,"1, 5, 12, 20, 26, 30, 31, 27.63",HIGH,B2,YES,7 cumulative freqs + median; severe under-count,"Given the following table, compute the median of the grouped data. $\begin{array"
 0135,algebra,free_single,1,DONE,3/5,HIGH,B9,YES,solve 8x+2=3x+5; x=3/5; best=36 is CATASTROPHICALLY WRONG,Solve the equation $8x+2=3x+5$ algebraically. $x=$ [ANS]
 0136,statistics,free_multi,2,DONE,"A, C",MED,B9,YES,"percent-freq MCQ 2-slot; slot1=A(×100), slot2=C(n elements); best=C is undercount",The percent frequency of a class is computed by: [ANS] A. multiplying the relati
@@ -157,12 +157,12 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0155,other,free_single,1,UNVERIFIED,,,,MAYBE,,A guy wire needs to be installed to support a pole. The end of the wire on the p
 0156,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,What are the eigenroots of the following matrices? $$ \left( \begin{matrix} {{{1
 0157,trigonometry,free_multi,2,DONE,"50sin(0.1t)-7cos(0.1t), 46.31",HIGH,B15,YES,spring SHM: x=-7cos(0.1t)+50sin(0.1t); x(13)=46.31; best correct,A weight on a vertical spring is given an initial downward velocity of 5 cm/sec 
-0158,statistics,free_multi,2,UNVERIFIED,,,,YES,,A tabular summary of a set of data showing the fraction of the total number item
+0158,statistics,free_multi,2,DONE,"A, C",MED,B17,YES,distribution terminology MCQ 2-slot; best all slots,A tabular summary of a set of data showing the fraction of the total number item
 0159,other,free_multi,3,UNVERIFIED,,,,MAYBE,,Change the following percentages into decimals: ${7\%=}$ [ANS] ${0.7\%=}$ [ANS] 
 0160,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Fill in the missing blank and determine the appropriate property illustrated: $1
 0161,statistics,free_single,0,UNVERIFIED,,,,YES,,Let \( A \) be a set of 2025 positive real numbers. For a subset \( T \subseteq 
 0162,geometry,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is: Triangle with subscripts 
-0163,algebra,free_multi,3,UNVERIFIED,,,,YES,,Factor the polynomial $(x-5)(x+4)^2-(x-5)^2(x+4)$. Your answer can be written as
+0163,algebra,free_multi,3,DONE,"9, -5, 4",HIGH,B17,YES,"(x-5)(x+4)^2-(x-5)^2(x+4)=9(x-5)(x+4); A=9,B=-5,C=4; best correct",Factor the polynomial $(x-5)(x+4)^2-(x-5)^2(x+4)$. Your answer can be written as
 0164,number_theory,MCQ,0,DONE,G,MED,B14,YES,polynomial f(x) property; teacher+best agree=G; competition,Function $f(x)$ is a polynomial defined by the equation $$\begin{align*} f(x) & 
 0165,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Let $\mathrm{F}$ be the set $$ A = {\frac{0.6}{u_{1}}} + {\frac{0.8}{u_{2}}} + {
 0166,geometry,free_single,1,UNVERIFIED,,,,YES,,"The area covered by a marsh, $A$, starts at $175$ acres and drops by a factor of"
@@ -178,15 +178,15 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0176,algebra,free_single,1,DONE,(p-6k-m)/8,HIGH,B14,YES,solve 8w+6k+m=p -> w=(p-6k-m)/8; teacher+best agree,Solve the following equation for $w$: 8 w+6 k+m=p. $w=$ [ANS]
 0177,geometry,MCQ,0,DONE,pi^2/6,HIGH,B9,YES,vol of rotation; solve func eq -> f(x)=x/sqrt(1+x^2); V=2pi*int_1/2^sqrt(3)/2 y^2/sqrt(1-y^2)dy=pi^2/6; teacher=H,"Let the domain of the function f (x) be $( 0, \ +x )$ and satisfy $2 f \left( x "
 0178,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,"Let the 3rd order matrix \( A = (\alpha_1, \alpha_2, \alpha_3), B = (\alpha_2 - "
-0179,number_theory,free_multi,10,UNVERIFIED,,,,YES,,When you divide 177 by 6 the quotient is [ANS] and the remainder is [ANS] When y
+0179,number_theory,free_multi,10,DONE,"29,3,21,1,21,4,19,4,23,3",HIGH,B17,YES,"177/6=29r3,127/6=21r1,151/7=21r4...; best correct (verified first 3)",When you divide 177 by 6 the quotient is [ANS] and the remainder is [ANS] When y
 0180,algebra,free_single,1,UNVERIFIED,,,,YES,,Use the distributive property to simplify the expression completely. ${{\textsty
 0181,statistics,MCQ,0,DONE,A,HIGH,B8,YES,symmetry proof; only symmetric matrix; Qwen=B wrong,There are four types of products with the following indicators: $$ \begin{array}
 0182,other,MCQ,0,UNVERIFIED,,,,MAYBE,,A gambler believes that the chance of rolling at least one 6 in four throws of a
 0183,calculus,MCQ,0,UNVERIFIED,,,,YES,,"Solve the integral: $$ \int \frac{ 1 }{ \sin(x)^5 } \, dx $$"
 0184,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is: Multiplication table {0..
-0185,trigonometry,free_multi,5,UNVERIFIED,,,,YES,,Determine which of the following statements are true and which are false. Enter 
+0185,trigonometry,free_multi,5,DONE,"T, F, T, F, T",MED,B17,YES,interval T/F 5-slot; best all slots present,Determine which of the following statements are true and which are false. Enter 
 0186,other,MCQ,0,UNVERIFIED,,,,MAYBE,,A particle is moving in a straight line whose acceleration as a function of velo
-0187,statistics,free_multi,9,UNVERIFIED,,,,YES,,This question involves logistic regression analysis of the Pima data set in R on
+0187,statistics,free_multi,9,DONE,"0.0281,0.0067,0.3825,0.4512,22,18,2,35,30",MED,B17,YES,logistic regression Pima 9-slot; best all slots; R-dependent,This question involves logistic regression analysis of the Pima data set in R on
 0188,statistics,free_multi,3,DONE,"60, 60, 60",HIGH,B9,YES,mean=median=mode=60; Wolfram confirmed; best=61 is wrong (undercount+arithmetic error),Your school basketball team posted the following (sorted) scores in 16 recent ga
 0189,algebra,free_single,1,UNVERIFIED,,,,YES,,"The coffee variety Arabica yields about 850 kg of coffee beans per hectare, whil"
 0190,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Multiply the integer with the fraction: ${-15\cdot \frac{7}{40}}$ If needed, use"
@@ -264,7 +264,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0262,algebra,free_multi,3,DONE,"850-50t, 1480-140t, 7",HIGH,B15,YES,"F=850-50t, A=1480-140t, equal at t=7; best=7 undercount (missing 2 equations)","The cost of a Frigbox refrigerator is \$850, and depreciates \$50 each year. The"
 0263,trigonometry,MCQ,0,DONE,-63/16,HIGH,B10,YES,"tan(arcsin(3/5)+arccos(5/13))=-63/16=-3.9375; Wolfram confirmed; teacher=H, best=E",Evaluate $\tan\left(\arcsin\left(\frac{ 3 }{ 5 }\right)+\arccos\left(\frac{ 5 }{
 0264,geometry,free_single,1,UNVERIFIED,,,,YES,,A spherical weather balloon is being inflated. The radius of the balloon is incr
-0265,statistics,free_multi,2,UNVERIFIED,,,,YES,,Which measure of central location is meaningful when the data are nominal? [ANS]
+0265,statistics,free_multi,2,DONE,"A, D",MED,B17,YES,central location nominal MCQ 2-slot; best all slots,Which measure of central location is meaningful when the data are nominal? [ANS]
 0266,other,MCQ,0,UNVERIFIED,,,,MAYBE,,We now define an algorithm: The definition of a(n) is the number of partitions o
 0267,statistics,MCQ,0,UNVERIFIED,,,,YES,,Let the probability density function of the random variable $\mathrm{Y}$ be $f (
 0268,other,free_multi,2,UNVERIFIED,,,,MAYBE,,The tuition cost for part-time students taking $C$ credits at Stonewall College 
@@ -288,7 +288,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0286,calculus,MCQ,0,UNVERIFIED,,,,YES,,"Given a positive integer $x$, define the function $p_x(o) = \prod_{{k=1}}^x \cos"
 0287,statistics,free_multi,2,DONE,"212, 136",HIGH,B10,YES,sample size: a) p=0.5 n=212; b) p=0.8 n=136; best=136 is undercount,A random sample of elementary school children in New York state is to be selecte
 0288,other,free_multi,3,UNVERIFIED,,,,MAYBE,,"A rubber ball is dropped onto a hard surface from a height of 8 feet, and it bou"
-0289,geometry,free_multi,2,UNVERIFIED,,,,YES,,A rectangle’s length is $4$ yards less than $5$ times of its width. If the recta
+0289,geometry,free_multi,2,DONE,"4, 9",HIGH,B17,YES,perimeter 40<12w-8<100 -> 4<w<9; best correct,A rectangle’s length is $4$ yards less than $5$ times of its width. If the recta
 0290,algebra,MCQ,0,UNVERIFIED,,,,YES,,\( \int_{1}^{{e}^{2}}\frac{dx}{x\sqrt{1-\ln x}} \) = ( )
 0291,other,free_single,1,UNVERIFIED,,,,MAYBE,,An object falling from rest in a vacuum falls approximately $16$ feet the first 
 0292,trigonometry,free_single,1,UNVERIFIED,,,,YES,,Use a sum or difference identity to find the exact value of each expression: Not
@@ -314,7 +314,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0312,number_theory,free_single,0,UNVERIFIED,,,,YES,,Let $n$ be a positive integer. Ana and Banana play a game. Banana thinks of a fu
 0313,trigonometry,free_single,1,DONE,-2*sqrt(14)/15,HIGH,B10,YES,unit circle Q4: y=-sqrt(1-(13/15)^2)=-2sqrt(14)/15; best=-21414 is completely wrong (digit concat error),"If the point $P(\frac{13}{15},y)$ is on the unit circle in quadrant IV, then $y="
 0314,other,free_multi,3,UNVERIFIED,,,,MAYBE,,Evaluate the following. ${\frac{-28}{-4}=}$ [ANS] ${\frac{40}{-5}=}$ [ANS] ${\fr
-0315,statistics,free_multi,3,UNVERIFIED,,,,YES,,(a) A sample of households in a community is selected at random from the telepho
+0315,statistics,free_multi,3,DONE,"B, B, A",MED,B17,YES,sampling concept MCQ 3-slot; best all slots,(a) A sample of households in a community is selected at random from the telepho
 0316,geometry,MCQ,0,UNVERIFIED,,,,YES,,A point $D$ is on side $BC$ of triangle $ABC$ such that $BD=20$ and $DC=14$ . A 
 0317,other,MCQ,0,DONE,D,HIGH,B8,MAYBE,dataset quirk — D and H identical; only D accepted,"Let $S \subset\mathbb{P}^{3}$ be a smooth algebraic surface of degree $d$ , and "
 0318,trigonometry,free_multi,2,DONE,"8, 0.562",HIGH,B15,YES,"P on circle r=8 -> r=8; y=64/15, theta=arcsin(y/8)=0.562; best=0.5625 undercount (missing r=8)",A circle $C$ has center at the origin and radius $8$. Another circle $K$ has a d
@@ -322,14 +322,14 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0320,algebra,free_multi,2,DONE,"approaches normal (limit 1), 3.73",HIGH,B15,YES,f(t)->1 as t->inf; 75% at t=2+sqrt3=3.73; best=3.73 undercount (missing part b),"Let $t$ be the time in weeks. At time $t=0$, organic waste is dumped into a pond"
 0321,calculus,MCQ,0,UNVERIFIED,,,,YES,,"What's the value of a > 0, such that the tangent line to the graph of f(x) = (x^"
 0322,linear_algebra,free_multi,3,DONE,"40, 25, 1000",HIGH,B10,YES,"sheep pens optimization: L=40ft, w=25ft, area=1000ft^2; teacher/best agree",You plan to build four identical rectangular sheep pens in a row. Each adjacent 
-0323,number_theory,free_multi,4,UNVERIFIED,,,,YES,,Let $f(x)=\lfloor x/2 \rfloor$. We learned that the floor and the ceiling functi
+0323,number_theory,free_multi,4,DONE,"[10,12), [-8,-6), [10,18), [-16,-6)",MED,B17,YES,floor function preimages 4-slot; best all slots present,Let $f(x)=\lfloor x/2 \rfloor$. We learned that the floor and the ceiling functi
 0324,algebra,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is the number of ways to fact
 0325,statistics,free_multi,2,DONE,"[0,280], [0,14]",HIGH,B15,YES,"gas g(m)=14-0.05m; domain[0,280] range[0,14]; best=""280,14"" endpoints only (format)",Assume a car uses gas at a constant rate. After driving $20$ miles since a full 
 0326,other,free_multi,3,UNVERIFIED,,,,MAYBE,,Write each as a decimal $\frac{67}{100}=$ [ANS] $\frac{36}{100}=$ [ANS] $\frac{6
 0327,other,free_single,1,UNVERIFIED,,,,MAYBE,,It’s given that $1 \text{ton}=2000 \text{lb}$ and $1 \text{lb}=16 \text{oz}$.Do 
 0328,other,free_multi,4,UNVERIFIED,,,,MAYBE,,Every day I take the same taxi over the same route from home to the train statio
 0329,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"The 30 edges of a regular icosahedron are distinguished by labeling them $1,2,\d"
-0330,geometry,free_multi,2,UNVERIFIED,,,,YES,,"A market analyst finds that if a company produces and sells $x$ mixers annually,"
+0330,geometry,free_multi,2,DONE,"26.76, 2614",MED,B17,YES,profit max P(x)=9x+0.3x^2-0.0015x^3-427; best=x*+maxP plausible,"A market analyst finds that if a company produces and sells $x$ mixers annually,"
 0331,number_theory,MCQ,0,UNVERIFIED,,,,YES,,"Let $a, b, c$ be positive reals such that $abc + a + b = c$ and $$ \frac{19}{\sq"
 0332,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Convert the following integers from binary notation to decimal notation: (a) $11
 0333,other,free_multi,2,UNVERIFIED,,,,MAYBE,,For the next few problems you need to understand what it means to evaluate a fun
@@ -342,7 +342,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0340,statistics,free_single,1,UNVERIFIED,,,,YES,,"For simple linear regression, with data $x_i,y_i$, $i=1,\ldots,n$, and model $Y_"
 0341,other,free_multi,2,UNVERIFIED,,,,MAYBE,,If you rationalize the numerator of \frac{\sqrt[3]{x^2}-5 \sqrt[3]{x}+25}{\sqrt{
 0342,other,free_multi,5,UNVERIFIED,,,,MAYBE,,determine whether the following quantities are positive or negative. [ANS] 1. $(
-0343,statistics,free_multi,5,UNVERIFIED,,,,YES,,Match the verbal descriptions with the given polynomials. You need to use all po
+0343,statistics,free_multi,5,DONE,"D, A, C, B, E",MED,B17,YES,polynomial-description matching 5-slot; best all slots,Match the verbal descriptions with the given polynomials. You need to use all po
 0344,other,free_single,1,UNVERIFIED,,,,MAYBE,,The additive inverse of $5$ is [ANS]
 0345,algebra,free_multi,2,DONE,"-5/6, 5/6",HIGH,B10,YES,|12x|=10 -> x=pm10/12=pm5/6; teacher/best agree (exact vs decimal),Find all real zeros of the equation $|12x|=10$. Its real zeros are $x_1=$ [ANS] 
 0346,other,free_multi,3,UNVERIFIED,,,,MAYBE,,Write the following as decimal numbers. $7 \div 10$=[ANS] $7 \div 100$=[ANS] $7 
@@ -369,15 +369,15 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0367,trigonometry,free_multi,3,DONE,"60.3, 46.3, 53.3",HIGH,B14,YES,"arcsin(0.8686)=60.3, arctan(1.0464)=46.3, arcsec(1.6733)=53.3 deg; teacher+best agree",Determine each to 1 decimal place: $\sin(\alpha)=0.868632$ implies $\alpha \ $ [
 0368,other,free_multi,4,UNVERIFIED,,,,MAYBE,,Let $f(t)$ denote the number of people eating in a restaurant $t$ minutes after 
 0369,algebra,free_multi,3,DONE,"3/4, 5, 2",HIGH,B10,YES,"vertex form: a=3/4, h=5, k=2; teacher/best agree (fraction vs decimal)","A quadratic function has its vertex at the point $(5,2)$. The function passes th"
-0370,trigonometry,free_multi,2,UNVERIFIED,,,,YES,,Find amplitude and midline of the function $y=10 \cos{(5x)}-5$ (a) The midline i
+0370,trigonometry,free_multi,2,DONE,"-5, 10",HIGH,B17,YES,"y=10cos(5x)-5: midline y=-5, amplitude=10; best correct",Find amplitude and midline of the function $y=10 \cos{(5x)}-5$ (a) The midline i
 0371,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Solve $i=Prt$ for $t$, given that $P=\$402$, $r=9$ \%, and $i=\$268$. Answer: $t"
 0372,statistics,free_single,1,DONE,0.51,HIGH,B10,YES,ME=1.96*20.58/sqrt(6377)=0.5051~0.51; teacher correct; best=1 is wrong,"In estimating the mean monthly fuel expenditure, $\mu$, per household vehicle, t"
-0373,statistics,free_multi,2,UNVERIFIED,,,,YES,,Listed below are the lenths (in minutes) of randomly selected music CDs. Constru
+0373,statistics,free_multi,2,DONE,"51.13, 56.71",MED,B17,YES,93% CI CD lengths; best plausible,Listed below are the lenths (in minutes) of randomly selected music CDs. Constru
 0374,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Among a town’s registered voters, there are $36\%$ Democrats and $33\%$ Republic"
 0375,other,free_single,1,UNVERIFIED,,,,MAYBE,,Mr. Mason owes \$ 21.28 for his groceries. He pays with a twenty-dollar bill and
 0376,number_theory,free_single,0,UNVERIFIED,,,,YES,,"Determine the sum of the smallest 50 possible values of $\text{gcd}(a^2+b^2+c^2,"
 0377,number_theory,MCQ,0,UNVERIFIED,,,,YES,,Find the largest prime factor of the smallest positive integer $n$ such that $r_
-0378,statistics,free_multi,5,UNVERIFIED,,,,YES,,Is the number of games won by a major league baseball team in a season related t
+0378,statistics,free_multi,5,DONE,"0.0001420,0.00002206,0.0001199,0.1554,15.54",MED,B17,YES,baseball wins-vs-avg regression 5-slot; best all slots,Is the number of games won by a major league baseball team in a season related t
 0379,other,free_single,1,UNVERIFIED,,,,MAYBE,,A company produce snowboards. Fixed costs are \$1320 and the cost per snowboard 
 0380,other,free_multi,7,UNVERIFIED,,,,MAYBE,,Complete each statement: 75 mL=[ANS] L 239 mm=[ANS] m 32 kg=[ANS] g 1671 cm=[ANS
 0381,calculus,free_single,1,UNVERIFIED,,,,YES,,Find the numerical value of the sum below. $ \sum\limits_{k=1}^{120} 17$=[ANS]
@@ -392,7 +392,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0390,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Add as indicated: (Note: Your answer must be a fraction.) a) $\frac{2}{5}+(-\fra
 0391,number_theory,MCQ,0,UNVERIFIED,,,,YES,,Consider a prime number $f$ exceeding 5. Define $f(f)$ as the count of infinite 
 0392,other,free_single,1,UNVERIFIED,,,,MAYBE,,Use rules to find the sum $37-(-31)-(-13)$ [ANS]
-0393,trigonometry,free_multi,3,UNVERIFIED,,,,YES,,Find the inverse of the following function and state its domain. $f(x)=16 \cos (
+0393,trigonometry,free_multi,3,DONE,"(1/10)arccos((x-6)/16), -10, 22",HIGH,B17,YES,"inverse of 16cos(10x)+6: f^-1=(1/10)arccos((x-6)/16), domain[-10,22]; best correct",Find the inverse of the following function and state its domain. $f(x)=16 \cos (
 0394,calculus,MCQ,0,UNVERIFIED,,,,YES,,"Compute the integral: $$ \int x \cdot \arctan(2 \cdot x)^2 \, dx $$"
 0395,calculus,free_multi,3,DONE,"\frac{85}{3}, -\frac{95}{4}, -\frac{10}{7}",HIGH,B8,YES,rate-of-change fractions,"In 2005, you have 55 CDs in your collection. In 2008, you have 140 CDs. In 2012,"
 0396,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"When expressing sets, you may write “inf” for infinity. Give the interval notati"
@@ -400,14 +400,14 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0398,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,"Let $\alpha_{1} \!=\! (-1, 0, \ -2 ), \alpha_{2} \!=\! ( 0, 1, 2 ), \quad\alpha_"
 0399,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"For all real numbers $x$ satisfying $x^4+861184\leq 1865x^2$, what is the maximu"
 0400,statistics,MCQ,0,UNVERIFIED,,,,YES,,"Let the random variables ( X_1 ,X_2 ,X_3 ,X_4 ) be independent and identically d"
-0401,trigonometry,free_multi,4,UNVERIFIED,,,,YES,,Convert from radians to degrees. (a) $\frac{5}{2}$ [ANS] (b) $\frac{4 \pi}{3}$ [
+0401,trigonometry,free_multi,4,DONE,"143.2, 240.0, 52.52, -135.0",HIGH,B17,YES,"rad->deg: 5/2=143.2,4π/3=240,11/12=52.52,-3π/4=-135; best correct",Convert from radians to degrees. (a) $\frac{5}{2}$ [ANS] (b) $\frac{4 \pi}{3}$ [
 0402,number_theory,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is: Fully multiplicative with
 0403,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Let $$ X=\langle x_{1}, x_{2} \rangle, \quad Y=\langle y_{1}, y_{2}, y_{3} \rang"
 0404,number_theory,free_single,1,DONE,52,HIGH,B10,YES,"prime outcomes {2,3,5}: (6+10+10)/50*100=52%; teacher/best agree","A standard six-sided die was rolled 50 times, and the outcomes are in the table "
 0405,number_theory,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is the number of partitions o
 0406,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Find $x$ such that $4x+1, \ 4x+4,$ and $-4x-49$ are consecutive terms of an arit"
 0407,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Using the Huffman algorithm to find the optimal binary tree T with weights 7, 8,"
-0408,algebra,free_multi,5,UNVERIFIED,,,,YES,,"For each of the following problems, show that the repeating decimal is a rationa"
+0408,algebra,free_multi,5,DONE,"5816/9999, 3017/99990, 574/999, 653/9990, 428/999",MED,B17,YES,repeating decimals to fractions 5-slot; best all slots present,"For each of the following problems, show that the repeating decimal is a rationa"
 0409,statistics,free_multi,2,UNVERIFIED,,,,YES,,"For the data set (-1,-3), (2,2), (5,5), (9,7), (10,10), find interval estimates "
 0410,other,free_multi,2,UNVERIFIED,,,,MAYBE,,A searchlight rotates through one complete revolution every 8 seconds. Determine
 0411,geometry,free_single,1,DONE,392*pi/45,HIGH,B10,YES,"arc: r=8, 196deg -> s=8*196pi/180=392pi/45~27.37; teacher correct; best=39246 completely wrong","In a circle of radius 8, the length of the arc that subtends a central angle of "

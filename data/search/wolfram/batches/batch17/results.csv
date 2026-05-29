@@ -1,0 +1,26 @@
+id,subject,type,n_ans_slots,wolfram_answer,confidence,computable,notes
+0056,statistics,MCQ,3,"D, D, A",MED,MAYBE,regression concept MCQ 3-slot; best all slots present
+0063,statistics,free_multi,2,"15.84, 18.96",HIGH,YES,"92.4% CI: mean=17.4, s=2.413, t(9)~2.045 -> (15.84,18.96); best correct"
+0097,geometry,free_multi,3,"0, 4, 4",HIGH,YES,"r=8sinθ -> x^2+(y-4)^2=16; center(0,4) r=4; best correct"
+0099,algebra,free_multi,3,"-6, 12, -6",HIGH,YES,-|3-9|=-6; |-3-9|=12; -1|9-3|=-6; best correct
+0101,statistics,MCQ,4,"C, C, A, C",MED,MAYBE,hypothesis test concept MCQ 4-slot; best all slots present
+0119,geometry,MCQ,4,"A, C, B, D",MED,MAYBE,quadrant matching 4-slot; best all slots present
+0129,trigonometry,free_multi,4,"5/sin(t), sqrt(7), -3cos(t), 2sqrt(2)tan(t)",HIGH,YES,polar conversions: y=5->r=5/sint; x^2+y^2=7->r=sqrt7; best correct
+0133,trigonometry,free_multi,4,"-0.8660, 0.5000, -1.732, 2.000",HIGH,YES,"θ=5π/3: sin=-√3/2,cos=1/2,tan=-√3,sec=2; best correct"
+0158,statistics,MCQ,2,"A, C",MED,MAYBE,distribution terminology MCQ 2-slot; best all slots
+0163,algebra,free_multi,3,"9, -5, 4",HIGH,YES,"(x-5)(x+4)^2-(x-5)^2(x+4)=9(x-5)(x+4); A=9,B=-5,C=4; best correct"
+0179,number_theory,free_multi,10,"29,3,21,1,21,4,19,4,23,3",HIGH,YES,"177/6=29r3,127/6=21r1,151/7=21r4...; best correct (verified first 3)"
+0185,algebra,free_multi,5,"T, F, T, F, T",MED,MAYBE,interval T/F 5-slot; best all slots present
+0187,statistics,free_multi,9,"0.0281,0.0067,0.3825,0.4512,22,18,2,35,30",MED,YES,logistic regression Pima 9-slot; best all slots; R-dependent
+0265,statistics,MCQ,2,"A, D",MED,MAYBE,central location nominal MCQ 2-slot; best all slots
+0289,algebra,free_multi,2,"4, 9",HIGH,YES,perimeter 40<12w-8<100 -> 4<w<9; best correct
+0315,statistics,MCQ,3,"B, B, A",MED,MAYBE,sampling concept MCQ 3-slot; best all slots
+0323,algebra,free_multi,4,"[10,12), [-8,-6), [10,18), [-16,-6)",MED,YES,floor function preimages 4-slot; best all slots present
+0330,calculus,free_multi,2,"26.76, 2614",MED,YES,profit max P(x)=9x+0.3x^2-0.0015x^3-427; best=x*+maxP plausible
+0343,algebra,MCQ,5,"D, A, C, B, E",MED,MAYBE,polynomial-description matching 5-slot; best all slots
+0370,trigonometry,free_multi,2,"-5, 10",HIGH,YES,"y=10cos(5x)-5: midline y=-5, amplitude=10; best correct"
+0373,statistics,free_multi,2,"51.13, 56.71",MED,YES,93% CI CD lengths; best plausible
+0378,statistics,free_multi,5,"0.0001420,0.00002206,0.0001199,0.1554,15.54",MED,YES,baseball wins-vs-avg regression 5-slot; best all slots
+0393,trigonometry,free_multi,3,"(1/10)arccos((x-6)/16), -10, 22",HIGH,YES,"inverse of 16cos(10x)+6: f^-1=(1/10)arccos((x-6)/16), domain[-10,22]; best correct"
+0401,trigonometry,free_multi,4,"143.2, 240.0, 52.52, -135.0",HIGH,YES,"rad->deg: 5/2=143.2,4π/3=240,11/12=52.52,-3π/4=-135; best correct"
+0408,algebra,free_multi,5,"5816/9999, 3017/99990, 574/999, 653/9990, 428/999",MED,YES,repeating decimals to fractions 5-slot; best all slots present

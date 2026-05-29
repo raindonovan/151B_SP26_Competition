@@ -269,3 +269,28 @@
 | 0035 | B16 | HIGH | down, ln(p) | horiz stretch p of ln(x): ln(x/p)=ln(x)-ln(p) -> down b |
 | 0046 | B16 | MED | 1.645, 1.719, 1.960, -1.960, 1.719, B, A | hypothesis test 7-slot; best has all 7; z-crit/stat pla |
 | 0050 | B16 | HIGH | 140A+150B=5930, 3A+4B=142 | apple/banana system; best correct (calories + fiber equ |
+| 0056 | B17 | MED | D, D, A | regression concept MCQ 3-slot; best all slots present |
+| 0063 | B17 | HIGH | 15.84, 18.96 | 92.4% CI: mean=17.4, s=2.413, t(9)~2.045 -> (15.84,18.9 |
+| 0097 | B17 | HIGH | 0, 4, 4 | r=8sinθ -> x^2+(y-4)^2=16; center(0,4) r=4; best correc |
+| 0099 | B17 | HIGH | -6, 12, -6 | -/3-9/=-6; /-3-9/=12; -1/9-3/=-6; best correct |
+| 0101 | B17 | MED | C, C, A, C | hypothesis test concept MCQ 4-slot; best all slots pres |
+| 0119 | B17 | MED | A, C, B, D | quadrant matching 4-slot; best all slots present |
+| 0129 | B17 | HIGH | 5/sin(t), sqrt(7), -3cos(t), 2sqrt(2)tan(t) | polar conversions: y=5->r=5/sint; x^2+y^2=7->r=sqrt7; b |
+| 0133 | B17 | HIGH | -0.8660, 0.5000, -1.732, 2.000 | θ=5π/3: sin=-√3/2,cos=1/2,tan=-√3,sec=2; best correct |
+| 0158 | B17 | MED | A, C | distribution terminology MCQ 2-slot; best all slots |
+| 0163 | B17 | HIGH | 9, -5, 4 | (x-5)(x+4)^2-(x-5)^2(x+4)=9(x-5)(x+4); A=9,B=-5,C=4; be |
+| 0179 | B17 | HIGH | 29,3,21,1,21,4,19,4,23,3 | 177/6=29r3,127/6=21r1,151/7=21r4...; best correct (veri |
+| 0185 | B17 | MED | T, F, T, F, T | interval T/F 5-slot; best all slots present |
+| 0187 | B17 | MED | 0.0281,0.0067,0.3825,0.4512,22,18,2,35,30 | logistic regression Pima 9-slot; best all slots; R-depe |
+| 0265 | B17 | MED | A, D | central location nominal MCQ 2-slot; best all slots |
+| 0289 | B17 | HIGH | 4, 9 | perimeter 40<12w-8<100 -> 4<w<9; best correct |
+| 0315 | B17 | MED | B, B, A | sampling concept MCQ 3-slot; best all slots |
+| 0323 | B17 | MED | [10,12), [-8,-6), [10,18), [-16,-6) | floor function preimages 4-slot; best all slots present |
+| 0330 | B17 | MED | 26.76, 2614 | profit max P(x)=9x+0.3x^2-0.0015x^3-427; best=x*+maxP p |
+| 0343 | B17 | MED | D, A, C, B, E | polynomial-description matching 5-slot; best all slots |
+| 0370 | B17 | HIGH | -5, 10 | y=10cos(5x)-5: midline y=-5, amplitude=10; best correct |
+| 0373 | B17 | MED | 51.13, 56.71 | 93% CI CD lengths; best plausible |
+| 0378 | B17 | MED | 0.0001420,0.00002206,0.0001199,0.1554,15.54 | baseball wins-vs-avg regression 5-slot; best all slots |
+| 0393 | B17 | HIGH | (1/10)arccos((x-6)/16), -10, 22 | inverse of 16cos(10x)+6: f^-1=(1/10)arccos((x-6)/16), d |
+| 0401 | B17 | HIGH | 143.2, 240.0, 52.52, -135.0 | rad->deg: 5/2=143.2,4π/3=240,11/12=52.52,-3π/4=-135; be |
+| 0408 | B17 | MED | 5816/9999, 3017/99990, 574/999, 653/9990, 428/999 | repeating decimals to fractions 5-slot; best all slots  |

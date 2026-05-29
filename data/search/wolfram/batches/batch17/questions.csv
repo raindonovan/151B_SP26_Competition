@@ -1,0 +1,89 @@
+id,subject,type,n_ans_slots,best_answer,teacher_consensus,question
+0056,statistics,free_multi,3,"D, D, A","D,D,A","For each problem, select the best response.
+(a) Can one predict a student's score on the midterm exam in a statistics course from the number of hours the student spent studying for the exam? To explore this, the teacher of the course asks students how many hours they spent studying for the exam and then makes a scatterplot of the time students spent studying and their scores on the exam. In making the scatterplot, the teacher should [ANS] A. plot the score on the exam on the horizontal axis.  B. first determine if the scores on the exam approximately follow a normal distribution.  C. use a plotting scale that makes the overall trend roughly linear.  D. plot time spent studying for the exam on the horizontal axis.  E. None of the above.
+(b) A gambler conducts a study to determine whether th"
+0063,statistics,free_multi,2,"15.84, 18.96",,"The following data were drawn from a normal population. Find a 92.4\% confidence interval for the mean.
+\begin{array}{ccccccccccc} 18 & 19 & 21 & 14 & 14 & 18 & 18 & 15 & 17 & 20 \end{array} UCL=[ANS]
+LCL=[ANS]"
+0097,trigonometry,free_multi,3,"0, 4, 4","0,4,4","The equation $r=8 \sin \theta$ represents a circle. Find the cartesian coordinates of the center: x=[ANS]
+y=[ANS]
+and the radius: r=[ANS]"
+0099,algebra,free_multi,3,"-6, 12, -6","-6,12,-6","Evaluate the following expressions which involve the absolute value:
+${-\lvert 3-9 \rvert=}$ [ANS]
+${\lvert-3-9 \rvert=}$ [ANS]
+${-1 \lvert 9-3 \rvert=}$ [ANS]"
+0101,statistics,free_multi,4,"C, C, A, C","C,C,A,C","Consider a hypothesis test to decide whether the mean cost to community hospitals per patient per day in Ohio exceed the national mean. Answer the following questions. a. "" The mean cost to community hospitals per patient per day in Ohio does not exceed the national mean but the result of the sampling leads to the conclusion that the mean cost to community hospitals per patient per day in Ohio exceeds the national mean "" is a [ANS] A. Type II error  B. correct decision  C. Type I error
+b. "" The mean cost to community hospitals per patient per day in Ohio does not exceed the national mean and the result of the sampling does not lead to the conclusion that the mean cost to community hospitals per patient per day in Ohio exceeds the national mean "" is a [ANS] A. Type I error  B. Type II error"
+0119,trigonometry,free_multi,4,"A, C, B, D","A,C,B,D","Match the set of points as indicated by the ordered pair with the correct quadrant the points lie in.
+Place the letter of the part of the plane next to the corresponding description listed below: [ANS] 1. $(x,y)$, where $x<0, y>0$ [ANS] 2. $(x,y)$, where $x<0, y<0$ [ANS] 3. $(x,y)$, where $y=0$ [ANS] 4. $(x,y)$, where $x=0$
+A. Quadrant Two B. $x$-axis C. Quadrant Three D. $y$-axis"
+0129,algebra,free_multi,4,"\dfrac{5}{\sin t}, \sqrt{7}, -3 \cos t, 2\sqrt{2} \tan t",,"Write each equation in polar coordinates. Express as a function of $\small{t}$. Assume that $\small{r > 0}$.
+(a) $\small{y=5}$
+$\quad \small{r=}$ [ANS]
+(b) $\small{x^2+y^2=7}$
+$\quad \small{r=}$ [ANS]
+(c) $\small{x^2+y^2+3x=0}$
+$\quad \small{r=}$ [ANS]
+(d) $\small{x^2(x^2+y^2)=8 y^2}$
+$\quad \small{r=}$ [ANS]"
+0133,trigonometry,free_multi,4,"-0.8660, 0.5000, -1.732, 2.000",,"If $\theta=\frac {5 \pi} {3}$, then
+$\sin (\theta)$ equals [ANS]
+$\cos (\theta)$ equals [ANS]
+$\tan (\theta)$ equals [ANS]
+$\sec (\theta)$ equals [ANS]"
+0158,statistics,free_multi,2,"A, C","A,C","A tabular summary of a set of data showing the fraction of the total number items in several classes is a: [ANS] A. relative frequency distribution  B. cumulative frequency distribution  C. frequency  D. frequency distribution
+Qualitative data can be graphically represented by using a(n): [ANS] A. ogive  B. histogram  C. bar graph  D. frequency polygon"
+0163,algebra,free_multi,3,"9, -5, 4","9,-5,4","Factor the polynomial $(x-5)(x+4)^2-(x-5)^2(x+4)$. Your answer can be written as $A(x+B)(x+C)$ with integers $A$, $B$, $C$ where $A=$ [ANS], $B=$ [ANS], and $C=$ [ANS]"
+0179,number_theory,free_multi,10,"29, 3, 21, 1, 21, 4, 19, 4, 23, 3","29,3,21,1,21,4,19,4,23,3","When you divide 177 by 6 the quotient is [ANS] and the remainder is [ANS]
+When you divide 127 by 6 the quotient is [ANS] and the remainder is [ANS]
+When you divide 151 by 7 the quotient is [ANS] and the remainder is [ANS]
+When you divide 137 by 7 the quotient is [ANS] and the remainder is [ANS]
+When you divide 187 by 8 the quotient is [ANS] and the remainder is [ANS]"
+0185,trigonometry,free_multi,5,"T, F, T, F, T","T,F,T,F,T","Determine which of the following statements are true and which are false. Enter the T or F in front of each statement. Remember that $x\in(-1,1)$ is the same as $-1 < x < 1$ and $x\in[-1,1]$ means $-1 \le x \le 1$. [ANS] 1. The function $\sin(x)$ on the domain $x\in[-\pi/2,\pi/2]$ has at least one input which produces a largest output value. [ANS] 2. The function $\sin(x)$ on the domain $x\in(-\pi/2,\pi/2)$ has at least one input which produces a largest output value. [ANS] 3. The function $f(x)=x^2$ with domain $x\in[-3,3]$ has at least one input which produces a smallest output value. [ANS] 4. The function $\sin(x)$ on the domain $x\in(-\pi/2,\pi/2)$ has at least one input which produces a smallest output value. [ANS] 5. The function $f(x)=x^2$ with domain $x\in(-3,3)$ has at least one i"
+0187,statistics,free_multi,9,"0.0281, 0.0067, 0.3825, 0.4512, 22.00, 18.00, 2, 35.00, 30.00",,"This question involves logistic regression analysis of the Pima data set in R on risk factors for diabetes among Pima women. Your training and holding data sets will be subsets of the Pima.tr and Pima.te data sets in the library MASS. The binary response variable is ""type"" (type=Yes for Diabetes, type=No for no diabetes). Get your training set and holdout set with the following in R.
+itrain=c(151, 117, 125, 146, 64, 70, 2, 118, 80, 104, 135, 62, 108, 93, 88, 96, 111, 42, 47, 91, 113, 162, 10, 81, 106, 181, 200, 76, 34, 74, 123, 61, 14, 159, 166, 21, 5, 97, 163, 37, 24, 78, 110, 86, 18, 129, 128, 67, 66, 8, 191, 175, 101, 139, 185, 182, 167, 31, 188, 189, 95, 100, 122, 190, 35, 153, 99, 116, 52, 12, 46, 44, 20, 11, 63, 23, 142, 184, 169, 180, 50, 7, 83, 157, 94, 156, 165, 195, 49, 131, 28, "
+0265,statistics,free_multi,2,"A, D","A,D","Which measure of central location is meaningful when the data are nominal? [ANS] A. The mode  B. The median  C. The geometric mean  D. The arithmetic mean
+Which of the following are measures of the linear relationship between two variables? [ANS] A. The variance  B. The covariance  C. The coefficient of correlation  D. Both the covariance and the coefficient of correlation"
+0289,geometry,free_multi,2,"4, 9","4,9","A rectangle’s length is $4$ yards less than $5$ times of its width. If the rectangle’s perimeter must be between $40$ and $100$ yards, what is the range of its width? Use an inequality to solve this problem. Solution: The rectangle’s width must be between [ANS] yards (smaller value) and [ANS] yards (bigger value)."
+0315,statistics,free_multi,3,"B, B, A","B,B,A","(a) A sample of households in a community is selected at random from the telephone directory. In this community, 3\% of households have no telephone, 14\% have only cell phones, and another 26\% have unlisted telephone numbers. The sample will certainly suffer from [ANS] A. nonresponse.  B. undercoverage.  C. false responses.  D. None of the above.
+(b) A committee on community relations in a college town plans to survey local businesses about the importance of students as customers. From telephone book listings, the committee chooses 235 businesses at random. Of these, 79 return the questionnaire mailed by the committee. The population for this study is [ANS] A. the 79 businesses that returned the questionnaire.  B. all businesses in the college town.  C. the 235 businesses chosen.  D. Non"
+0323,number_theory,free_multi,4,"[10, 12), [-8, -6), [10, 18), [-16, -6)","[10,12),[-8,-6),[10,18),[-16,-6)","Let $f(x)=\lfloor x/2 \rfloor$. We learned that the floor and the ceiling functions are NOT invertible, but we also learned about the set of preimages of any value in the Range, the set of images. Keeping that in mind, give your answer in interval notation if necessary.
+(a) Find $f^{-1}(\lbrace 5 \rbrace)$.
+Your answer is [ANS]
+(b) Find $f^{-1}(\lbrace-4 \rbrace)$.
+Your answer is [ANS]
+(c) Find $f^{-1}(\lbrace x \mid 5\le x \le 8 \rbrace)$.
+Your answer is [ANS]
+(d) Find $f^{-1}(\lbrace x \mid-8\le x \le-4 \rbrace)$.
+Your answer is [ANS]"
+0330,geometry,free_multi,2,"26.76, 2614",,"A market analyst finds that if a company produces and sells $x$ mixers annually, the total profit in dollars is P(x)=9x+0.3x^2-0.0015x^3-427 Graph the function $P$ in an appropriate viewing rectangle and use the graph to answer the following.
+When just a few mixers are produced, the company loses money (i.e., profit is negative). For example $P(10)=-308.5$, so the company loses \$308.50 if it produces and sells only 10 mixers. How many mixers must the company produce to break even?
+Number of mixers=[ANS]
+Does the profit increase indefinitely as more mixers are produced and sold, or is there a largest possible profit the firm could earn? If there is a maximum profit, enter that value. If profit could increase indefinitely, enter None.
+Maximum profit=\$ [ANS]"
+0343,statistics,free_multi,5,"D, A, C, B, E","D,A,C,B,E","Match the verbal descriptions with the given polynomials. You need to use all polynomials and all descriptions. Recall that polynomials of degrees 0, 1, 2, 3, 4, 5, are called constant, linear, quadratic, cubic, quartic, and quintic, respectively. Also recall the definitions of the terms monomial, binomial, trinomial, given. You must get all of the answers correct to receive credit. [ANS] 1. A cubic polynomial [ANS] 2. A trinomial [ANS] 3. A quartic binomial [ANS] 4. The square of a cubic polynomial [ANS] 5. A quintic monomial.
+A. $x^2+2x+1$ B. $(x^3+1)^2$ C. $x^4-2x^3$ D. $x^3+3x^2+3x+1$ E. $\pi x^5$."
+0370,trigonometry,free_multi,2,"-5, 10",,"Find amplitude and midline of the function $y=10 \cos{(5x)}-5$
+(a) The midline is the line with equation [ANS]
+(b) The amplitude is [ANS]"
+0373,statistics,free_multi,2,"51.13, 56.71",,Listed below are the lenths (in minutes) of randomly selected music CDs. Construct a 93\% confidence interval for the mean length of all such CDs. $\begin{array}{lllllll} 58.06& 52.42& 48.16& 55.15& 56.49& 47.9& 53.56 \cr 51.03& 59.45& 66.46& 71.17& 72.53& 53.69& 74.84 \cr 35.15& 70.04& 57.73& 47.68& 46.98& 53.13& 56.35 \cr 50.39& 55.29& 46.48& 46.14& 53.41& 51.62& 53.55 \cr 45.42& 57.42& 52.88& 60.06& 54.89& 70.56& 55.49 \cr 52.94& 35.41& 33.95& 36.2& 56.63 \cr \end{array}$ [ANS] $< \mu <$ [ANS]
+0378,statistics,free_multi,5,"0.0001420, 0.00002206, 0.0001199, 0.1554, 15.54",,"Is the number of games won by a major league baseball team in a season related to the team batting average? The table below shows the number of games won and the batting average of 8 teams.
+$\begin{array}{ccc}\hline Team & Games Won & Batting Average \\ \hline 1 & 105 & 0.277 \\ \hline 2 & 97 & 0.281 \\ \hline 3 & 78 & 0.269 \\ \hline 4 & 94 & 0.276 \\ \hline 5 & 82 & 0.274 \\ \hline 6 & 99 & 0.267 \\ \hline 7 & 90 & 0.272 \\ \hline 8 & 84 & 0.272 \\ \hline \end{array}$
+Using games won as the independent variable $x$, do the following:
+(a) Compute the value of SST (Total Sum of Squares) answer: [ANS]
+(b) Compute the value of SSR (Regression Sum of Squares) answer: [ANS]
+(c) Compute the value of SSE (Error Sum of Squares) answer: [ANS]
+(d) The coefficient of determination is answer: [ANS]
+("
+0393,trigonometry,free_multi,3,"\frac{1}{10} \arccos\left(\frac{x - 6}{16}\right), [-10, 22]",,"Find the inverse of the following function and state its domain. $f(x)=16 \cos (10x)+6$ Type 'arccos' for the inverse cosine function in your answer. $\ f^{-1} (x)$=[ANS]
+Domain=[[ANS], [ANS]]"
+0401,trigonometry,free_multi,4,"143.2, 240.0, 52.52, -135.0",,"Convert from radians to degrees.
+(a) $\frac{5}{2}$ [ANS]
+(b) $\frac{4 \pi}{3}$ [ANS]
+(c) $\frac{11}{12}$ [ANS]
+(d) $-\frac{3 \pi}{4}$ [ANS]"
+0408,algebra,free_multi,5,"\dfrac{5816}{9999}, \dfrac{3017}{99990}, \dfrac{574}{999}, \dfrac{653}{9990}, \dfrac{428}{999}",,"For each of the following problems, show that the repeating decimal is a rational number by writing the decimal as a fraction. Make sure that you reduce the factor to the lowest common denominator. For example, 0.33333333...=1/3, not 3/9. 0.581658165816582...=[ANS]
+0.0301730173017302...=[ANS]
+0.574574574574575...=[ANS]
+0.0653653653653654...=[ANS]
+0.428428428428428...=[ANS]"
