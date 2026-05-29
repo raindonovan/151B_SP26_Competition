@@ -2,7 +2,17 @@
 
 > Read this FIRST when resuming a claude_strategy chat. Detailed findings live in their canonical homes; this is the index.
 
-**Last updated**: 2026-05-29 (Day 7 late — bootstrap script shipped, OPL bulk-override disconfirmed, wolf B9-B16 landed with ~17 new undercount candidates, credential policy revised)
+**Last updated**: 2026-05-29 (Day 7 latest — OPL marked DEAD repo-wide, inference-analysis workstream opened: schema agreed + catalog structure built, phantom normalization-stack finding)
+
+## ⚡ ACTIVE WORKSTREAM (Day 7 pivot): inference-run analysis + cataloging
+
+Rain pivoted to inference work late Day 7. The plan: catalog every inference run from day 1, rename to a consistent schema, analyze each for Bucket A/B classification. State:
+- **Structure built**: `inference/{adapter,base_model}/` folders (each with README/FINDINGS/SCRATCH), `inference/runs/CATALOG.md` (master index, ~30 runs), `inference/TODO.md` (session plan), `inference/FINDINGS.md`.
+- **Analysis schema AGREED**: full spec in `inference/runs/ANALYSIS_SCHEMA.md`. Per-run `analysis.csv`+`analysis.jsonl`, SC `analysis_samples.jsonl`, cross-run `CROSS_RUN_MATRIX.csv`. End goal = Bucket A/B label per item (the F7 unlock).
+- **BLOCKED on a decision**: a phantom normalization stack (normalizer.py, build_review_sheet.py, etc.) was described in a dump but is NOT in the repo. Decision (A) recover vs (B) build fresh — claude_strategy recommends B. See ANALYSIS_SCHEMA.md "Open decision". Resolve before building `analyze_run.py`.
+- **Implementation path**: build `analyze_run.py` once → run on R14 → refine → batch. One run cataloged per session.
+
+
 
 ## TL;DR — Where we are
 

@@ -10,6 +10,26 @@
 
 ## Session log (newest at top)
 
+### Day 7 — Analysis-schema session (2026-05-29, claude_strategy)
+
+**Done:**
+- Agreed the per-run analysis schema with Rain (Rain's original 5 cols + 9 additions, all locked). Full spec written to `inference/runs/ANALYSIS_SCHEMA.md`.
+- Decided artifacts: per-run `analysis.csv` + `analysis.jsonl`, SC-only `analysis_samples.jsonl`, cross-run `inference/runs/CROSS_RUN_MATRIX.csv`. Traces stay in raw samples.jsonl, referenced by (item_id, sample_index).
+- Decided scoring methodology: format check + numeric math check automated (Hendrycks normalizer + tolerance); symbolic flagged for review; `math_right_in_response_body` deferred (expensive).
+- Decided implementation path: build `analyze_run.py` ONCE, run on R14 first, refine, then batch across ~30 runs.
+
+**CRITICAL FINDING:**
+- A 2026-05-29 dump described a large normalization/judger/review-sheet stack (`normalizer.py`, `build_review_sheet.py`, `INFERENCE_ANALYSIS_PIPELINE.md`, judger moved to a `grading/` package, etc.). **VERIFIED: none of it is on `main` or any remote branch.** `judger.py` is still at root. The work is uncommitted/phantom. Do NOT build on it without recovering + verifying it first.
+- The REAL normalization stack on main: `judger.py` (root), `postprocessing/{STRICT_NORMALIZER_SPEC.md, NORMALIZATION_RULES.md, FORMAT_RULES.md}`, `postprocessing/scripts/apply_grader_normalization.py`, `tests/test_grader_normalization.py`.
+
+**PENDING DECISION (blocks the analyzer build):**
+- (A) recover phantom work vs (B) build fresh on existing stack + salvage design ideas. claude_strategy recommends (B). See ANALYSIS_SCHEMA.md "Open decision". **Rain to decide before next session builds anything.**
+
+**Did NOT do:**
+- Did NOT build `analyze_run.py` (blocked on A-vs-B decision).
+- Did NOT catalog any run yet.
+- Did NOT spawn the search_02 or undercount_v2 agents (prompts drafted in chat, not yet launched).
+
 ### Day 7 — Setup session (2026-05-29, claude_strategy)
 
 **Done:**
