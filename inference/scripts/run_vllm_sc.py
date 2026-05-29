@@ -43,7 +43,7 @@ sys.path.insert(0, str(REPO_ROOT / "scripts"))
 import torch  # noqa: E402
 import transformers  # noqa: E402
 import vllm  # noqa: E402
-from judger import Judger  # noqa: E402
+from grading.judger import Judger  # noqa: E402
 from transformers import AutoTokenizer  # noqa: E402
 from vllm import LLM, SamplingParams  # noqa: E402
 

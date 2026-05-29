@@ -1,0 +1,7 @@
+id,category,question,response,gold_answer,notes
+1,MCQ,"Assuming the weights corresponding to the sign values are reduced by 1/10, then the arithmetic mean is ().","Reasoning... therefore \\boxed{A}",A,"MCQ preserved"
+3,MCQ,"It is known that there are two types of fish in the pond, in a ratio of 7:3.","bad path \\boxed{B} later text \\boxed{D}",B,"FIRST boxed MCQ letter wins"
+15,free_multi,"Are the functions below polynomials? If they are, enter their degree. If not, enter NONE. [ANS] [ANS]","Step 1 \\boxed{8} Step 2 \\boxed{NONE}","8, NONE","multi-answer consolidation"
+31,free_multi,"Divide or state that the division is undefined. [ANS] [ANS]","Final answer: \\boxed{-3, 42}","-3, 42","spacing irrelevant"
+135,free_single,"Synthetic fixture for decimal to fraction promotion","Answer: \\boxed{0.6}","\\frac{3}{5}","default mode with metadata can promote"
+423,free_single,"Synthetic fixture for aggressive trailing zero handling","Answer: \\boxed{-0.5000}","-0.5","aggressive only"

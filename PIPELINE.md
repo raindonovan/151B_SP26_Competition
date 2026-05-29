@@ -74,7 +74,7 @@ flowchart LR
 | **PRE-INFERENCE** | **competition spec** + `private.jsonl` + gold-harvesting (teachers, Wolfram, OPL) | **COMPETITION.md** (rules/eval/format/Piazza), 3 official files | `COMPETITION.md`, `private.jsonl`, `data/public.jsonl`, `data/sample_submission.csv`, `data/search/` | 2 (in part) |
 | **INFERENCE** | Qwen base + LoRA adapters; SC sampling; GenSelect | RUN_REGISTRY, RUN_ANSWER_MATRIX, ADAPTER_REGISTRY | `inference/` (scripts, results, runs, adapters), `checkpoints/` | 4, 5, 7, 10, 11 |
 | **POST-INFERENCE** | Post-processor: format fix, multi-slot expansion, normalization | postprocessing findings/levers | `postprocessing/` | (the levers) |
-| **GRADING** | Kaggle grader (Hendrycks `is_equiv`) + local Judger → real score | **GRADER_SPEC** | `grading/`, `judger.py` | 6 |
+| **GRADING** | Kaggle grader (Hendrycks `is_equiv`) + local Judger → real score | **GRADER_SPEC** | `grading/`, `grading/judger.py` (root `judger.py` kept as a compatibility entrypoint) | 6 |
 | *seam* | the **submission CSV** (post-inf emits → grading consumes) | submission REGISTRY + daily-5 plan | `submission/` | 8, 9 |
 | **KNOWLEDGE LAYER** *(cross-cutting — not a phase)* | aggregates run answers + grading feedback + gold; feeds pre-inference & post-processing | **MASTER_ITEM_TABLE, ANSWER_SHEET** | `data/`, `data/answer_sheet/` | 1, 2, 3 |
 

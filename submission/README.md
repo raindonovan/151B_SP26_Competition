@@ -10,6 +10,7 @@ Final CSVs submitted to Kaggle, registry, and submission-building scripts.
 - `csvs/` — all 29 submitted CSV files + scores
 - `scripts/` — answer sheet builders, backsolve, splice, format fix
 - `REGISTRY.md` — definitive list of all 29 submissions with scores
+- `SUBMISSION_FORENSICS.md` — what the submission corpus actually tells us after grader-visible comparison
 - `TODO.md` — submission tasks
 - `FINDINGS.md` — submission-specific learnings
 
