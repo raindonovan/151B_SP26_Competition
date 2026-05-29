@@ -1,0 +1,26 @@
+id,subject,type,n_ans_slots,wolfram_answer,confidence,computable,notes
+0214,number_theory,free_multi,4,"11, F, 10, T",HIGH,YES,"primality check: floor(sqrt(121))=11 (F, not prime), floor(sqrt(107))=10 (T, is prime); best slot3=7 is wrong (bound not highest prime)"
+0227,statistics,free_multi,2,"A, C",HIGH,YES,matched pairs df=9=option A; pooled variance=C; best slot1=9 (value not letter A)
+0240,trigonometry,free_multi,3,"12, 4.9, 3.3",HIGH,YES,"spring oscillation: period=12s, midline=4.9ft, amplitude=3.3ft; teacher/best agree"
+0243,statistics,free_multi,2,"0.8925, 0.2150",HIGH,YES,p-val z=1.24: left-tail P=Phi(1.24)=0.8925; two-tail P=2*(1-0.8925)=0.2150; best=1 is catastrophically wrong
+0255,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,"OEIS tiling 4x2n L-tetrominoes for n=15..24; Wolfram cannot compute; teacher=E, best=H"
+0263,trigonometry,MCQ,0,-63/16,HIGH,YES,"tan(arcsin(3/5)+arccos(5/13))=-63/16=-3.9375; Wolfram confirmed; teacher=H, best=E"
+0269,statistics,free_multi,3,"1.789, 0.3198, B",HIGH,YES,t_crit df=47 alpha=0.04 = 1.789 (teacher~1.79 correct; best=1.717 wrong); t_stat=3/(65/sqrt(48))=0.3198; conclusion B
+0271,algebra,free_multi,1,"-4, 0, 4",HIGH,YES,"4a^6=64a^4 -> 4a^4(a^2-16)=0 -> a=-4,0,4; best=4 is severe undercount"
+0287,statistics,free_multi,2,"212, 136",HIGH,YES,sample size: a) p=0.5 n=212; b) p=0.8 n=136; best=136 is undercount
+0296,algebra,free_multi,3,"45, 180, 270",HIGH,YES,"lawn width=45, factory=180x270; teacher/best agree (values same, teacher has units)"
+0301,statistics,free_multi,2,"0.878, 57.2",HIGH,YES,logistic: pi(43)=0.878; dist at pi=0.6: x=57.2; best slot1=0.877 slightly wrong (3sf: 0.87761->0.878)
+0313,trigonometry,free_single,1,-2*sqrt(14)/15,HIGH,YES,unit circle Q4: y=-sqrt(1-(13/15)^2)=-2sqrt(14)/15; best=-21414 is completely wrong (digit concat error)
+0319,statistics,free_multi,4,"False, True, True, False",HIGH,YES,T/F stats statements; teacher/best agree (different notation F/T vs False/True)
+0322,algebra,free_multi,3,"40, 25, 1000",HIGH,YES,"sheep pens optimization: L=40ft, w=25ft, area=1000ft^2; teacher/best agree"
+0345,algebra,free_multi,2,"-5/6, 5/6",HIGH,YES,|12x|=10 -> x=pm10/12=pm5/6; teacher/best agree (exact vs decimal)
+0347,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,"9x9 tiling with 1x3 tiles, N mod 1000; hard combinatorics, not Wolfram-computable; teacher=B, best=I"
+0369,algebra,free_multi,3,"3/4, 5, 2",HIGH,YES,"vertex form: a=3/4, h=5, k=2; teacher/best agree (fraction vs decimal)"
+0372,statistics,free_single,1,0.51,HIGH,YES,ME=1.96*20.58/sqrt(6377)=0.5051~0.51; teacher correct; best=1 is wrong
+0382,algebra,free_multi,2,"187/18, 55/9",HIGH,YES,"room dims: l=187/18~10.39m, w=55/9~6.11m; teacher/best agree (exact vs decimal)"
+0386,other,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,"combinatorics/geometry problem; teacher=3, best=5; not Wolfram-computable"
+0397,geometry,free_multi,2,"256*pi, 2048*pi/3",HIGH,YES,sphere r=8: SA=4pi*64=256pi~804.2; V=4/3*pi*512=2048pi/3~2145; teacher/best agree
+0404,statistics,free_single,1,52,HIGH,YES,"prime outcomes {2,3,5}: (6+10+10)/50*100=52%; teacher/best agree"
+0411,geometry,free_single,1,392*pi/45,HIGH,YES,"arc: r=8, 196deg -> s=8*196pi/180=392pi/45~27.37; teacher correct; best=39246 completely wrong"
+0421,trigonometry,free_multi,2,"-9*sqrt(5)/20, -sqrt(5)/20",HIGH,YES,sec=1/cos=-9/(4sqrt(5))=-9sqrt(5)/20; tan=-sqrt(5)/20; teacher/best agree
+0437,statistics,free_multi,1,"76.37, 79.63",HIGH,YES,"95% CI: ME=1.96*17/sqrt(420)=1.626; (78-1.63,78+1.63)=(76.37,79.63); best=79.63 is undercount"

@@ -94,3 +94,28 @@
 | 0196 | B9 | HIGH | 14.7447, 10.3244, 35 | right-tri: a=18sin55=14.7447, b=18cos55=10.3244, B=35;  |
 | 0201 | B9 | HIGH | (5t+8)^2 | factor 25t^2+80t+64=(5t+8)^2; teacher/best equivalent f |
 | 0208 | B9 | HIGH | 16.2, 720/(49*pi) | r1=81/5=16.2, r2=720/(49pi); teacher/best agree (81/5=1 |
+| 0214 | B10 | HIGH | 11, F, 10, T | primality check: floor(sqrt(121))=11 (F, not prime), fl |
+| 0227 | B10 | HIGH | A, C | matched pairs df=9=option A; pooled variance=C; best sl |
+| 0240 | B10 | HIGH | 12, 4.9, 3.3 | spring oscillation: period=12s, midline=4.9ft, amplitud |
+| 0243 | B10 | HIGH | 0.8925, 0.2150 | p-val z=1.24: left-tail P=Phi(1.24)=0.8925; two-tail P= |
+| 0255 | B10 | INCONCLUSIVE | INCONCLUSIVE | OEIS tiling 4x2n L-tetrominoes for n=15..24; Wolfram ca |
+| 0263 | B10 | HIGH | -63/16 | tan(arcsin(3/5)+arccos(5/13))=-63/16=-3.9375; Wolfram c |
+| 0269 | B10 | HIGH | 1.789, 0.3198, B | t_crit df=47 alpha=0.04 = 1.789 (teacher~1.79 correct;  |
+| 0271 | B10 | HIGH | -4, 0, 4 | 4a^6=64a^4 -> 4a^4(a^2-16)=0 -> a=-4,0,4; best=4 is sev |
+| 0287 | B10 | HIGH | 212, 136 | sample size: a) p=0.5 n=212; b) p=0.8 n=136; best=136 i |
+| 0296 | B10 | HIGH | 45, 180, 270 | lawn width=45, factory=180x270; teacher/best agree (val |
+| 0301 | B10 | HIGH | 0.878, 57.2 | logistic: pi(43)=0.878; dist at pi=0.6: x=57.2; best sl |
+| 0313 | B10 | HIGH | -2*sqrt(14)/15 | unit circle Q4: y=-sqrt(1-(13/15)^2)=-2sqrt(14)/15; bes |
+| 0319 | B10 | HIGH | False, True, True, False | T/F stats statements; teacher/best agree (different not |
+| 0322 | B10 | HIGH | 40, 25, 1000 | sheep pens optimization: L=40ft, w=25ft, area=1000ft^2; |
+| 0345 | B10 | HIGH | -5/6, 5/6 | /12x/=10 -> x=pm10/12=pm5/6; teacher/best agree (exact  |
+| 0347 | B10 | INCONCLUSIVE | INCONCLUSIVE | 9x9 tiling with 1x3 tiles, N mod 1000; hard combinatori |
+| 0369 | B10 | HIGH | 3/4, 5, 2 | vertex form: a=3/4, h=5, k=2; teacher/best agree (fract |
+| 0372 | B10 | HIGH | 0.51 | ME=1.96*20.58/sqrt(6377)=0.5051~0.51; teacher correct;  |
+| 0382 | B10 | HIGH | 187/18, 55/9 | room dims: l=187/18~10.39m, w=55/9~6.11m; teacher/best  |
+| 0386 | B10 | INCONCLUSIVE | INCONCLUSIVE | combinatorics/geometry problem; teacher=3, best=5; not  |
+| 0397 | B10 | HIGH | 256*pi, 2048*pi/3 | sphere r=8: SA=4pi*64=256pi~804.2; V=4/3*pi*512=2048pi/ |
+| 0404 | B10 | HIGH | 52 | prime outcomes {2,3,5}: (6+10+10)/50*100=52%; teacher/b |
+| 0411 | B10 | HIGH | 392*pi/45 | arc: r=8, 196deg -> s=8*196pi/180=392pi/45~27.37; teach |
+| 0421 | B10 | HIGH | -9*sqrt(5)/20, -sqrt(5)/20 | sec=1/cos=-9/(4sqrt(5))=-9sqrt(5)/20; tan=-sqrt(5)/20;  |
+| 0437 | B10 | HIGH | 76.37, 79.63 | 95% CI: ME=1.96*17/sqrt(420)=1.626; (78-1.63,78+1.63)=( |

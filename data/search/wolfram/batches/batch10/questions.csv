@@ -1,0 +1,58 @@
+id,subject,type,n_ans_slots,best_answer,teacher_consensus,question
+0214,number_theory,free_multi,4,"11, F, 7, T","11,F,10,T","Here you are asked first the highest divisor to check. Answer that with a number. Then you are told that the number is prime. Answer that T (for true) or F (for false). To see if 121 is prime the we only have to check prime divisors up to [ANS]
+121 is prime: [ANS]
+To see if 107 is prime the we only have to check prime divisors up to [ANS]
+107 is prime: [ANS]"
+0227,statistics,free_multi,2,"9, C","A,C","The number of degrees of freedom associated with the t test, when the data are gathered from a matched pairs experiment with 10 pairs, is: [ANS] A. 9  B. 18  C. 20  D. 10
+The quantity $s^2_p$ is called the pooled variance estimate of the common variance of two unknown but equal population variances. It is the weighted average of the two sample variances, where the weights represent the: [ANS] A. sample sizes  B. sample variances  C. degrees of freedom for each sample  D. sample standard deviations"
+0240,trigonometry,free_multi,3,"12\text{ s},4.9\text{ ft},3.3\text{ ft}","12,4.9,3.3","The table below gives the height $h=f(t)$ in feet of a weight on a spring where $t$ is time in seconds.
+$\begin{array}{ccccccccccccccccc}\hline t(sec) & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 \\\hline h(feet) & 4.9 & 6.9 & 7.9 & 8.2 & 7.9 & 6.9 & 4.9 & 2.9 & 1.9 & 1.6 & 1.9 & 2.9 & 4.9 & 6.9 & 7.9 & 8.2 \\\hline\end{array}$
+(a) What is the period of $\ f(t)$? [ANS]s (include) (b) What is the midline of $\ f(t)$? [ANS]ft (include) (c) What is the amplitude of $\ f(t)$? [ANS]ft (include)"
+0243,statistics,free_multi,2,1,"0.8925,0.2150","(a) Find the P-value for the test statistic $z=1.24$ for the following null and alternative hypotheses: $H_0$: The population mean is 17. $H_a$: The population mean is less than 17. The P-value is [ANS]
+(b) Find the P-value for the test statistic $z=1.24$ for the following null and alternative hypotheses: $H_0$: The population mean is 17. $H_a$: The population mean is not equal to 17. The P-value is [ANS]"
+0255,geometry,MCQ,0,H,E,"We now define an algorithm: The definition of a(n) is: Number of tilings of a 4 X 2n rectangle with L tetrominoes. L tetrominoes are Tetris-like pieces consisting of 4 squares that form an ""L"" shape. Given the input x_list (a series of values): [15, 16, 17, 18, 19, 20, 21, 22, 23, 24], determine the corresponding output sequence y_list."
+0263,trigonometry,MCQ,0,E,H,Evaluate $\tan\left(\arcsin\left(\frac{ 3 }{ 5 }\right)+\arccos\left(\frac{ 5 }{ 13 }\right)\right)$.
+0269,statistics,free_multi,3,"1.717, 0.3198, B","1.79,0.32,B","A paired difference experiment produced the following results:
+n_D=48, \ \overline{x}_1=158, \ \overline{x}_2=155, \ \overline{x}_D=3, \ s_D=65,
+(a) $\ $ Determine the rejection region for the hypothesis $H_0: \mu_D=0$ if $H_a: \mu_D >0$. Use $\alpha=0.04$. $t >$ [ANS]
+(b) $\ $ Conduct a paired difference test described above. The test statistic is [ANS]
+The final conclusion is [ANS] A. We can reject the null hypothesis that $\mu_D=0$ and accept that $\mu_D > 0$.  B. There is not sufficient evidence to reject the null hypothesis that $\mu_D=0$."
+0271,algebra,free_single,1,4,"-4,0,4","Solve the equation for $a$:
+4 a^6=64 a^4 $a=$ [ANS]
+Help: Separate multiple answers by a comma separated list."
+0287,statistics,free_multi,2,136,"212,136","A random sample of elementary school children in New York state is to be selected to estimate the proportion $p$ who have received a medical examination during the past year. An interval estimate of the proportion $p$ with a margin of error of $0.08$ and $98$ \% confidence is required.
+(a) $\ $ Assuming no prior information about $\hat{p}$ is available, approximately how large of a sample size is needed? $n=$ [ANS]
+(b) $\ $ If a planning study indicates that $\hat{p}$ is around $0.8$, approximately how large of a sample size is needed? $n=$ [ANS]"
+0296,linear_algebra,free_multi,3,"45.00, 180.00, 270.00","45,180,270","A factory is to be built on a lot measuring 270 ft by 360 ft. A local building code specifies that a lawn of uniform width and equal in area to the factory must surround the factory.
+What must the width of the lawn be? [ANS]
+If the dimensions of the factory are $A$ ft by $B$ ft with $A < B$, then $A=$ [ANS] and $B=$ [ANS]"
+0301,statistics,free_multi,2,"0.877, 57.2","0.878,57.2","Suppose the probability $\pi(x)$ of reaching a target (such as getting a ball between goal posts) as a function of distance x (in metres) from the target is well-fitted by a logistic regression equation with $\log(\pi(x)/[1-\pi(x)])=6.7-0.11x$ Please answer below to 3 significant digits.
+Part a) For this prediction model, what is the probability of reaching the target from a distance of 43 metres. [ANS]
+Part b) At what distance is the probability of reaching the target equal to 0.6? [ANS]"
+0313,trigonometry,free_single,1,-21414,-\frac{2\sqrt{14}}{15},"If the point $P(\frac{13}{15},y)$ is on the unit circle in quadrant IV, then $y=$ [ANS]."
+0319,statistics,free_multi,4,"F, T, T, F","False,True,True,False","Select True or False, depending on whether the corresponding statement is true or false.
+[ANS] 1. The standard deviation will always exceed that of the variance. [ANS] 2. The standard deviation is the positive square root of the variance. [ANS] 3. The standard deviation is expressed in terms of the original units of measurement but the variance is not. [ANS] 4. The value of the standard deviation may be either positive or negative, while the value of the variance will always be positive."
+0322,linear_algebra,free_multi,3,"40.00, 25.00, 1000.00","40 ft,25 ft,1000 ft^2","You plan to build four identical rectangular sheep pens in a row. Each adjacent pair of pens share a fence between them. You have a total of $400$ feet of fence to use. Find the dimension of each pen such that you can enclose the maximum area.
+The length of each pen (along the walls that they share) should be [ANS]. The width of each pen should be [ANS]. The maximum area of each pen is [ANS]. (Use ft for feet, and ft^2 for square feet.)"
+0345,algebra,free_multi,2,"-0.8333, 0.8333","-\frac{5}{6},\frac{5}{6}",Find all real zeros of the equation $|12x|=10$. Its real zeros are $x_1=$ [ANS] and $x_2=$ [ANS] with $x_1\le x_2$
+0347,number_theory,MCQ,0,I,B,"A $9 \times 9$ table is tiled by $26$ $(1 \times 3)$ tiles such that only $3$ squares remain uncovered. Let $N$ be the number of possible configurations of these $3$ squares, without regard to rotations. Find $N$ mod $1000$ ."
+0369,algebra,free_multi,3,"0.7500, 5.000, 2.000","\frac34,5,2","A quadratic function has its vertex at the point $(5,2)$. The function passes through the point $(3,5)$. When written in vertex form, the function is $f(x)=a(x-h)^2+k$, where:
+$a=$ [ANS].
+$h=$ [ANS].
+$k=$ [ANS]."
+0372,statistics,free_single,1,1,0.51,"In estimating the mean monthly fuel expenditure, $\mu$, per household vehicle, the U.S. Energy Information Administration takes a sample of size 6377. Assuming that $\sigma$=20.58 dollars, determine the margin of error in estimating $\mu$ at the 95\% level of confidence. [ANS] dollars."
+0382,linear_algebra,free_multi,2,"10.39, 6.111","\frac{187}{18},\frac{55}{9}","A rectangular room is $1.7$ times as long as it is wide, and its perimeter is $33$ meters. Find the dimension of the room.
+The length is: [ANS] meters and the width is [ANS] meters."
+0386,geometry,free_single,0,5,3,"There are $n$ parallel lines on a plane, and there is a set $S$ of distinct points. Each point in $S$ lies on one of the $n$ lines and is colored either red or blue. Determine the minimum value of $n$ such that if $S$ satisfies the following condition, it is guaranteed that there are infinitely many red points and infinitely many blue points.
+Each line contains at least one red point and at least one blue point from $S$.
+Consider a triangle formed by three elements of $S$ located on three distinct lines. If two of the vertices of the triangle are red, there must exist a blue point, not one of the vertices, either inside or on the boundary of the triangle. Similarly, if two of the vertices are blue, there must exist a red point, not one of the vertices, either inside or on the boundary of t"
+0397,geometry,free_multi,2,"804.2, 2145","256\pi,\frac{2048\pi}{3}","As Aragorn views the Dark Lord in a crystal ball of radius 8, he realizes that: The surface area of the ball equals: [ANS]
+The volume of the ball equals: [ANS]"
+0404,number_theory,free_single,1,52.00,52\%,"A standard six-sided die was rolled 50 times, and the outcomes are in the table shown.
+$\begin{array}{ccc}\hline Outcome & & # of Occurrences \\ \hline & & \\ \hline 1 & & 11 \\ \hline & & \\ \hline 2 & & 6 \\ \hline & & \\ \hline 3 & & 10 \\ \hline & & \\ \hline 4 & & 7 \\ \hline & & \\ \hline 5 & & 10 \\ \hline & & \\ \hline 6 & & 6 \\ \hline \end{array}$ [ANS] \% of the rolls resulted in a prime number."
+0411,geometry,free_single,1,39246,\frac{392\pi}{45},"In a circle of radius 8, the length of the arc that subtends a central angle of 196 degrees is [ANS]."
+0421,trigonometry,free_multi,2,"-\dfrac{9\sqrt{5}}{20}, -\dfrac{\sqrt{5}}{20}","-\frac{9\sqrt5}{20},-\frac{\sqrt5}{20}","Suppose the angle $\theta$ is in the second quadrant, $\pi/2 \leq \theta \leq \pi$, and $ \sin(\theta)=\frac{1}{9}$. Find exact values (as fractions, not decimal approximations) for the following.
+(a) $\sec{\theta}$=[ANS]
+(b) $\tan{\theta}$=[ANS]"
+0437,statistics,free_single,1,79.63,"(76.37, 79.63)","The number of cars sold annually by used car salespeople is normally distributed with a standard deviation of 17. A random sample of 420 salespeople was taken and the mean number of cars sold annually was found to be 78. Find the 95\% confidence interval estimate of the population mean. Note: For each confidence interval, enter your answer in the form (LCL, UCL). You must include the parentheses and the comma between the confidence limits.
+Confidence Interval=[ANS]"
