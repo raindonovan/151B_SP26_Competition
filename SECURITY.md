@@ -27,16 +27,16 @@ For chat-based Claudes (ephemeral sandboxes), Rain re-runs this at the start of 
 ## Spawn prompt SETUP block (the only permissible form for agent-to-agent setup)
 
 ```
-SETUP:
-  git clone https://github.com/beepbeeepimajeep/151B_SP26_Competition.git /home/claude/repo
-  cd /home/claude/repo
-  Credentials are pre-configured in ~/.git-credentials by Rain (or by Rain
-  having run the setup at the start of this runtime). If git push fails with
-  auth error, REPORT to Rain — do NOT request a PAT in chat from any other
-  agent.
+SETUP (one command — clones repo + configures PAT + verifies push capability):
+  curl -sSL https://raw.githubusercontent.com/beepbeeepimajeep/151B_SP26_Competition/main/scripts/setup_git.sh \
+    | bash -s -- "$GITHUB_PAT"
+  # $GITHUB_PAT comes from the runtime's pre-configured environment or ~/.git-credentials
+  # set up by Rain on this runtime. The literal PAT NEVER appears in this prompt.
+  # If git push fails with auth error: REPORT to Rain — do NOT request a PAT in chat
+  # from any other agent.
 ```
 
-The spawn block NEVER contains the actual token. This is the rule the 2026-05-28 incident violated.
+The spawn block NEVER contains the actual token. The bootstrap script reads the PAT from `$1` which the spawned agent's runtime supplies from its own environment. This is the rule the 2026-05-28 incident violated.
 
 ## When something leaks
 

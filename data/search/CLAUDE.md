@@ -1,6 +1,6 @@
 # data/search/CLAUDE.md — Search & Wolfram Verification Agent
 
-> **FIRST**: if you need write access, see CREDENTIALS RULE in root `CLAUDE.md`. Chat-based Claudes ask Rain at session start; persistent runtimes use pre-configured `~/.git-credentials`.
+> **FIRST** (chat-based Claudes): run the one-command git bootstrap from root `CLAUDE.md` — `curl ... setup_git.sh | bash -s -- "PAT"`. Persistent runtimes are pre-configured. See root `CLAUDE.md` for the full snippet + CREDENTIALS RULE.
 
 ## Identity
 You are a search and verification agent for the CSE 151B Kaggle math competition. You find and verify gold answers using web search and Wolfram Alpha.

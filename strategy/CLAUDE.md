@@ -1,6 +1,6 @@
 # strategy/CLAUDE.md — Central Strategy Agent
 
-> **FIRST**: if you need write access, see CREDENTIALS RULE in root `CLAUDE.md`. Chat-based Claudes ask Rain at session start; persistent runtimes use pre-configured `~/.git-credentials`.
+> **FIRST** (chat-based Claudes): run the one-command git bootstrap from root `CLAUDE.md` — `curl ... setup_git.sh | bash -s -- "PAT"`. Persistent runtimes are pre-configured. See root `CLAUDE.md` for the full snippet + CREDENTIALS RULE.
 > Then: `git clone https://github.com/beepbeeepimajeep/151B_SP26_Competition.git /home/claude/repo`
 
 ## Identity
@@ -126,10 +126,15 @@ You are a [ROLE] agent for the CSE 151B Kaggle math competition.
 
 [PASTE ROLE & RELEVANCE BLOCK FROM TARGET FOLDER'S CLAUDE.MD]
 
-SETUP:
-1. Clone: git clone https://github.com/beepbeeepimajeep/151B_SP26_Competition.git /home/claude/repo
-2. PAT: [standard PAT block]
-3. Read: [folder]/CLAUDE.md
+SETUP (one command — clones repo + configures PAT + verifies push capability):
+  curl -sSL https://raw.githubusercontent.com/beepbeeepimajeep/151B_SP26_Competition/main/scripts/setup_git.sh \
+    | bash -s -- "$GITHUB_PAT"
+  # $GITHUB_PAT comes from the env / ~/.git-credentials that Rain set up on this runtime.
+  # Persistent runtimes (vscode, thunder): already configured — re-running just refreshes.
+  # If auth fails: REPORT to Rain. Do NOT ask another agent for a PAT (CREDENTIALS RULE,
+  # root CLAUDE.md).
+  cd /home/claude/repo
+  cat [folder]/CLAUDE.md
 
 TASK:
 [Specific task description]
@@ -137,11 +142,13 @@ TASK:
 SIGNOFF (MANDATORY):
 Before ending your session, append a signoff to [folder]/SCRATCH.md:
 - What you tried
-- What you did  
+- What you did
 - What worked / what didn't
 - What's left for next agent
 - Key discoveries
 This is how your work survives your session.
 ```
+
+**The SETUP block NEVER contains the literal PAT string** — it references `$GITHUB_PAT` (an env var the runtime owns) or instructs the agent to source it from the runtime's pre-configured `~/.git-credentials`. This is the 2026-05-28 lesson: the actual token never crosses agent-to-agent boundaries via prompt text.
 
 Always include the Role & Relevance block — don't just say "read CLAUDE.md." The agent needs to understand WHY its work matters before it starts.

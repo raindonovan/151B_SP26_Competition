@@ -1,6 +1,11 @@
 # CLAUDE.md — Global Entry Point
 
-> **First thing**: if you need to push, see the CREDENTIALS RULE below. Chat-based Claudes ask Rain for a fresh fine-grained PAT at session start. Persistent runtimes use the pre-configured `~/.git-credentials`.
+> **FIRST**: if you're a fresh chat-based Claude (claude.ai), the one-command bootstrap to wire up git is:
+> ```bash
+> curl -sSL https://raw.githubusercontent.com/beepbeeepimajeep/151B_SP26_Competition/main/scripts/setup_git.sh \
+>   | bash -s -- "GITHUB_PAT_PASTED_BY_RAIN_AT_SESSION_START"
+> ```
+> Run this in `bash_tool` at session start. Output: `✅ git ready — repo at /home/claude/repo, ...`. Now you can `cd /home/claude/repo` and work normally. Persistent runtimes (vscode, thunder) only need this once per credential rotation. See CREDENTIALS RULE below for the policy.
 
 ## Who are you?
 

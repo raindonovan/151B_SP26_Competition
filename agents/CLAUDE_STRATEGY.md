@@ -57,11 +57,18 @@ You are claude_strategy = THE CENTRAL NODE. You operate inside Claude.ai web/des
 ## Session Start Protocol
 
 1. Memory auto-loads (30 entries)
-2. Read `START_HERE.md` (repo root) — follow read order there
-3. Clone repo: `git clone https://github.com/beepbeeepimajeep/151B_SP26_Competition.git /home/claude/repo`
-4. If writes are needed: ensure PAT is in `~/.git-credentials` (chat-based: ask Rain at session start; persistent: should already be configured). See CREDENTIALS RULE in root `CLAUDE.md`.
-5. Read `strategy/SESSION_HANDOFF.md` for current plan
+2. **Run the git bootstrap** (one command does steps 3-4 below in 10 seconds):
+   ```bash
+   curl -sSL https://raw.githubusercontent.com/beepbeeepimajeep/151B_SP26_Competition/main/scripts/setup_git.sh \
+     | bash -s -- "GITHUB_PAT_FROM_RAIN"
+   ```
+   Output `✅ git ready — repo at /home/claude/repo, ...` confirms credentials, clone, and push capability all in one shot. If this fails, REPORT to Rain — do NOT request a PAT from any other agent (per CREDENTIALS RULE in root `CLAUDE.md`).
+3. ~~Clone repo~~ — done by the bootstrap
+4. ~~Configure PAT~~ — done by the bootstrap
+5. Read `START_HERE.md` and `strategy/SESSION_HANDOFF.md` for the current plan
 6. Read `agents/CLAUDE_STRATEGY.md` (this file) for rules
+
+**For persistent runtimes (claude_vscode, claude_thunder)**: run the bootstrap **once per token rotation**. It's idempotent — re-running just updates the credential and verifies.
 
 ---
 
