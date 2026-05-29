@@ -26,6 +26,7 @@ symbolic/sympy equivalence.
   that describes our *local* judger, not Kaggle. (Flagged for correction.)
 - Within-box **order matters**: reversed `\boxed{a,b}`→`\boxed{b,a}` = **−17.6pp** (probe-verified).
 - Per-slot `\boxed{a} \boxed{b}` (separate boxes) = **−16.2pp** vs single `\boxed{a, b}` — only the last box survives.
+- **Empirically re-confirmed by 25_08 Slot 4 (2026-05-28)**: 21 real content changes (mostly adding missing slots to multi-answer items) yielded +4 slice items net. The grader does NOT look at reasoning trace for missing slots — only the last box matters.
 
 ## 3. MCQ vs Free-form (two code paths)
 
@@ -33,6 +34,12 @@ symbolic/sympy equivalence.
 |---|---|
 | **MCQ** | First `\boxed{LETTER}` (`re.search`), fallback last bare capital. Exact letter match. |
 | **Free-form** | Last `\boxed{}`, Hendrycks normalize, string match. |
+
+**⚠️ MCQ OVERRIDE MECHANISM CAVEAT (empirically confirmed 25_08 Slot 3, 2026-05-28):**
+For MCQ items, **appending `\boxed{NEW_LETTER}` at the END of the response does NOT override** the original letter from the model's reasoning trace. The grader's `re.search` finds the FIRST box, which is the original. 25_08 Slot 3 used append-to-end on 26 MCQ items and scored exactly 0.692 = base = no change. To override MCQ, you must either:
+- **Prepend** `\boxed{NEW_LETTER}` to the response, OR
+- **Replace** the entire response with just `\boxed{NEW_LETTER}`, OR
+- **Find-and-replace** the original first `\boxed{}` in the trace.
 
 ## 4. What Hendrycks AUTO-NORMALIZES — DO NOT waste a submission "fixing" these
 
@@ -53,9 +60,13 @@ symbolic/sympy equivalence.
 
 | Failure mode | Status |
 |---|---|
-| **Multi-slot under-count** (Qwen boxes last slot only) | DOMINANT — 79% of B1-7 failures. Primary lever. |
-| **Trailing zeros** `1.50 ≠ 1.5`, `70.00 ≠ 70` | LIVE — ~53 items in slot1_reformat affected |
-| **Fraction vs decimal** `3/5 ≠ 0.6` | Never normalized (Piazza-confirmed). Affects "4 sig-fig" prompt. |
+| **Multi-slot under-count** (Qwen boxes last slot only) | DOMINANT — 79% of B1-7 failures. Primary lever. **EMPIRICALLY CONFIRMED 25_08 Slot 4: +4 slice items from 21 real content changes (highest per-slot yield this run).** |
+| **Trailing zeros** `1.50 ≠ 1.5`, `70.00 ≠ 70` | LIVE — ~53 items in slot1_reformat affected. **Net-neutral on slice (#25 = #26 = 0.692) — strip wins ≈ strip losses.** |
+| **Fraction vs decimal** `3/5 ≠ 0.6` | Never normalized (Piazza-confirmed). **EMPIRICALLY CONFIRMED 25_08 Slot 1: +2 slice items from 8 decimal→fraction overrides (~83% conditional yield).** |
+| **Symbolic vs decimal** `\pi/4 ≠ 0.7854` | Never normalized. **Empirically confirmed via 25_08 Slot 4 item 834.** |
+| **`*` for multiplication NOT converted to `\cdot`** | Never normalized. **Empirically confirmed by 25_08 Slot 2 failure: items 104 (`7.7*31*pi/180`) and 127 (`5*ln(17/2)`) caused losses.** |
+| **Multi-char LHS prefixes** (`Mean=`, `A=`, `B=`) | `_strip_string` only handles LHS ≤ 2 chars. **Empirically confirmed by 25_08 Slot 2 failure: items 20 (`Mean=228...`), 108 (`A=72, B=12x`), 139 (`A=201, B=...`) caused losses.** |
+| **Verbal/conditional notation** ("if c>150; ...") | Never normalized. **Empirically confirmed by 25_08 Slot 2 item 61 piecewise verbal form.** |
 | `\mathbf{2}` vs `2`, `100,000` vs `100000` | minor / mostly dead in current subs |
 | `\text{A}` vs `A` (MCQ wrap) | dead — our subs already letterized |
 
