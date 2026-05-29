@@ -1,5 +1,9 @@
 # submission/ — Stage 4: Submission Management
 
+> ## ⚠️ READ FIRST
+> - 🔴 **`RED_ALERT_LB_SUBSET.md`** — the 283-slice contamination of back-solve infrastructure
+> - 🟡 **`AMBER_ALERT.md`** — four UNRESOLVED concerns affecting EV calculations, MCQ override mechanism, and evidence-source trust (raised 2026-05-28)
+
 Final CSVs submitted to Kaggle, registry, and submission-building scripts.
 
 ## Contents

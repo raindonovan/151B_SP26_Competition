@@ -39,3 +39,18 @@ Drop anything here. Rain will sort it later.
 - All 5 can be uploaded in any order, in parallel.
 
 **Files committed and pushed to main:** commit 5225c25
+
+## AMBER_ALERT raised 2026-05-28
+
+Created `submission/AMBER_ALERT.md` documenting four UNRESOLVED concerns from 25_08 build:
+1. Uniform-sampling EV math is no-info prior, not calibrated
+2. "Slice oversamples hard items" claim is RED_ALERT-contaminated — don't trust it
+3. Append-`\boxed{}`-to-end mechanism is BROKEN for MCQ (grader takes FIRST box); affects 25_08 Slot 3 + 26 of Slot 5's overrides, and possibly retroactively affects past submissions where MCQ overrides used same mechanism
+4. All override "correct answers" are proxies (teachers/search/Wolfram/back-solve), not verified ground truth
+
+Linked from `submission/README.md` top banner and `submission/25_08/README.md` top banner. Cross-refs to RED_ALERT_LB_SUBSET.md and grading/GRADER_SPEC.md.
+
+Action items spawned (not done yet):
+- Audit past submissions for the MCQ-append-bug — did any of our prior "+1 slice item" attributions for MCQ overrides silently no-op?
+- Decide whether to rebuild Slot 3 with prepend mechanism before uploading
+- Decide whether to rebuild Slot 5 with MCQ-portion using correct prepend mechanism

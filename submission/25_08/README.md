@@ -1,5 +1,11 @@
 # 25_08 — Five Independent Hypothesis Submissions
 
+> ## ⚠️ KNOWN ISSUES — READ BEFORE INTERPRETING SCORES
+> - 🟡 **See `submission/AMBER_ALERT.md`** for four unresolved concerns
+> - **Slot 3 (and 26 MCQ items in Slot 5) likely no-op** due to MCQ-first-box grader rule vs our append-to-end override mechanism. Confirm before drawing conclusions from Slot 3 score.
+> - All EVs in this doc use the **uniform random sampling prior**. We have no clean evidence the slice is uniform or biased in any direction.
+> - All override "correct answers" are **PROXIES** (teacher consensus, search GOLD label, etc.), not verified ground truth.
+
 **Built:** 2026-05-28 (under 15-min window)
 **Base:** `slot1_kitchen_sink_C.csv` (0.692 — current best)
 **Strategy:** 5 NON-CHAINED independent slots. Each tests a different post-processing/format hypothesis using NEW evidence sources. No slot's correctness depends on another's outcome.
