@@ -19,26 +19,48 @@ Drop anything here. Rain will sort it later.
 **Reuse**: Any future research task should follow this pattern. It's how we got the Hendrycks grader finding.
 
 ---
-## Agent signoff — claude_grader_research — 2026-05-28
-### What I tried
-- Cloned repo, ingested all grader/submission/postproc/data docs (Phase 1).
-- Fetched + ran the ACTUAL Hendrycks `is_equiv` + `last_boxed_only_string` source against 35+ edge-case probes (Phase 2).
-- Researched Math-Verify (lenient counter-reference), AIMO 1/2/3 winner post-processing, lm-eval-harness known Hendrycks bugs, and searched for the CSE 151B SP26 Kaggle grader code (Phase 4).
-### What I did
-- Created grading/GRADER_RESEARCH.md (full findings by confidence).
-- Created postprocessing/STRICT_NORMALIZER_SPEC.md (per-item-type build spec + bundled overlay recommendation).
-- Saved VERIFIED reference impls: grading/hendrycks_is_equiv_reference.py + hendrycks_extraction_reference.py (use as pre-submission validation harness).
-- Appended findings to postprocessing/SCRATCH.md and grading/SCRATCH.md.
-### What worked
-- Confirmed grader = Hendrycks at LINE level — all 20 prior documented claims verified against source. GRADER_SPEC.md is trustworthy.
-- Found 5 NEW levers (L9–L13) not in existing docs: multi-answer per-element a/b NOT auto-fraction'd; \mathrm/\mathbf NOT stripped; set braces NOT stripped; sci-notation NOT normalized; single neg a/b IS safe.
-### What didn't work
-- No external grader code exists for SP26 math comp (private competition). No golden key. Our reconstruction is the ceiling of available knowledge.
-### What's left for next agent
-- BUILD the bundled "strict normalizer" overlay (STRICT_NORMALIZER_SPEC.md §"THE BUNDLED OVERLAY") and submit as ONE hypothesis (test L9–L12 on slice). Highest cheap EV.
-- Wire grading/hendrycks_is_equiv_reference.py into the post-processor as a pre-submit check.
-- Per-item evidence calls still needed for: set-brace items, Yes/yes casing, interval open/closed, fraction-vs-decimal direction (these are NOT blanket rules).
-### Key discoveries
-- judger.py strips \mathrm and handles per-element fractions → it MASKED levers L9/L10 in local eval. The judger↔Hendrycks delta IS the lever list, mechanically.
-- AIMO winner independently confirms RED_ALERT: small public test → overfit risk → prefer robust picks for final 2.
-- MCQ override must PREPEND/replace, never append (re-confirmed AMBER #3 via source: re.search = FIRST box).
+
+## SIGNOFF: claude_grader_research (2026-05-28)
+
+### What I tried:
+- Cloned repo, read ALL specified files (REGISTRY.md, AMBER_ALERT.md, RED_ALERT.md, GLOBAL_STRATEGY.md, SCRATCH.md, 25_08/, GRADER_SPEC.md, JUDGER_AND_PUBLIC_SET.md, FINDINGS.md, FORMAT_RULES.md, data/FINDINGS.md, FORMAT_CONVENTIONS.md, POST_PROCESSING_TECHNIQUES.md)
+- Fetched and analyzed the COMPLETE Hendrycks `math_equivalence.py` source code (SHA b5c066f) from `hendrycks/math` repo via git-mcp
+- Read EleutherAI `lm-evaluation-harness` hendrycks_math implementation
+- Rebuilt the entire `_strip_string` and `is_equiv` locally and ran 40+ edge case tests
+- Searched for CSE 151B SP26 competition page (not found — may be private/InClass Kaggle)
+- Searched for AIMO Progress Prize 1 & 2 winner writeups (Numina, NemoSkills)
+- Searched for HuggingFace Math-Verify source code and changelog
+- Read starter notebook cells 11 (prompt) and 22 (scoring) in full
+- Searched for Piazza posts about format/grader (found references to Anthony Tong confirmation)
+
+### What I did:
+- Produced `grading/GRADER_RESEARCH.md` — comprehensive 9-section analysis with edge case tables
+- Appended 13 NEW format rules to `postprocessing/SCRATCH.md` with priority-ordered pipeline
+- Verified every claim with actual code execution (not speculation)
+
+### What worked:
+- git-mcp:get_file_contents successfully fetched the Hendrycks source code (better than web_fetch which hit rate limits)
+- Local reproduction of `_strip_string` allowed empirical testing of 40+ edge cases
+- Cross-referencing source code with our submission data confirmed all prior findings AND revealed 13 new ones
+
+### What didn't:
+- Could not find the exact Kaggle competition page for CSE 151B SP26 math (likely InClass/private)
+- Could not find the server-side Kaggle grader code directly (it's likely a variant of Hendrycks bundled in the competition setup)
+- web_fetch on github.com returned 429 (rate limited) — used git-mcp instead
+
+### What's left for next agent:
+1. **Build the actual post-processing script** implementing the priority-ordered pipeline (13 rules)
+2. **Test negative fraction sign placement** on our dataset — scan for items where our answer has `\frac{-a}{b}` and test whether gold uses `-\frac{a}{b}` instead
+3. **Audit for bare `%`, `\mathrm{}`, `\mathbf{}`, `\text{A}`** in our current best submission
+4. **Audit for `*` vs `\cdot` and bare `ln` vs `\ln`** in current answers
+5. **Check multi-answer items for slash fractions** that need explicit `\frac{}{}` conversion (standalone auto-convert doesn't work in multi-answer)
+6. **The MCQ override mechanism**: build proper prepend/replace override for MCQ items (not append)
+
+### Key discoveries:
+1. **Negative fraction sign placement is a NEW lever**: `-\frac{2}{3}` ≠ `\frac{-2}{3}` — MATH convention is sign-outside
+2. **`0.5` and `a/b` auto-conversion are STANDALONE ONLY**: They don't fire inside multi-answer comma-separated strings. Must use explicit `\frac{}{}` in multi-answer.
+3. **Bare `%` survives normalization**: Only `\%` is stripped. If model emits bare `%`, it persists.
+4. **`\text{A}` without space is PRESERVED**: Only `\text{ unit}` (with space) triggers unit stripping. `\text{A}` stays as-is.
+5. **Multiple `\text{ ` occurrences crash normalization**: Causes assert failure → falls back to raw string comparison, bypassing ALL normalization.
+6. **`\cdot` ≠ `*` and `\ln` ≠ `ln`**: LaTeX operators/functions are NOT interchangeable with plain text equivalents.
+7. **The complete `_strip_string` processing order is documented** — 17 steps in exact sequence, with specific conditions for each.

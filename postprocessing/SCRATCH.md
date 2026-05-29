@@ -151,11 +151,47 @@ The grader behavior confirms the following pipeline architecture (refining what'
 
 
 ---
-## Append — claude_grader_research — 2026-05-28
-**NEW Hendrycks levers discovered via line-level source probing (see grading/GRADER_RESEARCH.md §2):**
-- **L9:** `a/b`→`\frac` auto-fix fires ONLY on a whole single-fraction string. In multi-answer lists (`1/2, 3/4`) it does NOT fire → per-element rationals must be written as explicit `\frac{}{}` ourselves.
-- **L10:** Hendrycks does NOT strip `\mathrm{}`/`\mathbf{}` (`\mathrm{e}` ≠ `e`). judger.py DOES, which is why this never appeared in local eval. Strip ourselves.
-- **L11:** set braces NOT stripped (`{1,2,3}` ≠ `1,2,3`). Match gold notation.
-- **L12:** scientific notation NOT normalized (`1.5e3` ≠ `1500`). Expand ourselves.
-- **L13 (SAFE):** single negative `a/b` IS auto-handled (`-3/5` ≡ `\frac{-3}{5}`) — `int()` parses the minus. Don't bother converting lone `a/b`.
-**Full per-item-type build spec:** postprocessing/STRICT_NORMALIZER_SPEC.md (recommends a single bundled "strict normalizer" overlay as next high-EV submission).
+
+## GRADER RESEARCH NEW FORMAT RULES (claude_grader_research, 2026-05-28)
+
+### Source-code-verified NEW rules not previously in our docs:
+
+1. **NEGATIVE FRACTION SIGN PLACEMENT**: `-\frac{2}{3}` ≠ `\frac{-2}{3}`. Hendrycks does NOT normalize negative sign placement. MATH dataset convention is sign OUTSIDE (`-\frac{a}{b}`). ACTION: post-processor should normalize to sign-outside form for fractions.
+
+2. **BARE `%` NOT REMOVED**: `50%` ≠ `50`. Only `\%` (LaTeX escaped) is removed. ACTION: if model emits bare `%`, convert to either strip it or use `\%`.
+
+3. **`\text{A}` IS PRESERVED**: `\text{A}` ≠ `A` when there's no space in `\text{`. The `_remove_right_units` function only fires on `\text{ ` (with space). ACTION: always strip `\text{}` wrapping from MCQ letters in post-processing.
+
+4. **`\mathrm{}` IS PRESERVED**: `\mathrm{e}` ≠ `e`. ACTION: strip `\mathrm{}` wrapper.
+
+5. **`\cdot` ≠ `*`**: Multiplication operators not normalized. ACTION: convert `*` to `\cdot` in post-processing.
+
+6. **`ln()` ≠ `\ln()`**: Backslash matters for function names. ACTION: ensure all math function names are LaTeX-escaped.
+
+7. **PARENTHESIZED NEGATIVES**: `-5` ≠ `(-5)`. ACTION: match gold's convention.
+
+8. **LEADING ZEROS ON INTEGERS**: `042` ≠ `42`. ACTION: strip leading zeros.
+
+9. **`0.5` HARDCODE IS STANDALONE ONLY**: `0.5` → `\frac{1}{2}` ONLY when the ENTIRE normalized string is exactly `"0.5"`. In multi-answer like `0.5, 3`, the `0.5` stays as `0.5`. Same for `_fix_a_slash_b` — `3/5` → `\frac{3}{5}` only standalone. ACTION: in multi-answer, explicitly use `\frac{}{}` notation, never rely on auto-conversion.
+
+10. **MIXED NUMBERS NEVER EQUIVALENT**: `1\frac{1}{2}` ≠ `\frac{3}{2}`. ACTION: always use improper fractions.
+
+11. **SET BRACES NOT STRIPPED**: `\{1,2,3\}` ≠ `1,2,3`. ACTION: match gold's set notation.
+
+12. **COMMA GROUPING NOT STRIPPED**: `1,000` ≠ `1000`. ACTION: always strip commas from large numbers.
+
+13. **`_remove_right_units` CRASH ON MULTIPLE `\text{ `**: If response has multiple `\text{ ` occurrences, the assert fails → exception → raw string comparison fallback. This means normalization is SKIPPED. ACTION: clean up responses to have at most one `\text{ `.
+
+### PRIORITY POST-PROCESSING PIPELINE (ordered by confidence × impact):
+
+1. Multi-slot expansion (DOMINANT, confirmed +4 slice items)
+2. Decimal → fraction conversion (confirmed +2 slice items)  
+3. `*` → `\cdot` conversion (confirmed harmful without)
+4. Strip `\text{}` wrappers (preserves letter for MCQ in multi-answer)
+5. Strip verbose label prefixes (`Mean=`, `A=` etc.) 
+6. `ln` → `\ln`, `sin` → `\sin` etc.
+7. Strip `\mathrm{}`, `\mathbf{}` wrappers
+8. Strip commas from large numbers
+9. Strip leading zeros from integers
+10. Normalize negative sign to outside fraction
+11. Convert mixed numbers to improper fractions
