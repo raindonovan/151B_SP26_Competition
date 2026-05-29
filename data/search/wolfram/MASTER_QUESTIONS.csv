@@ -1,0 +1,944 @@
+id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,computable,notes,question_preview
+0000,algebra,free_multi,2,UNVERIFIED,,,,YES,,Use the order of operations to simplify: a) $[13-(11-11)]-[8-(5-6)]=$ [ANS] b) $
+0001,statistics,MCQ,0,UNVERIFIED,,,,YES,,"Assuming the weights corresponding to the sign values are reduced by 1/10, then "
+0002,statistics,free_multi,3,UNVERIFIED,,,,YES,,"According to a recent marketing campaign, $120$ drinkers of either Diet Coke or "
+0003,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"It is known that there are two types of fish in the pond, in a ratio of 7:3. If "
+0004,trigonometry,free_multi,3,UNVERIFIED,,,,YES,,"If the point (10,-7) is on the terminal side of the angle $\theta$ in standard p"
+0005,statistics,free_multi,5,DONE,"541.3, 63.25, 135.325, 4.2167, 32.09",HIGH,B2,YES,ANOVA 5-tuple; under-count,An experiment is conducted to determine whether there is a differnce among the m
+0006,other,free_single,1,UNVERIFIED,,,,MAYBE,,"A person is standing straight on the ground, looking up at an airplane which is "
+0007,geometry,free_single,0,UNVERIFIED,,,,YES,,"The circumference of a circle is divided into $45$ arcs, each of length $1$. Ini"
+0008,other,free_single,1,UNVERIFIED,,,,MAYBE,,What quantity of 70 per cent acid solution must be mixed with a 25 solution to p
+0009,algebra,free_multi,2,DONE,"L-8x, 6F",HIGH,B1,YES,2-slot numerator/denominator split; format risk,Solve the equation for $y$: 8x+6 y F=L $\begin{array}{cccc}\hline &  y=& & [ANS]
+0010,calculus,MCQ,0,UNVERIFIED,,,,YES,,What is the value of the integral $\int_{\mid z \mid=\rho} \frac{\mid\mathrm{d} 
+0011,statistics,free_single,1,DONE,0.939,consensus-only,B8,YES,truncated problem text; verify against source,"Consider simple linear regression with $n$ pairs of numbers $x_i,y_i$. Let ${\ha"
+0012,algebra,free_multi,2,DONE,"2c + 4p = 70, 11",HIGH,B2,YES,equation+value; string-match risk on equation form,"A barnyard is full of chickens and pigs, and the total number of chicken feet an"
+0013,calculus,MCQ,0,UNVERIFIED,,,,YES,,Solve the integral: $$ \int \frac{ 6 }{ \cos(-4 \cdot x)^7 \cdot \sin(4 \cdot x)
+0014,algebra,free_single,1,UNVERIFIED,,,,YES,,Use logarithms to find an EXACT solution to the equation below. $7 \cdot 3^t=245
+0015,algebra,free_multi,2,UNVERIFIED,,,,YES,,"Are the functions below polynomials? If they are, enter their degree. If not, en"
+0016,calculus,free_single,0,UNVERIFIED,,,,YES,,Rose and Brunno play the game on a board shaped like a regular 1001-gon. Initial
+0017,number_theory,MCQ,0,UNVERIFIED,,,,YES,,"Let $a_0=1$, $a_1=2$, and $a_n=4a_{n-1}-a_{n-2}$ for $n\geq 2$. Find the least o"
+0018,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Dani has 45 marbles. She has 5 times as many marbles as Joe has. How many marble
+0019,number_theory,MCQ,0,UNVERIFIED,,,,YES,,"Consider the sequence defined by $j_0=1$, $j_1=2$, and $j_c=4j_{c-1}-j_{c-2}$ fo"
+0020,statistics,free_multi,3,UNVERIFIED,,,,YES,,A sample of prices for eight television sets available at a local electronics st
+0021,statistics,free_multi,2,UNVERIFIED,,,,YES,,"The average life expectancy in the United States, $L$, has been rising steadily "
+0022,geometry,MCQ,0,UNVERIFIED,,,,YES,,"Let $P$ be a polyhedron with $37$ faces, all of which are equilateral triangles,"
+0023,other,MCQ,0,UNVERIFIED,,,,MAYBE,,The distance between points $A$ and $B$ is 5 km. Person A walks from $A$ towards
+0024,statistics,free_single,1,UNVERIFIED,,,,YES,,"Suppose that the line $\hat{y}=3+2x$ is fitted to the data points (-1,2), (2,7),"
+0025,statistics,free_multi,12,UNVERIFIED,,,,YES,,$\begin{array}{cc}\hline Grade on Statistics Exam & Frequency \\ \hline Below 50
+0026,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"If $abc-ab-bc-ca+a+b+c=2008$ for positive integers $a$ , $b$ , and $c$ , then de"
+0027,trigonometry,free_multi,2,UNVERIFIED,,,,YES,,"Solve the following equations in the interval [0,2 $\pi$]. Note: Give the answer"
+0028,other,free_multi,6,UNVERIFIED,,,,MAYBE,,a) In a dictionary 16 pages are 1 millimeter thick. To find the thickness of 112
+0029,algebra,free_single,1,UNVERIFIED,,,,YES,,"A mixture of 60 liters of paint is 25\% red tint, 30\% yellow tint and 45\% wate"
+0030,statistics,free_multi,2,UNVERIFIED,,,,YES,,"College officials want to estimate the percentage of students who carry a gun, k"
+0031,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"Divide or state that the division is undefined. (In this case, enter undefined.)"
+0032,geometry,free_multi,3,UNVERIFIED,,,,YES,,"The distance between $(4,-3)$ and $(-6,-4)$ is [ANS] The midpoint of the line se"
+0033,geometry,MCQ,0,UNVERIFIED,,,,YES,,"A rectangle, $HOMF$, has sides $HO=11$ and $OM=5$. A triangle $ABC$ has $H$ as t"
+0034,statistics,MCQ,0,UNVERIFIED,,,,YES,,"Given the following values for a variable: minimum value is 3, first quartile (Q"
+0035,algebra,free_multi,2,UNVERIFIED,,,,YES,,Applying a horizontal stretch by a factor of $p$ (where $p$ is a constant such t
+0036,other,free_single,1,UNVERIFIED,,,,MAYBE,,Multiply using the product rule: $(-8x^{5} y^{6})(-5x^{5} y^{3})$=[ANS]
+0037,other,free_multi,3,UNVERIFIED,,,,MAYBE,,"Chucky takes his first step on January 1, 2000. Every day after that, he takes 3"
+0038,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Calculate the following products: $$ \int_{C} \frac{d z} {( z-1 )^{2} ( z^{2}+1 
+0039,other,free_single,1,UNVERIFIED,,,,MAYBE,,One piece of paper is approximately $17$ millimeters in thickness. A stack of pa
+0040,algebra,free_single,1,DONE,D = 800 - 50d,HIGH,B8,YES,missing LHS prefix; Qwen failure=missing-prefix,A homing pigeon starts 800 miles from home and flies 50 miles toward home each d
+0041,other,free_single,0,DONE,2112,HIGH,WEBSEARCH,MAYBE,IMO 2025 P6 (Matilda tiles). ALL 5 teachers wrong (3986/4048/4048). Free-form.,Consider a $2025 \times 2025$ grid of unit squares. Matilda wishes to place on t
+0042,statistics,free_multi,3,UNVERIFIED,,,,YES,,Lindsey thinks a certain potato chip maker is putting fewer chips in their regul
+0043,trigonometry,free_multi,3,UNVERIFIED,,,,YES,,Use half angle formulas to fill in the blanks in the identity below: $(\sin(7x))
+0044,statistics,free_multi,4,UNVERIFIED,,,,YES,,"Select True or False, depending on whether the corresponding statement is true o"
+0045,statistics,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is the sequence where a(n) re
+0046,statistics,free_multi,7,UNVERIFIED,,,,YES,,A random sample of $100$ observations from a population with standard deviation 
+0047,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Find all natural numbers that satisfy $3^{m}-1$ being divisible by $2^{m}$.
+0048,algebra,free_single,1,UNVERIFIED,,,,YES,,Rewrite the exponential equation $e^{-2} \approx 0.135$ in equivalent logarithmi
+0049,statistics,free_single,1,UNVERIFIED,,,,YES,,Assume you are using a significance level of $\alpha=0.05$ to test the claim tha
+0050,algebra,free_multi,2,UNVERIFIED,,,,YES,,An apple contains 140 calories and 3 g of fiber. A banana contains 150 calories 
+0051,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Using the multiplication table, compute $651 _{8} \times 32 _{8}$ $\begin{array}"
+0052,other,free_multi,2,UNVERIFIED,,,,MAYBE,,You work in a lab. One day you need 616 oz of a chemical solution consisting of 
+0053,algebra,MCQ,0,UNVERIFIED,,,,YES,,A bird is lost in a 3 by 3 by 3 cubical maze. The bird flies from room to room g
+0054,geometry,free_single,0,UNVERIFIED,,,,YES,,"Let $P$ be a polygon formed by the edges of an infinite chessboard, which does n"
+0055,algebra,free_single,1,UNVERIFIED,,,,YES,,Write an equation for $y$ in terms of $x$ if $y$ is proportional to the fourth p
+0056,statistics,free_multi,3,UNVERIFIED,,,,YES,,"For each problem, select the best response. (a) Can one predict a student's scor"
+0057,other,free_single,1,UNVERIFIED,,,,MAYBE,,"A rectangular plot, 19 ft by 18 ft, is to be used for a garden. It is decided to"
+0058,number_theory,free_single,0,UNVERIFIED,,,,YES,,Let $\mathbb{Z}_{>0}$ denote the set of positive integers. Let $f : \mathbb{Z}_{
+0059,other,free_single,1,UNVERIFIED,,,,MAYBE,,Evaluate the numerical expression $343^\frac{2}{3}.$ Answer: [ANS] Note: You can
+0060,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Suppose we were comparing the mean age of buyers of new domestic cars to the mea
+0061,other,free_multi,5,UNVERIFIED,,,,MAYBE,,"A local pet shop charges \$0.76 per cricket up to 150 crickets, and \$0.69 per c"
+0062,other,free_multi,3,UNVERIFIED,,,,MAYBE,,Multiply the following integers. ${(-1)\cdot(-5)\cdot(-3)=}$ [ANS] ${6\cdot(-8)\
+0063,statistics,free_multi,2,UNVERIFIED,,,,YES,,The following data were drawn from a normal population. Find a 92.4\% confidence
+0064,other,free_single,1,UNVERIFIED,,,,MAYBE,,A population of animals oscillates sinusoidally between a low of 500 on January 
+0065,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"Multiply: (Note: If necessary, use fractions not decimals.) a) $\frac{3}{7}(-2)="
+0066,other,free_single,1,UNVERIFIED,,,,MAYBE,,A pilot flies in a straight path for 1 hour and 30 min. She then makes a course 
+0067,other,free_multi,3,DONE,"7.6(1.09)^t, 13.9, 5.4",HIGH,B8,MAYBE,exponential growth 3-slot; Qwen under-counted,"In the year 2004, a total of 7.6 million passengers took a cruise vacation. The "
+0068,statistics,free_multi,8,DONE,"-2.857, 6.986, -1.082, 3.707, -3.707, A, -12.647, 6.933",HIGH,B2,YES,8-slot paired t-test; slot1 was completely wrong (5.443),Suppose you want to test the claim the paired sample data given below come from 
+0069,calculus,MCQ,0,UNVERIFIED,,,,YES,,"The function $f(x)=\frac{x \sin^2 x}{1+\sin x}$, then the integral $\int_0^{\pi}"
+0070,other,free_single,1,UNVERIFIED,,,,MAYBE,,"A school just won a grant, and decided to spend ${{\textstyle\frac{5}{8}}}$ of t"
+0071,other,free_multi,2,UNVERIFIED,,,,MAYBE,,You are working on a new temperature scale that will unify the earth. After some
+0072,trigonometry,free_multi,5,DONE,"-0.8352, -0.9187, 0.3950, -2.3258, Quadrant IV",HIGH,B8,YES,trig 5-slot; full label required,"If $\sin(A)=0.55$ and $\cos(A) < 0$, determine: $\cos(A)=$ [ANS] $\sin(2A)=$ [AN"
+0073,statistics,MCQ,0,UNVERIFIED,,,,YES,,"Given $X \sim N(0, 1), Y \sim N(0, 1)$ and they are independent. Let $U = X^{2} "
+0074,statistics,free_single,1,UNVERIFIED,,,,YES,,"To test the efficacy of a new cholesterol-lowering medication, 10 people are sel"
+0075,algebra,free_single,1,UNVERIFIED,,,,YES,,Mike can be paid in one of two ways based on the amount of merchandise he sells:
+0076,other,free_multi,8,UNVERIFIED,,,,MAYBE,,6-10=[ANS].-6-5=[ANS].-9-(-12)=[ANS]. 20-(-13)=[ANS].-18-14=[ANS].-18-(-27)=[ANS
+0077,statistics,free_multi,3,UNVERIFIED,,,,YES,,A study of human development showed two types of movies to a group of children. 
+0078,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"If distance of the origin from the plane passing through the point $(2,2,1)$ and"
+0079,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Add these together: ${3+\frac{4}{7}}$ When needed, use an improper fraction in y"
+0080,algebra,MCQ,0,UNVERIFIED,,,,YES,,Simplify the fraction by rationalizing the denominator: $$\frac{4}{\sqrt{108}+2\
+0081,other,free_single,1,UNVERIFIED,,,,MAYBE,,Suppose there are three sections of a Statistics course taught by the same instr
+0082,statistics,free_multi,4,UNVERIFIED,,,,YES,,"There are several sections of statistics, some in the morning (AM) and some in t"
+0083,other,free_single,0,UNVERIFIED,,,,MAYBE,,"Let $n > 1$ be an integer. In a configuration of an $n \times n$ board, each of "
+0084,other,free_multi,3,UNVERIFIED,,,,MAYBE,,Subtract the following integers: ${4-8=}$ [ANS] ${8-3=}$ [ANS] ${3-14=}$ [ANS]
+0085,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"In a group of 1000 people, at least how many people have to share the same birth"
+0086,other,free_single,1,UNVERIFIED,,,,MAYBE,,"A gym charges members ${\$35}$ for a registration fee, and then ${\$32}$ per mon"
+0087,other,free_multi,3,UNVERIFIED,,,,MAYBE,,Determine whether the follow descriptions correspond to an observational study o
+0088,algebra,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is the number of possible dec
+0089,other,free_single,1,DONE,\frac{326}{7},HIGH,B8,MAYBE,fraction vs decimal,"Initially, you have lost 20,000 dollars in the stock market and you continue to "
+0090,other,free_single,1,UNVERIFIED,,,,MAYBE,,Find the nth term of the arithmetic sequence whose initial term is $8$ and commo
+0091,other,MCQ,0,UNVERIFIED,,,,MAYBE,,We now define an algorithm: The definition of a(n) is numbers n such that there 
+0092,calculus,MCQ,0,UNVERIFIED,,,,YES,,Find the value of the integral $$ I=\! \int_{0}^{1} \frac{x^{m-1}} {1+x^{n}} \ma
+0093,other,free_single,0,UNVERIFIED,,,,MAYBE,,Consider a bee (denoted by X ) in a rectangular honeycomb as seen below:  |  | $
+0094,geometry,MCQ,0,UNVERIFIED,,,,YES,,The option that represents the area of the plane figure enclosed by ( x = 1 - {y
+0095,geometry,free_single,0,UNVERIFIED,,,,YES,,Let $\triangle A B C$ be an isosceles triangle with $A B=A C$. Let $D$ be a poin
+0096,other,free_single,1,UNVERIFIED,,,,MAYBE,,"A baby was born $2$ years ago. In these $2$ years, the baby grew $13.6$ pounds. "
+0097,trigonometry,free_multi,3,UNVERIFIED,,,,YES,,The equation $r=8 \sin \theta$ represents a circle. Find the cartesian coordinat
+0098,number_theory,MCQ,0,UNVERIFIED,,,,YES,,"A deck of playing cards has 52 cards, and each shuffle changes the order of the "
+0099,algebra,free_multi,3,UNVERIFIED,,,,YES,,Evaluate the following expressions which involve the absolute value: ${-\lvert 3
+0100,other,free_single,1,DONE,\frac{180}{7},HIGH,B8,MAYBE,fraction vs decimal,"A jeweler has five rings, each weighing $18$ grams, made of an alloy of $10$ \% "
+0101,statistics,free_multi,4,UNVERIFIED,,,,YES,,Consider a hypothesis test to decide whether the mean cost to community hospital
+0102,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Let $C \subset\mathbb{P}^{3}$ be a smooth, irreducible, nondegenerate curve of d"
+0103,other,free_single,1,DONE,8\sqrt{2},HIGH,B8,MAYBE,exact form vs decimal,If the distance from the town of Bree to Weathertop is 16 miles on a 45 degree u
+0104,geometry,free_single,1,UNVERIFIED,,,,YES,,Find the arc length corresponding to the given angle (in degrees) on a circle of
+0105,statistics,free_multi,2,UNVERIFIED,,,,YES,,A sample of weights (in pounds) for six 12-year-olds is given below: 93 \quad 84
+0106,other,free_single,1,DONE,\frac{13}{6},HIGH,B8,MAYBE,fraction vs decimal,"After robbing a bank in Dodge City, a robber gallops off at 13 mi/h. 30 minutes "
+0107,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"A ray of light passing through the point $A\left( 2,3 \right)$ reflected at a po"
+0108,trigonometry,free_multi,2,UNVERIFIED,,,,YES,,Using a double-angle or half-angle formula to simplify the given expressions. (a
+0109,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,Find theeigenvaluesof matrices (a)\vert31\vert \vert13\vert (b)\vert221\vert \ve
+0110,algebra,free_multi,2,UNVERIFIED,,,,YES,,A national park records data regarding the total fox population $F$ over a 12 mo
+0111,algebra,free_single,1,UNVERIFIED,,,,YES,,Simplify the following expression as much as possible. Assume that all variables
+0112,geometry,free_single,0,UNVERIFIED,,,,YES,,The intersection between a plane and a cube is a convex pentagon $ABCDE$ satisfy
+0113,trigonometry,free_single,1,UNVERIFIED,,,,YES,,If $x+4=5 \sin(\theta)$ for $0 < \theta < \pi/2$ express $\cos(2\theta)$ in term
+0114,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,"Given $k$ as an integer and $a \ne \pi \cdot k$, evaluate $P=\cos(a) \cdot \cos("
+0115,other,free_multi,5,UNVERIFIED,,,,MAYBE,,A theater manager graphed weekly profits as a function of the number of patrons 
+0116,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Justin's boat travels 144 km downstream in 4 hours and it travels 168 km upstrea
+0117,number_theory,MCQ,0,DONE,B,HIGH,WEBSEARCH,YES,Putnam 2021 A5. Answer = 2020 = option B. All 5 teachers agreed. High confidence.,Consider the set $V$ containing all integers $e$ between 1 and 2021 (inclusive) 
+0118,other,free_single,1,DONE,\frac{18}{5},HIGH,B8,MAYBE,fraction vs decimal,You can paint a certain room in 9 hours. Your brother can do it in 6 hours. How 
+0119,trigonometry,free_multi,4,UNVERIFIED,,,,YES,,Match the set of points as indicated by the ordered pair with the correct quadra
+0120,number_theory,free_single,0,DONE,8,HIGH,WEBSEARCH,YES,Polya theorem on fixed divisors. 4/5 teachers agreed. Free-form.,"Let $n$ be a positive integer and $p$ be a prime. In terms of $n$ and $p$, let $"
+0121,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Fabrienne is working to pass a local measure, and she needs to collect a total o"
+0122,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"On average, a restaurant uses ${35.6\ {\rm lb}}$ of vegetable oil per day. Fill "
+0123,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,The primitive function of $(2xcos y-{{y}^{2}}sin x)dx+(2ycos x-{{x}^{2}}sin y)dy
+0124,linear_algebra,MCQ,0,DONE,H,HIGH,B8,YES,Putnam 2018 A2; Qwen=G missed z=1 edge case,"Consider the set $\{1,2,\dots,z\}$ and all its nonempty subsets, which we'll den"
+0125,calculus,MCQ,0,DONE,G,HIGH,WEBSEARCH,YES,Putnam 2016 A1; value=8 confirmed; MCQ option G (index 6 of 10 options),Determine the smallest positive integer $l$ such that for any polynomial $x(x)$ 
+0126,other,free_single,1,UNVERIFIED,,,,MAYBE,,"According to a survey, $6.6\%$ of a city’s residents are native Americans. The l"
+0127,other,free_single,1,UNVERIFIED,,,,MAYBE,,The velocity (in ft/s) of a sky diver $t$ seconds after jumping is given by v(t)
+0128,algebra,free_single,1,UNVERIFIED,,,,YES,,$(y^2-9)$ Perform the indicated operation. Note that the denominators are the sa
+0129,algebra,free_multi,4,UNVERIFIED,,,,YES,,Write each equation in polar coordinates. Express as a function of $\small{t}$. 
+0130,algebra,free_single,1,UNVERIFIED,,,,YES,,Use the properties of exponents to simplify the following ${r^{16}}\cdot{r^{13}}
+0131,statistics,free_single,1,UNVERIFIED,,,,YES,,"Physicians at a clinic gave what they thought were drugs to $950$ asthma, ulcer,"
+0132,other,free_single,1,UNVERIFIED,,,,MAYBE,,It’s given that $1 \text{mile}=5280 \text{feet}$ and $1 \text{yard}=3 \text{feet
+0133,trigonometry,free_multi,4,UNVERIFIED,,,,YES,,"If $\theta=\frac {5 \pi} {3}$, then $\sin (\theta)$ equals [ANS] $\cos (\theta)$"
+0134,statistics,free_multi,8,DONE,"1, 5, 12, 20, 26, 30, 31, 27.63",HIGH,B2,YES,7 cumulative freqs + median; severe under-count,"Given the following table, compute the median of the grouped data. $\begin{array"
+0135,algebra,free_single,1,UNVERIFIED,,,,YES,,Solve the equation $8x+2=3x+5$ algebraically. $x=$ [ANS]
+0136,statistics,free_multi,2,UNVERIFIED,,,,YES,,The percent frequency of a class is computed by: [ANS] A. multiplying the relati
+0137,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Write each ratio as a fraction in simplest form: $36: 234$ is the fraction [ANS]
+0138,other,free_single,1,UNVERIFIED,,,,MAYBE,,"When an aircraft takes off, it accelerates until it reaches its takeoff speed $V"
+0139,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Wirte the sum using sigma notation: $\frac{1}{1\cdot 2}+\frac{1}{2\cdot 3}+\frac
+0140,other,free_single,1,UNVERIFIED,,,,MAYBE,,Gregory and Lesley are participating in a summer reading program. Gregory reads 
+0141,number_theory,MCQ,0,DISPUTED,0,DISPUTED,WEBSEARCH,YES,"Putnam 1989 A-1 base-7 variant: math gives 0 primes but 0 is NOT in MCQ options (A-H: 1,4,5,7,6,8,2,3). Web search match likely wrong. DO NOT APPLY.","Consider all positive integers written in base 7, are alternating 1's and 0's, b"
+0142,other,free_single,1,UNVERIFIED,,,,MAYBE,,List the elements of the set \lbrace x | x \mbox{is a natural number between 6 a
+0143,other,free_multi,6,UNVERIFIED,,,,MAYBE,,"Convert from polar to rectangular coordinates: $\mathbf{(a)}\quad(8,\frac{3\pi}{"
+0144,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Compute $\sqrt[3]{130}$ with an estimate error of $0.0001$ using series expansio
+0145,other,free_multi,3,UNVERIFIED,,,,MAYBE,,Suppose that $M$ is the function that computes how many miles are in $x$ feet. F
+0146,calculus,MCQ,0,UNVERIFIED,,,,YES,,Find the integral: $$ \int \frac{ 4 \cdot x^2+25 \cdot x+7 }{ \sqrt{x^2+8 \cdot 
+0147,geometry,MCQ,0,UNVERIFIED,,,,YES,,Compute the volume of the solid formed by rotating about the x-axis the area bou
+0148,statistics,MCQ,0,UNVERIFIED,,,,YES,,The composite Poisson process is defined as $$\left|Y_{i}=\sum_{n=1}^{x_{i}}\xi_
+0149,other,free_single,1,UNVERIFIED,,,,MAYBE,,An airplane is flying at the height of ${10.8\ {\rm km}}$. The airplane can see 
+0150,algebra,MCQ,0,UNVERIFIED,,,,YES,,The cubic best square approximation polynomial of $f(x)=\mathrm{e}^{x}$ on $\lef
+0151,other,free_single,1,UNVERIFIED,,,,MAYBE,,Evaluate the expression: ${48\div(8)6=}$ [ANS]
+0152,number_theory,MCQ,0,UNVERIFIED,,,,YES,,Find the remainder when $$\sum_{a=0}^8 \sum_{b=0}^8 \sum_{c=0}^8 \sum_{d=0}^8 \m
+0153,algebra,MCQ,0,UNVERIFIED,,,,YES,,Transform the following quadratic form into its standard form using the method o
+0154,geometry,free_single,1,UNVERIFIED,,,,YES,,John's room is shaped like a box. It has a flat ceiling that is a rectangle that
+0155,other,free_single,1,UNVERIFIED,,,,MAYBE,,A guy wire needs to be installed to support a pole. The end of the wire on the p
+0156,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,What are the eigenroots of the following matrices? $$ \left( \begin{matrix} {{{1
+0157,trigonometry,free_multi,2,UNVERIFIED,,,,YES,,A weight on a vertical spring is given an initial downward velocity of 5 cm/sec 
+0158,statistics,free_multi,2,UNVERIFIED,,,,YES,,A tabular summary of a set of data showing the fraction of the total number item
+0159,other,free_multi,3,UNVERIFIED,,,,MAYBE,,Change the following percentages into decimals: ${7\%=}$ [ANS] ${0.7\%=}$ [ANS] 
+0160,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Fill in the missing blank and determine the appropriate property illustrated: $1
+0161,statistics,free_single,0,UNVERIFIED,,,,YES,,Let \( A \) be a set of 2025 positive real numbers. For a subset \( T \subseteq 
+0162,geometry,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is: Triangle with subscripts 
+0163,algebra,free_multi,3,UNVERIFIED,,,,YES,,Factor the polynomial $(x-5)(x+4)^2-(x-5)^2(x+4)$. Your answer can be written as
+0164,number_theory,MCQ,0,UNVERIFIED,,,,YES,,Function $f(x)$ is a polynomial defined by the equation $$\begin{align*} f(x) & 
+0165,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Let $\mathrm{F}$ be the set $$ A = {\frac{0.6}{u_{1}}} + {\frac{0.8}{u_{2}}} + {
+0166,geometry,free_single,1,UNVERIFIED,,,,YES,,"The area covered by a marsh, $A$, starts at $175$ acres and drops by a factor of"
+0167,trigonometry,free_multi,4,DONE,"Negative, Negative, Positive, Negative",HIGH,B8,YES,words not letters; Qwen failure=letter-vs-word,Determine whether each of the following expressions is Positive or Negative. $\s
+0168,other,free_multi,4,UNVERIFIED,,,,MAYBE,,"A choral conductor has 1301 singers in her choir, some of them are professional "
+0169,other,free_single,1,UNVERIFIED,,,,MAYBE,,The population of cats in a shelter increased from $16$ to $80$. What is the per
+0170,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Let $X=( S^{1} \times S^{1} ) \setminus\{p \}$ be a once-punctured torus. How ma
+0171,geometry,free_single,1,UNVERIFIED,,,,YES,,"Sketch the region given by the set $\lbrace (x,y) | 3\le x\le 7, 2\le y\le 7 \rb"
+0172,trigonometry,free_single,1,UNVERIFIED,,,,YES,,Find the exact value. $\small{\sin} \left(\small{2 \cos^{-1}} \large{\left(\frac
+0173,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Let $S = \{5^ k | k \in Z, 0 \le k \le 2004\}$ . Given that $5^{2004} = 5443 ..."
+0174,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Consider the function $H$ defined by $H(x)={\sqrt{x}}$. Evaluate the following: 
+0175,number_theory,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is the least common multiple 
+0176,algebra,free_single,1,UNVERIFIED,,,,YES,,Solve the following equation for $w$: 8 w+6 k+m=p. $w=$ [ANS]
+0177,geometry,MCQ,0,UNVERIFIED,,,,YES,,"Let the domain of the function f (x) be $( 0, \ +x )$ and satisfy $2 f \left( x "
+0178,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,"Let the 3rd order matrix \( A = (\alpha_1, \alpha_2, \alpha_3), B = (\alpha_2 - "
+0179,number_theory,free_multi,10,UNVERIFIED,,,,YES,,When you divide 177 by 6 the quotient is [ANS] and the remainder is [ANS] When y
+0180,algebra,free_single,1,UNVERIFIED,,,,YES,,Use the distributive property to simplify the expression completely. ${{\textsty
+0181,statistics,MCQ,0,DONE,A,HIGH,B8,YES,symmetry proof; only symmetric matrix; Qwen=B wrong,There are four types of products with the following indicators: $$ \begin{array}
+0182,other,MCQ,0,UNVERIFIED,,,,MAYBE,,A gambler believes that the chance of rolling at least one 6 in four throws of a
+0183,calculus,MCQ,0,UNVERIFIED,,,,YES,,"Solve the integral: $$ \int \frac{ 1 }{ \sin(x)^5 } \, dx $$"
+0184,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is: Multiplication table {0..
+0185,trigonometry,free_multi,5,UNVERIFIED,,,,YES,,Determine which of the following statements are true and which are false. Enter 
+0186,other,MCQ,0,UNVERIFIED,,,,MAYBE,,A particle is moving in a straight line whose acceleration as a function of velo
+0187,statistics,free_multi,9,UNVERIFIED,,,,YES,,This question involves logistic regression analysis of the Pima data set in R on
+0188,statistics,free_multi,3,UNVERIFIED,,,,YES,,Your school basketball team posted the following (sorted) scores in 16 recent ga
+0189,algebra,free_single,1,UNVERIFIED,,,,YES,,"The coffee variety Arabica yields about 850 kg of coffee beans per hectare, whil"
+0190,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Multiply the integer with the fraction: ${-15\cdot \frac{7}{40}}$ If needed, use"
+0191,other,free_multi,5,UNVERIFIED,,,,MAYBE,,Match the statements defined below with the letters labeling particular numbers.
+0192,statistics,free_multi,4,DONE,"1.06, (1.88, infty), 0.1449, A",HIGH,B2,YES,z-test 4-slot; note infty notation,Past experience indicates that the monthly long-distance telephone bill is norma
+0193,other,MCQ,0,UNVERIFIED,,,,MAYBE,,A particle move along x-axis and displacement varies with time $t$ as $x=(t^3-3t
+0194,algebra,free_multi,6,UNVERIFIED,,,,YES,,The town of Smallsville was founded in 1900. Its population $y$ (in hundreds) is
+0195,statistics,free_single,1,UNVERIFIED,,,,YES,,Random samples of female and male UVA undergraduates are asked to estimate the n
+0196,geometry,free_multi,3,UNVERIFIED,,,,YES,,Suppose that triangle ABC is a right triangle with a right angle at $C$ and hypo
+0197,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"Suppose $C(x)=8x^{2}-56x+115$, $x \ge 0$ represents the cost, in hundreds of dol"
+0198,number_theory,free_single,0,UNVERIFIED,,,,YES,,"Determine all triplets of positive integers $(p,m,n)$ such that $p$ is a prime, "
+0199,number_theory,free_single,0,UNVERIFIED,,,,YES,,"Let $ABCDE$ be a convex pentagon with $AB=14$, $BC=7$, $CD=24$, $DE=13$, $EA=26$"
+0200,geometry,MCQ,0,UNVERIFIED,,,,YES,,Point $P$ is located inside $\triangle{ABC}$ so that $\angle{PAB}=\angle{PBC}=\a
+0201,algebra,free_single,1,UNVERIFIED,,,,YES,,Write the expression $25 t^2+80 t+64$ in factored form $k (at+b)(ct+d)$. $25 t^2
+0202,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Multiply these two fractions: ${\frac{12}{7} \cdot \frac{9}{10}}$ If needed, use"
+0203,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Let $m = 101^4 + 256$ . Find the sum of digits of $m$ .
+0204,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Consider the function $a(o)$ defined for all positive integers $o$. This functio
+0205,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Express each of the following as a fraction in simplest form. a) 0.75=[ANS] b) 0
+0206,algebra,free_single,1,UNVERIFIED,,,,YES,,Multiply by using the FOIL method. Simplify and combine like radicals if necessa
+0207,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Find the value of $k$ so that the line containing the points $(-3,k)$ and $(1,-2"
+0208,trigonometry,free_multi,2,UNVERIFIED,,,,YES,,The radius of the circle with a central angle of 5 radians that intercepts an ar
+0209,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"In prokaryotes, translation of mRNA messages into proteins is most often initiat"
+0210,trigonometry,free_multi,2,UNVERIFIED,,,,YES,,a) Find $\tan\left(\sin^{-1}(\frac {4}{7})+\cos^{-1}(\frac {4}{8})\right)$=[ANS]
+0211,number_theory,MCQ,0,UNVERIFIED,,,,YES,,"Consider the sequence defined by $q_0=1$, $q_1=2$, and $q_d=4q_{d-1}-q_{d-2}$ fo"
+0212,statistics,MCQ,0,UNVERIFIED,,,,YES,,Assuming the different arrival times of a given renewal counting process follow 
+0213,other,free_single,1,UNVERIFIED,,,,MAYBE,,A trail’s total length is ${{\textstyle\frac{43}{72}}}$ of a mile. It has two le
+0214,number_theory,free_multi,4,UNVERIFIED,,,,YES,,Here you are asked first the highest divisor to check. Answer that with a number
+0215,other,free_single,1,UNVERIFIED,,,,MAYBE,,Find the size of each sample needed to estimate the difference between the propo
+0216,algebra,free_single,1,UNVERIFIED,,,,YES,,Solve the equation $ \frac{T}{6}=10$. $T=$ [ANS]
+0217,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Suppose $b > 1$ is a real number where $\log_5 (\log_5 b + \log_b 125) = 2$ . Fi
+0218,trigonometry,free_single,1,DONE,\arcsin\!(\frac{7}{10}),HIGH,B8,YES,exact form vs decimal,"If possible, find a solution to $ \sin(\theta)=\frac{7}{10}$. If no solution exi"
+0219,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Two cyclists, 108 miles apart, start riding toward each other at the same time. "
+0220,calculus,MCQ,0,UNVERIFIED,,,,YES,,Let $d_1 = a^2 + 2^a + a \cdot 2^{(a+1)/2}$ and $d_2 = a^2 + 2^a - a \cdot 2^{(a
+0221,other,free_single,1,UNVERIFIED,,,,MAYBE,,A survey consisting of $5500$ students on campus says that $50 \%$ prefer the co
+0222,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"There are 2010 boxes labeled $B_1, B_2, \dots, B_{2010}$, and $2010n$ balls have"
+0223,other,MCQ,0,UNVERIFIED,,,,MAYBE,,We now define an algorithm: The definition of a(n) is the elliptic divisibility 
+0224,statistics,free_single,1,UNVERIFIED,,,,YES,,An train station has determined that the relationship between the number of pass
+0225,statistics,free_multi,4,UNVERIFIED,,,,YES,,Consider the data set below. $\begin{array}{ccccccc}\hline x & 8 & 6 & 4 & 6 & 4
+0226,other,free_single,1,UNVERIFIED,,,,MAYBE,,Find $x$ if \frac{(5)^x (5)^{1}}{(5)^{3}}=(5)^{6} $x=$ [ANS]
+0227,statistics,free_multi,2,UNVERIFIED,,,,YES,,"The number of degrees of freedom associated with the t test, when the data are g"
+0228,other,free_single,1,UNVERIFIED,,,,MAYBE,,The expression \sqrt[11]{v^{77}} equals [ANS]
+0229,algebra,free_single,0,UNVERIFIED,,,,YES,,Fix an integer $n \geq 3$. Determine the smallest positive integer $k$ satisfyin
+0230,algebra,free_single,1,UNVERIFIED,,,,YES,,Solve the equation $16=50 (1.6)^{x}$ for $x$ using logs. $x=$ [ANS]
+0231,statistics,free_single,1,UNVERIFIED,,,,YES,,Calculate the least-squares regression line for the following set of data points
+0232,other,free_multi,3,UNVERIFIED,,,,MAYBE,,Estimate the difference by rounding each of the given values to the nearest inte
+0233,statistics,free_multi,4,DONE,"1.96, -1.96, -5.18, B",HIGH,B8,YES,hypothesis test 4-slot; Qwen under-counted,It is necessary for an automobile producer to estimate the number of miles per g
+0234,algebra,free_single,1,UNVERIFIED,,,,YES,,Use a vertical format to add the polynomials. $\begin{alignedat}{2} 16x^{7}&{}-{
+0235,number_theory,MCQ,0,UNVERIFIED,,,,YES,,"A card deck consists of $32$ cards. On each card, a different subset of $$$S = \"
+0236,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Is the function $ T(s)=\left(6 s^{-3} \right) \left(e s^{-3} \right)$ a power fu
+0237,other,free_single,1,UNVERIFIED,,,,MAYBE,,"A company’s stock value (per share) dropped by ${\$2.80}$, and its current value"
+0238,algebra,free_multi,3,UNVERIFIED,,,,YES,,The partial fraction decomposition of $ \frac{x^2+61}{x^3+x^2}$ can be written i
+0239,statistics,free_multi,2,UNVERIFIED,,,,YES,,A sample of 12 measurements has a mean of 35 and a standard deviation of 3.75. S
+0240,trigonometry,free_multi,3,UNVERIFIED,,,,YES,,The table below gives the height $h=f(t)$ in feet of a weight on a spring where 
+0241,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Denote $$$S(n,k)=\log_{k}\frac{2}{1}+\log_{k}\frac{3}{2}+...+\log_{k}\frac{n-1}{"
+0242,statistics,free_multi,6,UNVERIFIED,,,,YES,,"Below is a sample of share prices (in dollars) for a particular stock, selected "
+0243,statistics,free_multi,2,UNVERIFIED,,,,YES,,(a) Find the P-value for the test statistic $z=1.24$ for the following null and 
+0244,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"$p$ , $q$ , and $r$ are three non-zero integers such that $p + q + r = 26$ and $"
+0245,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Lily loves sports. Every week, she practices $70$ minutes of basketball, $75$ mi"
+0246,other,free_multi,5,UNVERIFIED,,,,MAYBE,,125 $\div$ 5=[ANS] 138 $\div$ 6=[ANS] 119 $\div$ 7=[ANS] 184 $\div$ 8=[ANS] 152 
+0247,other,free_multi,3,DONE,"\frac{2409}{65}, \frac{2474}{1+\frac{2409}{65}e^{-0.53t}}, 2473.84",HIGH,B8,MAYBE,logistic 3-slot; Qwen under-counted,"The town of Sickville, with a population of 2474 is exposed to the Blue Moon Vir"
+0248,linear_algebra,free_single,0,UNVERIFIED,,,,YES,,"Let $\alpha$ be a real number satisfying $0 < \alpha < 180$. For Leo's birthday,"
+0249,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Using the series expansion for the function $(1+x)^m$, calculate approximately $"
+0250,other,free_single,0,UNVERIFIED,,,,MAYBE,,"Let $S$ be the set of all strings of length $15$ formed from five $1$s, $2$s, an"
+0251,other,free_single,1,UNVERIFIED,,,,MAYBE,,The percentage change from 3.3 inches to 9 inches (to 1 decimal place) is [ANS]
+0252,statistics,free_single,1,UNVERIFIED,,,,YES,,What are the three conditions required for 0ne-way ANOVA? [ANS] A. normal popula
+0253,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,"Let the quadratic form \( f(x_1,x_2,x_3) = ax_2^2 -4x_1x_2+2bx_1x_3+ 4x_2x_3 \) "
+0254,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Let $C$ be a smooth projective curve over $\mathbb{C}$ and $\omega_{C}^{\otimes2
+0255,geometry,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is: Number of tilings of a 4 
+0256,other,free_multi,2,UNVERIFIED,,,,MAYBE,,The basic idea of manipulating algebraic expressions is that they obey the same 
+0257,statistics,free_multi,3,DONE,"2.52, 3.00, A",HIGH,B2,YES,CI + MCQ 3-slot,"a) For 30 randomly selected Rolling Stones concerts, the mean gross earnings is "
+0258,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Find $\frac{ d y }{d x}$ if $y = \frac{ 5 \cdot x^2 - 3 \cdot x }{ \left( 3 \cdo
+0259,other,free_single,1,UNVERIFIED,,,,MAYBE,,A proficiency examination was given to 100 students. The breakdown of the exam r
+0260,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Perform the given addition and subtraction: ${{-12-6+\left(-4\right)}=}$ [ANS] $
+0261,other,free_single,1,UNVERIFIED,,,,MAYBE,,The number of integers between $\sqrt{3}$ and $\sqrt{32}$ is [ANS].
+0262,algebra,free_multi,3,UNVERIFIED,,,,YES,,"The cost of a Frigbox refrigerator is \$850, and depreciates \$50 each year. The"
+0263,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,Evaluate $\tan\left(\arcsin\left(\frac{ 3 }{ 5 }\right)+\arccos\left(\frac{ 5 }{
+0264,geometry,free_single,1,UNVERIFIED,,,,YES,,A spherical weather balloon is being inflated. The radius of the balloon is incr
+0265,statistics,free_multi,2,UNVERIFIED,,,,YES,,Which measure of central location is meaningful when the data are nominal? [ANS]
+0266,other,MCQ,0,UNVERIFIED,,,,MAYBE,,We now define an algorithm: The definition of a(n) is the number of partitions o
+0267,statistics,MCQ,0,UNVERIFIED,,,,YES,,Let the probability density function of the random variable $\mathrm{Y}$ be $f (
+0268,other,free_multi,2,UNVERIFIED,,,,MAYBE,,The tuition cost for part-time students taking $C$ credits at Stonewall College 
+0269,statistics,free_multi,3,UNVERIFIED,,,,YES,,"A paired difference experiment produced the following results: n_D=48, \ \overli"
+0270,other,free_single,1,UNVERIFIED,,,,MAYBE,,"A $35 ft$ ladder leans up agains the side of a house, with the base of the ladde"
+0271,algebra,free_single,1,UNVERIFIED,,,,YES,,Solve the equation for $a$: 4 a^6=64 a^4 $a=$ [ANS] Help: Separate multiple answ
+0272,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,"If $\tan(\theta) = \sqrt{x^2 - 1}$, find $\sec(\theta) + \tan(\theta)$."
+0273,trigonometry,free_multi,3,UNVERIFIED,,,,YES,,Write each expression in terms of sines and/or cosines and then simplify. $\frac
+0274,number_theory,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is the number of permutations
+0275,other,free_single,0,UNVERIFIED,,,,MAYBE,,Bugs Bunny wants to choose a number $k$ such that every collection of $k$ consec
+0276,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Find the $x$-and $y$-intercepts of $f(x)=7 \log_{7}\left(8x-4\right)+21$. Write 
+0277,geometry,free_single,1,UNVERIFIED,,,,YES,,"The average salary of a government worker is $\$44{,}232.00$ per year. Given tha"
+0278,other,free_single,1,UNVERIFIED,,,,MAYBE,,"The graph of the function $y=\log_a x$ goes through $(38,-1)$. Then $a=1/$ [ANS]"
+0279,calculus,MCQ,0,UNVERIFIED,,,,YES,,Find the Taylor series of $f'(x)$ about $a=0$ if $f(x) = \frac{ x - \ln(1 + x) }
+0280,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"If f (x) is differentiable and f $(0) \ =1$, for any simple closed curve L, $$ \"
+0281,trigonometry,free_multi,4,UNVERIFIED,,,,YES,,"Suppose: $\sin(x)=0.4618$ $\cos(x)=0.8870$ $\tan(x)=0.5206$ Then, $\sin(-x)=$ [A"
+0282,algebra,free_single,1,UNVERIFIED,,,,YES,,Solve for $\small{x}$ without using a calculating utility. Enter your answer as 
+0283,statistics,free_single,1,UNVERIFIED,,,,YES,,Target heart rate for moderate exercise is $50\%$ to $70\%$ of maximum heart rat
+0284,geometry,MCQ,0,UNVERIFIED,,,,YES,,Find the area of the region bounded by $|x - |y|| + |y - |x|| + |y| = 9$ in the 
+0285,number_theory,free_single,0,UNVERIFIED,,,,YES,,"Let $N$ denote the numbers of ordered triples of positive integers $(a, b, c)$ s"
+0286,calculus,MCQ,0,UNVERIFIED,,,,YES,,"Given a positive integer $x$, define the function $p_x(o) = \prod_{{k=1}}^x \cos"
+0287,statistics,free_multi,2,UNVERIFIED,,,,YES,,A random sample of elementary school children in New York state is to be selecte
+0288,other,free_multi,3,UNVERIFIED,,,,MAYBE,,"A rubber ball is dropped onto a hard surface from a height of 8 feet, and it bou"
+0289,geometry,free_multi,2,UNVERIFIED,,,,YES,,A rectangle’s length is $4$ yards less than $5$ times of its width. If the recta
+0290,algebra,MCQ,0,UNVERIFIED,,,,YES,,\( \int_{1}^{{e}^{2}}\frac{dx}{x\sqrt{1-\ln x}} \) = ( )
+0291,other,free_single,1,UNVERIFIED,,,,MAYBE,,An object falling from rest in a vacuum falls approximately $16$ feet the first 
+0292,trigonometry,free_single,1,UNVERIFIED,,,,YES,,Use a sum or difference identity to find the exact value of each expression: Not
+0293,other,free_single,1,UNVERIFIED,,,,MAYBE,,"The business opened with a debt of \$4300. After 4 years, it accumulated profit "
+0294,other,free_multi,3,UNVERIFIED,,,,MAYBE,,Estimate the quotient by considering close values (say within one tenth) so that
+0295,geometry,MCQ,0,UNVERIFIED,,,,YES,,Compute the volume of the solid formed by rotating about the x-axis the area bou
+0296,linear_algebra,free_multi,3,UNVERIFIED,,,,YES,,A factory is to be built on a lot measuring 270 ft by 360 ft. A local building c
+0297,statistics,free_multi,4,UNVERIFIED,,,,YES,,A machine that produces ball bearings is set so that the average diameter is 0.5
+0298,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Set $A$ , $B$ is two events, and $P \ (A) = 0. 6, P (B) = 0. 7$. Request: (1) Un"
+0299,statistics,free_multi,2,UNVERIFIED,,,,YES,,A random sample of 20 U.S. weddings yielded the following data on wedding costs 
+0300,other,free_single,1,UNVERIFIED,,,,MAYBE,,The freshman class at a major university contains $5655$ students. This was a $1
+0301,statistics,free_multi,2,UNVERIFIED,,,,YES,,Suppose the probability $\pi(x)$ of reaching a target (such as getting a ball be
+0302,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"$p$ , $q$ , and $r$ are positive real numbers such that $$$p^2 + pq + q^2 = 211$"
+0303,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Evaluate$$\lceil\sqrt{5}\rceil + \lceil\sqrt{6}\rceil + \lceil\sqrt{7}\rceil + \
+0304,calculus,MCQ,0,UNVERIFIED,,,,YES,,Calculate the following curve integral using the residue theorem $ointlimits_{|z
+0305,number_theory,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is: Let n be a positive integ
+0306,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,$$\lim_{x\rightarrow 0}\left ( \frac{1+tan x}{1+sinx} \right )^{cosecx}=$$
+0307,other,free_single,1,UNVERIFIED,,,,MAYBE,,Add the following and express your answer as a single fraction. No decimals or m
+0308,geometry,free_single,0,UNVERIFIED,,,,YES,,"Let $\triangle A B C$ be an acute triangle with circumcircle $\omega_{1}$, and l"
+0309,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Do the following problem. Round numbers to the thousands place first, and then d"
+0310,other,free_multi,3,UNVERIFIED,,,,MAYBE,,(a) Put the expression $5x k+4 k+6-11x$ into the form $b+m x$. [ANS] $+\Big($ [A
+0311,other,free_single,1,UNVERIFIED,,,,MAYBE,,The 1906 San Francisco earthquake had a magnitude of 8.3 on the Richter scale. A
+0312,number_theory,free_single,0,UNVERIFIED,,,,YES,,Let $n$ be a positive integer. Ana and Banana play a game. Banana thinks of a fu
+0313,trigonometry,free_single,1,UNVERIFIED,,,,YES,,"If the point $P(\frac{13}{15},y)$ is on the unit circle in quadrant IV, then $y="
+0314,other,free_multi,3,UNVERIFIED,,,,MAYBE,,Evaluate the following. ${\frac{-28}{-4}=}$ [ANS] ${\frac{40}{-5}=}$ [ANS] ${\fr
+0315,statistics,free_multi,3,UNVERIFIED,,,,YES,,(a) A sample of households in a community is selected at random from the telepho
+0316,geometry,MCQ,0,UNVERIFIED,,,,YES,,A point $D$ is on side $BC$ of triangle $ABC$ such that $BD=20$ and $DC=14$ . A 
+0317,other,MCQ,0,DONE,D,HIGH,B8,MAYBE,dataset quirk — D and H identical; only D accepted,"Let $S \subset\mathbb{P}^{3}$ be a smooth algebraic surface of degree $d$ , and "
+0318,trigonometry,free_multi,2,UNVERIFIED,,,,YES,,A circle $C$ has center at the origin and radius $8$. Another circle $K$ has a d
+0319,statistics,free_multi,4,UNVERIFIED,,,,YES,,"Select True or False, depending on whether the corresponding statement is true o"
+0320,algebra,free_multi,2,UNVERIFIED,,,,YES,,"Let $t$ be the time in weeks. At time $t=0$, organic waste is dumped into a pond"
+0321,calculus,MCQ,0,UNVERIFIED,,,,YES,,"What's the value of a > 0, such that the tangent line to the graph of f(x) = (x^"
+0322,linear_algebra,free_multi,3,UNVERIFIED,,,,YES,,You plan to build four identical rectangular sheep pens in a row. Each adjacent 
+0323,number_theory,free_multi,4,UNVERIFIED,,,,YES,,Let $f(x)=\lfloor x/2 \rfloor$. We learned that the floor and the ceiling functi
+0324,algebra,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is the number of ways to fact
+0325,statistics,free_multi,2,UNVERIFIED,,,,YES,,Assume a car uses gas at a constant rate. After driving $20$ miles since a full 
+0326,other,free_multi,3,UNVERIFIED,,,,MAYBE,,Write each as a decimal $\frac{67}{100}=$ [ANS] $\frac{36}{100}=$ [ANS] $\frac{6
+0327,other,free_single,1,UNVERIFIED,,,,MAYBE,,It’s given that $1 \text{ton}=2000 \text{lb}$ and $1 \text{lb}=16 \text{oz}$.Do 
+0328,other,free_multi,4,UNVERIFIED,,,,MAYBE,,Every day I take the same taxi over the same route from home to the train statio
+0329,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"The 30 edges of a regular icosahedron are distinguished by labeling them $1,2,\d"
+0330,geometry,free_multi,2,UNVERIFIED,,,,YES,,"A market analyst finds that if a company produces and sells $x$ mixers annually,"
+0331,number_theory,MCQ,0,UNVERIFIED,,,,YES,,"Let $a, b, c$ be positive reals such that $abc + a + b = c$ and $$ \frac{19}{\sq"
+0332,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Convert the following integers from binary notation to decimal notation: (a) $11
+0333,other,free_multi,2,UNVERIFIED,,,,MAYBE,,For the next few problems you need to understand what it means to evaluate a fun
+0334,other,MCQ,0,UNVERIFIED,,,,MAYBE,,A rod of length L with linear mass density $\lambda = kx$ is placed along x-axis
+0335,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Find $\left(\left(f(a)\right)^{-1}\right)'$ for the function $f(x) = x + \sqrt{x
+0336,other,MCQ,0,UNVERIFIED,,,,MAYBE,,The integer 8871870642308873326043363 is the $1 3^{t h}$ power of an integer $n$
+0337,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,Suppose the rank of $\left( \begin{matrix} {{{a}}} \\ {{{3}}} \\ {{{1}}} \\ \end
+0338,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Determine the symmetries (if any) of the graphs of the given relations. (a) $7 y
+0339,calculus,MCQ,0,UNVERIFIED,,,,YES,,"The power series expansion of $f ( \, z \, )={\frac{4 z^{2} \!+\! 3 0 z \!+\! 6 "
+0340,statistics,free_single,1,UNVERIFIED,,,,YES,,"For simple linear regression, with data $x_i,y_i$, $i=1,\ldots,n$, and model $Y_"
+0341,other,free_multi,2,UNVERIFIED,,,,MAYBE,,If you rationalize the numerator of \frac{\sqrt[3]{x^2}-5 \sqrt[3]{x}+25}{\sqrt{
+0342,other,free_multi,5,UNVERIFIED,,,,MAYBE,,determine whether the following quantities are positive or negative. [ANS] 1. $(
+0343,statistics,free_multi,5,UNVERIFIED,,,,YES,,Match the verbal descriptions with the given polynomials. You need to use all po
+0344,other,free_single,1,UNVERIFIED,,,,MAYBE,,The additive inverse of $5$ is [ANS]
+0345,algebra,free_multi,2,UNVERIFIED,,,,YES,,Find all real zeros of the equation $|12x|=10$. Its real zeros are $x_1=$ [ANS] 
+0346,other,free_multi,3,UNVERIFIED,,,,MAYBE,,Write the following as decimal numbers. $7 \div 10$=[ANS] $7 \div 100$=[ANS] $7 
+0347,number_theory,MCQ,0,UNVERIFIED,,,,YES,,A $9 \times 9$ table is tiled by $26$ $(1 \times 3)$ tiles such that only $3$ sq
+0348,calculus,MCQ,0,UNVERIFIED,,,,YES,,"Find the integral: $$ \int \frac{ \arcsin(4 \cdot x) }{ \sqrt{4 \cdot x+1} } \, "
+0349,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Subtract one fraction from the other: ${\frac{14}{45}-\frac{4}{9}}$ When needed,"
+0350,other,free_multi,6,UNVERIFIED,,,,MAYBE,,The decimal number 28 written in binary is [ANS] The decimal number 25 written i
+0351,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,The path of a satellite is given by the parametric equations x = 4 cos(t) + cos(
+0352,other,free_single,1,UNVERIFIED,,,,MAYBE,,Find the distance betweem $333$ and $401$. [ANS] [NOTE: Your answer can be an al
+0353,other,free_multi,4,DONE,"8, C, 5 and 7, D",HIGH,B3,MAYBE,"table lookup; format risk on '5 and 7' vs '5, 7'","Chicago's average monthly rainfall, $R=f(t)$ inches, is given as a function of t"
+0354,other,free_multi,5,UNVERIFIED,,,,MAYBE,,"For each of the following, select the most appropriate unit of measurement: The "
+0355,calculus,MCQ,0,UNVERIFIED,,,,YES,,The inflection point of the function curve (f(x) = { { 4(x + 1)} over { { x^2}}}
+0356,algebra,MCQ,0,UNVERIFIED,,,,YES,,Expand the function $f(z) = \frac{1}{z^2 + 1}$ into series at $z = -1$ and $z = 
+0357,other,free_multi,2,UNVERIFIED,,,,MAYBE,,The half-life of Palladium-100 is 4 days. After 24 days a sample of Palladium-10
+0358,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"The value of $(4!)! $ is $$$620, 448, abc, 733, 239, 439, 360, 000$$$ where $a$ "
+0359,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"If $\operatorname*{lim}_{x\to0}\left(1-kx\right)^{\frac{2}{x}}=2$, what is the n"
+0360,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Sum the series \[\sum_{m=1}^\infty \sum_{n=1}^\infty \frac{m^2 n}{3^m(n3^m+m3^n)
+0361,other,free_single,1,UNVERIFIED,,,,MAYBE,,Two angles are supplementary if the sum of their measures is $180^{\circ}$. If t
+0362,algebra,free_single,1,UNVERIFIED,,,,YES,,Factor the difference of squares: $36x^{2}-25y^{2}=$ [ANS]
+0363,other,free_multi,3,UNVERIFIED,,,,MAYBE,,"Suppose $y$, the number of cases of a disease, is reduced by 11\% per year. (a) "
+0364,other,free_multi,4,UNVERIFIED,,,,MAYBE,,"Determine whether f is a function from $\mathbb{Z}$ to $\mathbb{R}$. Enter ""Y"" f"
+0365,geometry,free_single,1,UNVERIFIED,,,,YES,,Use a graphing calculator to decide which viewing rectangle (A)-(D) produces the
+0366,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,"Let the matrix $A=( \alpha_{_1}, \alpha_{_2}, \alpha_{_3}, \alpha_{_4} )$ , wher"
+0367,trigonometry,free_multi,3,UNVERIFIED,,,,YES,,Determine each to 1 decimal place: $\sin(\alpha)=0.868632$ implies $\alpha \ $ [
+0368,other,free_multi,4,UNVERIFIED,,,,MAYBE,,Let $f(t)$ denote the number of people eating in a restaurant $t$ minutes after 
+0369,algebra,free_multi,3,UNVERIFIED,,,,YES,,"A quadratic function has its vertex at the point $(5,2)$. The function passes th"
+0370,trigonometry,free_multi,2,UNVERIFIED,,,,YES,,Find amplitude and midline of the function $y=10 \cos{(5x)}-5$ (a) The midline i
+0371,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Solve $i=Prt$ for $t$, given that $P=\$402$, $r=9$ \%, and $i=\$268$. Answer: $t"
+0372,statistics,free_single,1,UNVERIFIED,,,,YES,,"In estimating the mean monthly fuel expenditure, $\mu$, per household vehicle, t"
+0373,statistics,free_multi,2,UNVERIFIED,,,,YES,,Listed below are the lenths (in minutes) of randomly selected music CDs. Constru
+0374,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Among a town’s registered voters, there are $36\%$ Democrats and $33\%$ Republic"
+0375,other,free_single,1,UNVERIFIED,,,,MAYBE,,Mr. Mason owes \$ 21.28 for his groceries. He pays with a twenty-dollar bill and
+0376,number_theory,free_single,0,UNVERIFIED,,,,YES,,"Determine the sum of the smallest 50 possible values of $\text{gcd}(a^2+b^2+c^2,"
+0377,number_theory,MCQ,0,UNVERIFIED,,,,YES,,Find the largest prime factor of the smallest positive integer $n$ such that $r_
+0378,statistics,free_multi,5,UNVERIFIED,,,,YES,,Is the number of games won by a major league baseball team in a season related t
+0379,other,free_single,1,UNVERIFIED,,,,MAYBE,,A company produce snowboards. Fixed costs are \$1320 and the cost per snowboard 
+0380,other,free_multi,7,UNVERIFIED,,,,MAYBE,,Complete each statement: 75 mL=[ANS] L 239 mm=[ANS] m 32 kg=[ANS] g 1671 cm=[ANS
+0381,calculus,free_single,1,UNVERIFIED,,,,YES,,Find the numerical value of the sum below. $ \sum\limits_{k=1}^{120} 17$=[ANS]
+0382,linear_algebra,free_multi,2,UNVERIFIED,,,,YES,,"A rectangular room is $1.7$ times as long as it is wide, and its perimeter is $3"
+0383,number_theory,free_single,0,UNVERIFIED,,,,YES,,We call a $n \times n$ table filled with positive integers \emph{divisoral} if i
+0384,algebra,free_single,1,UNVERIFIED,,,,YES,,Find the exact solution to the equation below. (Do not give a decimal approximat
+0385,statistics,free_multi,3,DONE,"A, A, A",HIGH,B3,YES,3-slot sampling design MCQ; all answers A,"For each problem, select the best response. (a) In order to take a sample of 120"
+0386,geometry,free_single,0,UNVERIFIED,,,,YES,,"There are $n$ parallel lines on a plane, and there is a set $S$ of distinct poin"
+0387,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Consider the following scenario in which you study your bank account. On Jan. 1,"
+0388,other,free_multi,5,UNVERIFIED,,,,MAYBE,,Consider a population of coyotes whose intristic growth rate is 9.1\% and whose 
+0389,algebra,MCQ,0,UNVERIFIED,,,,YES,,Express the polynomial $( x+1 ) ( x+2 ) ( x+3 ) ( x+4 )$ as a perfect square for
+0390,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Add as indicated: (Note: Your answer must be a fraction.) a) $\frac{2}{5}+(-\fra
+0391,number_theory,MCQ,0,UNVERIFIED,,,,YES,,Consider a prime number $f$ exceeding 5. Define $f(f)$ as the count of infinite 
+0392,other,free_single,1,UNVERIFIED,,,,MAYBE,,Use rules to find the sum $37-(-31)-(-13)$ [ANS]
+0393,trigonometry,free_multi,3,UNVERIFIED,,,,YES,,Find the inverse of the following function and state its domain. $f(x)=16 \cos (
+0394,calculus,MCQ,0,UNVERIFIED,,,,YES,,"Compute the integral: $$ \int x \cdot \arctan(2 \cdot x)^2 \, dx $$"
+0395,calculus,free_multi,3,DONE,"\frac{85}{3}, -\frac{95}{4}, -\frac{10}{7}",HIGH,B8,YES,rate-of-change fractions,"In 2005, you have 55 CDs in your collection. In 2008, you have 140 CDs. In 2012,"
+0396,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"When expressing sets, you may write “inf” for infinity. Give the interval notati"
+0397,geometry,free_multi,2,UNVERIFIED,,,,YES,,"As Aragorn views the Dark Lord in a crystal ball of radius 8, he realizes that: "
+0398,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,"Let $\alpha_{1} \!=\! (-1, 0, \ -2 ), \alpha_{2} \!=\! ( 0, 1, 2 ), \quad\alpha_"
+0399,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"For all real numbers $x$ satisfying $x^4+861184\leq 1865x^2$, what is the maximu"
+0400,statistics,MCQ,0,UNVERIFIED,,,,YES,,"Let the random variables ( X_1 ,X_2 ,X_3 ,X_4 ) be independent and identically d"
+0401,trigonometry,free_multi,4,UNVERIFIED,,,,YES,,Convert from radians to degrees. (a) $\frac{5}{2}$ [ANS] (b) $\frac{4 \pi}{3}$ [
+0402,number_theory,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is: Fully multiplicative with
+0403,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Let $$ X=\langle x_{1}, x_{2} \rangle, \quad Y=\langle y_{1}, y_{2}, y_{3} \rang"
+0404,number_theory,free_single,1,UNVERIFIED,,,,YES,,"A standard six-sided die was rolled 50 times, and the outcomes are in the table "
+0405,number_theory,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is the number of partitions o
+0406,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Find $x$ such that $4x+1, \ 4x+4,$ and $-4x-49$ are consecutive terms of an arit"
+0407,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Using the Huffman algorithm to find the optimal binary tree T with weights 7, 8,"
+0408,algebra,free_multi,5,UNVERIFIED,,,,YES,,"For each of the following problems, show that the repeating decimal is a rationa"
+0409,statistics,free_multi,2,UNVERIFIED,,,,YES,,"For the data set (-1,-3), (2,2), (5,5), (9,7), (10,10), find interval estimates "
+0410,other,free_multi,2,UNVERIFIED,,,,MAYBE,,A searchlight rotates through one complete revolution every 8 seconds. Determine
+0411,geometry,free_single,1,UNVERIFIED,,,,YES,,"In a circle of radius 8, the length of the arc that subtends a central angle of "
+0412,trigonometry,free_single,1,UNVERIFIED,,,,YES,,Given $\cos(\alpha)=-\frac{\sqrt{32}}{9}$ and $\alpha$ is in quadrant II and $\s
+0413,statistics,free_multi,4,DONE,"0.89, (1.83, infty), 0.2008, A",HIGH,B3,YES,paired t 4-slot; watch LaTeX \text{A} wrap risk,A company that sponsors LSAT prep courses would like to be able to claim that th
+0414,calculus,MCQ,0,UNVERIFIED,,,,YES,,Compute the integral: $$ \int \frac{ 3 }{ 4 \cdot x^2 \cdot \sqrt{5 \cdot x^2-2 
+0415,geometry,free_multi,4,UNVERIFIED,,,,YES,,The formula for the volume of a cube with side length $s$ is $V=s^3$. The formul
+0416,other,free_multi,2,UNVERIFIED,,,,MAYBE,,In simplest form: $\begin{array}{cccc}\hline & \frac {462}{672}=& & [ANS] [ANS] 
+0417,statistics,free_multi,5,UNVERIFIED,,,,YES,,Complete the ANOVA table for a completely randomized design below. $\begin{array
+0418,statistics,free_multi,4,UNVERIFIED,,,,YES,,Test the claim that the population of sophomore college students has a mean grad
+0419,other,free_single,0,UNVERIFIED,,,,MAYBE,,"Alice and Bob play a game on a connected graph with $2n$ vertices, where $n\in \"
+0420,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Suppose we like to calculate P(H|E, F) and we have no conditional independence i"
+0421,trigonometry,free_multi,2,UNVERIFIED,,,,YES,,"Suppose the angle $\theta$ is in the second quadrant, $\pi/2 \leq \theta \leq \p"
+0422,other,free_single,0,UNVERIFIED,,,,MAYBE,,A natural number \(N\) is given. A cube with side length \(2N + 1\) is made up o
+0423,other,free_single,1,UNVERIFIED,,,,MAYBE,,"The average of $10^\circ,-11^\circ, 4^\circ, 7^\circ,-7^\circ,-6^\circ$=[ANS] $^"
+0424,other,free_multi,4,UNVERIFIED,,,,MAYBE,,"Identify each quantity as a parameter or statistic. Write ""parameter"" or ""statis"
+0425,other,free_single,1,UNVERIFIED,,,,MAYBE,,Evaluate the expression \frac{\sqrt{343}}{\sqrt{7}} Your answer is [ANS]
+0426,other,free_single,1,UNVERIFIED,,,,MAYBE,,"In a group of healthy cows and chickens, the number of legs is 22 more than twic"
+0427,number_theory,MCQ,0,UNVERIFIED,,,,YES,,"Let $a$ , $b$ , and $c$ be positive real numbers such that $a^2+b^2=c^2+ab$ and "
+0428,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"Divide the fractions, and reduce your answer. \frac{8}{55}\div\frac{8}{43} The r"
+0429,other,free_single,1,UNVERIFIED,,,,MAYBE,,Libby had a ten-dollar bill. Then she spent \$ 2.95 at a store. How much money d
+0430,calculus,MCQ,0,UNVERIFIED,,,,YES,,Evaluate the limit: $$ \lim_{x \to 0}\left(\frac{ \ln\left(1+x+x^2\right)+\ln\le
+0431,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"Using a change of base formula, one can write \frac{\log_{11} (42)} {\log_{11}(5"
+0432,trigonometry,free_single,1,UNVERIFIED,,,,YES,,"Solve the equation in the interval $[0,\, 2 \pi]$. If there is more than one sol"
+0433,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,To express $\operatorname{cos} 3\theta$ in terms of $\operatorname{sin} \theta$ 
+0434,geometry,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is the number of ways of part
+0435,statistics,free_multi,3,DONE,"0.4457, 0.5368, A",HIGH,B1,YES,CI bounds + MCQ; under-count missing letter,Construct the $99$ \% confidence interval estimate of the population proportion 
+0436,other,free_single,1,UNVERIFIED,,,,MAYBE,,Find an equivalent fraction to $\frac{5}{8}$: ${\frac{5}{8}=\frac{?}{32}}$ The q
+0437,statistics,free_single,1,UNVERIFIED,,,,YES,,The number of cars sold annually by used car salespeople is normally distributed
+0438,algebra,free_multi,9,UNVERIFIED,,,,YES,,Determine the following for: $5x^{4} y^{5}+x^{3} y^{7}+2$ a) Determine the term 
+0439,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Add these two fractions: ${-\frac{10}{13}+\frac{6}{13}}$ When needed, use an imp"
+0440,geometry,MCQ,0,UNVERIFIED,,,,YES,,Given any convex pentagon whose vertices (no three of which are collinear) have 
+0441,other,free_single,1,UNVERIFIED,,,,MAYBE,,You’ve poured $140$ grams of a $6\%$ (by mass) alcohol solution into a large gla
+0442,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Find the gradient of the function $f(x,y) = \frac{ \sqrt{x} + y^2 }{ x \cdot y }"
+0443,number_theory,MCQ,0,UNVERIFIED,,,,YES,,"Let $P(x) = x^4 + 2x^3 + 3x^2 + 4x + 5$ have roots $r_1, r_2, r_3, r_4$ . Given "
+0444,number_theory,free_multi,6,UNVERIFIED,,,,YES,,Find the quotient and remainder in each of the following. $80\vert\overline{9075
+0445,number_theory,MCQ,0,UNVERIFIED,,,,YES,,"$P$ is the probability that if you flip a fair coin, $20$ heads will occur befor"
+0446,statistics,free_multi,2,UNVERIFIED,,,,YES,,Find the standard error of the estimate and the coefficient of determination for
+0447,algebra,free_single,1,UNVERIFIED,,,,YES,,Solve the compound inequality. x \leq 6 \mbox{and} x \leq 4 Answer: [ANS]
+0448,algebra,free_multi,2,UNVERIFIED,,,,YES,,"Is the function below a rational function? If it is, write it in reduced form as"
+0449,statistics,free_multi,3,UNVERIFIED,,,,YES,,$50$ people are randomly selected and the accuracy of their wristwatches is chec
+0450,geometry,MCQ,0,UNVERIFIED,,,,YES,,"There is an equiangular hexagon $OUTDIA$ such that $OU=DI$ , $UT=IA$ , $TD=AO$ a"
+0451,statistics,free_multi,6,UNVERIFIED,,,,YES,,Complete the table below. $\begin{array}{ccc}\hline Books read within the past y
+0452,statistics,free_single,1,UNVERIFIED,,,,YES,,A chi-square independence test is to be conducted to decide whether an associati
+0453,other,free_single,0,UNVERIFIED,,,,MAYBE,,"Let $a_1$, $a_2$, $r$, and $s$ be positive integers with $r$ and $s$ odd. The se"
+0454,other,free_multi,2,DONE,"1.5, 0.9375",HIGH,B8,MAYBE,GPA trailing zeros,Consider the report cards for Sam and Samantha given below. $\begin{array}{cccc}
+0455,other,free_single,1,UNVERIFIED,,,,MAYBE,,A movie is 115 minutes long. 60 minutes=1 hour Which statement about the movie i
+0456,statistics,free_multi,3,UNVERIFIED,,,,YES,,Samples were collected from two ponds in the Bahamas to compare salinity values 
+0457,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Find the sum of all positive integers $x$ such that there exists integers $a$ an
+0458,other,free_single,0,UNVERIFIED,,,,MAYBE,,$n$ assistants start simultaneously from one vertex of a cube-shaped planet with
+0459,trigonometry,free_multi,5,UNVERIFIED,,,,YES,,Complete the following fundamental identities: $\begin{array}{cccc}\hline 1. & P
+0460,other,free_multi,7,UNVERIFIED,,,,MAYBE,,Indicate whether the following statements are True (T) or False (F). You must ge
+0461,statistics,free_multi,2,UNVERIFIED,,,,YES,,Suppose that the minimum and maximum ages for typical textbooks currently used i
+0462,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Let $f(x)=\sqrt{56-x}$ and $g(x)=x^2-x$. Then the domain of $f\circ g$ is equal 
+0463,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Let $f(x)$ be a monotonically increasing function defined on $[a, b]$. Let $E = "
+0464,statistics,MCQ,0,UNVERIFIED,,,,YES,,Let the system $\mathrm{L}$ be formed by two independent subsystems $L1$ and $L2
+0465,geometry,MCQ,0,UNVERIFIED,,,,YES,,Find the volume of the solid that lies under the double cone $z^2 = 4 \cdot x^2 
+0466,statistics,free_single,1,UNVERIFIED,,,,YES,,A model car has a scale factor of $\frac{1}{64}$ The diameter of a tire on the m
+0467,algebra,free_multi,4,UNVERIFIED,,,,YES,,"According to the 1993 World Almanac, the number of calories a person walking at "
+0468,statistics,free_multi,2,UNVERIFIED,,,,YES,,Astronaunts often report that there are times when they become disoriented as th
+0469,geometry,free_multi,10,DONE,"s^2, 0.1575A, 0.1575s^2, C, 81, square feet, 14.175, dollars, 19.0575, dollars",HIGH,B3,YES,10-slot composition; includes units-as-slots,"The area, $A=f(s)$ square feet, of a square wooden deck is a function of the sid"
+0470,statistics,free_multi,6,UNVERIFIED,,,,YES,,Suppose you have selected a random sample of $n=12$ measurements from a normal d
+0471,geometry,MCQ,0,UNVERIFIED,,,,YES,,"In triangle $ABC,$ $BC=9.$ Points $P$ and $Q$ are located on $BC$ such that $BP="
+0472,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"On a certain planet, there are exactly 360 days in a year. Find the number of wa"
+0473,algebra,free_single,1,UNVERIFIED,,,,YES,,Solve the following inequality and write your answer using interval notation. u^
+0474,other,MCQ,0,UNVERIFIED,,,,MAYBE,,How many bit strings of length eight do not contain six consecutive 0s?
+0475,other,free_single,0,UNVERIFIED,,,,MAYBE,,Two points are selected independently and uniformly at random inside a regular h
+0476,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Compute $\int_{0}^{\frac{ 1 }{ 5 }} e^{-2 \cdot x^2} \, dx$ with accuracy $0.000"
+0477,statistics,free_multi,2,UNVERIFIED,,,,YES,,Which of the following must be avoided in designing a questionnaire? [ANS] A. Le
+0478,other,free_single,1,UNVERIFIED,,,,MAYBE,,"List all real values of $x$ such that $f(x)=0$. If there are no such real $x$, t"
+0479,statistics,free_multi,4,DONE,"40.36, 43.64, 40.01, 43.99",HIGH,B1,YES,90%+95% CI 4-slot; model emitted only 95% bounds,Construct both a $90$ \% and a $95$ \% confidence interval for $\beta_1$. $\hat{
+0480,other,free_multi,2,UNVERIFIED,,,,MAYBE,,The height inside a camping tent when you are $d$ feet from the edge of the tent
+0481,number_theory,MCQ,0,UNVERIFIED,,,,YES,,Let $N$ denote the number of $7$ digit positive integers have the property that 
+0482,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Set $x^{4} \!-\! 2 x^{2} \!+\! 3 \!=\! c_{0} \!+\! c_{1} ( x \!+\! 2 ) \!+\! c_{
+0483,number_theory,MCQ,0,UNVERIFIED,,,,YES,,"Let $x,y$ be two non-negative real numbers such that $y\sqrt{2016-x^2} + x\sqrt{"
+0484,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Let $\star (x)$ be the sum of the digits of a positive integer $x$ . $\mathcal{S
+0485,other,free_single,1,UNVERIFIED,,,,MAYBE,,Stan and Hilda can mow the lawn in $45$ min if they work together. If Hilda work
+0486,number_theory,MCQ,0,UNVERIFIED,,,,YES,,The number of increasing sequences of positive integers $a_1 \le a_2 \le a_3 \le
+0487,statistics,free_multi,2,DONE,"-21.1, -0.9636",HIGH,B3,YES,covariance + correlation 2-slot,A sample of four 35-year-old males is asked about the average number of hours pe
+0488,statistics,free_single,0,UNVERIFIED,,,,YES,,"Having won the elections in Linetown, Turbo the Snail has become mayor, and one "
+0489,other,free_single,1,UNVERIFIED,,,,MAYBE,,Angelina's goal for each five-day work week is to have average total sales of \$
+0490,geometry,free_multi,4,UNVERIFIED,,,,YES,,"The required cooling capacity, in BTUs, for a room air conditioner is directly p"
+0491,statistics,free_multi,5,UNVERIFIED,,,,YES,,Following are the number of miles traveled for 30 randomly selected business fli
+0492,statistics,free_multi,2,UNVERIFIED,,,,YES,,"If the coefficient of correlation is 0.90, the percentage of the variation in th"
+0493,statistics,free_multi,4,UNVERIFIED,,,,YES,,"In a study of red/green color blindness, $900$ men and $2650$ women are randomly"
+0494,other,free_multi,2,UNVERIFIED,,,,MAYBE,,It’s given that $1 \text{gram}=1000 \text{milligrams}$. Do the following unit co
+0495,statistics,free_multi,6,DONE,"100, 100, 200, 0.255, 5.991, B",HIGH,B3,YES,chi-sq GoF 6-slot,A multinomial experiment with $k=3$ cells and $n=400$ produced the data shown be
+0496,trigonometry,free_single,1,DONE,9.594^\circ,HIGH,B8,YES,bearing; degree symbol required,"Directions (or bearings) on Earth are measured in degrees, running from zero to "
+0497,trigonometry,free_multi,4,UNVERIFIED,,,,YES,,(a) Evaluate $\tan t$ if $t=48$ degrees. $\tan t=$ [ANS] (b) Evaluate $\arctan z
+0498,statistics,free_single,0,UNVERIFIED,,,,YES,,A list of positive integers satisfies the following properties: (A) The mean of 
+0499,statistics,free_multi,4,DONE,"36.9, 0.3225, 32.25, 2.149",HIGH,B4,YES,exponential growth 4-slot,"In July 2005, the internet was linked by a global network of about 352.7 million"
+0500,statistics,MCQ,0,UNVERIFIED,,,,YES,,"Using the iterative method to solve the system of equations $A X = b$, let $x^*$"
+0501,number_theory,MCQ,0,UNVERIFIED,,,,YES,,"Let $S_n$ denote the set $\{1, 2,..., n\}$ , and define $f(S)$ , where $S$ is a "
+0502,trigonometry,free_single,1,UNVERIFIED,,,,YES,,Determine the period for the function $y=2 \tan (\frac{11\pi}{8}x-\frac{9\pi}{10
+0503,statistics,free_multi,3,UNVERIFIED,,,,YES,,A company set aside a certain amount of money in the year 2000. The company spen
+0504,algebra,free_multi,2,UNVERIFIED,,,,YES,,Find the rectangular coordinates of the point whose polar coordinates are $\left
+0505,algebra,free_multi,6,UNVERIFIED,,,,YES,,Suppose $f(x)=-26-39x^1+37x^2+27x^3+10x^4+1x^5$ is factored using Horner's Metho
+0506,statistics,MCQ,0,DONE,J,HIGH,B8,YES,balanced primes MCQ,We now define an algorithm: The definition of a(n) is the arithmetic mean of two
+0507,number_theory,MCQ,0,UNVERIFIED,,,,YES,,The value of $\frac{1}{399!}\left(\sum_{i=2}^{200}\frac{199!(399-i)!}{(200-i)!}-
+0508,linear_algebra,free_single,0,UNVERIFIED,,,,YES,,"Let $n$ be a positive integer. A class of $n$ students run $n$ races, in each of"
+0509,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Given that a>0, for any two numbers x and y, where 0 < x < a and 0 < y < a, the "
+0510,other,free_single,0,UNVERIFIED,,,,MAYBE,,"Exactly \( n \) cells of an \( n \times n \) square grid are colored black, and "
+0511,geometry,MCQ,0,UNVERIFIED,,,,YES,,"Find the arc length of the curve, where x=t, y=t^2 and z=2*t^3/3."
+0512,algebra,free_single,1,UNVERIFIED,,,,YES,,Expand the expression (8 p+4)^2 and combine like terms. Simplify your answer as 
+0513,statistics,free_multi,3,UNVERIFIED,,,,YES,,Given the significance level $\alpha=0.08$ find the following: (a) $\ $ lower-ta
+0514,calculus,MCQ,0,UNVERIFIED,,,,YES,,Determine a definite integral that represents the region common to $r=2$ and $r=
+0515,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Order $-8$, $19$, $1$, $12$ from least to greatest. (Separate your answers by co"
+0516,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Consider the expression $7 j-11 j+4 j$. The coefficients=[ANS] (separate by a co
+0517,number_theory,MCQ,0,UNVERIFIED,,,,YES,,Let $S$ denote the sum of all of the three digit positive integers with three di
+0518,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"We now define an algorithm: The definition of a(n) is: Table T(n,k) = n OR k rea"
+0519,statistics,free_multi,3,DONE,"426.3, 5090, 98.30",HIGH,B4,YES,population model 3-slot,Assume that the number of bacteria follows an exponential growth model: $ P(t)=P
+0520,other,free_single,1,UNVERIFIED,,,,MAYBE,,You have a job raking leaves and have been able to save \$93. You decide to use 
+0521,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Two numbers added together are 19. Their product is 70. What are the two numbers
+0522,trigonometry,free_single,1,UNVERIFIED,,,,YES,,"Approximate, to three decimal places, the solutions to the equation. If there is"
+0523,other,free_single,0,UNVERIFIED,,,,MAYBE,,"Let $n$ be a positive integer. The integers $1,\,2,\,3,\,\ldots,\,n^2$ are to be"
+0524,calculus,MCQ,0,UNVERIFIED,,,,YES,,Find the Dini derivative of $$ f(x)=\begin{cases}ax\sin^2\frac{1}{x}+bx\cos^2\fr
+0525,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Given that: $$\begin{align*}\left(\frac {1}{r}\right)\left(\frac {1}{s}\right)\l
+0526,algebra,free_single,1,UNVERIFIED,,,,YES,,Use substitution to compose $y=8 u^2+4 u+4$ and $u=4x^{2}$. Enter your answer as
+0527,other,free_multi,5,UNVERIFIED,,,,MAYBE,,A microchip inspector found eight defective chips in a batch containing $700$ ch
+0528,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"A city had a population of 7,774 at the begining of 1968 and has been growing at"
+0529,other,free_single,1,UNVERIFIED,,,,MAYBE,,If Kamina can do a job in $33$ hours and Simon and Kamina working together can d
+0530,other,free_multi,3,UNVERIFIED,,,,MAYBE,,Put in simplest form. For example if $\frac{3}{7}$ were the answer you would put
+0531,other,free_single,1,UNVERIFIED,,,,MAYBE,,Which of the following are integers? There may be more than one correct answer. 
+0532,algebra,MCQ,0,UNVERIFIED,,,,YES,,"For the following exercises, find the polar equation of the conic with focus at "
+0533,statistics,free_single,1,UNVERIFIED,,,,YES,,A dean in the business school claims that GMAT scores of applicants to the schoo
+0534,number_theory,MCQ,0,UNVERIFIED,,,,YES,,Given that the general solution of the differential equation $\mathrm{y^{\prime\
+0535,algebra,free_single,1,UNVERIFIED,,,,YES,,Use factoring to solve the polynomial equation: HINT: Try multiplying each side 
+0536,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,Decompose the following matrix into the product $LU$ using a compact format: $$ 
+0537,other,free_single,1,UNVERIFIED,,,,MAYBE,,"In your Grandpa Neil’s recipe for a marinade, each serving uses $7.5$ tablespoon"
+0538,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Find the zeros of the function $f(x) = x^3 - (3 + \sqrt{3}) \cdot x + 3$.
+0539,algebra,free_multi,2,UNVERIFIED,,,,YES,,Let p(x)=x^{6}-14x^{5}+72x^{4}-78x^{3}-933x^{2}+5372x-9860. The polynomial $p(x)
+0540,statistics,free_multi,3,UNVERIFIED,,,,YES,,Suppose {$Z_t$} is white noise with mean zero. Define the stochastic process {$X
+0541,other,free_single,1,UNVERIFIED,,,,MAYBE,,The domain of the function $ f(x)=x+\frac{7}{3x-15}$ is all real numbers $x$ exc
+0542,statistics,free_multi,4,UNVERIFIED,,,,YES,,The length (in pages) of math research projects is given below. Using this infor
+0543,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Find the answer to the nearest cent when you perform each division. Your answer 
+0544,algebra,free_single,1,UNVERIFIED,,,,YES,,Can the following function be written in the form of an exponential function or 
+0545,calculus,free_single,1,UNVERIFIED,,,,YES,,Suppose that you have zero dollars now and that the average rate of change in yo
+0546,other,free_multi,5,UNVERIFIED,,,,MAYBE,,Compute: $2\times 46$=[ANS] $2\times 63$=[ANS] $2\times 73$=[ANS] $2\times 36$=[
+0547,geometry,MCQ,0,UNVERIFIED,,,,YES,,"Inscribe a rectangle of base $b$ and height $h$ in a circle of radius one, and i"
+0548,statistics,free_multi,2,DONE,"1.20x = 144, $120.00",HIGH,B1,YES,equation+value; risk on equation string form,The selling price of a textbook is \$144.00. If the markup is 20\% of the bookst
+0549,number_theory,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is the number of ways to writ
+0550,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Evaluate $\int\int\int_{E}{z \, dV}$, where $E$ is the region defined by: $$ E ="
+0551,trigonometry,free_single,1,UNVERIFIED,,,,YES,,Suppose $\cos(\alpha)=\frac{-6}{8}$ and $\sin(\alpha)$ is positive. If the point
+0552,statistics,free_multi,2,UNVERIFIED,,,,YES,,How much money do winners go home with from the television quiz show Jeopardy? T
+0553,statistics,free_multi,2,UNVERIFIED,,,,YES,,IQ scores have a mean of 100 and a standard deviation of 15. John has an IQ of 1
+0554,algebra,MCQ,0,UNVERIFIED,,,,YES,,Consider a random walk on a connected graph with 4 edges. What is the highest po
+0555,statistics,free_multi,2,UNVERIFIED,,,,YES,,A newspaper conducted a statewide survey concerning the 1998 race for state sena
+0556,geometry,free_single,1,UNVERIFIED,,,,YES,,Let $A=f(r)$ be the area of a circle with radius $r$ and $r=h(t)$ be the radius 
+0557,algebra,free_single,1,UNVERIFIED,,,,YES,,Find the absolute value of this number. ${|{5}|=}$ [ANS]
+0558,algebra,free_single,1,UNVERIFIED,,,,YES,,Find an equation for the linear function which has $f(250)=1600$ and $f(650)=420
+0559,other,free_single,1,UNVERIFIED,,,,MAYBE,,Multiply the following: ${-{8 {\textstyle\frac{3}{4}}} \cdot {32}}$ [ANS]
+0560,statistics,free_multi,3,UNVERIFIED,,,,YES,,A standardized variable always has [ANS] A. mean 0 and changing standard deviati
+0561,number_theory,MCQ,0,UNVERIFIED,,,,YES,,Find the prime factorization of 30!.
+0562,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Identify the smallest natural number (positive integer) $f$ such that for every 
+0563,other,free_single,1,UNVERIFIED,,,,MAYBE,,A painting is on sale at ${\$560.00}$. Its original price was ${\$700.00}$. What
+0564,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Compute private key $( \mathbf{d}, \mathbf{p}, \mathbf{q} )$, waht is th public "
+0565,other,free_multi,3,UNVERIFIED,,,,MAYBE,,"Order these decimals from biggest to smallest: ${-7.6,-7.006,-7.06}$ [ANS] > [AN"
+0566,other,free_single,1,UNVERIFIED,,,,MAYBE,,The expression \sqrt{180}-\sqrt{45} equals [ANS] $\times\sqrt{5}$.
+0567,statistics,free_multi,2,UNVERIFIED,,,,YES,,Which of the following statements is false? [ANS] A. The intervals in a frequenc
+0568,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Add as indicated: a) $-4+(-6)=$ [ANS] b) $-6+9=$ [ANS]
+0569,number_theory,MCQ,0,UNVERIFIED,,,,YES,,Let $p$ be an odd prime. What is the order of $G L_{2} ( \mathbb{F}_{p} )?$
+0570,other,MCQ,0,UNVERIFIED,,,,MAYBE,,We now define an algorithm: The definition of a(n) is the number of single parad
+0571,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Given positive integers $d$, define the sequence $s(d)$ by the following rules: "
+0572,other,free_multi,4,UNVERIFIED,,,,MAYBE,,"A football team gains 8 yards on first down, loses 6 on second down and then gai"
+0573,other,free_single,1,UNVERIFIED,,,,MAYBE,,A room needs to be painted. It would take Fabrienne $9$ hours to paint the whole
+0574,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,Given $A=\left( \begin{matrix} {{{{4}}}} & {{{{-5}}}} & {{{{2}}}} \\ {{{{5}}}} &
+0575,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Let the domain of discourse $R$ be the real number field, and $A$ be a triangula"
+0576,other,free_multi,2,UNVERIFIED,,,,MAYBE,,It takes Sadie $2$ day(s) more to build a shed than Mable. If they build it toge
+0577,algebra,MCQ,0,UNVERIFIED,,,,YES,,To ensure that the three roots of the polynomial $x^{3} + a x^{2} + b x + c$ for
+0578,statistics,free_multi,3,DONE,"7.62, 9.00, 95.44",HIGH,B1,YES,CI+confidence 3-slot,A random sample of 49 female cottonmouth snakes yielded a sample mean of 8.31 sn
+0579,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,Evaluate $\lim_{x \to 0^{+}} \left( \left( \frac{ \tan(4 \cdot x) }{ 4 \cdot x }
+0580,calculus,MCQ,0,UNVERIFIED,,,,YES,,Compute the limit using L'Hopital's Rule: $$ \lim_{x \to 0} \left( \frac{ 1 }{ x
+0581,number_theory,MCQ,0,UNVERIFIED,,,,YES,,Let $y=y \left(x \right)$be such that $y^{\prime}+2 \left(\operatorname{l n} x+1
+0582,algebra,free_single,1,UNVERIFIED,,,,YES,,"A pile of logs has $45$ logs in the bottom layer, $44$ logs in the next layer, $"
+0583,geometry,free_single,0,UNVERIFIED,,,,YES,,"Hannah has a $2024 \times 2025$ rectangle in the coordinate plane, with sides pa"
+0584,trigonometry,free_multi,2,DONE,"7z, 6w",HIGH,B8,YES,symbolic form; Qwen substituted z=w=1,"A mass is oscillating on the end of a spring. The distance, $y$, of the mass fro"
+0585,statistics,free_multi,5,DONE,"-0.2235, 2.262, -2.262, No",PARTIAL,B4,YES,slot 5 unknown (interpretation phrase),It is considered quite common to have feet of unequal length. In a sample of 10 
+0586,statistics,free_multi,4,UNVERIFIED,,,,YES,,"In some cases, the best-fitting multiple regression equation is of the form $\ha"
+0587,statistics,free_multi,4,DONE,"B, C, D, E, F, J, C, A, B, B",HIGH,B4,YES,4 sub-parts multi-select; last slot = B (centring effect),This is a problem on interpretation of regression equations which have quadratic
+0588,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"If all real symmetric matrices of order $n$ are classified by contract, that is,"
+0589,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Let $P(x)=\sum_{i=1}^{20}(-x)^{20-i}(x+i)^i$ . Let $K$ be the product of the roo
+0590,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Let $P(x) = (1 + x)(1 + 2x^2)(1 + 3x^4)(1 + 4x^8)(1 + 5x^{16})$ . Find the three
+0591,trigonometry,free_multi,8,DONE,"1.081, 1.683, 1.819, -0.832, 3.162, -0.322, 4.123, 1.326",HIGH,B4,YES,trig identity expansion 8-slot; note negative slot 4,Here is a little more review concerning trig functions. Using the formula for si
+0592,other,MCQ,0,UNVERIFIED,,,,MAYBE,,A parallel beam of light ray parallel to the X-axis is incident on a parabolic r
+0593,trigonometry,free_single,1,UNVERIFIED,,,,YES,,A ship is sailing due north. At a certain point the bearing of a lighthouse is N
+0594,statistics,MCQ,0,UNVERIFIED,,,,YES,,Let the probability distribution of the random variable $\mathrm{X}$ be $\mathrm
+0595,statistics,free_multi,2,UNVERIFIED,,,,YES,,This question concerns the likelihood for logistic regression. Suppose your data
+0596,other,MCQ,0,UNVERIFIED,,,,MAYBE,,We now define an algorithm: The definition of a(n) is the sequence obtained by a
+0597,geometry,MCQ,0,UNVERIFIED,,,,YES,,$ABC$ is a triangle with integer side lengths. Extend $\overline{AC}$ beyond $C$
+0598,algebra,MCQ,0,UNVERIFIED,,,,YES,,What is the result of replacing the following quadratic form with the standard f
+0599,statistics,free_single,1,UNVERIFIED,,,,YES,,An SRS of size 22 is drawn from a population that has a normal distribution. The
+0600,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,"Let the matrix \( N = \begin{bmatrix} 0 & A \\ B & 0 \end{bmatrix} \), where \( "
+0601,algebra,free_multi,2,UNVERIFIED,,,,YES,,Factor the expression and simplify your answer as much as possible: $6 s^2+s-1=\
+0602,statistics,free_multi,3,UNVERIFIED,,,,YES,,Heights (in centimeters) and weights (in kilograms) of $7$ supermodels are given
+0603,statistics,free_multi,3,UNVERIFIED,,,,YES,,"For each problem, select the best response. (a) Which of the following is least "
+0604,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"A ray of light passing through the point A$(1, 2, 3)$, strikes the plane $x + y "
+0605,other,free_single,1,UNVERIFIED,,,,MAYBE,,A mountain moves toward the west by $7.6$ millimeters per year. In the past $6$ 
+0606,number_theory,MCQ,0,UNVERIFIED,,,,YES,,"Consider the sequence defined by $y_0=1$, $y_1=2$, and $y_a=4y_{a-1}-y_{a-2}$ fo"
+0607,geometry,free_multi,18,UNVERIFIED,,,,YES,,What center should a sphere of radius 4 have so that it sits on the xy plane wit
+0608,trigonometry,free_multi,4,UNVERIFIED,,,,YES,,"Since Roger Bannister broke the 4-minute mile on May 6, 1954, the record has bee"
+0609,other,free_single,1,UNVERIFIED,,,,MAYBE,,A convertible and a minivan leave a highway junction at the same time. The conve
+0610,geometry,free_single,0,UNVERIFIED,,,,YES,,Let $R$ be the region in the complex plane enclosed by the curve $f(\theta)=e^{i
+0611,statistics,free_single,1,UNVERIFIED,,,,YES,,A regression line using 33 observations produced SSR=140 and SSE=57. Determine t
+0612,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Write the following rational number in simplest form: $\frac{24560172}{29255499}
+0613,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,"What is the expression for $\beta$ being linearly represented by $\alpha_{1}, \a"
+0614,algebra,MCQ,0,UNVERIFIED,,,,YES,,Allow the expression $x \left( x-a \right) \left( x-b \right) \left( x-c \right)
+0615,algebra,free_multi,2,UNVERIFIED,,,,YES,,An amateur cyclist is training for a road race. He rode the first 42-mile portio
+0616,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,The general solution of the equation $y''+y= sin 2 x$ is
+0617,other,free_multi,4,UNVERIFIED,,,,MAYBE,,Describe a series of shifts which translates the graph $y=(x-7)^3-6$ back onto t
+0618,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,The volume of the solid of revolution formed by rotating the region bounded by t
+0619,statistics,free_multi,3,UNVERIFIED,,,,YES,,Test the claim that the two samples described below come from populations with t
+0620,statistics,free_multi,4,UNVERIFIED,,,,YES,,A random sample of $n=8$ observations from a normal population produced the foll
+0621,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Two numbers have a sum of $153$. If one number is $k$, represent the other numbe"
+0622,statistics,free_multi,4,DONE,"3.854, 2.567, Yes",PARTIAL,B4,YES,slot 4 unknown (interpretation phrase),There is a lot of interest in the relationship between studying music and studyi
+0623,other,free_multi,6,UNVERIFIED,,,,MAYBE,,"Now that we have looked at the Gauss Trick, we would like to see why it works. M"
+0624,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"If f(2x) = x + 5 and f(g(6)) = 13, then 2 * g(6) ="
+0625,algebra,free_single,1,UNVERIFIED,,,,YES,,Factor out the greatest common factor first and place it in front. Then factorin
+0626,calculus,MCQ,0,UNVERIFIED,,,,YES,,"Calculate the integral $\int_{-1}^{1} \mid z \mid \mathrm{d} z$, with the integr"
+0627,geometry,free_single,1,UNVERIFIED,,,,YES,,"Given that the surface area of a sphere is 163 $\pi$ cm $^2$, find its volume. N"
+0628,other,free_multi,4,UNVERIFIED,,,,MAYBE,,Round the decimal $75.6733$ to the specified places. Round to a whole number: [A
+0629,other,free_single,0,UNVERIFIED,,,,MAYBE,,"There are $n$ cities in a country, where $n \geq 100$ is an integer. Some pairs "
+0630,other,free_multi,2,UNVERIFIED,,,,MAYBE,,5.751+66.23=[ANS] 571.7-7.335=[ANS]
+0631,calculus,MCQ,0,UNVERIFIED,,,,YES,,Define $C(\alpha)$ to be the coefficient of $x^{1992}$ in the power series about
+0632,other,free_single,1,UNVERIFIED,,,,MAYBE,,Evaluate this expression: ${3+4(113-4\cdot3^{3})=}$ [ANS]
+0633,algebra,free_multi,2,DONE,"B, D, 8",HIGH,B5,YES,multi-select + value 3-slot,(a) What operation on both sides of the equation $7x=56$ isolates the variable o
+0634,other,free_single,1,UNVERIFIED,,,,MAYBE,,A book is opened to a page at random. The product of the facing page numbers is 
+0635,algebra,free_multi,3,UNVERIFIED,,,,YES,,"Suppose $Q=37.6(0.746)^t$. Give the starting value $a$, the growth factor $b$, a"
+0636,other,free_single,0,UNVERIFIED,,,,MAYBE,,"Let $n$ be a positive integer. There exist $n$ ordered triples$$(x_1, y_1, z_1),"
+0637,other,free_multi,6,UNVERIFIED,,,,MAYBE,,"For each set of Polar coordinates $(r,\theta)$, match the equivalent Cartesian c"
+0638,statistics,free_multi,4,DONE,"0.15, (-infty, -1.75)U(1.75, infty), 0.88, D",HIGH,B5,YES,proportion z-test 4-slot,An Office of Admission document claims that 55.9\% of UVA undergraduates are fem
+0639,statistics,free_single,1,UNVERIFIED,,,,YES,,Suppose you calculate a 99\% confidence interval of 14.51 to 21.16. Determine th
+0640,other,MCQ,0,UNVERIFIED,,,,MAYBE,,What is the coefficient of $x^3y^{13}$ in $\left(\frac 12x + y\right)^{17}$ ?
+0641,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Estimate the product by rounding each of the given values to the nearest tenth. 
+0642,trigonometry,free_multi,3,UNVERIFIED,,,,YES,,Consider the function $y=7+6 \cos(6x)$. (a) What is its amplitude? [ANS]. (b) Wh
+0643,other,free_multi,5,UNVERIFIED,,,,MAYBE,,Are the following statements true or false? [ANS] 1. If $f$ and $h$ are reciproc
+0644,number_theory,MCQ,0,UNVERIFIED,,,,YES,,"How many positive integers $n\le 2010$ satisfy $\phi (n)|n$ , where $ \phi (n)$ "
+0645,other,free_single,1,UNVERIFIED,,,,MAYBE,,"A flight costs \$11,500 to operate, regardless of the number of passengers. Each"
+0646,calculus,MCQ,0,UNVERIFIED,,,,YES,,"Find a ""reasonable"" upper-bound on the error in approximating $f(x) = (x-1) \cdo"
+0647,number_theory,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is: Periods of reciprocals of
+0648,algebra,free_multi,2,UNVERIFIED,,,,YES,,"A manufacturer pays its assembly line workers \$11.51 per hour. In addition, wor"
+0649,other,free_single,0,UNVERIFIED,,,,MAYBE,,"Let $n$ be a positive integer. Given an $n\times n$ board, the unit cell in the "
+0650,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Let $f(x) = \mathrm{e}^{x}$. On the interval $\left[ 0, 1 \right]$, provide a ta"
+0651,other,free_multi,2,UNVERIFIED,,,,MAYBE,,The rat population in a major metropolitan city is given by the formula $ n(t)=7
+0652,other,free_single,0,UNVERIFIED,,,,MAYBE,,"Let $G$ be a finite abelian group. There is a magic box $T$. At any point, an el"
+0653,algebra,free_multi,3,UNVERIFIED,,,,YES,,Nicotine leaves the body at a constant rate. At a time of $4$ hours after smokin
+0654,algebra,free_multi,4,UNVERIFIED,,,,YES,,"Find $\small{f(12), f(-7), f(\pi), \;\mbox{and}\; f(-7.1)}$ for: \small{f(x)=\be"
+0655,algebra,free_single,1,UNVERIFIED,,,,YES,,A store is offering a 15\% discount on all items. Write an equation relating the
+0656,algebra,free_single,1,UNVERIFIED,,,,YES,,Enter a quadratic polynomial which has roots at 5/6 and 3. [ANS]
+0657,statistics,free_multi,8,DONE,"172.52, 187.48, 172.87, 187.13, 0, 5.167, -10.33, 10.33",HIGH,B5,YES,difference of means 8-slot,The purpose of this question is to compare the variability of $\overline{x}_1$ a
+0658,algebra,MCQ,0,UNVERIFIED,,,,YES,,Let $f(x) = 4x^3 + 2x^2 + x + 1$. Try to find a polynomial $P_2(x)$ of degree no
+0659,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Suppose that for a given data set, $s_x^2=550, \quad s_y^2=820, \quad \mbox{cov}"
+0660,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Find $I=\int \frac{ 5 }{ 1+\sqrt{(x+1)^2+1} } \, dx$."
+0661,algebra,free_multi,2,UNVERIFIED,,,,YES,,An astronaut $r$ thousand miles from the center of the earth weighs $2880/r^2$ p
+0662,other,free_single,1,UNVERIFIED,,,,MAYBE,,Fabrienne hired a face-painter for a birthday party. The painter charged a flat 
+0663,other,MCQ,0,UNVERIFIED,,,,MAYBE,,We now define an algorithm: The definition of a(n) is Lucas and Lehmer numbers w
+0664,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Express each decimal as a fraction or mixed number in simplest form. 1) 0.83=[AN
+0665,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Let $f(x)=\int_{x}^{{{x}^{2}}}{{{e}^{-x{{y}^{2}}}}} \text{d}y$, then ${f}'(y)=$"
+0666,statistics,free_multi,2,UNVERIFIED,,,,YES,,Suppose that the sales at Borders bookstores went from $76$ million dollars in $
+0667,algebra,MCQ,0,UNVERIFIED,,,,YES,,Find the particular solution of the differential equation $y''[x+(y')^{2}] = y'$
+0668,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Compute the largest integer $n$ such that $2005^{2^{100}} - 2003^{2^{100}}$ is d
+0669,other,MCQ,0,UNVERIFIED,,,,MAYBE,,A particle has a velocity u towards the east at t = 0. Its acceleration is towar
+0670,other,MCQ,0,UNVERIFIED,,,,MAYBE,,What is the number of iterations required in total to generate all the sub-keys 
+0671,other,free_multi,2,UNVERIFIED,,,,MAYBE,,5.7 $\times$ 0.3=[ANS] 56.6 $\div$ 0.5=[ANS]
+0672,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Evaluate $L=\lim_{(x,y) \to (-1,1)}\left(\frac{ x \cdot y \cdot (x+y)-5 \cdot y "
+0673,number_theory,free_single,0,UNVERIFIED,,,,YES,,"Consider a $2025\times 2025$ board where we identify the squares with pairs $(i,"
+0674,statistics,free_single,1,UNVERIFIED,,,,YES,,"Add the two binomials, making sure to simplify your answer as much as possible. "
+0675,geometry,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is given by the Hurwitz-Radon
+0676,algebra,free_multi,3,UNVERIFIED,,,,YES,,One hundred volunteers who suffer from severe depression are available for a stu
+0677,statistics,MCQ,0,UNVERIFIED,,,,YES,,"The number of home runs the Boston Red Sox hit in eight consecutivegames were 2,"
+0678,statistics,free_single,1,UNVERIFIED,,,,YES,,Teaneck High had an enrollment of 11510 in 1986 and an enrollment of 12910 in ye
+0679,geometry,free_single,1,UNVERIFIED,,,,YES,,A grain silo consists of a cylindrical main section and a hemispherical roof. If
+0680,calculus,free_multi,4,UNVERIFIED,,,,YES,,"Calculate the successive average rates of change for the function, $H(x)$ in the"
+0681,statistics,free_multi,4,UNVERIFIED,,,,YES,,"Currently, an artist can sell $240$ paintings every year at the price of ${\$100"
+0682,number_theory,MCQ,0,UNVERIFIED,,,,YES,,"Let $N$ be the number of ordered triples $(a,b,c)$ of positive integers such tha"
+0683,other,free_single,1,UNVERIFIED,,,,MAYBE,,Change the fraction ${-{\textstyle\frac{13}{20}}}$ into a decimal. ${{-{\textsty
+0684,statistics,free_single,1,UNVERIFIED,,,,YES,,Find the critical $z$ value for a left-tailed test using a significance level of
+0685,other,free_single,1,UNVERIFIED,,,,MAYBE,,In which of the following scenarios will conducting a paired $t$-test for means 
+0686,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"If a real number x is chosen at random in the interval [0, 3] and a real number "
+0687,algebra,free_single,1,UNVERIFIED,,,,YES,,A construction company must pay a fine for completing a job late. The company us
+0688,other,free_single,0,UNVERIFIED,,,,MAYBE,,"In Mexico, there live $n$ Mexicans, some pairs of which know each other. They de"
+0689,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"During a one-month promotional campaign, Tiger Films gave either a free DVD rent"
+0690,algebra,MCQ,0,UNVERIFIED,,,,YES,,Use common logarithms or natural logarithms and a calculator to evaluate to four
+0691,statistics,free_single,1,UNVERIFIED,,,,YES,,How many rounds of golf do those physicians who play golf play per year? A surve
+0692,trigonometry,free_single,1,UNVERIFIED,,,,YES,,Find the positive value of $x$ which satisfies $x=3.8 \cos(x)$. Give the answer 
+0693,other,free_multi,3,UNVERIFIED,,,,MAYBE,,Let $y=f(x)$ be a periodic function whose values are given below. Find the perio
+0694,other,free_multi,4,UNVERIFIED,,,,MAYBE,,"Bea T. Howen, a sophomore college student, lost her scholarship after receiving "
+0695,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,"Arrange the infinitesimal quantities $\alpha=\sqrt{1+x^{2}}-\cos x \, \quad\beta"
+0696,algebra,free_multi,2,UNVERIFIED,,,,YES,,Complete the square by writing $-17+16x+x^2$ in the form $(x-h)^2+k$. Note: the 
+0697,other,free_single,1,UNVERIFIED,,,,MAYBE,,Suppose $r$ varies directly with $t$ and that $r=30$ when $t=5$. What is the val
+0698,other,free_single,1,UNVERIFIED,,,,MAYBE,,It’s give that $76\cdot67=5092$. Use this fact to calculate the following: ${7.6
+0699,other,free_multi,2,UNVERIFIED,,,,MAYBE,,The expression x^{3}\left(\frac{1}{7} x^{4}\right)(42x^{-10}) equals $c/x^e$ whe
+0700,number_theory,MCQ,0,UNVERIFIED,,,,YES,,Let $p$ and $q$ be two coprime positive integers. What is $$ \sum_{0 < x < \frac
+0701,other,free_single,1,UNVERIFIED,,,,MAYBE,,You are flying in an open plane at an altitude of 7744 feet and you drop a Coca 
+0702,algebra,free_single,1,UNVERIFIED,,,,YES,,Perform the operation (-u^4-2 u^3-u^2-5 u-5)+(-2 u^3+4 u^2-u-3) and combine line
+0703,calculus,MCQ,0,UNVERIFIED,,,,YES,,"Compute the integral: $$ \int \frac{ 6 }{ \sin(3 \cdot x)^6 } \, dx $$"
+0704,statistics,free_multi,3,UNVERIFIED,,,,YES,,A new cream that advertises that it can reduce wrinkles and improve skin was sub
+0705,other,free_multi,4,UNVERIFIED,,,,MAYBE,,"Select True or False, depending on whether the corresponding statement is true o"
+0706,other,free_single,1,UNVERIFIED,,,,MAYBE,,Find this expression’s value. Round your answer to two or more decimal places. $
+0707,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"A man invests his savings in two accounts, one paying 6 percent and the other pa"
+0708,other,free_multi,2,UNVERIFIED,,,,MAYBE,,One number is $9$ less than a second number. Find a pair of such number that the
+0709,number_theory,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is the period length of the s
+0710,trigonometry,free_single,1,UNVERIFIED,,,,YES,,Find all solutions to the equation $ 8 \cos(x+3)=1$ in the interval $0 \leq x \l
+0711,geometry,MCQ,0,UNVERIFIED,,,,YES,,"We now define an algorithm: The definition of a(n) is: Triangle T(n,k) of number"
+0712,algebra,free_multi,3,UNVERIFIED,,,,YES,,A group of college students believes that herbal tea has remarkable restorative 
+0713,algebra,free_multi,2,UNVERIFIED,,,,YES,,Simplify. (a) $-\sqrt[5]{243}=$ [ANS] (b) $\sqrt[4]{-81}=$ [ANS] Write your answ
+0714,other,free_single,1,UNVERIFIED,,,,MAYBE,,Jason buys sports equipment worth \$ \$80.00 and pays 5\% sales tax. What is the
+0715,other,free_multi,4,DONE,"5, 7, 9, 13, 8.5, 6, 7, 8, 9, 10, 11, 8.5",HIGH,B5,MAYBE,sampling distribution 4-slot (lists as slots); format risk,Consider the population of four juvenile condors. Their weights in pounds are: 5
+0716,statistics,free_single,1,UNVERIFIED,,,,YES,,"Suppose that for a given least-squares regression, the sum of squares for error "
+0717,other,free_single,1,UNVERIFIED,,,,MAYBE,,Evaluate the expression $6^3+6^5$. [ANS] [NOTE: Your answer cannot be an algebra
+0718,statistics,free_multi,3,UNVERIFIED,,,,YES,,"Here is a list of some cities’ population: ${72704000,\;\;72120000,\;\;75396000,"
+0719,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"How many ways are there to color the vertices of a cube with two colors, up to r"
+0720,number_theory,MCQ,0,UNVERIFIED,,,,YES,,"The given initial value problem $$ \left\{\begin{array} {l} {y^{\prime}=ax+b,} \"
+0721,statistics,free_multi,3,DONE,"D, A, A",HIGH,B5,YES,3-slot CLT/sampling MCQ,"For each problem, select the best response. (a) How much do you plan to spend fo"
+0722,geometry,free_single,0,UNVERIFIED,,,,YES,,"At time $t=0$, Hobbes writes down positive real numbers at the vertices of a reg"
+0723,trigonometry,free_multi,2,UNVERIFIED,,,,YES,,Use an identity to find the exact value of each expression: Note: You are not al
+0724,other,free_single,0,UNVERIFIED,,,,MAYBE,,"Find the smallest real number $M$ such that there exist four complex numbers $a,"
+0725,statistics,free_multi,3,UNVERIFIED,,,,YES,,"The number of men and women among professors in Math, Physics, Chemistry, Lingui"
+0726,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"According to a salad recipe, each teaspoon of vinegar should be mixed with $6$ t"
+0727,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,Determine the greatest possible value of $\sum_{i=1}^{10} \cos(3x_i)$ for real n
+0728,other,free_single,1,UNVERIFIED,,,,MAYBE,,After a 5\% raise your new salary is \$ 84000. Before the raise your salary was 
+0729,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,Consider matrix $A=\left( \begin{matrix} {{{2}}} & {{{5}}} & {{{0}}} & {{{0}}} \
+0730,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Evaluate $L=\lim_{P(x,y) \to P(m+n,m-n)}\left(\frac{ x^2-m \cdot x-x \cdot y+m \"
+0731,number_theory,MCQ,0,UNVERIFIED,,,,YES,,"Find the number of ordered pairs of positive integers $(a,b)$ such that neither "
+0732,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,"Let the 3rd order matrix `A = (alpha _1,alpha _2,alpha _3), B = (alpha _2-2alpha"
+0733,statistics,free_multi,4,UNVERIFIED,,,,YES,,Determine the sample size required to estimate a population mean to within 11 un
+0734,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"Hill A is $5.56$ kilometers in height, while Hill B is $730$ meters in height. W"
+0735,statistics,free_multi,7,UNVERIFIED,,,,YES,,Calculate the 5 number summary and the interquartile range of the following data
+0736,other,free_single,1,UNVERIFIED,,,,MAYBE,,Rationalize the denominator. Use sqrt() for the square root symbol. For example:
+0737,other,free_single,1,UNVERIFIED,,,,MAYBE,,Consider the following situation in which you borrow money from your cousin: On 
+0738,statistics,free_multi,4,UNVERIFIED,,,,YES,,"Consider the following hypothesis test. The null hypothesis is ""The mean body te"
+0739,algebra,free_single,1,UNVERIFIED,,,,YES,,Solve the equation for $U$:  Z=1-\frac{Q}{U} $U=$ [ANS]
+0740,algebra,free_single,1,UNVERIFIED,,,,YES,,Find a polar equation of the hyperbola $\left(\frac{x}{8}\right)^2-\left(\frac{y
+0741,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,"Solve the equation ${\frac{1+\operatorname{tan} \, x} {1-\operatorname{tan} \,x}"
+0742,statistics,free_single,1,UNVERIFIED,,,,YES,,The director of an alumni association for a university wants to look at the rela
+0743,other,free_single,1,UNVERIFIED,,,,MAYBE,,A school purchased a batch of T-shirts from a company. The company charged ${\$9
+0744,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Taxylvania has a tax code that rewards charitable giving. If a person gives $p$ 
+0745,trigonometry,free_multi,8,UNVERIFIED,,,,YES,,Complete the following formulas: $\sin(2C)=$ [ANS] $\cos(A+B)=$ [ANS] $\tan(2C)=
+0746,other,free_multi,7,UNVERIFIED,,,,MAYBE,,For the problems below add or subtract as indicated. $7506$ $+9911$=[ANS] $64784
+0747,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Using Rabin cryptosystem with p=23 and q=7 Encrypt P=24 to find ciphertext. The 
+0748,statistics,free_multi,12,DONE,"222.51, 186.49, 79.43, 66.57, 50.05, 41.95, 31.01, 25.99, 20.79, 3, 11.345, B",HIGH,B5,YES,chi-sq independence 12-slot,"It has been suggusted that the highest priority of retirees is travel. Thus, a s"
+0749,algebra,free_multi,6,DONE,"5, 5, 5, 5, 5, is, 14/9, 19/14, 24/19, 29/24, 34/29, is not, 9+5n, (-1)^(n+1)(5n+9)",PARTIAL,B6,YES,format uncertain; 6 ANS slots but exact slot boundaries unclear,"Consider the sequence 9, 14, 19, 24, 29, 34... Compute the difference between su"
+0750,other,free_multi,3,UNVERIFIED,,,,MAYBE,,Oil leaks from a tank. At hour $t=0$ there are 350 gallons of oil in the tank. E
+0751,geometry,free_single,0,UNVERIFIED,,,,YES,,Given an odd integer $n \geq 3$. Let $V$ be the set of vertices of a regular $n$
+0752,geometry,MCQ,0,UNVERIFIED,,,,YES,,"Given a parallelogram $ABCD$ , let $\mathcal{P}$ be a plane such that the distan"
+0753,calculus,free_multi,4,UNVERIFIED,,,,YES,,Steadia is an island which experienced approximately linear population growth fr
+0754,algebra,free_single,1,UNVERIFIED,,,,YES,,"Let $m(x)=4x^2-7$, $n(x)=5x$, and $o(x)=\sqrt{3x+5}$. Find a simplified formula "
+0755,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,Find the steady-state solution of the equation y [n] + [1 / \surd(3)]y [n - 1] =
+0756,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"According to Car and Driver, an Alfa Romeo going 70 mph requires 177 feet to sto"
+0757,other,free_single,1,UNVERIFIED,,,,MAYBE,,Three students collected data for a school project. Anita asked her classmates w
+0758,statistics,free_single,1,UNVERIFIED,,,,YES,,For the purposes of this question a household corresponds to a single residentia
+0759,statistics,free_single,1,UNVERIFIED,,,,YES,,Altough in general you cannot know the sampling distribution of the sample mean 
+0760,calculus,MCQ,0,UNVERIFIED,,,,YES,,Find the sum of the series $\sum_{n=1}^\infty \frac{ x^{4 \cdot n-1} }{ 4 \cdot 
+0761,other,free_single,1,UNVERIFIED,,,,MAYBE,,"The current value $f(n)$ is five times the previous value, plus four. Find a rec"
+0762,algebra,free_single,1,UNVERIFIED,,,,YES,,"Write the expression $(8x)(7x)+(6x) (8x)+7 (6x)+x(6x)$ in a simpler form, if pos"
+0763,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Write a numerical expression for each verbal phrase. nine added to four [ANS] ei
+0764,algebra,free_single,1,UNVERIFIED,,,,YES,,Rewrite the expression \ln (a+b)+4 \ln (a-b)-5 \ln c as a single logarithm $\ln 
+0765,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Mr. Cleary's class and Ms. Ntuala's class go to use the computer lab. There are 
+0766,other,free_multi,3,UNVERIFIED,,,,MAYBE,,Convert each mixed fraction to a decimal using at least four decimal places. $4 
+0767,other,MCQ,0,UNVERIFIED,,,,MAYBE,,$int_{{}}^{{}}{frac{dx}{sqrt[3]{(x-1){{(x+1)}^{2}}}}}$
+0768,algebra,MCQ,0,UNVERIFIED,,,,YES,,"The inverse function of $y = left{ begin{array}{l} 1 + {{rm{e}}^{ - x}}{rm{, }}q"
+0769,trigonometry,free_single,1,UNVERIFIED,,,,YES,,An angle of $9 \pi$ radians can be converted to an angle of [ANS] degrees.
+0770,other,free_multi,10,UNVERIFIED,,,,MAYBE,,"For each of the following, find the base $b$ if the graph of $y=b^x$ contains th"
+0771,trigonometry,free_single,1,UNVERIFIED,,,,YES,,Find the exact value as fraction (not a decimal approximation). $ \sec\left(\fra
+0772,number_theory,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is the sequence generated by 
+0773,other,free_single,1,UNVERIFIED,,,,MAYBE,,Express the average age of three sisters in the terms of the age $a$ of the firs
+0774,statistics,free_multi,5,UNVERIFIED,,,,YES,,"Find the five-number summary for the following 10 values: 31,\ 28,\ 32,\ 26,\ 42"
+0775,trigonometry,free_single,1,UNVERIFIED,,,,YES,,Find the equation of a sine wave that is obtained by shifting the graph of $y=\s
+0776,other,free_single,1,UNVERIFIED,,,,MAYBE,,What is the value of $\frac{3}{4} x-\frac{1}{2}$ when $x=24$? [ANS] A. $17 \frac
+0777,algebra,free_single,1,UNVERIFIED,,,,YES,,Evaluate: $ \frac{2^{6}}{2^{3}}=$ [ANS] Note: Your answer should be completely s
+0778,other,MCQ,0,UNVERIFIED,,,,MAYBE,,You have applied to three medical schools: University of California at San Franc
+0779,calculus,MCQ,0,UNVERIFIED,,,,YES,,"Given the function $f(x)=\begin{cases}\sin x,&\text{if } \cos x \text{ is a rati"
+0780,other,free_single,1,UNVERIFIED,,,,MAYBE,,Subtract $-5t^{14}-7t^{12}-6t^{10}$ from the sum of $6t^{14}-5t^{12}+8t^{10}$ an
+0781,algebra,free_single,1,UNVERIFIED,,,,YES,,Simplify the expression ${\sqrt{\frac{3}{8}} \cdot \sqrt{\frac{5}{8}}}$. Use sqr
+0782,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Find the following partial sum, $ \sum_{n=0}^{40} (3-2 n)=$ [ANS]"
+0783,calculus,MCQ,0,UNVERIFIED,,,,YES,,Solve the integral: $$ 2 \cdot \int \sin(-2 \cdot x)^5 \cdot \cos(2 \cdot x)^2 \
+0784,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Find the distance between the pair of real numbers: ${\textstyle\frac{7}{12}}$, "
+0785,statistics,free_multi,4,UNVERIFIED,,,,YES,,"Select True or False, depending on whether the corresponding statement is true o"
+0786,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Determine the count of positive integers $X$ that fulfill all of these criteria:
+0787,other,free_multi,3,DONE,"148,178,452, 41.55, 46.97",MEDIUM,B1,MAYBE,discrete geometric 3-slot; format ambiguity on units,A country's consumption of iron increases 5.7\% per year. Assuming this rate of 
+0788,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Let $f(x) =\frac{2}{x^2 -1}$ . Find the largest positive integer $n$ such that $
+0789,algebra,free_multi,4,UNVERIFIED,,,,YES,,Find the absolute value of the following numbers. ${|{8}|=}$ [ANS] ${|{-8}|=}$ [
+0790,algebra,free_single,1,UNVERIFIED,,,,YES,,Write the equation $-5 (4x-5) (x-1)=0$ in the standard form $a x^2+b x+c=0$. [AN
+0791,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,Calculate the sum $S=\cos(a)+\cos(2 \cdot a)+\cos(3 \cdot a) + \ldots + \cos(n \
+0792,other,free_single,1,UNVERIFIED,,,,MAYBE,,Solve the expression $T h^{t}=V g^{t}$ for $t$ assuming that all other letters a
+0793,statistics,free_multi,4,DONE,"1.35, (1.49, inf), 0.0895, D",HIGH,B6,YES,t-test 4-slot; note 'inf' not 'infty' in notation,"A manufacturer of light bulbs advertises that, on average, its long-life bulb wi"
+0794,statistics,free_multi,2,UNVERIFIED,,,,YES,,Your teacher is trying to encourage her students to read more books. For the cur
+0795,other,free_multi,3,UNVERIFIED,,,,MAYBE,,"A population, $P$, of a certain species of fish in a lake begins with $450$ memb"
+0796,calculus,MCQ,0,UNVERIFIED,,,,YES,,Let $\omega_1$ be a circle of radius $1$ that is internally tangent to a circle 
+0797,geometry,MCQ,0,UNVERIFIED,,,,YES,,"$\triangle ABC$ has $AB=3$ , $BC=2007$ , and $CA=2008$ . Point $E$ is on $AC$ su"
+0798,algebra,free_multi,2,UNVERIFIED,,,,YES,,Solve for $t$: \sqrt{t-151}-\sqrt{t+117}=125 The only possible root is $t=$ [ANS
+0799,other,free_single,0,UNVERIFIED,,,,MAYBE,,Jerry places at most one rook in each cell of a $2025 \times 2025$ grid of cells
+0800,statistics,free_single,1,UNVERIFIED,,,,YES,,A medical researcher wants to investigate the amount of time it takes for patien
+0801,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,Let $V$ and $W$ be complex vector spaces of dimensions $m$ and $n$ respec- tivel
+0802,algebra,free_single,1,UNVERIFIED,,,,YES,,Simplify the following and express your answer as a single fraction. No decimals
+0803,other,free_single,1,UNVERIFIED,,,,MAYBE,,"According to the Food and Drug Administration (FDA), a cup of coffee contains on"
+0804,calculus,MCQ,0,UNVERIFIED,,,,YES,,Calculate the integral $$ \int_{0}^{+\infty} \frac{x \sin(m x)}{x^{4} + a^{4}} \
+0805,other,MCQ,0,UNVERIFIED,,,,MAYBE,,We now define an algorithm: The definition of a(n) is the number of n-step one-s
+0806,trigonometry,free_multi,6,UNVERIFIED,,,,YES,,Assume that $\theta$ is an angle in quadrant III. Find the values of the six tri
+0807,calculus,MCQ,0,UNVERIFIED,,,,YES,,Calculate the derivative of the function $r = \ln\left(\sqrt[4]{\frac{ 1+\tan(\v
+0808,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is Blue code for n: in the bi
+0809,other,free_single,0,UNVERIFIED,,,,MAYBE,,"The country of ELMOpia has $n \ge 4$ cities, where some pairs of cities are conn"
+0810,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,The general solution of the equation $y''+y= \sin x$ is
+0811,other,free_single,1,UNVERIFIED,,,,MAYBE,,The mass of one hydrogen atom is $1.67 \times 10^{-24}$ gram. Find the mass of 8
+0812,algebra,free_single,1,UNVERIFIED,,,,YES,,Convert $\left(xy\right)^{6}=8$ to an equation in polar coordinates. [ANS] $=r^{
+0813,statistics,free_multi,2,UNVERIFIED,,,,YES,,Under which of the following circumstances is it impossible to construct a confi
+0814,statistics,free_multi,10,UNVERIFIED,,,,YES,,A study was conducted to see how people reacted to certain facial expressions. A
+0815,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Take two numbers randomly from $(0,1)$, so what is the probability that the sum "
+0816,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Animals and people that take in more energy than they expend will get fatter. He
+0817,other,free_single,1,UNVERIFIED,,,,MAYBE,,Evaluate this expression: ${{{\textstyle\frac{8}{7}}}+8\cdot{{\textstyle\frac{8}
+0818,algebra,free_multi,2,UNVERIFIED,,,,YES,,Write the expression as a single fraction. Simplify your answer. $\begin{array}{
+0819,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,$\int_{{}}^{{}}{\frac{1+\sin x}{1+\cos x}dx}=$
+0820,algebra,free_single,1,UNVERIFIED,,,,YES,,Simplify the expression: $18-6 \div 2$ [ANS]
+0821,other,free_multi,4,UNVERIFIED,,,,MAYBE,,Suppose you want to use a paired sample to compare the mean TV viewing times of 
+0822,other,free_single,1,UNVERIFIED,,,,MAYBE,,What is the linear velocity in MILES PER HOUR of the tip of a lawnmower blade sp
+0823,number_theory,free_single,0,UNVERIFIED,,,,YES,,Let \(a\) be a positive integer. We say that \(a\) is bao-good if there exist in
+0824,calculus,MCQ,0,UNVERIFIED,,,,YES,,Calculate the integral using the trapezoidal rule $$ y=\int_{0}^{x} \mathrm{e}^{
+0825,calculus,MCQ,0,UNVERIFIED,,,,YES,,Find the value of the integral $\int_{0}^{\pi} \operatorname{tan}(\theta + \math
+0826,other,free_single,1,UNVERIFIED,,,,MAYBE,,A manufacturer has 3400 units in stock. The product is now selling at \$6 per un
+0827,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Where is the parabola $y = x^2$ closest to the point $(2,0)$?"
+0828,statistics,free_multi,2,UNVERIFIED,,,,YES,,Use the given data to find the 95\% confidence interval estimate of the populati
+0829,other,free_single,1,UNVERIFIED,,,,MAYBE,,You fire a rifle at an angle of 45 degrees. Thus the initial horizontal and vert
+0830,geometry,free_single,1,UNVERIFIED,,,,YES,,Find the distance along an arc on the surface of the earth that subtends a centr
+0831,calculus,MCQ,0,UNVERIFIED,,,,YES,,"Solve the integral: $$ \int \frac{ 1 }{ \sin(8 \cdot x)^5 } \, dx $$"
+0832,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Given \( y = {f^2}(x) \), assuming \( f(u) \) is twice differentiable, then \( y"
+0833,other,free_single,1,UNVERIFIED,,,,MAYBE,,Enter the following rational numbers from least to greatest. Separate your answe
+0834,algebra,free_multi,3,UNVERIFIED,,,,YES,,Fill in the following equations: $45^\circ=$ [ANS] rad $270^\circ=$ [ANS] rad $-
+0835,other,free_single,1,UNVERIFIED,,,,MAYBE,,Penelope collected a total of $2016$ stamps over the past $16$ years. On average
+0836,geometry,free_single,0,UNVERIFIED,,,,YES,,Let \( f: \mathbb{R} \to \mathbb{R} \) be a continuous function. A chord is defi
+0837,algebra,MCQ,0,UNVERIFIED,,,,YES,,"Find the value of $I=\int_{0}^{1}f(x)$d$x$ is (), where $$f(x)=\begin{cases}x\ma"
+0838,statistics,free_single,1,UNVERIFIED,,,,YES,,One of the few negative side effects of quitting smoking is weight gain. Suppose
+0839,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,"Evaluate $\sum_{n=0}^\infty \mathrm{Arccot}(n^2+n+1)$, where $\mathrm{Arccot}\,t"
+0840,calculus,MCQ,0,UNVERIFIED,,,,YES,,"Fix an integer $b \geq 2$. Let $f(1) = 1$, $f(2) = 2$, and for each $n \geq 3$, "
+0841,trigonometry,free_multi,2,UNVERIFIED,,,,YES,,Let $f(x)=\sin{(8x)}$ and $g(x)=5+\sqrt{x}$. Find formulas for: (a) $f(g(x))=$ [
+0842,statistics,free_multi,5,UNVERIFIED,,,,YES,,"When a poultry farmer uses his regular feed, the newborn chickens have normally "
+0843,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Rewrite the following using a single exponent. $\begin{array}{cccc}\hline &  32^
+0844,other,MCQ,0,UNVERIFIED,,,,MAYBE,,For $\mathbf{p}=\uparrow\mathbf{1}$ and $\mathbf{q}=1 7$ and choose $\mathrm{e}=
+0845,algebra,free_single,1,UNVERIFIED,,,,YES,,Write the expression with positive exponents and simplify. $ \frac{1}{5^{-1}}$=[
+0846,other,free_multi,5,UNVERIFIED,,,,MAYBE,,$\lceil 2.6\rceil=$ [ANS] $\lceil 0.800000000000001\rceil=$ [ANS] $\lceil 1.2\rc
+0847,statistics,MCQ,0,UNVERIFIED,,,,YES,,Let the random variable X follow a Poisson distribution with parameter A. Prove 
+0848,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,Find the minimum value of $y = \frac{ \left(\cos(x)\right)^2 - 4 \cdot \cos(x) +
+0849,calculus,free_single,1,UNVERIFIED,,,,YES,,Express the following sum in closed form. $ \sum\limits_{k=1}^{n} \ 8 \left(\fra
+0850,geometry,MCQ,0,UNVERIFIED,,,,YES,,"You have $5$ boxes and $2005$ balls. $286$ , $645$ , and $1074$ of these balls a"
+0851,algebra,free_single,1,UNVERIFIED,,,,YES,,Consider the equation $y=-\frac{5}{8}x$ Which of the following ordered pairs are
+0852,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Each second, an atom clock runs $0.0008$ second slower than usual. This clock an"
+0853,geometry,MCQ,0,UNVERIFIED,,,,YES,,What is the circumference of the ellipse $\frac{x^{2}}{4} + y^{2} = 1$? Provide 
+0854,other,free_multi,2,UNVERIFIED,,,,MAYBE,,If $g(t)=\frac{1}{t+8}-6$ (a) Find $g(0)$. $g(0)=$ [ANS] (b) Exactly solve $g(t)
+0855,other,free_multi,2,UNVERIFIED,,,,MAYBE,,The following table shows the number of canned food collected by a non-profit or
+0856,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Alice and Bob play a game on a board consisting of one row of 2022 consecutive s
+0857,statistics,free_multi,6,UNVERIFIED,,,,YES,,Weights of 10 red and 36 brown randomly chosen M{\&}M plain candies are listed b
+0858,statistics,free_multi,4,DONE,"2.300, 1.691, Yes",PARTIAL,B6,YES,slot 4 unknown (interpretation phrase),It is widely accepted that people are a little taller in the morning than at nig
+0859,trigonometry,free_multi,4,UNVERIFIED,,,,YES,,"For each angle (in degrees) below, determine the quadrant in which the terminal "
+0860,other,free_single,1,UNVERIFIED,,,,MAYBE,,"In a sequence of five integers the third integer is the sum of the previous two,"
+0861,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,The tridiagonal matrix A[1..100][1..100] is stored in a one-dimensional array B[
+0862,algebra,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is the number of ordered leng
+0863,algebra,free_single,1,UNVERIFIED,,,,YES,,"Simplify the following expression, and write your answer using only positive exp"
+0864,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Your friend from Paris arrives in New York and the forecast is for a low of 53 a
+0865,algebra,free_single,1,UNVERIFIED,,,,YES,,Translate the following phrase into a math expression or equation (whichever is 
+0866,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Calculate the following products: $$ ( 2 ) \ {\frac{1} {2 \pi\mathrm{i}}} \int_{
+0867,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Let two independent events, $A$ , $B$ and $C$, satisfy the following conditions:"
+0868,number_theory,MCQ,0,UNVERIFIED,,,,YES,,Call a positive integer $\textit{troubling}$ if its only prime divisors are $2$ 
+0869,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"(a) Suppose you pick two numbers 5 and 6. Find their sum and product, but do not"
+0870,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"A die is thrown 8 times, resulting in a 2 appearing 3 times, the probability is "
+0871,other,MCQ,0,UNVERIFIED,,,,MAYBE,,The locus of the mid point of the line segment joining the focus to a moving poi
+0872,calculus,free_multi,2,UNVERIFIED,,,,YES,,"Find: (a) $\lim\limits_{t\to-\infty}\, (t^{2}+5)=$ [ANS] (Enter the word infinit"
+0873,other,MCQ,0,UNVERIFIED,,,,MAYBE,,We now define an algorithm: The definition of a(n) is the reversion transform of
+0874,other,MCQ,0,UNVERIFIED,,,,MAYBE,,We now define an algorithm: The definition of a(n) is the result of the generali
+0875,geometry,MCQ,0,UNVERIFIED,,,,YES,,"If the volume of the tetrahedron with edges $2i + j - k,\,\,i + aj + k$  and $i "
+0876,algebra,MCQ,0,UNVERIFIED,,,,YES,,"After $5 k g$ soap is dissolved in $3 0 0 L$ water, clean water is poured in at "
+0877,number_theory,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is: Bisection (odd part) of C
+0878,number_theory,MCQ,0,UNVERIFIED,,,,YES,,Find the remainder when $\left( 1 2 3 7 1^{5 6}+3 4 \right)^{2 8}$ is divided by
+0879,geometry,MCQ,0,UNVERIFIED,,,,YES,,"Find the volume of the region of points $(x,y,z)$ such that \[ (x^2 + y^2 + z^2 "
+0880,trigonometry,free_multi,2,UNVERIFIED,,,,YES,,"Find $\sin \theta$ and $\tan \theta$ if $\cos \theta=\frac {12}{37}$, assuming t"
+0881,number_theory,MCQ,0,UNVERIFIED,,,,YES,,"In the group G = {2, 4, 6, 8) under multiplication modulo 10, the identity eleme"
+0882,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"Town A and Town B were located close to each other, and recently merged into one"
+0883,algebra,free_single,1,UNVERIFIED,,,,YES,,"You drop a rock into a deep well. You can't see the rock's impact at the bottom,"
+0884,other,free_single,1,DONE,g(x)=(x-59)^2+74,HIGH,B8,MAYBE,prefix required; g(x)= form,"Given $f(x)=x^2$, after performing the following transformations: shift upward 7"
+0885,statistics,free_multi,4,UNVERIFIED,,,,YES,,"Calculate the mode, mean, and median of the following data: 18, \ 20, \ 17, \ 18"
+0886,statistics,free_multi,2,DONE,"A, C",HIGH,B6,YES,2-slot ME scaling + n_req,"In developing an interval estimate for a population mean, a sample of 50 observa"
+0887,algebra,MCQ,0,UNVERIFIED,,,,YES,,Solve the equation $$ (x_{1} \wedge 0.6) \lor (x_{2} \wedge 0.7) \lor (x_{3} \we
+0888,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,"Given $A P=P B$ , and $P=\left( \begin{matrix} {{{1}}} & {{{0}}} & {{{0}}} \\ {{"
+0889,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Decide whether the expression \frac{20 y}{4 y+5} can be put in the form \frac{ax
+0890,other,free_multi,4,UNVERIFIED,,,,MAYBE,,A study investigated the effect of the length and the repetition of TV advertise
+0891,calculus,MCQ,0,UNVERIFIED,,,,YES,,The maximum interval of existence for the solution of the Cauchy problem $\left\
+0892,other,free_single,1,UNVERIFIED,,,,MAYBE,,An aerial photograph from a U-2 spy plane is taken of a building suspected of ho
+0893,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"In a questionnaire, respondents are asked to mark their gender as male or female"
+0894,statistics,free_multi,8,DONE,"0.008, 1.783, 2.013, -0.091, 0.283, -0.100, 0.272, 10",MEDIUM,B6,YES,"regression PI 8-slot; question hints 9, verified 10",The variables are x=SP500 market monthly log return and y=monthly return of Amer
+0895,algebra,free_single,1,UNVERIFIED,,,,YES,,Find a formula for the exponential function which satisfies the given conditions
+0896,algebra,free_multi,8,UNVERIFIED,,,,YES,,Choose True or False for the following questions about the difference between ex
+0897,other,free_single,1,UNVERIFIED,,,,MAYBE,,Suppose that the mean score of a class of 34 students was 77. The 18 male studen
+0898,algebra,free_single,1,UNVERIFIED,,,,YES,,Simplify the expression: $8\times 6+0 \times 7$ [ANS]
+0899,calculus,MCQ,0,UNVERIFIED,,,,YES,,"Compute the integral: $$ \int \frac{ \tan(x) }{ \sqrt{\sin(x)^4+\cos(x)^4} } \, "
+0900,algebra,free_multi,2,UNVERIFIED,,,,YES,,"Town A and Town B were located close to each other, and recently merged into one"
+0901,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Let $\quad{\underline{{{2}}}}=\int_{1}^{2} {\frac{x-1} {x}}+\int_{2}^{3} {\frac{
+0902,other,free_multi,2,DONE,"9, 6",HIGH,B8,MAYBE,simplified radical ratio,The expression \frac{\sqrt{81}}{\sqrt{36}} equals [ANS]/[ANS].
+0903,statistics,free_multi,2,UNVERIFIED,,,,YES,,"In a histogram, the proportion of the total area which must be to the left of th"
+0904,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,Let $$R_1 = \begin{pmatrix} 0.5 & 0.4 & 0.2 & 0.1 \\ 0.2 & 0.6 & 0.4 & 0.5 \\ 0.
+0905,statistics,free_multi,2,UNVERIFIED,,,,YES,,"For each paired data set, construct a scatterplot and identify the mathematical "
+0906,algebra,free_single,1,UNVERIFIED,,,,YES,,Find vertical asymptote(s) of the function ${m(x)={\frac{3}{x^{2}-7x+10}}}$. Use
+0907,geometry,free_single,0,UNVERIFIED,,,,YES,,Let $\mathcal P$ be a simple polygon and let $j$ and $k$ be positive integers wi
+0908,other,free_multi,2,UNVERIFIED,,,,MAYBE,,A typical cup of coffee contains about 100 mg of caffeine and every hour approxi
+0909,other,free_single,1,UNVERIFIED,,,,MAYBE,,You start with 800 items. How many do you have after a 90\% increase? You will h
+0910,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"On average, Fabrienne collects $126$ stamps every year. Fill in blanks: Question"
+0911,other,MCQ,0,UNVERIFIED,,,,MAYBE,,A bug is on a vertex of a regular icosahedron (a polyhedron with 20 triangular f
+0912,other,free_single,1,UNVERIFIED,,,,MAYBE,,A survey team is trying to estimate the height of a mountain above a level plain
+0913,other,MCQ,0,UNVERIFIED,,,,MAYBE,,$int {{{dx} over {x{{left( {x - 1} right)}^2}}}} = left( {} right)$
+0914,statistics,free_multi,2,UNVERIFIED,,,,YES,,A recent survey showed that among 800 randomly selected subjects who completed 4
+0915,other,free_single,1,UNVERIFIED,,,,MAYBE,,"A line passes through the points $(4,-6)$ and $(9,-16)$. Find this line’s slope."
+0916,geometry,free_multi,3,UNVERIFIED,,,,YES,,"Plot the points $A=(1, 0)$, $B=(4, 3)$, and $C=(-5, 6)$. Notice that these point"
+0917,statistics,free_multi,3,DONE,"189.8, 246.4, 43",HIGH,B6,YES,CI + n_req 3-slot,The time in hours for a worker to repair an electrical instrument is a Normally 
+0918,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,Given $A=\left[ \begin{array} {c c} {{{1}}} & {{{2}}} \\ {{{3}}} & {{{4}}} \\ \e
+0919,other,free_single,0,UNVERIFIED,,,,MAYBE,,"Let \( X_0, X_1, \dots, X_{n-1} \) be \( n \geq 2 \) given points in the plane, "
+0920,other,free_single,1,UNVERIFIED,,,,MAYBE,,It is your job to make numbered tags for placing on $372$ bicycles in your city.
+0921,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,Find the zeros of the function $f(x) = \left(1 - \tan(x)\right) \cdot \left(1 + 
+0922,calculus,MCQ,0,UNVERIFIED,,,,YES,,What is the value of the integral $\oint_{c} \frac{2 z^{2}-z+1} {z-1} \mathrm{d}
+0923,statistics,free_multi,3,UNVERIFIED,,,,YES,,Scientists are conducting an experiment with a gas in a sealed container. The ma
+0924,statistics,free_multi,2,DONE,"n = 55 + 0.2t, 2010",HIGH,B7,YES,linear model + year 2-slot,"According to one mathematical model, the average life expenctancy for American m"
+0925,other,free_single,1,UNVERIFIED,,,,MAYBE,,Your school creates student IDs by putting stick-on numbers from 0 to 9 onto a b
+0926,algebra,free_single,1,UNVERIFIED,,,,YES,,Let $f(t)=5-3t^{2}.$ Evaluate $f(t+1)$. $f(t+1)=$ [ANS] Note: Your answer should
+0927,algebra,free_multi,6,UNVERIFIED,,,,YES,,"Using the properties of logarithms, decide whether each equation is true or not."
+0928,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Find a cosine series which represents f(x) in 0 \leq x \leq \pi if f(x) is defin
+0929,statistics,free_multi,3,DONE,"5.860, (-0.78, 3.18), A",HIGH,B7,YES,pooled t CI + MCQ 3-slot; nB=11 (13-2 excluded),"Some car tires can develop what is known as ""heel and toe"" wear if not rotated a"
+0930,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,Given the n-order determinant $D \!=\! \left| \! \begin{array} {c c c c c} {{{1}
+0931,geometry,free_multi,2,UNVERIFIED,,,,YES,,"The midpoint of $AB$ is at $(3, 1)$. If $A=(3,5)$, find $B$. B is:([ANS], [ANS])"
+0932,other,free_single,1,UNVERIFIED,,,,MAYBE,,Evaluate the expression for $B=3$ and $A=5$. ${-3B+7A}=$ [ANS]
+0933,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"For the Knapsack: {1 6 8 15 24}, what is the plain text code if the ciphertext i"
+0934,other,MCQ,0,UNVERIFIED,,,,MAYBE,,We now define an algorithm: The definition of a(n) is the number of terms in the
+0935,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Draw in the diagonals of a regular octagon. What is the sum of all distinct angl
+0936,algebra,free_single,1,UNVERIFIED,,,,YES,,Find $k$ such that the Polynomial $P(x)=4x^3+k x^2+4x-3$ is divisible by $x+4$. 
+0937,other,free_single,1,UNVERIFIED,,,,MAYBE,,"If the positive numbers from 1 to 79, inclusive, are written on a piece of paper"
+0938,other,free_single,1,UNVERIFIED,,,,MAYBE,,Penelope is paying a dinner bill of ${\$43.00}$. Penelope plans to pay $16\%$ in
+0939,number_theory,MCQ,0,UNVERIFIED,,,,YES,,Let S be the sum of all positive integer k such that k is relatively prime to 10
+0940,number_theory,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is: Least gap in the partitio
+0941,statistics,free_multi,6,UNVERIFIED,,,,YES,,Is there an association between the use of computerized systems and hospital mor
+0942,algebra,free_single,1,UNVERIFIED,,,,YES,,Solve the equation 5\sqrt{n}=n-6. Solutions (separate by commas): $n=$ [ANS]

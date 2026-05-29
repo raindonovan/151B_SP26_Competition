@@ -1,0 +1,59 @@
+id,subject,type,n_ans_slots,best_answer,teacher_consensus,question
+0000,algebra,free_multi,2,16,"4,16","Use the order of operations to simplify: a) $[13-(11-11)]-[8-(5-6)]=$ [ANS]
+b) $4 \cdot 3-2+2 \cdot 3=$ [ANS]"
+0002,statistics,free_multi,3,"-1.461, 1.645, A","-1.46,1.645,A","According to a recent marketing campaign, $120$ drinkers of either Diet Coke or Diet Pepsi participated in a blind taste test to see which of the drinks was their favorite. In one Pepsi television commercial, an anouncer states that ""in recent blind taste tests, more than one half of the surveyed preferred Diet Pepsi over Diet Coke."" Suppose that out of those $120$, $52$ preferred Diet Pepsi. Test the hypothesis, using $\alpha=0.05$ that more than half of all participants will select Diet Pepsi in a blind taste test by giving the following:
+(a) $\ $ the test statistic $\ $ [ANS]
+(b) $\ $ the critical $z$ score $\ $ [ANS]
+The final conclustion is [ANS] A. There is not sufficient evidence to reject the null hypothesis that $p \le 0.5$.  B. We can reject the null hypothesis that $p \le 0.5$ a"
+0004,trigonometry,free_multi,3,"-0.5735, 0.8192, -0.7000","-\frac{7}{\sqrt{149}},\frac{10}{\sqrt{149}},-\frac{7}{10}","If the point (10,-7) is on the terminal side of the angle $\theta$ in standard position, $\sin (\theta)=$ [ANS] ; $\cos (\theta)=$ [ANS] ; $\tan (\theta)=$ [ANS]."
+0016,calculus,free_single,0,858,501,"Rose and Brunno play the game on a board shaped like a regular 1001-gon. Initially, all vertices of the board are white, and there is a chip at one of them. On each turn, Rose chooses an arbitrary positive integer \( k \), then Brunno chooses a direction: clockwise or counterclockwise, and moves the chip in the chosen direction by \( k \) vertices. If at the end of the turn the chip stands at a white vertex, this vertex is painted red.
+
+Find the greatest number of vertices that Rose can make red regardless of Brunno's actions, if the number of turns is not limited."
+0017,number_theory,MCQ,0,E,C,"Let $a_0=1$, $a_1=2$, and $a_n=4a_{n-1}-a_{n-2}$ for $n\geq 2$. Find the least odd prime factor of $a_{2015}$."
+0020,statistics,free_multi,3,229,"228,229,250","A sample of prices for eight television sets available at a local electronics store is given below:
+242 \quad 202 \quad 216 \quad 250 \quad 188 \quad 250 \quad 178 \quad 298 Find the mean, median, and mode for this sample. Sample
+Mean=[ANS]
+Sample Median=[ANS]
+Sample Mode=[ANS]"
+0024,statistics,free_single,1,2,1,"Suppose that the line $\hat{y}=3+2x$ is fitted to the data points (-1,2), (2,7), and (5,13). Determine the sum of the squared residuals. Sum of the Squared Residuals=[ANS]"
+0025,statistics,free_multi,12,"8, 14, 25, 42, 55, 63","\frac{8}{63},\frac{2}{21},\frac{11}{63},\frac{17}{63},\frac{13}{63},\frac{8}{63},8,14,25,42,55,63","$\begin{array}{cc}\hline Grade on Statistics Exam & Frequency \\ \hline Below 50 & 8 \\ \hline 50-59 & 6 \\ \hline 60-69 & 11 \\ \hline 70-79 & 17 \\ \hline 80-89 & 13 \\ \hline 90-100 & 8 \\ \hline \end{array}$
+Given the frequency table above, construct the following:
+(a) The relative frequency table that corresponds with the above table.
+$\begin{array}{cc}\hline Grade on Statistics Exam & Relative Frequency \\ \hline Below 50 & [ANS] \\ \hline 50-59 & [ANS] \\ \hline 60-69 & [ANS] \\ \hline 70-79 & [ANS] \\ \hline 80-89 & [ANS] \\ \hline 90-100 & [ANS] \\ \hline \end{array}$
+(b) The cumulative frequency table that corresponds with the above table.
+$\begin{array}{cc}\hline Grade on Statistics Exam & Cumulative Frequency \\ \hline Below 50 & [ANS] \\ \hline 50-59 & [ANS] \\ \hline 60-69 & "
+0029,algebra,free_single,1,39,38.2\%,"A mixture of 60 liters of paint is 25\% red tint, 30\% yellow tint and 45\% water. 8 liters of yellow tint are added to the original mixture. The percent of yellow tint in the new mixture is [ANS]. Answer must be correct to 1 decimal place."
+0032,geometry,free_multi,3,"10.05, -1.000, -3.500","\sqrt{101},-1,-\frac{7}{2}","The distance between $(4,-3)$ and $(-6,-4)$ is [ANS]
+The midpoint of the line segment that joins the given points is given by: $($ [ANS], [ANS] $)$."
+0049,statistics,free_single,1,0.01433,0.0143,"Assume you are using a significance level of $\alpha=0.05$ to test the claim that $\mu < 17$ and that your sample is a random sample of $45$ values. Find $\beta$, the probability of making a type II error (failing to reject a false null hypothesis), given that the population actually has a normal distribution with $\mu=13$ and $\sigma=7.$ $\beta=$ [ANS]"
+0058,number_theory,free_single,0,0,31,"Let $\mathbb{Z}_{>0}$ denote the set of positive integers. Let $f : \mathbb{Z}_{>0} \rightarrow \mathbb{Z}_{>0}$ be a function satisfying the following property: for $m,n \in \mathbb{Z}_{>0}$, the equation
+\[
+f(mn)^2 = f(m^2)f(f(n))f(mf(n))
+\]holds if and only if $m$ and $n$ are coprime.
+
+Let $S_n$ denote the set of all possible values of $f(n)$ that are strictly smaller than $n$. Determine $\sum_{n=1}^20 \sum{k \in S_n} k$.    "
+0077,statistics,free_multi,3,A,"C,D,A","A study of human development showed two types of movies to a group of children. Crackers were available in a bowl, and the investigators compared the number of crackers eaten by the children while watching the different kinds of movies. One kind was shown at 8 A.M. and another at 11 A.M. It was found that during the movie shown at 11 A.M., more crackers were eaten than during the movie shown at 8 A.M. The investigators concluded that the different types of movies had an effect on appetite.
+(a) This is an example of a [ANS] A. block design.  B. simple random sample.  C. matched pairs design.  D. None of the above.
+(b) The response variable in this experiment is [ANS] A. the bowls.  B. the different kinds of movies.  C. the time the movie was shown.  D. the number of crackers eaten.
+(c) A lu"
+0104,geometry,free_single,1,4.166,\frac{2387\pi}{1800},Find the arc length corresponding to the given angle (in degrees) on a circle of radius 7.7. An angle of $31^{\circ}$ has an arc length of [ANS] units.
+0105,statistics,free_multi,2,"24.00, 9.114","24,9.11","A sample of weights (in pounds) for six 12-year-olds is given below:
+93 \quad 84 \quad 81 \quad 94 \quad 99 \quad 75 Find the range and standard deviation for this sample. Sample Range=[ANS]
+Sample Standard Deviation=[ANS]"
+0113,trigonometry,free_single,1,\dfrac{-2x^2 - 16x - 7}{25},\frac{25-2(x+4)^2}{25},If $x+4=5 \sin(\theta)$ for $0 < \theta < \pi/2$ express $\cos(2\theta)$ in terms of $x$. $\cos(2\theta)$=[ANS]
+0135,algebra,free_single,1,36,\frac{3}{5},"Solve the equation $8x+2=3x+5$ algebraically.
+$x=$ [ANS]"
+0136,statistics,free_multi,2,C,"A,C","The percent frequency of a class is computed by: [ANS] A. multiplying the relative frequency by 100  B. adding 100 to the relative frequency  C. dividing the relative frequency by 100  D. multiplying the relative frequency by 10
+The sum of the frequencies for all classes will always equal: [ANS] A. a value between 0 and 1  B. 1  C. the number of elements in a data set  D. the number of classes"
+0154,geometry,free_single,1,18.75,\18.75,"John's room is shaped like a box. It has a flat ceiling that is a rectangle that is 14 feet long and 10 feet wide and the walls are 8 feet high. It has one door that is 7 feet high and 3 feet wide. It has two windows that are each 3 feet high and 30 inches wide. John wants to paint the walls and ceiling, but not the door or windows. He can paint 100 square feet with a quart of paint and paint costs \$3.75 per quart. He has to buy whole quarts and may have some paint left over. It will cost John [ANS] to paint his room."
+0171,geometry,free_single,1,21,20,"Sketch the region given by the set $\lbrace (x,y) | 3\le x\le 7, 2\le y\le 7 \rbrace$ on a piece of paper. The area of the region is [ANS]."
+0177,geometry,MCQ,0,I,H,"Let the domain of the function f (x) be $( 0, \ +x )$
+and satisfy $2 f \left( x \right)+x^{2} f \left( {\frac{1} {x}} \right)={\frac{x^{2}+2 x} {\sqrt{1+x^{2}}}}$ , then what is the expression for f(x)?The curves $\mathrm{y=f( x )} \; \; \;, \; \; \mathrm{y=1 / 2} \;, \; \; \; \mathrm{y=\frac{\sqrt{3}} {2} \, }$ and the Y-axis what is the volume of the rotation of the graph around which they revolve around the X-axis?"
+0188,statistics,free_multi,3,61,"60,60,60",Your school basketball team posted the following (sorted) scores in 16 recent games: 55 56 56 57 60 60 60 60 60 60 61 62 62 63 63 65 55 56 56 57 60 60 60 60 60 60 61 62 62 63 63 65 The average game score is [ANS] while the median score is [ANS]. The modal score is [ANS]. Express answers that are not integers to two decimal places.
+0196,geometry,free_multi,3,15,"14.7447,10.3244,35","Suppose that triangle ABC is a right triangle with a right angle at $C$ and hypotenuse $c$. Also note that $a$ is the length of the side opposite angle $A$ and $b$ is the length of the side opposite angle $B$. Given that $c$=18 and $A$=$55^ \circ$, determine the values indicated below. Round to four decimal places when needed.
+$a$=[ANS]
+$b$=[ANS]
+$B$=[ANS] degrees."
+0201,algebra,free_single,1,(5t+8)^2,(5t+8)(5t+8),"Write the expression $25 t^2+80 t+64$ in factored form $k (at+b)(ct+d)$.
+$25 t^2+80 t+64$=[ANS]"
+0208,trigonometry,free_multi,2,"16.2, \dfrac{720}{49\pi}","\frac{81}{5},\frac{720}{49\pi}",The radius of the circle with a central angle of 5 radians that intercepts an arc with length 81 cm is [ANS] cm. The radius of the circle with a central angle of $196^\circ$ that intercepts an arc with length 16 miles is [ANS] miles.
