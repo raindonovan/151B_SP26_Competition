@@ -114,40 +114,20 @@ Slot 2's catastrophic −0.021 was driven by 61 of 68 real-content overrides com
 
 
 ---
-
-## KNOW / SUSPECT / DON'T KNOW (claude_grader_research, 2026-05-28)
-
-### KNOW (source-code verified + empirically confirmed):
-1. Grader is Hendrycks `is_equiv` — pure string match after normalization, NO sympy
-2. Free-form: extracts LAST `\boxed{}` via `rfind`
-3. MCQ: extracts FIRST `\boxed{LETTER}` via `re.search`
-4. `_strip_string` does exactly 17 normalization steps (documented in GRADER_RESEARCH.md)
-5. `dfrac`/`tfrac` → `frac`, `\left`/`\right` removed, `^\circ` removed, `\$` removed, `\%` removed
-6. ALL whitespace removed (global `replace(" ", "")`)
-7. `x=5` stripped when LHS ≤ 2 chars (equation prefix)
-8. `0.5` (standalone only) → `\frac{1}{2}` (hardcoded)
-9. `a/b` (standalone integer-only) → `\frac{a}{b}`
-10. Trailing zeros NOT normalized (`1.50` ≠ `1.5`)
-11. Fraction ↔ decimal NOT normalized (except 0.5)
-12. Order within `\boxed{}` matters (string comparison)
-13. Slot count must match gold exactly
-14. `*` ≠ `\cdot`, `ln` ≠ `\ln`, `\text{A}` ≠ `A`
-15. `-\frac{a}{b}` ≠ `\frac{-a}{b}` (negative sign placement)
-16. Exception in `_strip_string` → raw string fallback (try/except)
-17. Leading `.` gets `0` prepended (`.5` → `0.5`)
-
-### SUSPECT (strong inference but not directly tested):
-1. Server-side grader is the same code as Hendrycks (Piazza + source align perfectly)
-2. Gold labels follow MATH dataset conventions (fractions for rationals, exact forms for symbolic)
-3. Gold negative fractions use sign-outside (`-\frac{a}{b}`) per MATH convention
-4. The `\text{ }` unit stripping applies to gold too (gold likely has clean format)
-5. MCQ gold is bare uppercase letter (no `\text{}` wrapper)
-
-### DON'T KNOW:
-1. The EXACT server-side grader source code (could be a fork with modifications)
-2. Which items are in the ~283 public LB slice
-3. The exact gold label for each of the 943 items
-4. Whether gold uses trailing zeros on any items (some WeBWorK-sourced problems might)
-5. Whether the server uses `last_boxed_only_string` or a different box extractor
-6. Whether the server's MCQ path is identical to Cell 22's `extract_letter`
-7. Per-item source corpus (AIME vs MATH vs WeBWorK vs custom)
+## Append — claude_grader_research — 2026-05-28 (KNOW / SUSPECT / DON'T-KNOW summary)
+### WHAT WE KNOW (source-verified or Piazza-confirmed)
+- Grader = Hendrycks `is_equiv`. Fetched real source, ran 35+ probes, 20/20 matched our prior docs.
+- Free-form: LAST `\boxed{}` (rfind, brace-matched). MCQ: FIRST `\boxed{LETTER}` (re.search), fallback last bare capital.
+- `_strip_string` exact pipeline documented (order matters) in GRADER_RESEARCH.md §1.
+- NO sympy server-side (Piazza Anthony Tong 2026-05-09). judger.py (Minerva/sympy) is NOT the grader → explains 28pp gap.
+- Reference impl saved: grading/hendrycks_is_equiv_reference.py + hendrycks_extraction_reference.py (VERIFIED, use as validation harness before submitting).
+### WHAT WE SUSPECT (single signal / inference)
+- Gold uses `\frac` for rationals (MATH convention + 1 probe). Strong but not airtight per-item.
+- Slice may shake-down on 943 (AIMO winner + RED_ALERT both say overfit-public-LB risk). Directional, not measured.
+### WHAT WE DON'T KNOW
+- Exact gold STRING for any specific item (slice hidden). All "correct answers" are proxies.
+- Whether slice over/under-samples MCQ/hard items (AMBER #1).
+- Per-item gold notation choices (set braces? Yes/yes? interval open/closed?) — these are per-item evidence questions, NOT blanket rules.
+### GOLDEN KEY (Phase 4): NO external grader code exists online.
+- CSE 151B SP26 *math* comp is private/un-indexed (public search only finds old taxi-time CSE151B comps).
+- Closest = in-repo starter notebook, but that's the LOCAL judger (Minerva), NOT the server grader (Hendrycks). Our reconstruction is the best obtainable; confidence HIGH.
