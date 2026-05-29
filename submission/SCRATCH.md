@@ -54,3 +54,18 @@ Action items spawned (not done yet):
 - Audit past submissions for the MCQ-append-bug — did any of our prior "+1 slice item" attributions for MCQ overrides silently no-op?
 - Decide whether to rebuild Slot 3 with prepend mechanism before uploading
 - Decide whether to rebuild Slot 5 with MCQ-portion using correct prepend mechanism
+
+## 25_08 Kaggle scores received (2026-05-28 evening)
+
+Slot 1 frac: 0.699 (+0.007, +2 slice) — Hendrycks-fractions CONFIRMED
+Slot 2 search: 0.671 (-0.021, -6 slice) — bulk search-gold HARMFUL
+Slot 3 mcq: 0.692 (no-op) — AMBER #3 (append-bug) CONFIRMED empirically
+Slot 4 undercount: **0.706** (+0.014, +4 slice) — NEW BEST EVER, undercount IS the lever
+Slot 5 combined: 0.696 (+0.004, +1 slice) — search drag offset frac+undercount additivity
+
+**Promote slot4_undercount_expand.csv to new base (0.706).**
+**Strong evidence for: undercount expansion (V3 tracker's 79%-of-failures claim), Hendrycks fraction preference.**
+**Strong evidence against: bulk web-search GOLD overlay (mixed source quality).**
+**Mechanism confirmed broken: MCQ append-to-end (Slot 3 was exact 0.692 = no change).**
+
+Updated: SCORES.md, REGISTRY.md (now 34 entries), this SCRATCH.

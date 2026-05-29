@@ -1,9 +1,14 @@
 # Submission Registry — Definitive (from Kaggle screenshots 2026-05-28)
 
-29 successful submissions + 2 errors = 31 total attempts.
+34 successful submissions + 2 errors = 36 total attempts.
 
 | # | Repo CSV | Score | What it tested |
 |---|---|---|---|
+| 34 | 25_08/slot5_combined_all.csv | 0.696 | All 4 overlays stacked (frac+search+mcq+undercount) |
+| 33 | 25_08/slot4_undercount_expand.csv | **0.706** | **Undercount expansion (51 items) — NEW BEST** |
+| 32 | 25_08/slot3_mcq_teacher_override.csv | 0.692 | MCQ teacher override (no-op: append-bug, AMBER #3) |
+| 31 | 25_08/slot2_search_gold_overlay.csv | 0.671 | 116 web-search GOLD overlay (NET HARMFUL) |
+| 30 | 25_08/slot1_frac_override.csv | 0.699 | 8 decimal→fraction conversions (HENDRYCKS CONFIRMED) |
 | 29 | slot5_minus_all_med.csv | 0.689 | Ablation: minus ALL MED |
 | 28 | slot4_minus_wolfram_med.csv | 0.689 | Ablation: duplicate of #27 |
 | 27 | slot4_minus_wolfram_med.csv | 0.689 | Ablation: minus Wolfram MED |
@@ -36,7 +41,12 @@
 | 1 | run08v2_v1_private943.csv | 0.586 | First submission |
 
 ## Key findings
-- Strip neutral: #26 = #25 (both 0.692)
+- **NEW BEST: 0.706 from slot4_undercount_expand** (+1.4pp over previous best 0.692)
+- **Undercount expansion CONFIRMED as dominant lever** (+4 slice items from 51 changes)
+- **Hendrycks-prefers-fractions CONFIRMED** (+2 slice items from 8 decimal→fraction)
+- **Bulk search-gold overlay is NET HARMFUL** (−6 slice items from 116 changes) — needs source-quality stratification
+- **MCQ append-to-end mechanism BROKEN** (AMBER #3 confirmed: Slot 3 was exact no-op)
+- Strip neutral: #26 = #25 (both 0.692) — strip neither helps nor hurts
 - MED = +0.3pp: #26 (0.692) vs #27/#29 (0.689)
 - Order matters: #4 (0.614) vs #5 (0.438) = -17.6pp
 - CURRENT PICKS ARE WRONG: 0.438 + 0.420 selected — CHANGE BEFORE 5/31
