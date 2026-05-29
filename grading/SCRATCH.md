@@ -112,3 +112,22 @@ Slot 2's catastrophic −0.021 was driven by 61 of 68 real-content overrides com
 | `*` NOT normalized | Inferred | **Empirically demonstrated by failure** (104, 127 lost) |
 | Symbolic ↔ decimal NOT normalized | Inferred | **Empirically demonstrated** (item 834 trig values) |
 
+
+---
+## Append — claude_grader_research — 2026-05-28 (KNOW / SUSPECT / DON'T-KNOW summary)
+### WHAT WE KNOW (source-verified or Piazza-confirmed)
+- Grader = Hendrycks `is_equiv`. Fetched real source, ran 35+ probes, 20/20 matched our prior docs.
+- Free-form: LAST `\boxed{}` (rfind, brace-matched). MCQ: FIRST `\boxed{LETTER}` (re.search), fallback last bare capital.
+- `_strip_string` exact pipeline documented (order matters) in GRADER_RESEARCH.md §1.
+- NO sympy server-side (Piazza Anthony Tong 2026-05-09). judger.py (Minerva/sympy) is NOT the grader → explains 28pp gap.
+- Reference impl saved: grading/hendrycks_is_equiv_reference.py + hendrycks_extraction_reference.py (VERIFIED, use as validation harness before submitting).
+### WHAT WE SUSPECT (single signal / inference)
+- Gold uses `\frac` for rationals (MATH convention + 1 probe). Strong but not airtight per-item.
+- Slice may shake-down on 943 (AIMO winner + RED_ALERT both say overfit-public-LB risk). Directional, not measured.
+### WHAT WE DON'T KNOW
+- Exact gold STRING for any specific item (slice hidden). All "correct answers" are proxies.
+- Whether slice over/under-samples MCQ/hard items (AMBER #1).
+- Per-item gold notation choices (set braces? Yes/yes? interval open/closed?) — these are per-item evidence questions, NOT blanket rules.
+### GOLDEN KEY (Phase 4): NO external grader code exists online.
+- CSE 151B SP26 *math* comp is private/un-indexed (public search only finds old taxi-time CSE151B comps).
+- Closest = in-repo starter notebook, but that's the LOCAL judger (Minerva), NOT the server grader (Hendrycks). Our reconstruction is the best obtainable; confidence HIGH.

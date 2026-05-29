@@ -149,3 +149,13 @@ The grader behavior confirms the following pipeline architecture (refining what'
 - Build systematic decimal→fraction scan: for every item where current answer is a decimal AND teachers agree on a fraction, queue for override
 - Build "tight" search-gold subset: filter to source_url containing 'putnam', 'mathworld', 'stackexchange' only
 
+
+---
+## Append — claude_grader_research — 2026-05-28
+**NEW Hendrycks levers discovered via line-level source probing (see grading/GRADER_RESEARCH.md §2):**
+- **L9:** `a/b`→`\frac` auto-fix fires ONLY on a whole single-fraction string. In multi-answer lists (`1/2, 3/4`) it does NOT fire → per-element rationals must be written as explicit `\frac{}{}` ourselves.
+- **L10:** Hendrycks does NOT strip `\mathrm{}`/`\mathbf{}` (`\mathrm{e}` ≠ `e`). judger.py DOES, which is why this never appeared in local eval. Strip ourselves.
+- **L11:** set braces NOT stripped (`{1,2,3}` ≠ `1,2,3`). Match gold notation.
+- **L12:** scientific notation NOT normalized (`1.5e3` ≠ `1500`). Expand ourselves.
+- **L13 (SAFE):** single negative `a/b` IS auto-handled (`-3/5` ≡ `\frac{-3}{5}`) — `int()` parses the minus. Don't bother converting lone `a/b`.
+**Full per-item-type build spec:** postprocessing/STRICT_NORMALIZER_SPEC.md (recommends a single bundled "strict normalizer" overlay as next high-EV submission).
