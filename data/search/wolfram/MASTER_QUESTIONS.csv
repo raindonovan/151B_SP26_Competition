@@ -20,13 +20,13 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0018,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Dani has 45 marbles. She has 5 times as many marbles as Joe has. How many marble
 0019,number_theory,MCQ,0,UNVERIFIED,,,,YES,,"Consider the sequence defined by $j_0=1$, $j_1=2$, and $j_c=4j_{c-1}-j_{c-2}$ fo"
 0020,statistics,free_multi,3,DONE,"228, 229, 250",HIGH,B9,YES,mean/median/mode; Wolfram confirmed; best=229 is 2-slot undercount,A sample of prices for eight television sets available at a local electronics st
-0021,statistics,free_multi,2,UNVERIFIED,,,,YES,,"The average life expectancy in the United States, $L$, has been rising steadily "
+0021,statistics,free_multi,2,DONE,"0.2915t+56.93, 67.43",HIGH,B15,YES,regression L(t)=0.2915t+56.93; est=67.43; best=67.43 undercount (missing equation),"The average life expectancy in the United States, $L$, has been rising steadily "
 0022,geometry,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B13,YES,polyhedron 37 faces vertex count; teacher/best both=G (agree but not Wolfram-verifiable),"Let $P$ be a polyhedron with $37$ faces, all of which are equilateral triangles,"
 0023,other,MCQ,0,UNVERIFIED,,,,MAYBE,,The distance between points $A$ and $B$ is 5 km. Person A walks from $A$ towards
 0024,statistics,free_single,1,DONE,1,HIGH,B9,YES,sum squared residuals=1; teacher correct; best=2 is wrong,"Suppose that the line $\hat{y}=3+2x$ is fitted to the data points (-1,2), (2,7),"
 0025,statistics,free_multi,12,DONE,"8/63, 2/21, 11/63, 17/63, 13/63, 8/63, 8, 14, 25, 42, 55, 63",HIGH,B9,YES,"rel-freq+cumul-freq 12-slot; best=6 slots (cumul only), missing rel-freqs",$\begin{array}{cc}\hline Grade on Statistics Exam & Frequency \\ \hline Below 50
 0026,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"If $abc-ab-bc-ca+a+b+c=2008$ for positive integers $a$ , $b$ , and $c$ , then de"
-0027,trigonometry,free_multi,2,UNVERIFIED,,,,YES,,"Solve the following equations in the interval [0,2 $\pi$]. Note: Give the answer"
+0027,trigonometry,free_multi,2,DONE,"1/3, 2/3, 7/6, 11/6",HIGH,B15,YES,"sin=sqrt3/2->1/3,2/3; sin=-1/2->7/6,11/6; best=""7/6,11/6"" undercount (missing eq1)","Solve the following equations in the interval [0,2 $\pi$]. Note: Give the answer"
 0028,other,free_multi,6,UNVERIFIED,,,,MAYBE,,a) In a dictionary 16 pages are 1 millimeter thick. To find the thickness of 112
 0029,algebra,free_single,1,DONE,38.2,HIGH,B9,YES,yellow tint pct: 26/68=38.24% rounded to 1dp=38.2; best=39 is wrong,"A mixture of 60 liters of paint is 25\% red tint, 30\% yellow tint and 45\% wate"
 0030,statistics,free_multi,2,DONE,"2944, 664",HIGH,B13,YES,sample size: a) p=0.5 n=2944; b) given p->664; teacher/best agree,"College officials want to estimate the percentage of students who carry a gun, k"
@@ -42,7 +42,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0040,algebra,free_single,1,DONE,D = 800 - 50d,HIGH,B8,YES,missing LHS prefix; Qwen failure=missing-prefix,A homing pigeon starts 800 miles from home and flies 50 miles toward home each d
 0041,other,free_single,0,DONE,2112,HIGH,WEBSEARCH,MAYBE,IMO 2025 P6 (Matilda tiles). ALL 5 teachers wrong (3986/4048/4048). Free-form.,Consider a $2025 \times 2025$ grid of unit squares. Matilda wishes to place on t
 0042,statistics,free_multi,3,DONE,"No, Yes, A",HIGH,B13,YES,"P=0.095: a)5% No, b)10% Yes, c)A; teacher/best agree",Lindsey thinks a certain potato chip maker is putting fewer chips in their regul
-0043,trigonometry,free_multi,3,UNVERIFIED,,,,YES,,Use half angle formulas to fill in the blanks in the identity below: $(\sin(7x))
+0043,trigonometry,free_multi,3,DONE,"3/8, 14, 28",HIGH,B15,YES,sin^4(7x)=3/8-1/2cos(14x)+1/8cos(28x); best correct (TrigReduce confirmed),Use half angle formulas to fill in the blanks in the identity below: $(\sin(7x))
 0044,statistics,free_multi,4,DONE,"True, True, True, False",HIGH,B13,YES,regression T/F 4-slot; teacher/best agree,"Select True or False, depending on whether the corresponding statement is true o"
 0045,statistics,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B13,YES,OEIS male-offspring recurrence MCQ; teacher/best both=A (agree but not computable),We now define an algorithm: The definition of a(n) is the sequence where a(n) re
 0046,statistics,free_multi,7,UNVERIFIED,,,,YES,,A random sample of $100$ observations from a population with standard deviation 
@@ -81,7 +81,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0079,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Add these together: ${3+\frac{4}{7}}$ When needed, use an improper fraction in y"
 0080,algebra,MCQ,0,UNVERIFIED,,,,YES,,Simplify the fraction by rationalizing the denominator: $$\frac{4}{\sqrt{108}+2\
 0081,other,free_single,1,UNVERIFIED,,,,MAYBE,,Suppose there are three sections of a Statistics course taught by the same instr
-0082,statistics,free_multi,4,UNVERIFIED,,,,YES,,"There are several sections of statistics, some in the morning (AM) and some in t"
+0082,statistics,free_multi,4,DONE,"1.309, 1.677, ?, No",MED,B15,YES,"two-sample t 4-slot; best=""1.309,1.677,No"" undercount 3of4; slot3 (df/p) needs source","There are several sections of statistics, some in the morning (AM) and some in t"
 0083,other,free_single,0,UNVERIFIED,,,,MAYBE,,"Let $n > 1$ be an integer. In a configuration of an $n \times n$ board, each of "
 0084,other,free_multi,3,UNVERIFIED,,,,MAYBE,,Subtract the following integers: ${4-8=}$ [ANS] ${8-3=}$ [ANS] ${3-14=}$ [ANS]
 0085,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"In a group of 1000 people, at least how many people have to share the same birth"
@@ -156,7 +156,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0154,geometry,free_single,1,DONE,18.75,HIGH,B9,YES,paint cost: 488sqft/100*$3.75=$18.75; teacher/best agree,John's room is shaped like a box. It has a flat ceiling that is a rectangle that
 0155,other,free_single,1,UNVERIFIED,,,,MAYBE,,A guy wire needs to be installed to support a pole. The end of the wire on the p
 0156,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,What are the eigenroots of the following matrices? $$ \left( \begin{matrix} {{{1
-0157,trigonometry,free_multi,2,UNVERIFIED,,,,YES,,A weight on a vertical spring is given an initial downward velocity of 5 cm/sec 
+0157,trigonometry,free_multi,2,DONE,"50sin(0.1t)-7cos(0.1t), 46.31",HIGH,B15,YES,spring SHM: x=-7cos(0.1t)+50sin(0.1t); x(13)=46.31; best correct,A weight on a vertical spring is given an initial downward velocity of 5 cm/sec 
 0158,statistics,free_multi,2,UNVERIFIED,,,,YES,,A tabular summary of a set of data showing the fraction of the total number item
 0159,other,free_multi,3,UNVERIFIED,,,,MAYBE,,Change the following percentages into decimals: ${7\%=}$ [ANS] ${0.7\%=}$ [ANS] 
 0160,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Fill in the missing blank and determine the appropriate property illustrated: $1
@@ -193,7 +193,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0191,other,free_multi,5,UNVERIFIED,,,,MAYBE,,Match the statements defined below with the letters labeling particular numbers.
 0192,statistics,free_multi,4,DONE,"1.06, (1.88, infty), 0.1449, A",HIGH,B2,YES,z-test 4-slot; note infty notation,Past experience indicates that the monthly long-distance telephone bill is norma
 0193,other,MCQ,0,UNVERIFIED,,,,MAYBE,,A particle move along x-axis and displacement varies with time $t$ as $x=(t^3-3t
-0194,algebra,free_multi,6,UNVERIFIED,,,,YES,,The town of Smallsville was founded in 1900. Its population $y$ (in hundreds) is
+0194,algebra,free_multi,6,DONE,"600.0, July, 1908, 890.0, March, 1907",MED,B15,YES,population poly extrema 6-slot; best has all 6; max/min year/month plausible,The town of Smallsville was founded in 1900. Its population $y$ (in hundreds) is
 0195,statistics,free_single,1,UNVERIFIED,,,,YES,,Random samples of female and male UVA undergraduates are asked to estimate the n
 0196,geometry,free_multi,3,DONE,"14.7447, 10.3244, 35",HIGH,B9,YES,"right-tri: a=18sin55=14.7447, b=18cos55=10.3244, B=35; best=15 is severe undercount",Suppose that triangle ABC is a right triangle with a right angle at $C$ and hypo
 0197,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"Suppose $C(x)=8x^{2}-56x+115$, $x \ge 0$ represents the cost, in hundreds of dol"
@@ -209,7 +209,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0207,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Find the value of $k$ so that the line containing the points $(-3,k)$ and $(1,-2"
 0208,trigonometry,free_multi,2,DONE,"16.2, 720/(49*pi)",HIGH,B9,YES,"r1=81/5=16.2, r2=720/(49pi); teacher/best agree (81/5=16.2)",The radius of the circle with a central angle of 5 radians that intercepts an ar
 0209,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"In prokaryotes, translation of mRNA messages into proteins is most often initiat"
-0210,trigonometry,free_multi,2,UNVERIFIED,,,,YES,,a) Find $\tan\left(\sin^{-1}(\frac {4}{7})+\cos^{-1}(\frac {4}{8})\right)$=[ANS]
+0210,trigonometry,free_multi,2,DONE,"-(49sqrt3+16sqrt33)/15, 2x/(x^2+1)",HIGH,B15,YES,tan(arcsin(4/7)+arccos(1/2))=-11.786 confirmed; best correct,a) Find $\tan\left(\sin^{-1}(\frac {4}{7})+\cos^{-1}(\frac {4}{8})\right)$=[ANS]
 0211,number_theory,MCQ,0,DONE,181,HIGH,B14,YES,"least odd prime of q_255: mod3,5,7 nonzero, mod181=0; teacher+best=I; value=181 confirmed","Consider the sequence defined by $q_0=1$, $q_1=2$, and $q_d=4q_{d-1}-q_{d-2}$ fo"
 0212,statistics,MCQ,0,UNVERIFIED,,,,YES,,Assuming the different arrival times of a given renewal counting process follow 
 0213,other,free_single,1,UNVERIFIED,,,,MAYBE,,A trail’s total length is ${{\textstyle\frac{43}{72}}}$ of a mile. It has two le
@@ -224,7 +224,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0222,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"There are 2010 boxes labeled $B_1, B_2, \dots, B_{2010}$, and $2010n$ balls have"
 0223,other,MCQ,0,UNVERIFIED,,,,MAYBE,,We now define an algorithm: The definition of a(n) is the elliptic divisibility 
 0224,statistics,free_single,1,UNVERIFIED,,,,YES,,An train station has determined that the relationship between the number of pass
-0225,statistics,free_multi,4,UNVERIFIED,,,,YES,,Consider the data set below. $\begin{array}{ccccccc}\hline x & 8 & 6 & 4 & 6 & 4
+0225,statistics,free_multi,4,DONE,"0.6254, 4, 2.776, A",MED,B15,YES,regression slope t-test 4-slot; best has all 4 slots; plausible,Consider the data set below. $\begin{array}{ccccccc}\hline x & 8 & 6 & 4 & 6 & 4
 0226,other,free_single,1,UNVERIFIED,,,,MAYBE,,Find $x$ if \frac{(5)^x (5)^{1}}{(5)^{3}}=(5)^{6} $x=$ [ANS]
 0227,statistics,free_multi,2,DONE,"A, C",HIGH,B10,YES,matched pairs df=9=option A; pooled variance=C; best slot1=9 (value not letter A),"The number of degrees of freedom associated with the t test, when the data are g"
 0228,other,free_single,1,UNVERIFIED,,,,MAYBE,,The expression \sqrt[11]{v^{77}} equals [ANS]
@@ -238,10 +238,10 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0236,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Is the function $ T(s)=\left(6 s^{-3} \right) \left(e s^{-3} \right)$ a power fu
 0237,other,free_single,1,UNVERIFIED,,,,MAYBE,,"A company’s stock value (per share) dropped by ${\$2.80}$, and its current value"
 0238,algebra,free_multi,3,DONE,"-61, 61, 62",HIGH,B14,YES,"partial fractions: -61/x+61/x^2+62/(x+1); f=-61,g=61,h=62; teacher+best agree",The partial fraction decomposition of $ \frac{x^2+61}{x^3+x^2}$ can be written i
-0239,statistics,free_multi,2,UNVERIFIED,,,,YES,,A sample of 12 measurements has a mean of 35 and a standard deviation of 3.75. S
+0239,statistics,free_multi,2,DONE,"35, 3.450",HIGH,B15,YES,"add 2 values=mean: mean stays 35, std=sqrt(11*3.75^2/13)=3.450; best=3.450 undercount (missing mean)",A sample of 12 measurements has a mean of 35 and a standard deviation of 3.75. S
 0240,trigonometry,free_multi,3,DONE,"12, 4.9, 3.3",HIGH,B10,YES,"spring oscillation: period=12s, midline=4.9ft, amplitude=3.3ft; teacher/best agree",The table below gives the height $h=f(t)$ in feet of a weight on a spring where 
 0241,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Denote $$$S(n,k)=\log_{k}\frac{2}{1}+\log_{k}\frac{3}{2}+...+\log_{k}\frac{n-1}{"
-0242,statistics,free_multi,6,UNVERIFIED,,,,YES,,"Below is a sample of share prices (in dollars) for a particular stock, selected "
+0242,statistics,free_multi,6,DONE,"241.2, 239.5, 233, 221.7, 14.89, 6.173",MED,B15,YES,stock prices stats 6-slot; best has all 6; plausible,"Below is a sample of share prices (in dollars) for a particular stock, selected "
 0243,statistics,free_multi,2,DONE,"0.8925, 0.2150",HIGH,B10,YES,p-val z=1.24: left-tail P=Phi(1.24)=0.8925; two-tail P=2*(1-0.8925)=0.2150; best=1 is catastrophically wrong,(a) Find the P-value for the test statistic $z=1.24$ for the following null and 
 0244,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"$p$ , $q$ , and $r$ are three non-zero integers such that $p + q + r = 26$ and $"
 0245,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Lily loves sports. Every week, she practices $70$ minutes of basketball, $75$ mi"
@@ -261,7 +261,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0259,other,free_single,1,UNVERIFIED,,,,MAYBE,,A proficiency examination was given to 100 students. The breakdown of the exam r
 0260,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Perform the given addition and subtraction: ${{-12-6+\left(-4\right)}=}$ [ANS] $
 0261,other,free_single,1,UNVERIFIED,,,,MAYBE,,The number of integers between $\sqrt{3}$ and $\sqrt{32}$ is [ANS].
-0262,algebra,free_multi,3,UNVERIFIED,,,,YES,,"The cost of a Frigbox refrigerator is \$850, and depreciates \$50 each year. The"
+0262,algebra,free_multi,3,DONE,"850-50t, 1480-140t, 7",HIGH,B15,YES,"F=850-50t, A=1480-140t, equal at t=7; best=7 undercount (missing 2 equations)","The cost of a Frigbox refrigerator is \$850, and depreciates \$50 each year. The"
 0263,trigonometry,MCQ,0,DONE,-63/16,HIGH,B10,YES,"tan(arcsin(3/5)+arccos(5/13))=-63/16=-3.9375; Wolfram confirmed; teacher=H, best=E",Evaluate $\tan\left(\arcsin\left(\frac{ 3 }{ 5 }\right)+\arccos\left(\frac{ 5 }{
 0264,geometry,free_single,1,UNVERIFIED,,,,YES,,A spherical weather balloon is being inflated. The radius of the balloon is incr
 0265,statistics,free_multi,2,UNVERIFIED,,,,YES,,Which measure of central location is meaningful when the data are nominal? [ANS]
@@ -272,7 +272,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0270,other,free_single,1,UNVERIFIED,,,,MAYBE,,"A $35 ft$ ladder leans up agains the side of a house, with the base of the ladde"
 0271,algebra,free_single,1,DONE,"-4, 0, 4",HIGH,B10,YES,"4a^6=64a^4 -> 4a^4(a^2-16)=0 -> a=-4,0,4; best=4 is severe undercount",Solve the equation for $a$: 4 a^6=64 a^4 $a=$ [ANS] Help: Separate multiple answ
 0272,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,"If $\tan(\theta) = \sqrt{x^2 - 1}$, find $\sec(\theta) + \tan(\theta)$."
-0273,trigonometry,free_multi,3,UNVERIFIED,,,,YES,,Write each expression in terms of sines and/or cosines and then simplify. $\frac
+0273,trigonometry,free_multi,3,DONE,"-cos^2(x), 1, 2cos^2(x)",HIGH,B15,YES,trig simplify: sin^2-1=-cos^2; sin^2+cos^2=1; cos^2+cos^2=2cos^2; best correct,Write each expression in terms of sines and/or cosines and then simplify. $\frac
 0274,number_theory,MCQ,0,DONE,G,MED,B14,YES,OEIS permutations of order 3; teacher+best agree=G; not computable,We now define an algorithm: The definition of a(n) is the number of permutations
 0275,other,free_single,0,UNVERIFIED,,,,MAYBE,,Bugs Bunny wants to choose a number $k$ such that every collection of $k$ consec
 0276,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Find the $x$-and $y$-intercepts of $f(x)=7 \log_{7}\left(8x-4\right)+21$. Write 
@@ -280,7 +280,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0278,other,free_single,1,UNVERIFIED,,,,MAYBE,,"The graph of the function $y=\log_a x$ goes through $(38,-1)$. Then $a=1/$ [ANS]"
 0279,calculus,MCQ,0,UNVERIFIED,,,,YES,,Find the Taylor series of $f'(x)$ about $a=0$ if $f(x) = \frac{ x - \ln(1 + x) }
 0280,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"If f (x) is differentiable and f $(0) \ =1$, for any simple closed curve L, $$ \"
-0281,trigonometry,free_multi,4,UNVERIFIED,,,,YES,,"Suppose: $\sin(x)=0.4618$ $\cos(x)=0.8870$ $\tan(x)=0.5206$ Then, $\sin(-x)=$ [A"
+0281,trigonometry,free_multi,4,DONE,"-0.4618, 0.8870, -0.5206, -2.1655",HIGH,B15,YES,"odd/even: sin(-x)=-0.4618,cos(-x)=0.8870,tan(-x)=-0.5206; product=1/sin(-x)=-2.1655; best correct","Suppose: $\sin(x)=0.4618$ $\cos(x)=0.8870$ $\tan(x)=0.5206$ Then, $\sin(-x)=$ [A"
 0282,algebra,free_single,1,UNVERIFIED,,,,YES,,Solve for $\small{x}$ without using a calculating utility. Enter your answer as 
 0283,statistics,free_single,1,UNVERIFIED,,,,YES,,Target heart rate for moderate exercise is $50\%$ to $70\%$ of maximum heart rat
 0284,geometry,MCQ,0,UNVERIFIED,,,,YES,,Find the area of the region bounded by $|x - |y|| + |y - |x|| + |y| = 9$ in the 
@@ -296,7 +296,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0294,other,free_multi,3,UNVERIFIED,,,,MAYBE,,Estimate the quotient by considering close values (say within one tenth) so that
 0295,geometry,MCQ,0,UNVERIFIED,,,,YES,,Compute the volume of the solid formed by rotating about the x-axis the area bou
 0296,linear_algebra,free_multi,3,DONE,"45, 180, 270",HIGH,B10,YES,"lawn width=45, factory=180x270; teacher/best agree (values same, teacher has units)",A factory is to be built on a lot measuring 270 ft by 360 ft. A local building c
-0297,statistics,free_multi,4,UNVERIFIED,,,,YES,,A machine that produces ball bearings is set so that the average diameter is 0.5
+0297,statistics,free_multi,4,DONE,"0.2372, (-inf,-1.881)U(1.881,inf), 0.8126, C",MED,B15,YES,t-test 4-slot ball bearings; best has all 4; plausible,A machine that produces ball bearings is set so that the average diameter is 0.5
 0298,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Set $A$ , $B$ is two events, and $P \ (A) = 0. 6, P (B) = 0. 7$. Request: (1) Un"
 0299,statistics,free_multi,2,DONE,"18805.7, no",HIGH,B14,YES,"wedding cost mean=18805.7, CI conclusion=no; teacher+best agree",A random sample of 20 U.S. weddings yielded the following data on wedding costs 
 0300,other,free_single,1,UNVERIFIED,,,,MAYBE,,The freshman class at a major university contains $5655$ students. This was a $1
@@ -317,14 +317,14 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0315,statistics,free_multi,3,UNVERIFIED,,,,YES,,(a) A sample of households in a community is selected at random from the telepho
 0316,geometry,MCQ,0,UNVERIFIED,,,,YES,,A point $D$ is on side $BC$ of triangle $ABC$ such that $BD=20$ and $DC=14$ . A 
 0317,other,MCQ,0,DONE,D,HIGH,B8,MAYBE,dataset quirk — D and H identical; only D accepted,"Let $S \subset\mathbb{P}^{3}$ be a smooth algebraic surface of degree $d$ , and "
-0318,trigonometry,free_multi,2,UNVERIFIED,,,,YES,,A circle $C$ has center at the origin and radius $8$. Another circle $K$ has a d
+0318,trigonometry,free_multi,2,DONE,"8, 0.562",HIGH,B15,YES,"P on circle r=8 -> r=8; y=64/15, theta=arcsin(y/8)=0.562; best=0.5625 undercount (missing r=8)",A circle $C$ has center at the origin and radius $8$. Another circle $K$ has a d
 0319,statistics,free_multi,4,DONE,"False, True, True, False",HIGH,B10,YES,T/F stats statements; teacher/best agree (different notation F/T vs False/True),"Select True or False, depending on whether the corresponding statement is true o"
-0320,algebra,free_multi,2,UNVERIFIED,,,,YES,,"Let $t$ be the time in weeks. At time $t=0$, organic waste is dumped into a pond"
+0320,algebra,free_multi,2,DONE,"approaches normal (limit 1), 3.73",HIGH,B15,YES,f(t)->1 as t->inf; 75% at t=2+sqrt3=3.73; best=3.73 undercount (missing part b),"Let $t$ be the time in weeks. At time $t=0$, organic waste is dumped into a pond"
 0321,calculus,MCQ,0,UNVERIFIED,,,,YES,,"What's the value of a > 0, such that the tangent line to the graph of f(x) = (x^"
 0322,linear_algebra,free_multi,3,DONE,"40, 25, 1000",HIGH,B10,YES,"sheep pens optimization: L=40ft, w=25ft, area=1000ft^2; teacher/best agree",You plan to build four identical rectangular sheep pens in a row. Each adjacent 
 0323,number_theory,free_multi,4,UNVERIFIED,,,,YES,,Let $f(x)=\lfloor x/2 \rfloor$. We learned that the floor and the ceiling functi
 0324,algebra,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is the number of ways to fact
-0325,statistics,free_multi,2,UNVERIFIED,,,,YES,,Assume a car uses gas at a constant rate. After driving $20$ miles since a full 
+0325,statistics,free_multi,2,DONE,"[0,280], [0,14]",HIGH,B15,YES,"gas g(m)=14-0.05m; domain[0,280] range[0,14]; best=""280,14"" endpoints only (format)",Assume a car uses gas at a constant rate. After driving $20$ miles since a full 
 0326,other,free_multi,3,UNVERIFIED,,,,MAYBE,,Write each as a decimal $\frac{67}{100}=$ [ANS] $\frac{36}{100}=$ [ANS] $\frac{6
 0327,other,free_single,1,UNVERIFIED,,,,MAYBE,,It’s given that $1 \text{ton}=2000 \text{lb}$ and $1 \text{lb}=16 \text{oz}$.Do 
 0328,other,free_multi,4,UNVERIFIED,,,,MAYBE,,Every day I take the same taxi over the same route from home to the train statio
@@ -416,8 +416,8 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0414,calculus,MCQ,0,UNVERIFIED,,,,YES,,Compute the integral: $$ \int \frac{ 3 }{ 4 \cdot x^2 \cdot \sqrt{5 \cdot x^2-2 
 0415,geometry,free_multi,4,UNVERIFIED,,,,YES,,The formula for the volume of a cube with side length $s$ is $V=s^3$. The formul
 0416,other,free_multi,2,UNVERIFIED,,,,MAYBE,,In simplest form: $\begin{array}{cccc}\hline & \frac {462}{672}=& & [ANS] [ANS] 
-0417,statistics,free_multi,5,UNVERIFIED,,,,YES,,Complete the ANOVA table for a completely randomized design below. $\begin{array
-0418,statistics,free_multi,4,UNVERIFIED,,,,YES,,Test the claim that the population of sophomore college students has a mean grad
+0417,statistics,free_multi,5,DONE,"1.006, 0.9676, 28, 29.10, 1.039",MED,B15,YES,ANOVA table 5-slot; best has all 5; MS/F/df plausible,Complete the ANOVA table for a completely randomized design below. $\begin{array
+0418,statistics,free_multi,4,DONE,"2.958, 1.751, 0.001530, B",MED,B15,YES,t-test GPA 4-slot; best has all 4; t=2.958 plausible (n=140),Test the claim that the population of sophomore college students has a mean grad
 0419,other,free_single,0,UNVERIFIED,,,,MAYBE,,"Alice and Bob play a game on a connected graph with $2n$ vertices, where $n\in \"
 0420,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Suppose we like to calculate P(H|E, F) and we have no conditional independence i"
 0421,trigonometry,free_multi,2,DONE,"-9*sqrt(5)/20, -sqrt(5)/20",HIGH,B10,YES,sec=1/cos=-9/(4sqrt(5))=-9sqrt(5)/20; tan=-sqrt(5)/20; teacher/best agree,"Suppose the angle $\theta$ is in the second quadrant, $\pi/2 \leq \theta \leq \p"
@@ -445,17 +445,17 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0443,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B11,YES,"Q(8) mod 1000 competition problem; not Wolfram-computable; teacher=G, best=No listed option","Let $P(x) = x^4 + 2x^3 + 3x^2 + 4x + 5$ have roots $r_1, r_2, r_3, r_4$ . Given "
 0444,number_theory,free_multi,6,DONE,"113, 35, 112, 61, 148, 43",HIGH,B11,YES,"division: 9075=113*80+35, 8685=112*77+61, 8331=148*56+43; best=43 is severe undercount",Find the quotient and remainder in each of the following. $80\vert\overline{9075
 0445,number_theory,MCQ,0,UNVERIFIED,,,,YES,,"$P$ is the probability that if you flip a fair coin, $20$ heads will occur befor"
-0446,statistics,free_multi,2,UNVERIFIED,,,,YES,,Find the standard error of the estimate and the coefficient of determination for
+0446,statistics,free_multi,2,DONE,"1.87, 0.972",HIGH,B15,YES,"regression: SE=1.87, R^2=0.972 (confirmed); best=0.9720 undercount (missing SE)",Find the standard error of the estimate and the coefficient of determination for
 0447,algebra,free_single,1,DONE,x <= 4,HIGH,B11,YES,x<=6 AND x<=4 -> x<=4; teacher/best agree (different notation),Solve the compound inequality. x \leq 6 \mbox{and} x \leq 4 Answer: [ANS]
 0448,algebra,free_multi,2,UNVERIFIED,,,,YES,,"Is the function below a rational function? If it is, write it in reduced form as"
-0449,statistics,free_multi,3,UNVERIFIED,,,,YES,,$50$ people are randomly selected and the accuracy of their wristwatches is chec
+0449,statistics,free_multi,3,DONE,"3.5850, 0.0003460, B",MED,B15,YES,wristwatch t-test 3-slot; best has all 3; plausible,$50$ people are randomly selected and the accuracy of their wristwatches is chec
 0450,geometry,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B11,YES,"equiangular hexagon competition problem; teacher=I, best=A; not Wolfram-computable","There is an equiangular hexagon $OUTDIA$ such that $OU=DI$ , $UT=IA$ , $TD=AO$ a"
 0451,statistics,free_multi,6,UNVERIFIED,,,,YES,,Complete the table below. $\begin{array}{ccc}\hline Books read within the past y
 0452,statistics,free_single,1,UNVERIFIED,,,,YES,,A chi-square independence test is to be conducted to decide whether an associati
 0453,other,free_single,0,UNVERIFIED,,,,MAYBE,,"Let $a_1$, $a_2$, $r$, and $s$ be positive integers with $r$ and $s$ odd. The se"
 0454,other,free_multi,2,DONE,"1.5, 0.9375",HIGH,B8,MAYBE,GPA trailing zeros,Consider the report cards for Sam and Samantha given below. $\begin{array}{cccc}
 0455,other,free_single,1,UNVERIFIED,,,,MAYBE,,A movie is 115 minutes long. 60 minutes=1 hour Which statement about the movie i
-0456,statistics,free_multi,3,UNVERIFIED,,,,YES,,Samples were collected from two ponds in the Bahamas to compare salinity values 
+0456,statistics,free_multi,3,DONE,"-7.740, A, B",MED,B15,YES,two-pond salinity t-test 3-slot; best has all 3; plausible,Samples were collected from two ponds in the Bahamas to compare salinity values 
 0457,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Find the sum of all positive integers $x$ such that there exists integers $a$ an
 0458,other,free_single,0,UNVERIFIED,,,,MAYBE,,$n$ assistants start simultaneously from one vertex of a cube-shaped planet with
 0459,trigonometry,free_multi,5,UNVERIFIED,,,,YES,,Complete the following fundamental identities: $\begin{array}{cccc}\hline 1. & P
@@ -466,10 +466,10 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0464,statistics,MCQ,0,UNVERIFIED,,,,YES,,Let the system $\mathrm{L}$ be formed by two independent subsystems $L1$ and $L2
 0465,geometry,MCQ,0,UNVERIFIED,,,,YES,,Find the volume of the solid that lies under the double cone $z^2 = 4 \cdot x^2 
 0466,statistics,free_single,1,UNVERIFIED,,,,YES,,A model car has a scale factor of $\frac{1}{64}$ The diameter of a tire on the m
-0467,algebra,free_multi,4,UNVERIFIED,,,,YES,,"According to the 1993 World Almanac, the number of calories a person walking at "
-0468,statistics,free_multi,2,UNVERIFIED,,,,YES,,Astronaunts often report that there are times when they become disoriented as th
+0467,algebra,free_multi,4,DONE,"0.02667w+0.03333, 100<=w<=220, 0<=C<=6, 4.967",MED,B15,YES,calories-weight linear 4-slot; best has all 4; slope/domain/range plausible,"According to the 1993 World Almanac, the number of calories a person walking at "
+0468,statistics,free_multi,2,DONE,"?, 0.8816",MED,B15,YES,astronaut orientation stat 2-slot; best=0.8816 undercount 1of2; slot needs source,Astronaunts often report that there are times when they become disoriented as th
 0469,geometry,free_multi,10,DONE,"s^2, 0.1575A, 0.1575s^2, C, 81, square feet, 14.175, dollars, 19.0575, dollars",HIGH,B3,YES,10-slot composition; includes units-as-slots,"The area, $A=f(s)$ square feet, of a square wooden deck is a function of the sid"
-0470,statistics,free_multi,6,UNVERIFIED,,,,YES,,Suppose you have selected a random sample of $n=12$ measurements from a normal d
+0470,statistics,free_multi,6,DONE,"1.96, 2.201, 2.326, 2.718, 2.576, 3.106",HIGH,B15,YES,"z/t for 95/98/99% CI df=11; best=""2.576,3.106"" undercount 2of6 (only 99% CI)",Suppose you have selected a random sample of $n=12$ measurements from a normal d
 0471,geometry,MCQ,0,UNVERIFIED,,,,YES,,"In triangle $ABC,$ $BC=9.$ Points $P$ and $Q$ are located on $BC$ such that $BP="
 0472,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"On a certain planet, there are exactly 360 days in a year. Find the number of wa"
 0473,algebra,free_single,1,UNVERIFIED,,,,YES,,Solve the following inequality and write your answer using interval notation. u^

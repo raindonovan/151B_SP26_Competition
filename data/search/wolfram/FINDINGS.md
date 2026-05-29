@@ -92,6 +92,15 @@ Items with best_answer literally "INVALID" or "answer" represent complete infere
 - P2 (teacher-split): higher teacher/best agreement, fewer competition problems → better for verification anchoring than override-hunting.
 - OEIS algorithm MCQs ("given a(n) definition, compute y_list") are systematically INCONCLUSIVE — Wolfram cannot compute arbitrary OEIS sequences at given indices.
 
+## Finding 18 — P3 bucket validated as the override-rich vein (B15)
+P3 (multi-answer computable, ~108 items) yielded 10 actionable undercount overrides in 25 items (40%) vs 0 in P2/B14. Confirms Finding 17: multi-slot undercount is the dominant recoverable failure, and P3 is where it concentrates. **Recommend prioritizing P3 over remaining P2 for override-hunting.**
+
+## Finding 19 — Undercount mode = "drop earlier sub-parts" (B15)
+Multi-PART questions (a/b/c) where Qwen answers only the FINAL part: 0027 (eq2 only), 0262 (part c only), 0470 (99% CI only, 4 of 6 slots dropped). Same as Horner (0505) and division (0444) undercounts. Post-processing lever: count sub-part markers (a/b/c, multiple [ANS]) and verify equal answer count. Worst case so far: 0470 dropped 4 of 6 slots.
+
+## Finding 20 — format_flags are noisy; Wolfram still needed
+Even within the "undercount-flagged" P3 subset, ~24% (6/25 in B15: 0043,0157,0210,0273,0281,0325) had best ALREADY complete and correct. The undercount/backsolve_disagree flags over-trigger. Independent Wolfram verification is required to separate true undercounts from false flags before applying any automated multi-slot expansion.
+
 ## Open questions
 - Exact Kaggle string-matching rules (whitespace, `\text{}` wrappers, trailing zeros, `^\circ` vs `°`)
 - 0587 multi-select format: comma-sep vs concatenated vs sub-boxes

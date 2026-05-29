@@ -1,0 +1,84 @@
+id,subject,type,n_ans_slots,best_answer,teacher_consensus,question
+0021,statistics,free_multi,2,67.43,,"The average life expectancy in the United States, $L$, has been rising steadily over the past few decades, as shown in the table below. Let $t$ be the number of years since 1920, (so $t=0$ represents the year 1920).
+$\begin{array}{ccccccccc}\hline Year & 1920 & 1930 & 1940 & 1950 & 1960 & 1970 & 1980 & 1990 \\ \hline Life expectancy & 57.5 & 59.4 & 62.4 & 65.9 & 68.8 & 71.1 & 74.3 & 77.7 \\ \hline \end{array}$
+(a) Find the equation of the regression line. Average life expectancy, $L(t)=$ [ANS]. Note: this is a function of $t$ (not $x$). (b) Estimate the average life expectancy in the United States in the year 1956 according to the linear model in part (a). Average life expectancy in 1956 $\approx$ [ANS]."
+0027,trigonometry,free_multi,2,"\frac{7}{6}, \frac{11}{6}",,"Solve the following equations in the interval [0,2 $\pi$]. Note: Give the answer as a multiple of $\pi$. Do not use decimal numbers. The answer should be a fraction or an integer. Note that $\pi$ is already included in the answer so you just have to enter the appropriate multiple. E.g. if the answer is $\pi/2$ you should enter 1/2. If there is more than one answer enter them separated by commas. $\sin(t)=\frac{\sqrt{3}}{2}$ t=[ANS] $\pi$ $\sin(t)=-\frac{1}{2}$ t=[ANS] $\pi$"
+0043,trigonometry,free_multi,3,"\dfrac{3}{8},\ 14,\ 28",,Use half angle formulas to fill in the blanks in the identity below: $(\sin(7x))^4$=[ANS] $-\frac{1}{2}\cos($ [ANS] $x)+\frac{1}{8}\cos ($ [ANS] $x)$
+0082,statistics,free_multi,4,"1.309, 1.677, \text{No}",,"There are several sections of statistics, some in the morning (AM) and some in the afternoon (PM). We want to see if afternoon sections do better. We randomly select 24 students from the AM sections and 28 students from the PM sections. Their final averages (out of 100) are given in the table with other relevant statistics. The degrees of freedom (d.f.) is given to save calculation time if you are not using software.
+$\begin{array}{ccccc}\hline & n & \bar x & s^2 & s \\ \hline PM & 28 & 78.6 & 277.2225 & 16.65 \\ \hline AM & 24 & 72.5 & 272.5801 & 16.51 \\ \hline degrees of freedom: d.f.=49 \\ \hline \end{array}$ degrees of freedom: d.f.=49 Test the claim that the average for all students in the PM sections is greater than the AM sections. Use a 0.05 significance level.
+(a) Find the test s"
+0157,trigonometry,free_multi,2,"50 \sin(0.1t) - 7 \cos(0.1t), 46.31",,"A weight on a vertical spring is given an initial downward velocity of 5 cm/sec from a point 7 cm above equilibrium. Assume that the contstant $\omega$ has a value of 0.1. Write the formula for the location of the weight at time t. x=[ANS]
+Find the location of the weight 13 seconds after it is set in motion. [ANS] centimeters"
+0194,algebra,free_multi,6,"600.0,\ July,\ 1908,\ 890.0,\ March,\ 1907",,"The town of Smallsville was founded in 1900. Its population $y$ (in hundreds) is given by the equation y=-0.1x^4+1.7x^3-9x^2+14.4x+6, where $x$ is the number of years since 1900. Use a the graph in the window $0 \le x \le 10$, $-2 \le y \le 15$. a) What was the population of Smallsville when it was founded? [ANS] people b) When did Smallsville become a ghost town (nobody lived there anymore)? In [ANS] (month, do not abbreviate) of [ANS] (year) c) What was the largest population of Smallsville after 1905? [ANS] (round to nearest whole person) d) In what month did Smallsville reach that population? In [ANS] (month, do not abbreviate) of [ANS] (year)"
+0210,trigonometry,free_multi,2,"-\frac{49\sqrt{3} + 16\sqrt{33}}{15}, \frac{2x}{x^2 + 1}",,a) Find $\tan\left(\sin^{-1}(\frac {4}{7})+\cos^{-1}(\frac {4}{8})\right)$=[ANS]. (Make sure your answer is an algebraic expression with square roots but without trigonometric or inverse trignometric functions.) b) Express in terms of $x$: $\sin\left(2 \tan^{-1}(x)\right)$=[ANS].
+0225,statistics,free_multi,4,"0.6254, 4, 2.776, A",,"Consider the data set below.
+$\begin{array}{ccccccc}\hline x & 8 & 6 & 4 & 6 & 4 & 7 \\ \hline y & 6 & 7 & 3 & 6 & 5 & 3 \\ \hline \end{array}$
+For a hypothesis test, where $H_0:\beta_1=0$ and $H_1:\beta_1 \ne 0$, and using $\alpha=0.05$, give the following:
+(a) $\ $ The test statistic $t=$ [ANS]
+(b) $\ $ The degree of freedom $df=$ [ANS]
+(c) $\ $ The rejection region $|t| >$ [ANS]
+The final conclustion is [ANS] A. There is not sufficient evidence to reject the null hypothesis that $\beta_1=0$.  B. We can reject the null hypothesis that $\beta_1=0$ and accept that $\beta_1 \ne 0$."
+0239,statistics,free_multi,2,3.450,,"A sample of 12 measurements has a mean of 35 and a standard deviation of 3.75. Suppose that the sample is enlarged to 14 measurements, by including two additional measurements having a common value of 35 each. A. Find the mean of the sample of 14 measurements.
+Mean=[ANS]
+B. Find the standard deviation of the sample of 14 measurements. Standard Deviation=[ANS]"
+0242,statistics,free_multi,6,"241.2, 239.5, 233, 221.7, 14.89, 6.173",,"Below is a sample of share prices (in dollars) for a particular stock, selected at random over several years:
+\begin{array}{ccccccccc} 233 & 233 & 234 & 246 & 221 & 226 & 245 & 249 & 262\\ 249 & 230 & 251 & 265 & 263 & 223 & 221 & 233 & 258 \end{array}
+Use Excel (or other form of electronic assistance) to find the mean, median, mode, variance, standard deviation, and coefficient of variation for this sample.
+Mean=[ANS]
+Median=[ANS]
+Mode=[ANS]
+Variance=[ANS]
+Standard Deviation=[ANS]
+Coefficient of Variation=[ANS]"
+0262,algebra,free_multi,3,7,,"The cost of a Frigbox refrigerator is \$850, and depreciates \$50 each year. The cost of an Arctic Air refrigerator is \$1480, and it depreciates \$140 per year.
+(a) Find an equation for the value of the Frigbox, $F$, $t$ years after it is purchased. $F(t)=$ [ANS]
+(b) Find an equation for the value of the Arctic Air, $A$, $t$ years after it is purchased. $A(t)=$ [ANS]
+(c) If a Frigbox and an Arctic Air are bought at the same time, when do the two refrigerators have equal value? In [ANS] years."
+0273,trigonometry,free_multi,3,"-\cos^{2}(x),1,2\cos^{2}(x)",,"Write each expression in terms of sines and/or cosines and then simplify. $\frac{\sin(x)}{\csc(x)}-\sec(x)\cos(x)$=[ANS]
+$\frac{\sin(x)}{\csc(x)}+\cos^2(x)$=[ANS]
+$\frac{\cos(x)}{\sec(x)}+\cos^2(x)$=[ANS]"
+0281,trigonometry,free_multi,4,"-0.4618, 0.8870, -0.5206, -2.1655",,"Suppose:
+$\sin(x)=0.4618$ $\cos(x)=0.8870$ $\tan(x)=0.5206$ Then,
+$\sin(-x)=$ [ANS]
+$\cos(-x)=$ [ANS]
+$\tan(-x)=$ [ANS]
+and $\sec(-x)\csc(-x)\cot(-x)\sin(-x)=$ [ANS]"
+0297,statistics,free_multi,4,"0.2372, (-\infty, -1.881)U(1.881, \infty), 0.8126, C",,"A machine that produces ball bearings is set so that the average diameter is 0.53 inch. A sample of 10 ball bearings was measured with the results shown below.
+\begin{array}{ccccccccccc} 0.54 & 0.54 & 0.55 & 0.51 & 0.51 \\ 0.54 & 0.54 & 0.52 & 0.53 & 0.55 \end{array} Assuming that the standard deviation is 0.04 inch, can we conclude at the 6\% significance level that the mean diameter is not 0.53 inch? A. The value of the standardized test statistic: [ANS]
+Note: For the next part, your answer should use interval notation. An answer of the form $(-\infty, a)$ is expressed (-infty, a), an answer of the form $(b, \infty)$ is expressed (b, infty), and an answer of the form $(-\infty, a) \cup (b, \infty)$ is expressed (-infty, a)U(b, infty). B. The rejection region for the standardized test sta"
+0318,trigonometry,free_multi,2,0.5625,,"A circle $C$ has center at the origin and radius $8$. Another circle $K$ has a diameter with one end at the origin and the other end at the point $(0,15)$. The circles $C$ and $K$ intersect in two points. Let $P$ be the point of intersection of $C$ and $K$ which lies in the first quadrant. Let $(r, \theta)$ be the polar coordinates of $P$, chosen so that $r$ is positive and $0 \leq \theta \leq 2$. Find $r$ and $\theta$.
+$r=$ [ANS]
+$\theta=$ [ANS]"
+0320,algebra,free_multi,2,3.73,,"Let $t$ be the time in weeks. At time $t=0$, organic waste is dumped into a pond. The oxygen level in the pond at time $t$ is given by
+$ f(t)=\frac{t^{2}-t+1}{t^{2}+1}$. Assume $f(0)=1$ is the normal level of oxygen.
+(a) On a separate piece of paper, graph this function. (b) What will happen to the oxygen level in the lake as time goes on? [ANS] (c) Approximately how many weeks must pass before the oxygen level returns to $75$ \% of its normal level? [ANS] weeks (Round to at least two decimal places.)"
+0325,statistics,free_multi,2,"280.0, 14.00",,"Assume a car uses gas at a constant rate. After driving $20$ miles since a full tank of gas was purchased, there was $13$ gallons of gas left; after driving $55$ miles since a full tank of gas was purchased, there was $11.25$ gallons of gas left. Use a function to model the amount of gas in the tank (in gallons). Let the independent variable be the number of miles driven since a full tank of gas was purchased. Find this function’s domain and range in this context.
+The function’s domain in this context is [ANS]. The function’s range in this context is [ANS]."
+0417,statistics,free_multi,5,"1.006, 0.9676, 28, 29.10, 1.039",,"Complete the ANOVA table for a completely randomized design below.
+$\begin{array}{ccccc}\hline Source & df & SS & MS & F \\ \hline Treatments & 18 & 18.1 & [ANS] & [ANS] \\ \hline Error & [ANS] & [ANS] & [ANS] & \ \\ \hline Total & 46 & 47.2 & \ & \ \\ \hline \end{array}$"
+0418,statistics,free_multi,4,"2.958, 1.751, 0.001530, B",,"Test the claim that the population of sophomore college students has a mean grade point average greater than $2.3$. Sample statistics include $n=140$, $\overline{x}=2.45$, and $s=0.6$. Use a significance level of $\alpha=0.04$. The test statistic is [ANS]
+The critical value is [ANS]
+The P-Value is [ANS]
+The final conclustion is [ANS] A. There is not sufficient evidence to support the claim that the mean grade point average is greater than 2.3.  B. There is sufficient evidence to support the claim that the mean grade point average is greater than 2.3."
+0446,statistics,free_multi,2,0.9720,,"Find the standard error of the estimate and the coefficient of determination for the least-squares regression line $\hat{y}=b_0+b_1x$ through the points (-1,0), (2,8), (5,14), (9,19), (10,25). Standard Error of the Estimate=[ANS]
+Coefficient of Determination=[ANS]"
+0449,statistics,free_multi,3,"3.5850, 0.0003460, B",,"$50$ people are randomly selected and the accuracy of their wristwatches is checked, with positive errors representing watches that are ahead of the correct time and negative errors representing watches that are behind the correct time. The $50$ values have a mean of $108$ sec and a standard deviation of $213$ sec. Use a $0.02$ significance level to test the claim that the population of all watches has a mean of $0$ sec. The test statistic is [ANS]
+The P-Value is [ANS]
+The final conclustion is [ANS] A. There is not sufficient evidence to warrant rejection of the claim that the mean is equal to 0  B. There is sufficient evidence to warrant rejection of the claim that the mean is equal to 0"
+0456,statistics,free_multi,3,"-7.740, A, B",,"Samples were collected from two ponds in the Bahamas to compare salinity values (in parts per thousand). Several samples were drawn at each site. Pond 1: 36.75, 37.03, 37.71, 37.36, 36.72, 37.03, 37.02 Pond 2: 38.71, 38.24, 38.53, 38.66, 39.21 Use a $0.05$ significance level to test the claim that the two ponds have the same mean salinity value.
+(a) The test statistic is [ANS]. (b) The conclusion is [ANS] A. There is sufficient evidence to indicate that the two ponds have different salinity values.  B. There is not sufficient evidence to indicate that the two ponds have different salinity values.
+(c) We should [ANS] A. not take the results too seriously since neither sample is big enough to be meaningful.  B. check to see if the data appear close to Normal since the sum of the sample sizes"
+0467,algebra,free_multi,4,"0.02667w + 0.03333,\ 100 \leq w \leq 220,\ 0 \leq C \leq 6,\ 4.967",,"According to the 1993 World Almanac, the number of calories a person walking at 3 mph burns per minute depends on the person's weight as in the following table.
+Calories per minute as a function of weight
+$\begin{array}{ccccccc}\hline Weight (pounds) & 100 & 120 & 150 & 170 & 200 & 220 \\ \hline Walking (calories) & 2.7 & 3.2 & 4 & 4.6 & 5.4 & 5.9 \\ \hline \end{array}$
+(a) On a sheet of paper, graph the linear function for the calories used per minute while walking, $C$, as a function of weight, $w$. Find an approximate formula for this equation. $C=$ [ANS]
+(b) What is a meaningful domain for your function? [ANS] A. $100 \leq w \leq 220$  B. $-\infty < w < \infty$  C. $0 \leq w$  D. $0 \leq w \leq 1000$
+(c) What is a meaningful range for your function? [ANS] A. $0 \leq C \leq 6$  B. $0 \l"
+0468,statistics,free_multi,2,0.8816,,"Astronaunts often report that there are times when they become disoriented as they move around in zero-gravity. Therefore, they ususally rely on bright colors and other visual information to help them estabish a top-down orientation. A study was conducted to assses the potential of using color as body orienting. $85$ college students, reclining on their backs in the dark, found it difficult to establish orientation when positioned on under a rotating disk. This rotating disk was painted half black and half white. Out of the $85$ students, $66$ believed they were right side up when the white was on top. Use this information to estimate the true proportion of subjects who use the white color as a cue for right-side-up orientation. That is, construct a $98$ \% confidence interval for the true"
+0470,statistics,free_multi,6,"2.576, 3.106",,"Suppose you have selected a random sample of $n=12$ measurements from a normal distribution. Compare the standard normal $z$ values with the corresponding $t$ values if you were forming the following confidence intervals.
+(a) $\ $ $95$ \% confidence interval $z=$ [ANS]
+$t=$ [ANS]
+(b) $\ $ $98$ \% confidence interval $z=$ [ANS]
+$t=$ [ANS]
+(c) $\ $ $99$ \% confidence interval $z=$ [ANS]
+$t=$ [ANS]"

@@ -219,3 +219,28 @@
 | 0383 | B14 | MED | 80 | divisoral table competition; teacher+best agree=80 |
 | 0389 | B14 | HIGH | (x^2+5x+5)^2-1 | (x+1)(x+2)(x+3)(x+4)=(x^2+5x+5)^2-1; teacher+best=F; fo |
 | 0427 | B14 | MED | E | a^2+b^2=c^2+ab Heron competition; teacher+best agree=E |
+| 0021 | B15 | HIGH | 0.2915t+56.93, 67.43 | regression L(t)=0.2915t+56.93; est=67.43; best=67.43 un |
+| 0027 | B15 | HIGH | 1/3, 2/3, 7/6, 11/6 | sin=sqrt3/2->1/3,2/3; sin=-1/2->7/6,11/6; best="7/6,11/ |
+| 0043 | B15 | HIGH | 3/8, 14, 28 | sin^4(7x)=3/8-1/2cos(14x)+1/8cos(28x); best correct (Tr |
+| 0082 | B15 | MED | 1.309, 1.677, ?, No | two-sample t 4-slot; best="1.309,1.677,No" undercount 3 |
+| 0157 | B15 | HIGH | 50sin(0.1t)-7cos(0.1t), 46.31 | spring SHM: x=-7cos(0.1t)+50sin(0.1t); x(13)=46.31; bes |
+| 0194 | B15 | MED | 600.0, July, 1908, 890.0, March, 1907 | population poly extrema 6-slot; best has all 6; max/min |
+| 0210 | B15 | HIGH | -(49sqrt3+16sqrt33)/15, 2x/(x^2+1) | tan(arcsin(4/7)+arccos(1/2))=-11.786 confirmed; best co |
+| 0225 | B15 | MED | 0.6254, 4, 2.776, A | regression slope t-test 4-slot; best has all 4 slots; p |
+| 0239 | B15 | HIGH | 35, 3.450 | add 2 values=mean: mean stays 35, std=sqrt(11*3.75^2/13 |
+| 0242 | B15 | MED | 241.2, 239.5, 233, 221.7, 14.89, 6.173 | stock prices stats 6-slot; best has all 6; plausible |
+| 0262 | B15 | HIGH | 850-50t, 1480-140t, 7 | F=850-50t, A=1480-140t, equal at t=7; best=7 undercount |
+| 0273 | B15 | HIGH | -cos^2(x), 1, 2cos^2(x) | trig simplify: sin^2-1=-cos^2; sin^2+cos^2=1; cos^2+cos |
+| 0281 | B15 | HIGH | -0.4618, 0.8870, -0.5206, -2.1655 | odd/even: sin(-x)=-0.4618,cos(-x)=0.8870,tan(-x)=-0.520 |
+| 0297 | B15 | MED | 0.2372, (-inf,-1.881)U(1.881,inf), 0.8126, C | t-test 4-slot ball bearings; best has all 4; plausible |
+| 0318 | B15 | HIGH | 8, 0.562 | P on circle r=8 -> r=8; y=64/15, theta=arcsin(y/8)=0.56 |
+| 0320 | B15 | HIGH | approaches normal (limit 1), 3.73 | f(t)->1 as t->inf; 75% at t=2+sqrt3=3.73; best=3.73 und |
+| 0325 | B15 | HIGH | [0,280], [0,14] | gas g(m)=14-0.05m; domain[0,280] range[0,14]; best="280 |
+| 0417 | B15 | MED | 1.006, 0.9676, 28, 29.10, 1.039 | ANOVA table 5-slot; best has all 5; MS/F/df plausible |
+| 0418 | B15 | MED | 2.958, 1.751, 0.001530, B | t-test GPA 4-slot; best has all 4; t=2.958 plausible (n |
+| 0446 | B15 | HIGH | 1.87, 0.972 | regression: SE=1.87, R^2=0.972 (confirmed); best=0.9720 |
+| 0449 | B15 | MED | 3.5850, 0.0003460, B | wristwatch t-test 3-slot; best has all 3; plausible |
+| 0456 | B15 | MED | -7.740, A, B | two-pond salinity t-test 3-slot; best has all 3; plausi |
+| 0467 | B15 | MED | 0.02667w+0.03333, 100<=w<=220, 0<=C<=6, 4.967 | calories-weight linear 4-slot; best has all 4; slope/do |
+| 0468 | B15 | MED | ?, 0.8816 | astronaut orientation stat 2-slot; best=0.8816 undercou |
+| 0470 | B15 | HIGH | 1.96, 2.201, 2.326, 2.718, 2.576, 3.106 | z/t for 95/98/99% CI df=11; best="2.576,3.106" undercou |

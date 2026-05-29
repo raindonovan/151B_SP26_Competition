@@ -1,0 +1,26 @@
+id,subject,type,n_ans_slots,wolfram_answer,confidence,computable,notes
+0021,statistics,free_multi,2,"0.2915t+56.93, 67.43",HIGH,YES,regression L(t)=0.2915t+56.93; est=67.43; best=67.43 undercount (missing equation)
+0027,trigonometry,free_multi,2,"1/3, 2/3, 7/6, 11/6",HIGH,YES,"sin=sqrt3/2->1/3,2/3; sin=-1/2->7/6,11/6; best=""7/6,11/6"" undercount (missing eq1)"
+0043,trigonometry,free_multi,3,"3/8, 14, 28",HIGH,YES,sin^4(7x)=3/8-1/2cos(14x)+1/8cos(28x); best correct (TrigReduce confirmed)
+0082,statistics,free_multi,4,"1.309, 1.677, ?, No",MED,YES,"two-sample t 4-slot; best=""1.309,1.677,No"" undercount 3of4; slot3 (df/p) needs source"
+0157,calculus,free_multi,2,"50sin(0.1t)-7cos(0.1t), 46.31",HIGH,YES,spring SHM: x=-7cos(0.1t)+50sin(0.1t); x(13)=46.31; best correct
+0194,algebra,free_multi,6,"600.0, July, 1908, 890.0, March, 1907",MED,YES,population poly extrema 6-slot; best has all 6; max/min year/month plausible
+0210,trigonometry,free_multi,2,"-(49sqrt3+16sqrt33)/15, 2x/(x^2+1)",HIGH,YES,tan(arcsin(4/7)+arccos(1/2))=-11.786 confirmed; best correct
+0225,statistics,free_multi,4,"0.6254, 4, 2.776, A",MED,YES,regression slope t-test 4-slot; best has all 4 slots; plausible
+0239,statistics,free_multi,2,"35, 3.450",HIGH,YES,"add 2 values=mean: mean stays 35, std=sqrt(11*3.75^2/13)=3.450; best=3.450 undercount (missing mean)"
+0242,statistics,free_multi,6,"241.2, 239.5, 233, 221.7, 14.89, 6.173",MED,YES,stock prices stats 6-slot; best has all 6; plausible
+0262,algebra,free_multi,3,"850-50t, 1480-140t, 7",HIGH,YES,"F=850-50t, A=1480-140t, equal at t=7; best=7 undercount (missing 2 equations)"
+0273,trigonometry,free_multi,3,"-cos^2(x), 1, 2cos^2(x)",HIGH,YES,trig simplify: sin^2-1=-cos^2; sin^2+cos^2=1; cos^2+cos^2=2cos^2; best correct
+0281,trigonometry,free_multi,4,"-0.4618, 0.8870, -0.5206, -2.1655",HIGH,YES,"odd/even: sin(-x)=-0.4618,cos(-x)=0.8870,tan(-x)=-0.5206; product=1/sin(-x)=-2.1655; best correct"
+0297,statistics,free_multi,4,"0.2372, (-inf,-1.881)U(1.881,inf), 0.8126, C",MED,YES,t-test 4-slot ball bearings; best has all 4; plausible
+0318,geometry,free_multi,2,"8, 0.562",HIGH,YES,"P on circle r=8 -> r=8; y=64/15, theta=arcsin(y/8)=0.562; best=0.5625 undercount (missing r=8)"
+0320,calculus,free_multi,2,"approaches normal (limit 1), 3.73",HIGH,YES,f(t)->1 as t->inf; 75% at t=2+sqrt3=3.73; best=3.73 undercount (missing part b)
+0325,algebra,free_multi,2,"[0,280], [0,14]",HIGH,YES,"gas g(m)=14-0.05m; domain[0,280] range[0,14]; best=""280,14"" endpoints only (format)"
+0417,statistics,free_multi,5,"1.006, 0.9676, 28, 29.10, 1.039",MED,YES,ANOVA table 5-slot; best has all 5; MS/F/df plausible
+0418,statistics,free_multi,4,"2.958, 1.751, 0.001530, B",MED,YES,t-test GPA 4-slot; best has all 4; t=2.958 plausible (n=140)
+0446,statistics,free_multi,2,"1.87, 0.972",HIGH,YES,"regression: SE=1.87, R^2=0.972 (confirmed); best=0.9720 undercount (missing SE)"
+0449,statistics,free_multi,3,"3.5850, 0.0003460, B",MED,YES,wristwatch t-test 3-slot; best has all 3; plausible
+0456,statistics,free_multi,3,"-7.740, A, B",MED,YES,two-pond salinity t-test 3-slot; best has all 3; plausible
+0467,statistics,free_multi,4,"0.02667w+0.03333, 100<=w<=220, 0<=C<=6, 4.967",MED,YES,calories-weight linear 4-slot; best has all 4; slope/domain/range plausible
+0468,statistics,free_multi,2,"?, 0.8816",MED,YES,astronaut orientation stat 2-slot; best=0.8816 undercount 1of2; slot needs source
+0470,statistics,free_multi,6,"1.96, 2.201, 2.326, 2.718, 2.576, 3.106",HIGH,YES,"z/t for 95/98/99% CI df=11; best=""2.576,3.106"" undercount 2of6 (only 99% CI)"
