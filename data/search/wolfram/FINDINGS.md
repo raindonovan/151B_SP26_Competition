@@ -74,6 +74,24 @@ For linear recurrence mod p: `Mod[LinearRecurrence[{P,-Q},{a0,a1},N][[-1]], p]` 
 ## Finding 13 — Two-step problems require chained Wolfram queries
 Item 0177: solve functional equation first (get f(x)=x/√(1+x²)), then compute volume of rotation. Wolfram confirmed V=π²/6 via `2*Pi * Integrate[y^2/Sqrt[1-y^2], {y, 1/2, Sqrt[3]/2}]`. Shell method along y-axis needed when rotation is around x-axis and region is y-parameterized.
 
+## Finding 14 — Digit-concatenation error (SYSTEMATIC, high-value post-processing target)
+Qwen sometimes flattens a correct fraction/radical answer into a concatenated digit string by stripping operators. Confirmed 3 instances:
+- 0313: -2√14/15 → "-21414"
+- 0411: 392π/45 → "39246"
+- 0936: 275/16 → "27517"
+**Post-processing lever**: items where best_answer is a long integer whose digits match the digits of a teacher fraction/radical are recoverable. Worth a sweep across all 943.
+
+## Finding 15 — T/F binary-vs-word encoding mismatch
+Qwen emits 0/1 (binary) where gold expects False/True (words). Confirmed: 0785, 0896, 0927 (also 0.000/1.000 float variant). Values correct (0=False, 1=True), pure format mismatch. Post-processing should map binary→words for T/F items.
+
+## Finding 16 — best="INVALID"/"answer" = inference failure, not format
+Items with best_answer literally "INVALID" or "answer" represent complete inference failures (no parseable output), NOT format issues. Wolfram easily solves these (e.g. 0790 standard-form, 0872 basic limits, 0679 silo radius, 0684 critical z, 0716 R²). Flag all such items for direct Wolfram/teacher override.
+
+## Finding 17 — P-bucket leverage profile (from B9-B13)
+- P1 (Qwen-vs-teacher disagree): ~33% INCONCLUSIVE (loaded with competition/OEIS problems where both guessed wrong), but high override yield (~32% actionable) when computable.
+- P2 (teacher-split): higher teacher/best agreement, fewer competition problems → better for verification anchoring than override-hunting.
+- OEIS algorithm MCQs ("given a(n) definition, compute y_list") are systematically INCONCLUSIVE — Wolfram cannot compute arbitrary OEIS sequences at given indices.
+
 ## Open questions
 - Exact Kaggle string-matching rules (whitespace, `\text{}` wrappers, trailing zeros, `^\circ` vs `°`)
 - 0587 multi-select format: comma-sep vs concatenated vs sub-boxes

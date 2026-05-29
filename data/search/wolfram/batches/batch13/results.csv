@@ -1,0 +1,26 @@
+id,subject,type,n_ans_slots,wolfram_answer,confidence,computable,notes
+0781,algebra,free_single,1,sqrt(15)/8,HIGH,YES,sqrt(3/8)*sqrt(5/8)=sqrt(15)/8; teacher/best agree
+0785,statistics,free_multi,4,"False, True, False, False",HIGH,YES,"T/F stats; teacher=words, best=0/1 numeric (0.000=False); semantically agree"
+0790,algebra,free_single,1,-20x^2+45x-25=0,HIGH,YES,-5(4x-5)(x-1)=-20x^2+45x-25; teacher correct; best=INVALID
+0794,statistics,free_multi,2,"4.47, 4",HIGH,YES,"mean=85/19=4.47, median=4; teacher correct; best=5 is wrong"
+0801,linear_algebra,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,"projective space linear maps competition; teacher=G, best=E; not computable"
+0818,algebra,free_multi,2,"5a+6b, ab",HIGH,YES,6/a+5/b=(6b+5a)/(ab); teacher/best agree (numerator+denominator slots)
+0830,trigonometry,free_single,1,44*pi/15,HIGH,YES,arc: 3960*8/60*pi/180=44pi/15=9.215; teacher(exact)=best(decimal) agree
+0834,trigonometry,free_multi,3,"pi/4, 3*pi/2, -19*pi/6",HIGH,YES,"45=pi/4, 270=3pi/2, -570=-19pi/6; teacher correct; best=5 is undercount/wrong"
+0836,calculus,free_single,0,2025,HIGH,YES,min chords of length 2025: continuous fn theorem gives N=2025; teacher correct; best=15 wrong
+0851,algebra,MCQ,1,"B, C",HIGH,YES,"y=-5/8 x: (0,0)->B, (-24,15)->C satisfy; teacher/best agree"
+0872,calculus,free_multi,2,"infinity, 0",HIGH,YES,lim(t->-inf)(t^2+5)=inf; lim(y->inf)4y^-2=0; teacher correct; best=INVALID
+0880,trigonometry,free_multi,2,"35/37, 35/12",HIGH,YES,"cos=12/37: sin=35/37, tan=35/12; teacher(exact)=best(decimal) agree"
+0887,linear_algebra,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,"fuzzy logic min/max equation; teacher=I, best=C; not Wolfram-computable"
+0896,algebra,free_multi,8,"False,True,False,False,True,True,False,True",HIGH,YES,"expr-vs-eqn T/F 8-slot; teacher=words, best=0/1 binary; semantically agree"
+0904,linear_algebra,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,"fuzzy relation matrix composition; teacher=A, best=D; not Wolfram-verifiable"
+0916,geometry,free_multi,3,"3*sqrt(2), 6*sqrt(2), 18",HIGH,YES,"AB=3sqrt2, AC=6sqrt2, area=18; teacher(exact)=best(decimal) agree"
+0927,algebra,free_multi,6,"False,True,True,True,False,False",HIGH,YES,"log properties T/F 6-slot; teacher=words, best=0/1 binary; semantically agree"
+0936,algebra,free_single,1,275/16,HIGH,YES,P(-4)=0 -> k=275/16; teacher correct; best=27517 is digit-concat error of 275/16
+0010,calculus,MCQ,0,2*pi*rho/(rho^2-a^2) form,MED,MAYBE,contour integral |dz|/|z-a|^2; standard result=2pi*rho/|rho^2-a^2|; teacher/best both=E (agree)
+0022,geometry,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,polyhedron 37 faces vertex count; teacher/best both=G (agree but not Wolfram-verifiable)
+0030,statistics,free_multi,2,"2944, 664",HIGH,YES,sample size: a) p=0.5 n=2944; b) given p->664; teacher/best agree
+0033,geometry,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,triangle orthocenter/circumcenter geometry; teacher/best both=F (agree)
+0042,statistics,free_multi,3,"No, Yes, A",HIGH,YES,"P=0.095: a)5% No, b)10% Yes, c)A; teacher/best agree"
+0044,statistics,free_multi,4,"True, True, True, False",HIGH,YES,regression T/F 4-slot; teacher/best agree
+0045,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,OEIS male-offspring recurrence MCQ; teacher/best both=A (agree but not computable)

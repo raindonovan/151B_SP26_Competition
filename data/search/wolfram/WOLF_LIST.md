@@ -169,3 +169,28 @@
 | 0751 | B12 | INCONCLUSIVE | INCONCLUSIVE | n-gon polygon count; teacher=31, best=45; competition |
 | 0762 | B12 | HIGH | 2x(55x+21) | 8x*7x+6x*8x+7*6x+x*6x=110x^2+42x=2x(55x+21); teacher/be |
 | 0772 | B12 | INCONCLUSIVE | INCONCLUSIVE | OEIS bell-ringing MCQ; teacher=H, best=J |
+| 0781 | B13 | HIGH | sqrt(15)/8 | sqrt(3/8)*sqrt(5/8)=sqrt(15)/8; teacher/best agree |
+| 0785 | B13 | HIGH | False, True, False, False | T/F stats; teacher=words, best=0/1 numeric (0.000=False |
+| 0790 | B13 | HIGH | -20x^2+45x-25=0 | -5(4x-5)(x-1)=-20x^2+45x-25; teacher correct; best=INVA |
+| 0794 | B13 | HIGH | 4.47, 4 | mean=85/19=4.47, median=4; teacher correct; best=5 is w |
+| 0801 | B13 | INCONCLUSIVE | INCONCLUSIVE | projective space linear maps competition; teacher=G, be |
+| 0818 | B13 | HIGH | 5a+6b, ab | 6/a+5/b=(6b+5a)/(ab); teacher/best agree (numerator+den |
+| 0830 | B13 | HIGH | 44*pi/15 | arc: 3960*8/60*pi/180=44pi/15=9.215; teacher(exact)=bes |
+| 0834 | B13 | HIGH | pi/4, 3*pi/2, -19*pi/6 | 45=pi/4, 270=3pi/2, -570=-19pi/6; teacher correct; best |
+| 0836 | B13 | HIGH | 2025 | min chords of length 2025: continuous fn theorem gives  |
+| 0851 | B13 | HIGH | B, C | y=-5/8 x: (0,0)->B, (-24,15)->C satisfy; teacher/best a |
+| 0872 | B13 | HIGH | infinity, 0 | lim(t->-inf)(t^2+5)=inf; lim(y->inf)4y^-2=0; teacher co |
+| 0880 | B13 | HIGH | 35/37, 35/12 | cos=12/37: sin=35/37, tan=35/12; teacher(exact)=best(de |
+| 0887 | B13 | INCONCLUSIVE | INCONCLUSIVE | fuzzy logic min/max equation; teacher=I, best=C; not Wo |
+| 0896 | B13 | HIGH | False,True,False,False,True,True,False,True | expr-vs-eqn T/F 8-slot; teacher=words, best=0/1 binary; |
+| 0904 | B13 | INCONCLUSIVE | INCONCLUSIVE | fuzzy relation matrix composition; teacher=A, best=D; n |
+| 0916 | B13 | HIGH | 3*sqrt(2), 6*sqrt(2), 18 | AB=3sqrt2, AC=6sqrt2, area=18; teacher(exact)=best(deci |
+| 0927 | B13 | HIGH | False,True,True,True,False,False | log properties T/F 6-slot; teacher=words, best=0/1 bina |
+| 0936 | B13 | HIGH | 275/16 | P(-4)=0 -> k=275/16; teacher correct; best=27517 is dig |
+| 0010 | B13 | MED | 2*pi*rho/(rho^2-a^2) form | contour integral /dz///z-a/^2; standard result=2pi*rho/ |
+| 0022 | B13 | INCONCLUSIVE | INCONCLUSIVE | polyhedron 37 faces vertex count; teacher/best both=G ( |
+| 0030 | B13 | HIGH | 2944, 664 | sample size: a) p=0.5 n=2944; b) given p->664; teacher/ |
+| 0033 | B13 | INCONCLUSIVE | INCONCLUSIVE | triangle orthocenter/circumcenter geometry; teacher/bes |
+| 0042 | B13 | HIGH | No, Yes, A | P=0.095: a)5% No, b)10% Yes, c)A; teacher/best agree |
+| 0044 | B13 | HIGH | True, True, True, False | regression T/F 4-slot; teacher/best agree |
+| 0045 | B13 | INCONCLUSIVE | INCONCLUSIVE | OEIS male-offspring recurrence MCQ; teacher/best both=A |

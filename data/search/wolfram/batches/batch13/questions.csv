@@ -1,0 +1,97 @@
+id,subject,type,n_ans_slots,best_answer,teacher_consensus,question
+0781,algebra,free_single,1,\frac{\sqrt{15}}{8},sqrt(15)/8,"Simplify the expression ${\sqrt{\frac{3}{8}} \cdot \sqrt{\frac{5}{8}}}$. Use sqrt() for the square root symbol. For example: $\sqrt{2}=$ sqrt(2).
+${\sqrt{\frac{3}{8}} \cdot \sqrt{\frac{5}{8}}=}$ [ANS]"
+0785,statistics,free_multi,4,"0.000, 1.000, 0.000, 0.000","False,True,False,False","Select True or False, depending on whether the corresponding statement is true or false.
+[ANS] 1. The $p$-value is usually 0.05. [ANS] 2. An alternative or research hypothesis is an assertion that holds if the null hypothesis is false. [ANS] 3. A two-tail test is a test in which a null hypothesis can be rejected by an extreme result occurring in only one direction. [ANS] 4. The probability of a Type I error is represented by $\beta$, and is the probability of failing to reject a false null hypothesis."
+0790,algebra,free_single,1,INVALID,-20x^2+45x-25=0,Write the equation $-5 (4x-5) (x-1)=0$ in the standard form $a x^2+b x+c=0$. [ANS] $=0.$
+0794,statistics,free_multi,2,5,"4.47,4","Your teacher is trying to encourage her students to read more books. For the current 9-weeks period, student in her class read the following (sorted) numbers of books: 2 2 3 3 3 4 4 4 4 4 5 5 5 6 6 6 6 6 7 2 2 3 3 3 4 4 4 4 4 5 5 5 6 6 6 6 6 7 For this data, the mean number of books read is [ANS] and the median number read is [ANS]
+Express answers that are not integers to two decimal places."
+0801,linear_algebra,MCQ,0,E,G,"Let $V$ and $W$ be complex vector spaces of dimensions $m$ and $n$ respec- tively and $A \subset V$ a subspace of dimension $l$ . Let $\mathbb{P H o m} ( V, W ) \cong\mathbb{P}^{m n-1}$ be the projective space of nonzero linear maps $\phi: V \to W$ mod scalars, and for any integer $k \leq l$ let
+$$
+\Psi_{k}=\{\phi: V \to W : \, \mathrm{r a n k} ( \phi|_{A} ) \leq k \} \subset\mathbb{P}^{m n-1}.
+$$
+$\Psi_{k}$ is an irreducible subvariety of $\mathbb{P}^{m n-1}$ . What its dimension?"
+0818,algebra,free_multi,2,\dfrac{5a + 6b}{ab},"6b+5a,ab","Write the expression as a single fraction. Simplify your answer.
+$\begin{array}{cccc}\hline &  \frac{6}{a}+\frac{5}{b}=& & [ANS] [ANS] \\ \hline \end{array}$"
+0830,geometry,free_single,1,9.215,\frac{44\pi}{15},Find the distance along an arc on the surface of the earth that subtends a central angle of 8 minutes (1 minute=1/60 degree). The radius of the earth is 3960 miles. Your answer is [ANS] miles.
+0834,algebra,free_multi,3,5,"\frac{\pi}{4},\frac{3\pi}{2},-\frac{19\pi}{6}",Fill in the following equations: $45^\circ=$ [ANS] rad $270^\circ=$ [ANS] rad $-570^\circ=$ [ANS] rad Hint: Everything follows from the fact that 360^\circ=2\pi \hbox{~rad}.
+0836,geometry,free_single,0,15,2025,"Let \( f: \mathbb{R} \to \mathbb{R} \) be a continuous function. A chord is defined as a segment of integer length, parallel to the x-axis, whose endpoints lie on the graph of \( f \). It is known that the graph of \( f \) contains exactly \( N \) chords, one of which has length 2025. Find the minimum possible value of \( N \)."
+0851,algebra,free_single,1,"B,\ C",B  and  C,"Consider the equation
+$y=-\frac{5}{8}x$ Which of the following ordered pairs are solutions to the given equation? There may be more than one correct answer. [ANS] A. \((-32,22)\)  B. \((0,0)\)  C. \((-24,15)\)  D. \((32,-16)\)"
+0872,calculus,free_multi,2,INVALID,"infinity,0","Find:
+(a) $\lim\limits_{t\to-\infty}\, (t^{2}+5)=$ [ANS]
+(Enter the word infinity or-infinity if the limit goes to $\infty$ or $-\infty$.) (b) $\lim\limits_{t\to\infty}\, 4y^{-2}=$ [ANS]
+(Enter the word infinity or-infinity if the limit goes to $\infty$ or $-\infty$.)"
+0880,trigonometry,free_multi,2,"0.9459, 2.917","\frac{35}{37},\frac{35}{12}","Find $\sin \theta$ and $\tan \theta$ if $\cos \theta=\frac {12}{37}$, assuming that $0\leq\theta < \pi/2$. $\sin \theta=$ [ANS]
+$\tan \theta=$ [ANS]"
+0887,algebra,MCQ,0,C,I,"Solve the equation
+$$
+(x_{1} \wedge 0.6) \lor (x_{2} \wedge 0.7) \lor (x_{3} \wedge 0.5) \lor (x_{4} \wedge 0.3) = 0.5.
+$$"
+0896,algebra,free_multi,8,"0, 1, 0, 0, 1, 1, 0, 1","False,True,False,False,True,True,False,True","Choose True or False for the following questions about the difference between expressions and equations.
+$\text{We can evaluate}5x+2=2x+5\text{when}x=1$ [ANS]
+$\text{We can evaluate}5x+2\text{when}x=1$ [ANS]
+$5x+2=2x+5\text{is an expression.}$ [ANS]
+$2x+5\text{is an equation.}$ [ANS]
+$5x+2=2x+5\text{is an equation.}$ [ANS]
+$\text{We can check whether}x=1\text{is a solution of}5x+2=2x+5.$ [ANS]
+$\text{We can check whether}x=1\text{is a solution of}5x+2.$ [ANS]
+$5x+2\text{is an expression.}$ [ANS]"
+0904,linear_algebra,MCQ,0,D,A,"Let $$R_1 = \begin{pmatrix}
+0.5 & 0.4 & 0.2 & 0.1 \\
+0.2 & 0.6 & 0.4 & 0.5 \\
+0.1 & 0.9 & 1 & 0.7
+\end{pmatrix},$$
+$$
+R_2 = \begin{pmatrix}
+0.4 & 0.1 & 0.1 & 0.6 \\
+0.5 & 0.9 & 0.7 & 0.5 \\
+0.6 & 0.8 & 0.7 & 0.6 \\
+\end{pmatrix},
+$$
+$$
+R_3 = \begin{pmatrix}
+0.6 & 0.5 \\
+0.7 & 0.8\\
+1&0.9\\0.2&0.3
+\end{pmatrix},
+$$
+$$
+R_4 = \begin{pmatrix}
+0.7 & 0.3 \\
+0.6 & 0.4\\0.5&0.5\\0.4&0.6
+\end{pmatrix},
+$$
+$$
+R_5 = \begin{pmatrix}
+0.2 & 0.3&0.7\\
+0.6 & 0.4&0.8
+\end{pmatrix},
+$$
+$$
+R_6 = \begin{pmatrix}
+0.2 & 0.6 & 0.9 \\
+0.3 & 0.2 & 0.1
+\end{pmatrix}
+$$
+What is the value of $(R_1 \cup R_2) \cdot (R_3 \cdot R_5)$?"
+0916,geometry,free_multi,3,"4.243, 8.485, 18.00","3\sqrt{2},6\sqrt{2},18","Plot the points $A=(1, 0)$, $B=(4, 3)$, and $C=(-5, 6)$. Notice that these points are vertices of a right triangle (the angle $A$ is 90 degrees). Find the distance between $A$ and $B$: [ANS]
+Find the distance between $A$ and $C$: [ANS]
+Find the area of the triangle $ABC$: [ANS]"
+0927,algebra,free_multi,6,"0,1,1,1,0,0","False,True,True,True,False,False","Using the properties of logarithms, decide whether each equation is true or not.
+[ANS] 1. $\ln{(A)} \ln{(B)}=\ln{(A)}+\ln{(B)}$ [ANS] 2. $p \cdot \ln{(A)}=\ln{(A^p)}$ [ANS] 3. $\log{(\sqrt{A})}=\frac{1}{2} \log{(A)}$ [ANS] 4. $\log{(AB)}=\log{(A)}+\log{(B)}$ [ANS] 5. $\sqrt{\ln{(A)}}=\ln{(A^{(1/2)})}$ [ANS] 6. $ \frac{\log{(A)}}{\log{(B)}}=\log{(A)}-\log{(B)}$"
+0936,algebra,free_single,1,27517,\frac{275}{16},Find $k$ such that the Polynomial $P(x)=4x^3+k x^2+4x-3$ is divisible by $x+4$. $k=$ [ANS]
+0010,calculus,MCQ,0,E,E,"What is the value of the integral $\int_{\mid z \mid=\rho} \frac{\mid\mathrm{d} z \mid} {\mid z-a \mid^{2}}$? Where $a \neq 0$, $a \neq \rho$, $\rho > 0$."
+0022,geometry,MCQ,0,G,G,"Let $P$ be a polyhedron with $37$ faces, all of which are equilateral triangles, squares, or regular pentagons with equal side length. Given there is at least one of each type of face and there are twice as many pentagons as triangles, what is the sum of all the possible number of vertices $P$ can have?"
+0030,statistics,free_multi,2,"2944, 664","2944,664","College officials want to estimate the percentage of students who carry a gun, knife, or other such weapon. How many randomly selected students must be surveyed in order to be $97$ \% confident that the sample percentage has a margin of error of $2$ percentage points?
+(a) $\ $ Assume that there is no available information that could be used as an estimate of $\hat{p}$. Answer: [ANS]
+(b) $\ $ Assume that another study indicated that $6$ \% of college students carry weapons.
+Answer: [ANS]"
+0033,geometry,MCQ,0,F,F,"A rectangle, $HOMF$, has sides $HO=11$ and $OM=5$. A triangle $ABC$ has $H$ as the intersection of the altitudes, $O$ the center of the circumscribed circle, $M$ the midpoint of $BC$, and $F$ the foot of the altitude from $A$. What is the length of $BC$?"
+0042,statistics,free_multi,3,"No, Yes, A","No,Yes,A","Lindsey thinks a certain potato chip maker is putting fewer chips in their regular bags of chips. From a random sample of 17 bags of potato chips she calculated a P value of 0.095 for the sample.
+(a) At a 5\% level of significance, is there evidence that Lindsey is correct? (Type: Yes or No): [ANS]
+(b) At a 10\% level of significance, is there evidence that she is correct? (Type: Yes or No): [ANS]
+(c) In a statistical test of hypotheses, we say that the data are statistically significant at level $\alpha$ if [ANS] A. the P-value is less than $\alpha$.  B. the P-value is larger than $\alpha$.  C. $\alpha$ is small.  D. $\alpha=0.05$."
+0044,statistics,free_multi,4,"True, True, True, False","True,True,True,False","Select True or False, depending on whether the corresponding statement is true or false.
+[ANS] 1. For each $x$ term in the multiple regression equation, the corresponding $\beta$ is referred to as a partial regression coefficient. [ANS] 2. In reference to the equation $\hat{y}=-0.80+0.12x_1+0.08x_2$, the value-0.80 is the $y-$ intercept. [ANS] 3. In a multiple regression problem involving 24 observations and three independent variables, the estimated regression equation is $\hat{y}=72+3.2x_1+1.5x_2-x_3$. For this model, $SST=800$ and $SSE=245$. The value of the $F$ statistic for testing the significance of this model is 15.102. [ANS] 4. In order to test the significance of a multiple regression model involving 4 independent variables and 25 observations, the numerator and denominator degre"
+0045,statistics,MCQ,0,A,A,"We now define an algorithm: The definition of a(n) is the sequence where a(n) represents the number of male offspring in a hypothetical population modelled by two interrelated recurrences, tracking the growth of both male and female populations over time. Given the input x_list (a series of values): [64, 65, 66, 67, 68, 69, 70, 71, 72, 73], determine the corresponding output sequence y_list."

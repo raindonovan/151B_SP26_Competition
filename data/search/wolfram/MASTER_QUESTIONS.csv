@@ -9,7 +9,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0007,geometry,free_single,0,UNVERIFIED,,,,YES,,"The circumference of a circle is divided into $45$ arcs, each of length $1$. Ini"
 0008,other,free_single,1,UNVERIFIED,,,,MAYBE,,What quantity of 70 per cent acid solution must be mixed with a 25 solution to p
 0009,algebra,free_multi,2,DONE,"L-8x, 6F",HIGH,B1,YES,2-slot numerator/denominator split; format risk,Solve the equation for $y$: 8x+6 y F=L $\begin{array}{cccc}\hline &  y=& & [ANS]
-0010,calculus,MCQ,0,UNVERIFIED,,,,YES,,What is the value of the integral $\int_{\mid z \mid=\rho} \frac{\mid\mathrm{d} 
+0010,calculus,MCQ,0,DONE,2*pi*rho/(rho^2-a^2) form,MED,B13,YES,contour integral |dz|/|z-a|^2; standard result=2pi*rho/|rho^2-a^2|; teacher/best both=E (agree),What is the value of the integral $\int_{\mid z \mid=\rho} \frac{\mid\mathrm{d} 
 0011,statistics,free_single,1,DONE,0.939,consensus-only,B8,YES,truncated problem text; verify against source,"Consider simple linear regression with $n$ pairs of numbers $x_i,y_i$. Let ${\ha"
 0012,algebra,free_multi,2,DONE,"2c + 4p = 70, 11",HIGH,B2,YES,equation+value; string-match risk on equation form,"A barnyard is full of chickens and pigs, and the total number of chicken feet an"
 0013,calculus,MCQ,0,UNVERIFIED,,,,YES,,Solve the integral: $$ \int \frac{ 6 }{ \cos(-4 \cdot x)^7 \cdot \sin(4 \cdot x)
@@ -21,7 +21,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0019,number_theory,MCQ,0,UNVERIFIED,,,,YES,,"Consider the sequence defined by $j_0=1$, $j_1=2$, and $j_c=4j_{c-1}-j_{c-2}$ fo"
 0020,statistics,free_multi,3,DONE,"228, 229, 250",HIGH,B9,YES,mean/median/mode; Wolfram confirmed; best=229 is 2-slot undercount,A sample of prices for eight television sets available at a local electronics st
 0021,statistics,free_multi,2,UNVERIFIED,,,,YES,,"The average life expectancy in the United States, $L$, has been rising steadily "
-0022,geometry,MCQ,0,UNVERIFIED,,,,YES,,"Let $P$ be a polyhedron with $37$ faces, all of which are equilateral triangles,"
+0022,geometry,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B13,YES,polyhedron 37 faces vertex count; teacher/best both=G (agree but not Wolfram-verifiable),"Let $P$ be a polyhedron with $37$ faces, all of which are equilateral triangles,"
 0023,other,MCQ,0,UNVERIFIED,,,,MAYBE,,The distance between points $A$ and $B$ is 5 km. Person A walks from $A$ towards
 0024,statistics,free_single,1,DONE,1,HIGH,B9,YES,sum squared residuals=1; teacher correct; best=2 is wrong,"Suppose that the line $\hat{y}=3+2x$ is fitted to the data points (-1,2), (2,7),"
 0025,statistics,free_multi,12,DONE,"8/63, 2/21, 11/63, 17/63, 13/63, 8/63, 8, 14, 25, 42, 55, 63",HIGH,B9,YES,"rel-freq+cumul-freq 12-slot; best=6 slots (cumul only), missing rel-freqs",$\begin{array}{cc}\hline Grade on Statistics Exam & Frequency \\ \hline Below 50
@@ -29,10 +29,10 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0027,trigonometry,free_multi,2,UNVERIFIED,,,,YES,,"Solve the following equations in the interval [0,2 $\pi$]. Note: Give the answer"
 0028,other,free_multi,6,UNVERIFIED,,,,MAYBE,,a) In a dictionary 16 pages are 1 millimeter thick. To find the thickness of 112
 0029,algebra,free_single,1,DONE,38.2,HIGH,B9,YES,yellow tint pct: 26/68=38.24% rounded to 1dp=38.2; best=39 is wrong,"A mixture of 60 liters of paint is 25\% red tint, 30\% yellow tint and 45\% wate"
-0030,statistics,free_multi,2,UNVERIFIED,,,,YES,,"College officials want to estimate the percentage of students who carry a gun, k"
+0030,statistics,free_multi,2,DONE,"2944, 664",HIGH,B13,YES,sample size: a) p=0.5 n=2944; b) given p->664; teacher/best agree,"College officials want to estimate the percentage of students who carry a gun, k"
 0031,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"Divide or state that the division is undefined. (In this case, enter undefined.)"
 0032,geometry,free_multi,3,DONE,"sqrt(101), -1, -7/2",HIGH,B9,YES,"distance=sqrt(101), midpoint=(-1,-7/2); best(decimals) equivalent to teacher(exact)","The distance between $(4,-3)$ and $(-6,-4)$ is [ANS] The midpoint of the line se"
-0033,geometry,MCQ,0,UNVERIFIED,,,,YES,,"A rectangle, $HOMF$, has sides $HO=11$ and $OM=5$. A triangle $ABC$ has $H$ as t"
+0033,geometry,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B13,YES,triangle orthocenter/circumcenter geometry; teacher/best both=F (agree),"A rectangle, $HOMF$, has sides $HO=11$ and $OM=5$. A triangle $ABC$ has $H$ as t"
 0034,statistics,MCQ,0,UNVERIFIED,,,,YES,,"Given the following values for a variable: minimum value is 3, first quartile (Q"
 0035,algebra,free_multi,2,UNVERIFIED,,,,YES,,Applying a horizontal stretch by a factor of $p$ (where $p$ is a constant such t
 0036,other,free_single,1,UNVERIFIED,,,,MAYBE,,Multiply using the product rule: $(-8x^{5} y^{6})(-5x^{5} y^{3})$=[ANS]
@@ -41,10 +41,10 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0039,other,free_single,1,UNVERIFIED,,,,MAYBE,,One piece of paper is approximately $17$ millimeters in thickness. A stack of pa
 0040,algebra,free_single,1,DONE,D = 800 - 50d,HIGH,B8,YES,missing LHS prefix; Qwen failure=missing-prefix,A homing pigeon starts 800 miles from home and flies 50 miles toward home each d
 0041,other,free_single,0,DONE,2112,HIGH,WEBSEARCH,MAYBE,IMO 2025 P6 (Matilda tiles). ALL 5 teachers wrong (3986/4048/4048). Free-form.,Consider a $2025 \times 2025$ grid of unit squares. Matilda wishes to place on t
-0042,statistics,free_multi,3,UNVERIFIED,,,,YES,,Lindsey thinks a certain potato chip maker is putting fewer chips in their regul
+0042,statistics,free_multi,3,DONE,"No, Yes, A",HIGH,B13,YES,"P=0.095: a)5% No, b)10% Yes, c)A; teacher/best agree",Lindsey thinks a certain potato chip maker is putting fewer chips in their regul
 0043,trigonometry,free_multi,3,UNVERIFIED,,,,YES,,Use half angle formulas to fill in the blanks in the identity below: $(\sin(7x))
-0044,statistics,free_multi,4,UNVERIFIED,,,,YES,,"Select True or False, depending on whether the corresponding statement is true o"
-0045,statistics,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is the sequence where a(n) re
+0044,statistics,free_multi,4,DONE,"True, True, True, False",HIGH,B13,YES,regression T/F 4-slot; teacher/best agree,"Select True or False, depending on whether the corresponding statement is true o"
+0045,statistics,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B13,YES,OEIS male-offspring recurrence MCQ; teacher/best both=A (agree but not computable),We now define an algorithm: The definition of a(n) is the sequence where a(n) re
 0046,statistics,free_multi,7,UNVERIFIED,,,,YES,,A random sample of $100$ observations from a population with standard deviation 
 0047,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Find all natural numbers that satisfy $3^{m}-1$ being divisible by $2^{m}$.
 0048,algebra,free_single,1,UNVERIFIED,,,,YES,,Rewrite the exponential equation $e^{-2} \approx 0.135$ in equivalent logarithmi
@@ -780,27 +780,27 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0778,other,MCQ,0,UNVERIFIED,,,,MAYBE,,You have applied to three medical schools: University of California at San Franc
 0779,calculus,MCQ,0,UNVERIFIED,,,,YES,,"Given the function $f(x)=\begin{cases}\sin x,&\text{if } \cos x \text{ is a rati"
 0780,other,free_single,1,UNVERIFIED,,,,MAYBE,,Subtract $-5t^{14}-7t^{12}-6t^{10}$ from the sum of $6t^{14}-5t^{12}+8t^{10}$ an
-0781,algebra,free_single,1,UNVERIFIED,,,,YES,,Simplify the expression ${\sqrt{\frac{3}{8}} \cdot \sqrt{\frac{5}{8}}}$. Use sqr
+0781,algebra,free_single,1,DONE,sqrt(15)/8,HIGH,B13,YES,sqrt(3/8)*sqrt(5/8)=sqrt(15)/8; teacher/best agree,Simplify the expression ${\sqrt{\frac{3}{8}} \cdot \sqrt{\frac{5}{8}}}$. Use sqr
 0782,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Find the following partial sum, $ \sum_{n=0}^{40} (3-2 n)=$ [ANS]"
 0783,calculus,MCQ,0,UNVERIFIED,,,,YES,,Solve the integral: $$ 2 \cdot \int \sin(-2 \cdot x)^5 \cdot \cos(2 \cdot x)^2 \
 0784,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Find the distance between the pair of real numbers: ${\textstyle\frac{7}{12}}$, "
-0785,statistics,free_multi,4,UNVERIFIED,,,,YES,,"Select True or False, depending on whether the corresponding statement is true o"
+0785,statistics,free_multi,4,DONE,"False, True, False, False",HIGH,B13,YES,"T/F stats; teacher=words, best=0/1 numeric (0.000=False); semantically agree","Select True or False, depending on whether the corresponding statement is true o"
 0786,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Determine the count of positive integers $X$ that fulfill all of these criteria:
 0787,other,free_multi,3,DONE,"148,178,452, 41.55, 46.97",MEDIUM,B1,MAYBE,discrete geometric 3-slot; format ambiguity on units,A country's consumption of iron increases 5.7\% per year. Assuming this rate of 
 0788,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Let $f(x) =\frac{2}{x^2 -1}$ . Find the largest positive integer $n$ such that $
 0789,algebra,free_multi,4,UNVERIFIED,,,,YES,,Find the absolute value of the following numbers. ${|{8}|=}$ [ANS] ${|{-8}|=}$ [
-0790,algebra,free_single,1,UNVERIFIED,,,,YES,,Write the equation $-5 (4x-5) (x-1)=0$ in the standard form $a x^2+b x+c=0$. [AN
+0790,algebra,free_single,1,DONE,-20x^2+45x-25=0,HIGH,B13,YES,-5(4x-5)(x-1)=-20x^2+45x-25; teacher correct; best=INVALID,Write the equation $-5 (4x-5) (x-1)=0$ in the standard form $a x^2+b x+c=0$. [AN
 0791,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,Calculate the sum $S=\cos(a)+\cos(2 \cdot a)+\cos(3 \cdot a) + \ldots + \cos(n \
 0792,other,free_single,1,UNVERIFIED,,,,MAYBE,,Solve the expression $T h^{t}=V g^{t}$ for $t$ assuming that all other letters a
 0793,statistics,free_multi,4,DONE,"1.35, (1.49, inf), 0.0895, D",HIGH,B6,YES,t-test 4-slot; note 'inf' not 'infty' in notation,"A manufacturer of light bulbs advertises that, on average, its long-life bulb wi"
-0794,statistics,free_multi,2,UNVERIFIED,,,,YES,,Your teacher is trying to encourage her students to read more books. For the cur
+0794,statistics,free_multi,2,DONE,"4.47, 4",HIGH,B13,YES,"mean=85/19=4.47, median=4; teacher correct; best=5 is wrong",Your teacher is trying to encourage her students to read more books. For the cur
 0795,other,free_multi,3,UNVERIFIED,,,,MAYBE,,"A population, $P$, of a certain species of fish in a lake begins with $450$ memb"
 0796,calculus,MCQ,0,UNVERIFIED,,,,YES,,Let $\omega_1$ be a circle of radius $1$ that is internally tangent to a circle 
 0797,geometry,MCQ,0,UNVERIFIED,,,,YES,,"$\triangle ABC$ has $AB=3$ , $BC=2007$ , and $CA=2008$ . Point $E$ is on $AC$ su"
 0798,algebra,free_multi,2,UNVERIFIED,,,,YES,,Solve for $t$: \sqrt{t-151}-\sqrt{t+117}=125 The only possible root is $t=$ [ANS
 0799,other,free_single,0,UNVERIFIED,,,,MAYBE,,Jerry places at most one rook in each cell of a $2025 \times 2025$ grid of cells
 0800,statistics,free_single,1,UNVERIFIED,,,,YES,,A medical researcher wants to investigate the amount of time it takes for patien
-0801,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,Let $V$ and $W$ be complex vector spaces of dimensions $m$ and $n$ respec- tivel
+0801,linear_algebra,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B13,YES,"projective space linear maps competition; teacher=G, best=E; not computable",Let $V$ and $W$ be complex vector spaces of dimensions $m$ and $n$ respec- tivel
 0802,algebra,free_single,1,UNVERIFIED,,,,YES,,Simplify the following and express your answer as a single fraction. No decimals
 0803,other,free_single,1,UNVERIFIED,,,,MAYBE,,"According to the Food and Drug Administration (FDA), a cup of coffee contains on"
 0804,calculus,MCQ,0,UNVERIFIED,,,,YES,,Calculate the integral $$ \int_{0}^{+\infty} \frac{x \sin(m x)}{x^{4} + a^{4}} \
@@ -817,7 +817,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0815,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Take two numbers randomly from $(0,1)$, so what is the probability that the sum "
 0816,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Animals and people that take in more energy than they expend will get fatter. He
 0817,other,free_single,1,UNVERIFIED,,,,MAYBE,,Evaluate this expression: ${{{\textstyle\frac{8}{7}}}+8\cdot{{\textstyle\frac{8}
-0818,algebra,free_multi,2,UNVERIFIED,,,,YES,,Write the expression as a single fraction. Simplify your answer. $\begin{array}{
+0818,algebra,free_multi,2,DONE,"5a+6b, ab",HIGH,B13,YES,6/a+5/b=(6b+5a)/(ab); teacher/best agree (numerator+denominator slots),Write the expression as a single fraction. Simplify your answer. $\begin{array}{
 0819,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,$\int_{{}}^{{}}{\frac{1+\sin x}{1+\cos x}dx}=$
 0820,algebra,free_single,1,UNVERIFIED,,,,YES,,Simplify the expression: $18-6 \div 2$ [ANS]
 0821,other,free_multi,4,UNVERIFIED,,,,MAYBE,,Suppose you want to use a paired sample to compare the mean TV viewing times of 
@@ -829,13 +829,13 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0827,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Where is the parabola $y = x^2$ closest to the point $(2,0)$?"
 0828,statistics,free_multi,2,UNVERIFIED,,,,YES,,Use the given data to find the 95\% confidence interval estimate of the populati
 0829,other,free_single,1,UNVERIFIED,,,,MAYBE,,You fire a rifle at an angle of 45 degrees. Thus the initial horizontal and vert
-0830,geometry,free_single,1,UNVERIFIED,,,,YES,,Find the distance along an arc on the surface of the earth that subtends a centr
+0830,geometry,free_single,1,DONE,44*pi/15,HIGH,B13,YES,arc: 3960*8/60*pi/180=44pi/15=9.215; teacher(exact)=best(decimal) agree,Find the distance along an arc on the surface of the earth that subtends a centr
 0831,calculus,MCQ,0,UNVERIFIED,,,,YES,,"Solve the integral: $$ \int \frac{ 1 }{ \sin(8 \cdot x)^5 } \, dx $$"
 0832,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Given \( y = {f^2}(x) \), assuming \( f(u) \) is twice differentiable, then \( y"
 0833,other,free_single,1,UNVERIFIED,,,,MAYBE,,Enter the following rational numbers from least to greatest. Separate your answe
-0834,algebra,free_multi,3,UNVERIFIED,,,,YES,,Fill in the following equations: $45^\circ=$ [ANS] rad $270^\circ=$ [ANS] rad $-
+0834,algebra,free_multi,3,DONE,"pi/4, 3*pi/2, -19*pi/6",HIGH,B13,YES,"45=pi/4, 270=3pi/2, -570=-19pi/6; teacher correct; best=5 is undercount/wrong",Fill in the following equations: $45^\circ=$ [ANS] rad $270^\circ=$ [ANS] rad $-
 0835,other,free_single,1,UNVERIFIED,,,,MAYBE,,Penelope collected a total of $2016$ stamps over the past $16$ years. On average
-0836,geometry,free_single,0,UNVERIFIED,,,,YES,,Let \( f: \mathbb{R} \to \mathbb{R} \) be a continuous function. A chord is defi
+0836,geometry,free_single,0,DONE,2025,HIGH,B13,YES,min chords of length 2025: continuous fn theorem gives N=2025; teacher correct; best=15 wrong,Let \( f: \mathbb{R} \to \mathbb{R} \) be a continuous function. A chord is defi
 0837,algebra,MCQ,0,UNVERIFIED,,,,YES,,"Find the value of $I=\int_{0}^{1}f(x)$d$x$ is (), where $$f(x)=\begin{cases}x\ma"
 0838,statistics,free_single,1,UNVERIFIED,,,,YES,,One of the few negative side effects of quitting smoking is weight gain. Suppose
 0839,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,"Evaluate $\sum_{n=0}^\infty \mathrm{Arccot}(n^2+n+1)$, where $\mathrm{Arccot}\,t"
@@ -850,7 +850,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0848,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,Find the minimum value of $y = \frac{ \left(\cos(x)\right)^2 - 4 \cdot \cos(x) +
 0849,calculus,free_single,1,UNVERIFIED,,,,YES,,Express the following sum in closed form. $ \sum\limits_{k=1}^{n} \ 8 \left(\fra
 0850,geometry,MCQ,0,UNVERIFIED,,,,YES,,"You have $5$ boxes and $2005$ balls. $286$ , $645$ , and $1074$ of these balls a"
-0851,algebra,free_single,1,UNVERIFIED,,,,YES,,Consider the equation $y=-\frac{5}{8}x$ Which of the following ordered pairs are
+0851,algebra,free_single,1,DONE,"B, C",HIGH,B13,YES,"y=-5/8 x: (0,0)->B, (-24,15)->C satisfy; teacher/best agree",Consider the equation $y=-\frac{5}{8}x$ Which of the following ordered pairs are
 0852,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Each second, an atom clock runs $0.0008$ second slower than usual. This clock an"
 0853,geometry,MCQ,0,UNVERIFIED,,,,YES,,What is the circumference of the ellipse $\frac{x^{2}}{4} + y^{2} = 1$? Provide 
 0854,other,free_multi,2,UNVERIFIED,,,,MAYBE,,If $g(t)=\frac{1}{t+8}-6$ (a) Find $g(0)$. $g(0)=$ [ANS] (b) Exactly solve $g(t)
@@ -871,7 +871,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0869,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"(a) Suppose you pick two numbers 5 and 6. Find their sum and product, but do not"
 0870,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"A die is thrown 8 times, resulting in a 2 appearing 3 times, the probability is "
 0871,other,MCQ,0,UNVERIFIED,,,,MAYBE,,The locus of the mid point of the line segment joining the focus to a moving poi
-0872,calculus,free_multi,2,UNVERIFIED,,,,YES,,"Find: (a) $\lim\limits_{t\to-\infty}\, (t^{2}+5)=$ [ANS] (Enter the word infinit"
+0872,calculus,free_multi,2,DONE,"infinity, 0",HIGH,B13,YES,lim(t->-inf)(t^2+5)=inf; lim(y->inf)4y^-2=0; teacher correct; best=INVALID,"Find: (a) $\lim\limits_{t\to-\infty}\, (t^{2}+5)=$ [ANS] (Enter the word infinit"
 0873,other,MCQ,0,UNVERIFIED,,,,MAYBE,,We now define an algorithm: The definition of a(n) is the reversion transform of
 0874,other,MCQ,0,UNVERIFIED,,,,MAYBE,,We now define an algorithm: The definition of a(n) is the result of the generali
 0875,geometry,MCQ,0,UNVERIFIED,,,,YES,,"If the volume of the tetrahedron with edges $2i + j - k,\,\,i + aj + k$  and $i "
@@ -879,14 +879,14 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0877,number_theory,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is: Bisection (odd part) of C
 0878,number_theory,MCQ,0,UNVERIFIED,,,,YES,,Find the remainder when $\left( 1 2 3 7 1^{5 6}+3 4 \right)^{2 8}$ is divided by
 0879,geometry,MCQ,0,UNVERIFIED,,,,YES,,"Find the volume of the region of points $(x,y,z)$ such that \[ (x^2 + y^2 + z^2 "
-0880,trigonometry,free_multi,2,UNVERIFIED,,,,YES,,"Find $\sin \theta$ and $\tan \theta$ if $\cos \theta=\frac {12}{37}$, assuming t"
+0880,trigonometry,free_multi,2,DONE,"35/37, 35/12",HIGH,B13,YES,"cos=12/37: sin=35/37, tan=35/12; teacher(exact)=best(decimal) agree","Find $\sin \theta$ and $\tan \theta$ if $\cos \theta=\frac {12}{37}$, assuming t"
 0881,number_theory,MCQ,0,UNVERIFIED,,,,YES,,"In the group G = {2, 4, 6, 8) under multiplication modulo 10, the identity eleme"
 0882,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"Town A and Town B were located close to each other, and recently merged into one"
 0883,algebra,free_single,1,UNVERIFIED,,,,YES,,"You drop a rock into a deep well. You can't see the rock's impact at the bottom,"
 0884,other,free_single,1,DONE,g(x)=(x-59)^2+74,HIGH,B8,MAYBE,prefix required; g(x)= form,"Given $f(x)=x^2$, after performing the following transformations: shift upward 7"
 0885,statistics,free_multi,4,UNVERIFIED,,,,YES,,"Calculate the mode, mean, and median of the following data: 18, \ 20, \ 17, \ 18"
 0886,statistics,free_multi,2,DONE,"A, C",HIGH,B6,YES,2-slot ME scaling + n_req,"In developing an interval estimate for a population mean, a sample of 50 observa"
-0887,algebra,MCQ,0,UNVERIFIED,,,,YES,,Solve the equation $$ (x_{1} \wedge 0.6) \lor (x_{2} \wedge 0.7) \lor (x_{3} \we
+0887,algebra,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B13,YES,"fuzzy logic min/max equation; teacher=I, best=C; not Wolfram-computable",Solve the equation $$ (x_{1} \wedge 0.6) \lor (x_{2} \wedge 0.7) \lor (x_{3} \we
 0888,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,"Given $A P=P B$ , and $P=\left( \begin{matrix} {{{1}}} & {{{0}}} & {{{0}}} \\ {{"
 0889,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Decide whether the expression \frac{20 y}{4 y+5} can be put in the form \frac{ax
 0890,other,free_multi,4,UNVERIFIED,,,,MAYBE,,A study investigated the effect of the length and the repetition of TV advertise
@@ -895,7 +895,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0893,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"In a questionnaire, respondents are asked to mark their gender as male or female"
 0894,statistics,free_multi,8,DONE,"0.008, 1.783, 2.013, -0.091, 0.283, -0.100, 0.272, 10",MEDIUM,B6,YES,"regression PI 8-slot; question hints 9, verified 10",The variables are x=SP500 market monthly log return and y=monthly return of Amer
 0895,algebra,free_single,1,UNVERIFIED,,,,YES,,Find a formula for the exponential function which satisfies the given conditions
-0896,algebra,free_multi,8,UNVERIFIED,,,,YES,,Choose True or False for the following questions about the difference between ex
+0896,algebra,free_multi,8,DONE,"False,True,False,False,True,True,False,True",HIGH,B13,YES,"expr-vs-eqn T/F 8-slot; teacher=words, best=0/1 binary; semantically agree",Choose True or False for the following questions about the difference between ex
 0897,other,free_single,1,UNVERIFIED,,,,MAYBE,,Suppose that the mean score of a class of 34 students was 77. The 18 male studen
 0898,algebra,free_single,1,UNVERIFIED,,,,YES,,Simplify the expression: $8\times 6+0 \times 7$ [ANS]
 0899,calculus,MCQ,0,UNVERIFIED,,,,YES,,"Compute the integral: $$ \int \frac{ \tan(x) }{ \sqrt{\sin(x)^4+\cos(x)^4} } \, "
@@ -903,7 +903,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0901,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Let $\quad{\underline{{{2}}}}=\int_{1}^{2} {\frac{x-1} {x}}+\int_{2}^{3} {\frac{
 0902,other,free_multi,2,DONE,"9, 6",HIGH,B8,MAYBE,simplified radical ratio,The expression \frac{\sqrt{81}}{\sqrt{36}} equals [ANS]/[ANS].
 0903,statistics,free_multi,2,UNVERIFIED,,,,YES,,"In a histogram, the proportion of the total area which must be to the left of th"
-0904,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,Let $$R_1 = \begin{pmatrix} 0.5 & 0.4 & 0.2 & 0.1 \\ 0.2 & 0.6 & 0.4 & 0.5 \\ 0.
+0904,linear_algebra,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B13,YES,"fuzzy relation matrix composition; teacher=A, best=D; not Wolfram-verifiable",Let $$R_1 = \begin{pmatrix} 0.5 & 0.4 & 0.2 & 0.1 \\ 0.2 & 0.6 & 0.4 & 0.5 \\ 0.
 0905,statistics,free_multi,2,UNVERIFIED,,,,YES,,"For each paired data set, construct a scatterplot and identify the mathematical "
 0906,algebra,free_single,1,UNVERIFIED,,,,YES,,Find vertical asymptote(s) of the function ${m(x)={\frac{3}{x^{2}-7x+10}}}$. Use
 0907,geometry,free_single,0,UNVERIFIED,,,,YES,,Let $\mathcal P$ be a simple polygon and let $j$ and $k$ be positive integers wi
@@ -915,7 +915,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0913,other,MCQ,0,UNVERIFIED,,,,MAYBE,,$int {{{dx} over {x{{left( {x - 1} right)}^2}}}} = left( {} right)$
 0914,statistics,free_multi,2,UNVERIFIED,,,,YES,,A recent survey showed that among 800 randomly selected subjects who completed 4
 0915,other,free_single,1,UNVERIFIED,,,,MAYBE,,"A line passes through the points $(4,-6)$ and $(9,-16)$. Find this line’s slope."
-0916,geometry,free_multi,3,UNVERIFIED,,,,YES,,"Plot the points $A=(1, 0)$, $B=(4, 3)$, and $C=(-5, 6)$. Notice that these point"
+0916,geometry,free_multi,3,DONE,"3*sqrt(2), 6*sqrt(2), 18",HIGH,B13,YES,"AB=3sqrt2, AC=6sqrt2, area=18; teacher(exact)=best(decimal) agree","Plot the points $A=(1, 0)$, $B=(4, 3)$, and $C=(-5, 6)$. Notice that these point"
 0917,statistics,free_multi,3,DONE,"189.8, 246.4, 43",HIGH,B6,YES,CI + n_req 3-slot,The time in hours for a worker to repair an electrical instrument is a Normally 
 0918,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,Given $A=\left[ \begin{array} {c c} {{{1}}} & {{{2}}} \\ {{{3}}} & {{{4}}} \\ \e
 0919,other,free_single,0,UNVERIFIED,,,,MAYBE,,"Let \( X_0, X_1, \dots, X_{n-1} \) be \( n \geq 2 \) given points in the plane, "
@@ -926,7 +926,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0924,statistics,free_multi,2,DONE,"n = 55 + 0.2t, 2010",HIGH,B7,YES,linear model + year 2-slot,"According to one mathematical model, the average life expenctancy for American m"
 0925,other,free_single,1,UNVERIFIED,,,,MAYBE,,Your school creates student IDs by putting stick-on numbers from 0 to 9 onto a b
 0926,algebra,free_single,1,UNVERIFIED,,,,YES,,Let $f(t)=5-3t^{2}.$ Evaluate $f(t+1)$. $f(t+1)=$ [ANS] Note: Your answer should
-0927,algebra,free_multi,6,UNVERIFIED,,,,YES,,"Using the properties of logarithms, decide whether each equation is true or not."
+0927,algebra,free_multi,6,DONE,"False,True,True,True,False,False",HIGH,B13,YES,"log properties T/F 6-slot; teacher=words, best=0/1 binary; semantically agree","Using the properties of logarithms, decide whether each equation is true or not."
 0928,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Find a cosine series which represents f(x) in 0 \leq x \leq \pi if f(x) is defin
 0929,statistics,free_multi,3,DONE,"5.860, (-0.78, 3.18), A",HIGH,B7,YES,pooled t CI + MCQ 3-slot; nB=11 (13-2 excluded),"Some car tires can develop what is known as ""heel and toe"" wear if not rotated a"
 0930,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,Given the n-order determinant $D \!=\! \left| \! \begin{array} {c c c c c} {{{1}
@@ -935,7 +935,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0933,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"For the Knapsack: {1 6 8 15 24}, what is the plain text code if the ciphertext i"
 0934,other,MCQ,0,UNVERIFIED,,,,MAYBE,,We now define an algorithm: The definition of a(n) is the number of terms in the
 0935,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Draw in the diagonals of a regular octagon. What is the sum of all distinct angl
-0936,algebra,free_single,1,UNVERIFIED,,,,YES,,Find $k$ such that the Polynomial $P(x)=4x^3+k x^2+4x-3$ is divisible by $x+4$. 
+0936,algebra,free_single,1,DONE,275/16,HIGH,B13,YES,P(-4)=0 -> k=275/16; teacher correct; best=27517 is digit-concat error of 275/16,Find $k$ such that the Polynomial $P(x)=4x^3+k x^2+4x-3$ is divisible by $x+4$. 
 0937,other,free_single,1,UNVERIFIED,,,,MAYBE,,"If the positive numbers from 1 to 79, inclusive, are written on a piece of paper"
 0938,other,free_single,1,UNVERIFIED,,,,MAYBE,,Penelope is paying a dinner bill of ${\$43.00}$. Penelope plans to pay $16\%$ in
 0939,number_theory,MCQ,0,UNVERIFIED,,,,YES,,Let S be the sum of all positive integer k such that k is relatively prime to 10
