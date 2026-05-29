@@ -107,6 +107,18 @@ Item 0718 best_answer = literal string "median" (the NAME of the statistic, not 
 ## Finding 22 — DATASET-WIDE OPEN QUESTION: population vs sample variance convention
 Item 0542: range=285 unambiguous, but "variance"/"standard deviation" (without "sample" qualifier) — best used POPULATION (n denominator: var=7457, std=86.35) while Wolfram defaults SAMPLE (n-1: var=8388, std=91.59). This convention affects MANY stats items. **ACTION: probe with one known-gold item (submit both forms) to resolve globally before mass-applying variance corrections.**
 
+## Finding 23 — `undercount` flag is strong, `backsolve_disagree` is weak (B18)
+Refines F17/F20. Discrepancy yield by flag:
+- `undercount`-flagged P3 (B15-16): ~30% discrepancies.
+- `backsolve_disagree`-only single-slot (B18): 2/25 discrepancies (8%), 7 matches, 12 inconclusive.
+`backsolve_disagree` fires when the back-solve posterior disagreed with the sheet, but the sheet's best is usually already correct, and many such items are uncomputable competition problems. **Prioritize `undercount`; deprioritize `backsolve_disagree`-only.**
+
+## Finding 24 — Sheet placeholder/CoT leakage (sheet-hygiene, not math)
+Some best_answer values are sheet-construction failures, not wrong math:
+- 0611: literal "PLACEHOLDER_0611" (template never filled)
+- 0498: leaked chain-of-thought rambling text (inference output never parsed to a final answer)
+Joins F16/F21 (best="INVALID"/"answer"/word). **Recommend a sheet-hygiene sweep:** grep best_answer for "PLACEHOLDER", multi-sentence text, or bare vocabulary words — all are unparsed/failed entries that need a value supplied.
+
 ## Open questions
 - Exact Kaggle string-matching rules (whitespace, `\text{}` wrappers, trailing zeros, `^\circ` vs `°`)
 - 0587 multi-select format: comma-sep vs concatenated vs sub-boxes

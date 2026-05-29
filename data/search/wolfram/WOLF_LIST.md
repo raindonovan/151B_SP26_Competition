@@ -294,3 +294,28 @@
 | 0393 | B17 | HIGH | (1/10)arccos((x-6)/16), -10, 22 | inverse of 16cos(10x)+6: f^-1=(1/10)arccos((x-6)/16), d |
 | 0401 | B17 | HIGH | 143.2, 240.0, 52.52, -135.0 | rad->deg: 5/2=143.2,4π/3=240,11/12=52.52,-3π/4=-135; be |
 | 0408 | B17 | MED | 5816/9999, 3017/99990, 574/999, 653/9990, 428/999 | repeating decimals to fractions 5-slot; best all slots  |
+| 0019 | B18 | HIGH | 181 | j_155 least odd prime: mod181=0 (recurrence family 0017 |
+| 0055 | B18 | HIGH | 5x^4 | y=kx^4, 405=k*81->k=5; y=5x^4; MATCH (best correct) |
+| 0112 | B18 | INCONCLUSIVE | INCONCLUSIVE | cube cross-section pentagon competition; best=600; not  |
+| 0161 | B18 | INCONCLUSIVE | INCONCLUSIVE | median-of-subsets competition; best=C(2024,1012); not c |
+| 0184 | B18 | INCONCLUSIVE | INCONCLUSIVE | OEIS GF(2) polynomial mult table; best=A; not computabl |
+| 0195 | B18 | MED | -2.445, -0.7553 | two-sample CI female/male drinks; best plausible (CI bo |
+| 0198 | B18 | INCONCLUSIVE | INCONCLUSIVE | reducible polynomial triplets competition; best=5; not  |
+| 0229 | B18 | INCONCLUSIVE | INCONCLUSIVE | tree/complex-numbers competition; best=n-2; not computa |
+| 0312 | B18 | INCONCLUSIVE | INCONCLUSIVE | Ana/Banana periodic function game; best=20; not computa |
+| 0316 | B18 | INCONCLUSIVE | INCONCLUSIVE | triangle/tangent-circle competition; best=I; not comput |
+| 0376 | B18 | INCONCLUSIVE | INCONCLUSIVE | gcd(a^2+b^2+c^2,abc) sum competition; best=1275; not co |
+| 0391 | B18 | INCONCLUSIVE | INCONCLUSIVE | sequence-mod-prime competition; best=I; not computable |
+| 0405 | B18 | INCONCLUSIVE | INCONCLUSIVE | OEIS partitions 3 kinds; best=B; not computable |
+| 0445 | B18 | INCONCLUSIVE | INCONCLUSIVE | coin-flip 20H-before-19T m+n mod competition; best=G; n |
+| 0498 | B18 | INCONCLUSIVE | INCONCLUSIVE | list mean8/median13/mode15/range27 competition; best=BR |
+| 0502 | B18 | HIGH | 8/11 | period of 2tan(11pi/8 x-...)=pi/(11pi/8)=8/11; MATCH (b |
+| 0522 | B18 | HIGH | -0.472, 0.472 | cos x=4x^2 -> x=+/-0.4719; MATCH (best correct) |
+| 0611 | B18 | HIGH | 1.356 | SE=sqrt(SSE/(n-2))=sqrt(57/31)=1.356; DISCREPANCY (best |
+| 0775 | B18 | HIGH | 6sin(x-7)-6 | right 7, down 6, vstretch 6: y=6sin(x-7)-6; DISCREPANCY |
+| 0802 | B18 | HIGH | 26/7 | 12/6 * 13/7 = 26/7; MATCH (best correct) |
+| 0812 | B18 | HIGH | 512/sin^6(2t) | (xy)^6=8 polar: r^12 sin^6(2t)/64=8 -> 512/sin^6(2t)=r^ |
+| 0906 | B18 | HIGH | x=2, x=5 | VA of 3/((x-2)(x-5)): x=2,x=5; MATCH (best correct) |
+| 0409 | B18 | MED | prediction-interval + mean-CI at x=3 | 96.2% PI and CI at x=3; best="(-0.02462, 4.239)" likely |
+| 0415 | B18 | HIGH | sqrt(A/6), A, (A/6)^(3/2), A | s=f(A)=sqrt(A/6) confirmed; MATCH (best has all 4 slots |
+| 0448 | B18 | MED | x^3-4x^2-6x+30, x^2-9x+20 | rational function reduced form 2-slot; best has both po |

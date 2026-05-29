@@ -1,0 +1,61 @@
+id,subject,type,n_ans_slots,best_answer,teacher_consensus,question
+0019,number_theory,MCQ,0,D,,"Consider the sequence defined by $j_0=1$, $j_1=2$, and $j_c=4j_{c-1}-j_{c-2}$ for $c\geq 2$. Determine the smallest odd prime factor of $j_{155}$."
+0055,algebra,free_single,1,5x^4,,"Write an equation for $y$ in terms of $x$ if $y$ is proportional to the fourth power of $x$, and $y=405$ when $x=3$. [ANS]"
+0112,geometry,free_single,0,600,,"The intersection between a plane and a cube is a convex pentagon $ABCDE$ satisfying $AB = BC = 10$, $CD = AE = 8$, and $DE = 3$. What is the surface area of the cube?"
+0161,statistics,free_single,0,\dbinom{2024}{1012},,"Let \( A \) be a set of 2025 positive real numbers. For a subset \( T \subseteq A \), define \( M_T \) as the median of \( T \) when all elements of \( T \) are arranged in increasing order, with the convention that \( M_\emptyset = 0 \). Define
+\[
+P(A) = \sum_{\substack{T \subseteq A \\ |T| \text{ odd}}} M_T, \quad Q(A) = \sum_{\substack{T \subseteq A \\ |T| \text{ even}}} M_T.
+\]Find the smallest real number \( C \) such that for any set \( A \) of 2025 positive real numbers, the following inequality holds:
+\[
+P(A) - Q(A) \leq C \cdot \max(A),
+\]where \(\max(A)\) denotes the largest element in \( A \)."
+0184,linear_algebra,MCQ,0,A,,"We now define an algorithm: The definition of a(n) is: Multiplication table {0..i} X {0..j} of binary polynomials (polynomials over GF(2)) interpreted as binary vectors, then written in base 10, or binary multiplication without carries. Note that this involves understanding binary polynomial arithmetic over the finite field GF(2), where addition and multiplication are performed modulo 2. Given the input x_list (a series of values): [81, 82, 83, 84, 85, 86, 87, 88, 89, 90], determine the corresponding output sequence y_list."
+0195,statistics,free_single,1,"-2.445, -0.7553",,"Random samples of female and male UVA undergraduates are asked to estimate the number of alcoholic drinks that each consumes on a typical weekend. The data is below: Females (Population 1): 5, 5, 3, 3, 4, 4, 3, 4, 5, 3 Males (Population 2): 6, 6, 5, 6, 6, 4, 4, 5, 6, 7 Give a 94.2\% confidence interval for the difference between mean female and male drink consumption. (Assume that the population variances are equal.) Confidence Interval=[ANS]"
+0198,number_theory,free_single,0,5,,"Determine all triplets of positive integers $(p,m,n)$ such that $p$ is a prime, $m \neq n < 2p$ and $2 \nmid n$. Also, the following polynomial is reducible in $\mathbb{Z}[x]$
+$$x^{2p} - 2px^m - p^2x^n - 1$$
+Then, compute $\sum_{(p,m,n) \text{admissible}} p + m + n$"
+0229,algebra,free_single,0,n-2,,"Fix an integer $n \geq 3$. Determine the smallest positive integer $k$ satisfying the following condition:
+
+For any tree $T$ with vertices $v_1, v_2, \dots, v_n$ and any pairwise distinct complex numbers $z_1, z_2, \dots, z_n$, there is a polynomial $P(X, Y)$ with complex coefficients of total degree at most $k$ such that for all $i \neq j$ satisfying $1 \leq i, j \leq n$, we have $P(z_i, z_j) = 0$ if and only if there is an edge in $T$ joining $v_i$ to $v_j$.
+
+Note, for example, that the total degree of the polynomial
+$$
+9X^3Y^4 + XY^5 + X^6 - 2
+$$
+is 7 because $7 = 3 + 4$.
+"
+0312,number_theory,free_single,0,20,,"Let $n$ be a positive integer. Ana and Banana play a game. Banana thinks of a function $f\colon\mathbb{Z}\to\mathbb{Z}$ and a prime number $p$. He tells Ana that $f$ is nonconstant, $p<100$, and $f(x+p)=f(x)$ for all integers $x$. Ana's goal is to determine the value of $p$. She writes down $n$ integers $x_1,\dots,x_n$. After seeing this list, Banana writes down $f(x_1),\dots,f(x_n)$ in order. Ana wins if she can determine the value of $p$ from this information. Find the smallest value of $n$ for which Ana has a winning strategy."
+0316,geometry,MCQ,0,I,,"A point $D$ is on side $BC$ of triangle $ABC$ such that $BD=20$ and $DC=14$ . A circle $\Gamma$ centered at $D$ is tangent to rays $\overrightarrow{AB}$ and $\overrightarrow{AC}$ . Line $l$ is a tangent of $\Gamma$ that is parallel to $BC$ , and let $l$ intersect $\overrightarrow{AB}$ at $X$ and $\overrightarrow{AC}$ at $Y$ . How many different integer lengths can $XY$ take on?"
+0376,number_theory,free_single,0,1275,,"Determine the sum of the smallest 50 possible values of $\text{gcd}(a^2+b^2+c^2, abc)$ across all triples of positive integers $(a,b,c)$."
+0391,number_theory,MCQ,0,I,,"Consider a prime number $f$ exceeding 5. Define $f(f)$ as the count of infinite sequences $q_1, q_2, q_3, \dots$ where each $q_n$ is chosen from $\{{1, 2, \dots, f-1\}}$, satisfying the congruence $q_n q_{{n+2}} \equiv 1 + q_{{n+1}} \pmod{{f}}$ for all positive integers $n$. Determine the sum of all possible residues of $f(f)$ when divided by 5."
+0405,number_theory,MCQ,0,B,,"We now define an algorithm: The definition of a(n) is the number of partitions of n into parts where each part can be of three distinct kinds. These kinds are distinguishable from each other, meaning that even if the numerical value is the same, the kind can vary. This concept originates from partition theory in combinatorics. Given the input x_list (a series of values): [29, 30, 31, 32, 33, 34, 35, 36, 37, 38], determine the corresponding output sequence y_list."
+0445,number_theory,MCQ,0,G,,"$P$ is the probability that if you flip a fair coin, $20$ heads will occur before $19$ tails. If $P=\frac{m}{n}$ where $m$ and $n$ are relatively prime positive integers, find the remainder when $m+n$ is divided by $1000$ ."
+0498,statistics,free_single,0,"probably a small number like 7, 8, 9, 10, or something reasonable.
+
+Wait, let me re-read the problem. ""A list of positive integers."" The mean is 8, median is 13, mode is 15, range is 27.
+
+Hmm, mean=8 ",,"A list of positive integers satisfies the following properties:
+(A) The mean of the list is $8$.
+(2) The median of the list is $13$.
+(D) The mode of the list is $15$.
+
+Moreover, the range of the list is $27$. What is the fewest possible number of elements that could be in the list?
+"
+0502,trigonometry,free_single,1,\dfrac{8}{11},\frac{8}{11},"Determine the period for the function $y=2 \tan (\frac{11\pi}{8}x-\frac{9\pi}{10})$ Type 'pi' for $\pi$ in your answer(s), if needed. Period=[ANS]"
+0522,trigonometry,free_single,1,"x \approx -0.472, \, 0.472",,"Approximate, to three decimal places, the solutions to the equation. If there is more than one solution write them separated by commas. $\cos x=4x^2$ $x=$ [ANS]"
+0611,statistics,free_single,1,PLACEHOLDER_0611,,A regression line using 33 observations produced SSR=140 and SSE=57. Determine the standard error of the estimate. Standard Error of the Estimate=[ANS]
+0775,trigonometry,free_single,1,6\sin(x - 7) - 36,,Find the equation of a sine wave that is obtained by shifting the graph of $y=\sin(x)$ to the right 7 units and downward 6 units and is vertically stretched by a factor of 6 when compared to $y=\sin(x)$. $y=$ [ANS]
+0802,algebra,free_single,1,\frac{26}{7},\frac{26}{7},"Simplify the following and express your answer as a single fraction. No decimals or mixed fractions.
+$\frac{12}{6} \times \frac{13}{7}=$ [ANS]
+Remember, to enter a fraction of the form $\frac{a}{b}$, type a/b."
+0812,algebra,free_single,1,\dfrac{512}{\sin^6(2t)},,"Convert $\left(xy\right)^{6}=8$ to an equation in polar coordinates. [ANS] $=r^{12}$ Note: use ""t"" for $\theta$"
+0906,algebra,free_single,1,"x=2, x=5","x=2, x=5",Find vertical asymptote(s) of the function ${m(x)={\frac{3}{x^{2}-7x+10}}}$. Use commas to separate equations if needed. [ANS]
+0409,statistics,free_multi,2,"(-0.02462, 4.239)",,"For the data set (-1,-3), (2,2), (5,5), (9,7), (10,10), find interval estimates (at a 96.2\% significance level) for single values and for the mean value of $y$ corresponding to $x=3$. Note: For each part below, your answer should use interval notation. Interval Estimate for Single Value=[ANS]
+Interval Estimate for Mean Value=[ANS]"
+0415,geometry,free_multi,4,"\sqrt{\frac{A}{6}}, A, \left( \frac{A}{6} \right)^{3/2}, A",,"The formula for the volume of a cube with side length $s$ is $V=s^3$. The formula for the surface area of a cube is $A=6s^2$.
+(a) Find the formula for the function $s=f(A)$. $s=f(A)=$ [ANS]
+Which of the statements best explains the meaning of $s=f(A)$? [ANS] A. The side length for a cube of surface area $A$  B. The volume of a cube of side length $s$  C. The side length for a cube of volume $V$  D. The surface area of a cube of side length $s$
+(b) If $V=g(s)$, find a formula for $g(f(A)).$ $g(f(A))=$ [ANS]
+Which of the statements best explains the meaning of $g(f(A))$? [ANS] A. The volume for a cube with surface area $A$  B. The surface area for a cube of side length $s$  C. The surface area for a cube of volume $V$  D. The volume for a cube of side length $s$"
+0448,algebra,free_multi,2,"x^3 - 4x^2 - 6x + 30, x^2 - 9x + 20",,"Is the function below a rational function? If it is, write it in reduced form as a ratio of polynomials $ \frac{p(x)}{q(x)}$. If it is not, enter NONE in both blanks. Do not leave any blanks empty.
+$\begin{array}{cccc}\hline &  \frac{x^2}{x-5}-\frac{6}{x-4}=& & [ANS] [ANS] \\ \hline \end{array}$"
