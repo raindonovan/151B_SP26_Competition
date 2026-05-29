@@ -1,9 +1,9 @@
 id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,computable,notes,question_preview
-0000,algebra,free_multi,2,UNVERIFIED,,,,YES,,Use the order of operations to simplify: a) $[13-(11-11)]-[8-(5-6)]=$ [ANS] b) $
+0000,algebra,free_multi,2,DONE,"4, 16",HIGH,B9,YES,order-of-ops 2-slot; best=16 is undercount,Use the order of operations to simplify: a) $[13-(11-11)]-[8-(5-6)]=$ [ANS] b) $
 0001,statistics,MCQ,0,UNVERIFIED,,,,YES,,"Assuming the weights corresponding to the sign values are reduced by 1/10, then "
-0002,statistics,free_multi,3,UNVERIFIED,,,,YES,,"According to a recent marketing campaign, $120$ drinkers of either Diet Coke or "
+0002,statistics,free_multi,3,DONE,"-1.461, 1.645, A",HIGH,B9,YES,z-prop-test 3-slot; z=-1.461 confirmed; best/teacher agree,"According to a recent marketing campaign, $120$ drinkers of either Diet Coke or "
 0003,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"It is known that there are two types of fish in the pond, in a ratio of 7:3. If "
-0004,trigonometry,free_multi,3,UNVERIFIED,,,,YES,,"If the point (10,-7) is on the terminal side of the angle $\theta$ in standard p"
+0004,trigonometry,free_multi,3,DONE,"-7/sqrt(149), 10/sqrt(149), -7/10",HIGH,B9,YES,trig on terminal point; exact form; best(decimals)=teacher(exact) agree,"If the point (10,-7) is on the terminal side of the angle $\theta$ in standard p"
 0005,statistics,free_multi,5,DONE,"541.3, 63.25, 135.325, 4.2167, 32.09",HIGH,B2,YES,ANOVA 5-tuple; under-count,An experiment is conducted to determine whether there is a differnce among the m
 0006,other,free_single,1,UNVERIFIED,,,,MAYBE,,"A person is standing straight on the ground, looking up at an airplane which is "
 0007,geometry,free_single,0,UNVERIFIED,,,,YES,,"The circumference of a circle is divided into $45$ arcs, each of length $1$. Ini"
@@ -15,23 +15,23 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0013,calculus,MCQ,0,UNVERIFIED,,,,YES,,Solve the integral: $$ \int \frac{ 6 }{ \cos(-4 \cdot x)^7 \cdot \sin(4 \cdot x)
 0014,algebra,free_single,1,UNVERIFIED,,,,YES,,Use logarithms to find an EXACT solution to the equation below. $7 \cdot 3^t=245
 0015,algebra,free_multi,2,UNVERIFIED,,,,YES,,"Are the functions below polynomials? If they are, enter their degree. If not, en"
-0016,calculus,free_single,0,UNVERIFIED,,,,YES,,Rose and Brunno play the game on a board shaped like a regular 1001-gon. Initial
-0017,number_theory,MCQ,0,UNVERIFIED,,,,YES,,"Let $a_0=1$, $a_1=2$, and $a_n=4a_{n-1}-a_{n-2}$ for $n\geq 2$. Find the least o"
+0016,calculus,free_single,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B9,YES,game theory on 1001-gon; not Wolfram-computable; teacher=501 vs best=858,Rose and Brunno play the game on a board shaped like a regular 1001-gon. Initial
+0017,number_theory,MCQ,0,DONE,181,HIGH,B9,YES,"least odd prime of a(2015); mod181=0 confirmed; mod3,5,7,11,13,31 all nonzero","Let $a_0=1$, $a_1=2$, and $a_n=4a_{n-1}-a_{n-2}$ for $n\geq 2$. Find the least o"
 0018,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Dani has 45 marbles. She has 5 times as many marbles as Joe has. How many marble
 0019,number_theory,MCQ,0,UNVERIFIED,,,,YES,,"Consider the sequence defined by $j_0=1$, $j_1=2$, and $j_c=4j_{c-1}-j_{c-2}$ fo"
-0020,statistics,free_multi,3,UNVERIFIED,,,,YES,,A sample of prices for eight television sets available at a local electronics st
+0020,statistics,free_multi,3,DONE,"228, 229, 250",HIGH,B9,YES,mean/median/mode; Wolfram confirmed; best=229 is 2-slot undercount,A sample of prices for eight television sets available at a local electronics st
 0021,statistics,free_multi,2,UNVERIFIED,,,,YES,,"The average life expectancy in the United States, $L$, has been rising steadily "
 0022,geometry,MCQ,0,UNVERIFIED,,,,YES,,"Let $P$ be a polyhedron with $37$ faces, all of which are equilateral triangles,"
 0023,other,MCQ,0,UNVERIFIED,,,,MAYBE,,The distance between points $A$ and $B$ is 5 km. Person A walks from $A$ towards
-0024,statistics,free_single,1,UNVERIFIED,,,,YES,,"Suppose that the line $\hat{y}=3+2x$ is fitted to the data points (-1,2), (2,7),"
-0025,statistics,free_multi,12,UNVERIFIED,,,,YES,,$\begin{array}{cc}\hline Grade on Statistics Exam & Frequency \\ \hline Below 50
+0024,statistics,free_single,1,DONE,1,HIGH,B9,YES,sum squared residuals=1; teacher correct; best=2 is wrong,"Suppose that the line $\hat{y}=3+2x$ is fitted to the data points (-1,2), (2,7),"
+0025,statistics,free_multi,12,DONE,"8/63, 2/21, 11/63, 17/63, 13/63, 8/63, 8, 14, 25, 42, 55, 63",HIGH,B9,YES,"rel-freq+cumul-freq 12-slot; best=6 slots (cumul only), missing rel-freqs",$\begin{array}{cc}\hline Grade on Statistics Exam & Frequency \\ \hline Below 50
 0026,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"If $abc-ab-bc-ca+a+b+c=2008$ for positive integers $a$ , $b$ , and $c$ , then de"
 0027,trigonometry,free_multi,2,UNVERIFIED,,,,YES,,"Solve the following equations in the interval [0,2 $\pi$]. Note: Give the answer"
 0028,other,free_multi,6,UNVERIFIED,,,,MAYBE,,a) In a dictionary 16 pages are 1 millimeter thick. To find the thickness of 112
-0029,algebra,free_single,1,UNVERIFIED,,,,YES,,"A mixture of 60 liters of paint is 25\% red tint, 30\% yellow tint and 45\% wate"
+0029,algebra,free_single,1,DONE,38.2,HIGH,B9,YES,yellow tint pct: 26/68=38.24% rounded to 1dp=38.2; best=39 is wrong,"A mixture of 60 liters of paint is 25\% red tint, 30\% yellow tint and 45\% wate"
 0030,statistics,free_multi,2,UNVERIFIED,,,,YES,,"College officials want to estimate the percentage of students who carry a gun, k"
 0031,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"Divide or state that the division is undefined. (In this case, enter undefined.)"
-0032,geometry,free_multi,3,UNVERIFIED,,,,YES,,"The distance between $(4,-3)$ and $(-6,-4)$ is [ANS] The midpoint of the line se"
+0032,geometry,free_multi,3,DONE,"sqrt(101), -1, -7/2",HIGH,B9,YES,"distance=sqrt(101), midpoint=(-1,-7/2); best(decimals) equivalent to teacher(exact)","The distance between $(4,-3)$ and $(-6,-4)$ is [ANS] The midpoint of the line se"
 0033,geometry,MCQ,0,UNVERIFIED,,,,YES,,"A rectangle, $HOMF$, has sides $HO=11$ and $OM=5$. A triangle $ABC$ has $H$ as t"
 0034,statistics,MCQ,0,UNVERIFIED,,,,YES,,"Given the following values for a variable: minimum value is 3, first quartile (Q"
 0035,algebra,free_multi,2,UNVERIFIED,,,,YES,,Applying a horizontal stretch by a factor of $p$ (where $p$ is a constant such t
@@ -48,7 +48,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0046,statistics,free_multi,7,UNVERIFIED,,,,YES,,A random sample of $100$ observations from a population with standard deviation 
 0047,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Find all natural numbers that satisfy $3^{m}-1$ being divisible by $2^{m}$.
 0048,algebra,free_single,1,UNVERIFIED,,,,YES,,Rewrite the exponential equation $e^{-2} \approx 0.135$ in equivalent logarithmi
-0049,statistics,free_single,1,UNVERIFIED,,,,YES,,Assume you are using a significance level of $\alpha=0.05$ to test the claim tha
+0049,statistics,free_single,1,DONE,0.0143,HIGH,B9,YES,type-II error beta; P(Z>=2.189)=0.01430; best=0.01433 agrees within rounding,Assume you are using a significance level of $\alpha=0.05$ to test the claim tha
 0050,algebra,free_multi,2,UNVERIFIED,,,,YES,,An apple contains 140 calories and 3 g of fiber. A banana contains 150 calories 
 0051,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Using the multiplication table, compute $651 _{8} \times 32 _{8}$ $\begin{array}"
 0052,other,free_multi,2,UNVERIFIED,,,,MAYBE,,You work in a lab. One day you need 616 oz of a chemical solution consisting of 
@@ -57,7 +57,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0055,algebra,free_single,1,UNVERIFIED,,,,YES,,Write an equation for $y$ in terms of $x$ if $y$ is proportional to the fourth p
 0056,statistics,free_multi,3,UNVERIFIED,,,,YES,,"For each problem, select the best response. (a) Can one predict a student's scor"
 0057,other,free_single,1,UNVERIFIED,,,,MAYBE,,"A rectangular plot, 19 ft by 18 ft, is to be used for a garden. It is decided to"
-0058,number_theory,free_single,0,UNVERIFIED,,,,YES,,Let $\mathbb{Z}_{>0}$ denote the set of positive integers. Let $f : \mathbb{Z}_{
+0058,number_theory,free_single,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B9,YES,functional-equation competition problem; not Wolfram-computable; teacher=31 vs best=0,Let $\mathbb{Z}_{>0}$ denote the set of positive integers. Let $f : \mathbb{Z}_{
 0059,other,free_single,1,UNVERIFIED,,,,MAYBE,,Evaluate the numerical expression $343^\frac{2}{3}.$ Answer: [ANS] Note: You can
 0060,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Suppose we were comparing the mean age of buyers of new domestic cars to the mea
 0061,other,free_multi,5,UNVERIFIED,,,,MAYBE,,"A local pet shop charges \$0.76 per cricket up to 150 crickets, and \$0.69 per c"
@@ -76,7 +76,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0074,statistics,free_single,1,UNVERIFIED,,,,YES,,"To test the efficacy of a new cholesterol-lowering medication, 10 people are sel"
 0075,algebra,free_single,1,UNVERIFIED,,,,YES,,Mike can be paid in one of two ways based on the amount of merchandise he sells:
 0076,other,free_multi,8,UNVERIFIED,,,,MAYBE,,6-10=[ANS].-6-5=[ANS].-9-(-12)=[ANS]. 20-(-13)=[ANS].-18-14=[ANS].-18-(-27)=[ANS
-0077,statistics,free_multi,3,UNVERIFIED,,,,YES,,A study of human development showed two types of movies to a group of children. 
+0077,statistics,free_multi,3,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B9,YES,"study-design MCQ 3-slot; conceptual; not Wolfram-verifiable; teacher=C,D,A vs best=A",A study of human development showed two types of movies to a group of children. 
 0078,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"If distance of the origin from the plane passing through the point $(2,2,1)$ and"
 0079,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Add these together: ${3+\frac{4}{7}}$ When needed, use an improper fraction in y"
 0080,algebra,MCQ,0,UNVERIFIED,,,,YES,,Simplify the fraction by rationalizing the denominator: $$\frac{4}{\sqrt{108}+2\
@@ -103,8 +103,8 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0101,statistics,free_multi,4,UNVERIFIED,,,,YES,,Consider a hypothesis test to decide whether the mean cost to community hospital
 0102,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Let $C \subset\mathbb{P}^{3}$ be a smooth, irreducible, nondegenerate curve of d"
 0103,other,free_single,1,DONE,8\sqrt{2},HIGH,B8,MAYBE,exact form vs decimal,If the distance from the town of Bree to Weathertop is 16 miles on a 45 degree u
-0104,geometry,free_single,1,UNVERIFIED,,,,YES,,Find the arc length corresponding to the given angle (in degrees) on a circle of
-0105,statistics,free_multi,2,UNVERIFIED,,,,YES,,A sample of weights (in pounds) for six 12-year-olds is given below: 93 \quad 84
+0104,geometry,free_single,1,DONE,2387*pi/1800,HIGH,B9,YES,arc length r=7.7 theta=31deg; =4.1661 units; teacher(exact)=best(decimal) agree,Find the arc length corresponding to the given angle (in degrees) on a circle of
+0105,statistics,free_multi,2,DONE,"24, 9.114",HIGH,B9,YES,range=24 ssd=9.114 confirmed; teacher/best agree,A sample of weights (in pounds) for six 12-year-olds is given below: 93 \quad 84
 0106,other,free_single,1,DONE,\frac{13}{6},HIGH,B8,MAYBE,fraction vs decimal,"After robbing a bank in Dodge City, a robber gallops off at 13 mi/h. 30 minutes "
 0107,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"A ray of light passing through the point $A\left( 2,3 \right)$ reflected at a po"
 0108,trigonometry,free_multi,2,UNVERIFIED,,,,YES,,Using a double-angle or half-angle formula to simplify the given expressions. (a
@@ -112,7 +112,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0110,algebra,free_multi,2,UNVERIFIED,,,,YES,,A national park records data regarding the total fox population $F$ over a 12 mo
 0111,algebra,free_single,1,UNVERIFIED,,,,YES,,Simplify the following expression as much as possible. Assume that all variables
 0112,geometry,free_single,0,UNVERIFIED,,,,YES,,The intersection between a plane and a cube is a convex pentagon $ABCDE$ satisfy
-0113,trigonometry,free_single,1,UNVERIFIED,,,,YES,,If $x+4=5 \sin(\theta)$ for $0 < \theta < \pi/2$ express $\cos(2\theta)$ in term
+0113,trigonometry,free_single,1,DONE,(-2x^2-16x-7)/25,HIGH,B9,YES,cos(2theta) trig-sub; equiv to (25-2(x+4)^2)/25; teacher/best equivalent,If $x+4=5 \sin(\theta)$ for $0 < \theta < \pi/2$ express $\cos(2\theta)$ in term
 0114,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,"Given $k$ as an integer and $a \ne \pi \cdot k$, evaluate $P=\cos(a) \cdot \cos("
 0115,other,free_multi,5,UNVERIFIED,,,,MAYBE,,A theater manager graphed weekly profits as a function of the number of patrons 
 0116,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Justin's boat travels 144 km downstream in 4 hours and it travels 168 km upstrea
@@ -134,8 +134,8 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0132,other,free_single,1,UNVERIFIED,,,,MAYBE,,It’s given that $1 \text{mile}=5280 \text{feet}$ and $1 \text{yard}=3 \text{feet
 0133,trigonometry,free_multi,4,UNVERIFIED,,,,YES,,"If $\theta=\frac {5 \pi} {3}$, then $\sin (\theta)$ equals [ANS] $\cos (\theta)$"
 0134,statistics,free_multi,8,DONE,"1, 5, 12, 20, 26, 30, 31, 27.63",HIGH,B2,YES,7 cumulative freqs + median; severe under-count,"Given the following table, compute the median of the grouped data. $\begin{array"
-0135,algebra,free_single,1,UNVERIFIED,,,,YES,,Solve the equation $8x+2=3x+5$ algebraically. $x=$ [ANS]
-0136,statistics,free_multi,2,UNVERIFIED,,,,YES,,The percent frequency of a class is computed by: [ANS] A. multiplying the relati
+0135,algebra,free_single,1,DONE,3/5,HIGH,B9,YES,solve 8x+2=3x+5; x=3/5; best=36 is CATASTROPHICALLY WRONG,Solve the equation $8x+2=3x+5$ algebraically. $x=$ [ANS]
+0136,statistics,free_multi,2,DONE,"A, C",MED,B9,YES,"percent-freq MCQ 2-slot; slot1=A(×100), slot2=C(n elements); best=C is undercount",The percent frequency of a class is computed by: [ANS] A. multiplying the relati
 0137,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Write each ratio as a fraction in simplest form: $36: 234$ is the fraction [ANS]
 0138,other,free_single,1,UNVERIFIED,,,,MAYBE,,"When an aircraft takes off, it accelerates until it reaches its takeoff speed $V"
 0139,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Wirte the sum using sigma notation: $\frac{1}{1\cdot 2}+\frac{1}{2\cdot 3}+\frac
@@ -153,7 +153,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0151,other,free_single,1,UNVERIFIED,,,,MAYBE,,Evaluate the expression: ${48\div(8)6=}$ [ANS]
 0152,number_theory,MCQ,0,UNVERIFIED,,,,YES,,Find the remainder when $$\sum_{a=0}^8 \sum_{b=0}^8 \sum_{c=0}^8 \sum_{d=0}^8 \m
 0153,algebra,MCQ,0,UNVERIFIED,,,,YES,,Transform the following quadratic form into its standard form using the method o
-0154,geometry,free_single,1,UNVERIFIED,,,,YES,,John's room is shaped like a box. It has a flat ceiling that is a rectangle that
+0154,geometry,free_single,1,DONE,18.75,HIGH,B9,YES,paint cost: 488sqft/100*$3.75=$18.75; teacher/best agree,John's room is shaped like a box. It has a flat ceiling that is a rectangle that
 0155,other,free_single,1,UNVERIFIED,,,,MAYBE,,A guy wire needs to be installed to support a pole. The end of the wire on the p
 0156,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,What are the eigenroots of the following matrices? $$ \left( \begin{matrix} {{{1
 0157,trigonometry,free_multi,2,UNVERIFIED,,,,YES,,A weight on a vertical spring is given an initial downward velocity of 5 cm/sec 
@@ -170,13 +170,13 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0168,other,free_multi,4,UNVERIFIED,,,,MAYBE,,"A choral conductor has 1301 singers in her choir, some of them are professional "
 0169,other,free_single,1,UNVERIFIED,,,,MAYBE,,The population of cats in a shelter increased from $16$ to $80$. What is the per
 0170,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Let $X=( S^{1} \times S^{1} ) \setminus\{p \}$ be a once-punctured torus. How ma
-0171,geometry,free_single,1,UNVERIFIED,,,,YES,,"Sketch the region given by the set $\lbrace (x,y) | 3\le x\le 7, 2\le y\le 7 \rb"
+0171,geometry,free_single,1,DONE,20,HIGH,B9,YES,"area of rect {3<=x<=7, 2<=y<=7}=4*5=20; best=21 is wrong","Sketch the region given by the set $\lbrace (x,y) | 3\le x\le 7, 2\le y\le 7 \rb"
 0172,trigonometry,free_single,1,UNVERIFIED,,,,YES,,Find the exact value. $\small{\sin} \left(\small{2 \cos^{-1}} \large{\left(\frac
 0173,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Let $S = \{5^ k | k \in Z, 0 \le k \le 2004\}$ . Given that $5^{2004} = 5443 ..."
 0174,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Consider the function $H$ defined by $H(x)={\sqrt{x}}$. Evaluate the following: 
 0175,number_theory,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is the least common multiple 
 0176,algebra,free_single,1,UNVERIFIED,,,,YES,,Solve the following equation for $w$: 8 w+6 k+m=p. $w=$ [ANS]
-0177,geometry,MCQ,0,UNVERIFIED,,,,YES,,"Let the domain of the function f (x) be $( 0, \ +x )$ and satisfy $2 f \left( x "
+0177,geometry,MCQ,0,DONE,pi^2/6,HIGH,B9,YES,vol of rotation; solve func eq -> f(x)=x/sqrt(1+x^2); V=2pi*int_1/2^sqrt(3)/2 y^2/sqrt(1-y^2)dy=pi^2/6; teacher=H,"Let the domain of the function f (x) be $( 0, \ +x )$ and satisfy $2 f \left( x "
 0178,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,"Let the 3rd order matrix \( A = (\alpha_1, \alpha_2, \alpha_3), B = (\alpha_2 - "
 0179,number_theory,free_multi,10,UNVERIFIED,,,,YES,,When you divide 177 by 6 the quotient is [ANS] and the remainder is [ANS] When y
 0180,algebra,free_single,1,UNVERIFIED,,,,YES,,Use the distributive property to simplify the expression completely. ${{\textsty
@@ -187,7 +187,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0185,trigonometry,free_multi,5,UNVERIFIED,,,,YES,,Determine which of the following statements are true and which are false. Enter 
 0186,other,MCQ,0,UNVERIFIED,,,,MAYBE,,A particle is moving in a straight line whose acceleration as a function of velo
 0187,statistics,free_multi,9,UNVERIFIED,,,,YES,,This question involves logistic regression analysis of the Pima data set in R on
-0188,statistics,free_multi,3,UNVERIFIED,,,,YES,,Your school basketball team posted the following (sorted) scores in 16 recent ga
+0188,statistics,free_multi,3,DONE,"60, 60, 60",HIGH,B9,YES,mean=median=mode=60; Wolfram confirmed; best=61 is wrong (undercount+arithmetic error),Your school basketball team posted the following (sorted) scores in 16 recent ga
 0189,algebra,free_single,1,UNVERIFIED,,,,YES,,"The coffee variety Arabica yields about 850 kg of coffee beans per hectare, whil"
 0190,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Multiply the integer with the fraction: ${-15\cdot \frac{7}{40}}$ If needed, use"
 0191,other,free_multi,5,UNVERIFIED,,,,MAYBE,,Match the statements defined below with the letters labeling particular numbers.
@@ -195,19 +195,19 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0193,other,MCQ,0,UNVERIFIED,,,,MAYBE,,A particle move along x-axis and displacement varies with time $t$ as $x=(t^3-3t
 0194,algebra,free_multi,6,UNVERIFIED,,,,YES,,The town of Smallsville was founded in 1900. Its population $y$ (in hundreds) is
 0195,statistics,free_single,1,UNVERIFIED,,,,YES,,Random samples of female and male UVA undergraduates are asked to estimate the n
-0196,geometry,free_multi,3,UNVERIFIED,,,,YES,,Suppose that triangle ABC is a right triangle with a right angle at $C$ and hypo
+0196,geometry,free_multi,3,DONE,"14.7447, 10.3244, 35",HIGH,B9,YES,"right-tri: a=18sin55=14.7447, b=18cos55=10.3244, B=35; best=15 is severe undercount",Suppose that triangle ABC is a right triangle with a right angle at $C$ and hypo
 0197,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"Suppose $C(x)=8x^{2}-56x+115$, $x \ge 0$ represents the cost, in hundreds of dol"
 0198,number_theory,free_single,0,UNVERIFIED,,,,YES,,"Determine all triplets of positive integers $(p,m,n)$ such that $p$ is a prime, "
 0199,number_theory,free_single,0,UNVERIFIED,,,,YES,,"Let $ABCDE$ be a convex pentagon with $AB=14$, $BC=7$, $CD=24$, $DE=13$, $EA=26$"
 0200,geometry,MCQ,0,UNVERIFIED,,,,YES,,Point $P$ is located inside $\triangle{ABC}$ so that $\angle{PAB}=\angle{PBC}=\a
-0201,algebra,free_single,1,UNVERIFIED,,,,YES,,Write the expression $25 t^2+80 t+64$ in factored form $k (at+b)(ct+d)$. $25 t^2
+0201,algebra,free_single,1,DONE,(5t+8)^2,HIGH,B9,YES,factor 25t^2+80t+64=(5t+8)^2; teacher/best equivalent forms,Write the expression $25 t^2+80 t+64$ in factored form $k (at+b)(ct+d)$. $25 t^2
 0202,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Multiply these two fractions: ${\frac{12}{7} \cdot \frac{9}{10}}$ If needed, use"
 0203,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Let $m = 101^4 + 256$ . Find the sum of digits of $m$ .
 0204,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Consider the function $a(o)$ defined for all positive integers $o$. This functio
 0205,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Express each of the following as a fraction in simplest form. a) 0.75=[ANS] b) 0
 0206,algebra,free_single,1,UNVERIFIED,,,,YES,,Multiply by using the FOIL method. Simplify and combine like radicals if necessa
 0207,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Find the value of $k$ so that the line containing the points $(-3,k)$ and $(1,-2"
-0208,trigonometry,free_multi,2,UNVERIFIED,,,,YES,,The radius of the circle with a central angle of 5 radians that intercepts an ar
+0208,trigonometry,free_multi,2,DONE,"16.2, 720/(49*pi)",HIGH,B9,YES,"r1=81/5=16.2, r2=720/(49pi); teacher/best agree (81/5=16.2)",The radius of the circle with a central angle of 5 radians that intercepts an ar
 0209,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"In prokaryotes, translation of mRNA messages into proteins is most often initiat"
 0210,trigonometry,free_multi,2,UNVERIFIED,,,,YES,,a) Find $\tan\left(\sin^{-1}(\frac {4}{7})+\cos^{-1}(\frac {4}{8})\right)$=[ANS]
 0211,number_theory,MCQ,0,UNVERIFIED,,,,YES,,"Consider the sequence defined by $q_0=1$, $q_1=2$, and $q_d=4q_{d-1}-q_{d-2}$ fo"

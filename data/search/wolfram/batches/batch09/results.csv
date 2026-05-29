@@ -1,1 +1,26 @@
 id,subject,type,n_ans_slots,wolfram_answer,confidence,computable,notes
+0000,algebra,free_multi,2,"4, 16",HIGH,YES,order-of-ops 2-slot; best=16 is undercount
+0002,statistics,free_multi,3,"-1.461, 1.645, A",HIGH,YES,z-prop-test 3-slot; z=-1.461 confirmed; best/teacher agree
+0004,trigonometry,free_multi,3,"-7/sqrt(149), 10/sqrt(149), -7/10",HIGH,YES,trig on terminal point; exact form; best(decimals)=teacher(exact) agree
+0016,other,free_single,0,INCONCLUSIVE,INCONCLUSIVE,NO,game theory on 1001-gon; not Wolfram-computable; teacher=501 vs best=858
+0017,number_theory,MCQ,0,181,HIGH,YES,"least odd prime of a(2015); mod181=0 confirmed; mod3,5,7,11,13,31 all nonzero"
+0020,statistics,free_multi,3,"228, 229, 250",HIGH,YES,mean/median/mode; Wolfram confirmed; best=229 is 2-slot undercount
+0024,statistics,free_single,1,1,HIGH,YES,sum squared residuals=1; teacher correct; best=2 is wrong
+0025,statistics,free_multi,12,"8/63, 2/21, 11/63, 17/63, 13/63, 8/63, 8, 14, 25, 42, 55, 63",HIGH,YES,"rel-freq+cumul-freq 12-slot; best=6 slots (cumul only), missing rel-freqs"
+0029,algebra,free_single,1,38.2,HIGH,YES,yellow tint pct: 26/68=38.24% rounded to 1dp=38.2; best=39 is wrong
+0032,geometry,free_multi,3,"sqrt(101), -1, -7/2",HIGH,YES,"distance=sqrt(101), midpoint=(-1,-7/2); best(decimals) equivalent to teacher(exact)"
+0049,statistics,free_single,1,0.0143,HIGH,YES,type-II error beta; P(Z>=2.189)=0.01430; best=0.01433 agrees within rounding
+0058,number_theory,free_single,0,INCONCLUSIVE,INCONCLUSIVE,NO,functional-equation competition problem; not Wolfram-computable; teacher=31 vs best=0
+0077,statistics,free_multi,3,INCONCLUSIVE,INCONCLUSIVE,NO,"study-design MCQ 3-slot; conceptual; not Wolfram-verifiable; teacher=C,D,A vs best=A"
+0104,geometry,free_single,1,2387*pi/1800,HIGH,YES,arc length r=7.7 theta=31deg; =4.1661 units; teacher(exact)=best(decimal) agree
+0105,statistics,free_multi,2,"24, 9.114",HIGH,YES,range=24 ssd=9.114 confirmed; teacher/best agree
+0113,trigonometry,free_single,1,(-2x^2-16x-7)/25,HIGH,YES,cos(2theta) trig-sub; equiv to (25-2(x+4)^2)/25; teacher/best equivalent
+0135,algebra,free_single,1,3/5,HIGH,YES,solve 8x+2=3x+5; x=3/5; best=36 is CATASTROPHICALLY WRONG
+0136,statistics,MCQ,2,"A, C",MED,MAYBE,"percent-freq MCQ 2-slot; slot1=A(×100), slot2=C(n elements); best=C is undercount"
+0154,algebra,free_single,1,18.75,HIGH,YES,paint cost: 488sqft/100*$3.75=$18.75; teacher/best agree
+0171,geometry,free_single,1,20,HIGH,YES,"area of rect {3<=x<=7, 2<=y<=7}=4*5=20; best=21 is wrong"
+0177,calculus,MCQ,0,pi^2/6,HIGH,YES,vol of rotation; solve func eq -> f(x)=x/sqrt(1+x^2); V=2pi*int_1/2^sqrt(3)/2 y^2/sqrt(1-y^2)dy=pi^2/6; teacher=H
+0188,statistics,free_multi,3,"60, 60, 60",HIGH,YES,mean=median=mode=60; Wolfram confirmed; best=61 is wrong (undercount+arithmetic error)
+0196,trigonometry,free_multi,3,"14.7447, 10.3244, 35",HIGH,YES,"right-tri: a=18sin55=14.7447, b=18cos55=10.3244, B=35; best=15 is severe undercount"
+0201,algebra,free_single,1,(5t+8)^2,HIGH,YES,factor 25t^2+80t+64=(5t+8)^2; teacher/best equivalent forms
+0208,trigonometry,free_multi,2,"16.2, 720/(49*pi)",HIGH,YES,"r1=81/5=16.2, r2=720/(49pi); teacher/best agree (81/5=16.2)"

@@ -69,3 +69,28 @@
 | 0120 | WEBSEARCH | HIGH | 8 | Polya theorem on fixed divisors. 4/5 teachers agreed. Free-f |
 | 0125 | WEBSEARCH | HIGH | G | Putnam 2016 A1; value=8 confirmed; MCQ option G (index 6 of  |
 | 0141 | WEBSEARCH | DISPUTED | 0 | Putnam 1989 A-1 base-7 variant: math gives 0 primes but 0 is |
+| 0000 | B9 | HIGH | 4, 16 | order-of-ops 2-slot; best=16 is undercount |
+| 0002 | B9 | HIGH | -1.461, 1.645, A | z-prop-test 3-slot; z=-1.461 confirmed; best/teacher ag |
+| 0004 | B9 | HIGH | -7/sqrt(149), 10/sqrt(149), -7/10 | trig on terminal point; exact form; best(decimals)=teac |
+| 0016 | B9 | INCONCLUSIVE | INCONCLUSIVE | game theory on 1001-gon; not Wolfram-computable; teache |
+| 0017 | B9 | HIGH | 181 | least odd prime of a(2015); mod181=0 confirmed; mod3,5, |
+| 0020 | B9 | HIGH | 228, 229, 250 | mean/median/mode; Wolfram confirmed; best=229 is 2-slot |
+| 0024 | B9 | HIGH | 1 | sum squared residuals=1; teacher correct; best=2 is wro |
+| 0025 | B9 | HIGH | 8/63, 2/21, 11/63, 17/63, 13/63, 8/63, 8, 14, 25, 42, 5 | rel-freq+cumul-freq 12-slot; best=6 slots (cumul only), |
+| 0029 | B9 | HIGH | 38.2 | yellow tint pct: 26/68=38.24% rounded to 1dp=38.2; best |
+| 0032 | B9 | HIGH | sqrt(101), -1, -7/2 | distance=sqrt(101), midpoint=(-1,-7/2); best(decimals)  |
+| 0049 | B9 | HIGH | 0.0143 | type-II error beta; P(Z>=2.189)=0.01430; best=0.01433 a |
+| 0058 | B9 | INCONCLUSIVE | INCONCLUSIVE | functional-equation competition problem; not Wolfram-co |
+| 0077 | B9 | INCONCLUSIVE | INCONCLUSIVE | study-design MCQ 3-slot; conceptual; not Wolfram-verifi |
+| 0104 | B9 | HIGH | 2387*pi/1800 | arc length r=7.7 theta=31deg; =4.1661 units; teacher(ex |
+| 0105 | B9 | HIGH | 24, 9.114 | range=24 ssd=9.114 confirmed; teacher/best agree |
+| 0113 | B9 | HIGH | (-2x^2-16x-7)/25 | cos(2theta) trig-sub; equiv to (25-2(x+4)^2)/25; teache |
+| 0135 | B9 | HIGH | 3/5 | solve 8x+2=3x+5; x=3/5; best=36 is CATASTROPHICALLY WRO |
+| 0136 | B9 | MED | A, C | percent-freq MCQ 2-slot; slot1=A(×100), slot2=C(n eleme |
+| 0154 | B9 | HIGH | 18.75 | paint cost: 488sqft/100*$3.75=$18.75; teacher/best agre |
+| 0171 | B9 | HIGH | 20 | area of rect {3<=x<=7, 2<=y<=7}=4*5=20; best=21 is wron |
+| 0177 | B9 | HIGH | pi^2/6 | vol of rotation; solve func eq -> f(x)=x/sqrt(1+x^2); V |
+| 0188 | B9 | HIGH | 60, 60, 60 | mean=median=mode=60; Wolfram confirmed; best=61 is wron |
+| 0196 | B9 | HIGH | 14.7447, 10.3244, 35 | right-tri: a=18sin55=14.7447, b=18cos55=10.3244, B=35;  |
+| 0201 | B9 | HIGH | (5t+8)^2 | factor 25t^2+80t+64=(5t+8)^2; teacher/best equivalent f |
+| 0208 | B9 | HIGH | 16.2, 720/(49*pi) | r1=81/5=16.2, r2=720/(49pi); teacher/best agree (81/5=1 |

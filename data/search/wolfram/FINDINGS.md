@@ -65,6 +65,15 @@ For matrix-answer MCQs, distractor options often have structural violations:
 ## Finding 10 — LaTeX text-wrap risk for MCQ letters
 0413 emitted `\text{A}`; 0622 emitted `\text{Yes}`. Kaggle behavior with `\text{}` wrappers UNVERIFIED — worth empirical probe.
 
+## Finding 11 — Multi-slot undercount is domain-independent (B9 confirmation)
+B9 confirms multi-slot undercount across algebra, statistics, trig, and geometry — not just statistics as seen in B1-7. 9 of 22 HIGH items had actionable best-answer overrides, all undercount or arithmetic error. Wolfram query tip: `statistics {data}` works; `mean, median, mode of {data}` often fails.
+
+## Finding 12 — Wolfram modular recurrence syntax confirmed
+For linear recurrence mod p: `Mod[LinearRecurrence[{P,-Q},{a0,a1},N][[-1]], p]` works and returns exact result. Used to confirm 181|a(2015) for item 0017 (least odd prime of a_n sequence). Also verified mod 13, 31 ≠ 0.
+
+## Finding 13 — Two-step problems require chained Wolfram queries
+Item 0177: solve functional equation first (get f(x)=x/√(1+x²)), then compute volume of rotation. Wolfram confirmed V=π²/6 via `2*Pi * Integrate[y^2/Sqrt[1-y^2], {y, 1/2, Sqrt[3]/2}]`. Shell method along y-axis needed when rotation is around x-axis and region is y-parameterized.
+
 ## Open questions
 - Exact Kaggle string-matching rules (whitespace, `\text{}` wrappers, trailing zeros, `^\circ` vs `°`)
 - 0587 multi-select format: comma-sep vs concatenated vs sub-boxes
