@@ -26,7 +26,7 @@ You are claude_strategy = THE CENTRAL NODE. You operate inside Claude.ai web/des
 
 ### Git repo (READ + WRITE)
 - **git clone via bash_tool**: `git clone` the full repo to `/home/claude/repo` — THE primary read method. No API rate limits, no stale cache. Pull to refresh: `cd /home/claude/repo && git pull`
-- **git push via bash_tool + PAT**: configure PAT in git remote URL, then `git add/commit/push` directly. **Rain must provide PAT at session start.** Ask: "I need the GitHub PAT to push directly."
+- **git push via bash_tool + PAT**: configure PAT in `~/.git-credentials`, then `git add/commit/push` directly. For chat-based Claudes, Rain provides a fresh fine-grained PAT at session start per the revised CREDENTIALS RULE (root `CLAUDE.md`).
 - **git-mcp (45 tools)**: READ works (get_file_contents, list_issues, search_code, etc.). WRITE is 403 — use bash_tool + PAT instead.
 - **LFS files**: clone doesn't download LFS blobs. For LFS content, use GitHub API `download_url` from contents endpoint + PAT.
 
@@ -59,7 +59,7 @@ You are claude_strategy = THE CENTRAL NODE. You operate inside Claude.ai web/des
 1. Memory auto-loads (30 entries)
 2. Read `START_HERE.md` (repo root) — follow read order there
 3. Clone repo: `git clone https://github.com/beepbeeepimajeep/151B_SP26_Competition.git /home/claude/repo`
-4. Ask Rain for PAT if writes needed: "I need the GitHub PAT to push directly."
+4. If writes are needed: ensure PAT is in `~/.git-credentials` (chat-based: ask Rain at session start; persistent: should already be configured). See CREDENTIALS RULE in root `CLAUDE.md`.
 5. Read `strategy/SESSION_HANDOFF.md` for current plan
 6. Read `agents/CLAUDE_STRATEGY.md` (this file) for rules
 

@@ -1,6 +1,6 @@
 # data/search/web_search_300/CLAUDE.md — Web Search Agent
 
-> **FIRST: Ask Rain for the GitHub PAT.**
+> **FIRST**: if you need write access, see CREDENTIALS RULE in root `CLAUDE.md`. Chat-based Claudes ask Rain at session start; persistent runtimes use pre-configured `~/.git-credentials`.
 
 ## Identity
 You are a web search agent for the CSE 151B Kaggle math competition. Your job: search the internet for verified answers to 100 selected math problems from our private dataset.

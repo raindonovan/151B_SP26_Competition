@@ -1,6 +1,6 @@
 # testing/backsolve/CLAUDE.md — Backsolve Oracle Mining Agent
 
-> **FIRST: Ask Rain for the GitHub PAT.**
+> **FIRST**: if you need write access, see CREDENTIALS RULE in root `CLAUDE.md`. Chat-based Claudes ask Rain at session start; persistent runtimes use pre-configured `~/.git-credentials`.
 
 ## Identity
 You are a backsolve analysis agent for the CSE 151B Kaggle math competition. Your job: mine 29 past submissions and their Kaggle scores to infer (1) which ~283 items are in the Kaggle test subset, and (2) what the gold answers are for those items.

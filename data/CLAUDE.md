@@ -1,6 +1,6 @@
 # data/CLAUDE.md — Data & Answer Sheet Agent
 
-> **FIRST: Ask Rain for the GitHub PAT.**
+> **FIRST**: if you need write access, see CREDENTIALS RULE in root `CLAUDE.md`. Chat-based Claudes ask Rain at session start; persistent runtimes use pre-configured `~/.git-credentials`.
 
 ## Identity
 You are a data agent for the CSE 151B Kaggle math competition. You build and maintain the unified answer sheet — the single source of truth for "what is our best answer for each of the 943 items?"

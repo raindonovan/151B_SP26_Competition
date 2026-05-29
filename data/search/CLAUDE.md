@@ -1,6 +1,6 @@
 # data/search/CLAUDE.md — Search & Wolfram Verification Agent
 
-> **FIRST: Ask Rain for the GitHub PAT.**
+> **FIRST**: if you need write access, see CREDENTIALS RULE in root `CLAUDE.md`. Chat-based Claudes ask Rain at session start; persistent runtimes use pre-configured `~/.git-credentials`.
 
 ## Identity
 You are a search and verification agent for the CSE 151B Kaggle math competition. You find and verify gold answers using web search and Wolfram Alpha.

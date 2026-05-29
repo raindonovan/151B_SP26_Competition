@@ -1,6 +1,6 @@
 # strategy/CLAUDE.md — Central Strategy Agent
 
-> **FIRST: Ask Rain for the GitHub PAT.**
+> **FIRST**: if you need write access, see CREDENTIALS RULE in root `CLAUDE.md`. Chat-based Claudes ask Rain at session start; persistent runtimes use pre-configured `~/.git-credentials`.
 > Then: `git clone https://github.com/beepbeeepimajeep/151B_SP26_Competition.git /home/claude/repo`
 
 ## Identity

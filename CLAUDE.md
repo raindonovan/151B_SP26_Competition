@@ -1,7 +1,6 @@
 # CLAUDE.md — Global Entry Point
 
-> **First thing: ask Rain for the GitHub PAT if you need to push.**
-> "I need the GitHub PAT to push directly."
+> **First thing**: if you need to push, see the CREDENTIALS RULE below. Chat-based Claudes ask Rain for a fresh fine-grained PAT at session start. Persistent runtimes use the pre-configured `~/.git-credentials`.
 
 ## Who are you?
 
@@ -104,9 +103,38 @@ This is the agent's legacy — the next agent or Rain reads this to avoid repeat
 ### Why this matters
 Without signoffs, findings die with the session. Without Role & Relevance in the prompt, agents don't understand WHY their work matters. Both are non-negotiable.
 
-## CREDENTIALS RULE (LOCKED 2026-05-28)
+## CREDENTIALS RULE (revised 2026-05-29 — supersedes 2026-05-28 lock)
 
-Never include a PAT, API key, password, or any credential in a chat prompt, spawn prompt, or committed file. See `SECURITY.md` for the credential setup pattern (per-runtime `~/.git-credentials`). When generating a spawn prompt, the SETUP block must say: "Credentials are pre-configured in ~/.git-credentials by Rain. If git push fails with auth error, REPORT to Rain — do NOT request a PAT in chat." If a future Claude (including me, claude_strategy) starts to embed a PAT in a prompt: STOP. That's a violation.
+The 2026-05-28 incident: a classic PAT got embedded in multiple agent spawn prompts, multiplying its exposure across runtimes and execution traces. That is the specific failure mode the policy guards against — NOT all chat-based credential transfer.
+
+Active rules:
+1. **NEVER embed a PAT, API key, password, or any credential in a spawn prompt, an agent-to-agent message, or any file committed to the repo.** This is the 2026-05-28 lesson — still locked. If a future Claude (including me, claude_strategy) starts to embed a PAT in a spawn prompt: STOP. Violation.
+2. **Rain MAY provide a PAT directly to a Claude in chat for use in that Claude's runtime.** Requirements on the token:
+   - Fine-grained, repo-scoped (never classic `ghp_` tokens, which over-scope)
+   - ≤7-day expiry
+   - Rotate within 24 hours of session end
+3. **When a Claude receives a PAT via chat**, it writes to `~/.git-credentials`, uses it for the session, NEVER re-displays the token, and NEVER embeds it in subsequent outputs (spawn prompts, commits, log dumps, etc.).
+4. **Any token disclosed in chat is burned at session end.** Rotate.
+5. **Spawn prompts say**: "Credentials are pre-configured in ~/.git-credentials by Rain (or by the parent Claude's setup step). If git push fails with auth error, REPORT — do NOT request a PAT in chat from another agent."
+
+### Per-session credential workflow (the practical recipe)
+
+For **chat-based Claudes** (e.g. claude_strategy in claude.ai, ephemeral sandbox):
+- At session start, if write access is needed, Rain provides a fresh fine-grained PAT directly in chat.
+- Claude writes it to `~/.git-credentials`, uses it for the session.
+- Sandbox resets at session end; token rotated by Rain within 24h.
+
+For **persistent runtimes** (claude_vscode, claude_thunder):
+- One-time manual setup by Rain. Same fine-grained token requirements.
+
+### PAT setup (run this once per runtime that needs write access)
+```bash
+git config --global credential.helper store
+echo "https://dvaneetv:THE_FINE_GRAINED_PAT@github.com" > ~/.git-credentials
+chmod 600 ~/.git-credentials
+git config --global user.email "dvaneetv@ucsd.edu"
+git config --global user.name "claude_agent"
+```
 
 ## GOLD-RULE (LOCKED SOP)
 
