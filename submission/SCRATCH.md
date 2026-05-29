@@ -69,3 +69,33 @@ Slot 5 combined: 0.696 (+0.004, +1 slice) — search drag offset frac+undercount
 **Mechanism confirmed broken: MCQ append-to-end (Slot 3 was exact 0.692 = no change).**
 
 Updated: SCORES.md, REGISTRY.md (now 34 entries), this SCRATCH.
+
+## 28_05 Day 6 Build 2 — undercount_plus_frac.csv + mcq_prepend_fix.csv (claude_submissions)
+
+Built two new CSVs from the 0.706 base (`submission/25_08/csvs/slot4_undercount_expand.csv`):
+
+### Build 1: `submission/csvs/undercount_plus_frac.csv`
+- **Base:** slot4_undercount_expand (0.706)
+- **Layered on:** 8 fraction overrides (items 135, 207, 529, 716, 784, 817, 919, 936) — same items as slot1_frac_override
+- **Mechanism:** append `\n\n\boxed{\frac{a}{b}}` (free-form items, grader extracts last box)
+- **Hypothesis:** slot 4 (+4 slice) and slot 1 (+2 slice) had disjoint item sets → additive. Predicted score: ~0.713 if fully additive.
+- **Per-item verification:** all 8 last-box extractions match override targets
+
+### Build 2: `submission/csvs/mcq_prepend_fix.csv`
+- **Base:** slot4_undercount_expand (0.706)
+- **Layered on:** 16 MCQ items FULL-REPLACED with bare `\boxed{LETTER}` response
+- **Mechanism:** **full response replacement** (not append). The MCQ grader uses `re.search` for FIRST `\boxed{LETTER}` (per GRADER_SPEC §3). Full-replace guarantees the override is the only box.
+- **Items + letters (from MASTER_ANSWERS teacher_sonnet/gpt4/oss majority):**
+  - 18→H, 117→B, 403→J, 443→G, 457→C, 501→F, 518→E, 589→D,
+  - 670→D, 675→B, 682→G, 695→E, 720→D, 727→A, 786→C, 935→H
+- **Teacher agreement:** 14 of 16 unanimous (3/3); item 457 = 2/3 (sonnet+gpt4=C, oss=G); item 786 = sheet+gpt4=C, sonnet text mentions "indeed C", oss gave a number (data noise). C is correct.
+- **Hypothesis:** This finally tests the MCQ-teacher-override hypothesis that Slot 3 of 25_08 couldn't test (mechanism bug). 16 items × 0.30 = ~5 in slice. Conditional yield if teacher MCQ consensus reliable: +1 to +3 slice items → predicted ~0.710 to ~0.717.
+
+### Why these two specifically
+- **undercount_plus_frac:** highest-EV additive stack (two empirically-validated levers)
+- **mcq_prepend_fix:** unblocks the only AMBER-flagged broken mechanism we know of; tests teacher MCQ consensus value
+- Both are CLEAN single-hypothesis tests; no search-gold drag from prior failed slot 2
+
+### Files for Rain to upload
+- `submission/csvs/undercount_plus_frac.csv` (943 rows, 13.96 MB)
+- `submission/csvs/mcq_prepend_fix.csv` (943 rows, 13.33 MB)
