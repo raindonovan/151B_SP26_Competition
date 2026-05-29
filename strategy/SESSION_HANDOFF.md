@@ -1,80 +1,86 @@
-# SESSION HANDOFF — Day 6 Morning (2026-05-28)
+# SESSION_HANDOFF.md — claude_strategy session state
 
-## You are claude_strategy = CENTRAL NODE
-Read `strategy/CLAUDE.md` for your full operating contract.
+> Read this FIRST when resuming a claude_strategy chat. Detailed findings live in their canonical homes; this is the index.
 
-## Session start checklist
-1. Clone repo: `git clone https://github.com/beepbeeepimajeep/151B_SP26_Competition.git /home/claude/repo`
-2. Ask Rain for PAT: "I need the GitHub PAT to push directly."
-3. Read this file + `strategy/CLAUDE.md` + memory
-4. Check `strategy/TODO.md` for priorities
+**Last updated**: 2026-05-28 (end of Day 6 — handing off to fresh chat after tool-set degradation)
 
-## Current state
-- **Best inference-only**: 0.646 (slot1_reformat, run14b SC=8 32K)
-- **Best with overrides**: 0.692 (kitchen_sink_C, 78 overrides)
-- **Leader**: 0.85 (gap: 15.8pp from inference, 20.4pp from base)
-- **Deadline**: ~2026-06-02 (Kaggle final picks) / 2026-05-31 (Gradescope code)
-- **Submissions remaining**: ~20 (5/day final week)
-- **CURRENT KAGGLE PICKS ARE WRONG**: 0.438 + 0.420 selected. CHANGE BEFORE DEADLINE.
+## TL;DR — Where we are
 
-## North star: TEST PIPELINE
-See `strategy/TEST_PIPELINE.md` for the full architecture.
-```
-Gold set → Inference → Compare → YES: post-proc → submit
-                                → NO: adapter → post-proc → submit
-                                → Kaggle score → back-solve → iterate
-```
+- **Score: 0.706** is current best (slot4_undercount_expand). New high.
+- **Picks must be changed**: Kaggle currently has 0.438 / 0.420 selected. Update to 0.706.
+- **F7 (postprocessing/FINDINGS.md) PROVEN**: tier-1 items are graded wrong on format. Fraction-fix submission gained +2/283 with pure decimal→fraction change. Post-processing is the major lever.
+- **MCQ override bug**: appending `\boxed{LETTER}` is a NO-OP — grader extracts FIRST `\boxed{LETTER}`. All past MCQ overrides were silently ignored. Fix is prepend / full-replace.
+- **Search-gold bulk overlay = harmful (-2.1pp)** but root cause was format application errors (added labels, collapsed multi-answers), not bad content. Normalized search-gold is untested.
 
-## What was done Day 5 (repo hygiene)
-- Full repo reorganization into pipeline structure
-- 29 submissions verified + definitive REGISTRY.md
-- 4 critical inference JSONLs LFS-tracked (586MB)
-- Data audits on DSMLP/Thunder — both Thunder instances flagged KILL
-- Direct push via PAT + bash established
+## Tomorrow's north star
 
-## What was done Day 6 morning (this session)
-- **Test pipeline concept** established as north star (diagram + TEST_PIPELINE.md)
-- **Submission strategy** locked (oracle mining > pipeline validation > final picks)
-- **Adapter format decision** locked (adapter = correctness only, post-proc = format)
-- **Per-folder CLAUDE.md** architecture created for delegated agent workflow
-- **Inference techniques inventory** built (tried vs untried, unanalyzed data flagged)
-- **Post-processing techniques inventory** built (implemented vs known-but-not-implemented)
-- **Back-solve research** documented (log-loss oracle paper + our differential approach)
-- **Format conventions research** summarized from deep research session
-- **DeepConf** identified as the logprob-weighted SC technique Rain was remembering
-- **Core questions** defined (Q1-Q4: what's correct, what's gold, what needs format fix, what's adapter material)
+The **inference-run scan**: for every T1 item, scan all runs (SC8/SC16/SC32/nothinking) using a Hendrycks-normalized format-blind comparison. Classify each T1 item as:
+- **Bucket A** — some run got the math right → format-fix and submit, NO adapter needed
+- **Bucket B** — no run ever got the math right → adapter training set
 
-## Key strategic decisions (locked Day 6)
+This is the operational unlock. See `strategy/HOW_WE_KNOW_CORRECTNESS.md` for the full framework.
 
-1. **Post-processing is the major lever before adapter.** Inference → post-processing → adapter (if time).
-2. **Adapter format is relaxed.** Just needs to produce something resembling an answer. Post-proc handles format.
-3. **Submissions are for oracle mining first.** Back-solve is resurrected as first-class lever.
-4. **Per-folder CLAUDE.md** enables delegated agent workflow. Spawn new chat, point to folder, go to work.
-5. **Source-corpus routing** is the highest-EV post-processing improvement (attacks 80% format-loss).
+## Pending tasks (in priority order)
 
-## Priority stack (this session, Day 6)
+1. **Push a0cb626 if unpushed** — contains SECURITY.md, CLAUDE.md (CREDENTIALS+GOLD rules), strategy/HOW_WE_KNOW_CORRECTNESS.md, data/ANSWER_SHEET_SCHEMA.md. Check `git log origin/main..HEAD`.
+2. **Spawn claude_wolf_01** — bootstrap wolfram/ directory + run batch 01 (25 items per batch). Spawn prompt drafted in chat history. Wolfram only 66/943 verified (~7%); ~700 are computable. Wide-open lever.
+3. **Compute qwen_cross_config_agree column** — free T1 expander, runs locally. Spec in `data/ANSWER_SHEET_SCHEMA.md`. Could expand T1 from ~90 to ~250+ overnight.
+4. **Run the T1 inference scan** — Bucket A / Bucket B classification.
+5. **Build the 2-3 confirmed-lever submissions** (using daily slots):
+   - `undercount_plus_frac` (built; expected ~0.713) — Pick A material
+   - `mcq_prepend_fix` (built; +~1pp expected on 16 INVALID MCQ items)
+   - `search_gold_NORMALIZED` (untested; tests corrected hypothesis)
 
-We are in **repo hygiene / strategy mode**. NO analysis/inference/research until Rain switches gears.
+## Submission budget
 
-1. ✅ Create strategy docs (CLAUDE.md, TEST_PIPELINE.md, technique inventories)
-2. ✅ Create per-folder CLAUDE.mds
-3. ✅ Document submission strategy
-4. ⬜ Update TODO.md with comprehensive Day 6 priorities
-5. ⬜ Build MASTER_ITEM_TABLE (reconcile 1039 vs 943 rows)
-6. ⬜ Run build_answer_sheet_v6.py → commit output
-7. ⬜ Confirm every run folder has analysis doc (even stub)
-8. ⬜ Answer Core Questions Q1-Q4
+~17 slots remaining before 5/31 deadline. Allocation:
+- ~12 for format-rule probes (each tests a specific NORMALIZATION_RULES.md tier-3 rule)
+- ~3 for score-locks (latest confirmed levers stacked, ensures Pick A is highest)
+- ~2 reserve (adapter validation, emergency)
 
-## Compute status
-- **DSMLP**: Active, A30 24GB, clean
-- **Thunder tnr-0**: FLAGGED KILL (audited, clean)
-- **Thunder tnr-1**: FLAGGED KILL (audited, clean)
+## Locked findings (canonical homes — do not duplicate, just reference)
 
-## Key files to read
-- `strategy/CLAUDE.md` — your operating contract
-- `strategy/TEST_PIPELINE.md` — the north star
-- `strategy/INFERENCE_TECHNIQUES.md` — tried vs untried techniques
-- `strategy/POST_PROCESSING_TECHNIQUES.md` — format normalization inventory
-- `submission/GLOBAL_STRATEGY.md` — submission allocation plan
-- `submission/REGISTRY.md` — all 29 past submissions
-- `grading/GRADER_SPEC.md` — grader behavior
+| Finding | Home |
+|---|---|
+| Tier-1 items graded wrong on format (F7) | `postprocessing/FINDINGS.md` |
+| 4 active concerns: MCQ bug, EV calc, proxy evidence, slice assumptions | `submission/AMBER_ALERT.md` |
+| Kaggle scores on ~283 LB slice, not 943; final ranking is 943 | `submission/RED_ALERT_LB_SUBSET.md` |
+| Normalization rules tiered (T1/T2/T3/T4) — trailing-zero strip is NEUTRAL | `postprocessing/NORMALIZATION_RULES.md` |
+| Math-vs-format mental model, two-bucket SFT framework | `strategy/HOW_WE_KNOW_CORRECTNESS.md` |
+| Upgraded answer-sheet schema + tier formula | `data/ANSWER_SHEET_SCHEMA.md` |
+| Search-gold raw harmful, normalized untested (correction) | `submission/SCRATCH.md` (2026-05-28 correction) |
+
+## Locked SOPs
+
+| SOP | What it says | Where |
+|---|---|---|
+| CREDENTIALS RULE | Never embed PAT in prompts. Lives in `~/.git-credentials` per runtime. Fine-grained ≤7-day. | `CLAUDE.md` + `SECURITY.md` |
+| GOLD-RULE | File findings in canonical home same session. Folder map in CLAUDE.md. | `CLAUDE.md` |
+| Agent lifecycle | Role&Relevance in spawn prompt; mandatory SCRATCH.md signoff before ending. | `CLAUDE.md` |
+| Terminology | "test set" = ~283 slice; "FINAL test set" = 943. | `CLAUDE.md` |
+| VSCODE COMMIT BLOCK | When claude_strategy in chat can't write directly, emit paste-ready block for claude_vscode. | `strategy/CLAUDE.md` |
+
+## Tool-set notes for next claude_strategy
+
+Opus 4.7 chat UI has a **"Code" chip** at the bottom of the message input. When enabled, claude_strategy gets `bash_tool / create_file / view / str_replace` and can clone-edit-push directly (the "singing" workflow). When disabled or in older toggle states, falls back to GitHub MCP (read-only writes 403) + VSCODE COMMIT BLOCK relay.
+
+**Verify on first message**: run an `ls` or any innocuous bash command. If bash_tool isn't available, tell Rain to check the Code chip.
+
+## Recent session signoff
+
+### Day 6 (2026-05-28, claude_strategy)
+- Documented F7 (tier-1 graded wrong on format) with the fraction-fix smoking gun
+- Wrote HOW_WE_KNOW_CORRECTNESS.md (the keystone mental model)
+- Locked NORMALIZATION_RULES.md tiered structure
+- Investigated search-gold harm — corrected to "format-application error, not bad content"
+- Identified MCQ append-bug (AMBER #3)
+- Designed wolfram/ directory + CLAUDE_WOLF.md schema + 25-per-batch workflow
+- Handled SECURITY incident: classic PAT exposed in spawn prompts → rotated → policy locked
+- GitHub MCP integration write scope confirmed broken (Anthropic-side OAuth bug, issues #38091 / #61189)
+- Established VSCODE COMMIT BLOCK pattern as write bridge
+- Mid-session tool-set degraded (bash_tool dropped); transitioning to fresh chat with Code enabled
+
+### What's left for next claude_strategy
+- Verify tools, read this doc + CLAUDE.md + SECURITY.md + HOW_WE_KNOW_CORRECTNESS.md + AMBER_ALERT.md + F7 in postprocessing/FINDINGS.md
+- Confirm a0cb626 pushed (or push it)
+- Pick up the wolf-agent spawn and the inference-run scan
