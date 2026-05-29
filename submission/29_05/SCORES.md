@@ -5,7 +5,7 @@
 | Build | CSV | Items changed | Score | Δ vs 0.706 | Slice items net | Verdict |
 |-------|-----|---------------|-------|------------|-----------------|---------|
 | 1 | undercount_plus_frac.csv | 8 | **0.713** 🏆 | **+0.007** | **+2** | ✅✅ NEW BEST — additivity CONFIRMED |
-| 2 | mcq_prepend_fix.csv | 16 | 0.703 | **−0.003** | **−1** | ❌ Teacher MCQ consensus weak; mechanism works (score moved) |
+| 2 | mcq_prepend_fix.csv | 16 (only 6 real flips) | 0.703 | **−0.003** | **−1** | ⚠️ Fusion-of-evidence beats raw teachers on MCQ disagreements; mechanism works (score moved) |
 
 ## Calibration check on pre-upload predictions
 
@@ -56,8 +56,9 @@ This means **NOT** "teachers are right but grader marks them wrong". It means **
 
 ### Build 2 confirms
 - **MCQ full-replace mechanism WORKS** (score moved, was not a silent no-op like 25_08 Slot 3)
-- **Teacher MCQ consensus is WEAK evidence** — different reliability from multi-slot teacher consensus
-- **Different evidence reliability per task type** — the evidence-source ranking must be split MCQ vs free-form
+- **Kitchen_sink_C's fusion-of-evidence beats raw 3-teacher MCQ consensus on disagreement items.** Of 16 attempted overrides, only 6 actually flipped letter (the other 10 had teacher_letter = base_letter). On those 6 disagreements: net −1 slice item. Fusion beats raw teachers on items where they disagree.
+- **NOT "teachers are unreliable on MCQ".** Pure-teacher-vs-pure-Qwen on MCQ remains untested — kitchen_sink_C already absorbed teacher input upstream via answer-sheet routing.
+- **Different evidence reliability per task type** — the evidence-source ranking must be split MCQ vs free-form, AND must distinguish raw-source vs fused-source
 
 ## Implications for next round
 

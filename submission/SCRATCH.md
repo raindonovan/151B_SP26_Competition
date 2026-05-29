@@ -107,7 +107,7 @@ Build 2 (mcq_prepend_fix): 0.703 (-0.003 vs 0.706) — full-replace mechanism wo
 
 **Critical empirical learnings:**
 1. Slot 1 + Slot 4 levers are FULLY ADDITIVE (predicted +0.007, observed +0.007 exactly)
-2. MCQ full-replace mechanism WORKS — but teacher MCQ consensus is weak. Evidence-source ranking must split by task type:
+2. MCQ full-replace mechanism WORKS — but kitchen_sink_C fusion-of-evidence beats raw teacher MCQ consensus on disagreement items (NOT "teachers are categorically weak"). Evidence-source ranking must split by task type AND distinguish raw-source vs fused-source:
    - STRONG: teacher consensus on multi-slot, decimal→fraction (slot 4, slot 1)
    - WEAK: teacher consensus on single-letter MCQ (this build)
 3. The "INVALID MCQ" framing from CLAUDE_STRATEGIES was misleading; items were already fixed by kitchen_sink overrides upstream of slot 4 base.

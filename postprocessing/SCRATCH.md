@@ -106,19 +106,32 @@ Five submissions to Kaggle yielded the cleanest grader-behavior data we've ever 
 - Causes search-gold harm
 - Recovery: convert to LaTeX (`\cdot`, `\ln`, function notation)
 
-### EMPIRICAL TRUST RANKING OF EVIDENCE SOURCES (after this run)
+### EMPIRICAL TRUST RANKING OF EVIDENCE SOURCES (after 25_08 + 29_05 runs)
 
 | Rank | Source | Empirical reliability |
 |------|--------|----------------------|
 | 1 | Wolfram HIGH | Strongest — mathematical computation in LaTeX |
-| 2 | All teachers unanimous (3-4 agree) on simple fractions | Strong — proven in slot 1 |
+| 2 | All teachers unanimous (3-4 agree) on simple fractions | Strong — proven in slot 1; reconfirmed additive in 29_05 Build 1 |
 | 3 | `undercount_candidates.csv` teacher consensus (multi-slot) | Strong — proven in slot 4 |
 | 4 | Putnam/MathWorld/MSE URL search match | Strong (small sample only ~5 of 116) |
-| 5 | "Search GOLD" with source_type ∈ {computation, math, basic math} | **WEAK — empirically NET HARMFUL** (this is just the search agent's own LLM output mislabeled as GOLD) |
-| 6 | Single teacher | Weak |
-| 7 | Back-solve majority | Contaminated (RED_ALERT) — don't use as ground truth |
+| 5 | **Kitchen_sink_C MCQ choice (fusion: SC8 + Wolfram + answer sheet + prior teacher overrides)** | **STRONGER than raw teachers on disagreements** (29_05 Build 2: of 6 actual flips fusion→raw-teachers, net −1 slice item) |
+| 6 | Raw 3-teacher MCQ consensus (in isolation) | **Untested vs raw Qwen.** Weaker than the existing fusion on items where they disagree. May still be useful where fusion has weak signal (still-INVALID, no Wolfram, SC split). |
+| 7 | "Search GOLD" with source_type ∈ {computation, math, basic math} | **HARMFUL** (−6 slice items in slot 2) — this is just the search agent's own LLM output mislabeled as GOLD |
+| 8 | Single teacher | Weak |
+| 9 | Back-solve majority | Contaminated (RED_ALERT) — don't use as ground truth |
 
 **The "search GOLD" label is a confidence flag, NOT external verification.** 61 of 68 real-content-changes in slot 2 had source_type = "computation"/"math"/"basic math" = agent self-computed. Only 1 item had an external source (HW.Study, weak).
+
+**CRITICAL CLARIFICATION on raw teacher MCQ consensus (rank 6 above):**
+The 29_05 Build 2 result (`mcq_prepend_fix.csv` = 0.703, −1 slice from 6 real flips) does NOT prove "teachers are categorically unreliable on MCQ". 
+
+Post-hoc audit: of 16 attempted overrides, only 6 actually changed letter vs slot4 base. The other 10 had teacher_letter = base_letter (no real test). On the 6 disagreements: 18(I→H), 457(G→C), 670(A→D), 675(J→B), 695(B→E), 720(I→D), net −1 slice item.
+
+What this proves: **kitchen_sink_C's MCQ fusion (which already absorbs teacher input upstream via answer-sheet routing) beats raw 3-teacher consensus on the items where they disagree.** Reverting to raw teachers DROPS the SC8 + Wolfram + MED contributions and loses information.
+
+What this does NOT prove: that raw teacher consensus beats raw Qwen output on MCQ. That experiment hasn't been run.
+
+**Strategic implication:** Don't blanket-override MCQ disagreements with raw teachers. Tactically override only items where fusion has DEMONSTRABLY weak signal (still-INVALID after kitchen_sink pass, SC split 3/8 vs 5/8 with no Wolfram coverage, etc.).
 
 ### POST-PROCESSING IMPLICATIONS
 

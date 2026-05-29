@@ -146,14 +146,15 @@
 ### Pre-upload predictions vs actual
 
 - **Build 1:** Predicted 0.713 → Actual 0.713 🎯 **EXACT MATCH**. The additivity model was correct.
-- **Build 2:** Predicted 0.713 → Actual 0.703 (off by −0.010). Teacher MCQ consensus reliability was over-estimated.
+- **Build 2:** Predicted 0.713 → Actual 0.703 (off by −0.010). Post-hoc audit: only 6 of 16 items were actual letter flips vs base (10 had teacher_letter = base_letter); net −1 slice item came from those 6 disagreements. Lesson: kitchen_sink_C's fusion-of-evidence beats raw teacher consensus on disagreements, not "teachers are unreliable overall".
 
 ### Implications
 
 - **NEW BEST overall: 0.713** (undercount_plus_frac.csv, sub #35 in registry)
 - **Slot 1 (frac) + Slot 4 (undercount) are FULLY ADDITIVE** — proven empirically
-- **Teacher MCQ consensus is WEAK evidence** — multi-slot teacher consensus and decimal→fraction teacher consensus are STRONG, but single-letter MCQ teacher consensus does NOT reliably beat Qwen. Evidence-source ranking must split by task type.
-- **MCQ full-replace mechanism WORKS** — Build 2 score moved (was not silent no-op like 25_08 Slot 3), confirming the AMBER #3 fix is mechanically correct. The negative delta is a real measurement of teacher-MCQ value, not a bug.
+- **Kitchen_sink_C's fusion-of-evidence beats raw teacher consensus on MCQ disagreements.** Post-hoc audit revealed: of 16 MCQ overrides in Build 2, only 6 actually flipped vs slot4 base (the other 10 had teacher_letter = base_letter, making those overrides no-ops). The net −1 slice came from those 6 real flips. This is NOT "teachers are categorically unreliable" — it's "kitchen_sink_C's existing fusion (SC8 + Wolfram + answer sheet + prior teacher overrides) is more reliable than raw 3-teacher consensus where they disagree". Pure teacher consensus in isolation may still be useful for items where the fusion has weak signal.
+- **MCQ full-replace mechanism WORKS** — Build 2 score moved (was not silent no-op like 25_08 Slot 3), confirming the AMBER #3 fix is mechanically correct. The negative delta is a real measurement of fusion-vs-raw-teacher value, not a bug.
+- **Statistical caveat on Build 2:** only ~2 slice items affected. Within noise we can't rule out "teachers equal to fusion on MCQ"; we can rule out "teachers clearly better".
 
 ---
 
@@ -167,16 +168,15 @@ This run is designed to confirm/refute three specific findings from 25_08:
 
 ---
 
-## 5. Evidence-source ranking changes expected
+## 5. Evidence-source ranking changes from this run
 
-Conditional on results:
-
-| Source | Current rank | If Build 2 wins | If Build 2 zero/loses |
-|--------|-------------|----------------|----------------------|
-| Teacher MCQ consensus (unanimous) | Untested rank ~5 | Promote to rank 3-4 | Demote to rank 7-8 |
-| Wolfram HIGH | Rank 1 | Unchanged | Unchanged |
-| Teacher multi-slot consensus | Rank 2 (proven slot 4) | Unchanged | Unchanged |
-| Search "GOLD" computation | Rank bottom (proven slot 2) | Unchanged | Unchanged |
+| Source | Pre-run rank | Post-run finding |
+|--------|-------------|------------------|
+| Multi-slot teacher consensus | Rank 2 (proven slot 4) | Unchanged — still strong |
+| Decimal→fraction teacher consensus | Rank 2-3 (proven slot 1) | **Reconfirmed additive** (Build 1 +2 slice, exact replication of 25_08 slot 1) |
+| **Raw 3-teacher MCQ consensus vs kitchen_sink_C fusion** | Untested | **WEAKER than fusion on disagreements** (Build 2 −1 slice on 6 real flips). Note: this is fusion-vs-teacher, NOT Qwen-vs-teacher. Pure teacher consensus may still beat pure Qwen on items where fusion has weak signal. |
+| Wolfram HIGH | Rank 1 | Unchanged (not tested in this run) |
+| Search "GOLD" computation | Bottom (proven slot 2) | Unchanged |
 
 ---
 

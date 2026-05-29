@@ -31,4 +31,4 @@ Yield numbers explain the result: search-gold's −17% conditional yield means a
 - **NEW BASE: `slot4_undercount_expand.csv` = 0.706**
 - Natural next submission: stack slot 1 + slot 4 (no search) → likely ~0.713 if additive
 - Drop bulk search-gold from future stacks
-- Rebuild MCQ override with prepend mechanism if we want to test teacher MCQ value
+- Rebuild MCQ override with full-replace mechanism if we want to test raw-teacher-vs-fusion (completed in 29_05 Build 2: fusion wins on disagreements; raw-teacher-vs-Qwen on MCQ remains untested)

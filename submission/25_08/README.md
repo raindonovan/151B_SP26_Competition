@@ -95,7 +95,7 @@
 Each slot is also a probe:
 - Slot 1 score tells us: do fraction conversions help on slice?
 - Slot 2 score tells us: is search gold reliable enough to overlay broadly?
-- Slot 3 score tells us: is teacher MCQ consensus better than Qwen?
+- Slot 3 score tells us: does raw teacher MCQ consensus beat kitchen_sink_C's fusion-of-evidence? (Bug masked the test in 25_08; properly tested in 29_05 Build 2 — fusion won on disagreements.)
 - Slot 4 score tells us: is multi-answer expansion the dominant lever everyone says it is?
 - Slot 5 score tells us: do these levers interfere or stack additively?
 

@@ -59,7 +59,7 @@ Identical to 25_08 Slot 1:
 Takes the 0.706 base. For 16 specific MCQ items, **replaces the entire response with just `\boxed{LETTER}`** (full replacement, no preserved reasoning trace). All 927 other items are byte-identical to slot4.
 
 ### Hypothesis tested
-**Does teacher MCQ consensus actually beat our kitchen-sink choices when the override mechanism works?**
+**Does raw 3-teacher MCQ consensus beat kitchen_sink_C's fusion-of-evidence (SC8 + Wolfram + answer sheet + prior teacher overrides) on the 16 "INVALID MCQ" items, when the override mechanism works?**
 
 25_08 Slot 3 tried to test this with the append-to-end mechanism. That mechanism is broken for MCQ (`re.search` finds first `\boxed{LETTER}`, ignores appended last box). The submission scored exactly 0.692 = base = silent no-op. AMBER #3 confirmed.
 
@@ -104,11 +104,13 @@ Build 2 uses the **full-replace mechanism** that GRADER_SPEC §3 says will work:
 - If teachers worse than Qwen on these items: negative delta possible
 
 ### What we LEARN regardless of score
-- **Score > 0.706:** Teacher MCQ consensus IS useful; expand to more disagreement items
-- **Score = 0.706:** Mechanism worked, but teachers and Qwen are equivalent on these items
-- **Score < 0.706:** Teacher MCQ consensus is wrong more than right; rethink trust ranking
+- **Score > 0.706:** Raw teacher MCQ consensus beats kitchen_sink fusion on these items; expand to more disagreement items
+- **Score = 0.706:** Mechanism worked, but fusion and raw teachers are equivalent on these items
+- **Score < 0.706:** Kitchen_sink fusion beats raw teacher consensus; the existing multi-source fusion is doing real work that raw teachers don't capture
 
-This is the first time we'll empirically measure the teacher-MCQ-vs-Qwen comparison — Slot 3 of 25_08 was a no-op so we have no data on this question yet.
+**ACTUAL RESULT: 0.703 (−0.003 = −1 slice item).** Post-hoc audit revealed only 6 of 16 items were actual letter flips (the other 10 had teacher_letter = kitchen_sink_letter — no real test). On those 6 disagreements, fusion was right more often than raw teachers. **Not "teachers are unreliable" — "kitchen_sink_C fusion of evidence is stronger than raw 3-teacher consensus on disagreements."**
+
+This is the first time we've empirically measured fusion-vs-raw-teacher on MCQ. Slot 3 of 25_08 was a no-op so we had no data on this question yet.
 
 ---
 

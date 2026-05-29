@@ -186,7 +186,7 @@ Updated based on empirical performance:
 | 3 | All-teachers-unanimous on simple decimal→fraction | **STRONG** (slot 1 won +2 items, 83% yield) |
 | 4 | Putnam/MathWorld/MSE URL match in search | **Strong but small sample** (~5 of 116) |
 | 5 | "Search GOLD" with source_type ∈ {computation, math, basic math} | **HARMFUL** (−6 slice items in slot 2) — degraded to bottom tier |
-| 6 | 2-teacher MCQ consensus | **UNKNOWN** (slot 3 mechanism bug masked the test) |
+| 6 | 2-teacher MCQ consensus | **TESTED IN 29_05 (post-this-run)** — Fusion-of-evidence in kitchen_sink_C beats raw teacher MCQ consensus on disagreement items (29_05 Build 2: 6 actual flips, net −1 slice). Pure teachers vs pure Qwen on MCQ remains untested. |
 | 7 | Single teacher | Weak, untested |
 | 8 | Back-solve majority | Contaminated (RED_ALERT) |
 

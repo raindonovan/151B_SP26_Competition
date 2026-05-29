@@ -4,7 +4,7 @@
 
 | # | Repo CSV | Score | What it tested |
 |---|---|---|---|
-| 36 | 29_05/mcq_prepend_fix.csv | 0.703 | 16 MCQ items full-replace with teacher majority letter (NET HARMFUL: teachers weak on MCQ) |
+| 36 | 29_05/mcq_prepend_fix.csv | 0.703 | 16 MCQ full-replace with teacher majority (only 6 actually flipped vs base; 10 had teacher=base; fusion beats raw teachers on disagreements) |
 | 35 | 29_05/undercount_plus_frac.csv | **0.713** | **Slot 4 + Slot 1 additive stack — NEW BEST** |
 | 34 | 25_08/slot5_combined_all.csv | 0.696 | All 4 overlays stacked (frac+search+mcq+undercount) |
 | 33 | 25_08/slot4_undercount_expand.csv | 0.706 | Undercount expansion (51 items) — previous best |
@@ -45,7 +45,7 @@
 ## Key findings
 - **NEW BEST: 0.713 from undercount_plus_frac** (+2.1pp over kitchen_sink 0.692)
 - **Slot 1 (frac) and Slot 4 (undercount) levers are FULLY ADDITIVE** — proven by exact prediction match in #35
-- **Teacher MCQ consensus is WEAK evidence** — 16-item full-replace override scored −0.003 (NET HARMFUL); contrast with multi-slot teacher consensus which is STRONG
+- **Kitchen_sink_C's fusion-of-evidence (SC8 + Wolfram + answer sheet + prior teacher overrides) BEATS raw 3-teacher consensus on MCQ items where they disagree.** In #36, of 16 attempted MCQ overrides, only 6 actually flipped (10 had teacher = base letter); those 6 flips netted −1 slice item. Lesson: don't blanket-override MCQ with raw teacher consensus — kitchen_sink already absorbed teacher input upstream. (Statistical caveat: small signal, ~2 slice items affected.)
 - **MCQ full-replace mechanism WORKS** — #36 score moved (not silent no-op), confirming GRADER_SPEC §3 fix is correct
 - **Undercount expansion CONFIRMED as dominant lever** (+4 slice items from 51 changes in #33)
 - **Hendrycks-prefers-fractions CONFIRMED** (+2 slice items from 8 decimal→fraction in #30, replicated in #35)
