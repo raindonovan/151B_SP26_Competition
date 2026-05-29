@@ -16,13 +16,13 @@ Corrected from earlier F1: the 0.692 figure conflates inference improvements wit
 
 **Inference-only honest read: we're at 0.646. Overrides add another +4.6pp on top.** The leader at 0.85 sits +15.8pp above slot1_reformat and +20.4pp above raw base. Format tricks alone won't close this.
 
-## F2 — OPL is answer-sheet gold for ~30-40 items, not training gold
+## F2 — OPL bulk-override is empirically disconfirmed (Day 7 update)
 
-See `playbook/runs/opl_run/findings.md` for full analysis. Headline:
-- 39 OK-status items with clean concrete OPL answers, all disagree with Qwen
-- Realistic projection +3.6pp (lower) to +10-12pp (upper, with layering)
-- Earlier "+5-12pp" projection was inherited speculation
-- NOT training gold (no CoT traces)
+See `data/search/opl/findings.md` for full analysis. **Headline (revised 2026-05-29)**:
+- Day-7 OPL × teacher-consensus join: **0 T1-promoted / 25 OPL-disagrees / 14 split-teacher** of 39 OK-status items.
+- The earlier projection of +3.6pp (lower) to +10-12pp (upper) was a CEILING that assumed parameter equality between OPL templates and our questions. The join shows that assumption is false.
+- Smoking-gun spot-check: id=15 at the **highest** similarity (0.9055) — OPL matched a completely different Loyola Chicago precalc problem. If the top match is a false positive, the rest are worse.
+- **OPL channel marked DEAD**. See `data/search/opl/decision.md`. NOT training gold, NOT answer-sheet gold, NOT a routing signal worth building in the time remaining.
 
 ## F3 — The "memorization 20/20" SFT v5 test was measuring the wrong thing
 

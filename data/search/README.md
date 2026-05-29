@@ -9,7 +9,7 @@
 |---|---|---|---|
 | Wolfram | `search/wolfram/` | Symbolic/numeric computation of answers | `results/wolfram_overrides.csv`, `docs/WOLFRAM_FINDINGS.md` |
 | PACE | `search/pace/` | Programmatic Answer-label Computational Evaluation (Wolfram+Python label verification) | `results/pace/`, `docs/PACE_METHODOLOGY.md` |
-| OPL | `search/opl/` | OpenProblemLibrary embedding match (database search) | `results/opl_match/`, `results/opl_embeddings/` |
+| OPL | `search/opl/` | OpenProblemLibrary embedding match (database search) — **DEAD as of Day 7** (see `opl/decision.md`) | `results/opl_match/`, `results/opl_embeddings/` |
 | Search App | `search/search_app/` | Web + database search (Numina, etc.) | TBD |
 | Teachers | `search/teachers/` | Multi-LLM teacher consensus answers | answer sheet + master tracker (stub-linked, not duplicated) |
 

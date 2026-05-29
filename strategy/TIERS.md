@@ -28,7 +28,7 @@
 - **Multi-teacher majority (2-of-3 / 3-of-4)** → T3
 - **Single-teacher answer** → T4
 - **Back-solve majority from score-weighted submissions** → T3-T4 depending on submission diversity
-- **OPL OK-status direct match** → T2 if similarity ≥0.95, T3 otherwise
+- **OPL OK-status direct match** → ~~T2 if similarity ≥0.95, T3 otherwise~~ — **DEAD as of Day 7**, see `data/search/opl/findings.md`. Do NOT use as a tier source. 0/39 alignment with teacher consensus.
 - **Qwen SC=8 with ≥7/8 agreement** → T2 on free-form, T1 on MCQ
 - **Qwen SC=8 with 5-6/8 agreement** → T3
 - **Qwen SC=8 with 3-4/8 agreement** → T4

@@ -30,7 +30,7 @@ You have these search tools available:
 
 ### Free-form single-answer
 - Search distinctive numerical values or variable names from the question
-- Look for: AoPS wiki, Math Stack Exchange, NuminaMath dataset pages, WeBWorK OPL
+- Look for: AoPS wiki, Math Stack Exchange, NuminaMath dataset pages, OEIS direct (for sequence items), WolframAlpha. NOTE: WeBWorK OPL embedding-match is DEAD as a source (see data/search/opl/decision.md) — only use OPL paths as a hint at problem origin, never as an answer.
 - Cross-check: does the found answer match any of our teacher answers?
 
 ### Free-form multi-answer
@@ -41,7 +41,7 @@ You have these search tools available:
 ## Best search sites
 - **Art of Problem Solving (AoPS)**: competition math (AIME, AMC, Olympiad)
 - **Math Stack Exchange**: conceptual and competition problems
-- **WeBWorK OPL** (GitHub: openwebwork/webwork-open-problem-library): textbook problems
+- ~~**WeBWorK OPL**~~ — DEAD CHANNEL (see `data/search/opl/decision.md`). Similarity-matching produces false positives at high thresholds. Do not use.
 - **NuminaMath**: math dataset with solutions
 - **University course pages**: homework solutions often posted
 - **Chegg/Course Hero**: textbook solutions (often paywalled — note this)

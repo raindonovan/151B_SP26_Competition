@@ -1,9 +1,11 @@
 # RUN: OPL Match
 
+> ⚰️ **STATUS (Day 7, 2026-05-29): DEAD CHANNEL.** OPL bulk-override is empirically disconfirmed. The OK-bucket is mostly false-positive text matches against unrelated problems. See `findings.md` Day-7 headline and `decision.md` for the verdict. Infrastructure kept for spot-query reference; no further work planned.
+
 **Type**: Embedding-based question matching (not an inference run)
-**Date**: ~2026-05-26 to 2026-05-27
-**Owner**: tnr-0 (OPL embeddings local), claude_strategy (analysis)
-**Status**: Match data complete; analyzed in `findings.md`; decision in `decision.md`
+**Date**: ~2026-05-26 to 2026-05-27 (matching); 2026-05-29 (join + disconfirmation)
+**Owner**: tnr-0 (OPL embeddings local), claude_strategy (analysis, then bust verdict)
+**Status**: DEAD — analyzed in `findings.md`, killed in `decision.md`
 
 ## What this was
 
