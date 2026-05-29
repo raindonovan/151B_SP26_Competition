@@ -437,19 +437,19 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0435,statistics,free_multi,3,DONE,"0.4457, 0.5368, A",HIGH,B1,YES,CI bounds + MCQ; under-count missing letter,Construct the $99$ \% confidence interval estimate of the population proportion 
 0436,other,free_single,1,UNVERIFIED,,,,MAYBE,,Find an equivalent fraction to $\frac{5}{8}$: ${\frac{5}{8}=\frac{?}{32}}$ The q
 0437,statistics,free_single,1,DONE,"76.37, 79.63",HIGH,B10,YES,"95% CI: ME=1.96*17/sqrt(420)=1.626; (78-1.63,78+1.63)=(76.37,79.63); best=79.63 is undercount",The number of cars sold annually by used car salespeople is normally distributed
-0438,algebra,free_multi,9,UNVERIFIED,,,,YES,,Determine the following for: $5x^{4} y^{5}+x^{3} y^{7}+2$ a) Determine the term 
+0438,algebra,free_multi,9,DONE,"5, 9, 1, 10, 2, 0, 10, x^3y^7, 1",HIGH,B11,YES,poly terms/coeff/degree 9-slot; slot9=leading coeff=1; best=1 is severe undercount,Determine the following for: $5x^{4} y^{5}+x^{3} y^{7}+2$ a) Determine the term 
 0439,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Add these two fractions: ${-\frac{10}{13}+\frac{6}{13}}$ When needed, use an imp"
 0440,geometry,MCQ,0,UNVERIFIED,,,,YES,,Given any convex pentagon whose vertices (no three of which are collinear) have 
 0441,other,free_single,1,UNVERIFIED,,,,MAYBE,,You’ve poured $140$ grams of a $6\%$ (by mass) alcohol solution into a large gla
 0442,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Find the gradient of the function $f(x,y) = \frac{ \sqrt{x} + y^2 }{ x \cdot y }"
-0443,number_theory,MCQ,0,UNVERIFIED,,,,YES,,"Let $P(x) = x^4 + 2x^3 + 3x^2 + 4x + 5$ have roots $r_1, r_2, r_3, r_4$ . Given "
-0444,number_theory,free_multi,6,UNVERIFIED,,,,YES,,Find the quotient and remainder in each of the following. $80\vert\overline{9075
+0443,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B11,YES,"Q(8) mod 1000 competition problem; not Wolfram-computable; teacher=G, best=No listed option","Let $P(x) = x^4 + 2x^3 + 3x^2 + 4x + 5$ have roots $r_1, r_2, r_3, r_4$ . Given "
+0444,number_theory,free_multi,6,DONE,"113, 35, 112, 61, 148, 43",HIGH,B11,YES,"division: 9075=113*80+35, 8685=112*77+61, 8331=148*56+43; best=43 is severe undercount",Find the quotient and remainder in each of the following. $80\vert\overline{9075
 0445,number_theory,MCQ,0,UNVERIFIED,,,,YES,,"$P$ is the probability that if you flip a fair coin, $20$ heads will occur befor"
 0446,statistics,free_multi,2,UNVERIFIED,,,,YES,,Find the standard error of the estimate and the coefficient of determination for
-0447,algebra,free_single,1,UNVERIFIED,,,,YES,,Solve the compound inequality. x \leq 6 \mbox{and} x \leq 4 Answer: [ANS]
+0447,algebra,free_single,1,DONE,x <= 4,HIGH,B11,YES,x<=6 AND x<=4 -> x<=4; teacher/best agree (different notation),Solve the compound inequality. x \leq 6 \mbox{and} x \leq 4 Answer: [ANS]
 0448,algebra,free_multi,2,UNVERIFIED,,,,YES,,"Is the function below a rational function? If it is, write it in reduced form as"
 0449,statistics,free_multi,3,UNVERIFIED,,,,YES,,$50$ people are randomly selected and the accuracy of their wristwatches is chec
-0450,geometry,MCQ,0,UNVERIFIED,,,,YES,,"There is an equiangular hexagon $OUTDIA$ such that $OU=DI$ , $UT=IA$ , $TD=AO$ a"
+0450,geometry,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B11,YES,"equiangular hexagon competition problem; teacher=I, best=A; not Wolfram-computable","There is an equiangular hexagon $OUTDIA$ such that $OU=DI$ , $UT=IA$ , $TD=AO$ a"
 0451,statistics,free_multi,6,UNVERIFIED,,,,YES,,Complete the table below. $\begin{array}{ccc}\hline Books read within the past y
 0452,statistics,free_single,1,UNVERIFIED,,,,YES,,A chi-square independence test is to be conducted to decide whether an associati
 0453,other,free_single,0,UNVERIFIED,,,,MAYBE,,"Let $a_1$, $a_2$, $r$, and $s$ be positive integers with $r$ and $s$ odd. The se"
@@ -460,7 +460,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0458,other,free_single,0,UNVERIFIED,,,,MAYBE,,$n$ assistants start simultaneously from one vertex of a cube-shaped planet with
 0459,trigonometry,free_multi,5,UNVERIFIED,,,,YES,,Complete the following fundamental identities: $\begin{array}{cccc}\hline 1. & P
 0460,other,free_multi,7,UNVERIFIED,,,,MAYBE,,Indicate whether the following statements are True (T) or False (F). You must ge
-0461,statistics,free_multi,2,UNVERIFIED,,,,YES,,Suppose that the minimum and maximum ages for typical textbooks currently used i
+0461,statistics,free_multi,2,DONE,"2, 302",HIGH,B11,YES,range rule std=8/4=2; n=(z97*sigma/ME)^2=ceil((2.17*2/0.25)^2)=302; best=3 is completely wrong,Suppose that the minimum and maximum ages for typical textbooks currently used i
 0462,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Let $f(x)=\sqrt{56-x}$ and $g(x)=x^2-x$. Then the domain of $f\circ g$ is equal 
 0463,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Let $f(x)$ be a monotonically increasing function defined on $[a, b]$. Let $E = "
 0464,statistics,MCQ,0,UNVERIFIED,,,,YES,,Let the system $\mathrm{L}$ be formed by two independent subsystems $L1$ and $L2
@@ -487,11 +487,11 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0485,other,free_single,1,UNVERIFIED,,,,MAYBE,,Stan and Hilda can mow the lawn in $45$ min if they work together. If Hilda work
 0486,number_theory,MCQ,0,UNVERIFIED,,,,YES,,The number of increasing sequences of positive integers $a_1 \le a_2 \le a_3 \le
 0487,statistics,free_multi,2,DONE,"-21.1, -0.9636",HIGH,B3,YES,covariance + correlation 2-slot,A sample of four 35-year-old males is asked about the average number of hours pe
-0488,statistics,free_single,0,UNVERIFIED,,,,YES,,"Having won the elections in Linetown, Turbo the Snail has become mayor, and one "
+0488,statistics,free_single,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B11,YES,"Linetown orientation competition: 2025-line acyclic orientation count; teacher=4050, best=2025!; not computable","Having won the elections in Linetown, Turbo the Snail has become mayor, and one "
 0489,other,free_single,1,UNVERIFIED,,,,MAYBE,,Angelina's goal for each five-day work week is to have average total sales of \$
 0490,geometry,free_multi,4,UNVERIFIED,,,,YES,,"The required cooling capacity, in BTUs, for a room air conditioner is directly p"
 0491,statistics,free_multi,5,UNVERIFIED,,,,YES,,Following are the number of miles traveled for 30 randomly selected business fli
-0492,statistics,free_multi,2,UNVERIFIED,,,,YES,,"If the coefficient of correlation is 0.90, the percentage of the variation in th"
+0492,statistics,free_multi,2,DONE,"A, A",HIGH,B11,YES,"R^2=0.9^2=0.81=81% variation explained->A; slot2=A; best slot1=81% (value not letter); teacher=A,A","If the coefficient of correlation is 0.90, the percentage of the variation in th"
 0493,statistics,free_multi,4,UNVERIFIED,,,,YES,,"In a study of red/green color blindness, $900$ men and $2650$ women are randomly"
 0494,other,free_multi,2,UNVERIFIED,,,,MAYBE,,It’s given that $1 \text{gram}=1000 \text{milligrams}$. Do the following unit co
 0495,statistics,free_multi,6,DONE,"100, 100, 200, 0.255, 5.991, B",HIGH,B3,YES,chi-sq GoF 6-slot,A multinomial experiment with $k=3$ cells and $n=400$ produced the data shown be
@@ -500,14 +500,14 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0498,statistics,free_single,0,UNVERIFIED,,,,YES,,A list of positive integers satisfies the following properties: (A) The mean of 
 0499,statistics,free_multi,4,DONE,"36.9, 0.3225, 32.25, 2.149",HIGH,B4,YES,exponential growth 4-slot,"In July 2005, the internet was linked by a global network of about 352.7 million"
 0500,statistics,MCQ,0,UNVERIFIED,,,,YES,,"Using the iterative method to solve the system of equations $A X = b$, let $x^*$"
-0501,number_theory,MCQ,0,UNVERIFIED,,,,YES,,"Let $S_n$ denote the set $\{1, 2,..., n\}$ , and define $f(S)$ , where $S$ is a "
+0501,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B11,YES,"GCD subset sum competition; teacher=F, best=INVALID; not Wolfram-computable","Let $S_n$ denote the set $\{1, 2,..., n\}$ , and define $f(S)$ , where $S$ is a "
 0502,trigonometry,free_single,1,UNVERIFIED,,,,YES,,Determine the period for the function $y=2 \tan (\frac{11\pi}{8}x-\frac{9\pi}{10
-0503,statistics,free_multi,3,UNVERIFIED,,,,YES,,A company set aside a certain amount of money in the year 2000. The company spen
+0503,statistics,free_multi,3,DONE,"y=-43000x+833000, 446000, 2019",HIGH,B11,YES,"slope=-43000, f(9)=446000, depleted year 2019; best=""446000,2019"" missing equation slot",A company set aside a certain amount of money in the year 2000. The company spen
 0504,algebra,free_multi,2,UNVERIFIED,,,,YES,,Find the rectangular coordinates of the point whose polar coordinates are $\left
-0505,algebra,free_multi,6,UNVERIFIED,,,,YES,,Suppose $f(x)=-26-39x^1+37x^2+27x^3+10x^4+1x^5$ is factored using Horner's Metho
+0505,algebra,free_multi,6,DONE,"1, 3, 6, -5, -4, 2",HIGH,B11,YES,"Horner at x=-7: 1,3,6,-5,-4,2 confirmed; best=2 is severe undercount (1 of 6 slots)",Suppose $f(x)=-26-39x^1+37x^2+27x^3+10x^4+1x^5$ is factored using Horner's Metho
 0506,statistics,MCQ,0,DONE,J,HIGH,B8,YES,balanced primes MCQ,We now define an algorithm: The definition of a(n) is the arithmetic mean of two
 0507,number_theory,MCQ,0,UNVERIFIED,,,,YES,,The value of $\frac{1}{399!}\left(\sum_{i=2}^{200}\frac{199!(399-i)!}{(200-i)!}-
-0508,linear_algebra,free_single,0,UNVERIFIED,,,,YES,,"Let $n$ be a positive integer. A class of $n$ students run $n$ races, in each of"
+0508,linear_algebra,free_single,0,DONE,n(n-1)/2,HIGH,B11,YES,n students n races score = n(n-1)/2; teacher/best agree,"Let $n$ be a positive integer. A class of $n$ students run $n$ races, in each of"
 0509,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Given that a>0, for any two numbers x and y, where 0 < x < a and 0 < y < a, the "
 0510,other,free_single,0,UNVERIFIED,,,,MAYBE,,"Exactly \( n \) cells of an \( n \times n \) square grid are colored black, and "
 0511,geometry,MCQ,0,UNVERIFIED,,,,YES,,"Find the arc length of the curve, where x=t, y=t^2 and z=2*t^3/3."
@@ -534,12 +534,12 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0532,algebra,MCQ,0,UNVERIFIED,,,,YES,,"For the following exercises, find the polar equation of the conic with focus at "
 0533,statistics,free_single,1,UNVERIFIED,,,,YES,,A dean in the business school claims that GMAT scores of applicants to the schoo
 0534,number_theory,MCQ,0,UNVERIFIED,,,,YES,,Given that the general solution of the differential equation $\mathrm{y^{\prime\
-0535,algebra,free_single,1,UNVERIFIED,,,,YES,,Use factoring to solve the polynomial equation: HINT: Try multiplying each side 
+0535,algebra,free_single,1,DONE,"-4, -6",HIGH,B11,YES,"x^2/240+x/24+1/10=0 -> x^2+10x+24=0 -> x=-4,-6; teacher/best agree",Use factoring to solve the polynomial equation: HINT: Try multiplying each side 
 0536,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,Decompose the following matrix into the product $LU$ using a compact format: $$ 
 0537,other,free_single,1,UNVERIFIED,,,,MAYBE,,"In your Grandpa Neil’s recipe for a marinade, each serving uses $7.5$ tablespoon"
 0538,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Find the zeros of the function $f(x) = x^3 - (3 + \sqrt{3}) \cdot x + 3$.
-0539,algebra,free_multi,2,UNVERIFIED,,,,YES,,Let p(x)=x^{6}-14x^{5}+72x^{4}-78x^{3}-933x^{2}+5372x-9860. The polynomial $p(x)
-0540,statistics,free_multi,3,UNVERIFIED,,,,YES,,Suppose {$Z_t$} is white noise with mean zero. Define the stochastic process {$X
+0539,algebra,free_multi,2,DONE,"4, 5",HIGH,B11,YES,"p(4)=-100 (neg), p(5)=800 (pos) -> root between 4 and 5; best=5 is undercount",Let p(x)=x^{6}-14x^{5}+72x^{4}-78x^{3}-933x^{2}+5372x-9860. The polynomial $p(x)
+0540,statistics,free_multi,3,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B11,YES,"AR(1) process MCQ 3-slot; teacher=A,B,C, best=A,C,C; slot2 differs; need MCQ options to verify",Suppose {$Z_t$} is white noise with mean zero. Define the stochastic process {$X
 0541,other,free_single,1,UNVERIFIED,,,,MAYBE,,The domain of the function $ f(x)=x+\frac{7}{3x-15}$ is all real numbers $x$ exc
 0542,statistics,free_multi,4,UNVERIFIED,,,,YES,,The length (in pages) of math research projects is given below. Using this infor
 0543,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Find the answer to the nearest cent when you perform each division. Your answer 
@@ -556,8 +556,8 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0554,algebra,MCQ,0,UNVERIFIED,,,,YES,,Consider a random walk on a connected graph with 4 edges. What is the highest po
 0555,statistics,free_multi,2,UNVERIFIED,,,,YES,,A newspaper conducted a statewide survey concerning the 1998 race for state sena
 0556,geometry,free_single,1,UNVERIFIED,,,,YES,,Let $A=f(r)$ be the area of a circle with radius $r$ and $r=h(t)$ be the radius 
-0557,algebra,free_single,1,UNVERIFIED,,,,YES,,Find the absolute value of this number. ${|{5}|=}$ [ANS]
-0558,algebra,free_single,1,UNVERIFIED,,,,YES,,Find an equation for the linear function which has $f(250)=1600$ and $f(650)=420
+0557,algebra,free_single,1,DONE,5,HIGH,B11,YES,|5|=5 trivially; best=6 is WRONG (trivial error),Find the absolute value of this number. ${|{5}|=}$ [ANS]
+0558,algebra,free_single,1,DONE,f(x)=(13/2)x-25,HIGH,B11,YES,"linear fn f(250)=1600, f(650)=4200: slope=13/2, b=-25; teacher/best agree",Find an equation for the linear function which has $f(250)=1600$ and $f(650)=420
 0559,other,free_single,1,UNVERIFIED,,,,MAYBE,,Multiply the following: ${-{8 {\textstyle\frac{3}{4}}} \cdot {32}}$ [ANS]
 0560,statistics,free_multi,3,UNVERIFIED,,,,YES,,A standardized variable always has [ANS] A. mean 0 and changing standard deviati
 0561,number_theory,MCQ,0,UNVERIFIED,,,,YES,,Find the prime factorization of 30!.
@@ -582,7 +582,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0580,calculus,MCQ,0,UNVERIFIED,,,,YES,,Compute the limit using L'Hopital's Rule: $$ \lim_{x \to 0} \left( \frac{ 1 }{ x
 0581,number_theory,MCQ,0,UNVERIFIED,,,,YES,,Let $y=y \left(x \right)$be such that $y^{\prime}+2 \left(\operatorname{l n} x+1
 0582,algebra,free_single,1,UNVERIFIED,,,,YES,,"A pile of logs has $45$ logs in the bottom layer, $44$ logs in the next layer, $"
-0583,geometry,free_single,0,UNVERIFIED,,,,YES,,"Hannah has a $2024 \times 2025$ rectangle in the coordinate plane, with sides pa"
+0583,geometry,free_single,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B11,YES,"rectangle cut competition (2024x2025); teacher=119, best=1; not Wolfram-computable","Hannah has a $2024 \times 2025$ rectangle in the coordinate plane, with sides pa"
 0584,trigonometry,free_multi,2,DONE,"7z, 6w",HIGH,B8,YES,symbolic form; Qwen substituted z=w=1,"A mass is oscillating on the end of a spring. The distance, $y$, of the mass fro"
 0585,statistics,free_multi,5,DONE,"-0.2235, 2.262, -2.262, No",PARTIAL,B4,YES,slot 5 unknown (interpretation phrase),It is considered quite common to have feet of unequal length. In a sample of 10 
 0586,statistics,free_multi,4,UNVERIFIED,,,,YES,,"In some cases, the best-fitting multiple regression equation is of the form $\ha"
@@ -592,22 +592,22 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0590,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Let $P(x) = (1 + x)(1 + 2x^2)(1 + 3x^4)(1 + 4x^8)(1 + 5x^{16})$ . Find the three
 0591,trigonometry,free_multi,8,DONE,"1.081, 1.683, 1.819, -0.832, 3.162, -0.322, 4.123, 1.326",HIGH,B4,YES,trig identity expansion 8-slot; note negative slot 4,Here is a little more review concerning trig functions. Using the formula for si
 0592,other,MCQ,0,UNVERIFIED,,,,MAYBE,,A parallel beam of light ray parallel to the X-axis is incident on a parabolic r
-0593,trigonometry,free_single,1,UNVERIFIED,,,,YES,,A ship is sailing due north. At a certain point the bearing of a lighthouse is N
+0593,trigonometry,free_single,1,DONE,19.4,HIGH,B11,YES,bearing navigation: d=15.5*sin(43.4)/sin(96.1)*cos(52.5-...)=19.43~19.4; teacher/best agree,A ship is sailing due north. At a certain point the bearing of a lighthouse is N
 0594,statistics,MCQ,0,UNVERIFIED,,,,YES,,Let the probability distribution of the random variable $\mathrm{X}$ be $\mathrm
-0595,statistics,free_multi,2,UNVERIFIED,,,,YES,,This question concerns the likelihood for logistic regression. Suppose your data
+0595,statistics,free_multi,2,DONE,"A, D, E, G, probability",MED,B11,YES,"logistic likelihood MCQ: A(deviance>=0),D(logL<=0),E(L<=1),G(L>=0) + word=probability; best=product WRONG",This question concerns the likelihood for logistic regression. Suppose your data
 0596,other,MCQ,0,UNVERIFIED,,,,MAYBE,,We now define an algorithm: The definition of a(n) is the sequence obtained by a
 0597,geometry,MCQ,0,UNVERIFIED,,,,YES,,$ABC$ is a triangle with integer side lengths. Extend $\overline{AC}$ beyond $C$
-0598,algebra,MCQ,0,UNVERIFIED,,,,YES,,What is the result of replacing the following quadratic form with the standard f
-0599,statistics,free_single,1,UNVERIFIED,,,,YES,,An SRS of size 22 is drawn from a population that has a normal distribution. The
+0598,algebra,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B11,YES,"quadratic form to standard form; hard linear algebra; teacher=G, best=D; not computable",What is the result of replacing the following quadratic form with the standard f
+0599,statistics,free_single,1,DONE,1.81,HIGH,B11,YES,"SE=8.5/sqrt(22)=1.812; teacher=1.81, best=1.8123; all agree",An SRS of size 22 is drawn from a population that has a normal distribution. The
 0600,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,"Let the matrix \( N = \begin{bmatrix} 0 & A \\ B & 0 \end{bmatrix} \), where \( "
 0601,algebra,free_multi,2,UNVERIFIED,,,,YES,,Factor the expression and simplify your answer as much as possible: $6 s^2+s-1=\
 0602,statistics,free_multi,3,UNVERIFIED,,,,YES,,Heights (in centimeters) and weights (in kilograms) of $7$ supermodels are given
 0603,statistics,free_multi,3,UNVERIFIED,,,,YES,,"For each problem, select the best response. (a) Which of the following is least "
 0604,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"A ray of light passing through the point A$(1, 2, 3)$, strikes the plane $x + y "
 0605,other,free_single,1,UNVERIFIED,,,,MAYBE,,A mountain moves toward the west by $7.6$ millimeters per year. In the past $6$ 
-0606,number_theory,MCQ,0,UNVERIFIED,,,,YES,,"Consider the sequence defined by $y_0=1$, $y_1=2$, and $y_a=4y_{a-1}-y_{a-2}$ fo"
-0607,geometry,free_multi,18,UNVERIFIED,,,,YES,,What center should a sphere of radius 4 have so that it sits on the xy plane wit
-0608,trigonometry,free_multi,4,UNVERIFIED,,,,YES,,"Since Roger Bannister broke the 4-minute mile on May 6, 1954, the record has bee"
+0606,number_theory,MCQ,0,DONE,181,HIGH,B11,YES,"least odd prime of y_25 (same recurrence as 0017); y_25 mod 181=0 confirmed; teacher=E, best=A","Consider the sequence defined by $y_0=1$, $y_1=2$, and $y_a=4y_{a-1}-y_{a-2}$ fo"
+0607,geometry,free_multi,18,DONE,"0, 0, 4, 0, 0, 14, 6, 6, 20, -6, -6, 0, -4, -4, 10, -4, -4, -12",HIGH,B11,YES,"sphere centers 18-slot; teacher/best agree (same values, different format)",What center should a sphere of radius 4 have so that it sits on the xy plane wit
+0608,trigonometry,free_multi,4,DONE,"B, A, A, 1981",HIGH,B11,YES,"time-vs-year: B(not fn), A(fn), A(record meaning), 1981; best=1981 is undercount (only slot4)","Since Roger Bannister broke the 4-minute mile on May 6, 1954, the record has bee"
 0609,other,free_single,1,UNVERIFIED,,,,MAYBE,,A convertible and a minivan leave a highway junction at the same time. The conve
 0610,geometry,free_single,0,UNVERIFIED,,,,YES,,Let $R$ be the region in the complex plane enclosed by the curve $f(\theta)=e^{i
 0611,statistics,free_single,1,UNVERIFIED,,,,YES,,A regression line using 33 observations produced SSR=140 and SSE=57. Determine t

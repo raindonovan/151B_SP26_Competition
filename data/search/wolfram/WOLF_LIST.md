@@ -119,3 +119,28 @@
 | 0411 | B10 | HIGH | 392*pi/45 | arc: r=8, 196deg -> s=8*196pi/180=392pi/45~27.37; teach |
 | 0421 | B10 | HIGH | -9*sqrt(5)/20, -sqrt(5)/20 | sec=1/cos=-9/(4sqrt(5))=-9sqrt(5)/20; tan=-sqrt(5)/20;  |
 | 0437 | B10 | HIGH | 76.37, 79.63 | 95% CI: ME=1.96*17/sqrt(420)=1.626; (78-1.63,78+1.63)=( |
+| 0438 | B11 | HIGH | 5, 9, 1, 10, 2, 0, 10, x^3y^7, 1 | poly terms/coeff/degree 9-slot; slot9=leading coeff=1;  |
+| 0443 | B11 | INCONCLUSIVE | INCONCLUSIVE | Q(8) mod 1000 competition problem; not Wolfram-computab |
+| 0444 | B11 | HIGH | 113, 35, 112, 61, 148, 43 | division: 9075=113*80+35, 8685=112*77+61, 8331=148*56+4 |
+| 0447 | B11 | HIGH | x <= 4 | x<=6 AND x<=4 -> x<=4; teacher/best agree (different no |
+| 0450 | B11 | INCONCLUSIVE | INCONCLUSIVE | equiangular hexagon competition problem; teacher=I, bes |
+| 0461 | B11 | HIGH | 2, 302 | range rule std=8/4=2; n=(z97*sigma/ME)^2=ceil((2.17*2/0 |
+| 0488 | B11 | INCONCLUSIVE | INCONCLUSIVE | Linetown orientation competition: 2025-line acyclic ori |
+| 0492 | B11 | HIGH | A, A | R^2=0.9^2=0.81=81% variation explained->A; slot2=A; bes |
+| 0501 | B11 | INCONCLUSIVE | INCONCLUSIVE | GCD subset sum competition; teacher=F, best=INVALID; no |
+| 0503 | B11 | HIGH | y=-43000x+833000, 446000, 2019 | slope=-43000, f(9)=446000, depleted year 2019; best="44 |
+| 0505 | B11 | HIGH | 1, 3, 6, -5, -4, 2 | Horner at x=-7: 1,3,6,-5,-4,2 confirmed; best=2 is seve |
+| 0508 | B11 | HIGH | n(n-1)/2 | n students n races score = n(n-1)/2; teacher/best agree |
+| 0535 | B11 | HIGH | -4, -6 | x^2/240+x/24+1/10=0 -> x^2+10x+24=0 -> x=-4,-6; teacher |
+| 0539 | B11 | HIGH | 4, 5 | p(4)=-100 (neg), p(5)=800 (pos) -> root between 4 and 5 |
+| 0540 | B11 | INCONCLUSIVE | INCONCLUSIVE | AR(1) process MCQ 3-slot; teacher=A,B,C, best=A,C,C; sl |
+| 0557 | B11 | HIGH | 5 | /5/=5 trivially; best=6 is WRONG (trivial error) |
+| 0558 | B11 | HIGH | f(x)=(13/2)x-25 | linear fn f(250)=1600, f(650)=4200: slope=13/2, b=-25;  |
+| 0583 | B11 | INCONCLUSIVE | INCONCLUSIVE | rectangle cut competition (2024x2025); teacher=119, bes |
+| 0593 | B11 | HIGH | 19.4 | bearing navigation: d=15.5*sin(43.4)/sin(96.1)*cos(52.5 |
+| 0595 | B11 | MED | A, D, E, G, probability | logistic likelihood MCQ: A(deviance>=0),D(logL<=0),E(L< |
+| 0598 | B11 | INCONCLUSIVE | INCONCLUSIVE | quadratic form to standard form; hard linear algebra; t |
+| 0599 | B11 | HIGH | 1.81 | SE=8.5/sqrt(22)=1.812; teacher=1.81, best=1.8123; all a |
+| 0606 | B11 | HIGH | 181 | least odd prime of y_25 (same recurrence as 0017); y_25 |
+| 0607 | B11 | HIGH | 0, 0, 4, 0, 0, 14, 6, 6, 20, -6, -6, 0, -4, -4, 10, -4, | sphere centers 18-slot; teacher/best agree (same values |
+| 0608 | B11 | HIGH | B, A, A, 1981 | time-vs-year: B(not fn), A(fn), A(record meaning), 1981 |
