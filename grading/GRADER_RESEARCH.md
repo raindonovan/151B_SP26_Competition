@@ -255,3 +255,25 @@ Math-Verify (HuggingFace) is SymPy-based and handles:
 - Piazza confirmations: Anthony Tong 2026-05-09 (no fraction/decimal normalization)
 - Our starter notebook: `starter_code_cse151b_comp.ipynb` Cells 11, 22
 - Empirical probes: 25_08 slots 1-5 (see submission/REGISTRY.md)
+
+---
+
+## 10. APPENDIX: ACTIONABLE FINDINGS FROM DATA AUDIT (2026-05-28)
+
+### A. WeBWorK source items use `a/b` gold format
+Items 137, 530, 833 (question text says "enter as a/b"): ALL teachers agree on slash format. Gold is almost certainly `a/b`, not `\frac{a}{b}`. The `_fix_a_slash_b` conversion does NOT fire in multi-answer context. **Converting these to `\frac{}{}` would BREAK the match.**
+
+Implication: source-corpus identification (WeBWorK vs MATH vs AIME) determines the correct format for each item.
+
+### B. \text{A} in item 725 multi-answer
+Answer `41.30,13.28,\text{A}` includes a MCQ letter wrapped in `\text{}`. Hendrycks will NOT strip this (no space in `\text{A}`). If gold has bare `A`, this costs a point.
+
+### C. Full normalization audit summary
+83/943 answers changed by `_strip_string`. All 19 non-whitespace changes are auto-normalized (safe). Zero items found with:
+- Bare `%` (0 items)
+- `\mathrm{}` wrapping (0 items)
+- `\mathbf{}` wrapping (0 items)
+- Bare `ln` without backslash (0 items)
+- Mixed numbers (0 items)
+
+These new format rules from our edge-case analysis are theoretical risks confirmed absent from our current answer sheet. They matter for future post-processing of raw model outputs.

@@ -195,3 +195,38 @@ The grader behavior confirms the following pipeline architecture (refining what'
 9. Strip leading zeros from integers
 10. Normalize negative sign to outside fraction
 11. Convert mixed numbers to improper fractions
+
+---
+
+## CRITICAL: SLASH FRACTIONS IN WEBWORK ITEMS (claude_grader_research, 2026-05-28)
+
+**Finding**: Items 137, 530, 833 have ALL teachers agreeing on `a/b` format (not `\frac{a}{b}`). Their question text EXPLICITLY says "enter in the form a/b". Gold is almost certainly in `a/b` format.
+
+**Hendrycks behavior for multi-answer slash fractions**: `_fix_a_slash_b` only converts STANDALONE `a/b` (entire string = `a/b`). In multi-answer like `2/13,2/1`, it WON'T convert because `split("/")` gives 3+ parts.
+
+**IMPLICATION**: If gold is `2/13,2/1` and we submit `\frac{2}{13},\frac{2}{1}` → **WRONG**.
+
+**RULE**: For WeBWorK-sourced items where question says "enter as a/b", keep slash format. DO NOT convert to `\frac{}{}`.
+
+**Source-corpus identification is CRITICAL**: The right format depends on whether the gold was encoded as LaTeX or plain text. WeBWorK → plain `a/b`. MATH dataset → `\frac{a}{b}`.
+
+### Affected items (all have unanimous teacher consensus on a/b format):
+- id=137: `2/13,2/1` — CORRECT as-is
+- id=530: `8/9,7/9,5` — CORRECT as-is
+- id=833: `-19/3,3/4,48/6,40/3` — CORRECT as-is
+- id=27: `1/3,2/3,7/6,11/6` — teachers split: Sonnet/OSS say a/b, GPT-4 says \frac. KEEP as a/b (WeBWorK source likely).
+
+## NORMALIZATION AUDIT RESULTS (83 answers changed, 19 non-whitespace)
+
+All 19 non-whitespace differences are auto-normalized by Hendrycks:
+- 8 items with `\%` (stripped automatically)  
+- 7 items with equation prefix like `y = ...` (stripped: LHS ≤ 2 chars)
+- 1 item with `\left`/`\right` (stripped)
+- 1 item with `\$` (stripped)
+- 1 item with `^\circ` (stripped)
+- 1 item with standalone `4/3` (auto-converted to `\frac{4}{3}`)
+
+**CONCLUSION**: No urgent format fixes needed for auto-normalized items. The real levers remain:
+1. Multi-slot undercount expansion (CONFIRMED: +4 items at 0.706)
+2. Decimal→fraction conversion for MATH-sourced items (CONFIRMED: +2 items)
+3. Symbolic→exact form conversion (e.g., decimals → π multiples for trig)

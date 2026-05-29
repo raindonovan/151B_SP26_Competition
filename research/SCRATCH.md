@@ -64,3 +64,11 @@ Drop anything here. Rain will sort it later.
 5. **Multiple `\text{ ` occurrences crash normalization**: Causes assert failure → falls back to raw string comparison, bypassing ALL normalization.
 6. **`\cdot` ≠ `*` and `\ln` ≠ `ln`**: LaTeX operators/functions are NOT interchangeable with plain text equivalents.
 7. **The complete `_strip_string` processing order is documented** — 17 steps in exact sequence, with specific conditions for each.
+
+### Additional discoveries (Phase 2 continuation):
+
+8. **WeBWorK items use `a/b` format, NOT `\frac{a}{b}`**: Items 137, 530, 833 have ALL teachers agreeing on `a/b`. Hendrycks `_fix_a_slash_b` doesn't convert in multi-answer context. Converting to `\frac{}{}` would BREAK the match. Source-corpus identification determines correct format.
+
+9. **Normalization audit of 943 answers**: 83 changed by normalization, but ALL 19 non-whitespace changes are auto-handled by Hendrycks (\\%, equation prefix, \\left/\\right, \\$, ^\\circ, standalone slash). No urgent format fixes in the auto-normalized category.
+
+10. **`\text{A}` in item 725**: MCQ letter wrapped in `\text{}` within multi-answer. If gold has bare `A`, our `\text{A}` won't match (Hendrycks doesn't strip `\text{X}` without space). Needs audit.
