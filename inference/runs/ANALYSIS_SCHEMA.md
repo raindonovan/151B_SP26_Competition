@@ -73,7 +73,9 @@ The dump described an uncommitted parallel stack (see "Open decision"). Regardle
 4. **Batch across all ~30 runs** once the analyzer is trusted.
 5. Per-session catalog work then = `analyze_run.py R{NN}` + read output + write prose `findings.md` + escalate cross-cutting → ~30-60 min/run.
 
-## OPEN DECISION (blocks build — Rain to decide)
+## ~~OPEN DECISION~~ — RESOLVED 2026-05-29 (merge 620301c)
+
+**The "phantom" stack was NOT phantom — the verification below was wrong.** The stack was real and pushed the whole time at `origin/copilot/normalizer-inference-review-20260529` (commit c07e149); the "not on any remote branch" check missed that branch. It is now **merged to main** and **runs on R14** (verified). Decision is moot: adopt + refine toward this schema, do not rebuild. Caveat: its numeric-surface layer (frac-promotion, trailing-zero) is largely mooted by the Piazza judge update (value-equality now collapses `0.6000`≡`3/5`, `4.000`≡`4`) — keep the structural layer (MCQ first-box, multi-answer single-box-ordered, undercount), retire/gate the numeric layer, and swap `build_review_sheet.py`'s strict-Hendrycks engine for the real `judger.py`. Original (now-superseded) text preserved below for the record:
 
 The 2026-05-29 normalization dump described a full parallel stack (`normalizer.py`, `build_review_sheet.py`, `INFERENCE_ANALYSIS_PIPELINE.md`, a judger move into a `grading/` package, etc.). **VERIFIED 2026-05-29: none of it is on `main` or any remote branch. `judger.py` is still at root. The work is uncommitted/phantom.**
 
