@@ -16,12 +16,36 @@
 
 Build 1 was a textbook calibrated prediction — the additivity model held perfectly. Build 2 prediction was too optimistic; "30-50% conditional yield" for teacher MCQ consensus was wrong; observed ~−10% conditional yield (worse than Qwen on these items).
 
-## Per-change yield analysis
+## Build 2 — IMPORTANT CORRECTION (added post-hoc)
+
+When we built mcq_prepend_fix.csv with 16 teacher-letter overrides, only **6 of 16 items actually changed letter** vs slot4 base. The other 10 already had the teacher's letter:
+
+| Outcome | Items | Count |
+|---------|-------|-------|
+| Teacher letter = slot4 base (no real flip) | 117, 403, 443, 501, 518, 589, 682, 727, 786, 935 | 10 |
+| Teacher letter ≠ slot4 base (real flip) | 18 (I→H), 457 (G→C), 670 (A→D), 675 (J→B), 695 (B→E), 720 (I→D) | 6 |
+
+**So the actual hypothesis tested was: 6 disagreement flips. Net result −1 slice item.**
+
+This means **NOT** "teachers are right but grader marks them wrong". It means **kitchen_sink_C's fusion-of-evidence (SC8 + Wolfram + answer sheet + prior teacher overrides) tends to be more reliable than raw 3-teacher consensus on the items where they DISAGREE**.
+
+### Corrected lesson
+
+- Teacher consensus in ISOLATION is not weak
+- Teacher consensus is weaker than **the existing fusion we've already built into kitchen_sink_C**
+- Don't BLANKET-override teacher disagreements — kitchen_sink already absorbed teacher input where useful upstream
+- Future MCQ overrides should be tactical: only items where kitchen_sink has DEMONSTRABLY weak signal (still-INVALID, SC very split, no Wolfram coverage)
+
+### Statistical caveat
+
+6 flips → ~1.8 expected slice items → net −1 is a SMALL signal. Within noise we can't rule out "teachers are equal to kitchen_sink on MCQ". We can only rule out "teachers are clearly better".
+
+## Per-change yield analysis (corrected)
 
 | Build | Real content changes | Net slice gain | Per-change yield |
 |-------|---------------------|----------------|-------------------|
 | 1 frac | 8 | +2 | ~83% conditional (matches slot 1 25_08 exactly — additive) |
-| 2 mcq | 16 | −1 | ~−5% conditional (NEGATIVE — teachers wrong more than right) |
+| 2 mcq | **6 actual flips** (not 16) | −1 | ~−17% conditional on the 6 disagreements |
 
 ## Empirical confirmations from this run
 

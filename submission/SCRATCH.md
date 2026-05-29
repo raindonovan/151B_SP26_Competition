@@ -119,3 +119,19 @@ Build 2 (mcq_prepend_fix): 0.703 (-0.003 vs 0.706) — full-replace mechanism wo
 - HIGH PRIORITY: TODO #8 (more undercount candidates) + #9 (more frac candidates) — both confirmed additive and replicable
 
 Updated: 29_05/SCORES.md, 29_05/RUN_REPORT.md, REGISTRY.md (now 36 entries), this SCRATCH.
+
+## CORRECTION to 29_05 Build 2 framing (claude_submissions, post-result reflection)
+
+Rain pushed back on my "teacher MCQ consensus is WEAK" framing. On audit:
+- Of the 16 items in mcq_prepend_fix, only 6 actually CHANGED letter (the other 10 had teacher_letter = slot4_letter, so override was a no-op for the grader)
+- The 6 real flips: 18(I→H), 457(G→C), 670(A→D), 675(J→B), 695(B→E), 720(I→D)
+- Net −1 slice item came from those 6 flips
+- This is NOT "teachers right, grader wrong". It's "kitchen_sink_C's fusion-of-evidence beats raw teacher consensus on items where they disagree"
+
+The fusion already absorbed teachers upstream (via answer sheet routing). Overriding back to raw teachers DROPS the other evidence streams (SC majority, Wolfram, MED tier).
+
+**Corrected lesson:** Don't blanket-override teacher disagreements with current best. Future MCQ overrides should target items where kitchen_sink has weak signal (still-INVALID, SC split 3/8 vs 5/8, no Wolfram coverage). Pure teacher disagreement is not sufficient cause.
+
+**Statistical caveat:** 6 flips → ~1.8 slice items affected → net −1 is small signal, within noise. Can't rule out "teachers equal to kitchen_sink on MCQ", only "teachers not clearly better".
+
+Updated 29_05/SCORES.md with the corrected framing.
