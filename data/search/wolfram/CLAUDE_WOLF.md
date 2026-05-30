@@ -24,8 +24,8 @@ Why not "override": (1) it falsely frames the stale sheet value as the thing wit
 - Known bugs to skip: 0011, 0317, 0570, 0585, 0622, 0858, 0894
 
 ## Files
-- `MASTER_QUESTIONS.csv` — 943-row tracking table (id, subject, type, n_ans_slots, wolfram_status, wolfram_answer, confidence, batch, computable, notes, question_preview)
-- `WOLF_LIST.md` — one-line digest of every DONE item
+- `WOLF_RESULTS.csv` — 943-row tracking table (id, subject, type, n_ans_slots, wolfram_status, wolfram_answer, confidence, batch, computable, notes, question_preview)
+- `WOLF_RESULTS_READABLE.md` — one-line digest of every DONE item
 - `TODO.md` — priority queue + next-batch IDs
 - `FINDINGS.md` — cumulative cross-batch findings (append-only)
 - `SCRATCH.md` — low-friction capture; dump anything surprising
@@ -50,7 +50,7 @@ Skip: 0011, 0317, 0570, 0585, 0622, 0858, 0894
 5. Extract the answer (value only — discard verbose response)
 6. Assign confidence: HIGH / MED / LOW / PARTIAL / INCONCLUSIVE
 7. Append row to `batches/batchNN/results.csv` immediately
-8. Update `MASTER_QUESTIONS.csv` row: wolfram_status=DONE, wolfram_answer, confidence, batch
+8. Update `WOLF_RESULTS.csv` row: wolfram_status=DONE, wolfram_answer, confidence, batch
 
 ### Confidence guide
 - HIGH: unambiguous numeric/symbolic answer, Wolfram fully solved it
@@ -73,8 +73,8 @@ Skip: 0011, 0317, 0570, 0585, 0622, 0858, 0894
    - Dataset bugs/quirks
    - Items needing query reformulation
    - Cross-cutting patterns worth promoting to root FINDINGS.md
-2. Update MASTER_QUESTIONS.csv (mark 25 as DONE)
-3. Append 25 to WOLF_LIST.md
+2. Update WOLF_RESULTS.csv (mark 25 as DONE)
+3. Append 25 to WOLF_RESULTS_READABLE.md
 4. Update TODO.md (mark batch done, list next 25 IDs)
 5. If observation is gold-tier, append to `FINDINGS.md` (root)
 6. Commit + push before starting next batch

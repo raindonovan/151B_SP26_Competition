@@ -146,7 +146,7 @@ git config --global user.name "claude_agent"
 Anything labeled GOLD — a confirmed lever, a discovered format rule, an empirical finding, a ground-truth signal — must be documented in its canonical home the same session it's discovered. Folder map:
 
 - Format / grader rules → `postprocessing/FINDINGS.md` (also update `NORMALIZATION_RULES.md` tier)
-- Verified Wolfram answers → `data/search/wolfram/WOLF_LIST.md` and `MASTER_QUESTIONS.csv`
+- Verified Wolfram answers → `data/search/wolfram/WOLF_RESULTS_READABLE.md` and `WOLF_RESULTS.csv`
 - Inference-config wins (per-run, per-config) → `inference/FINDINGS.md`
 - Confirmed submission levers (with score-delta evidence) → `submission/REGISTRY.md`
 - Conceptual gold (mental models, principles) → `strategy/HOW_WE_KNOW_CORRECTNESS.md` or a new strategy doc

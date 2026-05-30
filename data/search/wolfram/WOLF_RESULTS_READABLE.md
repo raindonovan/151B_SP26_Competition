@@ -1,5 +1,6 @@
-# WOLF_LIST.md — All Wolfram-Verified Items
-**Total verified**: 66 items (B1-B8 + WEBSEARCH)
+# WOLF_RESULTS_READABLE.md — Readable log of all processed items
+**Rows**: 316 processed (272 verified/DONE, 43 inconclusive, 1 disputed) across batches B1-B18 + WEBSEARCH.
+Readable companion to `WOLF_RESULTS.csv` (the full machine-readable scorecard for all 943).
 
 | ID | Batch | Confidence | Answer (truncated) | Notes |
 |-------|-------|------------|---------------------|-------|

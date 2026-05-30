@@ -5,7 +5,7 @@ Dump anything interesting here. Rain sorts later.
 ---
 ## Phase 1 bootstrap — 2026-05-29
 
-Built MASTER_QUESTIONS.csv from 943-item master_item_tracker.csv + 66 legacy wolfram_overrides.csv.
+Built WOLF_RESULTS.csv from 943-item master_item_tracker.csv + 66 legacy wolfram_overrides.csv.
 Subject classifier uses full question text from private.jsonl (not truncated previews).
 Subject distribution: statistics=163, algebra=124, trig=71, geometry=62, number_theory=62, calculus=46, linear_algebra=27, other=388.
 "other" is 41% — many are word problems without explicit domain keywords. Classified as MAYBE-computable.
