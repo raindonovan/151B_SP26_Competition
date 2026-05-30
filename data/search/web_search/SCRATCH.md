@@ -34,3 +34,25 @@
   source, but piecewise-formula options) and item 78 (plane verified on Shaalaa,
   but the asked quantity 5*sqrt2*d is not stated) to NOT_FOUND.
 - See FINDINGS.md "Pass 2026-05-29b" for the GOLD-source patterns.
+
+---
+## Signoff — claude_vscode (web_search) — 2026-05-29 (pass c, OEIS mining)
+- Switched from sequential to FINGERPRINT-TARGETED searching (Rain's call: focus
+  by findings). Triaged all remaining items for OEIS/competition signatures.
+- BIG WIN: the "We now define an algorithm: definition of a(n) is <name>... x_list
+  [...]" items are OEIS sequences verbatim. Read the b-file, match a(x_list) to an
+  option programmatically. 22 OEIS GOLD this pass.
+- GOLD count: 15 (session start) -> 39 (now). New: 17,41,47 (named comps) +
+  OEIS: 175,255,266,274,305,324,405,518,596,647,663,675,709,711,772,805,808,
+  862,874,877,934,940.
+- NOT_FOUND OEIS (couldn't read a clean/unambiguous b-file, computing forbidden):
+  88,162,402,434,506,873; also 911 (icosahedron-teleport, no matching page).
+- METHOD NOTE for next agent: fetch ONE b-file per call (batched fetches collide
+  on overlapping indices), and ALWAYS match the value-list to options with a
+  script - the distractor options are off-by-tiny-deltas and fool the eye.
+- STILL TO DO: many OEIS-fingerprint items remain unsearched in the triage list
+  (e.g. 711-done, but 88/402/434/506/873 need a better OEIS hit; plus the
+  competition-prose items 919,636,629,510,823,856,235,911 are mostly hard/original
+  olympiad - likely NOT_FOUND but worth a quick AoPS/archive check). Generic-drill
+  items 81-942 not individually searched (low yield, per established pattern).
+- See FINDINGS.md "Pass 2026-05-29c" for the full b-file workflow + gotchas.
