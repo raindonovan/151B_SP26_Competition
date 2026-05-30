@@ -13,5 +13,6 @@
   "kaggle_submission_id": null,
   "delta_vs_base": 0.025,
   "delta_vs_slot1": 0.025,
-  "notes": "+316 anchor overrides; +2.5pp; format-strict grader."
+  "notes": "+316 anchor overrides; +2.5pp (below +8-15 predicted \u2014 Kaggle format-strict on anchor notation).",
+  "delta_vs_prior_slot": 0.025
 }

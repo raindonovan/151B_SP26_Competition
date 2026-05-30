@@ -52,3 +52,20 @@ Expected slot 4 ≥ slot 3 ≥ slot 2 ≥ slot 1 (each overlay adds higher-confi
 | 4 | +0 to +0.5pp on top of slot 3 | TBD | pending |
 
 See `submission/30_05/SCORES.md` for delta analysis + implications.
+
+## Actuals + Post-Submission Analysis (Day 8 final — all 5 scored)
+
+| Slot | Predicted Δ | Actual score | Δ vs base | Δ vs prior | Verdict |
+|------|-------------|--------------|-----------|------------|---------|
+| 1 control | 0 | 0.713 | 0.000 | — | ✅ control valid (no regression) |
+| 2 +anchor | +8 to +15pp | 0.738 | +0.025 | +0.025 | ✅ positive, ~5-12pp below prediction |
+| 3 +4/4 bloc | +0.5 to +1.5pp | 0.738 | +0.025 | +0.000 | ❌ NULL |
+| 4 v2 (ship-A) | ~+5pp | **0.745** | +0.032 | +0.007 | ✅ best Day 8 |
+| 5 format probe | +1 to +3pp | 0.745 | +0.032 | +0.000 | ❌ NULL |
+
+### 3 key learnings
+1. **4/4 bloc has zero leverage on top of anchor** (0.738→0.738) — those items were already correct in the anchor base or sit off the ~283 scored slice.
+2. **Opus has leverage: +0.7pp** via the 3 (now 4) anchor flips + the 57-item 5th-teacher overlay — the only lever beyond anchor; it's what makes slot 4 v2 the Day-8 best (0.745).
+3. **Format probe was NULL** — render_d (Opus form) vs render_b (anchor form) gave no net change; content/format conflation makes the A/B indeterminate (can't isolate "format accepted" from "value already counted").
+
+Net: teacher/anchor/Opus overlay ceiling ≈ **+3.2pp over 0.713**, diminishing returns evident. Further upside (and Pick B per rule #11) must come from the **Qwen-only** path.

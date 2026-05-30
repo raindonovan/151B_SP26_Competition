@@ -16,5 +16,9 @@
   "n_degenerate_flags": 0,
   "degenerate_flags": [],
   "match_threshold": 0.95,
-  "ready_for_upload": true
+  "ready_for_upload": true,
+  "kaggle_score": 0.745,
+  "delta_vs_base": 0.032,
+  "delta_vs_prior_slot": 0.007,
+  "notes": "Full v7 ship-A (Opus flips + 5th teacher); +0.7pp over slot 2 \u2192 best Day 8 (0.745)."
 }

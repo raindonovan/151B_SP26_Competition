@@ -12,5 +12,6 @@
   "submission_date": "2026-05-30",
   "kaggle_submission_id": null,
   "delta_vs_base": 0.0,
-  "notes": "Control. Byte-identical to base."
+  "notes": "Control = 0.713 base; safety floor, no regression vs Day 5.",
+  "delta_vs_prior_slot": null
 }

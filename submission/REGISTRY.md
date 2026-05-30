@@ -4,6 +4,9 @@
 
 | # | Repo CSV | Score | What it tested |
 |---|---|---|---|
+| 41 | 30_05/slot5_format_probe/30_05_slot5_format_probe.csv | 0.745 | Format probe: render_d Opus-form on the 69 probe items (+0.0pp vs slot 4 v2) — NULL result, content/format conflation, indeterminate |
+| 40 | 30_05/slot4_aggressive/30_05_slot4_aggressive_v2.csv | **0.745** | Full v7 ship_class=A (Opus flips + 5th teacher) (+0.7pp over slot 2) — **NEW BEST (Day 8), +3.2pp over 0.713 base** |
+| 39 | 30_05/slot3_bloc/30_05_slot3_bloc.csv | 0.738 | slot 2 + 4/4 teacher bloc on non-anchor items (+0.0pp over slot 2) — 4/4 bloc has ZERO leverage on top of anchor |
 | 38 | 30_05/slot2_anchor/30_05_slot2_anchor.csv | **0.738** | +316 anchor overrides on top of 0.713 base (+2.5pp; smaller than +8-15pp predicted — Kaggle format-strict on anchor's audit-corrected notation per CHATGPT_AUDIT) |
 | 37 | 30_05/slot1_control/30_05_slot1_control.csv | 0.713 | Control: undercount_plus_frac.csv as-is, byte-identical to 0.713 base; verifies no regression from Day 5→Day 8 |
 | 36 | 29_05/mcq_prepend_fix.csv | 0.703 | 16 MCQ full-replace with teacher majority (only 6 actually flipped vs base; 10 had teacher=base; fusion beats raw teachers on disagreements) |
@@ -45,7 +48,10 @@
 | 1 | run08v2_v1_private943.csv | 0.586 | First submission |
 
 ## Key findings
-- **NEW BEST: 0.738 from slot2_anchor (#38)** (+2.5pp over the 0.713 base via 316 anchor overrides)
+- **NEW BEST: 0.745 from slot4_aggressive_v2 (#40)** (+3.2pp over 0.713 base; full v7 ship-A = Opus flips + 5th teacher). Teacher-overlay ceiling ~+3.2pp, diminishing returns evident.
+- **4/4 teacher bloc (#39): ZERO leverage on top of anchor** (0.738→0.738) — items already correct in anchor base or off-slice.
+- **Format probe (#41): NULL** (0.745→0.745) — render_d Opus-form vs anchor-form indeterminate (content/format conflation).
+- **NEW BEST (prior): 0.738 from slot2_anchor (#38)** (+2.5pp over the 0.713 base via 316 anchor overrides)
 - **Anchor overlay (slot 2) confirmed positive but format-precision issues cap the upside; format normalization is now a primary lever.** (+2.5pp actual vs +8-15pp predicted — Kaggle is format-strict on some anchor audit-corrected notation.)
 - **NEW BEST (prior): 0.713 from undercount_plus_frac** (+2.1pp over kitchen_sink 0.692)
 - **Slot 1 (frac) and Slot 4 (undercount) levers are FULLY ADDITIVE** — proven by exact prediction match in #35

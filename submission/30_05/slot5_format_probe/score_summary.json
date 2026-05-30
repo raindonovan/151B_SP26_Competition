@@ -6,5 +6,9 @@
   "n_degenerate_flags": 0,
   "degenerate_flags": [],
   "match_threshold": 0.85,
-  "ready_for_upload": true
+  "ready_for_upload": true,
+  "kaggle_score": 0.745,
+  "delta_vs_base": 0.032,
+  "delta_vs_prior_slot": 0.0,
+  "notes": "render_d Opus-form on 69 probe items; +0.0pp \u2014 null (content/format conflation, indeterminate)."
 }

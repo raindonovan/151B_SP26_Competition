@@ -16,5 +16,9 @@
   "n_degenerate_flags": 0,
   "degenerate_flags": [],
   "match_threshold": 0.75,
-  "ready_for_upload": true
+  "ready_for_upload": true,
+  "kaggle_score": 0.738,
+  "delta_vs_base": 0.025,
+  "delta_vs_prior_slot": 0.0,
+  "notes": "+4/4 teacher bloc on non-anchor items; +0.0pp \u2014 zero leverage on top of anchor."
 }
