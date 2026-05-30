@@ -93,6 +93,18 @@ class Normalizer:
                     first_boxed_letter=letter,
                     last_boxed=all_boxes[-1] if all_boxes else "",
                 )
+            # multi-select MCQ: box holds >=2 comma/space separated letters
+            if all_boxes:
+                letters = self._parse_mcq_letter_set(all_boxes[-1])
+                if letters:
+                    joined = ",".join(letters)
+                    return ExtractionResult(
+                        candidate=joined,
+                        rescued=False,
+                        all_boxes=all_boxes,
+                        first_boxed_letter=joined,
+                        last_boxed=all_boxes[-1],
+                    )
         elif all_boxes:
             return ExtractionResult(
                 candidate=all_boxes[-1],
@@ -155,6 +167,10 @@ class Normalizer:
         flags: list[str],
     ) -> str:
         letter = self._cleanup_mcq_letter(candidate)
+        if not letter:
+            letters = self._parse_mcq_letter_set(candidate)
+            if letters:
+                return ",".join(letters)
         if not letter:
             numeric_candidate = self.universal_cleanup(candidate)
             options = item.get("options") or []
@@ -289,6 +305,19 @@ class Normalizer:
         if item_type == "MCQ":
             return extract_mcq_letter(response)
         return ""
+
+    def _parse_mcq_letter_set(self, candidate: str):
+        """Return ['A','C','D'] for a multi-select MCQ answer like 'A,\\ C,\\ D',
+        or None if not a clean set of >=2 single letters. Single letters return
+        None so they keep flowing through the normal single-letter path."""
+        s = (candidate or "").strip()
+        for tok in ("\\,", "\\;", "\\:", "\\!", "\\ "):
+            s = s.replace(tok, "")
+        s = s.strip("()[]{} ")
+        parts = [p.strip("()[]{} ") for p in re.split(r"[,\s]+", s) if p.strip()]
+        if len(parts) >= 2 and all(len(p) == 1 and p.isalpha() for p in parts):
+            return [p.upper() for p in parts]
+        return None
 
     def _cleanup_mcq_letter(self, candidate: str) -> str:
         cleaned = candidate.strip().rstrip(".")

@@ -35,6 +35,16 @@ def test_mcq_replaces_when_rescue_needed():
     assert norm.normalize(response, item) == r"\boxed{B}"
 
 
+def test_mcq_multi_select_preserves_all_letters():
+    """Multi-select MCQ must keep every letter, not collapse to the last one."""
+    norm = Normalizer(mode="conservative")
+    item = {"id": 193, "options": ["o"] * 10}
+    assert norm.normalize_with_report(r"\boxed{A,\ C,\ D}", item).candidate == "A,C,D"
+    assert norm.normalize_with_report(r"\boxed{A, B}", item).candidate == "A,B"
+    # single-letter still works
+    assert norm.normalize_with_report(r"\boxed{B}", item).candidate == "B"
+
+
 def test_multi_answer_consolidates_all_boxes():
     norm = Normalizer(mode="conservative")
     item = {"id": 15, "question": "[ANS] [ANS]"}
