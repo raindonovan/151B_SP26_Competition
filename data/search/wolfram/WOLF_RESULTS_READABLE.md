@@ -570,3 +570,7 @@ Readable companion to `WOLF_RESULTS.csv` (the full machine-readable scorecard fo
 | 0926 | B28 | HIGH | -3t^2 - 6t + 2 | f(t+1)=5-3(t+1)^2=2-6t-3t^2; MATCH (best correct) |
 | 0930 | B28 | MED | n-order determinant value | structured determinant; MCQ best=E |
 | 0931 | B28 | HIGH | 3, -3 | midpoint(3,1),A=(3,5): B=(2*3-3,2*1-5)=(3,-3); MATCH (b |
+| 0939 | B29 | HIGH | 200 | S=sum totatives of 100=100*phi(100)/2=2000; n=3; floor( |
+| 0940 | B29 | INCONCLUSIVE | INCONCLUSIVE | OEIS Heinz-number least gap; best=B; not computable |
+| 0941 | B29 | MED | study-design conclusions | hospital mortality study design 6-slot; best="A,C,A,A,B |
+| 0942 | B29 | HIGH | 36 | 5sqrt(n)=n-6: u^2-5u-6=0->u=6->n=36 (5*6=30=36-6); MATC |

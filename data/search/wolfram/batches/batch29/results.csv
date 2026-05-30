@@ -1,0 +1,5 @@
+id,subject,type,n_ans_slots,wolfram_answer,confidence,computable,notes
+0939,number_theory,MCQ,0,200,HIGH,YES,S=sum totatives of 100=100*phi(100)/2=2000; n=3; floor(2000/10)=200; MCQ best=E
+0940,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,OEIS Heinz-number least gap; best=B; not computable
+0941,statistics,MCQ,6,study-design conclusions,MED,MAYBE,"hospital mortality study design 6-slot; best=""A,C,A,A,B,C""; conceptual"
+0942,algebra,free_single,1,36,HIGH,YES,5sqrt(n)=n-6: u^2-5u-6=0->u=6->n=36 (5*6=30=36-6); MATCH (best correct)

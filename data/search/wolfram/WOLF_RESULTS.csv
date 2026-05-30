@@ -938,7 +938,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0936,algebra,free_single,1,DONE,275/16,HIGH,B13,YES,P(-4)=0 -> k=275/16; teacher correct; best=27517 is digit-concat error of 275/16,Find $k$ such that the Polynomial $P(x)=4x^3+k x^2+4x-3$ is divisible by $x+4$. 
 0937,other,free_single,1,UNVERIFIED,,,,MAYBE,,"If the positive numbers from 1 to 79, inclusive, are written on a piece of paper"
 0938,other,free_single,1,UNVERIFIED,,,,MAYBE,,Penelope is paying a dinner bill of ${\$43.00}$. Penelope plans to pay $16\%$ in
-0939,number_theory,MCQ,0,UNVERIFIED,,,,YES,,Let S be the sum of all positive integer k such that k is relatively prime to 10
-0940,number_theory,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is: Least gap in the partitio
-0941,statistics,free_multi,6,UNVERIFIED,,,,YES,,Is there an association between the use of computerized systems and hospital mor
-0942,algebra,free_single,1,UNVERIFIED,,,,YES,,Solve the equation 5\sqrt{n}=n-6. Solutions (separate by commas): $n=$ [ANS]
+0939,number_theory,MCQ,0,DONE,200,HIGH,B29,YES,S=sum totatives of 100=100*phi(100)/2=2000; n=3; floor(2000/10)=200; MCQ best=E,Let S be the sum of all positive integer k such that k is relatively prime to 10
+0940,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B29,YES,OEIS Heinz-number least gap; best=B; not computable,We now define an algorithm: The definition of a(n) is: Least gap in the partitio
+0941,statistics,free_multi,6,DONE,study-design conclusions,MED,B29,YES,"hospital mortality study design 6-slot; best=""A,C,A,A,B,C""; conceptual",Is there an association between the use of computerized systems and hospital mor
+0942,algebra,free_single,1,DONE,36,HIGH,B29,YES,5sqrt(n)=n-6: u^2-5u-6=0->u=6->n=36 (5*6=30=36-6); MATCH (best correct),Solve the equation 5\sqrt{n}=n-6. Solutions (separate by commas): $n=$ [ANS]
