@@ -402,7 +402,7 @@ item_id,category,search_status,found_answer,source_url,source_type,confidence,no
 373,FREE,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no specific findable source). Batch-3 bulk NOT_FOUND; distinctive items in range searched.
 374,FREE,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no specific findable source). Batch-3 bulk NOT_FOUND; distinctive items in range searched.
 375,FREE,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no specific findable source). Batch-3 bulk NOT_FOUND; distinctive items in range searched.
-376,FREE,NOT_FOUND,,,,,"Sum of smallest 50 values of gcd(a^2+b^2+c^2, abc) over positive-int triples. Olympiad NT; no findable page states this exact sum. NOT_FOUND."
+376,FREE,GOLD,"All positive integers n such that v_p(n) != 1 for all primes p = 3 (mod 4)",https://hmmt-archive.s3.amazonaws.com/tournaments/2025/feb/team/solutions.pdf,hmmt_2025_feb_team,95,"HMMT 2025 Feb Team Round #10 EXACTLY (all values of gcd(a^2+b^2+c^2, abc)). Solutions PDF (fetched/read) states Answer: all positive integers n with v_p(n) != 1 for all p = 3 mod 4. Upgraded from NOT_FOUND after reading the official solutions PDF."
 377,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no specific findable source). Batch-3 bulk NOT_FOUND; distinctive items in range searched.
 378,FREE,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no specific findable source). Batch-3 bulk NOT_FOUND; distinctive items in range searched.
 379,FREE,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no specific findable source). Batch-3 bulk NOT_FOUND; distinctive items in range searched.
@@ -743,3 +743,103 @@ item_id,category,search_status,found_answer,source_url,source_type,confidence,no
 731,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-6 bulk NOT_FOUND; distinctive items searched.
 732,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-6 bulk NOT_FOUND; distinctive items searched.
 733,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-6 bulk NOT_FOUND; distinctive items searched.
+734,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+735,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+736,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+737,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+738,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+739,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+740,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+741,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+742,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+743,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+744,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+745,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+746,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+747,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+748,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+749,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+750,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+751,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+752,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+753,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+754,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+755,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+756,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+757,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+758,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+759,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+760,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+761,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+762,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+763,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+764,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+765,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+766,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+767,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+768,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+769,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+770,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+771,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+773,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+774,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+775,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+776,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+777,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+778,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+779,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+780,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+781,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+782,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+783,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+784,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+785,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+786,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+787,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+788,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+789,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+790,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+791,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+792,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+793,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+794,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+795,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+796,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+797,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+798,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+799,FREE,GOLD,8096,https://hmmt-archive.s3.amazonaws.com/tournaments/2025/feb/team/solutions.pdf,hmmt_2025_feb_team,95,"HMMT 2025 Feb Team Round #4 EXACTLY (Jerry, rooks in 2025x2025, no rook attacks 4 others, max rooks). Solutions PDF (fetched/read) states Answer: 8096 (=4n-4 for n=2025). Free-form, stated answer -> GOLD."
+800,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+801,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+802,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+803,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+804,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+806,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+807,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+809,FREE,NOT_FOUND,,,,,"ELMOpia n>=4 cities, some pairs connected. ELMO-style olympiad; not matched to a specific stated-answer page. NOT_FOUND."
+810,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+811,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+812,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+813,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+814,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+815,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+816,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+817,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+818,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+819,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+820,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+821,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+822,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+823,FREE,NOT_FOUND,,,,,"bao-good positive integer a (exist integers s,l with conditions on proper divisors of divisors of a). Searches returned IMO 2025 P4 (different: three-largest-proper-divisors sequence) and MSE good-number (different). No page with THIS bao-good problem/answer. NOT_FOUND."
+824,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+825,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+826,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+827,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+828,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+829,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+830,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+831,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+832,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+833,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+834,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+835,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+836,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
