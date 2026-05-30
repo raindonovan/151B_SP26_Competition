@@ -7,3 +7,4 @@ inference/results/run09sc8_v1_private943_tok16384.jsonl filter=lfs diff=lfs merg
 inference/results/run14b_sc8_v1_private943_tok32k_pp1.jsonl filter=lfs diff=lfs merge=lfs -text
 inference/results/run14b_sc8_v1_private943_tok32k_pp1.BACKUP_20260522_065113.jsonl filter=lfs diff=lfs merge=lfs -text
 inference/results/run14b_sc8_v1_private943_tok32k_pp1_v3filtered.jsonl filter=lfs diff=lfs merge=lfs -text
+data/search/teachers/opus/items.jsonl filter=lfs diff=lfs merge=lfs -text
