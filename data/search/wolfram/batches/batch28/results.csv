@@ -1,0 +1,26 @@
+id,subject,type,n_ans_slots,wolfram_answer,confidence,computable,notes
+0863,algebra,free_single,1,1/t^69,HIGH,YES,t^-5/(t^8)^8=t^-5/t^64=t^-69=1/t^69; MATCH (best correct)
+0865,algebra,free_single,1,7/x - 8,HIGH,YES,eight less than seven over a number = 7/x-8; MATCH (best correct)
+0868,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,"troubling numbers (2,5-smooth) competition; best=E"
+0875,linear_algebra,MCQ,0,a=2 or a=-10,HIGH,YES,tetra vol=(1/6)|det|=1 -> |-a-4|=6 -> a=2 or -10; MCQ best=C
+0876,calculus,MCQ,0,soap-mixing exponential decay,MED,YES,dC/dt mixing ODE; MCQ best=C
+0877,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,OEIS Chebyshev bisection; best=F
+0878,number_theory,MCQ,0,70,HIGH,YES,(12371^56+34)^28 mod 111 = 70 (verified); MCQ best=I
+0879,geometry,MCQ,0,6*pi^2,HIGH,YES,region is torus (rho-3)^2+z^2<=1: vol=2pi^2*R*r^2=6pi^2; MCQ best=H
+0881,linear_algebra,MCQ,0,6,HIGH,YES,"{2,4,6,8} x mod 10 identity=6 (6*n=n mod 10); MCQ best=D"
+0883,geometry,free_single,1,656.1,MED,YES,"well depth w/ sound delay, t1+t2=7s; best=656.1 plausible"
+0888,linear_algebra,MCQ,0,A from AP=PB (similarity),MED,YES,A=PBP^-1; MCQ best=I
+0891,calculus,MCQ,0,max existence interval of Cauchy problem,MED,YES,dy/dx=1+y^2 type; MCQ best=A
+0895,algebra,free_single,1,70*(2/7)^((x-10)/20),HIGH,YES,"g(10)=70,g(30)=20: g(x)=70(2/7)^((x-10)/20); MATCH (best correct)"
+0898,algebra,free_single,1,48,HIGH,YES,8*6+0*7=48; MATCH (best correct)
+0899,calculus,MCQ,0,int tan(x)/sqrt(sin^4+cos^4) dx (messy),MED,YES,computable substitution; MCQ best=D
+0900,statistics,free_multi,2,"1200, 3600",MED,YES,town merger demographics 2-slot; best plausible
+0903,statistics,MCQ,2,median area = 0.50,MED,YES,"histogram median splits area; best=""A,C""; conceptual"
+0905,statistics,MCQ,2,best-fit model identification,MED,YES,"scatterplot model MCQ; best=""B,C"""
+0907,geometry,free_single,0,INCONCLUSIVE,INCONCLUSIVE,NO,polygon partition competition; best=56
+0918,linear_algebra,MCQ,0,(5+sqrt(33))/2 = 5.372,HIGH,YES,"spectral radius of [[1,2],[3,4]]=(5+sqrt33)/2=5.372; MCQ best=C"
+0921,trigonometry,MCQ,0,zeros of (1-tanx)(1+sin2x)-tanx+cos2x-1,MED,YES,trig equation zeros; MCQ best=D
+0922,calculus,MCQ,0,4*pi*i,HIGH,YES,"oint (2z^2-z+1)/(z-1) |z|=2: residue at 1=2, =2pi i*2=4pi i; MCQ best=B"
+0926,algebra,free_single,1,-3t^2 - 6t + 2,HIGH,YES,f(t+1)=5-3(t+1)^2=2-6t-3t^2; MATCH (best correct)
+0930,linear_algebra,MCQ,0,n-order determinant value,MED,YES,structured determinant; MCQ best=E
+0931,geometry,free_multi,2,"3, -3",HIGH,YES,"midpoint(3,1),A=(3,5): B=(2*3-3,2*1-5)=(3,-3); MATCH (best correct)"

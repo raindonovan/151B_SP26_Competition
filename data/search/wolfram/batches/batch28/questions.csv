@@ -1,0 +1,42 @@
+id,subject,type,n_ans_slots,best_answer,teacher_consensus,question
+0863,algebra,free_single,1,\dfrac{1}{t^{69}},\frac{1}{t^{69}},"Simplify the following expression, and write your answer using only positive exponents.
+$\frac{t^{-5}}{\left(t^{8}\right)^{8}}=$ [ANS]"
+0865,algebra,free_single,1,\dfrac{7}{x} - 8,\frac{7}{x} - 8,"Translate the following phrase into a math expression or equation (whichever is appropriate). Use $x$ to represent the unknown number.
+eight less than the quotient of seven and a number [ANS]"
+0868,number_theory,MCQ,0,E,,"Call a positive integer $\textit{troubling}$ if its only prime divisors are $2$ and $5$ . Two $\textit{troubling}$ numbers have a sum of $135,000$ . Find the number of positive integer divisors of their product."
+0875,geometry,MCQ,0,C,C,"If the volume of the tetrahedron with edges $2i + j - k,\,\,i + aj + k$  and $i + 2j - k$ is one cubic unit then $a$="
+0876,algebra,MCQ,0,C,C,"After $5 k g$ soap is dissolved in $3 0 0 L$ water, clean water is poured in at a rate of $1 0 L$ per minute, and the evenly mixed soapy water is pumped out. What's the time when there's only $1 kg$ of soap left in the soapy water?"
+0877,number_theory,MCQ,0,F,F,"We now define an algorithm: The definition of a(n) is: Bisection (odd part) of Chebyshev sequence with Diophantine property. Chebyshev sequences are specific sequences derived from Chebyshev polynomials, which have applications in approximation theory and Diophantine equations. This specific subsequence takes only the odd-indexed terms of such a Chebyshev sequence. Given the input x_list (a series of values): [12, 13, 14, 15, 16, 17, 18, 19, 20, 21], determine the corresponding output sequence y_list."
+0878,number_theory,MCQ,0,I,I,Find the remainder when $\left( 1 2 3 7 1^{5 6}+3 4 \right)^{2 8}$ is divided by 111.
+0879,geometry,MCQ,0,H,H,"Find the volume of the region of points $(x,y,z)$ such that \[ (x^2 + y^2 + z^2 + 8)^2 \leq 36(x^2 + y^2). \]"
+0881,number_theory,MCQ,0,D,D,"In the group G = {2, 4, 6, 8) under multiplication modulo 10, the identity element is"
+0883,algebra,free_single,1,656.1,,"You drop a rock into a deep well. You can't see the rock's impact at the bottom, but you hear it after 7 seconds. The depth of the well is [ANS] feet. Ignore air resistance. The time that passes after you drop the rock has two components: the time it takes the rock to reach the bottom of the well, and the time that it takes the sound of the impact to travel back to you. Assume the speed of sound is 1100 feet per second. Note: After $t$ seconds the rock has reached a depth of $d$ feet where d=16t^2. Set up and solve a quadratic equation."
+0888,linear_algebra,MCQ,0,I,I,"Given $A P=P B$ , and $P=\left( \begin{matrix} {{{1}}} & {{{0}}} & {{{0}}} \\ {{{2}}} & {{{-1}}} & {{{0}}} \\ {{{2}}} & {{{1}}} & {{{1}}} \\ \end{matrix} \right), B=\left( \begin{matrix} {{{{1}}}} & {{{{0}}}} & {{{{0}}}} \\ {{{{0}}}} & {{{{0}}}} & {{{{0}}}} \\ {{{{0}}}} & {{{{0}}}} & {{{{-1}}}} \\ \end{matrix} \right)$ , what are the respective values of $A$ and $A^{2011}$?"
+0891,calculus,MCQ,0,A,A,The maximum interval of existence for the solution of the Cauchy problem $\left\{\begin{matrix} {{{\frac{\mathrm{d} y} {\mathrm{d} x}}=1+y^{2}}} \\ {{{y ( 0 )=0}}} \\ \end{matrix} \right.$ is().
+0895,algebra,free_single,1,70 \left( \dfrac{2}{7} \right)^{\frac{x - 10}{20}},,Find a formula for the exponential function which satisfies the given conditions: g(10)=70 \quad\mbox{and}\quad g(30)=20. $g(x)=$ [ANS]
+0898,algebra,free_single,1,48,48,"Simplify the expression:
+$8\times 6+0 \times 7$ [ANS]"
+0899,calculus,MCQ,0,D,D,"Compute the integral:
+$$
+\int \frac{ \tan(x) }{ \sqrt{\sin(x)^4+\cos(x)^4} } \, dx
+$$"
+0900,algebra,free_multi,2,"1200, 3600","1200,3600","Town A and Town B were located close to each other, and recently merged into one city. Town A had a population with $8\%$ African Americans. Town B had a population with $12\%$ African Americans. After the merge, the new city has a total of $4800$ residents, with $11\%$ African Americans. How many residents did Town A and Town B used to have? Write and solve a system equation to answer the following questions.
+Town A used to have [ANS] residents, and Town B used to have [ANS] residents."
+0903,statistics,free_multi,2,"A, C","A,C","In a histogram, the proportion of the total area which must be to the left of the median is: [ANS] A. exactly 0.50  B. between 0.25 and 0.60 if the distribution is symmetric and unimodal  C. more than 0.50 if the distribution is skewed to the right  D. less than 0.50 if the distribution is skewed to the left
+Which of the following statements is true? [ANS] A. The sum of the squared deviations from the arithmetic mean is always zero  B. The distance between the first and third quartiles is twice the distance between the first quartile and the median  C. The sum of the deviations from the arithmetic mean is always zero  D. The standard deviation is always less than the variance  E. The arithmetic mean is always less than the geometric mean"
+0905,statistics,free_multi,2,"B, C","B,C","For each paired data set, construct a scatterplot and identify the mathematical model that best fits the given data. $\begin{array}{c|ccccccc} x & 1 & 2 & 3 & 4 & 5 & 6 & 7\cr \hline y & 1 & 2.83 & 5.2 & 8 & 11.18 & 14.7 & 18.52 \cr \end{array}$ [ANS] A. Quadratic  B. Power  C. Logarithmic  D. Logistic  E. Linear $\begin{array}{c|ccccccc} x & 1 & 2 & 3 & 4 & 5 & 6 & 7\cr \hline y & 4.5 & 7.5 & 10.5 & 13.5 & 16.5 & 19.5 & 22.5 \cr \end{array}$ [ANS] A. Power  B. Logistic  C. Linear  D. Quadratic  E. Exponential"
+0907,geometry,free_single,0,56,,"Let $\mathcal P$ be a simple polygon and let $j$ and $k$ be positive integers with $j > k$. Suppose that it is possible to partition $\mathcal P$ into $j$ rectangles and shade $k$ of them gray such that no two shaded rectangles share a positive amount of perimeter. (It is permissible for any two of them to share a vertex.) Let $S(j,k)$ denote the fewest number of sides that $\mathcal P$ could have. Compute 
+\[
+\sum_{k=5}^{10}\sum_{j=11}^{15} S(j,k).
+\]
+"
+0918,linear_algebra,MCQ,0,C,C,"Given $A=\left[ \begin{array} {c c} {{{1}}} & {{{2}}} \\ {{{3}}} & {{{4}}} \\ \end{array} \right].$
+Find the spectral radius $\rho(A)$ of matrix $\boldsymbol{A}$."
+0921,trigonometry,MCQ,0,D,D,Find the zeros of the function $f(x) = \left(1 - \tan(x)\right) \cdot \left(1 + \sin(2 \cdot x)\right) - \tan(x) + \cos(2 \cdot x) - 1$.
+0922,calculus,MCQ,0,B,B,"What is the value of the integral $\oint_{c} \frac{2 z^{2}-z+1} {z-1} \mathrm{d} z$,Where $C \colon\mid z \mid=2$?"
+0926,algebra,free_single,1,-3t^2 - 6t + 2,,"Let $f(t)=5-3t^{2}.$ Evaluate $f(t+1)$.
+$f(t+1)=$ [ANS]
+Note: Your answer should be completely simplified. Unsimplified answers will not be accepted."
+0930,linear_algebra,MCQ,0,E,E,"Given the n-order determinant $D \!=\! \left| \! \begin{array} {c c c c c} {{{1}}} & {{{2}}} & {{{3}}} & {{{\cdots}}} & {{{n}}} \\ {{{1}}} & {{{2}}} & {{{0}}} & {{{\cdots}}} & {{{0}}} \\ {{{1}}} & {{{0}}} & {{{3}}} & {{{\cdots}}} & {{{0}}} \\ {{{\cdots}}} & {{{}}} & {{{\cdots}}} & {{{}}} & {{{\cdots}}} \\ {{{1}}} & {{{0}}} & {{{0}}} & {{{\cdots}}} & {{{n}}} \\ \end{array} \! \right|$ , what is the sum of the cofactors $A_{1 1}+A_{1 2}+\ \cdots\ +A_{1 n}$ of the elements in row 1?"
+0931,geometry,free_multi,2,"3, -3","3,-3","The midpoint of $AB$ is at $(3, 1)$. If $A=(3,5)$, find $B$.
+B is:([ANS], [ANS])"

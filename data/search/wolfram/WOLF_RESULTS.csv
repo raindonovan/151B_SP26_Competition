@@ -862,51 +862,51 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0860,other,free_single,1,UNVERIFIED,,,,MAYBE,,"In a sequence of five integers the third integer is the sum of the previous two,"
 0861,linear_algebra,MCQ,0,DONE,tridiagonal array index formula,MED,B27,YES,row-major position in B[1..298]; MCQ best=G,The tridiagonal matrix A[1..100][1..100] is stored in a one-dimensional array B[
 0862,algebra,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B27,YES,OEIS length-2 compositions; best=I,We now define an algorithm: The definition of a(n) is the number of ordered leng
-0863,algebra,free_single,1,UNVERIFIED,,,,YES,,"Simplify the following expression, and write your answer using only positive exp"
+0863,algebra,free_single,1,DONE,1/t^69,HIGH,B28,YES,t^-5/(t^8)^8=t^-5/t^64=t^-69=1/t^69; MATCH (best correct),"Simplify the following expression, and write your answer using only positive exp"
 0864,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Your friend from Paris arrives in New York and the forecast is for a low of 53 a
-0865,algebra,free_single,1,UNVERIFIED,,,,YES,,Translate the following phrase into a math expression or equation (whichever is 
+0865,algebra,free_single,1,DONE,7/x - 8,HIGH,B28,YES,eight less than seven over a number = 7/x-8; MATCH (best correct),Translate the following phrase into a math expression or equation (whichever is 
 0866,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Calculate the following products: $$ ( 2 ) \ {\frac{1} {2 \pi\mathrm{i}}} \int_{
 0867,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Let two independent events, $A$ , $B$ and $C$, satisfy the following conditions:"
-0868,number_theory,MCQ,0,UNVERIFIED,,,,YES,,Call a positive integer $\textit{troubling}$ if its only prime divisors are $2$ 
+0868,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B28,YES,"troubling numbers (2,5-smooth) competition; best=E",Call a positive integer $\textit{troubling}$ if its only prime divisors are $2$ 
 0869,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"(a) Suppose you pick two numbers 5 and 6. Find their sum and product, but do not"
 0870,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"A die is thrown 8 times, resulting in a 2 appearing 3 times, the probability is "
 0871,other,MCQ,0,UNVERIFIED,,,,MAYBE,,The locus of the mid point of the line segment joining the focus to a moving poi
 0872,calculus,free_multi,2,DONE,"infinity, 0",HIGH,B13,YES,lim(t->-inf)(t^2+5)=inf; lim(y->inf)4y^-2=0; teacher correct; best=INVALID,"Find: (a) $\lim\limits_{t\to-\infty}\, (t^{2}+5)=$ [ANS] (Enter the word infinit"
 0873,other,MCQ,0,UNVERIFIED,,,,MAYBE,,We now define an algorithm: The definition of a(n) is the reversion transform of
 0874,other,MCQ,0,UNVERIFIED,,,,MAYBE,,We now define an algorithm: The definition of a(n) is the result of the generali
-0875,geometry,MCQ,0,UNVERIFIED,,,,YES,,"If the volume of the tetrahedron with edges $2i + j - k,\,\,i + aj + k$  and $i "
-0876,algebra,MCQ,0,UNVERIFIED,,,,YES,,"After $5 k g$ soap is dissolved in $3 0 0 L$ water, clean water is poured in at "
-0877,number_theory,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is: Bisection (odd part) of C
-0878,number_theory,MCQ,0,UNVERIFIED,,,,YES,,Find the remainder when $\left( 1 2 3 7 1^{5 6}+3 4 \right)^{2 8}$ is divided by
-0879,geometry,MCQ,0,UNVERIFIED,,,,YES,,"Find the volume of the region of points $(x,y,z)$ such that \[ (x^2 + y^2 + z^2 "
+0875,geometry,MCQ,0,DONE,a=2 or a=-10,HIGH,B28,YES,tetra vol=(1/6)|det|=1 -> |-a-4|=6 -> a=2 or -10; MCQ best=C,"If the volume of the tetrahedron with edges $2i + j - k,\,\,i + aj + k$  and $i "
+0876,algebra,MCQ,0,DONE,soap-mixing exponential decay,MED,B28,YES,dC/dt mixing ODE; MCQ best=C,"After $5 k g$ soap is dissolved in $3 0 0 L$ water, clean water is poured in at "
+0877,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B28,YES,OEIS Chebyshev bisection; best=F,We now define an algorithm: The definition of a(n) is: Bisection (odd part) of C
+0878,number_theory,MCQ,0,DONE,70,HIGH,B28,YES,(12371^56+34)^28 mod 111 = 70 (verified); MCQ best=I,Find the remainder when $\left( 1 2 3 7 1^{5 6}+3 4 \right)^{2 8}$ is divided by
+0879,geometry,MCQ,0,DONE,6*pi^2,HIGH,B28,YES,region is torus (rho-3)^2+z^2<=1: vol=2pi^2*R*r^2=6pi^2; MCQ best=H,"Find the volume of the region of points $(x,y,z)$ such that \[ (x^2 + y^2 + z^2 "
 0880,trigonometry,free_multi,2,DONE,"35/37, 35/12",HIGH,B13,YES,"cos=12/37: sin=35/37, tan=35/12; teacher(exact)=best(decimal) agree","Find $\sin \theta$ and $\tan \theta$ if $\cos \theta=\frac {12}{37}$, assuming t"
-0881,number_theory,MCQ,0,UNVERIFIED,,,,YES,,"In the group G = {2, 4, 6, 8) under multiplication modulo 10, the identity eleme"
+0881,number_theory,MCQ,0,DONE,6,HIGH,B28,YES,"{2,4,6,8} x mod 10 identity=6 (6*n=n mod 10); MCQ best=D","In the group G = {2, 4, 6, 8) under multiplication modulo 10, the identity eleme"
 0882,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"Town A and Town B were located close to each other, and recently merged into one"
-0883,algebra,free_single,1,UNVERIFIED,,,,YES,,"You drop a rock into a deep well. You can't see the rock's impact at the bottom,"
+0883,algebra,free_single,1,DONE,656.1,MED,B28,YES,"well depth w/ sound delay, t1+t2=7s; best=656.1 plausible","You drop a rock into a deep well. You can't see the rock's impact at the bottom,"
 0884,other,free_single,1,DONE,g(x)=(x-59)^2+74,HIGH,B8,MAYBE,prefix required; g(x)= form,"Given $f(x)=x^2$, after performing the following transformations: shift upward 7"
 0885,statistics,free_multi,4,DONE,"18, 139.875, 18, B",HIGH,B16,YES,"mode=18, mean=1119/8=139.875, median=18, Mean(B) fails (outlier 999); best=""B"" undercount","Calculate the mode, mean, and median of the following data: 18, \ 20, \ 17, \ 18"
 0886,statistics,free_multi,2,DONE,"A, C",HIGH,B6,YES,2-slot ME scaling + n_req,"In developing an interval estimate for a population mean, a sample of 50 observa"
 0887,algebra,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B13,YES,"fuzzy logic min/max equation; teacher=I, best=C; not Wolfram-computable",Solve the equation $$ (x_{1} \wedge 0.6) \lor (x_{2} \wedge 0.7) \lor (x_{3} \we
-0888,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,"Given $A P=P B$ , and $P=\left( \begin{matrix} {{{1}}} & {{{0}}} & {{{0}}} \\ {{"
+0888,linear_algebra,MCQ,0,DONE,A from AP=PB (similarity),MED,B28,YES,A=PBP^-1; MCQ best=I,"Given $A P=P B$ , and $P=\left( \begin{matrix} {{{1}}} & {{{0}}} & {{{0}}} \\ {{"
 0889,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Decide whether the expression \frac{20 y}{4 y+5} can be put in the form \frac{ax
 0890,other,free_multi,4,UNVERIFIED,,,,MAYBE,,A study investigated the effect of the length and the repetition of TV advertise
-0891,calculus,MCQ,0,UNVERIFIED,,,,YES,,The maximum interval of existence for the solution of the Cauchy problem $\left\
+0891,calculus,MCQ,0,DONE,max existence interval of Cauchy problem,MED,B28,YES,dy/dx=1+y^2 type; MCQ best=A,The maximum interval of existence for the solution of the Cauchy problem $\left\
 0892,other,free_single,1,UNVERIFIED,,,,MAYBE,,An aerial photograph from a U-2 spy plane is taken of a building suspected of ho
 0893,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"In a questionnaire, respondents are asked to mark their gender as male or female"
 0894,statistics,free_multi,8,DONE,"0.008, 1.783, 2.013, -0.091, 0.283, -0.100, 0.272, 10",MEDIUM,B6,YES,"regression PI 8-slot; question hints 9, verified 10",The variables are x=SP500 market monthly log return and y=monthly return of Amer
-0895,algebra,free_single,1,UNVERIFIED,,,,YES,,Find a formula for the exponential function which satisfies the given conditions
+0895,algebra,free_single,1,DONE,70*(2/7)^((x-10)/20),HIGH,B28,YES,"g(10)=70,g(30)=20: g(x)=70(2/7)^((x-10)/20); MATCH (best correct)",Find a formula for the exponential function which satisfies the given conditions
 0896,algebra,free_multi,8,DONE,"False,True,False,False,True,True,False,True",HIGH,B13,YES,"expr-vs-eqn T/F 8-slot; teacher=words, best=0/1 binary; semantically agree",Choose True or False for the following questions about the difference between ex
 0897,other,free_single,1,UNVERIFIED,,,,MAYBE,,Suppose that the mean score of a class of 34 students was 77. The 18 male studen
-0898,algebra,free_single,1,UNVERIFIED,,,,YES,,Simplify the expression: $8\times 6+0 \times 7$ [ANS]
-0899,calculus,MCQ,0,UNVERIFIED,,,,YES,,"Compute the integral: $$ \int \frac{ \tan(x) }{ \sqrt{\sin(x)^4+\cos(x)^4} } \, "
-0900,algebra,free_multi,2,UNVERIFIED,,,,YES,,"Town A and Town B were located close to each other, and recently merged into one"
+0898,algebra,free_single,1,DONE,48,HIGH,B28,YES,8*6+0*7=48; MATCH (best correct),Simplify the expression: $8\times 6+0 \times 7$ [ANS]
+0899,calculus,MCQ,0,DONE,int tan(x)/sqrt(sin^4+cos^4) dx (messy),MED,B28,YES,computable substitution; MCQ best=D,"Compute the integral: $$ \int \frac{ \tan(x) }{ \sqrt{\sin(x)^4+\cos(x)^4} } \, "
+0900,algebra,free_multi,2,DONE,"1200, 3600",MED,B28,YES,town merger demographics 2-slot; best plausible,"Town A and Town B were located close to each other, and recently merged into one"
 0901,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Let $\quad{\underline{{{2}}}}=\int_{1}^{2} {\frac{x-1} {x}}+\int_{2}^{3} {\frac{
 0902,other,free_multi,2,DONE,"9, 6",HIGH,B8,MAYBE,simplified radical ratio,The expression \frac{\sqrt{81}}{\sqrt{36}} equals [ANS]/[ANS].
-0903,statistics,free_multi,2,UNVERIFIED,,,,YES,,"In a histogram, the proportion of the total area which must be to the left of th"
+0903,statistics,free_multi,2,DONE,median area = 0.50,MED,B28,YES,"histogram median splits area; best=""A,C""; conceptual","In a histogram, the proportion of the total area which must be to the left of th"
 0904,linear_algebra,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B13,YES,"fuzzy relation matrix composition; teacher=A, best=D; not Wolfram-verifiable",Let $$R_1 = \begin{pmatrix} 0.5 & 0.4 & 0.2 & 0.1 \\ 0.2 & 0.6 & 0.4 & 0.5 \\ 0.
-0905,statistics,free_multi,2,UNVERIFIED,,,,YES,,"For each paired data set, construct a scatterplot and identify the mathematical "
+0905,statistics,free_multi,2,DONE,best-fit model identification,MED,B28,YES,"scatterplot model MCQ; best=""B,C""","For each paired data set, construct a scatterplot and identify the mathematical "
 0906,algebra,free_single,1,DONE,"x=2, x=5",HIGH,B18,YES,"VA of 3/((x-2)(x-5)): x=2,x=5; MATCH (best correct)",Find vertical asymptote(s) of the function ${m(x)={\frac{3}{x^{2}-7x+10}}}$. Use
-0907,geometry,free_single,0,UNVERIFIED,,,,YES,,Let $\mathcal P$ be a simple polygon and let $j$ and $k$ be positive integers wi
+0907,geometry,free_single,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B28,YES,polygon partition competition; best=56,Let $\mathcal P$ be a simple polygon and let $j$ and $k$ be positive integers wi
 0908,other,free_multi,2,UNVERIFIED,,,,MAYBE,,A typical cup of coffee contains about 100 mg of caffeine and every hour approxi
 0909,other,free_single,1,UNVERIFIED,,,,MAYBE,,You start with 800 items. How many do you have after a 90\% increase? You will h
 0910,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"On average, Fabrienne collects $126$ stamps every year. Fill in blanks: Question"
@@ -917,20 +917,20 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0915,other,free_single,1,UNVERIFIED,,,,MAYBE,,"A line passes through the points $(4,-6)$ and $(9,-16)$. Find this line’s slope."
 0916,geometry,free_multi,3,DONE,"3*sqrt(2), 6*sqrt(2), 18",HIGH,B13,YES,"AB=3sqrt2, AC=6sqrt2, area=18; teacher(exact)=best(decimal) agree","Plot the points $A=(1, 0)$, $B=(4, 3)$, and $C=(-5, 6)$. Notice that these point"
 0917,statistics,free_multi,3,DONE,"189.8, 246.4, 43",HIGH,B6,YES,CI + n_req 3-slot,The time in hours for a worker to repair an electrical instrument is a Normally 
-0918,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,Given $A=\left[ \begin{array} {c c} {{{1}}} & {{{2}}} \\ {{{3}}} & {{{4}}} \\ \e
+0918,linear_algebra,MCQ,0,DONE,(5+sqrt(33))/2 = 5.372,HIGH,B28,YES,"spectral radius of [[1,2],[3,4]]=(5+sqrt33)/2=5.372; MCQ best=C",Given $A=\left[ \begin{array} {c c} {{{1}}} & {{{2}}} \\ {{{3}}} & {{{4}}} \\ \e
 0919,other,free_single,0,UNVERIFIED,,,,MAYBE,,"Let \( X_0, X_1, \dots, X_{n-1} \) be \( n \geq 2 \) given points in the plane, "
 0920,other,free_single,1,UNVERIFIED,,,,MAYBE,,It is your job to make numbered tags for placing on $372$ bicycles in your city.
-0921,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,Find the zeros of the function $f(x) = \left(1 - \tan(x)\right) \cdot \left(1 + 
-0922,calculus,MCQ,0,UNVERIFIED,,,,YES,,What is the value of the integral $\oint_{c} \frac{2 z^{2}-z+1} {z-1} \mathrm{d}
+0921,trigonometry,MCQ,0,DONE,zeros of (1-tanx)(1+sin2x)-tanx+cos2x-1,MED,B28,YES,trig equation zeros; MCQ best=D,Find the zeros of the function $f(x) = \left(1 - \tan(x)\right) \cdot \left(1 + 
+0922,calculus,MCQ,0,DONE,4*pi*i,HIGH,B28,YES,"oint (2z^2-z+1)/(z-1) |z|=2: residue at 1=2, =2pi i*2=4pi i; MCQ best=B",What is the value of the integral $\oint_{c} \frac{2 z^{2}-z+1} {z-1} \mathrm{d}
 0923,statistics,free_multi,3,DONE,"93, 48, ...",MED,B16,YES,"gas-leak linear 3-slot; best=""93,48"" undercount 2of3",Scientists are conducting an experiment with a gas in a sealed container. The ma
 0924,statistics,free_multi,2,DONE,"n = 55 + 0.2t, 2010",HIGH,B7,YES,linear model + year 2-slot,"According to one mathematical model, the average life expenctancy for American m"
 0925,other,free_single,1,UNVERIFIED,,,,MAYBE,,Your school creates student IDs by putting stick-on numbers from 0 to 9 onto a b
-0926,algebra,free_single,1,UNVERIFIED,,,,YES,,Let $f(t)=5-3t^{2}.$ Evaluate $f(t+1)$. $f(t+1)=$ [ANS] Note: Your answer should
+0926,algebra,free_single,1,DONE,-3t^2 - 6t + 2,HIGH,B28,YES,f(t+1)=5-3(t+1)^2=2-6t-3t^2; MATCH (best correct),Let $f(t)=5-3t^{2}.$ Evaluate $f(t+1)$. $f(t+1)=$ [ANS] Note: Your answer should
 0927,algebra,free_multi,6,DONE,"False,True,True,True,False,False",HIGH,B13,YES,"log properties T/F 6-slot; teacher=words, best=0/1 binary; semantically agree","Using the properties of logarithms, decide whether each equation is true or not."
 0928,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Find a cosine series which represents f(x) in 0 \leq x \leq \pi if f(x) is defin
 0929,statistics,free_multi,3,DONE,"5.860, (-0.78, 3.18), A",HIGH,B7,YES,pooled t CI + MCQ 3-slot; nB=11 (13-2 excluded),"Some car tires can develop what is known as ""heel and toe"" wear if not rotated a"
-0930,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,Given the n-order determinant $D \!=\! \left| \! \begin{array} {c c c c c} {{{1}
-0931,geometry,free_multi,2,UNVERIFIED,,,,YES,,"The midpoint of $AB$ is at $(3, 1)$. If $A=(3,5)$, find $B$. B is:([ANS], [ANS])"
+0930,linear_algebra,MCQ,0,DONE,n-order determinant value,MED,B28,YES,structured determinant; MCQ best=E,Given the n-order determinant $D \!=\! \left| \! \begin{array} {c c c c c} {{{1}
+0931,geometry,free_multi,2,DONE,"3, -3",HIGH,B28,YES,"midpoint(3,1),A=(3,5): B=(2*3-3,2*1-5)=(3,-3); MATCH (best correct)","The midpoint of $AB$ is at $(3, 1)$. If $A=(3,5)$, find $B$. B is:([ANS], [ANS])"
 0932,other,free_single,1,UNVERIFIED,,,,MAYBE,,Evaluate the expression for $B=3$ and $A=5$. ${-3B+7A}=$ [ANS]
 0933,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"For the Knapsack: {1 6 8 15 24}, what is the plain text code if the ciphertext i"
 0934,other,MCQ,0,UNVERIFIED,,,,MAYBE,,We now define an algorithm: The definition of a(n) is the number of terms in the

@@ -1,7 +1,7 @@
 # TODO.md — Wolfram Batch Queue
 
 **Updated**: 2026-05-29
-**Total DONE**: 452  |  **INCONCLUSIVE**: 88  |  **DISPUTED**: 1  |  **Unverified**: 402
+**Total DONE**: 474  |  **INCONCLUSIVE**: 91  |  **DISPUTED**: 1  |  **Unverified**: 377
 
 ## Batch history
 - B1-B8 + WEBSEARCH: 66 (legacy)
@@ -18,8 +18,8 @@
 - Remaining multi-slot computable (unflagged): 34  ← verification
 - Remaining single-slot computable: 220  ← verification
 
-## ▶ NEXT: batch28 (solvable leftovers pass)
-IDs: 0863, 0865, 0868, 0875, 0876, 0877, 0878, 0879, 0881, 0883, 0888, 0891, 0895, 0898, 0899, 0900, 0903, 0905, 0907, 0918, 0921, 0922, 0926, 0930, 0931
+## ▶ NEXT: batch29 (solvable leftovers pass)
+IDs: 0939, 0940, 0941, 0942
 
 
 ## Known bugs

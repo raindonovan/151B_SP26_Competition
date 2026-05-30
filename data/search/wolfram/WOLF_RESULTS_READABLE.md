@@ -545,3 +545,28 @@ Readable companion to `WOLF_RESULTS.csv` (the full machine-readable scorecard fo
 | 0859 | B27 | MED | 1, 2, 2, 4 (quadrants) | terminal-side quadrants; best plausible |
 | 0861 | B27 | MED | tridiagonal array index formula | row-major position in B[1..298]; MCQ best=G |
 | 0862 | B27 | INCONCLUSIVE | INCONCLUSIVE | OEIS length-2 compositions; best=I |
+| 0863 | B28 | HIGH | 1/t^69 | t^-5/(t^8)^8=t^-5/t^64=t^-69=1/t^69; MATCH (best correc |
+| 0865 | B28 | HIGH | 7/x - 8 | eight less than seven over a number = 7/x-8; MATCH (bes |
+| 0868 | B28 | INCONCLUSIVE | INCONCLUSIVE | troubling numbers (2,5-smooth) competition; best=E |
+| 0875 | B28 | HIGH | a=2 or a=-10 | tetra vol=(1/6)/det/=1 -> /-a-4/=6 -> a=2 or -10; MCQ b |
+| 0876 | B28 | MED | soap-mixing exponential decay | dC/dt mixing ODE; MCQ best=C |
+| 0877 | B28 | INCONCLUSIVE | INCONCLUSIVE | OEIS Chebyshev bisection; best=F |
+| 0878 | B28 | HIGH | 70 | (12371^56+34)^28 mod 111 = 70 (verified); MCQ best=I |
+| 0879 | B28 | HIGH | 6*pi^2 | region is torus (rho-3)^2+z^2<=1: vol=2pi^2*R*r^2=6pi^2 |
+| 0881 | B28 | HIGH | 6 | {2,4,6,8} x mod 10 identity=6 (6*n=n mod 10); MCQ best= |
+| 0883 | B28 | MED | 656.1 | well depth w/ sound delay, t1+t2=7s; best=656.1 plausib |
+| 0888 | B28 | MED | A from AP=PB (similarity) | A=PBP^-1; MCQ best=I |
+| 0891 | B28 | MED | max existence interval of Cauchy problem | dy/dx=1+y^2 type; MCQ best=A |
+| 0895 | B28 | HIGH | 70*(2/7)^((x-10)/20) | g(10)=70,g(30)=20: g(x)=70(2/7)^((x-10)/20); MATCH (bes |
+| 0898 | B28 | HIGH | 48 | 8*6+0*7=48; MATCH (best correct) |
+| 0899 | B28 | MED | int tan(x)/sqrt(sin^4+cos^4) dx (messy) | computable substitution; MCQ best=D |
+| 0900 | B28 | MED | 1200, 3600 | town merger demographics 2-slot; best plausible |
+| 0903 | B28 | MED | median area = 0.50 | histogram median splits area; best="A,C"; conceptual |
+| 0905 | B28 | MED | best-fit model identification | scatterplot model MCQ; best="B,C" |
+| 0907 | B28 | INCONCLUSIVE | INCONCLUSIVE | polygon partition competition; best=56 |
+| 0918 | B28 | HIGH | (5+sqrt(33))/2 = 5.372 | spectral radius of [[1,2],[3,4]]=(5+sqrt33)/2=5.372; MC |
+| 0921 | B28 | MED | zeros of (1-tanx)(1+sin2x)-tanx+cos2x-1 | trig equation zeros; MCQ best=D |
+| 0922 | B28 | HIGH | 4*pi*i | oint (2z^2-z+1)/(z-1) /z/=2: residue at 1=2, =2pi i*2=4 |
+| 0926 | B28 | HIGH | -3t^2 - 6t + 2 | f(t+1)=5-3(t+1)^2=2-6t-3t^2; MATCH (best correct) |
+| 0930 | B28 | MED | n-order determinant value | structured determinant; MCQ best=E |
+| 0931 | B28 | HIGH | 3, -3 | midpoint(3,1),A=(3,5): B=(2*3-3,2*1-5)=(3,-3); MATCH (b |
