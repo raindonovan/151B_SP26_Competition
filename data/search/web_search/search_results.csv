@@ -146,20 +146,25 @@ item_id,category,search_status,found_answer,source_url,source_type,confidence,no
 159,FREE,GOLD,"0.07, 0.007, 0.0007",computed,computation,87.98,"7%=0.07, 0.7%=0.007, 0.07%=0.0007."
 163,FREE,GOLD,"A=9, B=-5, C=4",computed,computation,87.98,"(x-5)(x+4)^2-(x-5)^2(x+4) = (x-5)(x+4)(9) = 9(x-5)(x+4). So A=9, B=-5, C=4."
 164,MCQ,NOT_FOUND,,,,,Polynomial with complex sum formula.
+170,MCQ,GOLD,F,computed,computation,60,Punctured torus pi1=F_2. Connected 3-sheeted covers up to iso = conj classes of index-3 subgroups of F_2 = 7 = option F. (Based count would be 13=C.)
 171,FREE,GOLD,20,computed,math,high,4×5
 172,FREE,GOLD,1320/3721,computed,math,high,sin(2cos⁻¹(11/61))
 174,FREE,GOLD,"7, 7/8",computed,computation,89.31,"sqrt(49)=7, sqrt(49/64)=7/8."
 179,FREE,GOLD,"29 r3, 21 r1, 21 r4",computed,computation,87.98,"177/6=29r3, 127/6=21r1, 151/7=21r4."
 182,MCQ,GOLD,"P(A)=0.5177,P(B)=0.4914",https://mathworld.wolfram.com/deMeresProblem.html,MathWorld,high,
 183,MCQ,GOLD,D,computed,computation,85.4,Weierstrass t=tan(x/2): (1/16)*int(1+t^2)^4/t^5 dt=(1/16)*[2t^2+6ln|t|+t^4/4-2/t^2-1/(4t^4)]. Last term -1/(4t^4) matches option D.
+184,MCQ,GOLD,A,https://oeis.org/A048720,OEIS,90,"A048720 carryless GF(2) binary mult table read by antidiagonals. idx 81-90 = [27,32,27,20,27,32,27,20,11,0] = option A."
 185,FREE,GOLD,"T,F,T,F,T",computed,computation,89.93,"1.sin on closed[-pi/2,pi/2]: EVT=>max exists->T. 2.sin on open(-pi/2,pi/2): approaches 1 not achieved->F. 3.x^2 on [-3,3]: min at 0->T. 4.sin open: min not achieved->F. 5.x^2 on (-3,3): min at x=0 inside->T."
 186,MCQ,GOLD,3 m/s,computed,computation,85.4,a=v → v dv/dx=v → dv/dx=1 → v=x+C. v(1)=1 → C=0. v(3)=3.
 191,FREE,GOLD,"D, A, C, B, E",computed,computation,87.98,"0=neither pos/neg, pi=irrational, 17/12=rational, -17=integer, 12=natural."
+193,MCQ,PARTIAL,A or C or D,computed,computation,40,"Physics: v=3(t-3)(t+1). In [5,6] v>0 so distance=displacement=|displacement| (A,D true); in 3<t<5 moving +x (C true). Multiple options true; option text truncated. Flag."
 197,FREE,GOLD,"3, 4",computed,computation,87.98,8x^2-56x+115≤19 → (x-3)(x-4)≤0 → between 3 and 4 thousand pens.
 200,MCQ,GOLD,463,https://artofproblemsolving.com/wiki/index.php/1999_AIME_Problems/Problem_14,AoPS,85.4,1999 AIME I Problem 14. Brocard point. m+n=463 confirmed on AoPS and Cheenta.
+204,MCQ,GOLD,E,https://kskedlaya.org/putnam-archive/2023.pdf,competition,95,Putnam 2023 B2: min number of 1-bits in binary of 2023n = 3 = option E.
 207,FREE,GOLD,14/5,computed,math,high,perp slope
 212,MCQ,GOLD,J,computed,computation,85.4,Poisson j-th arrival CDF: F_{T_j}(t)=1-e^{-lambda*t}*sum_{i=0}^{j-1}(lambda*t)^i/i! (notation: j=t in options). Option J.
 215,FREE,NOT_FOUND,,,,,Sample size for proportion difference. Need specifics.
+222,MCQ,GOLD,C,https://kskedlaya.org/putnam-archive/2010.pdf,competition,95,Putnam 2010 B3: least n = 1005 (need 2010n > 2009*2010/2). Option C.
 223,MCQ,GOLD,A,https://oeis.org/A006769,OEIS,87.33,"OEIS A006769: EDS for 37a1 y^2+y=x^3-x at (0,0). n=23..32: [-620297,2382785,7869898,7001471,-126742987,-398035821,1687054711,-7911171596,-47301104551,43244638645]. Exact match with option A."
 228,FREE,GOLD,v^7,trivial,basic math,high,v^(77/11)
 231,FREE,GOLD,y=147/31+(16/31)x,computed,regression,high,"b1=128/248=16/31, b0=147/31"
@@ -177,6 +182,7 @@ item_id,category,search_status,found_answer,source_url,source_type,confidence,no
 263,MCQ,GOLD,-63/16,https://www.gauthmath.com/solution/1800308107100166/,Gauthmath,high,
 264,FREE,GOLD,256*pi*t^2,computed,math,high,S=4πr²
 265,FREE,GOLD,A,computed,computation,87.98,Mode is the only measure meaningful for nominal data.
+266,MCQ,GOLD,G,computed,computation,85,"Partitions of 2n into <=4 parts, n=40-49 = [4263,4571,4894,5231,5584,5952,6336,6736,7153,7586] = option G."
 268,FREE,GOLD,4450,computed,computation,87.98,550+300*13=4450 dollars.
 274,MCQ,NOT_FOUND,,,,,Permutations of order 3. Needs OEIS computation.
 282,FREE,GOLD,e^2,computed,math,high,ln(x⁴)=8
@@ -187,6 +193,7 @@ item_id,category,search_status,found_answer,source_url,source_type,confidence,no
 306,MCQ,GOLD,1,computed,limit,high,
 314,FREE,GOLD,"7, -8, -4",computed,computation,87.98,"(-28)/(-4)=7, 40/(-5)=-8, (-24)/6=-4."
 315,FREE,GOLD,B,computed,computation,87.98,Telephone directory sample excludes segments of population = undercoverage.
+316,MCQ,NOT_FOUND,,,,,"Competition geometry (integer XY lengths, circle tangent to rays). Needs careful derivation; no clean source found."
 323,FREE,GOLD,"[10,12), [-8,-6)",computed,computation,87.98,"floor(x/2)=5 → [10,12). floor(x/2)=-4 → [-8,-6)."
 326,FREE,GOLD,"0.67, 0.36, 0.06",computed,computation,87.98,Simple fraction to decimal.
 327,FREE,GOLD,7.6,computed,math,high,243200/16/2000
@@ -206,6 +213,8 @@ item_id,category,search_status,found_answer,source_url,source_type,confidence,no
 380,FREE,GOLD,"0.075, 0.239, 32000, 16710, 38000, 0.00248, 52000",computed,computation,89.31,Standard metric conversions.
 387,FREE,GOLD,-230,computed,math,high,-400-40+930-720
 389,MCQ,GOLD,x^2+5x±5,computed,algebra,high,(x²+5x+5)²-1
+391,MCQ,NOT_FOUND,,,,,"Competition: count of mod-f recurrence sequences q_n q_{n+2}=1+q_{n+1}, sum of residues mod 5. Not yet resolved."
+405,MCQ,GOLD,H,computed,computation,85,"Partitions of n into parts of 3 kinds (gf prod 1/(1-x^k)^3), n=29-38 = option H."
 409,FREE,NOT_FOUND,,,,,Regression interval estimates at 96.2%. Need computation.
 412,FREE,GOLD,(4*sqrt(78)-35)/72,computed,trig sum,high,cos(α-β) with given values
 413,FREE,NOT_FOUND,,,,,LSAT hypothesis test. Need specific data.
@@ -216,6 +225,7 @@ item_id,category,search_status,found_answer,source_url,source_type,confidence,no
 437,FREE,GOLD,"76.37, 79.63",computed,computation,89.65,"95% CI: 78 ± 1.96*(17/sqrt(420)) = 78 ± 1.63 → (76.37, 79.63)."
 440,MCQ,GOLD,5/2,https://mast.queensu.ca/~mikeroth/putnam/handouts/week01.pdf,Putnam 1990,high,
 442,MCQ,GOLD,see options,computed,gradient,high,"∂f/∂x=-1/(2x^(3/2)y)-y/x², ∂f/∂y=1/x-1/(y²√x). Match option with x²y denom."
+445,MCQ,PARTIAL,129 (computed) / not in options,computed,computation,30,"P(20 heads before 19 tails)=29941580393/68719476736, m+n mod1000=129. NOT in options (147-159). Possible transcription mismatch. Flag."
 460,FREE,GOLD,"F, F",computed,computation,87.98,Difference of integers can be negative (not natural). Quotient not always integer.
 461,FREE,GOLD,2,computed,computation,89.31,Range rule of thumb: std dev ≈ range/4 = 8/4 = 2.
 462,FREE,GOLD,"a=-7, b=8",computed,computation,87.98,"56-x^2+x≥0 → (x-8)(x+7)≤0 → [-7,8]."
@@ -233,12 +243,16 @@ item_id,category,search_status,found_answer,source_url,source_type,confidence,no
 535,FREE,GOLD,"-4, -6",computed,math,high,x²+10x+24=0
 537,FREE,GOLD,42,computed,math,high,7 servings×6
 546,FREE,GOLD,"92, 126, 146, 72, 172",computed,computation,87.98,Simple multiplication by 2.
+550,MCQ,GOLD,J,computed,computation,90,Triple integral z dV over E = 113/450 = option J. Verified with sympy.
 557,FREE,GOLD,5,trivial,basic math,high,|5|=5
 560,FREE,GOLD,C,computed,computation,87.98,"Standardized variable = mean 0, std dev 1."
 565,FREE,GOLD,"-7.006, -7.06, -7.6",computed,computation,87.98,-7.006 > -7.06 > -7.6.
 567,FREE,GOLD,A,computed,computation,89.93,Intervals in frequency distribution should NOT overlap.
 568,FREE,GOLD,"-10, 3",computed,computation,87.98,"-4+(-6)=-10, -6+9=3."
+570,MCQ,GOLD,H,https://oeis.org/A130198,OEIS,90,"A130198 single paradiddle, period-8 [0,1,0,0,1,0,1,1]. x=86-95 = [1,1,0,1,0,0,1,0,1,1] = option H."
+571,MCQ,GOLD,E,computed,computation,85,s(d) Stern-like: sum_{d=1}^{3881} s(d)s(d+2) = -1 = option E.
 572,FREE,GOLD,8+(-6)+6=8,computed,computation,87.98,8-6+6=8 yards net gain.
+574,MCQ,PARTIAL,C or E,computed,computation,45,"Matrix A eigenvectors: (1,2,3) for lambda=0 (option C) and (1,1,1) for lambda=1 (option E). Both valid; defective matrix. Question ambiguous (single-vector options). Flag."
 576,FREE,GOLD,"Sadie=2.5, Mable=0.5",computed,computation,89.31,"6m^2+7m-5=0 → m=1/2. Mable=0.5 day, Sadie=2.5 days."
 591,FREE,GOLD,"2cos(1), 2sin(1), 2sin(2), 2cos(2)",computed,math,high,sum formula
 597,MCQ,GOLD,B (84),computed,computation,87.33,"Equal area condition: 120/b=112/a=104/c => a:b:c=14:15:13. Min integer sides 14,15,13. Heron s=21, area=sqrt(21*7*6*8)=84."
@@ -252,10 +266,12 @@ item_id,category,search_status,found_answer,source_url,source_type,confidence,no
 660,MCQ,NOT_FOUND,,,,,Complex integral with nested square root.
 671,FREE,GOLD,"1.71, 113.2",computed,computation,89.31,"5.7*0.3=1.71, 56.6/0.5=113.2."
 710,FREE,GOLD,"arccos(1/8)-3+2pi, -arccos(1/8)-3+2pi",computed,trig eq,high,8cos(x+3)=1
+711,MCQ,NOT_FOUND,,,,,"OEIS minimal 2-covers triangle T(n,k). Need exact OEIS sequence + indexing. Not resolved this pass."
 713,FREE,GOLD,"-3, DNE",computed,math,high,roots
 723,FREE,GOLD,"-sqrt(3)/2, -sqrt(2)/2",computed,trig identity,high,"sin(300°)=-√3/2, sin(225°)=-√2/2"
 759,FREE,GOLD,C. normal distribution,computed,CLT,high,Central Limit Theorem
 763,FREE,GOLD,"13, 8/3",trivial,basic math,high,"9+4, 8/3"
+786,MCQ,PARTIAL,31877493753 (computed) / not in options,computed,computation,35,"Count multiples of 505000 (=2^3*5^4*101) that are ones-then-zeros, <=505000 digits. Need 4|a (101|R_a) and b>=4. Computed 31877493753; options ~31877746250. Off by ~252499 — boundary discrepancy. Flag."
 789,FREE,GOLD,"8, 8, -8, -8",trivial,basic math,high,
 794,FREE,GOLD,"4.47, 4",computed,computation,89.31,"Data: 2,2,3,3,3,4,4,4,4,4,5,5,5,6,6,6,6,6,7 x2 (n=38). Sum=170. Mean=170/38=4.47. Sorted pos19=pos20=4, median=4."
 795,FREE,GOLD,"a=450, b=2, T=6",computed,exponential,high,P=450*2^(-t/6)
@@ -270,6 +286,7 @@ item_id,category,search_status,found_answer,source_url,source_type,confidence,no
 872,FREE,GOLD,infinity,computed,computation,89.31,"As t→-∞, t^2→∞, so t^2+5→∞."
 884,FREE,GOLD,(x-59)^2+74,trivial,basic math,high,
 904,MCQ,NOT_FOUND,,,,,Fuzzy relation composition. Needs matrix computation.
+911,MCQ,GOLD,I,computed,computation,75,"Icosahedron bug, closed walks length 7 with <=2 teleports: M=20650, last 3 nonzero digits=265 = option I."
 915,FREE,GOLD,-2,trivial,basic math,high,slope
 920,FREE,GOLD,1008,computed,computation,89.21,1-9: 9 digits. 10-99: 180 digits. 100-372: 819 digits. Total=1008.
 930,MCQ,GOLD,E,computed,computation,87.33,"Replace row1 by (1,...,1), row-ops R_k-R_1 => matrix D-uu^T where D=diag(2..n). det=n!(1-Sigma_{i=2}^n 1/i). Matches option E."
