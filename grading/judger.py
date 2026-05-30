@@ -1,8 +1,10 @@
-"""Canonical local grading import surface.
+"""DEPRECATED module name — use `grading.grader` (Grader) instead.
 
-Use this module for local judger access from repo code. The root-level
-`judger.py` remains as a compatibility entrypoint for older scripts and the
-starter notebook.
+Kept for backward compatibility. Note:
+- `Judger` here is the value-equality engine (same object as grading.grader.Grader).
+- `kaggle_like_is_equiv` is the Hendrycks STRICT string-match mirror, which models
+  the RETIRED strict Kaggle grader. Do NOT use it to predict the current
+  (value-equality) grader — it is retained only for historical comparison.
 """
 
 from judger import Judger

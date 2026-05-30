@@ -1,7 +1,12 @@
-"""Legacy compatibility entrypoint for the local judger.
+"""Value-equality grader ENGINE (sympy, numeric equality ~1e-8).
 
-The canonical import path now lives at `grading.judger`, but this module stays
-in place so older scripts and the starter notebook continue to work.
+This file holds the engine, but the CANONICAL way to use it is:
+    from grading.grader import Grader
+Do not import this by file path in new code. This is our best mirror of the
+updated (value-equality) Kaggle grader. The name "judger" is legacy; the
+canonical name is "grader" (see grading/grader.py for the full trust note).
+It stays at the repo root only because of its `from utils import *` dependency;
+relocating it under grading/ is a deferred post-deadline cleanup.
 """
 
 import sympy as sp
