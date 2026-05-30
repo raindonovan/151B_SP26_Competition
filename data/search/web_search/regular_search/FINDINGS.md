@@ -1,5 +1,44 @@
 # data/search/web_search/FINDINGS.md
 
+## Pass 2026-05-30f — TEXTBOOK-CONCEPT MCQ seam (new angle, +8 GOLD)
+
+After the competition/OEIS veins were exhausted, a new angle paid off: the
+CONCEPTUAL-FACT stats/math MCQs (which I'd bulk-skipped as "drills" in the first
+sweep). These have a CANONICAL answer stated verbatim across multiple authoritative
+pages (PSU/Emory/Laerd/AAPOR/LibreTexts/Wikipedia/Saylor), so they are genuinely
+findable by plain web_search_exa — NO special tooling.
+
+GOLD won this way (answer IS the stated fact, single-answer):
+  252 one-way ANOVA conditions = C (indep/normal/equal-var)
+  265 nominal-data central measure = mode (A)
+  477 questionnaire: avoid leading questions (A)
+  492 r=0.90 -> R^2 = 81% variation explained (A)  [R^2=r^2 stated verbatim]
+  567 false statement = "intervals may overlap" (A)  [intervals must NOT overlap]
+  813 CI impossible = non-normal+small+unknown-var (A)
+  893 gender = qualitative variable (A)
+  903 histogram area left of median = exactly 0.50 (A)
+
+THE DISCIPLINE LINE (important — keep it):
+- GOLD only when the ANSWER IS THE STATED FACT (a definition/property read straight
+  off authoritative pages, single-answer).
+- PARTIAL when the answer is a COMPUTED APPLICATION of a canonical fact, or a
+  MULTI-SLOT assembly of per-statement facts:
+    227 (df=pairs-1=9), 452 (chi2 df=(r-1)(c-1)=42)  [1-step application]
+    319, 927 (multi-slot True/False over canonical identities)
+    368 (4-slot function-notation interpretation; rule canonical, slots applied)
+    60  (variable=age; canonical definition but option-selection is inference)
+  -> these carry the indicated answer in found_answer for a downstream finish,
+     but are NOT GOLD (would require me to compute/assemble).
+- The "twin trap" still bites here: numeric template drills (potato-chip P-value,
+  boat downstream, paint-room rates) appear online with RANDOMIZED/back-solved
+  constants; the template is everywhere but OUR instance's stated answer is nowhere
+  -> NOT_FOUND. (item 46's sd=20.3575072960673 is a back-solved constant: unfindable.)
+- Seam now ~exhausted: the remaining NOT_FOUND concept-flagged items are
+  computation problems (integrals, eigenvalues, determinants, prob densities) ->
+  compute-track, not findable facts.
+
+---
+
 ## search_results.csv = genuine web-search hits only
 
 This file contains ONLY items where a verbatim web search returned a real

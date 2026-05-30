@@ -347,7 +347,7 @@ item_id,category,search_status,found_answer,source_url,source_type,confidence,no
 316,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no specific findable source). Batch-3 bulk NOT_FOUND; distinctive items in range searched.
 317,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no specific findable source). Batch-3 bulk NOT_FOUND; distinctive items in range searched.
 318,FREE,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no specific findable source). Batch-3 bulk NOT_FOUND; distinctive items in range searched.
-319,FREE,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no specific findable source). Batch-3 bulk NOT_FOUND; distinctive items in range searched.
+319,FREE,PARTIAL,"1F 2T 3T 4F - canonical sd/variance facts, multi-slot",https://en.wikipedia.org/wiki/Standard_deviation,textbook_stats,78,"sd vs variance T/F. 1 sd always exceeds variance FALSE (false when var<1); 2 sd = +sqrt(variance) TRUE; 3 sd in original units, variance not TRUE; 4 sd may be +/-, variance always + FALSE (sd>=0). Facts canonical/verbatim but 4-slot assembly is application. PARTIAL."
 320,FREE,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no specific findable source). Batch-3 bulk NOT_FOUND; distinctive items in range searched.
 321,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no specific findable source). Batch-3 bulk NOT_FOUND; distinctive items in range searched.
 322,FREE,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no specific findable source). Batch-3 bulk NOT_FOUND; distinctive items in range searched.
@@ -394,7 +394,7 @@ item_id,category,search_status,found_answer,source_url,source_type,confidence,no
 365,FREE,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no specific findable source). Batch-3 bulk NOT_FOUND; distinctive items in range searched.
 366,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no specific findable source). Batch-3 bulk NOT_FOUND; distinctive items in range searched.
 367,FREE,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no specific findable source). Batch-3 bulk NOT_FOUND; distinctive items in range searched.
-368,FREE,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no specific findable source). Batch-3 bulk NOT_FOUND; distinctive items in range searched.
+368,FREE,PARTIAL,"(a)C 17 ppl at 5:05; (b)D; (c)D; (d)E - canonical function-notation reading, multi-slot application",https://openstax.org/books/algebra-1/pages/4-3-2-writing-statements-from-function-notation,textbook_math,75,"Function-notation interpretation. EXACT template twin (montgomeryadvertiser, f(4)=11->11 ppl at 5:04 PM=A there) + OpenStax establish the canonical reading f(in)=out -> at [in] there are [out]. Parts: (a)=C, (b)=D, (c)=D, (d)=E. RULE stated verbatim but 4-slot answer is application. PARTIAL."
 369,FREE,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no specific findable source). Batch-3 bulk NOT_FOUND; distinctive items in range searched.
 370,FREE,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no specific findable source). Batch-3 bulk NOT_FOUND; distinctive items in range searched.
 371,FREE,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no specific findable source). Batch-3 bulk NOT_FOUND; distinctive items in range searched.
@@ -928,7 +928,7 @@ item_id,category,search_status,found_answer,source_url,source_type,confidence,no
 924,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-8 (final) bulk NOT_FOUND; distinctive items searched.
 925,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-8 (final) bulk NOT_FOUND; distinctive items searched.
 926,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-8 (final) bulk NOT_FOUND; distinctive items searched.
-927,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-8 (final) bulk NOT_FOUND; distinctive items searched.
+927,FREE,PARTIAL,"1F 2T 3T 4T 5F 6F - canonical log identities, multi-slot",https://en.wikipedia.org/wiki/List_of_logarithmic_identities,textbook_math,78,"Each slot is a named log identity (canonical, verbatim everywhere): 1 ln A ln B = ln A+ln B FALSE; 2 p ln A=ln A^p TRUE; 3 log sqrt A=1/2 log A TRUE; 4 log AB=log A+log B TRUE; 5 sqrt(ln A)=ln A^(1/2) FALSE; 6 log A/log B = log A - log B FALSE. Identities stated verbatim but 6-slot T/F is application. PARTIAL."
 928,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-8 (final) bulk NOT_FOUND; distinctive items searched.
 929,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-8 (final) bulk NOT_FOUND; distinctive items searched.
 930,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-8 (final) bulk NOT_FOUND; distinctive items searched.
