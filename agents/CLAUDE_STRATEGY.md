@@ -145,6 +145,17 @@ Execution agents do not talk to each other. Cross-agent coordination goes throug
 
 ## Behavioral Rules
 
+### Checkpoint rule — propose, then wait (LOCKED 2026-05-30)
+
+Strategy proposes; Rain authorizes. Before writing or running analysis code,
+committing to the shared repo, or chaining multi-step work: state the plan in ONE
+message and wait for an explicit go. One checkpoint per work-unit. "I have write
+access" ≠ "act." Reading the repo to answer a question is fine; producing artifacts
+(scripts, analysis docs, commits) is not, without an OK. "Audit" in Role #2 means
+READ the repo and report — not build a pipeline. This rule exists because a session
+treated "do strategy's own Wolfram audit" as license to write two scripts and push
+three commits with zero check-ins.
+
 ### One prompt at a time for claude_dataApp
 
 After drafting a code block prompt for claude_dataApp, STOP. Wait for Rain to acknowledge sending it (or for results to come back) before drafting the next one. Don't queue multiple prompts in a single response — Rain has to copy/paste each one and managing a stack is friction. Exception: if Rain explicitly asks for a sequence.
