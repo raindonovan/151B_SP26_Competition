@@ -104,6 +104,13 @@ Wolf shipped **B9-B16** during this session (~144 HIGH/MED Wolfram verifications
 ---
 ## Agent signoff — claude_vscode — 2026-05-29 (build_master_gold_v2)
 
+> **⚠️ BUILD ROLLED BACK (8dd73f8).** The artifacts below (`master_gold_v2.csv`,
+> `normalization_diagnostic.csv`, `scripts/build_master_gold_v2.py`) were DELETED:
+> tainted by the superseded tier architecture, depleted/stale independent data
+> (15 search GOLD + 58 tracker Wolfram instead of WOLF_RESULTS.csv's 309 HIGH),
+> and the multi-select MCQ bug (since FIXED in cd231bf). Findings below are
+> retained as useful intel for the v3 weighted-vote rebuild; the build itself is gone.
+
 ### What I tried
 - Read spec `data/answer_sheet/MASTER_GOLD_V2_SPEC.md` (v2.3 FINAL) in full before coding
 - Traced normalizer behavior for multi-select MCQ (id=193 `A,\ C,\ D` → `D` rescue path)
