@@ -21,11 +21,12 @@
 ## Finding 2 — Qwen failure-mode taxonomy (7 modes)
 1. **Multi-slot under-count** — collapses N-slot answer to last slot. Dominant in B1-7 (30/38). Severity up to 12→1 (item 0748).
   - 1a. Multi-select MCQ collapse — single letter when multi-letter required (0633, 0587, 0721)
+    - NOTE (2026-05-30): two *distinct* problems share this shape. (i) **Qwen-side** collapse — the model emits one letter at inference when several are required (this F2.1a; still an inference/undercount issue). (ii) **Normalizer-side** mangling — the normalizer was collapsing a *correctly* multi-letter answer like `A,\ C,\ D` down to the last letter `D` (corrupted teacher/wolfram answers in the gold build, e.g. id=193). The normalizer bug is **FIXED** (commit cd231bf): `extract_answer`/`mcq_normalize` now preserve a ≥2-letter set as `A,C,D`. Re-running the gold build with the fixed normalizer corrects any multi-letter MCQ answers that were previously collapsed.
 2. **Decimal/fraction format mismatch** — math right, decimal form fails string-match (0089, 0100, 0106, 0118, 0218, 0395, 0454 all B8)
 3. **Symbolic-constant substitution** — plugs numeric values for unspecified constants (0584)
 4. **Missing prefix/label/unit** — no `D=`, no `Quadrant`, no `^\circ` (0040, 0072, 0496, 0167)
 5. **Multi-option equivalence trap** — multiple options encode same math, Kaggle accepts only one (0317)
-6. **Genuine arithmetic error** — small numeric mistake (0506, 0068)
+6. **Genuine arithmetic error** — small numeric mistake (0506, 0068, 0557 |5|=6 off-by-one)
   - 6a. "All of the above" sub-MCQ trap — Qwen picks one true statement instead of D (0721)
 7. **LaTeX text-wrap** — model wraps single-letter MCQ as `\text{A}` or `\text{Yes}` (0413, 0622). Kaggle behavior with `\text{}` wrappers UNVERIFIED.
 
