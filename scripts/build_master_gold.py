@@ -15,7 +15,7 @@ QT = {r['id']: (r.get('type','') or '').strip() for r in csv.DictReader(open('da
 
 # consolidated search GOLD
 search_gold = {}
-for r in csv.DictReader(open('data/search/web_search/search_results.csv')):
+for r in csv.DictReader(open('data/search/web_search/regular_search/search_results.csv')):
     if (r.get('search_status','') or '').strip().upper()=='GOLD' and (r.get('found_answer','') or '').strip():
         search_gold[r['item_id']] = (r['found_answer'].strip(), (r.get('source_url','') or '').strip())
 
