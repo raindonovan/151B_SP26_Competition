@@ -99,3 +99,31 @@
 - The 7 PARTIAL rows carry identified source + indicated option for downstream completion.
 - Exa MCP token expired mid-session once; Rain re-authorized. If it dies again, page-
   reading stops (WebSearch snippets alone are NOT enough to read answers verbatim).
+
+---
+## Signoff — claude_vscode (web_search) — 2026-05-30 (pass: playbook 2nd-pass)
+### What I did
+- Executed Rain's ranked playbook. Item 7 already promoted PARTIAL->GOLD = 448/3
+  (HMMT 2025 Feb Comb sols PDF, dropped "/3" corrected).
+- OEIS descriptor 2nd-pass on 88, 402, 434, 506, 549, 873 (descriptor/g.f./
+  transform-name searches, not x_list format).
+### What worked
+- **549 -> GOLD**. "Number of ways to write n as sum of two squares, allowing
+  permutations" = OEIS A000161 ("partitions of n into 2 squares"). b-file
+  a(98..107)=[1,0,2,1,0,0,1,0,1,0] uniquely matches option idx 9 VERBATIM
+  (programmatic). Earlier pass mis-tried A000925 (has a 4, no match) and gave up.
+  LESSON: when a descriptor is ambiguous among OEIS entries, enumerate candidate
+  A-numbers and b-file-match ALL of them to the options before declaring NOT_FOUND.
+### What didn't work (confirmed NOT_FOUND, 2nd-pass)
+- 88 (n*(x+..+x^q) into k polys), 402 (mult. a(p)=floor((p+1)/2)),
+  434 (circle pts into size-2/3 subsets), 506 (mean of consec balanced primes),
+  873 (reversion of x(x-1)^2/(1-x+x^3)). Each descriptor maps to NO clean named
+  OEIS entry with a readable b-file. Searches returned only different sequences.
+### Status: 60 GOLD / 14 PARTIAL / 869 NOT_FOUND (README synced, source of truth).
+### What's left (handoffs, NOT in-sandbox)
+- 173 / 471 / 486: answers exist on AoPS but are MathJax-image + Cloudflare-gated.
+  Cheapest fix = human opens the 3 AoPS pages in a browser, pastes boxed numbers,
+  verify vs option, flip to GOLD. See ../TOOLING_RETIRED.md for the exact items.
+- PARTIALs 117/286 (Putnam) and the rule-application set (60/227/319/368/452/603/927)
+  correctly stay PARTIAL: page states the RULE/formula, not our exact value;
+  closing them needs computation (forbidden for this agent), per Rain's playbook #5.
