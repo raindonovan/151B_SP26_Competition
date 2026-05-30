@@ -75,3 +75,23 @@
   sols. (2) re-scan for OEIS phrasing in case any slipped the triage. Generic
   drills 81-942 remain individually unsearched by design (established ~0 yield).
 - See FINDINGS.md "Pass 2026-05-29d".
+
+---
+## Signoff — claude_vscode (web_search) — 2026-05-29 (pass e, FULL 943 sweep COMPLETE)
+- ALL 943 items now have a row in search_results.csv. Final: 48 GOLD / 7 PARTIAL / 888 NOT_FOUND.
+- Swept the remaining ~800 in 8 batches of ~100 (id order). New GOLD found in the
+  sequential sweep (back half, ids 629+): 668 (v2 LTE=103, MSE), 719 (cube 2-color
+  Burnside=23, MSE), 799 (HMMT2025 Feb Team#4 rooks=8096), 376 (HMMT2025 Feb Team#10
+  gcd; UPGRADED from earlier NOT_FOUND), 856 (Putnam2022 A5=290). New PARTIAL: 471
+  (Ray Li geo), 486 (Mock AIME4 P8), 644 (phi(n)|n), 173/117/286 earlier.
+- KEY LESSON: competition SOLUTIONS PDFs (Putnam kskedlaya, HMMT archive) render as
+  readable TEXT and often contain MULTIPLE of our items -> fetch the whole sols PDF.
+  Reading HMMT 2025 Feb Team sols gave 2 GOLD (799, 376) at once.
+- KEY BLOCKER: AoPS wiki answers are LaTeX IMAGES -> stripped by Exa text fetch.
+  AIME/Mock-AIME items whose answer only lives on AoPS are PARTIAL not GOLD (173,486,471).
+  Next agent: re-fetch those from Random Math Wiki (renders text) or a browser to GOLD them.
+- FORBIDDEN sources confirmed (do NOT use): HuggingFace ProofRank/RIMO/JudgeBench/
+  AI-MO benchmarks (circular with our corpus) - hit on 53, 250, 383.
+- The 7 PARTIAL rows carry identified source + indicated option for downstream completion.
+- Exa MCP token expired mid-session once; Rain re-authorized. If it dies again, page-
+  reading stops (WebSearch snippets alone are NOT enough to read answers verbatim).
