@@ -155,40 +155,40 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0153,algebra,MCQ,0,DONE,quadratic form standard form via completing square,MED,B19,YES,"f(x1,x2,x3) diagonalization computable; MCQ best=B",Transform the following quadratic form into its standard form using the method o
 0154,geometry,free_single,1,DONE,18.75,HIGH,B9,YES,paint cost: 488sqft/100*$3.75=$18.75; teacher/best agree,John's room is shaped like a box. It has a flat ceiling that is a rectangle that
 0155,other,free_single,1,UNVERIFIED,,,,MAYBE,,A guy wire needs to be installed to support a pole. The end of the wire on the p
-0156,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,What are the eigenroots of the following matrices? $$ \left( \begin{matrix} {{{1
+0156,linear_algebra,MCQ,0,DONE,"eigenvalues -7, 2, 2",HIGH,B20,YES,eigenvalues computed; value verified; MCQ best=H,What are the eigenroots of the following matrices? $$ \left( \begin{matrix} {{{1
 0157,trigonometry,free_multi,2,DONE,"50sin(0.1t)-7cos(0.1t), 46.31",HIGH,B15,YES,spring SHM: x=-7cos(0.1t)+50sin(0.1t); x(13)=46.31; best correct,A weight on a vertical spring is given an initial downward velocity of 5 cm/sec 
 0158,statistics,free_multi,2,DONE,"A, C",MED,B17,YES,distribution terminology MCQ 2-slot; best all slots,A tabular summary of a set of data showing the fraction of the total number item
 0159,other,free_multi,3,UNVERIFIED,,,,MAYBE,,Change the following percentages into decimals: ${7\%=}$ [ANS] ${0.7\%=}$ [ANS] 
 0160,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Fill in the missing blank and determine the appropriate property illustrated: $1
 0161,statistics,free_single,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B18,YES,"median-of-subsets competition; best=C(2024,1012); not computable",Let \( A \) be a set of 2025 positive real numbers. For a subset \( T \subseteq 
-0162,geometry,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is: Triangle with subscripts 
+0162,geometry,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B20,YES,OEIS floor(i/j) triangle; best=B; not computable,We now define an algorithm: The definition of a(n) is: Triangle with subscripts 
 0163,algebra,free_multi,3,DONE,"9, -5, 4",HIGH,B17,YES,"(x-5)(x+4)^2-(x-5)^2(x+4)=9(x-5)(x+4); A=9,B=-5,C=4; best correct",Factor the polynomial $(x-5)(x+4)^2-(x-5)^2(x+4)$. Your answer can be written as
 0164,number_theory,MCQ,0,DONE,G,MED,B14,YES,polynomial f(x) property; teacher+best agree=G; competition,Function $f(x)$ is a polynomial defined by the equation $$\begin{align*} f(x) & 
 0165,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Let $\mathrm{F}$ be the set $$ A = {\frac{0.6}{u_{1}}} + {\frac{0.8}{u_{2}}} + {
-0166,geometry,free_single,1,UNVERIFIED,,,,YES,,"The area covered by a marsh, $A$, starts at $175$ acres and drops by a factor of"
+0166,geometry,free_single,1,DONE,175*(1/4)^n,HIGH,B20,YES,marsh decay A=175(1/4)^n; MATCH (best correct),"The area covered by a marsh, $A$, starts at $175$ acres and drops by a factor of"
 0167,trigonometry,free_multi,4,DONE,"Negative, Negative, Positive, Negative",HIGH,B8,YES,words not letters; Qwen failure=letter-vs-word,Determine whether each of the following expressions is Positive or Negative. $\s
 0168,other,free_multi,4,UNVERIFIED,,,,MAYBE,,"A choral conductor has 1301 singers in her choir, some of them are professional "
 0169,other,free_single,1,UNVERIFIED,,,,MAYBE,,The population of cats in a shelter increased from $16$ to $80$. What is the per
 0170,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Let $X=( S^{1} \times S^{1} ) \setminus\{p \}$ be a once-punctured torus. How ma
 0171,geometry,free_single,1,DONE,20,HIGH,B9,YES,"area of rect {3<=x<=7, 2<=y<=7}=4*5=20; best=21 is wrong","Sketch the region given by the set $\lbrace (x,y) | 3\le x\le 7, 2\le y\le 7 \rb"
-0172,trigonometry,free_single,1,UNVERIFIED,,,,YES,,Find the exact value. $\small{\sin} \left(\small{2 \cos^{-1}} \large{\left(\frac
+0172,trigonometry,free_single,1,DONE,1320/3721,HIGH,B20,YES,sin(2arccos(11/61))=2*(11/61)*(60/61)=1320/3721; MATCH (best correct),Find the exact value. $\small{\sin} \left(\small{2 \cos^{-1}} \large{\left(\frac
 0173,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Let $S = \{5^ k | k \in Z, 0 \le k \le 2004\}$ . Given that $5^{2004} = 5443 ..."
 0174,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Consider the function $H$ defined by $H(x)={\sqrt{x}}$. Evaluate the following: 
-0175,number_theory,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is the least common multiple 
+0175,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B20,YES,OEIS lcm(1..n); best=I; not computable,We now define an algorithm: The definition of a(n) is the least common multiple 
 0176,algebra,free_single,1,DONE,(p-6k-m)/8,HIGH,B14,YES,solve 8w+6k+m=p -> w=(p-6k-m)/8; teacher+best agree,Solve the following equation for $w$: 8 w+6 k+m=p. $w=$ [ANS]
 0177,geometry,MCQ,0,DONE,pi^2/6,HIGH,B9,YES,vol of rotation; solve func eq -> f(x)=x/sqrt(1+x^2); V=2pi*int_1/2^sqrt(3)/2 y^2/sqrt(1-y^2)dy=pi^2/6; teacher=H,"Let the domain of the function f (x) be $( 0, \ +x )$ and satisfy $2 f \left( x "
-0178,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,"Let the 3rd order matrix \( A = (\alpha_1, \alpha_2, \alpha_3), B = (\alpha_2 - "
+0178,linear_algebra,MCQ,0,DONE,-4,HIGH,B20,YES,"det B=det[a2-2a3,a1,a2]=-2det[a3,a1,a2]=-2|A|=-4; value verified; MCQ best=C","Let the 3rd order matrix \( A = (\alpha_1, \alpha_2, \alpha_3), B = (\alpha_2 - "
 0179,number_theory,free_multi,10,DONE,"29,3,21,1,21,4,19,4,23,3",HIGH,B17,YES,"177/6=29r3,127/6=21r1,151/7=21r4...; best correct (verified first 3)",When you divide 177 by 6 the quotient is [ANS] and the remainder is [ANS] When y
-0180,algebra,free_single,1,UNVERIFIED,,,,YES,,Use the distributive property to simplify the expression completely. ${{\textsty
+0180,algebra,free_single,1,DONE,(1/2)m - 7/2,HIGH,B20,YES,7/8(-4+4m/7)=-7/2+m/2; MATCH (best correct),Use the distributive property to simplify the expression completely. ${{\textsty
 0181,statistics,MCQ,0,DONE,A,HIGH,B8,YES,symmetry proof; only symmetric matrix; Qwen=B wrong,There are four types of products with the following indicators: $$ \begin{array}
 0182,other,MCQ,0,UNVERIFIED,,,,MAYBE,,A gambler believes that the chance of rolling at least one 6 in four throws of a
-0183,calculus,MCQ,0,UNVERIFIED,,,,YES,,"Solve the integral: $$ \int \frac{ 1 }{ \sin(x)^5 } \, dx $$"
+0183,calculus,MCQ,0,DONE,reduction formula for int csc^5(x)dx,MED,B20,YES,int 1/sin^5 x dx computable (reduction); MCQ best=D,"Solve the integral: $$ \int \frac{ 1 }{ \sin(x)^5 } \, dx $$"
 0184,linear_algebra,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B18,YES,OEIS GF(2) polynomial mult table; best=A; not computable,We now define an algorithm: The definition of a(n) is: Multiplication table {0..
 0185,trigonometry,free_multi,5,DONE,"T, F, T, F, T",MED,B17,YES,interval T/F 5-slot; best all slots present,Determine which of the following statements are true and which are false. Enter 
 0186,other,MCQ,0,UNVERIFIED,,,,MAYBE,,A particle is moving in a straight line whose acceleration as a function of velo
 0187,statistics,free_multi,9,DONE,"0.0281,0.0067,0.3825,0.4512,22,18,2,35,30",MED,B17,YES,logistic regression Pima 9-slot; best all slots; R-dependent,This question involves logistic regression analysis of the Pima data set in R on
 0188,statistics,free_multi,3,DONE,"60, 60, 60",HIGH,B9,YES,mean=median=mode=60; Wolfram confirmed; best=61 is wrong (undercount+arithmetic error),Your school basketball team posted the following (sorted) scores in 16 recent ga
-0189,algebra,free_single,1,UNVERIFIED,,,,YES,,"The coffee variety Arabica yields about 850 kg of coffee beans per hectare, whil"
+0189,algebra,free_single,1,DONE,850a + 1200r = 35000,HIGH,B20,YES,coffee yield equation setup; MATCH (best correct),"The coffee variety Arabica yields about 850 kg of coffee beans per hectare, whil"
 0190,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Multiply the integer with the fraction: ${-15\cdot \frac{7}{40}}$ If needed, use"
 0191,other,free_multi,5,UNVERIFIED,,,,MAYBE,,Match the statements defined below with the letters labeling particular numbers.
 0192,statistics,free_multi,4,DONE,"1.06, (1.88, infty), 0.1449, A",HIGH,B2,YES,z-test 4-slot; note infty notation,Past experience indicates that the monthly long-distance telephone bill is norma
@@ -198,43 +198,43 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0196,geometry,free_multi,3,DONE,"14.7447, 10.3244, 35",HIGH,B9,YES,"right-tri: a=18sin55=14.7447, b=18cos55=10.3244, B=35; best=15 is severe undercount",Suppose that triangle ABC is a right triangle with a right angle at $C$ and hypo
 0197,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"Suppose $C(x)=8x^{2}-56x+115$, $x \ge 0$ represents the cost, in hundreds of dol"
 0198,number_theory,free_single,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B18,YES,reducible polynomial triplets competition; best=5; not computable,"Determine all triplets of positive integers $(p,m,n)$ such that $p$ is a prime, "
-0199,number_theory,free_single,0,UNVERIFIED,,,,YES,,"Let $ABCDE$ be a convex pentagon with $AB=14$, $BC=7$, $CD=24$, $DE=13$, $EA=26$"
-0200,geometry,MCQ,0,UNVERIFIED,,,,YES,,Point $P$ is located inside $\triangle{ABC}$ so that $\angle{PAB}=\angle{PBC}=\a
+0199,number_theory,free_single,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B20,YES,convex pentagon min sum-of-distances (Fermat point) competition; best=47,"Let $ABCDE$ be a convex pentagon with $AB=14$, $BC=7$, $CD=24$, $DE=13$, $EA=26$"
+0200,geometry,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B20,YES,Brocard-angle triangle competition; best=I; not Wolfram-computable,Point $P$ is located inside $\triangle{ABC}$ so that $\angle{PAB}=\angle{PBC}=\a
 0201,algebra,free_single,1,DONE,(5t+8)^2,HIGH,B9,YES,factor 25t^2+80t+64=(5t+8)^2; teacher/best equivalent forms,Write the expression $25 t^2+80 t+64$ in factored form $k (at+b)(ct+d)$. $25 t^2
 0202,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Multiply these two fractions: ${\frac{12}{7} \cdot \frac{9}{10}}$ If needed, use"
 0203,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Let $m = 101^4 + 256$ . Find the sum of digits of $m$ .
 0204,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Consider the function $a(o)$ defined for all positive integers $o$. This functio
 0205,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Express each of the following as a fraction in simplest form. a) 0.75=[ANS] b) 0
-0206,algebra,free_single,1,UNVERIFIED,,,,YES,,Multiply by using the FOIL method. Simplify and combine like radicals if necessa
+0206,algebra,free_single,1,DONE,4,HIGH,B20,YES,(sqrt11+sqrt7)(sqrt11-sqrt7)=11-7=4; MATCH (best correct),Multiply by using the FOIL method. Simplify and combine like radicals if necessa
 0207,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Find the value of $k$ so that the line containing the points $(-3,k)$ and $(1,-2"
 0208,trigonometry,free_multi,2,DONE,"16.2, 720/(49*pi)",HIGH,B9,YES,"r1=81/5=16.2, r2=720/(49pi); teacher/best agree (81/5=16.2)",The radius of the circle with a central angle of 5 radians that intercepts an ar
 0209,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"In prokaryotes, translation of mRNA messages into proteins is most often initiat"
 0210,trigonometry,free_multi,2,DONE,"-(49sqrt3+16sqrt33)/15, 2x/(x^2+1)",HIGH,B15,YES,tan(arcsin(4/7)+arccos(1/2))=-11.786 confirmed; best correct,a) Find $\tan\left(\sin^{-1}(\frac {4}{7})+\cos^{-1}(\frac {4}{8})\right)$=[ANS]
 0211,number_theory,MCQ,0,DONE,181,HIGH,B14,YES,"least odd prime of q_255: mod3,5,7 nonzero, mod181=0; teacher+best=I; value=181 confirmed","Consider the sequence defined by $q_0=1$, $q_1=2$, and $q_d=4q_{d-1}-q_{d-2}$ fo"
-0212,statistics,MCQ,0,UNVERIFIED,,,,YES,,Assuming the different arrival times of a given renewal counting process follow 
+0212,statistics,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B20,YES,renewal process exponential interarrival; best=J; conceptual,Assuming the different arrival times of a given renewal counting process follow 
 0213,other,free_single,1,UNVERIFIED,,,,MAYBE,,A trail’s total length is ${{\textstyle\frac{43}{72}}}$ of a mile. It has two le
 0214,number_theory,free_multi,4,DONE,"11, F, 10, T",HIGH,B10,YES,"primality check: floor(sqrt(121))=11 (F, not prime), floor(sqrt(107))=10 (T, is prime); best slot3=7 is wrong (bound not highest prime)",Here you are asked first the highest divisor to check. Answer that with a number
 0215,other,free_single,1,UNVERIFIED,,,,MAYBE,,Find the size of each sample needed to estimate the difference between the propo
-0216,algebra,free_single,1,UNVERIFIED,,,,YES,,Solve the equation $ \frac{T}{6}=10$. $T=$ [ANS]
+0216,algebra,free_single,1,DONE,60,HIGH,B20,YES,T/6=10 -> T=60; MATCH (best correct),Solve the equation $ \frac{T}{6}=10$. $T=$ [ANS]
 0217,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Suppose $b > 1$ is a real number where $\log_5 (\log_5 b + \log_b 125) = 2$ . Fi
 0218,trigonometry,free_single,1,DONE,\arcsin\!(\frac{7}{10}),HIGH,B8,YES,exact form vs decimal,"If possible, find a solution to $ \sin(\theta)=\frac{7}{10}$. If no solution exi"
 0219,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Two cyclists, 108 miles apart, start riding toward each other at the same time. "
-0220,calculus,MCQ,0,UNVERIFIED,,,,YES,,Let $d_1 = a^2 + 2^a + a \cdot 2^{(a+1)/2}$ and $d_2 = a^2 + 2^a - a \cdot 2^{(a
+0220,calculus,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B20,YES,count a with d1*d2 perfect square competition; best=A; not computable,Let $d_1 = a^2 + 2^a + a \cdot 2^{(a+1)/2}$ and $d_2 = a^2 + 2^a - a \cdot 2^{(a
 0221,other,free_single,1,UNVERIFIED,,,,MAYBE,,A survey consisting of $5500$ students on campus says that $50 \%$ prefer the co
 0222,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"There are 2010 boxes labeled $B_1, B_2, \dots, B_{2010}$, and $2010n$ balls have"
 0223,other,MCQ,0,UNVERIFIED,,,,MAYBE,,We now define an algorithm: The definition of a(n) is the elliptic divisibility 
-0224,statistics,free_single,1,UNVERIFIED,,,,YES,,An train station has determined that the relationship between the number of pass
+0224,statistics,free_single,1,DONE,2643,HIGH,B20,YES,y=193+25*98=2643; MATCH (best correct),An train station has determined that the relationship between the number of pass
 0225,statistics,free_multi,4,DONE,"0.6254, 4, 2.776, A",MED,B15,YES,regression slope t-test 4-slot; best has all 4 slots; plausible,Consider the data set below. $\begin{array}{ccccccc}\hline x & 8 & 6 & 4 & 6 & 4
 0226,other,free_single,1,UNVERIFIED,,,,MAYBE,,Find $x$ if \frac{(5)^x (5)^{1}}{(5)^{3}}=(5)^{6} $x=$ [ANS]
 0227,statistics,free_multi,2,DONE,"A, C",HIGH,B10,YES,matched pairs df=9=option A; pooled variance=C; best slot1=9 (value not letter A),"The number of degrees of freedom associated with the t test, when the data are g"
 0228,other,free_single,1,UNVERIFIED,,,,MAYBE,,The expression \sqrt[11]{v^{77}} equals [ANS]
 0229,algebra,free_single,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B18,YES,tree/complex-numbers competition; best=n-2; not computable,Fix an integer $n \geq 3$. Determine the smallest positive integer $k$ satisfyin
-0230,algebra,free_single,1,UNVERIFIED,,,,YES,,Solve the equation $16=50 (1.6)^{x}$ for $x$ using logs. $x=$ [ANS]
-0231,statistics,free_single,1,UNVERIFIED,,,,YES,,Calculate the least-squares regression line for the following set of data points
+0230,algebra,free_single,1,DONE,-2.424,HIGH,B20,YES,16=50(1.6)^x -> x=log(0.32)/log(1.6)=-2.424; MATCH (best correct),Solve the equation $16=50 (1.6)^{x}$ for $x$ using logs. $x=$ [ANS]
+0231,statistics,free_single,1,DONE,y=0.5161x+4.742,HIGH,B20,YES,"least-squares fit: slope 0.5161, intercept 4.742; MATCH (best correct)",Calculate the least-squares regression line for the following set of data points
 0232,other,free_multi,3,UNVERIFIED,,,,MAYBE,,Estimate the difference by rounding each of the given values to the nearest inte
 0233,statistics,free_multi,4,DONE,"1.96, -1.96, -5.18, B",HIGH,B8,YES,hypothesis test 4-slot; Qwen under-counted,It is necessary for an automobile producer to estimate the number of miles per g
-0234,algebra,free_single,1,UNVERIFIED,,,,YES,,Use a vertical format to add the polynomials. $\begin{alignedat}{2} 16x^{7}&{}-{
-0235,number_theory,MCQ,0,UNVERIFIED,,,,YES,,"A card deck consists of $32$ cards. On each card, a different subset of $$$S = \"
+0234,algebra,free_single,1,DONE,29x^7 + 6x^5,HIGH,B20,YES,(16x^7-9x^5)+(13x^7+15x^5)=29x^7+6x^5; MATCH (best correct),Use a vertical format to add the polynomials. $\begin{alignedat}{2} 16x^{7}&{}-{
+0235,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B20,YES,32-card subset competition; best=B; not computable,"A card deck consists of $32$ cards. On each card, a different subset of $$$S = \"
 0236,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Is the function $ T(s)=\left(6 s^{-3} \right) \left(e s^{-3} \right)$ a power fu
 0237,other,free_single,1,UNVERIFIED,,,,MAYBE,,"A company’s stock value (per share) dropped by ${\$2.80}$, and its current value"
 0238,algebra,free_multi,3,DONE,"-61, 61, 62",HIGH,B14,YES,"partial fractions: -61/x+61/x^2+62/(x+1); f=-61,g=61,h=62; teacher+best agree",The partial fraction decomposition of $ \frac{x^2+61}{x^3+x^2}$ can be written i
@@ -251,7 +251,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0249,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Using the series expansion for the function $(1+x)^m$, calculate approximately $"
 0250,other,free_single,0,UNVERIFIED,,,,MAYBE,,"Let $S$ be the set of all strings of length $15$ formed from five $1$s, $2$s, an"
 0251,other,free_single,1,UNVERIFIED,,,,MAYBE,,The percentage change from 3.3 inches to 9 inches (to 1 decimal place) is [ANS]
-0252,statistics,free_single,1,UNVERIFIED,,,,YES,,What are the three conditions required for 0ne-way ANOVA? [ANS] A. normal popula
+0252,statistics,free_single,1,DONE,normal populations + equal variances + independence,MED,B20,YES,one-way ANOVA conditions; MCQ best=C; standard answer ~normal/equal-SD/no-outliers,What are the three conditions required for 0ne-way ANOVA? [ANS] A. normal popula
 0253,linear_algebra,MCQ,0,DONE,E,MED,B14,YES,"quadratic form eigenvalues a,b integers; teacher+best agree=E","Let the quadratic form \( f(x_1,x_2,x_3) = ax_2^2 -4x_1x_2+2bx_1x_3+ 4x_2x_3 \) "
 0254,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Let $C$ be a smooth projective curve over $\mathbb{C}$ and $\omega_{C}^{\otimes2
 0255,geometry,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B10,YES,"OEIS tiling 4x2n L-tetrominoes for n=15..24; Wolfram cannot compute; teacher=E, best=H",We now define an algorithm: The definition of a(n) is: Number of tilings of a 4 
@@ -263,20 +263,20 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0261,other,free_single,1,UNVERIFIED,,,,MAYBE,,The number of integers between $\sqrt{3}$ and $\sqrt{32}$ is [ANS].
 0262,algebra,free_multi,3,DONE,"850-50t, 1480-140t, 7",HIGH,B15,YES,"F=850-50t, A=1480-140t, equal at t=7; best=7 undercount (missing 2 equations)","The cost of a Frigbox refrigerator is \$850, and depreciates \$50 each year. The"
 0263,trigonometry,MCQ,0,DONE,-63/16,HIGH,B10,YES,"tan(arcsin(3/5)+arccos(5/13))=-63/16=-3.9375; Wolfram confirmed; teacher=H, best=E",Evaluate $\tan\left(\arcsin\left(\frac{ 3 }{ 5 }\right)+\arccos\left(\frac{ 5 }{
-0264,geometry,free_single,1,UNVERIFIED,,,,YES,,A spherical weather balloon is being inflated. The radius of the balloon is incr
+0264,geometry,free_single,1,DONE,256*pi*t^2,HIGH,B20,YES,"r=8t, SA=4pi r^2=4pi(8t)^2=256pi t^2; MATCH (best correct)",A spherical weather balloon is being inflated. The radius of the balloon is incr
 0265,statistics,free_multi,2,DONE,"A, D",MED,B17,YES,central location nominal MCQ 2-slot; best all slots,Which measure of central location is meaningful when the data are nominal? [ANS]
 0266,other,MCQ,0,UNVERIFIED,,,,MAYBE,,We now define an algorithm: The definition of a(n) is the number of partitions o
-0267,statistics,MCQ,0,UNVERIFIED,,,,YES,,Let the probability density function of the random variable $\mathrm{Y}$ be $f (
+0267,statistics,MCQ,0,DONE,k = -1/2,HIGH,B20,YES,int_0^2(ky+1)dy=2k+2=1 -> k=-1/2; value verified; MCQ best=C,Let the probability density function of the random variable $\mathrm{Y}$ be $f (
 0268,other,free_multi,2,UNVERIFIED,,,,MAYBE,,The tuition cost for part-time students taking $C$ credits at Stonewall College 
 0269,statistics,free_multi,3,DONE,"1.789, 0.3198, B",HIGH,B10,YES,t_crit df=47 alpha=0.04 = 1.789 (teacher~1.79 correct; best=1.717 wrong); t_stat=3/(65/sqrt(48))=0.3198; conclusion B,"A paired difference experiment produced the following results: n_D=48, \ \overli"
 0270,other,free_single,1,UNVERIFIED,,,,MAYBE,,"A $35 ft$ ladder leans up agains the side of a house, with the base of the ladde"
 0271,algebra,free_single,1,DONE,"-4, 0, 4",HIGH,B10,YES,"4a^6=64a^4 -> 4a^4(a^2-16)=0 -> a=-4,0,4; best=4 is severe undercount",Solve the equation for $a$: 4 a^6=64 a^4 $a=$ [ANS] Help: Separate multiple answ
-0272,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,"If $\tan(\theta) = \sqrt{x^2 - 1}$, find $\sec(\theta) + \tan(\theta)$."
+0272,trigonometry,MCQ,0,DONE,x + sqrt(x^2-1),HIGH,B20,YES,tan=sqrt(x^2-1) -> sec=x; sec+tan=x+sqrt(x^2-1); value verified; MCQ best=B,"If $\tan(\theta) = \sqrt{x^2 - 1}$, find $\sec(\theta) + \tan(\theta)$."
 0273,trigonometry,free_multi,3,DONE,"-cos^2(x), 1, 2cos^2(x)",HIGH,B15,YES,trig simplify: sin^2-1=-cos^2; sin^2+cos^2=1; cos^2+cos^2=2cos^2; best correct,Write each expression in terms of sines and/or cosines and then simplify. $\frac
 0274,number_theory,MCQ,0,DONE,G,MED,B14,YES,OEIS permutations of order 3; teacher+best agree=G; not computable,We now define an algorithm: The definition of a(n) is the number of permutations
 0275,other,free_single,0,UNVERIFIED,,,,MAYBE,,Bugs Bunny wants to choose a number $k$ such that every collection of $k$ consec
 0276,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Find the $x$-and $y$-intercepts of $f(x)=7 \log_{7}\left(8x-4\right)+21$. Write 
-0277,geometry,free_single,1,UNVERIFIED,,,,YES,,"The average salary of a government worker is $\$44{,}232.00$ per year. Given tha"
+0277,geometry,free_single,1,DONE,38800,HIGH,B20,YES,44232/1.14=38800; MATCH (best correct),"The average salary of a government worker is $\$44{,}232.00$ per year. Given tha"
 0278,other,free_single,1,UNVERIFIED,,,,MAYBE,,"The graph of the function $y=\log_a x$ goes through $(38,-1)$. Then $a=1/$ [ANS]"
 0279,calculus,MCQ,0,UNVERIFIED,,,,YES,,Find the Taylor series of $f'(x)$ about $a=0$ if $f(x) = \frac{ x - \ln(1 + x) }
 0280,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"If f (x) is differentiable and f $(0) \ =1$, for any simple closed curve L, $$ \"

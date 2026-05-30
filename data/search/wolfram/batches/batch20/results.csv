@@ -1,0 +1,26 @@
+id,subject,type,n_ans_slots,wolfram_answer,confidence,computable,notes
+0156,linear_algebra,MCQ,0,"eigenvalues -7, 2, 2",HIGH,YES,eigenvalues computed; value verified; MCQ best=H
+0162,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,OEIS floor(i/j) triangle; best=B; not computable
+0166,algebra,free_single,1,175*(1/4)^n,HIGH,YES,marsh decay A=175(1/4)^n; MATCH (best correct)
+0172,trigonometry,free_single,1,1320/3721,HIGH,YES,sin(2arccos(11/61))=2*(11/61)*(60/61)=1320/3721; MATCH (best correct)
+0175,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,OEIS lcm(1..n); best=I; not computable
+0178,linear_algebra,MCQ,0,-4,HIGH,YES,"det B=det[a2-2a3,a1,a2]=-2det[a3,a1,a2]=-2|A|=-4; value verified; MCQ best=C"
+0180,algebra,free_single,1,(1/2)m - 7/2,HIGH,YES,7/8(-4+4m/7)=-7/2+m/2; MATCH (best correct)
+0183,calculus,MCQ,0,reduction formula for int csc^5(x)dx,MED,YES,int 1/sin^5 x dx computable (reduction); MCQ best=D
+0189,algebra,free_single,1,850a + 1200r = 35000,HIGH,YES,coffee yield equation setup; MATCH (best correct)
+0199,geometry,free_single,0,INCONCLUSIVE,INCONCLUSIVE,NO,convex pentagon min sum-of-distances (Fermat point) competition; best=47
+0200,geometry,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,Brocard-angle triangle competition; best=I; not Wolfram-computable
+0206,algebra,free_single,1,4,HIGH,YES,(sqrt11+sqrt7)(sqrt11-sqrt7)=11-7=4; MATCH (best correct)
+0212,statistics,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,renewal process exponential interarrival; best=J; conceptual
+0216,algebra,free_single,1,60,HIGH,YES,T/6=10 -> T=60; MATCH (best correct)
+0220,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,count a with d1*d2 perfect square competition; best=A; not computable
+0224,statistics,free_single,1,2643,HIGH,YES,y=193+25*98=2643; MATCH (best correct)
+0230,algebra,free_single,1,-2.424,HIGH,YES,16=50(1.6)^x -> x=log(0.32)/log(1.6)=-2.424; MATCH (best correct)
+0231,statistics,free_single,1,y=0.5161x+4.742,HIGH,YES,"least-squares fit: slope 0.5161, intercept 4.742; MATCH (best correct)"
+0234,algebra,free_single,1,29x^7 + 6x^5,HIGH,YES,(16x^7-9x^5)+(13x^7+15x^5)=29x^7+6x^5; MATCH (best correct)
+0235,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,32-card subset competition; best=B; not computable
+0252,statistics,MCQ,1,normal populations + equal variances + independence,MED,YES,one-way ANOVA conditions; MCQ best=C; standard answer ~normal/equal-SD/no-outliers
+0264,calculus,free_single,1,256*pi*t^2,HIGH,YES,"r=8t, SA=4pi r^2=4pi(8t)^2=256pi t^2; MATCH (best correct)"
+0267,statistics,MCQ,0,k = -1/2,HIGH,YES,int_0^2(ky+1)dy=2k+2=1 -> k=-1/2; value verified; MCQ best=C
+0272,trigonometry,MCQ,0,x + sqrt(x^2-1),HIGH,YES,tan=sqrt(x^2-1) -> sec=x; sec+tan=x+sqrt(x^2-1); value verified; MCQ best=B
+0277,algebra,free_single,1,38800,HIGH,YES,44232/1.14=38800; MATCH (best correct)

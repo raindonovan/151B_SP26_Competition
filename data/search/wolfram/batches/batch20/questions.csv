@@ -1,0 +1,42 @@
+id,subject,type,n_ans_slots,best_answer,teacher_consensus,question
+0156,linear_algebra,MCQ,0,H,H,"What are the eigenroots of the following matrices?
+$$
+\left( \begin{matrix} {{{1}}} & {{{-2}}} & {{{2}}} \\ {{{-2}}} & {{{-2}}} & {{{4}}} \\ {{{2}}} & {{{4}}} & {{{-2}}} \\ \end{matrix} \right)
+$$"
+0162,geometry,MCQ,0,B,B,"We now define an algorithm: The definition of a(n) is: Triangle with subscripts (1,1),(2,1),(1,2),(3,1),(2,2),(1,3), etc. in which entry (i,j) is the floor function of the ratio i/j. Given the input x_list (a series of values): [93, 94, 95, 96, 97, 98, 99, 100, 101, 102], determine the corresponding output sequence y_list."
+0166,geometry,free_single,1,175 \cdot \left( \frac{1}{4} \right)^n,,"The area covered by a marsh, $A$, starts at $175$ acres and drops by a factor of $\dfrac{1}{4}$ each year for $n$ years. Write a formula for $A=f(n)$.
+$A=f(n)=$ [ANS]"
+0172,trigonometry,free_single,1,\frac{1320}{3721},\frac{1320}{3721},Find the exact value. $\small{\sin} \left(\small{2 \cos^{-1}} \large{\left(\frac{11}{61}\right)} \right)$=[ANS]
+0175,number_theory,MCQ,0,I,I,"We now define an algorithm: The definition of a(n) is the least common multiple (or LCM) of the set of integers {1, 2, ..., n} for n >= 1, and a(0) = 1. Given the input x_list (a series of values): [21, 22, 23, 24, 25, 26, 27, 28, 29, 30], determine the corresponding output sequence y_list."
+0178,linear_algebra,MCQ,0,C,C,"Let the 3rd order matrix \( A = (\alpha_1, \alpha_2, \alpha_3), B = (\alpha_2 - 2\alpha_3, \alpha_1, \alpha_2) \), if the determinant of \( A \) is \( |A| = 2 \), then the determinant of \( B \) is \( |B| = \) ( )"
+0180,algebra,free_single,1,\dfrac{1}{2}m - \dfrac{7}{2},,"Use the distributive property to simplify the expression completely.
+${{\textstyle\frac{7}{8}}\!\left(-4+{\textstyle\frac{4}{7}}m\right)}$ $=$ [ANS]"
+0183,calculus,MCQ,0,D,D,"Solve the integral:
+$$
+\int \frac{ 1 }{ \sin(x)^5 } \, dx
+$$"
+0189,algebra,free_single,1,850a + 1200r = 35000,850a+1200r=35000,"The coffee variety Arabica yields about 850 kg of coffee beans per hectare, while Robusta yields about 1200 kg per hectare. Suppose that a plantation has $a$ hectares of Arabica and $r$ hectares of Robusta. Robusta. Write an equation relating $a$ and $r$ if the plantation yields 35000 kg of coffee. Do not enter any commas or units in your answer. [ANS]"
+0199,number_theory,free_single,0,47,,"Let $ABCDE$ be a convex pentagon with $AB=14$, $BC=7$, $CD=24$, $DE=13$, $EA=26$, and $\angle B=\angle E=60^{\circ}$. For each point $X$ in the plane, define $f(X)=AX+BX+CX+DX+EX$. The least possible value of $f(X)$ can be expressed as $m+n\sqrt{p}$, where $m$ and $n$ are positive integers and $p$ is not divisible by the square of any prime. Find $m+n+p$."
+0200,geometry,MCQ,0,I,I,"Point $P$ is located inside $\triangle{ABC}$ so that $\angle{PAB}=\angle{PBC}=\angle{PCA}$ . The sides of the triangle are $AB=13$ , $BC=14$ , $CA=15$ . The tangent of $\angle{PAB}$ may be expressed in the form $\frac{m}{n}$ , where $m$ and $n$ are relatively prime positive integers. Compute $m+n$ ."
+0206,algebra,free_single,1,4,4,Multiply by using the FOIL method. Simplify and combine like radicals if necessary. Use sqrt for the square root symbol (Example: ${\sqrt{2}=}$ sqrt(2).) ${({\sqrt{11}}+{\sqrt{7}})({\sqrt{11}}-{\sqrt{7}})=}$ [ANS]
+0212,statistics,MCQ,0,J,J,"Assuming the different arrival times of a given renewal counting process follow an exponential distribution
+$$
+F_{z} ( t )=\left\{\begin{cases} {{{1-\mathrm{e}^{-\lambda t}}}} & {{{t \geq0}}} \\ {{{0,}}} & {{{t < 0}}} \\ \end{cases} \right.
+$$
+Determine the characteristic function of the $j$-th arrival time is ()."
+0216,algebra,free_single,1,60,60,"Solve the equation $ \frac{T}{6}=10$.
+$T=$ [ANS]"
+0220,calculus,MCQ,0,A,A,"Let $d_1 = a^2 + 2^a + a \cdot 2^{(a+1)/2}$ and $d_2 = a^2 + 2^a - a \cdot 2^{(a+1)/2}$ . If $1 \le a \le 251$ , how many integral values of $a$ are there such that $d_1 \cdot d_2$ is a multiple of $5$ ?"
+0224,statistics,free_single,1,2643,2643,An train station has determined that the relationship between the number of passengers on a train and the total weight of luggage stored in the baggage compartment can be estimated by the least squares regression equation $y=193+25x$. Predict the weight of luggage for a flight with 98 passengers. Answer: [ANS] pounds
+0230,algebra,free_single,1,-2.424,,Solve the equation $16=50 (1.6)^{x}$ for $x$ using logs. $x=$ [ANS]
+0231,statistics,free_single,1,"4.742, 0.5161",,"Calculate the least-squares regression line for the following set of data points: (-1,3), (1,6), (1,6), (4,5), (4,7), (4,9), (6,7). Answer: $y=$ [ANS]"
+0234,algebra,free_single,1,29x^7 + 6x^5,,"Use a vertical format to add the polynomials.
+$\begin{alignedat}{2} 16x^{7}&{}-{}&9x^{5}\\ 13x^{7}&{}+{}&15x^{5}\\ \hline \end{alignedat}$ [ANS]"
+0235,number_theory,MCQ,0,B,B,"A card deck consists of $32$ cards. On each card, a different subset of
+$$$S = \{algebra, \,\,\, combinatorics, \,\,\, geometry, \,\,\, number \,\,\, theory, \,\,\, sequences\}$$$
+is written (thus, one of the cards is empty). Let $N$ be the number of ways to burn $5$ cards from this deck so that each element of $S$ appears an odd number of times among the remaining cards. Find the remainder when $N$ is divided by $1000$ ."
+0252,statistics,free_single,1,C,C,"What are the three conditions required for 0ne-way ANOVA? [ANS] A. normal populations, no outliers and equal sample standard deviations  B. large sample sizes, paired samples and normal differences  C. independent samples, normal populations and approximately equal population standard deviations  D. None of the above"
+0264,geometry,free_single,1,256\pi t^2,,A spherical weather balloon is being inflated. The radius of the balloon is increasing at the rate of 8 cm per second. Express the surface area of the balloon as a function of time $t$ (in seconds). If needed you can enter $\pi$ as pi. Your answer is [ANS].
+0267,statistics,MCQ,0,C,C,"Let the probability density function of the random variable $\mathrm{Y}$ be $f ( y )=\left\{\begin{aligned} {{{ky + 1, 0 < y < 2}}} \\ {{0, \qquad{\mathrm{other}}}} \\ \end{aligned} \right.$. What is the value of $k$? What is the distribution function $\mathrm{F}(Y)$ for $\mathrm{Y}$? What is the value of $\mathrm{P} \, (1.5 < \mathrm{Y} < 2.5)$?"
+0272,trigonometry,MCQ,0,B,B,"If $\tan(\theta) = \sqrt{x^2 - 1}$, find $\sec(\theta) + \tan(\theta)$."
+0277,geometry,free_single,1,38800.00,,"The average salary of a government worker is $\$44{,}232.00$ per year. Given that this is about $14 \%$ percent higher than the yearly salary of a private-sector worker, find the salary of the private-sector worker. Private-Sector Salary: [ANS] (Round your answer to the nearest cent and include units.)"

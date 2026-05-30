@@ -345,3 +345,28 @@ Readable companion to `WOLF_RESULTS.csv` (the full machine-readable scorecard fo
 | 0148 | B19 | INCONCLUSIVE | INCONCLUSIVE | compound Poisson process distribution; best=A; conceptu |
 | 0150 | B19 | MED | best L2 cubic approx of e^x on [-1,1] (Legendre) | least-squares cubic via Legendre coeffs; computable but |
 | 0153 | B19 | MED | quadratic form standard form via completing square | f(x1,x2,x3) diagonalization computable; MCQ best=B |
+| 0156 | B20 | HIGH | eigenvalues -7, 2, 2 | eigenvalues computed; value verified; MCQ best=H |
+| 0162 | B20 | INCONCLUSIVE | INCONCLUSIVE | OEIS floor(i/j) triangle; best=B; not computable |
+| 0166 | B20 | HIGH | 175*(1/4)^n | marsh decay A=175(1/4)^n; MATCH (best correct) |
+| 0172 | B20 | HIGH | 1320/3721 | sin(2arccos(11/61))=2*(11/61)*(60/61)=1320/3721; MATCH  |
+| 0175 | B20 | INCONCLUSIVE | INCONCLUSIVE | OEIS lcm(1..n); best=I; not computable |
+| 0178 | B20 | HIGH | -4 | det B=det[a2-2a3,a1,a2]=-2det[a3,a1,a2]=-2/A/=-4; value |
+| 0180 | B20 | HIGH | (1/2)m - 7/2 | 7/8(-4+4m/7)=-7/2+m/2; MATCH (best correct) |
+| 0183 | B20 | MED | reduction formula for int csc^5(x)dx | int 1/sin^5 x dx computable (reduction); MCQ best=D |
+| 0189 | B20 | HIGH | 850a + 1200r = 35000 | coffee yield equation setup; MATCH (best correct) |
+| 0199 | B20 | INCONCLUSIVE | INCONCLUSIVE | convex pentagon min sum-of-distances (Fermat point) com |
+| 0200 | B20 | INCONCLUSIVE | INCONCLUSIVE | Brocard-angle triangle competition; best=I; not Wolfram |
+| 0206 | B20 | HIGH | 4 | (sqrt11+sqrt7)(sqrt11-sqrt7)=11-7=4; MATCH (best correc |
+| 0212 | B20 | INCONCLUSIVE | INCONCLUSIVE | renewal process exponential interarrival; best=J; conce |
+| 0216 | B20 | HIGH | 60 | T/6=10 -> T=60; MATCH (best correct) |
+| 0220 | B20 | INCONCLUSIVE | INCONCLUSIVE | count a with d1*d2 perfect square competition; best=A;  |
+| 0224 | B20 | HIGH | 2643 | y=193+25*98=2643; MATCH (best correct) |
+| 0230 | B20 | HIGH | -2.424 | 16=50(1.6)^x -> x=log(0.32)/log(1.6)=-2.424; MATCH (bes |
+| 0231 | B20 | HIGH | y=0.5161x+4.742 | least-squares fit: slope 0.5161, intercept 4.742; MATCH |
+| 0234 | B20 | HIGH | 29x^7 + 6x^5 | (16x^7-9x^5)+(13x^7+15x^5)=29x^7+6x^5; MATCH (best corr |
+| 0235 | B20 | INCONCLUSIVE | INCONCLUSIVE | 32-card subset competition; best=B; not computable |
+| 0252 | B20 | MED | normal populations + equal variances + independence | one-way ANOVA conditions; MCQ best=C; standard answer ~ |
+| 0264 | B20 | HIGH | 256*pi*t^2 | r=8t, SA=4pi r^2=4pi(8t)^2=256pi t^2; MATCH (best corre |
+| 0267 | B20 | HIGH | k = -1/2 | int_0^2(ky+1)dy=2k+2=1 -> k=-1/2; value verified; MCQ b |
+| 0272 | B20 | HIGH | x + sqrt(x^2-1) | tan=sqrt(x^2-1) -> sec=x; sec+tan=x+sqrt(x^2-1); value  |
+| 0277 | B20 | HIGH | 38800 | 44232/1.14=38800; MATCH (best correct) |
