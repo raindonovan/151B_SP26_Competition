@@ -100,3 +100,42 @@ Wolf shipped **B9-B16** during this session (~144 HIGH/MED Wolfram verifications
 - OPL bulk-override is **dead**. Don't re-estimate +3-4pp from the OK-bucket count. See `data/search/opl/findings.md` Day-7 headline.
 - Bootstrap is `curl -sSL .../setup_git.sh | bash -s -- "$PAT"`. Run it first in every fresh chat session.
 - Aggressive/conservative are NOT canonical labels — Tier 1/2/3/4 from `NORMALIZATION_RULES.md` is the actual axis.
+
+---
+## Git consolidation signoff — claude_vscode — 2026-05-29
+
+### What was merged
+Branch `copilot/normalizer-inference-review-20260529` (d3753b3) into main (was at fcbff12).
+Two commits from branch: `3dd2e7b` (search_02 batch 3 — 77 GOLD search results, VALUABLE DATA) and `d3753b3` (clean working tree grab-bag).
+
+### Conflict resolution log
+No textual conflicts — git merged automatically. Policy overrides applied:
+
+| File | Policy | Action |
+|------|--------|--------|
+| `data/search/web_search/search_results.csv` | DATA → take branch | auto-merged (new file from branch) ✓ |
+| `data/search/web_search/FINDINGS.md` | DATA → take branch | auto-merged (new file from branch) ✓ |
+| `grading/judger.py` | RECONCILED DOC → keep main | `git restore --source=HEAD` + re-staged ✓ |
+| `inference/INFERENCE_ANALYSIS_PIPELINE.md` | RECONCILED DOC → keep main | `git restore --source=HEAD` + re-staged ✓ |
+| `inference/scripts/build_review_sheet.py` | RECONCILED DOC → keep main | `git restore --source=HEAD` + re-staged ✓ |
+| `postprocessing/scripts/normalizer.py` | RECONCILED DOC → keep main | `git restore --source=HEAD` + re-staged ✓ |
+
+Pre-merge verifications passed: search_results.csv has 245 GOLD, normalizer.py present, SESSION_HANDOFF phantom status RESOLVED.
+
+### New main HEAD
+`a072de6` — Consolidate copilot branch into main: search_02 batch 3 + web_search consolidation
+
+### Auto-branching source identified and mitigated
+Root cause: **VS Code GitHub Copilot agent mode** auto-creates `copilot/*` branches on every session. Git hooks were all LFS-only — not involved. The branch tracking entry `vscode-merge-base` in `.git/config` is the fingerprint of Copilot agent commits.
+
+Mitigations applied:
+- `branch.main.remote = origin` and `branch.main.merge = refs/heads/main` set explicitly in `.git/config`
+- Stale `branch.copilot/normalizer-inference-review-20260529` tracking entry removed from `.git/config`
+- `push.default` left as `simple` (correct — pushes to tracking branch which is now main)
+- Backup tag `backup/pre-consolidation-20260529` pushed to origin as safety net
+
+**Going forward:** Claude Code (this runtime) is now on main and will stay there. If VS Code Copilot agent is used again, it will create a new `copilot/*` branch — prompt claude_vscode to merge it back to main promptly.
+
+### Runtime confirmation
+`git branch --show-current` = main ✓
+Branch `copilot/normalizer-inference-review-20260529` deleted from origin ✓
