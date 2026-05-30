@@ -1,0 +1,39 @@
+id,subject,type,n_ans_slots,best_answer,teacher_consensus,question
+0279,calculus,MCQ,0,J,J,Find the Taylor series of $f'(x)$ about $a=0$ if $f(x) = \frac{ x - \ln(1 + x) }{ x^2 }$. Use sigma notation in the final answer.
+0282,algebra,free_single,1,"e^2, -e^2",,"Solve for $\small{x}$ without using a calculating utility. Enter your answer as an expression containing $\small{e}$. If there is more than one answer, enter them as a comma-separated list.
+$\small{\ln\!\left(x^{4}\right)=8}$ $\small{x=}$ [ANS]"
+0283,statistics,free_single,1,114,114,"Target heart rate for moderate exercise is $50\%$ to $70\%$ of maximum heart rate. If we want to represent a certain percent of an individual’s maximum heart rate, we’d use the formula
+${\text{rate}=p(220-a)}$ where $p$ is the percent, and $a$ is age in years. Determine the target heart rate at $65\%$ level for someone who is $45$ years old. Round your answer to an integer. The target heart rate at $65\%$ level for someone who is $45$ years old is [ANS] beats per minute."
+0284,geometry,MCQ,0,E,,Find the area of the region bounded by $|x - |y|| + |y - |x|| + |y| = 9$ in the Cartesian plane.
+0286,calculus,MCQ,0,H,H,"Given a positive integer $x$, define the function $p_x(o) = \prod_{{k=1}}^x \cos(ko)$.Determine the smallest $x$ such that the absolute value of the second derivative at zero satisfies $|p_x''(0)| > 89688$."
+0290,algebra,MCQ,0,C,C,\( \int_{1}^{{e}^{2}}\frac{dx}{x\sqrt{1-\ln x}} \) = ( )
+0292,trigonometry,free_single,1,-2 - \sqrt{3},-2-\sqrt{3},Use a sum or difference identity to find the exact value of each expression: Note: You are not allowed to use decimals in your answer. $\tan(285 ^ \circ)$=[ANS]
+0295,geometry,MCQ,0,C,C,Compute the volume of the solid formed by rotating about the x-axis the area bounded by the axes and the parabola $x^{\frac{ 1 }{ 2 }}+y^{\frac{ 1 }{ 2 }}=2^{\frac{ 1 }{ 2 }}$.
+0304,calculus,MCQ,0,G,G,Calculate the following curve integral using the residue theorem $ointlimits_{|z|=3}frac{z^{13}}{(z^2+5)^3(z^4+1)^2}dz$
+0305,number_theory,MCQ,0,B,B,"We now define an algorithm: The definition of a(n) is: Let n be a positive integer. For each prime divisor p of n, consider the highest power of p which does not exceed n. The sum a(n) of these powers is defined as the power-sum of n. For example, for n=10, the prime divisors are 2 and 5. The highest power of 2 that does not exceed 10 is 8 (2^3), and the highest power of 5 that does not exceed 10 is 5 (5^1). Therefore, a(10) = 8 + 5 = 13. Given the input x_list (a series of values): [59, 60, 61, 62, 63, 64, 65, 66, 67, 68], determine the corresponding output sequence y_list."
+0321,calculus,MCQ,0,H,H,"What's the value of a > 0, such that the tangent line to the graph of f(x) = (x^2) (e^(-x)) at x = a passes through the origin?"
+0324,algebra,MCQ,0,H,H,"We now define an algorithm: The definition of a(n) is the number of ways to factorize n into three ordered parts, such that n = r * s * t. Given the input x_list (a series of values): [80, 81, 82, 83, 84, 85, 86, 87, 88, 89], determine the corresponding output sequence y_list."
+0331,number_theory,MCQ,0,H,H,"Let $a, b, c$ be positive reals such that $abc + a + b = c$ and
+$$ \frac{19}{\sqrt{a^2 + 1}} + \frac{20}{\sqrt{b^2 + 1}} = 31.$$
+The maximum possible value of $c^2$ can be written in the form $\frac{m}{n}$ where $m$ and $n$ are relatively prime positive integers. Find the value of $m+n$ ."
+0337,linear_algebra,MCQ,0,H,H,"Suppose the rank of $\left( \begin{matrix} {{{a}}} \\ {{{3}}} \\ {{{1}}} \\ \end{matrix} \right), \left( \begin{matrix} {{{2}}} \\ {{{b}}} \\ {{{3}}} \\ \end{matrix} \right), \left( \begin{matrix} {{{1}}} \\ {{{2}}} \\ {{{1}}} \\ \end{matrix} \right), \left( \begin{matrix} {{{2}}} \\ {{{3}}} \\ {{{1}}} \\ \end{matrix} \right)$ is 2, then what are the values of $a, b$ ?"
+0340,statistics,free_single,1,"C, E, F",,"For simple linear regression, with data $x_i,y_i$, $i=1,\ldots,n$, and model $Y_i=\beta_0+\beta_1x_i+\epsilon_i$, the multiple correlation coefficient is define as $R^2=1-{SS(Res)\over SS(Total)}$ An identity for simple linear regression is that $R^2$ is the same as square of the sample correlation of the $x$ and $y$ variables.
+Part a) Which of the following is a correct statement used in the proof of the claim.? By choosing the items in a correct order, you will derive the claimed result. Note that an identity for the residual SD (previous homework question) is being used. Choose all appropriate items: [ANS] A. ${\hat \sigma}^2=(n-1)(1-r_{xy}^2)s_y^2/(n-2)$  B. $SS(Total)=s_y^2$  C. $SS(Total)=(n-1)s_y^2$  D. $SS(Total)=(n-2)s_y^2$  E. $R^2=1-(1-r_{xy}^2)$  F. $SS(Res)=(n-1)(1-r_{xy}^2)s_"
+0348,calculus,MCQ,0,D,D,"Find the integral:
+$$
+\int \frac{ \arcsin(4 \cdot x) }{ \sqrt{4 \cdot x+1} } \, dx
+$$"
+0351,trigonometry,MCQ,0,A,A,"The path of a satellite is given by the parametric equations x = 4 cos(t) + cos(12t), y = 4 sin(t) + sin(12t). The upward velocity at t = 1 equals"
+0355,calculus,MCQ,0,H,H,The inflection point of the function curve (f(x) = { { 4(x + 1)} over { { x^2}}} - 2) is ( ).
+0356,algebra,MCQ,0,F,F,Expand the function $f(z) = \frac{1}{z^2 + 1}$ into series at $z = -1$ and $z = \infty$ respectively.
+0365,geometry,free_single,1,C,C,"Use a graphing calculator to decide which viewing rectangle (A)-(D) produces the most appropriate graph of the equation. y=\sqrt[4]{1296-x^2} Choose one: [ANS] A. [-10,10] by [-2,8]  B. [-10,10] by [-10,10]  C. [-36,36] by [-2,8]  D. [0,36] by [-2,8]
+Note: The answers are given by [Xmin, Xmax] by [Ymin, Ymax]"
+0366,linear_algebra,MCQ,0,G,G,"Let the matrix $A=( \alpha_{_1}, \alpha_{_2}, \alpha_{_3}, \alpha_{_4} )$ , where $\alpha_{_{2}}, \alpha_{_{3}}, \alpha_{_{_4}}$ are linearly independent, and $\alpha_{1}=\alpha_{2}-\alpha_{3}+\alpha_{4}$ . There's a vector $\beta=\alpha_{{1}}+2 \alpha_{{2}}+3 \alpha_{{3}}+4 \alpha_{{4}} \,$. So what is the general solution to the system $A X=\beta$?"
+0377,number_theory,MCQ,0,B,B,"Find the largest prime factor of the smallest positive integer $n$ such that $r_1, r_2, \ldots , r_{2006}$ are distinct integers such that the polynomial $(x-r_{1})(x-r_{2})\cdots (x-r_{2006})$ has exactly $n$ nonzero coefficients."
+0381,calculus,free_single,1,2040,2040,Find the numerical value of the sum below. $ \sum\limits_{k=1}^{120} 17$=[ANS]
+0384,algebra,free_single,1,\frac{\ln\left(\frac{11}{32}\right) - 3}{5},,"Find the exact solution to the equation below. (Do not give a decimal approximation.) (Do not give a decimal approximation.)
+64 e^{5x+3}=22. $x=$ [ANS]"
+0394,calculus,MCQ,0,H,H,"Compute the integral:
+$$
+\int x \cdot \arctan(2 \cdot x)^2 \, dx
+$$"

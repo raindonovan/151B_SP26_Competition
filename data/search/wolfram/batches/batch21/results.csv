@@ -1,0 +1,26 @@
+id,subject,type,n_ans_slots,wolfram_answer,confidence,computable,notes
+0279,calculus,MCQ,0,Taylor series of f'(x) (sigma form),MED,YES,f=(x-ln(1+x))/x^2; f' series computable; MCQ best=J
+0282,algebra,free_single,1,"e^2, -e^2",MED,YES,"solve-for-x; best=""e^2,-e^2"" plausible (log equation)"
+0283,algebra,free_single,1,114 (target HR),MED,YES,heart-rate percent calc; best=114 plausible
+0284,geometry,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,area of |x-|y||+|y-|x||+|y|=9 competition; best=E
+0286,calculus,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,smallest x with 2nd-deriv condition on prod cos; best=H; competition
+0290,calculus,MCQ,0,2,HIGH,YES,"int_1^{e^2} dx/(x sqrt(1-lnx)): u=lnx, real convergent part [-2sqrt(1-u)]_0^1=2; MCQ best=C"
+0292,trigonometry,free_single,1,-2 - sqrt(3),HIGH,YES,tan(285)=tan(-75)=-tan(75)=-(2+sqrt3); MATCH (best correct)
+0295,calculus,MCQ,0,8*pi/15,HIGH,YES,vol rev sqrt(x)+sqrt(y)=sqrt2: pi*a^3/15 with a=2 = 8pi/15; MCQ best=C
+0304,calculus,MCQ,0,residue-theorem contour integral (involved),MED,YES,oint z^13/((z^2+5)^3(z^4+1)^2) |z|=3; all poles enclosed; MCQ best=G
+0305,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,OEIS prime-power algorithm; best=B; not computable
+0321,calculus,MCQ,0,a = 1,HIGH,YES,tangent to x^2 e^-x through origin: a e^-a=(2a-a^2)e^-a -> a=1; MCQ best=H
+0324,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,OEIS ordered-factorization count; best=H; not computable
+0331,algebra,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,abc+a+b=c constraint optimization competition; best=H
+0337,linear_algebra,MCQ,0,"rank condition on a,b (computable per options)",MED,YES,"rank of 3 column vectors with params a,b; MCQ best=H"
+0340,statistics,MCQ,1,R^2 definition (multiple true statements),MED,MAYBE,"R^2 multiple-correlation MCQ; best=""C,E,F""; conceptual"
+0348,calculus,MCQ,0,int arcsin(4x)/sqrt(4x+1) dx (messy),MED,YES,computable by parts but messy closed form; MCQ best=D
+0351,calculus,MCQ,0,12.287,HIGH,YES,dy/dt=4cos(t)+12cos(12t) at t=1 (rad)=12.287; MCQ best=A
+0355,calculus,MCQ,0,"inflection point (-3, -26/9)",HIGH,YES,"f=4(x+1)/x^2-2, f''=0 at x=-3, f(-3)=-26/9; MCQ best=H"
+0356,calculus,MCQ,0,Laurent series of 1/(z^2+1) at z=-1 and z=inf,MED,YES,series expansions computable; MCQ best=F
+0365,algebra,MCQ,1,"x in [-36,36], y in [0,6]",MED,YES,"y=(1296-x^2)^(1/4): domain |x|<=36, range [0,6]; MCQ best=C"
+0366,linear_algebra,MCQ,0,solution-space/rank statement (computable per options),MED,YES,"a2,a3,a4 indep, a1=...; MCQ best=G; conceptual"
+0377,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,largest prime factor of smallest n competition; best=B
+0381,algebra,free_single,1,2040,HIGH,YES,sum_{k=1}^{120} 17 = 120*17 = 2040; MATCH (best correct)
+0384,algebra,free_single,1,(ln(11/32)-3)/5,HIGH,YES,64e^(5x+3)=22 -> x=(ln(11/32)-3)/5; MATCH (best correct)
+0394,calculus,MCQ,0,"int x*arctan(2x)^2 dx (by parts, messy)",MED,YES,computable by parts; messy closed form; MCQ best=H

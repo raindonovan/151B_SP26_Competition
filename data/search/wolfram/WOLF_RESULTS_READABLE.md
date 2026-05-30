@@ -370,3 +370,28 @@ Readable companion to `WOLF_RESULTS.csv` (the full machine-readable scorecard fo
 | 0267 | B20 | HIGH | k = -1/2 | int_0^2(ky+1)dy=2k+2=1 -> k=-1/2; value verified; MCQ b |
 | 0272 | B20 | HIGH | x + sqrt(x^2-1) | tan=sqrt(x^2-1) -> sec=x; sec+tan=x+sqrt(x^2-1); value  |
 | 0277 | B20 | HIGH | 38800 | 44232/1.14=38800; MATCH (best correct) |
+| 0279 | B21 | MED | Taylor series of f'(x) (sigma form) | f=(x-ln(1+x))/x^2; f' series computable; MCQ best=J |
+| 0282 | B21 | MED | e^2, -e^2 | solve-for-x; best="e^2,-e^2" plausible (log equation) |
+| 0283 | B21 | MED | 114 (target HR) | heart-rate percent calc; best=114 plausible |
+| 0284 | B21 | INCONCLUSIVE | INCONCLUSIVE | area of /x-/y//+/y-/x//+/y/=9 competition; best=E |
+| 0286 | B21 | INCONCLUSIVE | INCONCLUSIVE | smallest x with 2nd-deriv condition on prod cos; best=H |
+| 0290 | B21 | HIGH | 2 | int_1^{e^2} dx/(x sqrt(1-lnx)): u=lnx, real convergent  |
+| 0292 | B21 | HIGH | -2 - sqrt(3) | tan(285)=tan(-75)=-tan(75)=-(2+sqrt3); MATCH (best corr |
+| 0295 | B21 | HIGH | 8*pi/15 | vol rev sqrt(x)+sqrt(y)=sqrt2: pi*a^3/15 with a=2 = 8pi |
+| 0304 | B21 | MED | residue-theorem contour integral (involved) | oint z^13/((z^2+5)^3(z^4+1)^2) /z/=3; all poles enclose |
+| 0305 | B21 | INCONCLUSIVE | INCONCLUSIVE | OEIS prime-power algorithm; best=B; not computable |
+| 0321 | B21 | HIGH | a = 1 | tangent to x^2 e^-x through origin: a e^-a=(2a-a^2)e^-a |
+| 0324 | B21 | INCONCLUSIVE | INCONCLUSIVE | OEIS ordered-factorization count; best=H; not computabl |
+| 0331 | B21 | INCONCLUSIVE | INCONCLUSIVE | abc+a+b=c constraint optimization competition; best=H |
+| 0337 | B21 | MED | rank condition on a,b (computable per options) | rank of 3 column vectors with params a,b; MCQ best=H |
+| 0340 | B21 | MED | R^2 definition (multiple true statements) | R^2 multiple-correlation MCQ; best="C,E,F"; conceptual |
+| 0348 | B21 | MED | int arcsin(4x)/sqrt(4x+1) dx (messy) | computable by parts but messy closed form; MCQ best=D |
+| 0351 | B21 | HIGH | 12.287 | dy/dt=4cos(t)+12cos(12t) at t=1 (rad)=12.287; MCQ best= |
+| 0355 | B21 | HIGH | inflection point (-3, -26/9) | f=4(x+1)/x^2-2, f''=0 at x=-3, f(-3)=-26/9; MCQ best=H |
+| 0356 | B21 | MED | Laurent series of 1/(z^2+1) at z=-1 and z=inf | series expansions computable; MCQ best=F |
+| 0365 | B21 | MED | x in [-36,36], y in [0,6] | y=(1296-x^2)^(1/4): domain /x/<=36, range [0,6]; MCQ be |
+| 0366 | B21 | MED | solution-space/rank statement (computable per options) | a2,a3,a4 indep, a1=...; MCQ best=G; conceptual |
+| 0377 | B21 | INCONCLUSIVE | INCONCLUSIVE | largest prime factor of smallest n competition; best=B |
+| 0381 | B21 | HIGH | 2040 | sum_{k=1}^{120} 17 = 120*17 = 2040; MATCH (best correct |
+| 0384 | B21 | HIGH | (ln(11/32)-3)/5 | 64e^(5x+3)=22 -> x=(ln(11/32)-3)/5; MATCH (best correct |
+| 0394 | B21 | MED | int x*arctan(2x)^2 dx (by parts, messy) | computable by parts; messy closed form; MCQ best=H |

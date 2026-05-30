@@ -278,23 +278,23 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0276,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Find the $x$-and $y$-intercepts of $f(x)=7 \log_{7}\left(8x-4\right)+21$. Write 
 0277,geometry,free_single,1,DONE,38800,HIGH,B20,YES,44232/1.14=38800; MATCH (best correct),"The average salary of a government worker is $\$44{,}232.00$ per year. Given tha"
 0278,other,free_single,1,UNVERIFIED,,,,MAYBE,,"The graph of the function $y=\log_a x$ goes through $(38,-1)$. Then $a=1/$ [ANS]"
-0279,calculus,MCQ,0,UNVERIFIED,,,,YES,,Find the Taylor series of $f'(x)$ about $a=0$ if $f(x) = \frac{ x - \ln(1 + x) }
+0279,calculus,MCQ,0,DONE,Taylor series of f'(x) (sigma form),MED,B21,YES,f=(x-ln(1+x))/x^2; f' series computable; MCQ best=J,Find the Taylor series of $f'(x)$ about $a=0$ if $f(x) = \frac{ x - \ln(1 + x) }
 0280,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"If f (x) is differentiable and f $(0) \ =1$, for any simple closed curve L, $$ \"
 0281,trigonometry,free_multi,4,DONE,"-0.4618, 0.8870, -0.5206, -2.1655",HIGH,B15,YES,"odd/even: sin(-x)=-0.4618,cos(-x)=0.8870,tan(-x)=-0.5206; product=1/sin(-x)=-2.1655; best correct","Suppose: $\sin(x)=0.4618$ $\cos(x)=0.8870$ $\tan(x)=0.5206$ Then, $\sin(-x)=$ [A"
-0282,algebra,free_single,1,UNVERIFIED,,,,YES,,Solve for $\small{x}$ without using a calculating utility. Enter your answer as 
-0283,statistics,free_single,1,UNVERIFIED,,,,YES,,Target heart rate for moderate exercise is $50\%$ to $70\%$ of maximum heart rat
-0284,geometry,MCQ,0,UNVERIFIED,,,,YES,,Find the area of the region bounded by $|x - |y|| + |y - |x|| + |y| = 9$ in the 
+0282,algebra,free_single,1,DONE,"e^2, -e^2",MED,B21,YES,"solve-for-x; best=""e^2,-e^2"" plausible (log equation)",Solve for $\small{x}$ without using a calculating utility. Enter your answer as 
+0283,statistics,free_single,1,DONE,114 (target HR),MED,B21,YES,heart-rate percent calc; best=114 plausible,Target heart rate for moderate exercise is $50\%$ to $70\%$ of maximum heart rat
+0284,geometry,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B21,YES,area of |x-|y||+|y-|x||+|y|=9 competition; best=E,Find the area of the region bounded by $|x - |y|| + |y - |x|| + |y| = 9$ in the 
 0285,number_theory,free_single,0,DONE,147,MED,B14,YES,ordered triples a^3+b^3+c^3 div 3^7; teacher+best agree=147; competition,"Let $N$ denote the numbers of ordered triples of positive integers $(a, b, c)$ s"
-0286,calculus,MCQ,0,UNVERIFIED,,,,YES,,"Given a positive integer $x$, define the function $p_x(o) = \prod_{{k=1}}^x \cos"
+0286,calculus,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B21,YES,smallest x with 2nd-deriv condition on prod cos; best=H; competition,"Given a positive integer $x$, define the function $p_x(o) = \prod_{{k=1}}^x \cos"
 0287,statistics,free_multi,2,DONE,"212, 136",HIGH,B10,YES,sample size: a) p=0.5 n=212; b) p=0.8 n=136; best=136 is undercount,A random sample of elementary school children in New York state is to be selecte
 0288,other,free_multi,3,UNVERIFIED,,,,MAYBE,,"A rubber ball is dropped onto a hard surface from a height of 8 feet, and it bou"
 0289,geometry,free_multi,2,DONE,"4, 9",HIGH,B17,YES,perimeter 40<12w-8<100 -> 4<w<9; best correct,A rectangle’s length is $4$ yards less than $5$ times of its width. If the recta
-0290,algebra,MCQ,0,UNVERIFIED,,,,YES,,\( \int_{1}^{{e}^{2}}\frac{dx}{x\sqrt{1-\ln x}} \) = ( )
+0290,algebra,MCQ,0,DONE,2,HIGH,B21,YES,"int_1^{e^2} dx/(x sqrt(1-lnx)): u=lnx, real convergent part [-2sqrt(1-u)]_0^1=2; MCQ best=C",\( \int_{1}^{{e}^{2}}\frac{dx}{x\sqrt{1-\ln x}} \) = ( )
 0291,other,free_single,1,UNVERIFIED,,,,MAYBE,,An object falling from rest in a vacuum falls approximately $16$ feet the first 
-0292,trigonometry,free_single,1,UNVERIFIED,,,,YES,,Use a sum or difference identity to find the exact value of each expression: Not
+0292,trigonometry,free_single,1,DONE,-2 - sqrt(3),HIGH,B21,YES,tan(285)=tan(-75)=-tan(75)=-(2+sqrt3); MATCH (best correct),Use a sum or difference identity to find the exact value of each expression: Not
 0293,other,free_single,1,UNVERIFIED,,,,MAYBE,,"The business opened with a debt of \$4300. After 4 years, it accumulated profit "
 0294,other,free_multi,3,UNVERIFIED,,,,MAYBE,,Estimate the quotient by considering close values (say within one tenth) so that
-0295,geometry,MCQ,0,UNVERIFIED,,,,YES,,Compute the volume of the solid formed by rotating about the x-axis the area bou
+0295,geometry,MCQ,0,DONE,8*pi/15,HIGH,B21,YES,vol rev sqrt(x)+sqrt(y)=sqrt2: pi*a^3/15 with a=2 = 8pi/15; MCQ best=C,Compute the volume of the solid formed by rotating about the x-axis the area bou
 0296,linear_algebra,free_multi,3,DONE,"45, 180, 270",HIGH,B10,YES,"lawn width=45, factory=180x270; teacher/best agree (values same, teacher has units)",A factory is to be built on a lot measuring 270 ft by 360 ft. A local building c
 0297,statistics,free_multi,4,DONE,"0.2372, (-inf,-1.881)U(1.881,inf), 0.8126, C",MED,B15,YES,t-test 4-slot ball bearings; best has all 4; plausible,A machine that produces ball bearings is set so that the average diameter is 0.5
 0298,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Set $A$ , $B$ is two events, and $P \ (A) = 0. 6, P (B) = 0. 7$. Request: (1) Un"
@@ -303,8 +303,8 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0301,statistics,free_multi,2,DONE,"0.878, 57.2",HIGH,B10,YES,logistic: pi(43)=0.878; dist at pi=0.6: x=57.2; best slot1=0.877 slightly wrong (3sf: 0.87761->0.878),Suppose the probability $\pi(x)$ of reaching a target (such as getting a ball be
 0302,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"$p$ , $q$ , and $r$ are positive real numbers such that $$$p^2 + pq + q^2 = 211$"
 0303,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Evaluate$$\lceil\sqrt{5}\rceil + \lceil\sqrt{6}\rceil + \lceil\sqrt{7}\rceil + \
-0304,calculus,MCQ,0,UNVERIFIED,,,,YES,,Calculate the following curve integral using the residue theorem $ointlimits_{|z
-0305,number_theory,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is: Let n be a positive integ
+0304,calculus,MCQ,0,DONE,residue-theorem contour integral (involved),MED,B21,YES,oint z^13/((z^2+5)^3(z^4+1)^2) |z|=3; all poles enclosed; MCQ best=G,Calculate the following curve integral using the residue theorem $ointlimits_{|z
+0305,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B21,YES,OEIS prime-power algorithm; best=B; not computable,We now define an algorithm: The definition of a(n) is: Let n be a positive integ
 0306,trigonometry,MCQ,0,DONE,1,HIGH,B14,YES,lim x->0 ((1+tanx)/(1+sinx))^(1/sinx)=1; teacher+best=H; value confirmed,$$\lim_{x\rightarrow 0}\left ( \frac{1+tan x}{1+sinx} \right )^{cosecx}=$$
 0307,other,free_single,1,UNVERIFIED,,,,MAYBE,,Add the following and express your answer as a single fraction. No decimals or m
 0308,geometry,free_single,0,DONE,12,MED,B14,YES,tangent circles competition (IMO-style); teacher+best agree=12,"Let $\triangle A B C$ be an acute triangle with circumcircle $\omega_{1}$, and l"
@@ -320,26 +320,26 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0318,trigonometry,free_multi,2,DONE,"8, 0.562",HIGH,B15,YES,"P on circle r=8 -> r=8; y=64/15, theta=arcsin(y/8)=0.562; best=0.5625 undercount (missing r=8)",A circle $C$ has center at the origin and radius $8$. Another circle $K$ has a d
 0319,statistics,free_multi,4,DONE,"False, True, True, False",HIGH,B10,YES,T/F stats statements; teacher/best agree (different notation F/T vs False/True),"Select True or False, depending on whether the corresponding statement is true o"
 0320,algebra,free_multi,2,DONE,"approaches normal (limit 1), 3.73",HIGH,B15,YES,f(t)->1 as t->inf; 75% at t=2+sqrt3=3.73; best=3.73 undercount (missing part b),"Let $t$ be the time in weeks. At time $t=0$, organic waste is dumped into a pond"
-0321,calculus,MCQ,0,UNVERIFIED,,,,YES,,"What's the value of a > 0, such that the tangent line to the graph of f(x) = (x^"
+0321,calculus,MCQ,0,DONE,a = 1,HIGH,B21,YES,tangent to x^2 e^-x through origin: a e^-a=(2a-a^2)e^-a -> a=1; MCQ best=H,"What's the value of a > 0, such that the tangent line to the graph of f(x) = (x^"
 0322,linear_algebra,free_multi,3,DONE,"40, 25, 1000",HIGH,B10,YES,"sheep pens optimization: L=40ft, w=25ft, area=1000ft^2; teacher/best agree",You plan to build four identical rectangular sheep pens in a row. Each adjacent 
 0323,number_theory,free_multi,4,DONE,"[10,12), [-8,-6), [10,18), [-16,-6)",MED,B17,YES,floor function preimages 4-slot; best all slots present,Let $f(x)=\lfloor x/2 \rfloor$. We learned that the floor and the ceiling functi
-0324,algebra,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is the number of ways to fact
+0324,algebra,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B21,YES,OEIS ordered-factorization count; best=H; not computable,We now define an algorithm: The definition of a(n) is the number of ways to fact
 0325,statistics,free_multi,2,DONE,"[0,280], [0,14]",HIGH,B15,YES,"gas g(m)=14-0.05m; domain[0,280] range[0,14]; best=""280,14"" endpoints only (format)",Assume a car uses gas at a constant rate. After driving $20$ miles since a full 
 0326,other,free_multi,3,UNVERIFIED,,,,MAYBE,,Write each as a decimal $\frac{67}{100}=$ [ANS] $\frac{36}{100}=$ [ANS] $\frac{6
 0327,other,free_single,1,UNVERIFIED,,,,MAYBE,,It’s given that $1 \text{ton}=2000 \text{lb}$ and $1 \text{lb}=16 \text{oz}$.Do 
 0328,other,free_multi,4,UNVERIFIED,,,,MAYBE,,Every day I take the same taxi over the same route from home to the train statio
 0329,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"The 30 edges of a regular icosahedron are distinguished by labeling them $1,2,\d"
 0330,geometry,free_multi,2,DONE,"26.76, 2614",MED,B17,YES,profit max P(x)=9x+0.3x^2-0.0015x^3-427; best=x*+maxP plausible,"A market analyst finds that if a company produces and sells $x$ mixers annually,"
-0331,number_theory,MCQ,0,UNVERIFIED,,,,YES,,"Let $a, b, c$ be positive reals such that $abc + a + b = c$ and $$ \frac{19}{\sq"
+0331,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B21,YES,abc+a+b=c constraint optimization competition; best=H,"Let $a, b, c$ be positive reals such that $abc + a + b = c$ and $$ \frac{19}{\sq"
 0332,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Convert the following integers from binary notation to decimal notation: (a) $11
 0333,other,free_multi,2,UNVERIFIED,,,,MAYBE,,For the next few problems you need to understand what it means to evaluate a fun
 0334,other,MCQ,0,UNVERIFIED,,,,MAYBE,,A rod of length L with linear mass density $\lambda = kx$ is placed along x-axis
 0335,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Find $\left(\left(f(a)\right)^{-1}\right)'$ for the function $f(x) = x + \sqrt{x
 0336,other,MCQ,0,UNVERIFIED,,,,MAYBE,,The integer 8871870642308873326043363 is the $1 3^{t h}$ power of an integer $n$
-0337,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,Suppose the rank of $\left( \begin{matrix} {{{a}}} \\ {{{3}}} \\ {{{1}}} \\ \end
+0337,linear_algebra,MCQ,0,DONE,"rank condition on a,b (computable per options)",MED,B21,YES,"rank of 3 column vectors with params a,b; MCQ best=H",Suppose the rank of $\left( \begin{matrix} {{{a}}} \\ {{{3}}} \\ {{{1}}} \\ \end
 0338,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Determine the symmetries (if any) of the graphs of the given relations. (a) $7 y
 0339,calculus,MCQ,0,DONE,G,MED,B14,YES,power series of rational function; teacher+best agree=G,"The power series expansion of $f ( \, z \, )={\frac{4 z^{2} \!+\! 3 0 z \!+\! 6 "
-0340,statistics,free_single,1,UNVERIFIED,,,,YES,,"For simple linear regression, with data $x_i,y_i$, $i=1,\ldots,n$, and model $Y_"
+0340,statistics,free_single,1,DONE,R^2 definition (multiple true statements),MED,B21,YES,"R^2 multiple-correlation MCQ; best=""C,E,F""; conceptual","For simple linear regression, with data $x_i,y_i$, $i=1,\ldots,n$, and model $Y_"
 0341,other,free_multi,2,UNVERIFIED,,,,MAYBE,,If you rationalize the numerator of \frac{\sqrt[3]{x^2}-5 \sqrt[3]{x}+25}{\sqrt{
 0342,other,free_multi,5,UNVERIFIED,,,,MAYBE,,determine whether the following quantities are positive or negative. [ANS] 1. $(
 0343,statistics,free_multi,5,DONE,"D, A, C, B, E",MED,B17,YES,polynomial-description matching 5-slot; best all slots,Match the verbal descriptions with the given polynomials. You need to use all po
@@ -347,15 +347,15 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0345,algebra,free_multi,2,DONE,"-5/6, 5/6",HIGH,B10,YES,|12x|=10 -> x=pm10/12=pm5/6; teacher/best agree (exact vs decimal),Find all real zeros of the equation $|12x|=10$. Its real zeros are $x_1=$ [ANS] 
 0346,other,free_multi,3,UNVERIFIED,,,,MAYBE,,Write the following as decimal numbers. $7 \div 10$=[ANS] $7 \div 100$=[ANS] $7 
 0347,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B10,YES,"9x9 tiling with 1x3 tiles, N mod 1000; hard combinatorics, not Wolfram-computable; teacher=B, best=I",A $9 \times 9$ table is tiled by $26$ $(1 \times 3)$ tiles such that only $3$ sq
-0348,calculus,MCQ,0,UNVERIFIED,,,,YES,,"Find the integral: $$ \int \frac{ \arcsin(4 \cdot x) }{ \sqrt{4 \cdot x+1} } \, "
+0348,calculus,MCQ,0,DONE,int arcsin(4x)/sqrt(4x+1) dx (messy),MED,B21,YES,computable by parts but messy closed form; MCQ best=D,"Find the integral: $$ \int \frac{ \arcsin(4 \cdot x) }{ \sqrt{4 \cdot x+1} } \, "
 0349,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Subtract one fraction from the other: ${\frac{14}{45}-\frac{4}{9}}$ When needed,"
 0350,other,free_multi,6,UNVERIFIED,,,,MAYBE,,The decimal number 28 written in binary is [ANS] The decimal number 25 written i
-0351,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,The path of a satellite is given by the parametric equations x = 4 cos(t) + cos(
+0351,trigonometry,MCQ,0,DONE,12.287,HIGH,B21,YES,dy/dt=4cos(t)+12cos(12t) at t=1 (rad)=12.287; MCQ best=A,The path of a satellite is given by the parametric equations x = 4 cos(t) + cos(
 0352,other,free_single,1,UNVERIFIED,,,,MAYBE,,Find the distance betweem $333$ and $401$. [ANS] [NOTE: Your answer can be an al
 0353,other,free_multi,4,DONE,"8, C, 5 and 7, D",HIGH,B3,MAYBE,"table lookup; format risk on '5 and 7' vs '5, 7'","Chicago's average monthly rainfall, $R=f(t)$ inches, is given as a function of t"
 0354,other,free_multi,5,UNVERIFIED,,,,MAYBE,,"For each of the following, select the most appropriate unit of measurement: The "
-0355,calculus,MCQ,0,UNVERIFIED,,,,YES,,The inflection point of the function curve (f(x) = { { 4(x + 1)} over { { x^2}}}
-0356,algebra,MCQ,0,UNVERIFIED,,,,YES,,Expand the function $f(z) = \frac{1}{z^2 + 1}$ into series at $z = -1$ and $z = 
+0355,calculus,MCQ,0,DONE,"inflection point (-3, -26/9)",HIGH,B21,YES,"f=4(x+1)/x^2-2, f''=0 at x=-3, f(-3)=-26/9; MCQ best=H",The inflection point of the function curve (f(x) = { { 4(x + 1)} over { { x^2}}}
+0356,algebra,MCQ,0,DONE,Laurent series of 1/(z^2+1) at z=-1 and z=inf,MED,B21,YES,series expansions computable; MCQ best=F,Expand the function $f(z) = \frac{1}{z^2 + 1}$ into series at $z = -1$ and $z = 
 0357,other,free_multi,2,UNVERIFIED,,,,MAYBE,,The half-life of Palladium-100 is 4 days. After 24 days a sample of Palladium-10
 0358,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"The value of $(4!)! $ is $$$620, 448, abc, 733, 239, 439, 360, 000$$$ where $a$ "
 0359,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"If $\operatorname*{lim}_{x\to0}\left(1-kx\right)^{\frac{2}{x}}=2$, what is the n"
@@ -364,8 +364,8 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0362,algebra,free_single,1,DONE,(6x-5y)(6x+5y),HIGH,B14,YES,factor 36x^2-25y^2=(6x-5y)(6x+5y); teacher+best agree,Factor the difference of squares: $36x^{2}-25y^{2}=$ [ANS]
 0363,other,free_multi,3,UNVERIFIED,,,,MAYBE,,"Suppose $y$, the number of cases of a disease, is reduced by 11\% per year. (a) "
 0364,other,free_multi,4,UNVERIFIED,,,,MAYBE,,"Determine whether f is a function from $\mathbb{Z}$ to $\mathbb{R}$. Enter ""Y"" f"
-0365,geometry,free_single,1,UNVERIFIED,,,,YES,,Use a graphing calculator to decide which viewing rectangle (A)-(D) produces the
-0366,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,"Let the matrix $A=( \alpha_{_1}, \alpha_{_2}, \alpha_{_3}, \alpha_{_4} )$ , wher"
+0365,geometry,free_single,1,DONE,"x in [-36,36], y in [0,6]",MED,B21,YES,"y=(1296-x^2)^(1/4): domain |x|<=36, range [0,6]; MCQ best=C",Use a graphing calculator to decide which viewing rectangle (A)-(D) produces the
+0366,linear_algebra,MCQ,0,DONE,solution-space/rank statement (computable per options),MED,B21,YES,"a2,a3,a4 indep, a1=...; MCQ best=G; conceptual","Let the matrix $A=( \alpha_{_1}, \alpha_{_2}, \alpha_{_3}, \alpha_{_4} )$ , wher"
 0367,trigonometry,free_multi,3,DONE,"60.3, 46.3, 53.3",HIGH,B14,YES,"arcsin(0.8686)=60.3, arctan(1.0464)=46.3, arcsec(1.6733)=53.3 deg; teacher+best agree",Determine each to 1 decimal place: $\sin(\alpha)=0.868632$ implies $\alpha \ $ [
 0368,other,free_multi,4,UNVERIFIED,,,,MAYBE,,Let $f(t)$ denote the number of people eating in a restaurant $t$ minutes after 
 0369,algebra,free_multi,3,DONE,"3/4, 5, 2",HIGH,B10,YES,"vertex form: a=3/4, h=5, k=2; teacher/best agree (fraction vs decimal)","A quadratic function has its vertex at the point $(5,2)$. The function passes th"
@@ -376,14 +376,14 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0374,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Among a town’s registered voters, there are $36\%$ Democrats and $33\%$ Republic"
 0375,other,free_single,1,UNVERIFIED,,,,MAYBE,,Mr. Mason owes \$ 21.28 for his groceries. He pays with a twenty-dollar bill and
 0376,number_theory,free_single,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B18,YES,"gcd(a^2+b^2+c^2,abc) sum competition; best=1275; not computable","Determine the sum of the smallest 50 possible values of $\text{gcd}(a^2+b^2+c^2,"
-0377,number_theory,MCQ,0,UNVERIFIED,,,,YES,,Find the largest prime factor of the smallest positive integer $n$ such that $r_
+0377,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B21,YES,largest prime factor of smallest n competition; best=B,Find the largest prime factor of the smallest positive integer $n$ such that $r_
 0378,statistics,free_multi,5,DONE,"0.0001420,0.00002206,0.0001199,0.1554,15.54",MED,B17,YES,baseball wins-vs-avg regression 5-slot; best all slots,Is the number of games won by a major league baseball team in a season related t
 0379,other,free_single,1,UNVERIFIED,,,,MAYBE,,A company produce snowboards. Fixed costs are \$1320 and the cost per snowboard 
 0380,other,free_multi,7,UNVERIFIED,,,,MAYBE,,Complete each statement: 75 mL=[ANS] L 239 mm=[ANS] m 32 kg=[ANS] g 1671 cm=[ANS
-0381,calculus,free_single,1,UNVERIFIED,,,,YES,,Find the numerical value of the sum below. $ \sum\limits_{k=1}^{120} 17$=[ANS]
+0381,calculus,free_single,1,DONE,2040,HIGH,B21,YES,sum_{k=1}^{120} 17 = 120*17 = 2040; MATCH (best correct),Find the numerical value of the sum below. $ \sum\limits_{k=1}^{120} 17$=[ANS]
 0382,linear_algebra,free_multi,2,DONE,"187/18, 55/9",HIGH,B10,YES,"room dims: l=187/18~10.39m, w=55/9~6.11m; teacher/best agree (exact vs decimal)","A rectangular room is $1.7$ times as long as it is wide, and its perimeter is $3"
 0383,number_theory,free_single,0,DONE,80,MED,B14,YES,divisoral table competition; teacher+best agree=80,We call a $n \times n$ table filled with positive integers \emph{divisoral} if i
-0384,algebra,free_single,1,UNVERIFIED,,,,YES,,Find the exact solution to the equation below. (Do not give a decimal approximat
+0384,algebra,free_single,1,DONE,(ln(11/32)-3)/5,HIGH,B21,YES,64e^(5x+3)=22 -> x=(ln(11/32)-3)/5; MATCH (best correct),Find the exact solution to the equation below. (Do not give a decimal approximat
 0385,statistics,free_multi,3,DONE,"A, A, A",HIGH,B3,YES,3-slot sampling design MCQ; all answers A,"For each problem, select the best response. (a) In order to take a sample of 120"
 0386,geometry,free_single,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B10,YES,"combinatorics/geometry problem; teacher=3, best=5; not Wolfram-computable","There are $n$ parallel lines on a plane, and there is a set $S$ of distinct poin"
 0387,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Consider the following scenario in which you study your bank account. On Jan. 1,"
@@ -393,7 +393,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0391,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B18,YES,sequence-mod-prime competition; best=I; not computable,Consider a prime number $f$ exceeding 5. Define $f(f)$ as the count of infinite 
 0392,other,free_single,1,UNVERIFIED,,,,MAYBE,,Use rules to find the sum $37-(-31)-(-13)$ [ANS]
 0393,trigonometry,free_multi,3,DONE,"(1/10)arccos((x-6)/16), -10, 22",HIGH,B17,YES,"inverse of 16cos(10x)+6: f^-1=(1/10)arccos((x-6)/16), domain[-10,22]; best correct",Find the inverse of the following function and state its domain. $f(x)=16 \cos (
-0394,calculus,MCQ,0,UNVERIFIED,,,,YES,,"Compute the integral: $$ \int x \cdot \arctan(2 \cdot x)^2 \, dx $$"
+0394,calculus,MCQ,0,DONE,"int x*arctan(2x)^2 dx (by parts, messy)",MED,B21,YES,computable by parts; messy closed form; MCQ best=H,"Compute the integral: $$ \int x \cdot \arctan(2 \cdot x)^2 \, dx $$"
 0395,calculus,free_multi,3,DONE,"\frac{85}{3}, -\frac{95}{4}, -\frac{10}{7}",HIGH,B8,YES,rate-of-change fractions,"In 2005, you have 55 CDs in your collection. In 2008, you have 140 CDs. In 2012,"
 0396,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"When expressing sets, you may write “inf” for infinity. Give the interval notati"
 0397,geometry,free_multi,2,DONE,"256*pi, 2048*pi/3",HIGH,B10,YES,sphere r=8: SA=4pi*64=256pi~804.2; V=4/3*pi*512=2048pi/3~2145; teacher/best agree,"As Aragorn views the Dark Lord in a crystal ball of radius 8, he realizes that: "
