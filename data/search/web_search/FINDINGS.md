@@ -126,3 +126,26 @@ problem's origin as a hint only.
 Geometry-olympiad prose (95, 308, etc.) and original/synthetic olympiad items
 (161, 198, 229, 235, 248, 275) almost never have a findable stated-answer page
 -> NOT_FOUND. Don't over-invest; one targeted Exa search each is enough.
+
+## Pass 2026-05-29e (claude_vscode) — batched 100-at-a-time sweep
+
+Working the remaining ~700 in id-batches of 100. Batches 1 (ids 1-194) and 2
+(ids 195-314): 0 GOLD each. This id range is the textbook-drill-heavy front;
+its few findable gems were already harvested in earlier passes. The remaining
+distinctive items here are COMPUTABLE TEXTBOOK MATH-FACTS (max genus of degree-4
+curve in P^3 = Castelnuovo bound; # 3-sheeted covers of punctured torus = index-3
+subgroups of F_2; log-telescope pair counts; cube-section pentagon areas; mixti-
+linear/Sawayama-Thebault geometry) -- the THEORY is online but no page states our
+exact numeric answer, so they're NOT_FOUND (computing the option is forbidden).
+
+*** LEAK / CIRCULAR-SOURCE WARNING (NEW, important) ***
+Item 250 (threnodic strings) was found verbatim in the HuggingFace dataset
+**INSAIT-Institute/ProofRank** (tags 'apex_2025_10', also contains 'aime_2026_*'
+entries with gold_answer fields). This is an AI-EVALUATION BENCHMARK that overlaps
+our own competition's source corpus -- using its values would be CIRCULAR (same
+failure mode as the JudgeBench HuggingFace leak noted for item 53). 
+RULE: HuggingFace eval datasets (ProofRank/JudgeBench/AI-MO/olympiads/Apex), and
+any "benchmark"/"dataset"/"gold_answer" aggregator, are FORBIDDEN as sources --
+they may literally contain our private answers. Treat a hit there as NOT a source;
+record NOT_FOUND. A real, independent solution page (archive PDF, AoPS wiki text,
+MSE, OEIS b-file) is still required for GOLD.
