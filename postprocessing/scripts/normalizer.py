@@ -1,9 +1,13 @@
-"""Canonical post-inference normalizer.
+"""Canonical post-inference normalizer (SINGLE MODE).
 
-Modes:
-- conservative: locked-in extraction + safe cleanup + structural fixes
-- default: conservative + evidence-backed fraction promotion when metadata supports it
-- aggressive: default + medium-confidence formatting transforms and heuristics
+Best-guess normalizer for the value-equality Kaggle grader: extraction + safe
+universal cleanup + structural fixes (MCQ first-box / multi-letter, multi-slot
+undercount) + per-item overrides. There is ONE behavior — the old
+conservative/default/aggressive modes are collapsed. Automatic fraction/decimal/
+format transforms are removed: under value-equality (4.000 == 4, 0.6 == 3/5)
+they cannot raise the score and can lower it. Any explicit format fix must go
+through per_item_overrides.csv (apply_per_item_override), never as an automatic
+transform.
 """
 
 from __future__ import annotations
@@ -47,10 +51,11 @@ class NormalizationResult:
 
 
 class Normalizer:
-    def __init__(self, mode: str = "default", overrides_path: Optional[str] = None):
-        if mode not in {"conservative", "default", "aggressive"}:
-            raise ValueError(f"Unsupported mode: {mode}")
-        self.mode = mode
+    def __init__(self, mode: str = "single", overrides_path: Optional[str] = None):
+        # Single-mode normalizer. `mode` is accepted for backward compatibility
+        # with existing callers/CLIs (conservative/default/aggressive) but no
+        # longer changes behavior — there is one structural-only behavior.
+        self.mode = "single"
         self.overrides = self._load_overrides(overrides_path)
         self.custom_overrides: dict[str, Callable[[str, dict], str]] = {}
 
@@ -210,16 +215,9 @@ class Normalizer:
         return self._normalize_multi_element(candidate, item)
 
     def single_answer_normalize(self, candidate: str, item: dict, flags: list[str]) -> str:
-        out = candidate
-        if self.mode in {"default", "aggressive"}:
-            promoted = self._promote_fraction_from_metadata(out, item)
-            if promoted != out:
-                flags.append("FRACTION_PROMOTED")
-                out = promoted
-        if self.mode == "aggressive":
-            aggressive = self._apply_aggressive_transforms(out, item, flags)
-            out = aggressive
-        return out
+        # Single-mode: structural-only. No automatic fraction/format transforms
+        # (dead under value-equality). Explicit fixes go via per_item_overrides.csv.
+        return candidate
 
     def apply_per_item_override(self, candidate: str, item: dict, flags: list[str]) -> str:
         item_id = str(item.get("id", ""))
@@ -330,13 +328,8 @@ class Normalizer:
         return ""
 
     def _normalize_multi_element(self, value: str, item: dict) -> str:
-        out = value
-        if self.mode in {"default", "aggressive"}:
-            out = self._promote_fraction_from_metadata(out, item)
-        if self.mode == "aggressive":
-            flags: list[str] = []
-            out = self._apply_aggressive_transforms(out, item, flags)
-        return out
+        # Single-mode: per-slot value passes through unchanged (structural-only).
+        return value
 
     def _promote_fraction_from_metadata(self, candidate: str, item: dict) -> str:
         if not self._looks_decimal(candidate):

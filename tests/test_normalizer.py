@@ -53,8 +53,10 @@ def test_multi_answer_consolidates_all_boxes():
     assert out.endswith(r"Final answer: \boxed{8, NONE}")
 
 
-def test_default_promotes_fraction_when_metadata_supports_it():
-    norm = Normalizer(mode="default")
+def test_single_mode_does_not_auto_promote_fraction():
+    # Under the value-equality grader, decimal == fraction, so the normalizer
+    # must NOT auto-convert 0.6 -> 3/5 (that was the old default-mode behavior).
+    norm = Normalizer()
     item = {
         "id": 135,
         "question": "Probability [ANS]",
@@ -62,32 +64,26 @@ def test_default_promotes_fraction_when_metadata_supports_it():
         "sheet_tier": 1,
         "sheet_confidence": 90,
         "teacher_sonnet": r"\frac{3}{5}",
-        "teacher_gpt4": r"\frac{3}{5}",
-        "teacher_oss": r"\frac{3}{5}",
     }
-    response = r"work... \boxed{0.6}"
-    out = norm.normalize_with_report(response, item)
-    assert out.candidate == r"\frac{3}{5}"
-    assert out.response.endswith(r"Final answer: \boxed{\frac{3}{5}}")
+    out = norm.normalize_with_report(r"work... \boxed{0.6}", item)
+    assert out.candidate == "0.6"
+    assert "FRACTION_PROMOTED" not in out.flags
 
 
-def test_aggressive_strips_trailing_zero_and_wrappers():
-    norm = Normalizer(mode="aggressive")
-    item = {"id": 423, "question": "Value [ANS]"}
-    response = r"work... \boxed{\mathbf{-0.5000}}"
-    out = norm.normalize_with_report(response, item)
-    assert out.candidate == "-0.5"
-    assert "TRAILING_ZERO_STRIP" in out.flags
-    assert "LATEX_WRAPPER_STRIP" in out.flags
+def test_single_mode_does_not_auto_strip_trailing_zero_or_prefix():
+    # Old aggressive transforms are gone: no trailing-zero strip, no prefix strip.
+    norm = Normalizer()
+    out = norm.normalize_with_report(r"work... \boxed{-0.5000}", {"id": 423, "question": "Value [ANS]"})
+    assert out.candidate == "-0.5000"
+    assert "TRAILING_ZERO_STRIP" not in out.flags
+    out2 = norm.normalize_with_report(r"work... \boxed{Mean=228}", {"id": 20, "question": "Mean [ANS]"})
+    assert "MULTI_CHAR_PREFIX_STRIP" not in out2.flags
 
 
-def test_aggressive_strips_multi_char_prefix():
-    norm = Normalizer(mode="aggressive")
-    item = {"id": 20, "question": "Mean [ANS]"}
-    response = r"work... \boxed{Mean=228}"
-    out = norm.normalize_with_report(response, item)
-    assert out.candidate == "228"
-    assert "MULTI_CHAR_PREFIX_STRIP" in out.flags
+def test_legacy_mode_args_still_accepted():
+    # Callers passing old mode strings must not crash; behavior is identical.
+    for m in ("conservative", "default", "aggressive", "single"):
+        assert Normalizer(mode=m).normalize_with_report(r"\boxed{B}", {"id": 1, "options": ["x"] * 3}).candidate == "B"
 
 
 def test_per_item_override_force_value():
