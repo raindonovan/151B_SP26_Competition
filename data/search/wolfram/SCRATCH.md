@@ -90,3 +90,34 @@ a_n=4a(n-1)-a(n-2) appears in 0017, 0606, 0211 — all least-odd-prime=181.
 The discrepancy work is mostly done. Remaining batches are verification-anchoring
 (unflagged) or low-yield (P5 competition). Next session: clear batch18 (last flagged vein),
 then decide whether full coverage is worth it vs. focusing on the F22 variance probe.
+
+---
+## Agent signoff — claude_wolf — 2026-05-29 (FINAL — computable pass complete)
+
+### Scope completed this session
+Batches B9 through B29 (411 items processed on top of the 66 legacy). Every `computable=YES`
+item in the dataset is now verified or marked inconclusive.
+
+### Final numbers
+477 DONE (309 HIGH, 161 MED, 4 PARTIAL, 2 MEDIUM, 1 consensus) | 92 INCONCLUSIVE | 1 DISPUTED | 373 UNVERIFIED.
+
+### Headline results
+- ~58 discrepancies found (sheet was wrong) — ALL in flagged buckets (P1 + undercount), batches B9–B18.
+- ~72+ matches in the unflagged solvable pass (B19–B29) — 0 discrepancies. Confirmations only.
+- format_flags are the reliable predictor: undercount ~30% wrong, backsolve_disagree ~8%, unflagged ~0%.
+
+### Deliverables written
+- RESULTS_SUMMARY.md — full consolidated report (coverage, discrepancy list, failure taxonomy, open actions).
+- WOLF_RESULTS.csv — 943-row scorecard (renamed from MASTER_QUESTIONS.csv).
+- WOLF_RESULTS_READABLE.md — readable log (renamed from WOLF_LIST.md).
+- FINDINGS.md F14–F24 — cross-batch findings.
+- batches/batch09–29/ — per-batch results.csv, questions.csv, FINDINGS.md.
+
+### Terminology note (per Rain)
+Stopped calling findings "overrides." A solved answer is just the verified answer; vs the sheet it's a
+match or a discrepancy. "override" reserved for the inference-pipeline action (run_inference.py) only.
+
+### What's left (NOT Wolfram work)
+- 373 MAYBE items → web/source search agent.
+- F22 variance-convention Kaggle probe (human).
+- F24 sheet-hygiene sweep for PLACEHOLDER/CoT/bare-word entries.

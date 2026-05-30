@@ -1,35 +1,24 @@
 # TODO.md — Wolfram Batch Queue
 
-**Updated**: 2026-05-29
-**Total DONE**: 477  |  **INCONCLUSIVE**: 92  |  **DISPUTED**: 1  |  **Unverified**: 373
+**Status: COMPUTABLE PASS COMPLETE (2026-05-29).**
+All `computable=YES` items have been processed across batches B1–B29.
 
-## Batch history
-- B1-B8 + WEBSEARCH: 66 (legacy)
-- B9-B13 (P1): ~90 done, ~39 discrepancies, competition-heavy tail
-- B14 (P2): 0 discrepancies (verification only)
-- B15-B16 (P3 undercount-flagged): 17 discrepancies / 50
-- B17 (P3 unflagged): 0 discrepancies (verification only)
-- B18 (backsolve_disagree single-slot): 2 discrepancies / 25 (weak flag — see F23)
+**Final: 477 DONE | 92 INCONCLUSIVE | 1 DISPUTED | 373 UNVERIFIED**
 
-## Outcome vocabulary (per Rain): match / discrepancy / inconclusive. NOT "override".
+See `RESULTS_SUMMARY.md` for the full consolidated report.
 
-## Priority (per Finding 23: undercount flag strong, backsolve_disagree weak)
-- Remaining UNDERCOUNT-flagged computable: 0  ← highest discrepancy yield
-- Remaining multi-slot computable (unflagged): 34  ← verification
-- Remaining single-slot computable: 220  ← verification
+## Nothing queued — error-finding is done
+- All flagged buckets (P1, undercount, backsolve_disagree) verified → ~58 discrepancies found.
+- All unflagged solvable items verified → confirmations only, 0 discrepancies.
+- Remaining 373 UNVERIFIED are all flagged `MAYBE`: word-problems / competition items that
+  Wolfram cannot adjudicate. They need **web/source search** (AoPS, textbook, WeBWorK), not Wolfram.
 
-## ▶ NEXT: batch30 (solvable leftovers pass)
-IDs: 
+## Open actions for a human (from RESULTS_SUMMARY.md §5)
+1. **F22 variance convention** — Kaggle probe: submit a known stats item with population vs sample
+   variance to learn which the grader wants, before mass-applying variance corrections.
+2. **F24 sheet-hygiene sweep** — grep `best_answer` across all 943 for "PLACEHOLDER", CoT text,
+   or bare vocabulary words; all are unparsed/failed entries needing a value (e.g. 0611, 0498).
+3. **373 MAYBE items** — route to the search agent (web/source) rather than Wolfram.
 
-
-## Known bugs
+## Known dataset bugs (skipped throughout)
 0011, 0317, 0570, 0585, 0622, 0858, 0894
-
-## OPEN ACTIONS
-- F22: resolve population-vs-sample variance convention via Kaggle probe.
-- F24: sheet-hygiene sweep — grep best_answer for PLACEHOLDER / CoT text / bare words.
-
-## Strategy (LOCKED)
-- `undercount` flag = strong discrepancy signal (~30%). `backsolve_disagree` = weak (~8%).
-- UNFLAGGED items = verification-only (~0% discrepancy).
-- best=PLACEHOLDER/word/INVALID/CoT-text = sheet failure, supply value (F16/F21/F24).

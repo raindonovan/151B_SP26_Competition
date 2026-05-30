@@ -2,7 +2,7 @@
 
 **Agent**: claude_wolf (claude_vscode runtime)
 **Role**: Wolfram Alpha MCP verification — the ONLY independent (non-LLM) source we have.
-**Status**: Phase 2 active — batches B9-B18 done; batch19 next. (Last updated after B18.)
+**Status**: COMPLETE — all computable items processed (B1-B29). 477 verified. See RESULTS_SUMMARY.md.
 
 ## Terminology (LOCKED — do not call findings "overrides")
 This agent produces, per item, a **verified answer** + confidence. That answer is the answer; it has standing on its own. We then *observe* how it relates to the sheet's current `best_answer`:
@@ -14,14 +14,15 @@ Why not "override": (1) it falsely frames the stale sheet value as the thing wit
 
 **Note — the OTHER, legitimate sense of "override":** the inference pipeline (`inference/scripts/run_inference.py`, reading `wolfram_overrides.csv`, column `override_value`) literally *overrides* the model's last `\boxed{}` output with the verified value. There, "override" correctly names an *action on model output*. That file/schema is load-bearing and documented in the gradescope submission — do NOT rename it. Keep "override" for the pipeline action; use match/discrepancy for verification findings.
 
-## Quick state (after B18)
+## Quick state (FINAL — computable pass complete)
 - Total dataset: 943 items
-- DONE (verified): 272 — confidence: 206 HIGH, 59 MED, 4 PARTIAL, 2 MEDIUM, 1 consensus-only
-- INCONCLUSIVE (Wolfram couldn't solve): 43
+- DONE (verified): 477 — confidence: 309 HIGH, 161 MED, 4 PARTIAL, 2 MEDIUM, 1 consensus-only
+- INCONCLUSIVE (Wolfram couldn't solve): 92
 - DISPUTED: 1 (0141)
-- UNVERIFIED (not yet done): 627
-- Batches done: B1-B8 + WEBSEARCH (legacy, 66) then B9-B18 (this work, 250)
+- UNVERIFIED (not yet done): 373 — all flagged MAYBE-computable (word/competition; need web-search not Wolfram)
+- Batches done: B1-B8 + WEBSEARCH (legacy, 66) then B9-B29 (this work, 411)
 - Known bugs to skip: 0011, 0317, 0570, 0585, 0622, 0858, 0894
+- **Full report: RESULTS_SUMMARY.md** — 58 discrepancies (all flagged buckets), error-finding complete.
 
 ## Files
 - `WOLF_RESULTS.csv` — 943-row tracking table (id, subject, type, n_ans_slots, wolfram_status, wolfram_answer, confidence, batch, computable, notes, question_preview)
