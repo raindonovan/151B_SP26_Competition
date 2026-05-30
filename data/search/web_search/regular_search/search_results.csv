@@ -69,7 +69,7 @@ item_id,category,search_status,found_answer,source_url,source_type,confidence,no
 57,FREE,NOT_FOUND,,,,,"19x18 garden, pavement border, 110 sqft left, find width. Generic algebra word problem, no specific source. NOT_FOUND."
 58,FREE,NOT_FOUND,,,,,"CUSTOM/SYNTHETIC FE: f(mn)^2=f(m^2)f(f(n))f(mf(n)) iff coprime, then contrived sum_{n=1}^{20} over S_n. Resembles IMO2016 SL N6 in flavor but is a constructed variant with a fabricated aggregation; not a real competition problem. No web page has this exact question. NOT_FOUND."
 59,FREE,NOT_FOUND,,,,,"Evaluate 343^(2/3) with bizarre format constraints (only / and -). Trivial radical drill w/ odd formatting; no source page. NOT_FOUND."
-60,MCQ,NOT_FOUND,,,,,"'Variable under consideration' comparing car-buyer ages MCQ. Generic stats concept item, no source. NOT_FOUND."
+60,MCQ,PARTIAL,"C. age of buyers (canonical definition, not page-stated for this item)",https://unstats.un.org/wiki/display/genderstatmanual/Types+of+data+involved+in+gender+statistics,textbook_stats,70,"Concept MCQ: variable under consideration when comparing mean AGES = the characteristic measured = age of buyers = C. Definition is canonical but the option-selection is application/inference, not a page that states this item answer verbatim. PARTIAL: C indicated, left as inference."
 61,FREE,NOT_FOUND,,,,,"Cricket pricing piecewise function ($0.76 up to 150, $0.69 after). Generic piecewise word problem, no source. NOT_FOUND."
 62,FREE,NOT_FOUND,,,,,"Multiply signed integers (-1)(-5)(-3) etc. Trivial arithmetic drill, no source. NOT_FOUND."
 63,FREE,NOT_FOUND,,,,,"92.4% CI for mean from 10 data points. Generic CI drill (odd conf level suggests back-solved), no source. NOT_FOUND."
@@ -511,7 +511,7 @@ item_id,category,search_status,found_answer,source_url,source_type,confidence,no
 489,FREE,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no findable stated-answer page). Batch-4 bulk NOT_FOUND; distinctive items in range searched.
 490,FREE,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no findable stated-answer page). Batch-4 bulk NOT_FOUND; distinctive items in range searched.
 491,FREE,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no findable stated-answer page). Batch-4 bulk NOT_FOUND; distinctive items in range searched.
-492,FREE,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no findable stated-answer page). Batch-4 bulk NOT_FOUND; distinctive items in range searched.
+492,MCQ,GOLD,"A. 81%",https://www.mathwords.com/c/coefficient_of_determination.htm,textbook_stats,90,"Canonical: % variation explained = coefficient of determination R^2 = r^2. r=0.90 -> R^2=0.81=81%. Mathwords (uses r=0.90 example -> 81%), LibreTexts, StatProofBook all state R^2=r^2 verbatim. Option A=81%. GOLD (was NOT_FOUND)."
 493,FREE,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no findable stated-answer page). Batch-4 bulk NOT_FOUND; distinctive items in range searched.
 494,FREE,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no findable stated-answer page). Batch-4 bulk NOT_FOUND; distinctive items in range searched.
 495,FREE,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no findable stated-answer page). Batch-4 bulk NOT_FOUND; distinctive items in range searched.
@@ -895,7 +895,7 @@ item_id,category,search_status,found_answer,source_url,source_type,confidence,no
 890,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-8 (final) bulk NOT_FOUND; distinctive items searched.
 891,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-8 (final) bulk NOT_FOUND; distinctive items searched.
 892,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-8 (final) bulk NOT_FOUND; distinctive items searched.
-893,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-8 (final) bulk NOT_FOUND; distinctive items searched.
+893,MCQ,GOLD,"A. qualitative variable",https://unstats.un.org/wiki/display/genderstatmanual/Types+of+data+involved+in+gender+statistics,textbook_stats,90,"Canonical: gender/sex = QUALITATIVE (categorical) variable. UN Stats (qualitative variables... such as sex), Wikipedia (nominal scales = qualitative), Brainly twin (gender->nominal). Item asks variable TYPE -> A qualitative variable. GOLD (was NOT_FOUND)."
 894,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-8 (final) bulk NOT_FOUND; distinctive items searched.
 895,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-8 (final) bulk NOT_FOUND; distinctive items searched.
 896,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-8 (final) bulk NOT_FOUND; distinctive items searched.
@@ -905,7 +905,7 @@ item_id,category,search_status,found_answer,source_url,source_type,confidence,no
 900,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-8 (final) bulk NOT_FOUND; distinctive items searched.
 901,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-8 (final) bulk NOT_FOUND; distinctive items searched.
 902,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-8 (final) bulk NOT_FOUND; distinctive items searched.
-903,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-8 (final) bulk NOT_FOUND; distinctive items searched.
+903,MCQ,GOLD,"A. exactly 0.50",https://saylordotorg.github.io/text_introductory-statistics/s06-descriptive-statistics.html,textbook_stats,92,"Canonical: median divides total histogram area into 0.5 left / 0.5 right (Saylor, BBC Bitesize, Quizlet STAT351 which has the EXACT question wording). Median is a positional 50/50 split regardless of skew. Option A=exactly 0.50. GOLD (was NOT_FOUND)."
 904,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-8 (final) bulk NOT_FOUND; distinctive items searched.
 905,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-8 (final) bulk NOT_FOUND; distinctive items searched.
 906,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-8 (final) bulk NOT_FOUND; distinctive items searched.
