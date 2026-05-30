@@ -46,7 +46,10 @@ external source with the answer (source_url is a live URL). Everything that was
 computed/solved locally, or copied from teacher consensus, has been removed —
 those were never search results.
 
-Count: 15 genuine hits.
+Count: 15 genuine hits **(STALE — this was the very first pass).** For the LIVE
+tally always use `README.md` Status block (currently 57 GOLD / 13 PARTIAL /
+873 NOT_FOUND, 2026-05-30). All counts elsewhere in this FINDINGS file and in
+SCRATCH.md are per-pass historical snapshots, not the current state.
 
 Sources that produced hits: OEIS (sequence items), AoPS/Putnam/HMMT archives
 (competition items), MathWorld, Math StackExchange, a few course-PDF/homework

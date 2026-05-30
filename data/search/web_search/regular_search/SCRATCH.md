@@ -1,3 +1,7 @@
+> LIVE TALLY lives in `README.md` Status block: **57 GOLD / 13 PARTIAL /
+> 873 NOT_FOUND** (2026-05-30). Every per-pass count BELOW in this file is a
+> historical snapshot from that pass (e.g. "138/943: 42 GOLD") — accurate for its
+> date, NOT the current state. Do not read them as live.
 
 ---
 ## Signoff — claude_search/vscode — 2026-05-29

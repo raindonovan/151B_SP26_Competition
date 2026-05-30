@@ -61,9 +61,13 @@ item_id,category,search_status,found_answer,source_url,source_type,confidence,no
 - **Synthetic / fabricated-aggregation items** (a real base wrapped in a made-up
   Sum_{n=a}^{b}); original/geometry olympiad prose; variant indices of a known comp.
 
-## Status (2026-05-30): 52 GOLD / 7 PARTIAL / 884 NOT_FOUND (943 searched).
+## Status (2026-05-30): 57 GOLD / 13 PARTIAL / 873 NOT_FOUND (943 searched).
+
+This block is the SOURCE OF TRUTH for the live tally (verify against the CSV with:
+`python3 -c "import csv,collections;print(collections.Counter(r['search_status'] for r in csv.DictReader(open('search_results.csv'))))"`).
+Per-pass snapshots in SCRATCH.md/FINDINGS.md are historical and NOT current.
 
 GOLD ids: 17 33 41 45 47 91 97 125 175 182 184 200 204 222 223 252 255 263 265 266
-274 285 305 312 324 329 376 405 440 474 477 518 570 596 644 647 663 668 675 709
-711 719 772 799 805 808 856 862 874 877 934 940.
-PARTIAL ids: 7 117 173 286 471 486 603.
+274 285 305 312 324 329 376 405 440 474 477 492 518 567 570 596 644 647 663 668 675
+709 711 719 772 799 805 808 813 856 862 874 877 893 903 934 940.
+PARTIAL ids: 7 60 117 173 227 286 319 368 452 471 486 603 927.
