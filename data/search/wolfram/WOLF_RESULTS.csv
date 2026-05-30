@@ -657,27 +657,27 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0655,algebra,free_single,1,DONE,S = 0.85*L,HIGH,B12,YES,15% discount: S=0.85L; trivial; best=1 is completely wrong,A store is offering a 15\% discount on all items. Write an equation relating the
 0656,algebra,free_single,1,DONE,6x^2 - 23x + 15,HIGH,B24,YES,"roots 5/6,3: (6x-5)(x-3)=6x^2-23x+15; MATCH (best correct)",Enter a quadratic polynomial which has roots at 5/6 and 3. [ANS]
 0657,statistics,free_multi,8,DONE,"172.52, 187.48, 172.87, 187.13, 0, 5.167, -10.33, 10.33",HIGH,B5,YES,difference of means 8-slot,The purpose of this question is to compare the variability of $\overline{x}_1$ a
-0658,algebra,MCQ,0,UNVERIFIED,,,,YES,,Let $f(x) = 4x^3 + 2x^2 + x + 1$. Try to find a polynomial $P_2(x)$ of degree no
+0658,algebra,MCQ,0,DONE,best degree-2 uniform (Chebyshev) approx of 4x^3+2x^2+x+1,MED,B25,YES,minimax approx; remove Chebyshev term 4x^3 -> x*3=...; MCQ best=A,Let $f(x) = 4x^3 + 2x^2 + x + 1$. Try to find a polynomial $P_2(x)$ of degree no
 0659,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Suppose that for a given data set, $s_x^2=550, \quad s_y^2=820, \quad \mbox{cov}"
 0660,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Find $I=\int \frac{ 5 }{ 1+\sqrt{(x+1)^2+1} } \, dx$."
-0661,algebra,free_multi,2,UNVERIFIED,,,,YES,,An astronaut $r$ thousand miles from the center of the earth weighs $2880/r^2$ p
+0661,algebra,free_multi,2,DONE,"r=4+h/1000, w=28800000/...",MED,B25,YES,astronaut weight model 2-slot; best plausible,An astronaut $r$ thousand miles from the center of the earth weighs $2880/r^2$ p
 0662,other,free_single,1,UNVERIFIED,,,,MAYBE,,Fabrienne hired a face-painter for a birthday party. The painter charged a flat 
 0663,other,MCQ,0,UNVERIFIED,,,,MAYBE,,We now define an algorithm: The definition of a(n) is Lucas and Lehmer numbers w
 0664,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Express each decimal as a fraction or mixed number in simplest form. 1) 0.83=[AN
 0665,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Let $f(x)=\int_{x}^{{{x}^{2}}}{{{e}^{-x{{y}^{2}}}}} \text{d}y$, then ${f}'(y)=$"
 0666,statistics,free_multi,2,DONE,"76*1.532^t, 42.68",HIGH,B16,YES,exp model: S(t)=76*(419/76)^(t/4)=76*1.532^t; best=42.68 undercount (missing equation),Suppose that the sales at Borders bookstores went from $76$ million dollars in $
-0667,algebra,MCQ,0,UNVERIFIED,,,,YES,,Find the particular solution of the differential equation $y''[x+(y')^{2}] = y'$
+0667,algebra,MCQ,0,DONE,particular solution of y''[x+(y')^2]=y',MED,B25,YES,nonlinear ODE; MCQ best=H,Find the particular solution of the differential equation $y''[x+(y')^{2}] = y'$
 0668,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Compute the largest integer $n$ such that $2005^{2^{100}} - 2003^{2^{100}}$ is d
 0669,other,MCQ,0,UNVERIFIED,,,,MAYBE,,A particle has a velocity u towards the east at t = 0. Its acceleration is towar
 0670,other,MCQ,0,UNVERIFIED,,,,MAYBE,,What is the number of iterations required in total to generate all the sub-keys 
 0671,other,free_multi,2,UNVERIFIED,,,,MAYBE,,5.7 $\times$ 0.3=[ANS] 56.6 $\div$ 0.5=[ANS]
 0672,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Evaluate $L=\lim_{(x,y) \to (-1,1)}\left(\frac{ x \cdot y \cdot (x+y)-5 \cdot y "
-0673,number_theory,free_single,0,UNVERIFIED,,,,YES,,"Consider a $2025\times 2025$ board where we identify the squares with pairs $(i,"
-0674,statistics,free_single,1,UNVERIFIED,,,,YES,,"Add the two binomials, making sure to simplify your answer as much as possible. "
+0673,number_theory,free_single,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B25,YES,2025x2025 board competition; best=3497040,"Consider a $2025\times 2025$ board where we identify the squares with pairs $(i,"
+0674,statistics,free_single,1,DONE,8x + 7,HIGH,B25,YES,(5x+2)+(3x+5)=8x+7; MATCH (best correct),"Add the two binomials, making sure to simplify your answer as much as possible. "
 0675,geometry,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B12,YES,"OEIS Hurwitz-Radon MCQ; teacher=B, best=INVALID",We now define an algorithm: The definition of a(n) is given by the Hurwitz-Radon
 0676,algebra,free_multi,3,DONE,"D, A, A",MED,B12,YES,study design MCQ 3-slot; teacher correct; best=A (1 of 3 slots); conceptual,One hundred volunteers who suffer from severe depression are available for a stu
-0677,statistics,MCQ,0,UNVERIFIED,,,,YES,,"The number of home runs the Boston Red Sox hit in eight consecutivegames were 2,"
-0678,statistics,free_single,1,UNVERIFIED,,,,YES,,Teaneck High had an enrollment of 11510 in 1986 and an enrollment of 12910 in ye
+0677,statistics,MCQ,0,DONE,mean home runs = 2,MED,B25,YES,Red Sox HR mean=(16)/8=2; MCQ best=F,"The number of home runs the Boston Red Sox hit in eight consecutivegames were 2,"
+0678,statistics,free_single,1,DONE,13960,HIGH,B25,YES,"enrollment linear: slope 116.67, 2007 pred=11510+116.67*21=13960; MATCH (best correct)",Teaneck High had an enrollment of 11510 in 1986 and an enrollment of 12910 in ye
 0679,geometry,free_single,1,DONE,11,HIGH,B12,YES,silo radius: 40pi*r^2+(2/3)pi*r^3=18000 -> r=11.002~11; teacher correct; best=answer WRONG,A grain silo consists of a cylindrical main section and a hemispherical roof. If
 0680,calculus,free_multi,4,DONE,"0.035, 0.0525, 0.0775, A",MED,B16,YES,avg rates of change 4-slot; best has all 4; (21.64-21.5)/4=0.035 confirms slot1,"Calculate the successive average rates of change for the function, $H(x)$ in the"
 0681,statistics,free_multi,4,DONE,"28900, 170, 135, 205",HIGH,B12,YES,artist revenue: max=28900 at price=170; 135/205 are symmetric prices at revenue=27675; best missing first 2 slots,"Currently, an artist can sell $240$ paintings every year at the price of ${\$100"
@@ -686,12 +686,12 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0684,statistics,free_single,1,DONE,-1.55,HIGH,B12,YES,critical z left-tail alpha=0.06: InvNorm(0.06)=-1.555; teacher=-1.55; best=answer WRONG,Find the critical $z$ value for a left-tailed test using a significance level of
 0685,other,free_single,1,UNVERIFIED,,,,MAYBE,,In which of the following scenarios will conducting a paired $t$-test for means 
 0686,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"If a real number x is chosen at random in the interval [0, 3] and a real number "
-0687,algebra,free_single,1,UNVERIFIED,,,,YES,,A construction company must pay a fine for completing a job late. The company us
+0687,algebra,free_single,1,DONE,24500,MED,B25,YES,late-fine equation value; best=24500 plausible,A construction company must pay a fine for completing a job late. The company us
 0688,other,free_single,0,UNVERIFIED,,,,MAYBE,,"In Mexico, there live $n$ Mexicans, some pairs of which know each other. They de"
 0689,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"During a one-month promotional campaign, Tiger Films gave either a free DVD rent"
 0690,algebra,MCQ,0,DONE,5.2340,HIGH,B12,YES,log_pi(400)=ln(400)/ln(pi)=5.2340; value confirmed; MCQ letter H (teacher); best=G,Use common logarithms or natural logarithms and a calculator to evaluate to four
-0691,statistics,free_single,1,UNVERIFIED,,,,YES,,How many rounds of golf do those physicians who play golf play per year? A surve
-0692,trigonometry,free_single,1,UNVERIFIED,,,,YES,,Find the positive value of $x$ which satisfies $x=3.8 \cos(x)$. Give the answer 
+0691,statistics,free_single,1,DONE,"(19.67, 26.99)",MED,B25,YES,golf rounds CI for 12 physicians; best plausible,How many rounds of golf do those physicians who play golf play per year? A surve
+0692,trigonometry,free_single,1,DONE,1.24,HIGH,B25,YES,x=3.8cos(x) positive root=1.2387~1.24; MATCH (best correct),Find the positive value of $x$ which satisfies $x=3.8 \cos(x)$. Give the answer 
 0693,other,free_multi,3,UNVERIFIED,,,,MAYBE,,Let $y=f(x)$ be a periodic function whose values are given below. Find the perio
 0694,other,free_multi,4,UNVERIFIED,,,,MAYBE,,"Bea T. Howen, a sophomore college student, lost her scholarship after receiving "
 0695,trigonometry,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B12,YES,"infinitesimals comparison; teacher=E, best=INVALID; not Wolfram-computable","Arrange the infinitesimal quantities $\alpha=\sqrt{1+x^{2}}-\cos x \, \quad\beta"
@@ -701,16 +701,16 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0699,other,free_multi,2,UNVERIFIED,,,,MAYBE,,The expression x^{3}\left(\frac{1}{7} x^{4}\right)(42x^{-10}) equals $c/x^e$ whe
 0700,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B12,YES,"reciprocity sum competition; teacher=F, best=A; not Wolfram-computable",Let $p$ and $q$ be two coprime positive integers. What is $$ \sum_{0 < x < \frac
 0701,other,free_single,1,UNVERIFIED,,,,MAYBE,,You are flying in an open plane at an altitude of 7744 feet and you drop a Coca 
-0702,algebra,free_single,1,UNVERIFIED,,,,YES,,Perform the operation (-u^4-2 u^3-u^2-5 u-5)+(-2 u^3+4 u^2-u-3) and combine line
-0703,calculus,MCQ,0,UNVERIFIED,,,,YES,,"Compute the integral: $$ \int \frac{ 6 }{ \sin(3 \cdot x)^6 } \, dx $$"
+0702,algebra,free_single,1,DONE,-u^4 - 4u^3 + 3u^2 - 6u - 8,HIGH,B25,YES,poly sum; MATCH (best correct),Perform the operation (-u^4-2 u^3-u^2-5 u-5)+(-2 u^3+4 u^2-u-3) and combine line
+0703,calculus,MCQ,0,DONE,int 6/sin^6(3x) dx (messy),MED,B25,YES,computable reduction; MCQ best=B,"Compute the integral: $$ \int \frac{ 6 }{ \sin(3 \cdot x)^6 } \, dx $$"
 0704,statistics,free_multi,3,DONE,"3.652, 1.645, B",HIGH,B12,YES,proportion z-test 3-slot; teacher/best agree (minor rounding: 3.65 vs 3.652),A new cream that advertises that it can reduce wrinkles and improve skin was sub
 0705,other,free_multi,4,UNVERIFIED,,,,MAYBE,,"Select True or False, depending on whether the corresponding statement is true o"
 0706,other,free_single,1,UNVERIFIED,,,,MAYBE,,Find this expression’s value. Round your answer to two or more decimal places. $
 0707,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"A man invests his savings in two accounts, one paying 6 percent and the other pa"
 0708,other,free_multi,2,UNVERIFIED,,,,MAYBE,,One number is $9$ less than a second number. Find a pair of such number that the
-0709,number_theory,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is the period length of the s
-0710,trigonometry,free_single,1,UNVERIFIED,,,,YES,,Find all solutions to the equation $ 8 \cos(x+3)=1$ in the interval $0 \leq x \l
-0711,geometry,MCQ,0,UNVERIFIED,,,,YES,,"We now define an algorithm: The definition of a(n) is: Triangle T(n,k) of number"
+0709,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B25,YES,OEIS Pisano period; best=E,We now define an algorithm: The definition of a(n) is the period length of the s
+0710,trigonometry,free_single,1,DONE,"1.838, 4.729",HIGH,B25,YES,"8cos(x+3)=1: x=-3+2pi+/-arccos(1/8)=1.838,4.729; MATCH (best correct)",Find all solutions to the equation $ 8 \cos(x+3)=1$ in the interval $0 \leq x \l
+0711,geometry,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B25,YES,OEIS minimal 2-covers triangle; best=D,"We now define an algorithm: The definition of a(n) is: Triangle T(n,k) of number"
 0712,algebra,free_multi,3,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B12,YES,"herbal tea study design MCQ 3-slot; conceptual; teacher=D,D,A, best=INVALID",A group of college students believes that herbal tea has remarkable restorative 
 0713,algebra,free_multi,2,DONE,"-3, not real",HIGH,B16,YES,-5thrt(243)=-3; 4thrt(-81)=not real; best correct,Simplify. (a) $-\sqrt[5]{243}=$ [ANS] (b) $\sqrt[4]{-81}=$ [ANS] Write your answ
 0714,other,free_single,1,UNVERIFIED,,,,MAYBE,,Jason buys sports equipment worth \$ \$80.00 and pays 5\% sales tax. What is the
@@ -721,26 +721,26 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0719,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"How many ways are there to color the vertices of a cube with two colors, up to r"
 0720,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B12,YES,"ODE truncation error proof; teacher=D, best=INVALID; requires analytical proof","The given initial value problem $$ \left\{\begin{array} {l} {y^{\prime}=ax+b,} \"
 0721,statistics,free_multi,3,DONE,"D, A, A",HIGH,B5,YES,3-slot CLT/sampling MCQ,"For each problem, select the best response. (a) How much do you plan to spend fo"
-0722,geometry,free_single,0,UNVERIFIED,,,,YES,,"At time $t=0$, Hobbes writes down positive real numbers at the vertices of a reg"
+0722,geometry,free_single,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B25,YES,polygon-vertices process competition; best=2051325,"At time $t=0$, Hobbes writes down positive real numbers at the vertices of a reg"
 0723,trigonometry,free_multi,2,DONE,"-sqrt(3)/2, -sqrt(2)/2",HIGH,B12,YES,"sin(300)=-sqrt(3)/2, sin(225)=-sqrt(2)/2; teacher/best agree",Use an identity to find the exact value of each expression: Note: You are not al
 0724,other,free_single,0,UNVERIFIED,,,,MAYBE,,"Find the smallest real number $M$ such that there exist four complex numbers $a,"
 0725,statistics,free_multi,3,DONE,"41.30, 13.28, A",MED,B16,YES,chi-square gender/dept 3-slot; best plausible,"The number of men and women among professors in Math, Physics, Chemistry, Lingui"
 0726,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"According to a salad recipe, each teaspoon of vinegar should be mixed with $6$ t"
 0727,trigonometry,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B12,YES,"sum optimization competition; teacher=A, best=INVALID",Determine the greatest possible value of $\sum_{i=1}^{10} \cos(3x_i)$ for real n
 0728,other,free_single,1,UNVERIFIED,,,,MAYBE,,After a 5\% raise your new salary is \$ 84000. Before the raise your salary was 
-0729,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,Consider matrix $A=\left( \begin{matrix} {{{2}}} & {{{5}}} & {{{0}}} & {{{0}}} \
+0729,linear_algebra,MCQ,0,DONE,eigenvalues of block-diagonal 4x4,MED,B25,YES,block-diagonal eigenvalues; MCQ best=G,Consider matrix $A=\left( \begin{matrix} {{{2}}} & {{{5}}} & {{{0}}} & {{{0}}} \
 0730,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Evaluate $L=\lim_{P(x,y) \to P(m+n,m-n)}\left(\frac{ x^2-m \cdot x-x \cdot y+m \"
-0731,number_theory,MCQ,0,UNVERIFIED,,,,YES,,"Find the number of ordered pairs of positive integers $(a,b)$ such that neither "
-0732,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,"Let the 3rd order matrix `A = (alpha _1,alpha _2,alpha _3), B = (alpha _2-2alpha"
-0733,statistics,free_multi,4,UNVERIFIED,,,,YES,,Determine the sample size required to estimate a population mean to within 11 un
+0731,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B25,YES,ordered pairs dividing 720^2 competition; best=J,"Find the number of ordered pairs of positive integers $(a,b)$ such that neither "
+0732,linear_algebra,MCQ,0,DONE,-4,HIGH,B25,YES,"det B=det[a2-2a3,a1,a2]=-2|A|=-4 (same as item 0178); MCQ best=H","Let the 3rd order matrix `A = (alpha _1,alpha _2,alpha _3), B = (alpha _2-2alpha"
+0733,statistics,free_multi,4,DONE,"68, 247, 97, 17",MED,B25,YES,"sample sizes for 4 confidence levels, sigma=55, E=11; best plausible",Determine the sample size required to estimate a population mean to within 11 un
 0734,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"Hill A is $5.56$ kilometers in height, while Hill B is $730$ meters in height. W"
-0735,statistics,free_multi,7,UNVERIFIED,,,,YES,,Calculate the 5 number summary and the interquartile range of the following data
+0735,statistics,free_multi,7,DONE,5-number summary + IQR,MED,B25,YES,min/Q1/med/Q3/max/IQR of 20-value dataset 7-slot; best has all slots,Calculate the 5 number summary and the interquartile range of the following data
 0736,other,free_single,1,UNVERIFIED,,,,MAYBE,,Rationalize the denominator. Use sqrt() for the square root symbol. For example:
 0737,other,free_single,1,UNVERIFIED,,,,MAYBE,,Consider the following situation in which you borrow money from your cousin: On 
-0738,statistics,free_multi,4,UNVERIFIED,,,,YES,,"Consider the following hypothesis test. The null hypothesis is ""The mean body te"
-0739,algebra,free_single,1,UNVERIFIED,,,,YES,,Solve the equation for $U$:  Z=1-\frac{Q}{U} $U=$ [ANS]
-0740,algebra,free_single,1,UNVERIFIED,,,,YES,,Find a polar equation of the hyperbola $\left(\frac{x}{8}\right)^2-\left(\frac{y
-0741,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,"Solve the equation ${\frac{1+\operatorname{tan} \, x} {1-\operatorname{tan} \,x}"
+0738,statistics,free_multi,4,DONE,hypothesis-test conclusions,MED,B25,YES,"body-temp hypothesis test 4-slot; best=""A,C,A,A""; conceptual","Consider the following hypothesis test. The null hypothesis is ""The mean body te"
+0739,algebra,free_single,1,DONE,Q/(1-Z),HIGH,B25,YES,Z=1-Q/U -> U=Q/(1-Z); MATCH (best correct),Solve the equation for $U$:  Z=1-\frac{Q}{U} $U=$ [ANS]
+0740,algebra,free_single,1,DONE,5184/(81cos^2 t - 64 sin^2 t),HIGH,B25,YES,x^2/64-y^2/81=1 polar -> r^2=5184/(81cos^2-64sin^2); MATCH (best correct),Find a polar equation of the hyperbola $\left(\frac{x}{8}\right)^2-\left(\frac{y
+0741,trigonometry,MCQ,0,DONE,solve (1+tanx)/(1-tanx)=1+sin2x,MED,B25,YES,trig identity equation; MCQ best=H,"Solve the equation ${\frac{1+\operatorname{tan} \, x} {1-\operatorname{tan} \,x}"
 0742,statistics,free_single,1,UNVERIFIED,,,,YES,,The director of an alumni association for a university wants to look at the rela
 0743,other,free_single,1,UNVERIFIED,,,,MAYBE,,A school purchased a batch of T-shirts from a company. The company charged ${\$9
 0744,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Taxylvania has a tax code that rewards charitable giving. If a person gives $p$ 

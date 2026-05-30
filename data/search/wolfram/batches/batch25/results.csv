@@ -1,0 +1,26 @@
+id,subject,type,n_ans_slots,wolfram_answer,confidence,computable,notes
+0658,calculus,MCQ,0,best degree-2 uniform (Chebyshev) approx of 4x^3+2x^2+x+1,MED,YES,minimax approx; remove Chebyshev term 4x^3 -> x*3=...; MCQ best=A
+0661,algebra,free_multi,2,"r=4+h/1000, w=28800000/...",MED,YES,astronaut weight model 2-slot; best plausible
+0667,calculus,MCQ,0,particular solution of y''[x+(y')^2]=y',MED,YES,nonlinear ODE; MCQ best=H
+0673,number_theory,free_single,0,INCONCLUSIVE,INCONCLUSIVE,NO,2025x2025 board competition; best=3497040
+0674,algebra,free_single,1,8x + 7,HIGH,YES,(5x+2)+(3x+5)=8x+7; MATCH (best correct)
+0677,statistics,MCQ,0,mean home runs = 2,MED,YES,Red Sox HR mean=(16)/8=2; MCQ best=F
+0678,statistics,free_single,1,13960,HIGH,YES,"enrollment linear: slope 116.67, 2007 pred=11510+116.67*21=13960; MATCH (best correct)"
+0687,algebra,free_single,1,24500,MED,YES,late-fine equation value; best=24500 plausible
+0691,statistics,free_single,1,"(19.67, 26.99)",MED,YES,golf rounds CI for 12 physicians; best plausible
+0692,algebra,free_single,1,1.24,HIGH,YES,x=3.8cos(x) positive root=1.2387~1.24; MATCH (best correct)
+0702,algebra,free_single,1,-u^4 - 4u^3 + 3u^2 - 6u - 8,HIGH,YES,poly sum; MATCH (best correct)
+0703,calculus,MCQ,0,int 6/sin^6(3x) dx (messy),MED,YES,computable reduction; MCQ best=B
+0709,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,OEIS Pisano period; best=E
+0710,trigonometry,free_single,1,"1.838, 4.729",HIGH,YES,"8cos(x+3)=1: x=-3+2pi+/-arccos(1/8)=1.838,4.729; MATCH (best correct)"
+0711,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,OEIS minimal 2-covers triangle; best=D
+0722,algebra,free_single,0,INCONCLUSIVE,INCONCLUSIVE,NO,polygon-vertices process competition; best=2051325
+0729,linear_algebra,MCQ,0,eigenvalues of block-diagonal 4x4,MED,YES,block-diagonal eigenvalues; MCQ best=G
+0731,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,ordered pairs dividing 720^2 competition; best=J
+0732,linear_algebra,MCQ,0,-4,HIGH,YES,"det B=det[a2-2a3,a1,a2]=-2|A|=-4 (same as item 0178); MCQ best=H"
+0733,statistics,free_multi,4,"68, 247, 97, 17",MED,YES,"sample sizes for 4 confidence levels, sigma=55, E=11; best plausible"
+0735,statistics,free_multi,7,5-number summary + IQR,MED,YES,min/Q1/med/Q3/max/IQR of 20-value dataset 7-slot; best has all slots
+0738,statistics,MCQ,4,hypothesis-test conclusions,MED,MAYBE,"body-temp hypothesis test 4-slot; best=""A,C,A,A""; conceptual"
+0739,algebra,free_single,1,Q/(1-Z),HIGH,YES,Z=1-Q/U -> U=Q/(1-Z); MATCH (best correct)
+0740,trigonometry,free_single,1,5184/(81cos^2 t - 64 sin^2 t),HIGH,YES,x^2/64-y^2/81=1 polar -> r^2=5184/(81cos^2-64sin^2); MATCH (best correct)
+0741,trigonometry,MCQ,0,solve (1+tanx)/(1-tanx)=1+sin2x,MED,YES,trig identity equation; MCQ best=H

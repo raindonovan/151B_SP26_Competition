@@ -470,3 +470,28 @@ Readable companion to `WOLF_RESULTS.csv` (the full machine-readable scorecard fo
 | 0653 | B24 | MED | (600-45t)/7, 85.71, 47.14 | nicotine linear decay 3-slot; best plausible |
 | 0654 | B24 | HIGH | sqrt(19), 2, 2, 2 | piecewise f: f(12)=sqrt19, f(-7)=f(pi)=f(-7.1)=2; MATCH |
 | 0656 | B24 | HIGH | 6x^2 - 23x + 15 | roots 5/6,3: (6x-5)(x-3)=6x^2-23x+15; MATCH (best corre |
+| 0658 | B25 | MED | best degree-2 uniform (Chebyshev) approx of 4x^3+2x^2+x | minimax approx; remove Chebyshev term 4x^3 -> x*3=...;  |
+| 0661 | B25 | MED | r=4+h/1000, w=28800000/... | astronaut weight model 2-slot; best plausible |
+| 0667 | B25 | MED | particular solution of y''[x+(y')^2]=y' | nonlinear ODE; MCQ best=H |
+| 0673 | B25 | INCONCLUSIVE | INCONCLUSIVE | 2025x2025 board competition; best=3497040 |
+| 0674 | B25 | HIGH | 8x + 7 | (5x+2)+(3x+5)=8x+7; MATCH (best correct) |
+| 0677 | B25 | MED | mean home runs = 2 | Red Sox HR mean=(16)/8=2; MCQ best=F |
+| 0678 | B25 | HIGH | 13960 | enrollment linear: slope 116.67, 2007 pred=11510+116.67 |
+| 0687 | B25 | MED | 24500 | late-fine equation value; best=24500 plausible |
+| 0691 | B25 | MED | (19.67, 26.99) | golf rounds CI for 12 physicians; best plausible |
+| 0692 | B25 | HIGH | 1.24 | x=3.8cos(x) positive root=1.2387~1.24; MATCH (best corr |
+| 0702 | B25 | HIGH | -u^4 - 4u^3 + 3u^2 - 6u - 8 | poly sum; MATCH (best correct) |
+| 0703 | B25 | MED | int 6/sin^6(3x) dx (messy) | computable reduction; MCQ best=B |
+| 0709 | B25 | INCONCLUSIVE | INCONCLUSIVE | OEIS Pisano period; best=E |
+| 0710 | B25 | HIGH | 1.838, 4.729 | 8cos(x+3)=1: x=-3+2pi+/-arccos(1/8)=1.838,4.729; MATCH  |
+| 0711 | B25 | INCONCLUSIVE | INCONCLUSIVE | OEIS minimal 2-covers triangle; best=D |
+| 0722 | B25 | INCONCLUSIVE | INCONCLUSIVE | polygon-vertices process competition; best=2051325 |
+| 0729 | B25 | MED | eigenvalues of block-diagonal 4x4 | block-diagonal eigenvalues; MCQ best=G |
+| 0731 | B25 | INCONCLUSIVE | INCONCLUSIVE | ordered pairs dividing 720^2 competition; best=J |
+| 0732 | B25 | HIGH | -4 | det B=det[a2-2a3,a1,a2]=-2/A/=-4 (same as item 0178); M |
+| 0733 | B25 | MED | 68, 247, 97, 17 | sample sizes for 4 confidence levels, sigma=55, E=11; b |
+| 0735 | B25 | MED | 5-number summary + IQR | min/Q1/med/Q3/max/IQR of 20-value dataset 7-slot; best  |
+| 0738 | B25 | MED | hypothesis-test conclusions | body-temp hypothesis test 4-slot; best="A,C,A,A"; conce |
+| 0739 | B25 | HIGH | Q/(1-Z) | Z=1-Q/U -> U=Q/(1-Z); MATCH (best correct) |
+| 0740 | B25 | HIGH | 5184/(81cos^2 t - 64 sin^2 t) | x^2/64-y^2/81=1 polar -> r^2=5184/(81cos^2-64sin^2); MA |
+| 0741 | B25 | MED | solve (1+tanx)/(1-tanx)=1+sin2x | trig identity equation; MCQ best=H |

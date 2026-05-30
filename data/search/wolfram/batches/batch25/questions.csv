@@ -1,0 +1,57 @@
+id,subject,type,n_ans_slots,best_answer,teacher_consensus,question
+0658,algebra,MCQ,0,A,A,"Let $f(x) = 4x^3 + 2x^2 + x + 1$. Try to find a polynomial $P_2(x)$ of degree no greater than 2 on $[-1, 1]$, such that it is the best uniform approximation polynomial to $f(x)$ on $[-1, 1]$. This polynomial is ______."
+0661,algebra,free_multi,2,"r = 4 + \frac{h}{1000}, w = \frac{2880000000}{(h + 4000)^2}",,"An astronaut $r$ thousand miles from the center of the earth weighs $2880/r^2$ pounds. The surface of the earth is 4000 miles from the center.
+(a) If the astronaut is $h$ miles above the surface of the earth, express $r$ as a function of $h$. Enter your answer as an equation, such as $r=5h-1$. [ANS]
+(b) Express the astronaut's weight $w$, in pounds, as a function of $h$. Enter your answer as an equation, such as $w=5h-1$. [ANS]"
+0667,algebra,MCQ,0,H,H,Find the particular solution of the differential equation $y''[x+(y')^{2}] = y'$ that satisfies the initial conditions $y(1) = y'(1) = 1$ is().
+0673,number_theory,free_single,0,3497040,,"Consider a $2025\times 2025$ board where we identify the squares with pairs $(i,j)$ where $i$ and $j$ denote the row and column number of that square, respectively.
+
+Calvin picks two positive integers $a,b<2025$ and places a pawn at the bottom left corner (i.e. on $(1,1)$) and makes the following moves. In his $k$-th move, he moves the pawn from $(i,j)$ to either $(i+a,j)$ or $(i,j+a)$ if $k$ is odd and to either $(i+b,j)$ and $(i,j+b)$ if $k$ is even. Here all the numbers are taken modulo $2025$. Find the number of pairs $(a,b)$ that Calvin could have picked such that he can make moves so that the pawn covers all the squares on the board without being on any square twice."
+0674,statistics,free_single,1,8x + 7,8x+7,"Add the two binomials, making sure to simplify your answer as much as possible.
+$\left({5x+2}\right)+\left({3x+5}\right)$ [ANS]"
+0677,statistics,MCQ,0,F,F,"The number of home runs the Boston Red Sox hit in eight consecutivegames were 2, 3, 0, 3, 4, 1, 3, 0. (a) What is the mean number of home runs hit? (b) What is the median? (c) What is the mode?"
+0678,statistics,free_single,1,13960,13960,Teaneck High had an enrollment of 11510 in 1986 and an enrollment of 12910 in year 1998. What is the predicted enrollment of Teaneck High in 2007 if we assume a linear model? Predicted Enrollment=[ANS]
+0687,algebra,free_single,1,24500,24500,"A construction company must pay a fine for completing a job late. The company uses the equation below to calculate the amount of the fine $f$ in dollars when the job is finished $d$ days late. f=20,000+1,500 d. The company completes a construction job $3$ days late. The fine is \$ [ANS]."
+0691,statistics,free_single,1,"(19.67, 26.99)","(19.67, 26.99)","How many rounds of golf do those physicians who play golf play per year? A survey of 12 physicians revealed the following numbers:
+8, \quad 42, \quad 16, \quad 3, \quad 32, \quad 37, \quad 20, \quad 15, \quad 16, \quad 29, \quad 13, \quad 49 Estimate with 93\% confidence the mean number of rounds played per year by physicians, assuming that the population is normally distributed with a standard deviation of 7. Note: For each confidence interval, enter your answer in the form (LCL, UCL). You must include the parentheses and the comma between the confidence limits.
+Confidence Interval=[ANS]"
+0692,trigonometry,free_single,1,1.24,1.24,Find the positive value of $x$ which satisfies $x=3.8 \cos(x)$. Give the answer to 2 decimal places. [ANS]
+0702,algebra,free_single,1,-u^4 - 4u^3 + 3u^2 - 6u - 8,,"Perform the operation
+(-u^4-2 u^3-u^2-5 u-5)+(-2 u^3+4 u^2-u-3) and combine line terms. Simplify your answer as much as possible. Answer: [ANS]"
+0703,calculus,MCQ,0,B,B,"Compute the integral:
+$$
+\int \frac{ 6 }{ \sin(3 \cdot x)^6 } \, dx
+$$"
+0709,number_theory,MCQ,0,E,E,"We now define an algorithm: The definition of a(n) is the period length of the sequence of Fibonacci numbers taken modulo n, also known as the Pisano period. Given the input x_list (a series of values): [58, 59, 60, 61, 62, 63, 64, 65, 66, 67], determine the corresponding output sequence y_list."
+0710,trigonometry,free_single,1,"1.838, 4.729",,"Find all solutions to the equation $ 8 \cos(x+3)=1$ in the interval $0 \leq x \leq 2 \pi$. If there is more than one answer, enter your answers as a comma separated list. $x=$ [ANS]"
+0711,geometry,MCQ,0,D,,"We now define an algorithm: The definition of a(n) is: Triangle T(n,k) of number of minimal 2-covers of a labeled n-set that cover k points of that set uniquely (k=2,..,n). A 2-cover of a set is a collection of pairs of elements from the set such that each element is included in at least one pair. Minimal means that no proper subset of the 2-cover still covers all elements. Given the input x_list (a series of values): [45, 46, 47, 48, 49, 50, 51, 52, 53, 54], determine the corresponding output sequence y_list."
+0722,geometry,free_single,0,2051325,2051325,"At time $t=0$, Hobbes writes down positive real numbers at the vertices of a regular polygon $P_1P_2\dots P_n$. Suppose that after an even number of seconds, the numbers $x$ and $y$ are written on $P_i$ and $P_{i+1}$ respectively. Then one second later, Hobbes updates the number at $P_i$ to $x+\frac{1}{y}$. Here $i$ is taken modulo $n$.
+
+Let $N(n)$ denote the number of pairs $(i,j)$ (in terms of $n$) for which can we guarantee (without knowing what Hobbes wrote down) that at some point in time the number at $P_i$ is at least as large as the number at $P_j$. Compute 
+\[
+\sum_{n=1}^{2025} N(n).
+\]
+
+Note. The numbers are all updated only whenever an odd number of seconds have passed. If all the numbers were initially $1$ then after $1$ second they would all be updated to $2$ then at $T=3s$, t"
+0729,linear_algebra,MCQ,0,G,G,"Consider matrix $A=\left( \begin{matrix} {{{2}}} & {{{5}}} & {{{0}}} & {{{0}}} \\ {{{1}}} & {{{3}}} & {{{0}}} & {{{0}}} \\ {{{0}}} & {{{0}}} & {{{2}}} & {{{1}}} \\ {{{0}}} & {{{0}}} & {{{1}}} & {{{2}}} \\ \end{matrix} \right)$ , using block matrix operations calculate the value of $\left| A^{2012} \right|$, what is the result?"
+0731,number_theory,MCQ,0,J,J,"Find the number of ordered pairs of positive integers $(a,b)$ such that neither $a$ nor $b$ are divisors of $720,$ but $ab$ is a divisor of $720^2.$"
+0732,linear_algebra,MCQ,0,H,H,"Let the 3rd order matrix `A = (alpha _1,alpha _2,alpha _3), B = (alpha _2-2alpha _3,alpha _1,alpha _2)`, if the determinant of `A` is `| A | = 2`, then the determinant of `B` is `| B | =` ( )"
+0733,statistics,free_multi,4,"68, 247, 97, 17","68,247,97,17","Determine the sample size required to estimate a population mean to within 11 units given that the population standard deviation is 55. A confidence level of 90\% is judged to be appropriate. Sample Size=[ANS]
+Determine the sample size required to estimate a population mean to within 11 units given that the population standard deviation is 105. Use a confidence level of 90\%. Sample Size=[ANS]
+Determine the sample size required to estimate a population mean to within 11 units given that the population standard deviation is 55. Use a confidence level of 95\%. Sample Size=[ANS]
+Determine the sample size required to estimate a population mean to within 22 units given that the population standard deviation is 55. A confidence level of 90\% is judged to be appropriate. Sample Size=[ANS]"
+0735,statistics,free_multi,7,"28.00, 42.50, 55.00, -29.00, 82.00, 27.00, A",,"Calculate the 5 number summary and the interquartile range of the following data: 32, \ 65, \ 40, \ 58, \ 52, \ 36, \ 24, \ 21,\ 41,\ 48,\ 75,\ 16,\-29,\ 51,\ 44, \ 82
+Q1=[ANS]
+Q2=[ANS]
+Q3=[ANS]
+Min=[ANS]
+Max=[ANS]
+IQR=[ANS]
+There is a potential outlier in this data set [ANS] A. True  B. False"
+0738,statistics,free_multi,4,"A, C, A, A","A,C,A,A","Consider the following hypothesis test. The null hypothesis is ""The mean body temperature for humans is 98.6 degrees Farenheit."" and the alternative hypothesis is ""The mean body temperature for humans differs from 98.6 degrees Farenheit."" Answer the following questions. a. ""The mean body temperature for humans in fact is 98.6 degrees Farenheit but the result of the sampling lead to the conclusion that the mean body temprature for humans differ from 98.6 degrees Farenheit"" is a [ANS] A. Type I error  B. correct decision  C. Type II error
+b. ""The mean body temperature for humans in fact is 98.6 degrees Farenheit and the result of the sampling do not lead to the rejection of the fact that the mean body temprature is 98.6 degrees Farenheit"" is a [ANS] A. Type I error  B. Type II error  C. corr"
+0739,algebra,free_single,1,\dfrac{Q}{1 - Z},,"Solve the equation for $U$:
+ Z=1-\frac{Q}{U} $U=$ [ANS]"
+0740,algebra,free_single,1,\dfrac{5184}{81 \cos^2 t - 64 \sin^2 t},,"Find a polar equation of the hyperbola $\left(\frac{x}{8}\right)^2-\left(\frac{y}{9}\right)^2=1$. $r^2=$ [ANS]
+Note: use t for $\theta$."
+0741,trigonometry,MCQ,0,H,H,"Solve the equation ${\frac{1+\operatorname{tan} \, x} {1-\operatorname{tan} \,x}}=1+\operatorname{sin}\ 2x$."
