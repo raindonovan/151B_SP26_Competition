@@ -80,7 +80,7 @@ class Normalizer:
         )
 
     def extract_answer(self, response: str, item: dict) -> ExtractionResult:
-        all_boxes = self.extract_all_boxed(response)
+        all_boxes = self.extract_last_contiguous_box_group(response)
         item_type = self.classify_type(item)
         if item_type == "MCQ":
             boxed_match = re.search(r"\\boxed\{([A-Za-z])\}", response)
@@ -177,16 +177,32 @@ class Normalizer:
         flags: list[str],
     ) -> str:
         expected = self._expected_slot_count(item)
-        cleaned_boxes = [self.universal_cleanup(box) for box in extraction.all_boxes if box.strip()]
-        if cleaned_boxes:
-            if len(cleaned_boxes) < expected:
-                flags.append(f"UNDERCOUNT_{len(cleaned_boxes)}_OF_{expected}")
-                values = cleaned_boxes
+        candidate_values = [
+            self._normalize_multi_element(value, item)
+            for value in self._split_top_level_csv(candidate)
+            if value.strip()
+        ]
+        if candidate_values:
+            if len(candidate_values) >= expected:
+                if len(candidate_values) > expected:
+                    flags.append(f"OVERCOUNT_{len(candidate_values)}_TO_{expected}")
+                return ", ".join(candidate_values)
+
+        group_values: list[str] = []
+        for box in extraction.all_boxes:
+            cleaned_box = self.universal_cleanup(box)
+            for value in self._split_top_level_csv(cleaned_box):
+                if value.strip():
+                    group_values.append(self._normalize_multi_element(value, item))
+
+        if group_values:
+            if len(group_values) < expected:
+                flags.append(f"UNDERCOUNT_{len(group_values)}_OF_{expected}")
+                values = group_values
             else:
-                values = cleaned_boxes[:expected]
-                if len(cleaned_boxes) > expected:
-                    flags.append(f"OVERCOUNT_{len(cleaned_boxes)}_TO_{expected}")
-            values = [self._normalize_multi_element(value, item) for value in values]
+                values = group_values
+                if len(group_values) > expected:
+                    flags.append(f"OVERCOUNT_{len(group_values)}_TO_{expected}")
             return ", ".join(values)
 
         if candidate:
@@ -253,7 +269,24 @@ class Normalizer:
         return response.rstrip() + "\n\n" + final_box
 
     def extract_all_boxed(self, text: str) -> list[str]:
-        results: list[str] = []
+        return [entry[2] for entry in self._find_boxed_entries(text)]
+
+    def extract_last_contiguous_box_group(self, text: str) -> list[str]:
+        entries = [entry for entry in self._find_boxed_entries(text) if entry[2].strip()]
+        if not entries:
+            return []
+
+        group = [entries[-1]]
+        for idx in range(len(entries) - 2, -1, -1):
+            gap = text[entries[idx][1] : entries[idx + 1][0]]
+            if re.fullmatch(r"[\s,\$\.\;\:\-\&\\]*", gap):
+                group.insert(0, entries[idx])
+            else:
+                break
+        return [entry[2] for entry in group]
+
+    def _find_boxed_entries(self, text: str) -> list[tuple[int, int, str]]:
+        results: list[tuple[int, int, str]] = []
         i = 0
         while i < len(text):
             match = BOX_START_RE.search(text, i)
@@ -268,9 +301,39 @@ class Normalizer:
                     depth -= 1
                 j += 1
             if depth == 0:
-                results.append(text[match.end() : j - 1])
+                results.append((match.start(), j, text[match.end() : j - 1]))
             i = match.end()
         return results
+
+    def _split_top_level_csv(self, string: str) -> list[str]:
+        if not string:
+            return []
+
+        values: list[str] = []
+        start = 0
+        depth_curly = 0
+        depth_round = 0
+        depth_square = 0
+
+        for idx, char in enumerate(string):
+            if char == "{":
+                depth_curly += 1
+            elif char == "}":
+                depth_curly = max(0, depth_curly - 1)
+            elif char == "(":
+                depth_round += 1
+            elif char == ")":
+                depth_round = max(0, depth_round - 1)
+            elif char == "[":
+                depth_square += 1
+            elif char == "]":
+                depth_square = max(0, depth_square - 1)
+            elif char == "," and depth_curly == depth_round == depth_square == 0:
+                values.append(string[start:idx].strip())
+                start = idx + 1
+
+        values.append(string[start:].strip())
+        return values
 
     def _rescue_candidate(self, response: str, item_type: str) -> str:
         patterns = [

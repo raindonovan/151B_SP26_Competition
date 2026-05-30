@@ -4,12 +4,14 @@
 **Original maintainer**: wolfmaster + claude_strategy
 **Status**: Cumulative cross-batch findings. Append-only.
 
-## Coverage snapshot
+## Coverage snapshot (after B18)
 - Total dataset: 943 items
-- Wolfram coverage: 63 items (~6.7%) across Batches 1-8
-- B1-B7 (38 items): 33 HIGH discrepancies, 2 MED, 3 inconclusive (interpretation-MCQ truncation)
-- B8 (25 items): 23 HIGH discrepancies (incl. 0181 by symmetry argument), 1 no-op, 1 inconclusive (0570 synthetic)
-- W-tier remaining high-leverage: ~186 items (174 Qwen-vs-teacher disagreements + 67 teacher splits, with overlap)
+- DONE (verified): 272 (29%) — 206 HIGH, 59 MED, 4 PARTIAL, 2 MEDIUM, 1 consensus-only
+- INCONCLUSIVE: 43 | DISPUTED: 1 (0141) | UNVERIFIED: 627
+- Batches: B1-B8 + WEBSEARCH (legacy, 66), then B9-B18 (250 items this work)
+- Status of veins: all P1 (Qwen-vs-teacher) done; all `undercount`-flagged computable done;
+  all `backsolve_disagree`-flagged single-slot done. Remaining 627 = verification-only
+  (unflagged, ~0% discrepancy) or competition/OEIS tail (mostly inconclusive).
 
 ## Finding 1 — Qwen's math is right far more often than its strings
 **56% of Batch 8 items (14/25) had Qwen mathematically correct but format-mismatched** against Kaggle's string matcher. The dominant failure is encoding, not arithmetic.

@@ -19,6 +19,7 @@ Important role split:
 
 - `Judger` is for local extraction/diagnostics and public-set style evaluation.
 - `kaggle_like_is_equiv` is the grading-phase helper for Hendrycks-style string equivalence checks against surrogate gold.
+- `math_correct_is_equiv` is the secondary helper for symbolic or math-equivalence checks against surrogate gold when available.
 
 Do not treat the local judger as proof of private-set correctness.
 
@@ -95,12 +96,17 @@ Run the chosen normalizer mode and record:
 
 ### C. Compare against surrogate gold
 
-Use `grading.judger.kaggle_like_is_equiv` for free-form equivalence and exact letter comparison for MCQ.
+Use two grades:
+
+- `grading.judger.kaggle_like_is_equiv` for free-form equivalence and exact letter comparison for MCQ
+- `grading.judger.math_correct_is_equiv` for the secondary math-correct verdict when parseable
 
 Track both:
 
 - raw answer vs surrogate gold
 - normalized answer vs surrogate gold
+- raw math-correct verdict vs surrogate gold
+- normalized math-correct verdict vs surrogate gold
 
 ### D. Bucket the item
 

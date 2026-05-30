@@ -22,7 +22,7 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO_ROOT))
 sys.path.insert(0, str(REPO_ROOT / "postprocessing" / "scripts"))
 
-from grading.judger import kaggle_like_is_equiv  # noqa: E402
+from grading.judger import kaggle_like_is_equiv, math_correct_is_equiv  # noqa: E402
 from normalizer import (  # noqa: E402
     Normalizer,
     load_items,
@@ -165,6 +165,13 @@ def kaggle_like_match(candidate: str, surrogate: str, item_type: str) -> bool:
     return bool(kaggle_like_is_equiv(candidate, surrogate))
 
 
+def math_correct_match(candidate: str, surrogate: str, item_type: str) -> str:
+    verdict = math_correct_is_equiv(candidate, surrogate, item_type=item_type)
+    if verdict is None:
+        return "UNKNOWN"
+    return "TRUE" if verdict else "FALSE"
+
+
 def recommended_action(
     *,
     raw_candidate: str,
@@ -220,6 +227,8 @@ def main() -> int:
         "surrogate_dirty",
         "raw_matches_surrogate",
         "normalized_matches_surrogate",
+        "raw_math_correct",
+        "normalized_math_correct",
         "tracker_best_answer",
         "tracker_flags",
         "tracker_action",
@@ -254,6 +263,8 @@ def main() -> int:
             surrogate_dirty = looks_dirty_answer(surrogate_gold)
             raw_match = kaggle_like_match(raw_candidate, surrogate_gold, item_type)
             normalized_match = kaggle_like_match(normalized_candidate, surrogate_gold, item_type)
+            raw_math_correct = math_correct_match(raw_candidate, surrogate_gold, item_type)
+            normalized_math_correct = math_correct_match(normalized_candidate, surrogate_gold, item_type)
             tracker_flags = tracker_row.get("format_flags", "")
             action = recommended_action(
                 raw_candidate=raw_candidate,
@@ -282,6 +293,8 @@ def main() -> int:
                     "surrogate_dirty": surrogate_dirty,
                     "raw_matches_surrogate": raw_match,
                     "normalized_matches_surrogate": normalized_match,
+                    "raw_math_correct": raw_math_correct,
+                    "normalized_math_correct": normalized_math_correct,
                     "tracker_best_answer": tracker_row.get("best_answer", ""),
                     "tracker_flags": tracker_flags,
                     "tracker_action": tracker_row.get("action", ""),
