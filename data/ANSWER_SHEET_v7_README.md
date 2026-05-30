@@ -5,7 +5,7 @@
 
 ## Files
 - `data/answer_sheet_v7_FINAL.csv` — the master (943 rows, 11 cols). **LFS-tracked** (12 MB).
-- `data/answer_sheet_v7_probe_overlay.csv` — the 74 `ship_class==B` items, with render variants, for the format-probe submission.
+- `data/answer_sheet_v7_probe_overlay.csv` — the 69 `ship_class==B` items, with render variants (render_a/b/c/d), for the format-probe submission.
 
 ## Schema (column definitions)
 | col | meaning |
@@ -34,16 +34,48 @@ anchor_set_FINAL (316) + 4-of-4 teacher bloc (cluster_pattern=='4') + CHATGPT-cu
 ## Distribution stats (943 rows)
 - **math_source_tier:** T1 308 · T2 410 · T3 39 · T4 182 · T5 4
   - (T3 = exact count of n_agree==3 among the 57 Opus items; the other 18 are n_agree==4 → T2.)
-- **format_status:** submission_proven 773 · format_suspect 73 · untested 96 · known_bad 1
-- **ship_class:** A 865 · B 73 · C 5  (C = 0187 quarantine + 4 no-box T5 rescue items)
+- **format_status:** submission_proven 773 · format_suspect 71 · untested 98 · known_bad 1
+- **ship_class:** A 869 · B 69 · C 5  (C = 0187 quarantine + 4 no-box T5 rescue items)
 - **anchor flips: 4** (0120, 0248, 0308, 0836)
+- **probe pool (ship B): 69**  (after Fix 1: 0383/0570→A; Fix 2: 0405/0586→untested/A)
 
 ## How to use for slot 6+ builds
 - **Conservative production sheet:** take `submission_answer` for all `ship_class∈{A}` (and the proven strings of B). This never regresses the 0.713 base and folds in T1/T2/T3 value upgrades.
-- **Format probe submission:** use `answer_sheet_v7_probe_overlay.csv` — submit rebuilt renders for the 74 B items to learn which format Kaggle accepts; only promote a render after it scores.
+- **Format probe submission:** use `answer_sheet_v7_probe_overlay.csv` (69 rows) — a clean A/B of `render_d` (Opus's form) vs `render_b` (anchor's form); only promote a render after it scores.
 - **Math truth** (`math_answer`) is correct on all rows regardless of `submission_answer`; use it for adapter/training targets and downstream analysis.
 
 ## When to override `format_status`
 - After slot 3 (4/4 bloc) Kaggle score lands: if the 4/4-bloc items prove Kaggle-accepted, re-tag those `submission_proven` and promote to ship A.
 - After the format-probe submission lands: for each B item whose rebuilt render scored, set `format_status=submission_proven` and adopt that render as `submission_answer`.
 - General rule: a row only moves toward A once its (math, format) pair has a Kaggle data point; until then keep it conservative.
+
+## format_strategy column — what it actually means
+`format_strategy` records the ACTION applied to derive `submission_answer` from `math_answer`, **not** the question type:
+- `keep_raw` — math_answer was already the last `\boxed{}` in the 0.713 base; no derivation. Used across all qtypes whenever the base already contains the right answer.
+- `append_last_box` — math_answer appended as a new `\boxed{}` at the end (after the existing Qwen response). Used when overriding the base answer.
+- `replace_mcq_box` — MCQ full-replacement with `\boxed{LETTER}`.
+- `single_box_multislot` — free_multi rendered as one `\boxed{a, b, c}`.
+- `fraction_render` / `decimal_render` / `symbolic_render` — reserved for probe-overlay use (not used in v7_FINAL.csv).
+
+To check the underlying qtype of a row, use `master_item_tracker.csv['is_mcq']` and comma presence in `math_answer`.
+
+## Probe overlay (ship_class==B) — membership criteria (69 rows)
+A row is in the format-probe overlay iff:
+- `opus_verdict == 'contradict'` (anchor↔Opus disagreement), AND
+- `anchor_source ∈ {wolfram_only, web_search_only}`, AND
+- NOT in {0120, 0248, 0308, 0836} (Opus flips — math resolved), AND
+- NOT in {0383, 0570} (CHATGPT secondary: content-uncertain → ship A), AND
+- NOT in {0405, 0586} (CHATGPT secondary: anchor confirmed → untested/A), AND
+- NOT 0187 (quarantined).
+
+Result: 69 rows where math is reasonably trusted but anchor's format may not be Kaggle-friendly.
+
+## Probe overlay render scheme (69 rows)
+Pool composition: 55 multi-part (comma-separated) · 43 contain letters/text/variables · 27 fully numeric · 2 with `\frac`. Because the pool is dominated by multi-part symbolic/text answers (one sensible representation each), a forced fraction-vs-decimal-vs-symbolic triple doesn't exist for most rows. Render columns:
+- `render_a_kaggle_friendly` — de-LaTeX'd version where LaTeX exists; else = `render_b` (differs on **3** rows here).
+- `render_b_exact_symbolic` — current anchor form (= `math_answer`).
+- `render_c_decimal` — decimal evaluation; populated only for fully-numeric items (**27** of 69).
+- `render_d_opus_alternative` — Opus's contradiction value; **differs from `render_b` on all 69** by definition of the pool.
+- `preferred_render_current` — = `render_b` (anchor format is what we currently ship).
+
+This makes the probe a clean **A/B: `render_d` (Opus form) vs `render_b` (anchor form)** on all 69 items — submitting `render_d` on all 69 directly compares Opus's rendering of the same math against anchor's.

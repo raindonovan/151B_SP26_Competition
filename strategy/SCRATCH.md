@@ -409,3 +409,11 @@ Patched `scripts/build_answer_sheet_v7.py`: ANCHOR_FLIPS now 4 (added 0836→"15
 **Surgical diff vs e10573c:** exactly 5 rows changed — 0836 (full flip) + 0383/0405/0570/0586 (notes only); other 938 byte-identical.
 **Updated distribution:** format_suspect 74→**73**, untested 95→**96**, ship B 74→**73** / A 864→**865** (0836 left the probe pool — it's now a confirmed flip, not suspect). Tier unchanged (0836 was already T1 anchor-A). C still 5.
 **Acceptance:** P1-P4 + all original A1-A9 PASS (asserts in builder). Probe pool now 73.
+
+---
+## claude_vscode signoff — 2026-05-30 — v7 YELLOW fixes (F1-F4)
+Applied CHATGPT YELLOW fixes: F1 0383/0570 → ship A (content-uncertain, kept format_suspect); F2 0405/0586 → untested/ship A (anchor confirmed, CONFIRMED notes); F3 real render variants; F4 **revised per my proposal (strategy-approved)** — render_d repointed to the Opus contradiction value (`anchor_v2.opus_answer`), making the probe a clean A/B (Opus form vs anchor form); F4 README + count fixes.
+**Original F4 (≥50 render_a≠b≠c) was unachievable** — pool is 55/69 multi-part, 43/69 contain letters/vars, only 2 have \frac → no clean 3-way numeric triple. Surfaced; strategy approved the render_d=opus redesign.
+**F4-revised metrics (all met):** render_d≠render_b **69/69** · render_c populated **27** · render_a≠render_b **3** (≥2) · sympy parse-fail 0%.
+**v7_FINAL diff vs 33a39b9:** exactly 4 rows (0383/0570 ship_class; 0405/0586 format_status+ship_class); other 939 byte-identical. Distribution: format_suspect **71** · ship A **869** / B **69** / C 5. All A1-A9 + P1-P6 still PASS.
+**For strategy:** answer sheet ready to LOCK. Probe submission = render_d on the 69 → measures Opus-format vs anchor-format directly.

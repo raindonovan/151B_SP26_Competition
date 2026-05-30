@@ -45,6 +45,8 @@ REVIEW_NOTES = {
     "0405": "CHATGPT secondary review CONFIRMED anchor via DP recomputation of generating function",
     "0586": "CHATGPT secondary review CONFIRMED anchor via direct cubic regression",
 }
+SECONDARY_CONFIRMED = {"0405", "0586"}   # Fix 2: anchor confirmed → format_status untested, ship A (out of probe)
+CONTENT_UNCERTAIN = {"0383", "0570"}     # Fix 1: content-uncertain → keep format_suspect but ship A (out of probe)
 CONTRADICTION_CATEGORY_OVERRIDES = {
     "0167":"FORMAT_ARTIFACT","0448":"FORMAT_ARTIFACT","0713":"FORMAT_ARTIFACT",
     "0382":"PRECISION_DIFF","0187":"INCOMPARABLE",
@@ -153,6 +155,8 @@ def main():
             fstatus = "submission_proven"
         else:
             fstatus = "untested"
+        if i in SECONDARY_CONFIRMED:   # Fix 2: secondary review confirmed anchor → out of probe pool
+            fstatus = "untested"
 
         # ---- Step 3: submission_answer + format_strategy (DECISION 1: B-ship — never regress proven strings) ----
         def rebuild(math_v):
@@ -174,7 +178,7 @@ def main():
 
         # ---- Step 4: ship_class (format_suspect → B regardless) ----
         if fstatus == "known_bad": ship = "C"
-        elif fstatus == "format_suspect": ship = "B"
+        elif fstatus == "format_suspect": ship = "A" if i in CONTENT_UNCERTAIN else "B"  # Fix 1: content-uncertain → A
         elif fstatus == "submission_proven": ship = "A"
         elif tier in ("T1","T2") and fstatus == "untested": ship = "A"
         elif tier == "T3": ship = "A"
@@ -191,26 +195,91 @@ def main():
     with open(out,"w",newline="") as f:
         w = csv.DictWriter(f, fieldnames=cols); w.writeheader(); w.writerows(rows)
 
-    # probe overlay (ship_class==B)
-    bset = [r for r in rows if r["ship_class"]=="B"]
-    def bucket(r):
-        qt = qtype(r["id"])
-        if qt=="MCQ": return "mcq_letter_vs_word"
-        if qt=="free_multi": return "multislot_spacing"
-        if "frac" in r["math_answer"] or "." in r["math_answer"]: return "fraction_vs_decimal"
-        if any(s in r["math_answer"] for s in ["\\sqrt","\\pi","^"]): return "symbolic_vs_numeric"
+    # ---- probe overlay (Fix 3: real render variants) ----
+    import re as _re
+    from sympy import sympify, N
+    try:
+        from sympy.parsing.latex import parse_latex
+    except Exception:
+        parse_latex = None
+
+    def ascii_plain(s):
+        """render_a — Kaggle-friendly plain notation: de-LaTeX \\frac/\\dfrac/\\sqrt/\\pi, strip braces/$."""
+        s = (s or "").strip()
+        s = s.replace("\\dfrac", "\\frac").replace("\\tfrac", "\\frac")
+        s = _re.sub(r"\\d?frac\{([^{}]*)\}\{([^{}]*)\}", r"(\1)/(\2)", s)
+        s = _re.sub(r"\\sqrt\{([^{}]*)\}", r"sqrt(\1)", s)
+        s = _re.sub(r"\\sqrt(\w)", r"sqrt(\1)", s)
+        s = s.replace("\\pi", "pi").replace("\\cdot", "*").replace("\\left", "").replace("\\right", "")
+        s = s.replace("$", "").replace("\\,", "").replace("\\ ", " ")
+        return _re.sub(r"\s+", " ", s).strip()
+
+    def to_decimal_one(part):
+        part = (part or "").strip()
+        if not part:
+            return None
+        try:
+            v = float(part)
+            return f"{v:.6g}"
+        except ValueError:
+            pass
+        if parse_latex is None:
+            return None
+        try:
+            expr = sympify(parse_latex(part))
+            if expr.free_symbols:   # has variables → not a pure decimal
+                return None
+            return f"{float(N(expr)):.6g}"
+        except Exception:
+            return None
+
+    def to_decimal(s):
+        """render_c — decimal eval; multi-part comma; blank if any part non-numeric."""
+        parts = [p.strip() for p in str(s).split(",")]
+        outp = [to_decimal_one(p) for p in parts]
+        if any(o is None for o in outp):
+            return ""   # not fully numeric
+        return ", ".join(outp)
+
+    def teacher_literal(i):
+        if i in anchor: return anchor[i].get("answer", "")
+        if i in four_bloc: return tans["sonnet"].get(i, {}).get("answer", "")
+        if i in opus5: return opus5[i].get("opus_answer", "")
+        return ""
+
+    def bucket(i, m):
+        qt = qtype(i)
+        if qt == "MCQ": return "mcq_letter_vs_word"
+        if qt == "free_multi": return "multislot_spacing"
+        if "frac" in m or "." in m: return "fraction_vs_decimal"
+        if any(s in m for s in ["\\sqrt", "\\pi", "^"]): return "symbolic_vs_numeric"
         return "unit_in_string"
+
+    bset = [r for r in rows if r["ship_class"] == "B"]
     pcols = ["id","math_answer_canonical","render_a_kaggle_friendly","render_b_exact_symbolic",
-             "render_c_decimal","render_d_teacher_literal","preferred_render_current",
+             "render_c_decimal","render_d_opus_alternative","preferred_render_current",
              "format_risk","content_risk","probe_bucket"]
+    parse_fail = 0; rd_ne_rb = 0; rc_pop = 0; ra_ne_rb = 0
     with open(REPO/"data/answer_sheet_v7_probe_overlay.csv","w",newline="") as f:
         w = csv.DictWriter(f, fieldnames=pcols); w.writeheader()
         for r in bset:
-            m = r["math_answer"]
-            w.writerow({"id":r["id"],"math_answer_canonical":m,"render_a_kaggle_friendly":m,
-                        "render_b_exact_symbolic":m,"render_c_decimal":"","render_d_teacher_literal":m,
+            i = r["id"]; m = r["math_answer"]
+            ra = ascii_plain(m)
+            rb = m
+            rc = to_decimal(m)
+            rd = av2.get(i, {}).get("opus_answer", "")   # Opus contradiction value (genuine alternative)
+            is_numeric_item = (qtype(i) != "MCQ")
+            if is_numeric_item and not rc and ("," not in m) and not _re.search(r"[A-Za-z]", m):
+                parse_fail += 1   # looked numeric but failed to evaluate
+            if rd and rd != rb: rd_ne_rb += 1
+            if rc: rc_pop += 1
+            if ra != rb: ra_ne_rb += 1
+            w.writerow({"id":i,"math_answer_canonical":m,"render_a_kaggle_friendly":ra,
+                        "render_b_exact_symbolic":rb,"render_c_decimal":rc,"render_d_opus_alternative":rd,
                         "preferred_render_current":m,"format_risk":"high","content_risk":"low",
-                        "probe_bucket":bucket(r)})
+                        "probe_bucket":bucket(i,m)})
+    print(f"F4(revised) probe={len(bset)}: render_d!=render_b {rd_ne_rb}/69 (target 69) | render_c populated {rc_pop} (~27) | render_a!=render_b {ra_ne_rb} (>=2)")
+    print(f"probe sympy parse-fail on numeric-looking: {parse_fail}/{len(bset)} ({100*parse_fail/max(1,len(bset)):.0f}%)")
 
     # stats
     tdist = Counter(r["math_source_tier"] for r in rows)
