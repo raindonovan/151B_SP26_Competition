@@ -1,0 +1,317 @@
+id,answer,category,tier,source,audit_action,wolfram_value_quarantined,source_quality,promotion_class
+0002,"-1.461, 1.645, A",FREE,A,wolfram_only,pass,,strong,clean_value
+0004,"-7/sqrt(149), 10/sqrt(149), -7/10",FREE,A,wolfram_only,pass,,strong,clean_value
+0005,"541.3, 63.25, 135.325, 4.2167, 32.09",FREE,A,wolfram_only,pass,,strong,clean_value
+0007,448/3,FREE,A,web_search_only,pass,,strong,clean_value_numeric
+0009,"L-8x, 6F",FREE,A,wolfram_only,pass,,strong,clean_value
+0012,"2c + 4p = 70, 11",FREE,A,wolfram_only,pass,,strong,clean_value
+0014,ln(35)/ln(3),FREE,A,wolfram_only,pass,,strong,clean_value
+0015,"8, NONE",FREE,A,wolfram_only,pass,,strong,clean_value
+0017,C,MCQ,A+,wolfram+web_search,pass,,strong,mcq_letter_mapped_numeric
+0019,E,MCQ,A,wolfram_only,pass,,strong,mcq_letter_mapped_numeric
+0024,1,FREE,A,wolfram_only,pass,,strong,clean_value
+0029,38.2,FREE,A,wolfram_only,pass,,strong,clean_value
+0030,"2944, 664",FREE,A,wolfram_only,pass,,strong,clean_value
+0032,"sqrt(101), -1, -7/2",FREE,A,wolfram_only,pass,,strong,clean_value
+0033,F,MCQ,A,web_search_only,pass,,strong,mcq_exact_option_match
+0035,"down, ln(p)",FREE,A,wolfram_only,pass,,strong,clean_value
+0041,2112,FREE,A+,wolfram+web_search,pass,,strong,clean_value
+0042,"No, Yes, A",FREE,A,wolfram_only,pass,,strong,clean_value
+0043,"3/8, 14, 28",FREE,A,wolfram_only,pass,,strong,clean_value
+0044,"True, True, True, False",FREE,A,wolfram_only,pass,,strong,clean_value
+0049,0.0143,FREE,A,wolfram_only,pass,,strong,clean_value
+0050,"140A+150B=5930, 3A+4B=142",FREE,A,wolfram_only,pass,,strong,clean_value
+0054,1,FREE,A,wolfram_only,pass,,strong,clean_value
+0055,5x^4,FREE,A,wolfram_only,pass,,strong,clean_value
+0056,"D, D, A",FREE,A,wolfram_only,pass,,strong,clean_value
+0063,"15.84, 18.96",FREE,A,wolfram_only,pass,,strong,clean_value
+0067,"7.6(1.09)^t, 13.9, 5.4",FREE,A,wolfram_only,pass,,strong,clean_value
+0072,"-0.8352, -0.9187, 0.3950, -2.3258, Quadrant IV",FREE,A,wolfram_only,pass,,strong,clean_value
+0074,"12.36, 25.04",FREE,A,wolfram_only,pass,,strong,clean_value
+0075,x > 21250,FREE,A,wolfram_only,pass,,strong,clean_value
+0088,C,MCQ,A,wolfram_only,pass,,strong,clean_letter
+0089,\frac{326}{7},FREE,A,wolfram_only,pass,,strong,clean_value
+0097,"0, 4, 4",free_multi,A+,wolfram+web_search,cosmetic_equal_promoted_to_a_plus,,weak,clean_value
+0099,"-6, 12, -6",FREE,A,wolfram_only,pass,,strong,clean_value
+0100,\frac{180}{7},FREE,A,wolfram_only,pass,,strong,clean_value
+0101,"C, C, A, C",FREE,A,wolfram_only,pass,,strong,clean_value
+0103,8\sqrt{2},FREE,A,wolfram_only,pass,,strong,clean_value
+0104,2387*pi/1800,FREE,A,wolfram_only,pass,,strong,clean_value
+0105,"24, 9.114",FREE,A,wolfram_only,pass,,strong,clean_value
+0106,\frac{13}{6},FREE,A,wolfram_only,pass,,strong,clean_value
+0108,"72, 12x",FREE,A,wolfram_only,pass,,strong,clean_value
+0110,"3, 9",FREE,A,wolfram_only,pass,,strong,clean_value
+0111,8x^3,FREE,A,wolfram_only,pass,,strong,clean_value
+0113,(-2x^2-16x-7)/25,FREE,A,wolfram_only,pass,,strong,clean_value
+0117,B,MCQ,A,wolfram_only,pass,,strong,clean_letter
+0118,\frac{18}{5},FREE,A,wolfram_only,pass,,strong,clean_value
+0119,"A, C, B, D",FREE,A,wolfram_only,pass,,strong,clean_value
+0120,8,FREE,A,wolfram_only,pass,,strong,clean_value
+0124,H,MCQ,A,wolfram_only,pass,,strong,clean_letter
+0125,G,MCQ,A+,wolfram+web_search,pass,,strong,clean_letter
+0128,(y-3)/(y+3),FREE,A,wolfram_only,pass,,strong,clean_value
+0129,"5/sin(t), sqrt(7), -3cos(t), 2sqrt(2)tan(t)",FREE,A,wolfram_only,pass,,strong,clean_value
+0130,r^42,FREE,A,wolfram_only,pass,,strong,clean_value
+0131,0.1084,FREE,A,wolfram_only,pass,,strong,clean_value
+0133,"-0.8660, 0.5000, -1.732, 2.000",FREE,A,wolfram_only,pass,,strong,clean_value
+0134,"1, 5, 12, 20, 26, 30, 31, 27.63",FREE,A,wolfram_only,pass,,strong,clean_value
+0135,3/5,FREE,A,wolfram_only,pass,,strong,clean_value
+0152,J,MCQ,A,wolfram_only,pass,,strong,clean_letter
+0154,18.75,FREE,A,wolfram_only,pass,,strong,clean_value
+0157,"50sin(0.1t)-7cos(0.1t), 46.31",FREE,A,wolfram_only,pass,,strong,clean_value
+0158,"A, C",FREE,A,wolfram_only,pass,,strong,clean_value
+0163,"9, -5, 4",FREE,A,wolfram_only,pass,,strong,clean_value
+0164,G,MCQ,A,wolfram_only,pass,,strong,clean_letter
+0166,175*(1/4)^n,FREE,A,wolfram_only,pass,,strong,clean_value
+0167,"Negative, Negative, Positive, Negative",FREE,A,wolfram_only,pass,,strong,clean_value
+0171,20,FREE,A,wolfram_only,pass,,strong,clean_value
+0172,1320/3721,FREE,A,wolfram_only,pass,,strong,clean_value
+0175,I,MCQ,A,web_search_only,pass,,strong,mcq_exact_option_match
+0176,(p-6k-m)/8,FREE,A,wolfram_only,pass,,strong,clean_value
+0178,C,MCQ,A,wolfram_only,pass,,strong,mcq_letter_mapped_numeric
+0179,"29,3,21,1,21,4,19,4,23,3",FREE,A,wolfram_only,pass,,strong,clean_value
+0180,(1/2)m - 7/2,FREE,A,wolfram_only,pass,,strong,clean_value
+0181,A,MCQ,A,wolfram_only,pass,,strong,clean_letter
+0182,E,MCQ,A,web_search_only,pass,,strong,mcq_exact_option_match
+0184,A,MCQ,A,web_search_only,pass,,strong,clean_letter
+0185,"T, F, T, F, T",FREE,A,wolfram_only,pass,,strong,clean_value
+0187,"0.0281,0.0067,0.3825,0.4512,22,18,2,35,30",FREE,A,wolfram_only,pass,,strong,clean_value
+0189,850a + 1200r = 35000,FREE,A,wolfram_only,pass,,strong,clean_value
+0194,"600.0, July, 1908, 890.0, March, 1907",FREE,A,wolfram_only,pass,,strong,clean_value
+0195,"-2.445, -0.7553",FREE,A,wolfram_only,pass,,strong,clean_value
+0201,(5t+8)^2,FREE,A,wolfram_only,pass,,strong,clean_value
+0204,E,MCQ,A,web_search_only,pass,,strong,clean_letter
+0206,4,FREE,A,wolfram_only,pass,,strong,clean_value
+0208,"16.2, 720/(49*pi)",FREE,A,wolfram_only,pass,,strong,clean_value
+0210,"-(49sqrt3+16sqrt33)/15, 2x/(x^2+1)",FREE,A,wolfram_only,pass,,strong,clean_value
+0211,I,MCQ,A,wolfram_only,pass,,strong,mcq_letter_mapped_numeric
+0214,"11, F, 10, T",FREE,A,wolfram_only,pass,,strong,clean_value
+0216,60,FREE,A,wolfram_only,pass,,strong,clean_value
+0218,\arcsin\!(\frac{7}{10}),FREE,A,wolfram_only,pass,,strong,clean_value
+0222,C,MCQ,A,web_search_only,pass,,strong,clean_letter
+0224,2643,FREE,A,wolfram_only,pass,,strong,clean_value
+0225,"0.6254, 4, 2.776, A",FREE,A,wolfram_only,pass,,strong,clean_value
+0227,"A, C",FREE,A,wolfram_only,pass,,strong,clean_value
+0230,-2.424,FREE,A,wolfram_only,pass,,strong,clean_value
+0231,y=0.5161x+4.742,FREE,A,wolfram_only,pass,,strong,clean_value
+0234,29x^7 + 6x^5,FREE,A,wolfram_only,pass,,strong,clean_value
+0240,"12, 4.9, 3.3",FREE,A,wolfram_only,pass,,strong,clean_value
+0243,"0.8925, 0.2150",FREE,A,wolfram_only,pass,,strong,clean_value
+0247,"\frac{2409}{65}, \frac{2474}{1+\frac{2409}{65}e^{-0.53t}}, 2473.84",FREE,A,wolfram_only,pass,,strong,clean_value
+0248,180,FREE,A,wolfram_only,pass,,strong,clean_value
+0252,C,MCQ,A,web_search_only,recovered_from_residual_inline_option_mcq,,strong,clean_letter_recovered
+0253,E,MCQ,A,wolfram_only,pass,,strong,clean_letter
+0255,A,MCQ,A,web_search_only,pass,,strong,mcq_exact_option_match
+0263,E,MCQ,A+,wolfram+web_search,pass,,weak,mcq_letter_mapped_numeric
+0264,256*pi*t^2,FREE,A,wolfram_only,pass,,strong,clean_value
+0266,G,MCQ,A,web_search_only,pass,,strong,mcq_exact_option_match
+0269,"1.789, 0.3198, B",FREE,A,wolfram_only,pass,,strong,clean_value
+0273,"-cos^2(x), 1, 2cos^2(x)",FREE,A,wolfram_only,pass,,strong,clean_value
+0274,G,MCQ,A+,wolfram+web_search,pass,,strong,clean_letter
+0277,38800,FREE,A,wolfram_only,pass,,strong,clean_value
+0281,"-0.4618, 0.8870, -0.5206, -2.1655",FREE,A,wolfram_only,pass,,strong,clean_value
+0282,"e^2, -e^2",FREE,A,wolfram_only,pass,,strong,clean_value
+0285,735,FREE,A,web_search_only,wolfram_quarantine_replaced_with_web_search,147,strong,clean_value_numeric
+0289,"4, 9",FREE,A,wolfram_only,pass,,strong,clean_value
+0292,-2 - sqrt(3),FREE,A,wolfram_only,pass,,strong,clean_value
+0296,"45, 180, 270",FREE,A,wolfram_only,pass,,strong,clean_value
+0299,"18805.7, no",FREE,A,wolfram_only,pass,,strong,clean_value
+0301,"0.878, 57.2",FREE,A,wolfram_only,pass,,strong,clean_value
+0305,B,MCQ,A,web_search_only,pass,,strong,mcq_exact_option_match
+0308,12,FREE,A,wolfram_only,pass,,strong,clean_value
+0312,171,FREE,A,web_search_only,pass,,strong,clean_value_numeric
+0313,-2*sqrt(14)/15,FREE,A,wolfram_only,pass,,strong,clean_value
+0315,"B, B, A",FREE,A,wolfram_only,pass,,strong,clean_value
+0322,"40, 25, 1000",FREE,A,wolfram_only,pass,,strong,clean_value
+0323,"[10,12), [-8,-6), [10,18), [-16,-6)",FREE,A,wolfram_only,pass,,strong,clean_value
+0324,H,MCQ,A,web_search_only,pass,,strong,mcq_exact_option_match
+0325,"[0,280], [0,14]",FREE,A,wolfram_only,pass,,strong,clean_value
+0329,J,MCQ,A,web_search_only,pass,,strong,mcq_exact_option_match
+0330,"26.76, 2614",FREE,A,wolfram_only,pass,,strong,clean_value
+0339,G,MCQ,A,wolfram_only,pass,,strong,clean_letter
+0343,"D, A, C, B, E",FREE,A,wolfram_only,pass,,strong,clean_value
+0345,"-5/6, 5/6",FREE,A,wolfram_only,pass,,strong,clean_value
+0351,A,MCQ,A,wolfram_only,pass,,strong,mcq_letter_mapped_numeric
+0362,(6x-5y)(6x+5y),FREE,A,wolfram_only,pass,,strong,clean_value
+0367,"60.3, 46.3, 53.3",FREE,A,wolfram_only,pass,,strong,clean_value
+0369,"3/4, 5, 2",FREE,A,wolfram_only,pass,,strong,clean_value
+0370,"-5, 10",FREE,A,wolfram_only,pass,,strong,clean_value
+0372,0.51,FREE,A,wolfram_only,pass,,strong,clean_value
+0373,"51.13, 56.71",FREE,A,wolfram_only,pass,,strong,clean_value
+0376,All positive integers n such that v_p(n) != 1 for all primes p = 3 (mod 4),FREE,A,web_search_only,pass,,strong,clean_value_other
+0378,"0.0001420,0.00002206,0.0001199,0.1554,15.54",FREE,A,wolfram_only,pass,,strong,clean_value
+0381,2040,FREE,A,wolfram_only,pass,,strong,clean_value
+0382,"187/18, 55/9",FREE,A,wolfram_only,pass,,strong,clean_value
+0383,80,FREE,A,wolfram_only,pass,,strong,clean_value
+0384,(ln(11/32)-3)/5,FREE,A,wolfram_only,pass,,strong,clean_value
+0385,"A, A, A",FREE,A,wolfram_only,pass,,strong,clean_value
+0393,"(1/10)arccos((x-6)/16), -10, 22",FREE,A,wolfram_only,pass,,strong,clean_value
+0395,"\frac{85}{3}, -\frac{95}{4}, -\frac{10}{7}",FREE,A,wolfram_only,pass,,strong,clean_value
+0397,"256*pi, 2048*pi/3",FREE,A,wolfram_only,pass,,strong,clean_value
+0401,"143.2, 240.0, 52.52, -135.0",FREE,A,wolfram_only,pass,,strong,clean_value
+0404,52,FREE,A,wolfram_only,pass,,strong,clean_value
+0405,H,MCQ,A,web_search_only,pass,,strong,mcq_exact_option_match
+0408,"5816/9999, 3017/99990, 574/999, 653/9990, 428/999",FREE,A,wolfram_only,pass,,strong,clean_value
+0411,392*pi/45,FREE,A,wolfram_only,pass,,strong,clean_value
+0412,(4*sqrt(78)-35)/72,FREE,A,wolfram_only,pass,,strong,clean_value
+0413,"0.89, (1.83, infty), 0.2008, A",FREE,A,wolfram_only,pass,,strong,clean_value
+0415,"sqrt(A/6), A, (A/6)^(3/2), A",FREE,A,wolfram_only,pass,,strong,clean_value
+0417,"1.006, 0.9676, 28, 29.10, 1.039",FREE,A,wolfram_only,pass,,strong,clean_value
+0418,"2.958, 1.751, 0.001530, B",FREE,A,wolfram_only,pass,,strong,clean_value
+0421,"-9*sqrt(5)/20, -sqrt(5)/20",FREE,A,wolfram_only,pass,,strong,clean_value
+0427,E,MCQ,A,wolfram_only,pass,,strong,clean_letter
+0430,E,MCQ,A,wolfram_only,pass,,strong,mcq_letter_mapped_numeric
+0432,"1.202, 2.129, 4.344, 5.271",FREE,A,wolfram_only,pass,,strong,clean_value
+0440,G,MCQ,A+,wolfram+web_search,pass,,strong,mcq_letter_mapped_numeric
+0447,x <= 4,FREE,A,wolfram_only,pass,,strong,clean_value
+0448,"x^3-4x^2-6x+30, x^2-9x+20",FREE,A,wolfram_only,pass,,strong,clean_value
+0451,"0.1290,0.1935,0.2097,14,0.1774,0.06452",FREE,A,wolfram_only,pass,,strong,clean_value
+0452,42,FREE,A,wolfram_only,pass,,strong,clean_value
+0454,"1.5, 0.9375",FREE,A,wolfram_only,pass,,strong,clean_value
+0456,"-7.740, A, B",FREE,A,wolfram_only,pass,,strong,clean_value
+0465,H,MCQ,A,wolfram_only,pass,,strong,mcq_letter_mapped_numeric
+0466,26.88,FREE,A,wolfram_only,pass,,strong,clean_value
+0467,"0.02667w+0.03333, 100<=w<=220, 0<=C<=6, 4.967",FREE,A,wolfram_only,pass,,strong,clean_value
+0473,"[-7, -3]",FREE,A,wolfram_only,pass,,strong,clean_value
+0474,C,MCQ,A,web_search_only,pass,,strong,mcq_exact_option_match
+0479,"40.36, 43.64, 40.01, 43.99",FREE,A,wolfram_only,pass,,strong,clean_value
+0487,"-21.1, -0.9636",FREE,A,wolfram_only,pass,,strong,clean_value
+0492,"A, A",FREE,A,wolfram_only,pass,,strong,clean_value
+0493,"14.67, B, 0.06866, 0.1083",FREE,A,wolfram_only,pass,,strong,clean_value
+0495,"100, 100, 200, 0.255, 5.991, B",FREE,A,wolfram_only,pass,,strong,clean_value
+0496,9.594^\circ,FREE,A,wolfram_only,pass,,strong,clean_value
+0497,"1.111, 88.81, 88.81, 0.9004",FREE,A,wolfram_only,pass,,strong,clean_value
+0499,"36.9, 0.3225, 32.25, 2.149",FREE,A,wolfram_only,pass,,strong,clean_value
+0502,8/11,FREE,A,wolfram_only,pass,,strong,clean_value
+0504,"-3/2, -3*sqrt(3)/2",FREE,A,wolfram_only,pass,,strong,clean_value
+0506,J,MCQ,A,wolfram_only,pass,,strong,clean_letter
+0508,n(n-1)/2,FREE,A,wolfram_only,pass,,strong,clean_value
+0512,64p^2 + 64p + 16,FREE,A,wolfram_only,pass,,strong,clean_value
+0513,"-1.405, 1.405, 1.751",FREE,A,wolfram_only,pass,,strong,clean_value
+0518,E,MCQ,A,web_search_only,pass,,strong,mcq_exact_option_match
+0519,"426.3, 5090, 98.30",FREE,A,wolfram_only,pass,,strong,clean_value
+0522,"-0.472, 0.472",FREE,A,wolfram_only,pass,,strong,clean_value
+0526,128x^4 + 16x^2 + 4,FREE,A,wolfram_only,pass,,strong,clean_value
+0535,"-4, -6",FREE,A,wolfram_only,pass,,strong,clean_value
+0545,400000,FREE,A,wolfram_only,pass,,strong,clean_value
+0548,"1.20x = 144, $120.00",FREE,A,wolfram_only,pass,,strong,clean_value
+0549,J,MCQ,A,web_search_only,pass,,strong,mcq_exact_option_match
+0551,sqrt(28),FREE,A,wolfram_only,pass,,strong,clean_value
+0552,"33150, 36300",FREE,A,wolfram_only,pass,,strong,clean_value
+0555,"1.109, 0.1336",FREE,A,wolfram_only,pass,,strong,clean_value
+0557,5,FREE,A,wolfram_only,pass,,strong,clean_value
+0558,f(x)=(13/2)x-25,FREE,A,wolfram_only,pass,,strong,clean_value
+0570,H,MCQ,A,web_search_only,pass,,strong,clean_letter
+0578,"7.62, 9.00, 95.44",FREE,A,wolfram_only,pass,,strong,clean_value
+0580,D,MCQ,A,wolfram_only,pass,,strong,mcq_letter_mapped_numeric
+0582,1035,FREE,A,wolfram_only,pass,,strong,clean_value
+0584,"7z, 6w",FREE,A,wolfram_only,pass,,strong,clean_value
+0586,"1.899, -0.9423, 0.1109, -0.02966",FREE,A,wolfram_only,pass,,strong,clean_value
+0591,"1.081, 1.683, 1.819, -0.832, 3.162, -0.322, 4.123, 1.326",FREE,A,wolfram_only,pass,,strong,clean_value
+0593,19.4,FREE,A,wolfram_only,pass,,strong,clean_value
+0596,G,MCQ,A,web_search_only,pass,,strong,mcq_exact_option_match
+0602,"-70.8, 0.719, 53.6",FREE,A,wolfram_only,pass,,strong,clean_value
+0606,E,MCQ,A,wolfram_only,pass,,strong,mcq_letter_mapped_numeric
+0607,"0, 0, 4, 0, 0, 14, 6, 6, 20, -6, -6, 0, -4, -4, 10, -4, -4, -12",FREE,A,wolfram_only,pass,,strong,clean_value
+0611,1.356,FREE,A,wolfram_only,pass,,strong,clean_value
+0615,"14, 9",FREE,A,wolfram_only,pass,,strong,clean_value
+0619,"-3.226, 0.001230, A",FREE,A,wolfram_only,pass,,strong,clean_value
+0625,5(x+2)(x+3),FREE,A,wolfram_only,pass,,strong,clean_value
+0627,1090,FREE,A,wolfram_only,pass,,strong,clean_value
+0635,"37.60, 0.7460, -25.40",FREE,A,wolfram_only,pass,,strong,clean_value
+0638,"0.15, (-infty, -1.75)U(1.75, infty), 0.88, D",FREE,A,wolfram_only,pass,,strong,clean_value
+0639,3.325,FREE,A,wolfram_only,pass,,strong,clean_value
+0642,"6, pi/3, 13",FREE,A,wolfram_only,pass,,strong,clean_value
+0644,A,MCQ,A,web_search_only,pass,,strong,mcq_exact_option_match
+0647,J,MCQ,A,web_search_only,pass,,strong,mcq_exact_option_match
+0648,"11.51 + 0.83x, 30.60",FREE,A,wolfram_only,pass,,strong,clean_value
+0653,"(600-45t)/7, 85.71, 47.14",FREE,A,wolfram_only,pass,,strong,clean_value
+0654,"sqrt(19), 2, 2, 2",FREE,A,wolfram_only,pass,,strong,clean_value
+0655,S = 0.85*L,FREE,A,wolfram_only,pass,,strong,clean_value
+0656,6x^2 - 23x + 15,FREE,A,wolfram_only,pass,,strong,clean_value
+0663,F,MCQ,A,web_search_only,pass,,strong,mcq_exact_option_match
+0668,G,MCQ,A,web_search_only,pass,,strong,mcq_exact_option_match
+0674,8x + 7,FREE,A,wolfram_only,pass,,strong,clean_value
+0675,B,MCQ,A,web_search_only,pass,,strong,mcq_exact_option_match
+0676,"D, A, A",FREE,A,wolfram_only,pass,,strong,clean_value
+0678,13960,FREE,A,wolfram_only,pass,,strong,clean_value
+0679,11,FREE,A,wolfram_only,pass,,strong,clean_value
+0680,"0.035, 0.0525, 0.0775, A",FREE,A,wolfram_only,pass,,strong,clean_value
+0684,-1.55,FREE,A,wolfram_only,pass,,strong,clean_value
+0687,24500,FREE,A,wolfram_only,pass,,strong,clean_value
+0692,1.24,FREE,A,wolfram_only,pass,,strong,clean_value
+0696,"x+8, -81",FREE,A,wolfram_only,pass,,strong,clean_value
+0702,-u^4 - 4u^3 + 3u^2 - 6u - 8,FREE,A,wolfram_only,pass,,strong,clean_value
+0704,"3.652, 1.645, B",FREE,A,wolfram_only,pass,,strong,clean_value
+0709,E,MCQ,A,web_search_only,pass,,strong,mcq_exact_option_match
+0710,"1.838, 4.729",FREE,A,wolfram_only,pass,,strong,clean_value
+0711,D,MCQ,A,web_search_only,pass,,strong,mcq_exact_option_match
+0713,"-3, not real",FREE,A,wolfram_only,pass,,strong,clean_value
+0716,19/33,FREE,A,wolfram_only,pass,,strong,clean_value
+0719,E,MCQ,A,web_search_only,pass,,strong,mcq_exact_option_match
+0723,"-sqrt(3)/2, -sqrt(2)/2",FREE,A,wolfram_only,pass,,strong,clean_value
+0725,"41.30, 13.28, A",FREE,A,wolfram_only,pass,,strong,clean_value
+0732,H,MCQ,A,wolfram_only,pass,,strong,mcq_letter_mapped_numeric
+0739,Q/(1-Z),FREE,A,wolfram_only,pass,,strong,clean_value
+0740,5184/(81cos^2 t - 64 sin^2 t),FREE,A,wolfram_only,pass,,strong,clean_value
+0748,"222.51, 186.49, 79.43, 66.57, 50.05, 41.95, 31.01, 25.99, 20.79, 3, 11.345, B",FREE,A,wolfram_only,pass,,strong,clean_value
+0754,60x^2 + 65x,FREE,A,wolfram_only,pass,,strong,clean_value
+0762,2x(55x+21),FREE,A,wolfram_only,pass,,strong,clean_value
+0764,(a+b)(a-b)^4/c^5,FREE,A,wolfram_only,pass,,strong,clean_value
+0769,1620,FREE,A,wolfram_only,pass,,strong,clean_value
+0771,2,FREE,A,wolfram_only,pass,,strong,clean_value
+0772,H,MCQ,A,web_search_only,pass,,strong,mcq_exact_option_match
+0774,"24, 28, 33, 39, 42",FREE,A,wolfram_only,pass,,strong,clean_value
+0775,6sin(x-7)-6,FREE,A,wolfram_only,pass,,strong,clean_value
+0777,8,FREE,A,wolfram_only,pass,,strong,clean_value
+0778,I,MCQ,A,web_search_only,pass,,weak,mcq_exact_option_match
+0781,sqrt(15)/8,FREE,A,wolfram_only,pass,,strong,clean_value
+0785,"False, True, False, False",FREE,A,wolfram_only,pass,,strong,clean_value
+0789,"8, 8, -8, -8",FREE,A,wolfram_only,pass,,strong,clean_value
+0790,-20x^2+45x-25=0,FREE,A,wolfram_only,pass,,strong,clean_value
+0794,"4.47, 4",FREE,A,wolfram_only,pass,,strong,clean_value
+0798,"3924, EXTRANEOUS",FREE,A,wolfram_only,pass,,strong,clean_value
+0799,8096,FREE,A,web_search_only,pass,,strong,clean_value_numeric
+0802,26/7,FREE,A,wolfram_only,pass,,strong,clean_value
+0805,C,MCQ,A,web_search_only,pass,,strong,mcq_exact_option_match
+0806,"-0.6551, -0.7556, 0.8670, 1.153, -1.324, -1.527",FREE,A,wolfram_only,pass,,strong,clean_value
+0808,D,MCQ,A,web_search_only,pass,,strong,mcq_exact_option_match
+0812,512/sin^6(2t),FREE,A,wolfram_only,pass,,strong,clean_value
+0818,"5a+6b, ab",FREE,A,wolfram_only,pass,,strong,clean_value
+0820,15,FREE,A,wolfram_only,pass,,strong,clean_value
+0830,44*pi/15,FREE,A,wolfram_only,pass,,strong,clean_value
+0836,2025,FREE,A,wolfram_only,pass,,strong,clean_value
+0841,"sin(40+8sqrt(x)), 5+sqrt(sin(8x))",FREE,A,wolfram_only,pass,,strong,clean_value
+0842,"65.47, 1.552, 6.052, 1.833, B",FREE,A,wolfram_only,pass,,strong,clean_value
+0845,5,FREE,A,wolfram_only,pass,,strong,clean_value
+0849,4(n+1),FREE,A,wolfram_only,pass,,strong,clean_value
+0851,"B, C",FREE,A,wolfram_only,pass,,strong,clean_value
+0856,H,MCQ,A,web_search_only,pass,,strong,mcq_exact_option_match
+0857,"A, 0.8974, 0.9146, A, 0.9015, 0.9221",FREE,A,wolfram_only,pass,,strong,clean_value
+0862,I,MCQ,A,web_search_only,pass,,strong,mcq_exact_option_match
+0863,1/t^69,FREE,A,wolfram_only,pass,,strong,clean_value
+0865,7/x - 8,FREE,A,wolfram_only,pass,,strong,clean_value
+0872,"infinity, 0",FREE,A,wolfram_only,pass,,strong,clean_value
+0874,J,MCQ,A,web_search_only,pass,,strong,mcq_exact_option_match
+0877,F,MCQ,A,web_search_only,pass,,strong,mcq_exact_option_match
+0878,I,MCQ,A,wolfram_only,pass,,strong,mcq_letter_mapped_numeric
+0880,"35/37, 35/12",FREE,A,wolfram_only,pass,,strong,clean_value
+0881,D,MCQ,A,wolfram_only,pass,,strong,mcq_letter_mapped_numeric
+0883,656.1,FREE,A,wolfram_only,pass,,strong,clean_value
+0884,g(x)=(x-59)^2+74,FREE,A,wolfram_only,pass,,strong,clean_value
+0895,70*(2/7)^((x-10)/20),FREE,A,wolfram_only,pass,,strong,clean_value
+0896,"False,True,False,False,True,True,False,True",FREE,A,wolfram_only,pass,,strong,clean_value
+0898,48,FREE,A,wolfram_only,pass,,strong,clean_value
+0900,"1200, 3600",FREE,A,wolfram_only,pass,,strong,clean_value
+0902,"9, 6",FREE,A,wolfram_only,pass,,strong,clean_value
+0906,"x=2, x=5",FREE,A,wolfram_only,pass,,strong,clean_value
+0916,"3*sqrt(2), 6*sqrt(2), 18",FREE,A,wolfram_only,pass,,strong,clean_value
+0924,"n = 55 + 0.2t, 2010",FREE,A,wolfram_only,pass,,strong,clean_value
+0926,-3t^2 - 6t + 2,FREE,A,wolfram_only,pass,,strong,clean_value
+0927,"False,True,True,True,False,False",FREE,A,wolfram_only,pass,,strong,clean_value
+0931,"3, -3",FREE,A,wolfram_only,pass,,strong,clean_value
+0934,D,MCQ,A,web_search_only,pass,,strong,mcq_exact_option_match
+0936,275/16,FREE,A,wolfram_only,pass,,strong,clean_value
+0939,E,MCQ,A,wolfram_only,pass,,strong,mcq_letter_mapped_numeric
+0940,B,MCQ,A,web_search_only,pass,,strong,mcq_exact_option_match
+0942,36,FREE,A,wolfram_only,pass,,strong,clean_value

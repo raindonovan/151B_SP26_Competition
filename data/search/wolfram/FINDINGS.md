@@ -150,3 +150,36 @@ Ran claude_strategy's fail-closed extraction spec (`scripts/wolfram_extract.py`,
 - 0715 list-inside-slot ordering: natural enumeration vs sorted
 - Whether 0317-style duplicate-option bugs exist elsewhere
 - Whether 0585/0622/0858-style interpretation-truncation exists elsewhere
+
+## Finding 26 — Round-2 fix + round-3 build: 261/216 → 276/201; mcq_letter_mapped_numeric=15 (2026-05-30)
+
+Finding 25's split is superseded by round-2 (Wolfram fixes) and round-3 (combined Wolfram+web_search build, commit efcd55c).
+
+**Round-2 fixes (commit efcd55c, Phase B):**
+- Fix 1: annotation predicate rewritten — per-slot, balanced-paren-aware, math-token whitelist, interval pre-check (`looks_like_interval`). New skip_reason `syntax_unparseable` (fail-closed on unbalanced parens).
+- Fix 2: dropped regex option parser entirely; Phase 2 now reads `private.jsonl.options` structured field. Renamed `mcq_options_not_parseable` → `mcq_options_missing_or_invalid`. Added `mcq_no_match`, `mcq_ambiguous`, `mcq_answer_not_numeric` enum members.
+- D1: phase2_map equality now value-based via `vals_equal` helper (was structural sympy `==`, which failed on equivalent expressions like Mul(1, 1/(4*sqrt(3))) vs sqrt(3)/12).
+- Shared helper: `_to_exact` added to `gold_equiv.py` (Phase A of round-3) — mirrors `_to_number`'s normalization including `parse_latex` fallback and `\boxed{...}` strip; returns sympy.Rational/Integer instead of float.
+
+**Round-3 result (committed at efcd55c):**
+- answer_sheet **276** (was 261), residual **201** (was 216).
+- Promotions: clean_value 249, clean_letter 12, **mcq_letter_mapped_numeric 15** (was 0).
+- Skips: mcq_options_not_numeric replaces old mcq_options_not_parseable; full enum is now `notes_admit_incomplete, mcq_options_missing_or_invalid, low_confidence, convention_sensitive, marker_in_answer, annotation_contamination, prose_or_nonanswer, known_dataset_bug, slot_mismatch, syntax_unparseable, mcq_options_not_numeric, mcq_answer_not_numeric, mcq_no_match, mcq_ambiguous`.
+- annotation_contamination count: **34** (exact, locked acceptance check #11). syntax_unparseable: **0**.
+- 15-item smoke gate PASS, all 12 fail-closed acceptance checks PASS.
+
+## Finding 27 — Anchor audit: 0285 is a bad Wolfram promotion (2026-05-30)
+
+Independent audit (strategy + ChatGPT cross-audit + Wolfram-Alpha tool independent computation) of the round-3 outputs caught **one confirmed wrong-value promotion in `wolfram_alpha_answer_sheet.csv`**: item 0285.
+
+**The case:**
+- AIME problem: count ordered triples (a,b,c) with a,b,c ≤ 3⁶ and a³+b³+c³ ≡ 0 mod 3⁷, return N mod 1000.
+- Wolfram answer_sheet says: **147** (carried through from `WOLF_RESULTS.csv` row 287, MAYBE-competition status in upstream Wolfram batch artifact).
+- Web_search answer_sheet says: **735** (source=AIME_2025, conf=95).
+- Wolfram|Alpha independently computed (anchor audit, 2026-05-30): N=885,735 → N mod 1000 = **735**.
+
+Web_search and the independent computation agree. The Wolfram answer_sheet value is wrong.
+
+**Disposition:** quarantined from anchor via `data/search/teachers/anchor_set_FINAL.csv` (audit_action `wolfram_quarantine_replaced_with_web_search`). `WOLF_RESULTS.csv` left untouched (raw input is read-only). `wolfram_alpha_answer_sheet.csv` row remains as-is — fix applied at the anchor layer, not the source layer, to preserve full auditability.
+
+**Generalizable concern:** 268 Wolfram-only anchor rows have no independent cross-source check. The round-2 fail-closed pipeline correctly extracted what Wolfram itself stored, but does not detect upstream wrong values. An 8-row random spot-check of the Wolfram clean_value rows during the audit found no additional bad entries, but that is 3% coverage, not a guarantee.
