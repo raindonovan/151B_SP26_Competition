@@ -376,3 +376,11 @@ Authorized read-only audit. Deliverables: `postprocessing/AUDIT_REPORT.md` + `po
 Built `scripts/score_inference_vs_sheet.py` + `scripts/build_slots_1_4.py`; 4 candidate sheets in `submission/30_05/slot{1..4}_*/` (943 rows each) + report `SLOTS_1_4_REPORT.md`.
 Stack on the 0.713 base: +anchor(316) → +4/4 bloc(385 non-anchor) → +3/4-xhigh MCQ(23 non-anchor).
 **For strategy:** A7=385 / A8=23 were off your rough estimates but confirmed CORRECT (anchor∩4/4=137 → anchor audited contested items; all MCQ are single-slot → A8 funnel 145→116→40→23). Local anchor agreement 236/316/316/316 is **directional only** (grader can't resolve <2pp). Predicted ordering slot4≥3≥2≥1 is a Kaggle hypothesis, untestable locally. Rain uploads. Pre-Opus checkpoint.
+
+---
+## claude_vscode signoff — 2026-05-30 — Opus 4.7 outputs landed (535 items)
+Landed `~/cse151b/DataApp/dataapp_outputs/opus/` (DataApp `f437b9e`) into `data/search/teachers/opus/`: `answers.csv` (535, [id,answer], Opus-as-5th-teacher), `results.csv` (535, cost/perf), `items.jsonl` (535, traces, **LFS** oid c92d8fb, 2.48MB), `anchor_v2_candidates.csv` (316), `opus_5th_teacher.csv` (219), README.
+**Verified:** diamonds 0041=2112, 0285=735 ✅. Anchor v2: corroborate **209** / contradict **78** / inconclusive **29**. All A1-A9 pass.
+**Config:** claude-opus-4-7, temp 0.6, thinking OFF, max_tok 32768, streaming. Targets = 316 anchor + 219 uncovered (not all 943).
+**Process note (honest):** first push `84e659e` landed only `.gitattributes` — `data/search` is gitignored and a non-`-f` `git add` silently skipped the data. Fixed with `git add -f` (the established convention — anchor_set_FINAL.csv etc. are force-added too); files landed in `153e5a7`. Both commits on origin/main.
+**For strategy:** answers.csv now joinable as a 5th teacher; opus_5th_teacher.csv ready for slot 6-10 overlays; anchor_v2 (78 contradictions) for anchor-revision decisions.
