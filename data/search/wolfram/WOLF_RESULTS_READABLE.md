@@ -320,3 +320,28 @@ Readable companion to `WOLF_RESULTS.csv` (the full machine-readable scorecard fo
 | 0409 | B18 | MED | prediction-interval + mean-CI at x=3 | 96.2% PI and CI at x=3; best="(-0.02462, 4.239)" likely |
 | 0415 | B18 | HIGH | sqrt(A/6), A, (A/6)^(3/2), A | s=f(A)=sqrt(A/6) confirmed; MATCH (best has all 4 slots |
 | 0448 | B18 | MED | x^3-4x^2-6x+30, x^2-9x+20 | rational function reduced form 2-slot; best has both po |
+| 0001 | B19 | MED | Unchanged (A) | weighted mean invariant when all weights scaled by same |
+| 0007 | B19 | INCONCLUSIVE | INCONCLUSIVE | snakes-on-circle merging competition; best=56; not Wolf |
+| 0013 | B19 | MED | (1/8)(2sec^6(4x)+3sec^4(4x)+6sec^2(4x)+12 ln/tan(4x)/)+ | integral antiderivative computed (Wolfram); MCQ best=C; |
+| 0014 | B19 | HIGH | ln(35)/ln(3) | 7*3^t=245 -> 3^t=35 -> t=ln35/ln3; MATCH (best correct) |
+| 0034 | B19 | MED | 20 is an outlier (Q3+1.5*IQR=19.5<20) | boxplot: IQR=6, upper fence 19.5, max 20 -> outlier; be |
+| 0048 | B19 | HIGH | C (-2 ~ ln(0.135)) | e^-2=0.135 -> -2=ln(0.135)=option C; MATCH (best=C) |
+| 0053 | B19 | INCONCLUSIVE | INCONCLUSIVE | bird-in-3x3x3-maze Markov competition; best=F; not Wolf |
+| 0073 | B19 | INCONCLUSIVE | INCONCLUSIVE | joint pdf of U=X^2+Y^2,V=X/Y transformation; best=E; ha |
+| 0074 | B19 | HIGH | 12.36, 25.04 | paired diff CI 94.6%: mean=18.7,s=9.056,t(9)=2.22 -> (1 |
+| 0080 | B19 | HIGH | sqrt(3)/12 | 4/(6sqrt3+4sqrt3+6sqrt3)=4/(16sqrt3)=sqrt3/12; value ve |
+| 0092 | B19 | INCONCLUSIVE | INCONCLUSIVE | parametric integral int_0^1 x^(m-1)/(1+x^n)dx; no numer |
+| 0094 | B19 | HIGH | 4/3 | area x=1-y^2,x=0: int_-1^1(1-y^2)dy=4/3; value verified |
+| 0095 | B19 | INCONCLUSIVE | INCONCLUSIVE | isosceles triangle circumcircle competition; best=12; n |
+| 0098 | B19 | INCONCLUSIVE | INCONCLUSIVE | 52-card riffle permutation order competition; best=A; n |
+| 0109 | B19 | HIGH | (a) 4,2 (b) 5,1,1 (c) 3,-1,1 | eigenvalues of 3 matrices computed; value verified; MCQ |
+| 0114 | B19 | MED | sin(2^(n+1) a)/(2^(n+1) sin a) | product cos(a)...cos(2^n a)=sin(2^(n+1)a)/(2^(n+1)sin a |
+| 0123 | B19 | HIGH | x^2 cos(y) + y^2 cos(x) | exact differential primitive: d(x^2cosy+y^2cosx) matche |
+| 0128 | B19 | HIGH | (y-3)/(y+3) | (y^2-9)/(y+3)^2=(y-3)/(y+3); MATCH (best correct) |
+| 0130 | B19 | HIGH | r^42 | r^16*r^13*r^13=r^42; MATCH (best correct) |
+| 0131 | B19 | HIGH | 0.1084 | prop z=(0.55-0.53)/sqrt(0.53*0.47/950)=1.235, p=1-Phi=0 |
+| 0146 | B19 | MED | antiderivative (messy radical integral) | int(4x^2+25x+7)/sqrt(x^2+8x)dx computable but messy; MC |
+| 0147 | B19 | HIGH | 25*pi/3 | vol rev of sqrt(x)+sqrt(y)=sqrt5 about x-axis: pi*int_0 |
+| 0148 | B19 | INCONCLUSIVE | INCONCLUSIVE | compound Poisson process distribution; best=A; conceptu |
+| 0150 | B19 | MED | best L2 cubic approx of e^x on [-1,1] (Legendre) | least-squares cubic via Legendre coeffs; computable but |
+| 0153 | B19 | MED | quadratic form standard form via completing square | f(x1,x2,x3) diagonalization computable; MCQ best=B |

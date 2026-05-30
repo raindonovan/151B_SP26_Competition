@@ -1,19 +1,19 @@
 id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,computable,notes,question_preview
 0000,algebra,free_multi,2,DONE,"4, 16",HIGH,B9,YES,order-of-ops 2-slot; best=16 is undercount,Use the order of operations to simplify: a) $[13-(11-11)]-[8-(5-6)]=$ [ANS] b) $
-0001,statistics,MCQ,0,UNVERIFIED,,,,YES,,"Assuming the weights corresponding to the sign values are reduced by 1/10, then "
+0001,statistics,MCQ,0,DONE,Unchanged (A),MED,B19,YES,weighted mean invariant when all weights scaled by same factor; best=A consistent,"Assuming the weights corresponding to the sign values are reduced by 1/10, then "
 0002,statistics,free_multi,3,DONE,"-1.461, 1.645, A",HIGH,B9,YES,z-prop-test 3-slot; z=-1.461 confirmed; best/teacher agree,"According to a recent marketing campaign, $120$ drinkers of either Diet Coke or "
 0003,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"It is known that there are two types of fish in the pond, in a ratio of 7:3. If "
 0004,trigonometry,free_multi,3,DONE,"-7/sqrt(149), 10/sqrt(149), -7/10",HIGH,B9,YES,trig on terminal point; exact form; best(decimals)=teacher(exact) agree,"If the point (10,-7) is on the terminal side of the angle $\theta$ in standard p"
 0005,statistics,free_multi,5,DONE,"541.3, 63.25, 135.325, 4.2167, 32.09",HIGH,B2,YES,ANOVA 5-tuple; under-count,An experiment is conducted to determine whether there is a differnce among the m
 0006,other,free_single,1,UNVERIFIED,,,,MAYBE,,"A person is standing straight on the ground, looking up at an airplane which is "
-0007,geometry,free_single,0,UNVERIFIED,,,,YES,,"The circumference of a circle is divided into $45$ arcs, each of length $1$. Ini"
+0007,geometry,free_single,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B19,YES,snakes-on-circle merging competition; best=56; not Wolfram-computable,"The circumference of a circle is divided into $45$ arcs, each of length $1$. Ini"
 0008,other,free_single,1,UNVERIFIED,,,,MAYBE,,What quantity of 70 per cent acid solution must be mixed with a 25 solution to p
 0009,algebra,free_multi,2,DONE,"L-8x, 6F",HIGH,B1,YES,2-slot numerator/denominator split; format risk,Solve the equation for $y$: 8x+6 y F=L $\begin{array}{cccc}\hline &  y=& & [ANS]
 0010,calculus,MCQ,0,DONE,2*pi*rho/(rho^2-a^2) form,MED,B13,YES,contour integral |dz|/|z-a|^2; standard result=2pi*rho/|rho^2-a^2|; teacher/best both=E (agree),What is the value of the integral $\int_{\mid z \mid=\rho} \frac{\mid\mathrm{d} 
 0011,statistics,free_single,1,DONE,0.939,consensus-only,B8,YES,truncated problem text; verify against source,"Consider simple linear regression with $n$ pairs of numbers $x_i,y_i$. Let ${\ha"
 0012,algebra,free_multi,2,DONE,"2c + 4p = 70, 11",HIGH,B2,YES,equation+value; string-match risk on equation form,"A barnyard is full of chickens and pigs, and the total number of chicken feet an"
-0013,calculus,MCQ,0,UNVERIFIED,,,,YES,,Solve the integral: $$ \int \frac{ 6 }{ \cos(-4 \cdot x)^7 \cdot \sin(4 \cdot x)
-0014,algebra,free_single,1,UNVERIFIED,,,,YES,,Use logarithms to find an EXACT solution to the equation below. $7 \cdot 3^t=245
+0013,calculus,MCQ,0,DONE,(1/8)(2sec^6(4x)+3sec^4(4x)+6sec^2(4x)+12 ln|tan(4x)|)+C,MED,B19,YES,integral antiderivative computed (Wolfram); MCQ best=C; value verified,Solve the integral: $$ \int \frac{ 6 }{ \cos(-4 \cdot x)^7 \cdot \sin(4 \cdot x)
+0014,algebra,free_single,1,DONE,ln(35)/ln(3),HIGH,B19,YES,7*3^t=245 -> 3^t=35 -> t=ln35/ln3; MATCH (best correct),Use logarithms to find an EXACT solution to the equation below. $7 \cdot 3^t=245
 0015,algebra,free_multi,2,DONE,"8, NONE",HIGH,B16,YES,x^8+4 degree 8; 8^x+4 not poly NONE; best correct,"Are the functions below polynomials? If they are, enter their degree. If not, en"
 0016,calculus,free_single,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B9,YES,game theory on 1001-gon; not Wolfram-computable; teacher=501 vs best=858,Rose and Brunno play the game on a board shaped like a regular 1001-gon. Initial
 0017,number_theory,MCQ,0,DONE,181,HIGH,B9,YES,"least odd prime of a(2015); mod181=0 confirmed; mod3,5,7,11,13,31 all nonzero","Let $a_0=1$, $a_1=2$, and $a_n=4a_{n-1}-a_{n-2}$ for $n\geq 2$. Find the least o"
@@ -33,7 +33,7 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0031,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"Divide or state that the division is undefined. (In this case, enter undefined.)"
 0032,geometry,free_multi,3,DONE,"sqrt(101), -1, -7/2",HIGH,B9,YES,"distance=sqrt(101), midpoint=(-1,-7/2); best(decimals) equivalent to teacher(exact)","The distance between $(4,-3)$ and $(-6,-4)$ is [ANS] The midpoint of the line se"
 0033,geometry,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B13,YES,triangle orthocenter/circumcenter geometry; teacher/best both=F (agree),"A rectangle, $HOMF$, has sides $HO=11$ and $OM=5$. A triangle $ABC$ has $H$ as t"
-0034,statistics,MCQ,0,UNVERIFIED,,,,YES,,"Given the following values for a variable: minimum value is 3, first quartile (Q"
+0034,statistics,MCQ,0,DONE,20 is an outlier (Q3+1.5*IQR=19.5<20),MED,B19,YES,"boxplot: IQR=6, upper fence 19.5, max 20 -> outlier; best=J; needs options to confirm letter","Given the following values for a variable: minimum value is 3, first quartile (Q"
 0035,algebra,free_multi,2,DONE,"down, ln(p)",HIGH,B16,YES,horiz stretch p of ln(x): ln(x/p)=ln(x)-ln(p) -> down by ln(p); best correct,Applying a horizontal stretch by a factor of $p$ (where $p$ is a constant such t
 0036,other,free_single,1,UNVERIFIED,,,,MAYBE,,Multiply using the product rule: $(-8x^{5} y^{6})(-5x^{5} y^{3})$=[ANS]
 0037,other,free_multi,3,UNVERIFIED,,,,MAYBE,,"Chucky takes his first step on January 1, 2000. Every day after that, he takes 3"
@@ -47,12 +47,12 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0045,statistics,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B13,YES,OEIS male-offspring recurrence MCQ; teacher/best both=A (agree but not computable),We now define an algorithm: The definition of a(n) is the sequence where a(n) re
 0046,statistics,free_multi,7,DONE,"1.645, 1.719, 1.960, -1.960, 1.719, B, A",MED,B16,YES,hypothesis test 7-slot; best has all 7; z-crit/stat plausible,A random sample of $100$ observations from a population with standard deviation 
 0047,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Find all natural numbers that satisfy $3^{m}-1$ being divisible by $2^{m}$.
-0048,algebra,free_single,1,UNVERIFIED,,,,YES,,Rewrite the exponential equation $e^{-2} \approx 0.135$ in equivalent logarithmi
+0048,algebra,free_single,1,DONE,C (-2 ~ ln(0.135)),HIGH,B19,YES,e^-2=0.135 -> -2=ln(0.135)=option C; MATCH (best=C),Rewrite the exponential equation $e^{-2} \approx 0.135$ in equivalent logarithmi
 0049,statistics,free_single,1,DONE,0.0143,HIGH,B9,YES,type-II error beta; P(Z>=2.189)=0.01430; best=0.01433 agrees within rounding,Assume you are using a significance level of $\alpha=0.05$ to test the claim tha
 0050,algebra,free_multi,2,DONE,"140A+150B=5930, 3A+4B=142",HIGH,B16,YES,apple/banana system; best correct (calories + fiber equations),An apple contains 140 calories and 3 g of fiber. A banana contains 150 calories 
 0051,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Using the multiplication table, compute $651 _{8} \times 32 _{8}$ $\begin{array}"
 0052,other,free_multi,2,UNVERIFIED,,,,MAYBE,,You work in a lab. One day you need 616 oz of a chemical solution consisting of 
-0053,algebra,MCQ,0,UNVERIFIED,,,,YES,,A bird is lost in a 3 by 3 by 3 cubical maze. The bird flies from room to room g
+0053,algebra,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B19,YES,bird-in-3x3x3-maze Markov competition; best=F; not Wolfram-computable,A bird is lost in a 3 by 3 by 3 cubical maze. The bird flies from room to room g
 0054,geometry,free_single,0,DONE,1,MED,B14,YES,"chessboard polygon a1>=a3+something; teacher+best agree=1; competition, not Wolfram-verified","Let $P$ be a polygon formed by the edges of an infinite chessboard, which does n"
 0055,algebra,free_single,1,DONE,5x^4,HIGH,B18,YES,"y=kx^4, 405=k*81->k=5; y=5x^4; MATCH (best correct)",Write an equation for $y$ in terms of $x$ if $y$ is proportional to the fourth p
 0056,statistics,free_multi,3,DONE,"D, D, A",MED,B17,YES,regression concept MCQ 3-slot; best all slots present,"For each problem, select the best response. (a) Can one predict a student's scor"
@@ -72,14 +72,14 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0070,other,free_single,1,UNVERIFIED,,,,MAYBE,,"A school just won a grant, and decided to spend ${{\textstyle\frac{5}{8}}}$ of t"
 0071,other,free_multi,2,UNVERIFIED,,,,MAYBE,,You are working on a new temperature scale that will unify the earth. After some
 0072,trigonometry,free_multi,5,DONE,"-0.8352, -0.9187, 0.3950, -2.3258, Quadrant IV",HIGH,B8,YES,trig 5-slot; full label required,"If $\sin(A)=0.55$ and $\cos(A) < 0$, determine: $\cos(A)=$ [ANS] $\sin(2A)=$ [AN"
-0073,statistics,MCQ,0,UNVERIFIED,,,,YES,,"Given $X \sim N(0, 1), Y \sim N(0, 1)$ and they are independent. Let $U = X^{2} "
-0074,statistics,free_single,1,UNVERIFIED,,,,YES,,"To test the efficacy of a new cholesterol-lowering medication, 10 people are sel"
+0073,statistics,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B19,YES,"joint pdf of U=X^2+Y^2,V=X/Y transformation; best=E; hard to verify letter","Given $X \sim N(0, 1), Y \sim N(0, 1)$ and they are independent. Let $U = X^{2} "
+0074,statistics,free_single,1,DONE,"12.36, 25.04",HIGH,B19,YES,"paired diff CI 94.6%: mean=18.7,s=9.056,t(9)=2.22 -> (12.36,25.04); MATCH (best=12.32,25.08 rounding)","To test the efficacy of a new cholesterol-lowering medication, 10 people are sel"
 0075,algebra,free_single,1,DONE,x > 21250,HIGH,B14,YES,Plan A vs B: 1100+0.11x vs 1450+0.09x -> x>21250 wait sign; teacher+best agree x>21250,Mike can be paid in one of two ways based on the amount of merchandise he sells:
 0076,other,free_multi,8,UNVERIFIED,,,,MAYBE,,6-10=[ANS].-6-5=[ANS].-9-(-12)=[ANS]. 20-(-13)=[ANS].-18-14=[ANS].-18-(-27)=[ANS
 0077,statistics,free_multi,3,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B9,YES,"study-design MCQ 3-slot; conceptual; not Wolfram-verifiable; teacher=C,D,A vs best=A",A study of human development showed two types of movies to a group of children. 
 0078,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"If distance of the origin from the plane passing through the point $(2,2,1)$ and"
 0079,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Add these together: ${3+\frac{4}{7}}$ When needed, use an improper fraction in y"
-0080,algebra,MCQ,0,UNVERIFIED,,,,YES,,Simplify the fraction by rationalizing the denominator: $$\frac{4}{\sqrt{108}+2\
+0080,algebra,MCQ,0,DONE,sqrt(3)/12,HIGH,B19,YES,4/(6sqrt3+4sqrt3+6sqrt3)=4/(16sqrt3)=sqrt3/12; value verified; MCQ best=G,Simplify the fraction by rationalizing the denominator: $$\frac{4}{\sqrt{108}+2\
 0081,other,free_single,1,UNVERIFIED,,,,MAYBE,,Suppose there are three sections of a Statistics course taught by the same instr
 0082,statistics,free_multi,4,DONE,"1.309, 1.677, ?, No",MED,B15,YES,"two-sample t 4-slot; best=""1.309,1.677,No"" undercount 3of4; slot3 (df/p) needs source","There are several sections of statistics, some in the morning (AM) and some in t"
 0083,other,free_single,0,UNVERIFIED,,,,MAYBE,,"Let $n > 1$ be an integer. In a configuration of an $n \times n$ board, each of "
@@ -91,13 +91,13 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0089,other,free_single,1,DONE,\frac{326}{7},HIGH,B8,MAYBE,fraction vs decimal,"Initially, you have lost 20,000 dollars in the stock market and you continue to "
 0090,other,free_single,1,UNVERIFIED,,,,MAYBE,,Find the nth term of the arithmetic sequence whose initial term is $8$ and commo
 0091,other,MCQ,0,UNVERIFIED,,,,MAYBE,,We now define an algorithm: The definition of a(n) is numbers n such that there 
-0092,calculus,MCQ,0,UNVERIFIED,,,,YES,,Find the value of the integral $$ I=\! \int_{0}^{1} \frac{x^{m-1}} {1+x^{n}} \ma
+0092,calculus,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B19,YES,parametric integral int_0^1 x^(m-1)/(1+x^n)dx; no numeric answer; best=E,Find the value of the integral $$ I=\! \int_{0}^{1} \frac{x^{m-1}} {1+x^{n}} \ma
 0093,other,free_single,0,UNVERIFIED,,,,MAYBE,,Consider a bee (denoted by X ) in a rectangular honeycomb as seen below:  |  | $
-0094,geometry,MCQ,0,UNVERIFIED,,,,YES,,The option that represents the area of the plane figure enclosed by ( x = 1 - {y
-0095,geometry,free_single,0,UNVERIFIED,,,,YES,,Let $\triangle A B C$ be an isosceles triangle with $A B=A C$. Let $D$ be a poin
+0094,geometry,MCQ,0,DONE,4/3,HIGH,B19,YES,"area x=1-y^2,x=0: int_-1^1(1-y^2)dy=4/3; value verified; MCQ best=C",The option that represents the area of the plane figure enclosed by ( x = 1 - {y
+0095,geometry,free_single,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B19,YES,isosceles triangle circumcircle competition; best=12; not Wolfram-computable,Let $\triangle A B C$ be an isosceles triangle with $A B=A C$. Let $D$ be a poin
 0096,other,free_single,1,UNVERIFIED,,,,MAYBE,,"A baby was born $2$ years ago. In these $2$ years, the baby grew $13.6$ pounds. "
 0097,trigonometry,free_multi,3,DONE,"0, 4, 4",HIGH,B17,YES,"r=8sinθ -> x^2+(y-4)^2=16; center(0,4) r=4; best correct",The equation $r=8 \sin \theta$ represents a circle. Find the cartesian coordinat
-0098,number_theory,MCQ,0,UNVERIFIED,,,,YES,,"A deck of playing cards has 52 cards, and each shuffle changes the order of the "
+0098,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B19,YES,52-card riffle permutation order competition; best=A; not computable,"A deck of playing cards has 52 cards, and each shuffle changes the order of the "
 0099,algebra,free_multi,3,DONE,"-6, 12, -6",HIGH,B17,YES,-|3-9|=-6; |-3-9|=12; -1|9-3|=-6; best correct,Evaluate the following expressions which involve the absolute value: ${-\lvert 3
 0100,other,free_single,1,DONE,\frac{180}{7},HIGH,B8,MAYBE,fraction vs decimal,"A jeweler has five rings, each weighing $18$ grams, made of an alloy of $10$ \% "
 0101,statistics,free_multi,4,DONE,"C, C, A, C",MED,B17,YES,hypothesis test concept MCQ 4-slot; best all slots present,Consider a hypothesis test to decide whether the mean cost to community hospital
@@ -108,12 +108,12 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0106,other,free_single,1,DONE,\frac{13}{6},HIGH,B8,MAYBE,fraction vs decimal,"After robbing a bank in Dodge City, a robber gallops off at 13 mi/h. 30 minutes "
 0107,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"A ray of light passing through the point $A\left( 2,3 \right)$ reflected at a po"
 0108,trigonometry,free_multi,2,DONE,"72, 12x",HIGH,B14,YES,"cos^2-sin^2=cos(2t): A=72, B=12x; teacher+best agree",Using a double-angle or half-angle formula to simplify the given expressions. (a
-0109,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,Find theeigenvaluesof matrices (a)\vert31\vert \vert13\vert (b)\vert221\vert \ve
+0109,linear_algebra,MCQ,0,DONE,"(a) 4,2 (b) 5,1,1 (c) 3,-1,1",HIGH,B19,YES,eigenvalues of 3 matrices computed; value verified; MCQ best=B,Find theeigenvaluesof matrices (a)\vert31\vert \vert13\vert (b)\vert221\vert \ve
 0110,algebra,free_multi,2,DONE,"3, 9",MED,B14,YES,"fox population sinusoid params; teacher+best agree=3,9",A national park records data regarding the total fox population $F$ over a 12 mo
 0111,algebra,free_single,1,DONE,8x^3,HIGH,B14,YES,4thrt(64x^5)*4thrt(64x^7)=4thrt(4096 x^12)=8x^3; teacher+best agree,Simplify the following expression as much as possible. Assume that all variables
 0112,geometry,free_single,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B18,YES,cube cross-section pentagon competition; best=600; not Wolfram-computable,The intersection between a plane and a cube is a convex pentagon $ABCDE$ satisfy
 0113,trigonometry,free_single,1,DONE,(-2x^2-16x-7)/25,HIGH,B9,YES,cos(2theta) trig-sub; equiv to (25-2(x+4)^2)/25; teacher/best equivalent,If $x+4=5 \sin(\theta)$ for $0 < \theta < \pi/2$ express $\cos(2\theta)$ in term
-0114,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,"Given $k$ as an integer and $a \ne \pi \cdot k$, evaluate $P=\cos(a) \cdot \cos("
+0114,trigonometry,MCQ,0,DONE,sin(2^(n+1) a)/(2^(n+1) sin a),MED,B19,YES,product cos(a)...cos(2^n a)=sin(2^(n+1)a)/(2^(n+1)sin a) identity; MCQ best=D,"Given $k$ as an integer and $a \ne \pi \cdot k$, evaluate $P=\cos(a) \cdot \cos("
 0115,other,free_multi,5,UNVERIFIED,,,,MAYBE,,A theater manager graphed weekly profits as a function of the number of patrons 
 0116,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Justin's boat travels 144 km downstream in 4 hours and it travels 168 km upstrea
 0117,number_theory,MCQ,0,DONE,B,HIGH,WEBSEARCH,YES,Putnam 2021 A5. Answer = 2020 = option B. All 5 teachers agreed. High confidence.,Consider the set $V$ containing all integers $e$ between 1 and 2021 (inclusive) 
@@ -122,15 +122,15 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0120,number_theory,free_single,0,DONE,8,HIGH,WEBSEARCH,YES,Polya theorem on fixed divisors. 4/5 teachers agreed. Free-form.,"Let $n$ be a positive integer and $p$ be a prime. In terms of $n$ and $p$, let $"
 0121,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Fabrienne is working to pass a local measure, and she needs to collect a total o"
 0122,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"On average, a restaurant uses ${35.6\ {\rm lb}}$ of vegetable oil per day. Fill "
-0123,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,The primitive function of $(2xcos y-{{y}^{2}}sin x)dx+(2ycos x-{{x}^{2}}sin y)dy
+0123,trigonometry,MCQ,0,DONE,x^2 cos(y) + y^2 cos(x),HIGH,B19,YES,exact differential primitive: d(x^2cosy+y^2cosx) matches; value verified; MCQ best=G,The primitive function of $(2xcos y-{{y}^{2}}sin x)dx+(2ycos x-{{x}^{2}}sin y)dy
 0124,linear_algebra,MCQ,0,DONE,H,HIGH,B8,YES,Putnam 2018 A2; Qwen=G missed z=1 edge case,"Consider the set $\{1,2,\dots,z\}$ and all its nonempty subsets, which we'll den"
 0125,calculus,MCQ,0,DONE,G,HIGH,WEBSEARCH,YES,Putnam 2016 A1; value=8 confirmed; MCQ option G (index 6 of 10 options),Determine the smallest positive integer $l$ such that for any polynomial $x(x)$ 
 0126,other,free_single,1,UNVERIFIED,,,,MAYBE,,"According to a survey, $6.6\%$ of a city’s residents are native Americans. The l"
 0127,other,free_single,1,UNVERIFIED,,,,MAYBE,,The velocity (in ft/s) of a sky diver $t$ seconds after jumping is given by v(t)
-0128,algebra,free_single,1,UNVERIFIED,,,,YES,,$(y^2-9)$ Perform the indicated operation. Note that the denominators are the sa
+0128,algebra,free_single,1,DONE,(y-3)/(y+3),HIGH,B19,YES,(y^2-9)/(y+3)^2=(y-3)/(y+3); MATCH (best correct),$(y^2-9)$ Perform the indicated operation. Note that the denominators are the sa
 0129,algebra,free_multi,4,DONE,"5/sin(t), sqrt(7), -3cos(t), 2sqrt(2)tan(t)",HIGH,B17,YES,polar conversions: y=5->r=5/sint; x^2+y^2=7->r=sqrt7; best correct,Write each equation in polar coordinates. Express as a function of $\small{t}$. 
-0130,algebra,free_single,1,UNVERIFIED,,,,YES,,Use the properties of exponents to simplify the following ${r^{16}}\cdot{r^{13}}
-0131,statistics,free_single,1,UNVERIFIED,,,,YES,,"Physicians at a clinic gave what they thought were drugs to $950$ asthma, ulcer,"
+0130,algebra,free_single,1,DONE,r^42,HIGH,B19,YES,r^16*r^13*r^13=r^42; MATCH (best correct),Use the properties of exponents to simplify the following ${r^{16}}\cdot{r^{13}}
+0131,statistics,free_single,1,DONE,0.1084,HIGH,B19,YES,"prop z=(0.55-0.53)/sqrt(0.53*0.47/950)=1.235, p=1-Phi=0.1084; MATCH (best correct)","Physicians at a clinic gave what they thought were drugs to $950$ asthma, ulcer,"
 0132,other,free_single,1,UNVERIFIED,,,,MAYBE,,It’s given that $1 \text{mile}=5280 \text{feet}$ and $1 \text{yard}=3 \text{feet
 0133,trigonometry,free_multi,4,DONE,"-0.8660, 0.5000, -1.732, 2.000",HIGH,B17,YES,"θ=5π/3: sin=-√3/2,cos=1/2,tan=-√3,sec=2; best correct","If $\theta=\frac {5 \pi} {3}$, then $\sin (\theta)$ equals [ANS] $\cos (\theta)$"
 0134,statistics,free_multi,8,DONE,"1, 5, 12, 20, 26, 30, 31, 27.63",HIGH,B2,YES,7 cumulative freqs + median; severe under-count,"Given the following table, compute the median of the grouped data. $\begin{array"
@@ -145,14 +145,14 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0143,other,free_multi,6,UNVERIFIED,,,,MAYBE,,"Convert from polar to rectangular coordinates: $\mathbf{(a)}\quad(8,\frac{3\pi}{"
 0144,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Compute $\sqrt[3]{130}$ with an estimate error of $0.0001$ using series expansio
 0145,other,free_multi,3,UNVERIFIED,,,,MAYBE,,Suppose that $M$ is the function that computes how many miles are in $x$ feet. F
-0146,calculus,MCQ,0,UNVERIFIED,,,,YES,,Find the integral: $$ \int \frac{ 4 \cdot x^2+25 \cdot x+7 }{ \sqrt{x^2+8 \cdot 
-0147,geometry,MCQ,0,UNVERIFIED,,,,YES,,Compute the volume of the solid formed by rotating about the x-axis the area bou
-0148,statistics,MCQ,0,UNVERIFIED,,,,YES,,The composite Poisson process is defined as $$\left|Y_{i}=\sum_{n=1}^{x_{i}}\xi_
+0146,calculus,MCQ,0,DONE,antiderivative (messy radical integral),MED,B19,YES,int(4x^2+25x+7)/sqrt(x^2+8x)dx computable but messy; MCQ best=F,Find the integral: $$ \int \frac{ 4 \cdot x^2+25 \cdot x+7 }{ \sqrt{x^2+8 \cdot 
+0147,geometry,MCQ,0,DONE,25*pi/3,HIGH,B19,YES,vol rev of sqrt(x)+sqrt(y)=sqrt5 about x-axis: pi*int_0^5(sqrt5-sqrtx)^4dx=25pi/3; MCQ best=I,Compute the volume of the solid formed by rotating about the x-axis the area bou
+0148,statistics,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B19,YES,"compound Poisson process distribution; best=A; conceptual, hard to verify letter",The composite Poisson process is defined as $$\left|Y_{i}=\sum_{n=1}^{x_{i}}\xi_
 0149,other,free_single,1,UNVERIFIED,,,,MAYBE,,An airplane is flying at the height of ${10.8\ {\rm km}}$. The airplane can see 
-0150,algebra,MCQ,0,UNVERIFIED,,,,YES,,The cubic best square approximation polynomial of $f(x)=\mathrm{e}^{x}$ on $\lef
+0150,algebra,MCQ,0,DONE,"best L2 cubic approx of e^x on [-1,1] (Legendre)",MED,B19,YES,least-squares cubic via Legendre coeffs; computable but involved; MCQ best=A,The cubic best square approximation polynomial of $f(x)=\mathrm{e}^{x}$ on $\lef
 0151,other,free_single,1,UNVERIFIED,,,,MAYBE,,Evaluate the expression: ${48\div(8)6=}$ [ANS]
 0152,number_theory,MCQ,0,DONE,J,MED,B14,YES,4-fold sum max divided by 1000; teacher+best agree=J; competition,Find the remainder when $$\sum_{a=0}^8 \sum_{b=0}^8 \sum_{c=0}^8 \sum_{d=0}^8 \m
-0153,algebra,MCQ,0,UNVERIFIED,,,,YES,,Transform the following quadratic form into its standard form using the method o
+0153,algebra,MCQ,0,DONE,quadratic form standard form via completing square,MED,B19,YES,"f(x1,x2,x3) diagonalization computable; MCQ best=B",Transform the following quadratic form into its standard form using the method o
 0154,geometry,free_single,1,DONE,18.75,HIGH,B9,YES,paint cost: 488sqft/100*$3.75=$18.75; teacher/best agree,John's room is shaped like a box. It has a flat ceiling that is a rectangle that
 0155,other,free_single,1,UNVERIFIED,,,,MAYBE,,A guy wire needs to be installed to support a pole. The end of the wire on the p
 0156,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,What are the eigenroots of the following matrices? $$ \left( \begin{matrix} {{{1

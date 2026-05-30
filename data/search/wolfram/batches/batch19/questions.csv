@@ -1,0 +1,48 @@
+id,subject,type,n_ans_slots,best_answer,teacher_consensus,question
+0001,statistics,MCQ,0,A,A,"Assuming the weights corresponding to the sign values are reduced by 1/10, then the arithmetic mean is ()."
+0007,geometry,free_single,0,56,,"The circumference of a circle is divided into $45$ arcs, each of length $1$. Initially, there are $15$ snakes, each of length $1$, occupying every third arc. Every second, each snake independently moves either one arc left or one arc right, each with probability $\frac{1}{2}$. If two snakes ever touch, they merge to form a single snake occupying the arcs of both of the previous snakes, and the merged snake moves as one snake. Compute the expected number of seconds until there is only one snake left."
+0013,calculus,MCQ,0,C,C,"Solve the integral:
+$$
+\int \frac{ 6 }{ \cos(-4 \cdot x)^7 \cdot \sin(4 \cdot x) } \, dx
+$$"
+0014,algebra,free_single,1,\dfrac{\ln 35}{\ln 3},,"Use logarithms to find an EXACT solution to the equation below.
+$7 \cdot 3^t=245$
+$t=$ [ANS] (do NOT approximate your answer)"
+0034,statistics,MCQ,0,J,J,"Given the following values for a variable: minimum value is 3, first quartile (Q1) is 4.5, median is 9, third quartile (Q3) is 10.5, and maximum value is 20, which of the following statements is correct?"
+0048,algebra,free_single,1,C,C,Rewrite the exponential equation $e^{-2} \approx 0.135$ in equivalent logarithmic form. There may be more than one correct answer. [ANS] A. $-1 \approx \ln(0.135)$  B. $-2 \approx \log(0.135)$  C. $-2 \approx \ln(0.135)$  D. $0.135 \approx \log(-2)$  E. None of the above
+0053,algebra,MCQ,0,F,F,"A bird is lost in a 3 by 3 by 3 cubical maze. The bird flies from room to room going to adjoining rooms with equal probability through each of the walls. To be specific, the corner rooms have 3 exits. What is the entropy rate of this random walk? Use base 2 logarithm and return the entropy rate in bits."
+0073,statistics,MCQ,0,E,E,"Given $X \sim N(0, 1), Y \sim N(0, 1)$ and they are independent. Let $U = X^{2} + Y^{2}$, $V = \frac{X}{Y}$. Find the joint probability density $f_{UV}(u, v)$ of the two-dimensional random variable $(U, V)$ is ()."
+0074,statistics,free_single,1,"12.32, 25.08",,"To test the efficacy of a new cholesterol-lowering medication, 10 people are selected at random. Each has their LDL levels measured (shown below as Before), then take the medicine for 10 weeks, and then has their LDL levels measured again (After).
+\begin{array}{ccc} \mbox{Subject} & \mbox{Before} & \mbox{After} \\ 1 & 178 & 174 \\ 2 & 162 & 137 \\ 3 & 166 & 154 \\ 4 & 175 & 158 \\ 5 & 137 & 119 \\ 6 & 140 & 124 \\ 7 & 161 & 149 \\ 8 & 162 & 129 \\ 9 & 143 & 111 \\ 10 & 154 & 136 \\ \end{array}
+Give a 94.6\% confidence interval for $\mu_B-\mu_A$, the difference between LDL levels before and after taking the medication. Confidence Interval=[ANS]"
+0080,algebra,MCQ,0,G,G,Simplify the fraction by rationalizing the denominator: $$\frac{4}{\sqrt{108}+2\sqrt{12}+2\sqrt{27}}.$$
+0092,calculus,MCQ,0,E,E,"Find the value of the integral
+$$ I=\! \int_{0}^{1} \frac{x^{m-1}} {1+x^{n}} \mathrm{d} x \
+$$."
+0094,geometry,MCQ,0,C,C,"The option that represents the area of the plane figure enclosed by ( x = 1 - {y^2},;x = 0 ) is"
+0095,geometry,free_single,0,12,,"Let $\triangle A B C$ be an isosceles triangle with $A B=A C$. Let $D$ be a point on the circumcircle of $\triangle A B C$ on minor arc $A B$. Let $\overline{A D}$ intersect the extension of $\overline{B C}$ at $E$. Let $F$ be the midpoint of segment $A C$, and let $G$ be the intersection of $\overline{E F}$ and $\overline{A B}$. Let the extension of $\overline{D G}$ intersect $\overline{A C}$ and the circumcircle of $\triangle A B C$ at $H$ and $I$, respectively. Given that $D G=3, G H=5$, and $H I=1$, compute the length of $A E$."
+0098,number_theory,MCQ,0,A,A,"A deck of playing cards has 52 cards, and each shuffle changes the order of the cards, which is a permutation. If each shuffle strictly follows the operation below: first divide the cards into two equal parts, then interlace the cards from each part alternately, so that the first and last cards remain in their original positions while all other cards are rearranged. Express this permutation as a product of disjoint cycles, write out the cyclic structure of this permutation, and determine the minimum number of shuffles needed to restore the deck to its original order."
+0109,linear_algebra,MCQ,0,B,B,Find theeigenvaluesof matrices (a)\vert31\vert \vert13\vert (b)\vert221\vert \vert131\vert \vert122\vert (c)\vert2- 10\vert \vert946\vert \vert- 80- 3\vert
+0114,trigonometry,MCQ,0,D,D,"Given $k$ as an integer and $a \ne \pi \cdot k$, evaluate $P=\cos(a) \cdot \cos(2 \cdot a) \cdot \cos(4 \cdot a) \ldots \cos\left(2^n \cdot a\right)$."
+0123,trigonometry,MCQ,0,G,G,The primitive function of $(2xcos y-{{y}^{2}}sin x)dx+(2ycos x-{{x}^{2}}sin y)dy$ is ()
+0128,algebra,free_single,1,\dfrac{y - 3}{y + 3},\frac{y-3}{y+3},"$(y^2-9)$ Perform the indicated operation. Note that the denominators are the same. Simplify the result, if possible. \frac{y^{2}+3y+3}{y^{2}+6y+9}-\frac{12+3y}{y^{2}+6y+9} Answer: [ANS]"
+0130,algebra,free_single,1,r^{42},r^{42},"Use the properties of exponents to simplify the following
+${r^{16}}\cdot{r^{13}}\cdot{r^{13}}=$ [ANS]"
+0131,statistics,free_single,1,0.1084,,"Physicians at a clinic gave what they thought were drugs to $950$ asthma, ulcer, and herpes patients. Although the doctors later learned that the drugs were really placebos, $55$ \% of the patients reported an improved condition. Assume that if the placebo is ineffective, the probability of a patients condition improving is $0.53$. For the hypotheses that the proportion of improving is $0.53$ against that it is $>0.53$, find the p-value. $p=$ [ANS]"
+0146,calculus,MCQ,0,F,F,"Find the integral:
+$$
+\int \frac{ 4 \cdot x^2+25 \cdot x+7 }{ \sqrt{x^2+8 \cdot x} } \, dx
+$$"
+0147,geometry,MCQ,0,I,I,Compute the volume of the solid formed by rotating about the x-axis the area bounded by the axes and the parabola $x^{\frac{ 1 }{ 2 }}+y^{\frac{ 1 }{ 2 }}=5^{\frac{ 1 }{ 2 }}$.
+0148,statistics,MCQ,0,A,A,"The composite Poisson process is defined as
+$$\left|Y_{i}=\sum_{n=1}^{x_{i}}\xi_{n},\quad t\geqslant0\right|$$
+Assume $\lambda=5,\xi_n$ follows the distribution:
+$$p(x)=\begin{cases}\frac{1}{1000},&1000\leqslant x\leqslant2000\\\\0,&\text{otherwise}\end{cases}$$
+If points follow the distribution:
+$$P(\xi_n<x)=\begin{cases}1-\mathrm{e}^{-\mu t},&x\geqslant0\\0,&x<0\end{cases}$$
+find the mean $E(Y_i)$, variance var$(Y_i)$, and characteristic function $\phi_Y(v)$ is ()."
+0150,algebra,MCQ,0,A,A,"The cubic best square approximation polynomial of $f(x)=\mathrm{e}^{x}$ on $\left[-1, 1\right]$ is ____."
+0153,algebra,MCQ,0,B,B,"Transform the following quadratic form into its standard form using the method of completing the square. What is the result?
+$$
+f ( x_{1}, x_{2}, x_{3} )=x_{1}^{2}-3 x_{2}+4 x_{3}-2 x_{1} x_{2}+2 x_{1} x_{3}-1 0 x_{2} x_{3}
+$$"
