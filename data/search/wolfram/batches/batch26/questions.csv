@@ -1,0 +1,61 @@
+id,subject,type,n_ans_slots,best_answer,teacher_consensus,question
+0742,statistics,free_single,1,241.0,241.0,"The director of an alumni association for a university wants to look at the relationship between the number of years since graduation and the amount of monetary contribution an alumnus makes to the university. He collects data on 50 alumni who have made contributions this year. The number of years since graduation has a mean of 7, and the amount of contribution has a mean of 208 dollars. Based on the least squares regression line fitted to the data, it is found that for every year increase since graduation, the contribution is expected to drop by 33 dollars. Predict the amount of contribution made by an alumnus who graduated 6 years ago. Do not round in intermediate steps. The predicted contribution of an alumnus who graduated 6 years ago is: [ANS] (in dollars, rounded to one decimal place"
+0745,trigonometry,free_multi,8,"2 \sin C \cos C, \cos A \cos B - \sin A \sin B, \dfrac{2 \tan C}{1 - \tan^2 C}, \sin A \cos B - \cos A \sin B, \sin A \cos B + \cos A \sin B, \cos A \",,"Complete the following formulas:
+$\sin(2C)=$ [ANS]
+$\cos(A+B)=$ [ANS]
+$\tan(2C)=$ [ANS]
+$\sin(A-B)=$ [ANS]
+$\sin(A+B)=$ [ANS]
+$\cos(A-B)=$ [ANS]
+$\tan(x/2)=$ [ANS]
+$\cos(2C)=$ [ANS]
+Be certain to use the specified variables for each formula. Be certain to use the specified variables for each formula."
+0752,geometry,MCQ,0,D,D,"Given a parallelogram $ABCD$ , let $\mathcal{P}$ be a plane such that the distance from vertex $A$ to $\mathcal{P}$ is $49$ , the distance from vertex $B$ to $\mathcal{P}$ is $25$ , and the distance from vertex $C$ to $\mathcal{P}$ is $36$ . Find the sum of all possible distances from vertex $D$ to $\mathcal{P}$ ."
+0754,algebra,free_single,1,60x^2 + 65x,60x^2+65x,"Let $m(x)=4x^2-7$, $n(x)=5x$, and $o(x)=\sqrt{3x+5}$. Find a simplified formula for the function below. Your final answer should be a polynomial with only one term in each power of $x$. $m(o(x)) n(x)=$ [ANS]"
+0755,trigonometry,MCQ,0,F,F,Find the steady-state solution of the equation y [n] + [1 / \surd(3)]y [n - 1] =cos(\pi/6) n.
+0758,statistics,free_single,1,C,C,"For the purposes of this question a household corresponds to a single residential address, while household size is the number of individuals living at that address. Say you conduct a simple random sample of individuals living in Vancouver. Those sampled are asked to report their household sizes. The sample average of household size will be: [ANS] A. systematically biased downwards as an estimator of the average size of Vancouver households.  B. sensible as an estimator of the average size of Vancouver households.  C. systematically biased upwards as an estimator of the average size of Vancouver households."
+0759,statistics,free_single,1,C,C,"Altough in general you cannot know the sampling distribution of the sample mean exactly, by what distribution can you often approximate it? [ANS] A. reverse-J-shaped distribution  B. uniform distribution  C. normal distribution  D. none of the above"
+0760,calculus,MCQ,0,I,I,Find the sum of the series $\sum_{n=1}^\infty \frac{ x^{4 \cdot n-1} }{ 4 \cdot n-1 }$ using the integration of series.
+0764,algebra,free_single,1,\dfrac{(a + b)(a - b)^4}{c^5},\frac{(a+b)(a-b)^4}{c^5},Rewrite the expression \ln (a+b)+4 \ln (a-b)-5 \ln c as a single logarithm $\ln A$. Then the function A=[ANS]
+0768,algebra,MCQ,0,G,G,"The inverse function of $y = left{ begin{array}{l} 1 + {{rm{e}}^{ - x}}{rm{, }}quad quad ;,quad x le {rm{0,}} 2 - 2x,{rm{ }}quad qquad ;0 &lt; x &lt; 1, 2x - (1 + {x^2}),{rm{ }}quad x ge 1 end{array} right.$ is ( )."
+0769,trigonometry,free_single,1,1620,1620,An angle of $9 \pi$ radians can be converted to an angle of [ANS] degrees.
+0771,trigonometry,free_single,1,2,2,Find the exact value as fraction (not a decimal approximation). $ \sec\left(\frac{-\pi}{3} \right)$=[ANS]
+0774,statistics,free_multi,5,"24, 28, 33, 39, 42","24,28,33,39,42","Find the five-number summary for the following 10 values: 31,\ 28,\ 32,\ 26,\ 42,\ 39,\ 36,\ 24,\ 41,\ 34 NOTE: Different books define the word ""quartile"" in different ways which can lead to somewhat different results. In this exercise we define the first quartile to be the median of the bottom half of the data set, and the third quartile to be the median of the top half. Find the minimum: [ANS]
+Find $Q_{1}$: [ANS]
+Find the median: [ANS]
+Find $Q_{3}$: [ANS]
+Find the maximum: [ANS]"
+0777,algebra,free_single,1,8,8,"Evaluate: $ \frac{2^{6}}{2^{3}}=$ [ANS]
+Note: Your answer should be completely simplified. Unsimplified answers will not be accepted."
+0779,calculus,MCQ,0,F,F,"Given the function
+$f(x)=\begin{cases}\sin x,&\text{if } \cos x \text{ is a rational number,}\\\cos^2x,&\text{if } \cos x \text{ is an irrational number,}\end{cases}$
+find the value of the integral
+$\int_0^{\pi/2}f(x)$d$x$."
+0783,calculus,MCQ,0,H,H,"Solve the integral:
+$$
+2 \cdot \int \sin(-2 \cdot x)^5 \cdot \cos(2 \cdot x)^2 \, dx
+$$"
+0789,algebra,free_multi,4,"8, 8, -8, -8","8,8,-8,-8","Find the absolute value of the following numbers.
+${|{8}|=}$ [ANS]
+${|{-8}|=}$ [ANS]
+${-|{8}|=}$ [ANS]
+${-|{-8}|=}$ [ANS]"
+0791,trigonometry,MCQ,0,F,F,"Calculate the sum $S=\cos(a)+\cos(2 \cdot a)+\cos(3 \cdot a) + \ldots + \cos(n \cdot a)$, where $a \ne 2 \cdot \pi \cdot k$ for integers $k$."
+0796,calculus,MCQ,0,F,F,"Let $\omega_1$ be a circle of radius $1$ that is internally tangent to a circle $\omega_2$ of radius $2$ at point $A$ . Suppose $\overline{AB}$ is a chord of $\omega_2$ with length $2\sqrt3$ that intersects $\omega_1$ at point $C\ne A$ . If the tangent line of $\omega_1$ at $C$ intersects $\omega_2$ at points $D$ and $E$ , find $CD^4 + CE^4$ ."
+0797,geometry,MCQ,0,C,C,"$\triangle ABC$ has $AB=3$ , $BC=2007$ , and $CA=2008$ . Point $E$ is on $AC$ such that $\angle ABE=\angle EBC$ . The parallel to $BC$ through $E$ hits $AB$ at $F$ . If $BE$ hits $CF$ at $D$ , then find $\frac{CD}{DF}$ ."
+0798,algebra,free_multi,2,"3924, \text{EXTRANEOUS}",,"Solve for $t$: \sqrt{t-151}-\sqrt{t+117}=125
+The only possible root is $t=$ [ANS]. It is a(n) [ANS] root. (Fill in the second blank with REAL or EXTRANEOUS)"
+0800,statistics,free_single,1,140,140,A medical researcher wants to investigate the amount of time it takes for patients' headache pain to be relieved after taking a new prescription painkiller. She plans to use statistical methods to estimate the mean of the population of relief times. She believes that the population is normally distributed with a standard deviation of 23 minutes. How large a sample should she take to estimate the mean time to within 4 minutes with 96\% confidence? Sample Size=[ANS]
+0804,calculus,MCQ,0,F,F,"Calculate the integral
+$$
+\int_{0}^{+\infty} \frac{x \sin(m x)}{x^{4} + a^{4}} \, \mathrm{d}x \quad \text{where} \begin{cases} m > 0 \\ a > 0 \end{cases}
+$$"
+0806,trigonometry,free_multi,6,"-0.6551, -0.7556, 0.8670, 1.153, -1.324, -1.527",,"Assume that $\theta$ is an angle in quadrant III. Find the values of the six triginometric functions given the following:
+\sec(\theta)=\frac{-45}{34}.
+$\sin(\theta)$=[ANS]
+$\cos(\theta)$=[ANS]
+$\tan(\theta)$=[ANS]
+$\cot(\theta)$=[ANS]
+$\sec(\theta)$=[ANS]
+$\csc(\theta)$=[ANS]"
+0807,calculus,MCQ,0,E,E,Calculate the derivative of the function $r = \ln\left(\sqrt[4]{\frac{ 1+\tan(\varphi) }{ 1-\tan(\varphi) }}\right)$.

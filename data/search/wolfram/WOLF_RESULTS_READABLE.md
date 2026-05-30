@@ -495,3 +495,28 @@ Readable companion to `WOLF_RESULTS.csv` (the full machine-readable scorecard fo
 | 0739 | B25 | HIGH | Q/(1-Z) | Z=1-Q/U -> U=Q/(1-Z); MATCH (best correct) |
 | 0740 | B25 | HIGH | 5184/(81cos^2 t - 64 sin^2 t) | x^2/64-y^2/81=1 polar -> r^2=5184/(81cos^2-64sin^2); MA |
 | 0741 | B25 | MED | solve (1+tanx)/(1-tanx)=1+sin2x | trig identity equation; MCQ best=H |
+| 0742 | B26 | MED | 241.0 (regression prediction) | years-since-grad vs donation regression; best=241.0 pla |
+| 0745 | B26 | HIGH | 2sinC cosC, cosAcosB-sinAsinB, ... | standard double/sum/diff identities; MATCH (best correc |
+| 0752 | B26 | INCONCLUSIVE | INCONCLUSIVE | parallelogram vertex-to-plane distance competition; bes |
+| 0754 | B26 | MED | 60x^2 + 65x | composition of m,n,o; best=60x^2+65x plausible |
+| 0755 | B26 | MED | steady-state of difference equation | y[n]+(1/sqrt3)y[n-1]=cos; steady-state response; MCQ be |
+| 0758 | B26 | MED | household-size sampling concept | size-biased sampling MCQ; best=C; conceptual |
+| 0759 | B26 | MED | normal distribution (CLT) | sampling dist of mean approx normal; MCQ best=C |
+| 0760 | B26 | MED | (1/4)ln((1+x)/(1-x)) - (1/2)arctan(x) type | sum x^(4n-1)/(4n-1) via integration; MCQ best=I |
+| 0764 | B26 | HIGH | (a+b)(a-b)^4/c^5 | ln(a+b)+4ln(a-b)-5lnc=ln[(a+b)(a-b)^4/c^5]; MATCH (best |
+| 0768 | B26 | MED | inverse of piecewise function | piecewise inverse; MCQ best=G |
+| 0769 | B26 | HIGH | 1620 | 9pi rad = 9*180 = 1620 deg; MATCH (best correct) |
+| 0771 | B26 | HIGH | 2 | sec(-pi/3)=1/cos(pi/3)=1/(1/2)=2; MATCH (best correct) |
+| 0774 | B26 | HIGH | 24, 28, 33, 39, 42 | 5-num summary: min24,Q1 28,med33,Q3 39,max42; MATCH (be |
+| 0777 | B26 | HIGH | 8 | 2^6/2^3=2^3=8; MATCH (best correct) |
+| 0779 | B26 | MED | Dirichlet-type continuity at points | f=sinx/cos^2x by rationality of cosx; continuity analys |
+| 0783 | B26 | MED | 2*int sin^5(-2x)cos^2(2x)dx (messy) | computable trig integral; MCQ best=H |
+| 0789 | B26 | HIGH | 8, 8, -8, -8 | /8/=8,/-8/=8,-/8/=-8,-/-8/=-8; MATCH (best correct) |
+| 0791 | B26 | MED | sin(na/2)cos((n+1)a/2)/sin(a/2) | sum cos(ka) k=1..n Dirichlet kernel; MCQ best=F |
+| 0796 | B26 | INCONCLUSIVE | INCONCLUSIVE | internally tangent circles competition; best=F |
+| 0797 | B26 | INCONCLUSIVE | INCONCLUSIVE | triangle angle-bisector competition; best=C |
+| 0798 | B26 | HIGH | 3924, EXTRANEOUS | sqrt(t-151)-sqrt(t+117)=125 has NO real solution; 3924  |
+| 0800 | B26 | MED | 140 (sample size) | headache-relief sample size; best=140 plausible |
+| 0804 | B26 | MED | int x sin(mx)/(x^4+a^4) via residues | contour integral, parametric in m,a; MCQ best=F |
+| 0806 | B26 | HIGH | -0.6551, -0.7556, 0.8670, 1.153, -1.324, -1.527 | sec=-45/34 QIII: cos=-0.7556,sin=-0.6551,tan=0.8670,cot |
+| 0807 | B26 | HIGH | (1/2)sec(2*phi) | d/dphi (1/4)ln((1+tan)/(1-tan))=(1/2)sec(2phi); value v |

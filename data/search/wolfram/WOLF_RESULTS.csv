@@ -741,72 +741,72 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0739,algebra,free_single,1,DONE,Q/(1-Z),HIGH,B25,YES,Z=1-Q/U -> U=Q/(1-Z); MATCH (best correct),Solve the equation for $U$:  Z=1-\frac{Q}{U} $U=$ [ANS]
 0740,algebra,free_single,1,DONE,5184/(81cos^2 t - 64 sin^2 t),HIGH,B25,YES,x^2/64-y^2/81=1 polar -> r^2=5184/(81cos^2-64sin^2); MATCH (best correct),Find a polar equation of the hyperbola $\left(\frac{x}{8}\right)^2-\left(\frac{y
 0741,trigonometry,MCQ,0,DONE,solve (1+tanx)/(1-tanx)=1+sin2x,MED,B25,YES,trig identity equation; MCQ best=H,"Solve the equation ${\frac{1+\operatorname{tan} \, x} {1-\operatorname{tan} \,x}"
-0742,statistics,free_single,1,UNVERIFIED,,,,YES,,The director of an alumni association for a university wants to look at the rela
+0742,statistics,free_single,1,DONE,241.0 (regression prediction),MED,B26,YES,years-since-grad vs donation regression; best=241.0 plausible,The director of an alumni association for a university wants to look at the rela
 0743,other,free_single,1,UNVERIFIED,,,,MAYBE,,A school purchased a batch of T-shirts from a company. The company charged ${\$9
 0744,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Taxylvania has a tax code that rewards charitable giving. If a person gives $p$ 
-0745,trigonometry,free_multi,8,UNVERIFIED,,,,YES,,Complete the following formulas: $\sin(2C)=$ [ANS] $\cos(A+B)=$ [ANS] $\tan(2C)=
+0745,trigonometry,free_multi,8,DONE,"2sinC cosC, cosAcosB-sinAsinB, ...",HIGH,B26,YES,standard double/sum/diff identities; MATCH (best correct),Complete the following formulas: $\sin(2C)=$ [ANS] $\cos(A+B)=$ [ANS] $\tan(2C)=
 0746,other,free_multi,7,UNVERIFIED,,,,MAYBE,,For the problems below add or subtract as indicated. $7506$ $+9911$=[ANS] $64784
 0747,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Using Rabin cryptosystem with p=23 and q=7 Encrypt P=24 to find ciphertext. The 
 0748,statistics,free_multi,12,DONE,"222.51, 186.49, 79.43, 66.57, 50.05, 41.95, 31.01, 25.99, 20.79, 3, 11.345, B",HIGH,B5,YES,chi-sq independence 12-slot,"It has been suggusted that the highest priority of retirees is travel. Thus, a s"
 0749,algebra,free_multi,6,DONE,"5, 5, 5, 5, 5, is, 14/9, 19/14, 24/19, 29/24, 34/29, is not, 9+5n, (-1)^(n+1)(5n+9)",PARTIAL,B6,YES,format uncertain; 6 ANS slots but exact slot boundaries unclear,"Consider the sequence 9, 14, 19, 24, 29, 34... Compute the difference between su"
 0750,other,free_multi,3,UNVERIFIED,,,,MAYBE,,Oil leaks from a tank. At hour $t=0$ there are 350 gallons of oil in the tank. E
 0751,geometry,free_single,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B12,YES,"n-gon polygon count; teacher=31, best=45; competition",Given an odd integer $n \geq 3$. Let $V$ be the set of vertices of a regular $n$
-0752,geometry,MCQ,0,UNVERIFIED,,,,YES,,"Given a parallelogram $ABCD$ , let $\mathcal{P}$ be a plane such that the distan"
+0752,geometry,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B26,YES,parallelogram vertex-to-plane distance competition; best=D,"Given a parallelogram $ABCD$ , let $\mathcal{P}$ be a plane such that the distan"
 0753,calculus,free_multi,4,DONE,"..., 16.56",MED,B16,YES,Steadia linear pop 4-slot; best=16.56 undercount 1of4,Steadia is an island which experienced approximately linear population growth fr
-0754,algebra,free_single,1,UNVERIFIED,,,,YES,,"Let $m(x)=4x^2-7$, $n(x)=5x$, and $o(x)=\sqrt{3x+5}$. Find a simplified formula "
-0755,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,Find the steady-state solution of the equation y [n] + [1 / \surd(3)]y [n - 1] =
+0754,algebra,free_single,1,DONE,60x^2 + 65x,MED,B26,YES,"composition of m,n,o; best=60x^2+65x plausible","Let $m(x)=4x^2-7$, $n(x)=5x$, and $o(x)=\sqrt{3x+5}$. Find a simplified formula "
+0755,trigonometry,MCQ,0,DONE,steady-state of difference equation,MED,B26,YES,y[n]+(1/sqrt3)y[n-1]=cos; steady-state response; MCQ best=F,Find the steady-state solution of the equation y [n] + [1 / \surd(3)]y [n - 1] =
 0756,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"According to Car and Driver, an Alfa Romeo going 70 mph requires 177 feet to sto"
 0757,other,free_single,1,UNVERIFIED,,,,MAYBE,,Three students collected data for a school project. Anita asked her classmates w
-0758,statistics,free_single,1,UNVERIFIED,,,,YES,,For the purposes of this question a household corresponds to a single residentia
-0759,statistics,free_single,1,UNVERIFIED,,,,YES,,Altough in general you cannot know the sampling distribution of the sample mean 
-0760,calculus,MCQ,0,UNVERIFIED,,,,YES,,Find the sum of the series $\sum_{n=1}^\infty \frac{ x^{4 \cdot n-1} }{ 4 \cdot 
+0758,statistics,free_single,1,DONE,household-size sampling concept,MED,B26,YES,size-biased sampling MCQ; best=C; conceptual,For the purposes of this question a household corresponds to a single residentia
+0759,statistics,free_single,1,DONE,normal distribution (CLT),MED,B26,YES,sampling dist of mean approx normal; MCQ best=C,Altough in general you cannot know the sampling distribution of the sample mean 
+0760,calculus,MCQ,0,DONE,(1/4)ln((1+x)/(1-x)) - (1/2)arctan(x) type,MED,B26,YES,sum x^(4n-1)/(4n-1) via integration; MCQ best=I,Find the sum of the series $\sum_{n=1}^\infty \frac{ x^{4 \cdot n-1} }{ 4 \cdot 
 0761,other,free_single,1,UNVERIFIED,,,,MAYBE,,"The current value $f(n)$ is five times the previous value, plus four. Find a rec"
 0762,algebra,free_single,1,DONE,2x(55x+21),HIGH,B12,YES,8x*7x+6x*8x+7*6x+x*6x=110x^2+42x=2x(55x+21); teacher/best agree (factored vs expanded),"Write the expression $(8x)(7x)+(6x) (8x)+7 (6x)+x(6x)$ in a simpler form, if pos"
 0763,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Write a numerical expression for each verbal phrase. nine added to four [ANS] ei
-0764,algebra,free_single,1,UNVERIFIED,,,,YES,,Rewrite the expression \ln (a+b)+4 \ln (a-b)-5 \ln c as a single logarithm $\ln 
+0764,algebra,free_single,1,DONE,(a+b)(a-b)^4/c^5,HIGH,B26,YES,ln(a+b)+4ln(a-b)-5lnc=ln[(a+b)(a-b)^4/c^5]; MATCH (best correct),Rewrite the expression \ln (a+b)+4 \ln (a-b)-5 \ln c as a single logarithm $\ln 
 0765,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Mr. Cleary's class and Ms. Ntuala's class go to use the computer lab. There are 
 0766,other,free_multi,3,UNVERIFIED,,,,MAYBE,,Convert each mixed fraction to a decimal using at least four decimal places. $4 
 0767,other,MCQ,0,UNVERIFIED,,,,MAYBE,,$int_{{}}^{{}}{frac{dx}{sqrt[3]{(x-1){{(x+1)}^{2}}}}}$
-0768,algebra,MCQ,0,UNVERIFIED,,,,YES,,"The inverse function of $y = left{ begin{array}{l} 1 + {{rm{e}}^{ - x}}{rm{, }}q"
-0769,trigonometry,free_single,1,UNVERIFIED,,,,YES,,An angle of $9 \pi$ radians can be converted to an angle of [ANS] degrees.
+0768,algebra,MCQ,0,DONE,inverse of piecewise function,MED,B26,YES,piecewise inverse; MCQ best=G,"The inverse function of $y = left{ begin{array}{l} 1 + {{rm{e}}^{ - x}}{rm{, }}q"
+0769,trigonometry,free_single,1,DONE,1620,HIGH,B26,YES,9pi rad = 9*180 = 1620 deg; MATCH (best correct),An angle of $9 \pi$ radians can be converted to an angle of [ANS] degrees.
 0770,other,free_multi,10,UNVERIFIED,,,,MAYBE,,"For each of the following, find the base $b$ if the graph of $y=b^x$ contains th"
-0771,trigonometry,free_single,1,UNVERIFIED,,,,YES,,Find the exact value as fraction (not a decimal approximation). $ \sec\left(\fra
+0771,trigonometry,free_single,1,DONE,2,HIGH,B26,YES,sec(-pi/3)=1/cos(pi/3)=1/(1/2)=2; MATCH (best correct),Find the exact value as fraction (not a decimal approximation). $ \sec\left(\fra
 0772,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B12,YES,"OEIS bell-ringing MCQ; teacher=H, best=J",We now define an algorithm: The definition of a(n) is the sequence generated by 
 0773,other,free_single,1,UNVERIFIED,,,,MAYBE,,Express the average age of three sisters in the terms of the age $a$ of the firs
-0774,statistics,free_multi,5,UNVERIFIED,,,,YES,,"Find the five-number summary for the following 10 values: 31,\ 28,\ 32,\ 26,\ 42"
+0774,statistics,free_multi,5,DONE,"24, 28, 33, 39, 42",HIGH,B26,YES,"5-num summary: min24,Q1 28,med33,Q3 39,max42; MATCH (best correct)","Find the five-number summary for the following 10 values: 31,\ 28,\ 32,\ 26,\ 42"
 0775,trigonometry,free_single,1,DONE,6sin(x-7)-6,HIGH,B18,YES,"right 7, down 6, vstretch 6: y=6sin(x-7)-6; DISCREPANCY (best=""6sin(x-7)-36"" wrong, -36 not -6)",Find the equation of a sine wave that is obtained by shifting the graph of $y=\s
 0776,other,free_single,1,UNVERIFIED,,,,MAYBE,,What is the value of $\frac{3}{4} x-\frac{1}{2}$ when $x=24$? [ANS] A. $17 \frac
-0777,algebra,free_single,1,UNVERIFIED,,,,YES,,Evaluate: $ \frac{2^{6}}{2^{3}}=$ [ANS] Note: Your answer should be completely s
+0777,algebra,free_single,1,DONE,8,HIGH,B26,YES,2^6/2^3=2^3=8; MATCH (best correct),Evaluate: $ \frac{2^{6}}{2^{3}}=$ [ANS] Note: Your answer should be completely s
 0778,other,MCQ,0,UNVERIFIED,,,,MAYBE,,You have applied to three medical schools: University of California at San Franc
-0779,calculus,MCQ,0,UNVERIFIED,,,,YES,,"Given the function $f(x)=\begin{cases}\sin x,&\text{if } \cos x \text{ is a rati"
+0779,calculus,MCQ,0,DONE,Dirichlet-type continuity at points,MED,B26,YES,f=sinx/cos^2x by rationality of cosx; continuity analysis; MCQ best=F,"Given the function $f(x)=\begin{cases}\sin x,&\text{if } \cos x \text{ is a rati"
 0780,other,free_single,1,UNVERIFIED,,,,MAYBE,,Subtract $-5t^{14}-7t^{12}-6t^{10}$ from the sum of $6t^{14}-5t^{12}+8t^{10}$ an
 0781,algebra,free_single,1,DONE,sqrt(15)/8,HIGH,B13,YES,sqrt(3/8)*sqrt(5/8)=sqrt(15)/8; teacher/best agree,Simplify the expression ${\sqrt{\frac{3}{8}} \cdot \sqrt{\frac{5}{8}}}$. Use sqr
 0782,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Find the following partial sum, $ \sum_{n=0}^{40} (3-2 n)=$ [ANS]"
-0783,calculus,MCQ,0,UNVERIFIED,,,,YES,,Solve the integral: $$ 2 \cdot \int \sin(-2 \cdot x)^5 \cdot \cos(2 \cdot x)^2 \
+0783,calculus,MCQ,0,DONE,2*int sin^5(-2x)cos^2(2x)dx (messy),MED,B26,YES,computable trig integral; MCQ best=H,Solve the integral: $$ 2 \cdot \int \sin(-2 \cdot x)^5 \cdot \cos(2 \cdot x)^2 \
 0784,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Find the distance between the pair of real numbers: ${\textstyle\frac{7}{12}}$, "
 0785,statistics,free_multi,4,DONE,"False, True, False, False",HIGH,B13,YES,"T/F stats; teacher=words, best=0/1 numeric (0.000=False); semantically agree","Select True or False, depending on whether the corresponding statement is true o"
 0786,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Determine the count of positive integers $X$ that fulfill all of these criteria:
 0787,other,free_multi,3,DONE,"148,178,452, 41.55, 46.97",MEDIUM,B1,MAYBE,discrete geometric 3-slot; format ambiguity on units,A country's consumption of iron increases 5.7\% per year. Assuming this rate of 
 0788,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Let $f(x) =\frac{2}{x^2 -1}$ . Find the largest positive integer $n$ such that $
-0789,algebra,free_multi,4,UNVERIFIED,,,,YES,,Find the absolute value of the following numbers. ${|{8}|=}$ [ANS] ${|{-8}|=}$ [
+0789,algebra,free_multi,4,DONE,"8, 8, -8, -8",HIGH,B26,YES,"|8|=8,|-8|=8,-|8|=-8,-|-8|=-8; MATCH (best correct)",Find the absolute value of the following numbers. ${|{8}|=}$ [ANS] ${|{-8}|=}$ [
 0790,algebra,free_single,1,DONE,-20x^2+45x-25=0,HIGH,B13,YES,-5(4x-5)(x-1)=-20x^2+45x-25; teacher correct; best=INVALID,Write the equation $-5 (4x-5) (x-1)=0$ in the standard form $a x^2+b x+c=0$. [AN
-0791,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,Calculate the sum $S=\cos(a)+\cos(2 \cdot a)+\cos(3 \cdot a) + \ldots + \cos(n \
+0791,trigonometry,MCQ,0,DONE,sin(na/2)cos((n+1)a/2)/sin(a/2),MED,B26,YES,sum cos(ka) k=1..n Dirichlet kernel; MCQ best=F,Calculate the sum $S=\cos(a)+\cos(2 \cdot a)+\cos(3 \cdot a) + \ldots + \cos(n \
 0792,other,free_single,1,UNVERIFIED,,,,MAYBE,,Solve the expression $T h^{t}=V g^{t}$ for $t$ assuming that all other letters a
 0793,statistics,free_multi,4,DONE,"1.35, (1.49, inf), 0.0895, D",HIGH,B6,YES,t-test 4-slot; note 'inf' not 'infty' in notation,"A manufacturer of light bulbs advertises that, on average, its long-life bulb wi"
 0794,statistics,free_multi,2,DONE,"4.47, 4",HIGH,B13,YES,"mean=85/19=4.47, median=4; teacher correct; best=5 is wrong",Your teacher is trying to encourage her students to read more books. For the cur
 0795,other,free_multi,3,UNVERIFIED,,,,MAYBE,,"A population, $P$, of a certain species of fish in a lake begins with $450$ memb"
-0796,calculus,MCQ,0,UNVERIFIED,,,,YES,,Let $\omega_1$ be a circle of radius $1$ that is internally tangent to a circle 
-0797,geometry,MCQ,0,UNVERIFIED,,,,YES,,"$\triangle ABC$ has $AB=3$ , $BC=2007$ , and $CA=2008$ . Point $E$ is on $AC$ su"
-0798,algebra,free_multi,2,UNVERIFIED,,,,YES,,Solve for $t$: \sqrt{t-151}-\sqrt{t+117}=125 The only possible root is $t=$ [ANS
+0796,calculus,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B26,YES,internally tangent circles competition; best=F,Let $\omega_1$ be a circle of radius $1$ that is internally tangent to a circle 
+0797,geometry,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B26,YES,triangle angle-bisector competition; best=C,"$\triangle ABC$ has $AB=3$ , $BC=2007$ , and $CA=2008$ . Point $E$ is on $AC$ su"
+0798,algebra,free_multi,2,DONE,"3924, EXTRANEOUS",HIGH,B26,YES,sqrt(t-151)-sqrt(t+117)=125 has NO real solution; 3924 is extraneous; MATCH (best correct),Solve for $t$: \sqrt{t-151}-\sqrt{t+117}=125 The only possible root is $t=$ [ANS
 0799,other,free_single,0,UNVERIFIED,,,,MAYBE,,Jerry places at most one rook in each cell of a $2025 \times 2025$ grid of cells
-0800,statistics,free_single,1,UNVERIFIED,,,,YES,,A medical researcher wants to investigate the amount of time it takes for patien
+0800,statistics,free_single,1,DONE,140 (sample size),MED,B26,YES,headache-relief sample size; best=140 plausible,A medical researcher wants to investigate the amount of time it takes for patien
 0801,linear_algebra,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B13,YES,"projective space linear maps competition; teacher=G, best=E; not computable",Let $V$ and $W$ be complex vector spaces of dimensions $m$ and $n$ respec- tivel
 0802,algebra,free_single,1,DONE,26/7,HIGH,B18,YES,12/6 * 13/7 = 26/7; MATCH (best correct),Simplify the following and express your answer as a single fraction. No decimals
 0803,other,free_single,1,UNVERIFIED,,,,MAYBE,,"According to the Food and Drug Administration (FDA), a cup of coffee contains on"
-0804,calculus,MCQ,0,UNVERIFIED,,,,YES,,Calculate the integral $$ \int_{0}^{+\infty} \frac{x \sin(m x)}{x^{4} + a^{4}} \
+0804,calculus,MCQ,0,DONE,int x sin(mx)/(x^4+a^4) via residues,MED,B26,YES,"contour integral, parametric in m,a; MCQ best=F",Calculate the integral $$ \int_{0}^{+\infty} \frac{x \sin(m x)}{x^{4} + a^{4}} \
 0805,other,MCQ,0,UNVERIFIED,,,,MAYBE,,We now define an algorithm: The definition of a(n) is the number of n-step one-s
-0806,trigonometry,free_multi,6,UNVERIFIED,,,,YES,,Assume that $\theta$ is an angle in quadrant III. Find the values of the six tri
-0807,calculus,MCQ,0,UNVERIFIED,,,,YES,,Calculate the derivative of the function $r = \ln\left(\sqrt[4]{\frac{ 1+\tan(\v
+0806,trigonometry,free_multi,6,DONE,"-0.6551, -0.7556, 0.8670, 1.153, -1.324, -1.527",HIGH,B26,YES,"sec=-45/34 QIII: cos=-0.7556,sin=-0.6551,tan=0.8670,cot=1.153,sec=-1.324,csc=-1.527; MATCH",Assume that $\theta$ is an angle in quadrant III. Find the values of the six tri
+0807,calculus,MCQ,0,DONE,(1/2)sec(2*phi),HIGH,B26,YES,d/dphi (1/4)ln((1+tan)/(1-tan))=(1/2)sec(2phi); value verified; MCQ best=E,Calculate the derivative of the function $r = \ln\left(\sqrt[4]{\frac{ 1+\tan(\v
 0808,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is Blue code for n: in the bi
 0809,other,free_single,0,UNVERIFIED,,,,MAYBE,,"The country of ELMOpia has $n \ge 4$ cities, where some pairs of cities are conn"
 0810,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,The general solution of the equation $y''+y= \sin x$ is

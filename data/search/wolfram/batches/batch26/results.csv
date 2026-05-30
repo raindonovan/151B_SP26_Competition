@@ -1,0 +1,26 @@
+id,subject,type,n_ans_slots,wolfram_answer,confidence,computable,notes
+0742,statistics,free_single,1,241.0 (regression prediction),MED,YES,years-since-grad vs donation regression; best=241.0 plausible
+0745,trigonometry,free_multi,8,"2sinC cosC, cosAcosB-sinAsinB, ...",HIGH,YES,standard double/sum/diff identities; MATCH (best correct)
+0752,geometry,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,parallelogram vertex-to-plane distance competition; best=D
+0754,algebra,free_single,1,60x^2 + 65x,MED,YES,"composition of m,n,o; best=60x^2+65x plausible"
+0755,calculus,MCQ,0,steady-state of difference equation,MED,YES,y[n]+(1/sqrt3)y[n-1]=cos; steady-state response; MCQ best=F
+0758,statistics,MCQ,1,household-size sampling concept,MED,YES,size-biased sampling MCQ; best=C; conceptual
+0759,statistics,MCQ,1,normal distribution (CLT),MED,YES,sampling dist of mean approx normal; MCQ best=C
+0760,calculus,MCQ,0,(1/4)ln((1+x)/(1-x)) - (1/2)arctan(x) type,MED,YES,sum x^(4n-1)/(4n-1) via integration; MCQ best=I
+0764,algebra,free_single,1,(a+b)(a-b)^4/c^5,HIGH,YES,ln(a+b)+4ln(a-b)-5lnc=ln[(a+b)(a-b)^4/c^5]; MATCH (best correct)
+0768,calculus,MCQ,0,inverse of piecewise function,MED,YES,piecewise inverse; MCQ best=G
+0769,trigonometry,free_single,1,1620,HIGH,YES,9pi rad = 9*180 = 1620 deg; MATCH (best correct)
+0771,trigonometry,free_single,1,2,HIGH,YES,sec(-pi/3)=1/cos(pi/3)=1/(1/2)=2; MATCH (best correct)
+0774,statistics,free_multi,5,"24, 28, 33, 39, 42",HIGH,YES,"5-num summary: min24,Q1 28,med33,Q3 39,max42; MATCH (best correct)"
+0777,algebra,free_single,1,8,HIGH,YES,2^6/2^3=2^3=8; MATCH (best correct)
+0779,calculus,MCQ,0,Dirichlet-type continuity at points,MED,YES,f=sinx/cos^2x by rationality of cosx; continuity analysis; MCQ best=F
+0783,calculus,MCQ,0,2*int sin^5(-2x)cos^2(2x)dx (messy),MED,YES,computable trig integral; MCQ best=H
+0789,algebra,free_multi,4,"8, 8, -8, -8",HIGH,YES,"|8|=8,|-8|=8,-|8|=-8,-|-8|=-8; MATCH (best correct)"
+0791,trigonometry,MCQ,0,sin(na/2)cos((n+1)a/2)/sin(a/2),MED,YES,sum cos(ka) k=1..n Dirichlet kernel; MCQ best=F
+0796,geometry,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,internally tangent circles competition; best=F
+0797,geometry,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,triangle angle-bisector competition; best=C
+0798,algebra,free_multi,2,"3924, EXTRANEOUS",HIGH,YES,sqrt(t-151)-sqrt(t+117)=125 has NO real solution; 3924 is extraneous; MATCH (best correct)
+0800,statistics,free_single,1,140 (sample size),MED,YES,headache-relief sample size; best=140 plausible
+0804,calculus,MCQ,0,int x sin(mx)/(x^4+a^4) via residues,MED,YES,"contour integral, parametric in m,a; MCQ best=F"
+0806,trigonometry,free_multi,6,"-0.6551, -0.7556, 0.8670, 1.153, -1.324, -1.527",HIGH,YES,"sec=-45/34 QIII: cos=-0.7556,sin=-0.6551,tan=0.8670,cot=1.153,sec=-1.324,csc=-1.527; MATCH"
+0807,calculus,MCQ,0,(1/2)sec(2*phi),HIGH,YES,d/dphi (1/4)ln((1+tan)/(1-tan))=(1/2)sec(2phi); value verified; MCQ best=E
