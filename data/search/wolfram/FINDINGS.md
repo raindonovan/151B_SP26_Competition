@@ -122,6 +122,27 @@ Some best_answer values are sheet-construction failures, not wrong math:
 - 0498: leaked chain-of-thought rambling text (inference output never parsed to a final answer)
 Joins F16/F21 (best="INVALID"/"answer"/word). **Recommend a sheet-hygiene sweep:** grep best_answer for "PLACEHOLDER", multi-sentence text, or bare vocabulary words — all are unparsed/failed entries that need a value supplied.
 
+## Finding 25 — Derived answer-sheet extraction (2026-05-30): 477-DONE → 267 promoted / 210 residual; smoke gate caught a prose-gate gap
+Ran claude_strategy's fail-closed extraction spec (`scripts/wolfram_extract.py`, re-uses ONLY `_slots`/`_to_number` from `gold_equiv.py`; the reverted structural_screen.py/normalize_delta.py were NOT resurrected). Read-only over WOLF_RESULTS.csv (sha `019b428a…81fa7`) + private.jsonl (sha `bd48cf7e…626a6d`), both unchanged start→end.
+
+**Dry-run result (NOT committed — held pending a ruling):**
+- Universe freeze |U| = 477 DONE ✓.
+- Would-be: answer_sheet **267**, residual **210**. All 9 fail-closed acceptance checks PASS; Phase-2 ambiguous rate 0%.
+- Promotions: clean_value 255, clean_letter 12, mcq_letter_mapped_numeric **0**.
+- Skips: mcq_options_not_parseable 96, notes_admit_incomplete 33, annotation_contamination 25, convention_sensitive 22, slot_mismatch 15, marker_in_answer 9, low_confidence 7, prose_or_nonanswer 2, known_dataset_bug 1.
+
+**Why nothing was committed — smoke gate flagged a real defect (spec: STOP-and-surface, do not relax):**
+- **Prose-gate gap (the defect).** Phase 0.8 only rejects a non-numeric free answer when it contains a standalone function-word from a FIXED list (`in/is/are/the/…`). A `+`-joined / noun-phrase SENTENCE slips through and gets promoted as `clean_value`. Canary: **0252** = `"normal populations + equal variances + independence"` (really MCQ option C) was promoted. Blast radius ~6 sentence/concept rows wrongly promoted: **0252, 0469** (`…square feet…dollars…`), **0491** (`…Central Limit Theorem`), **0544** (`yes: power function…`), **0556** (`chain rule dA/dt…`), **0758** (`household-size sampling concept`). Borderline-OK (legit non-numeric math, leave promoted): 0247 (logistic g.f.), 0638 (interval notation). NOTE: widening the gate naively would false-reject ~120 legit symbolic answers already CLEAN (`5x^4`, `(y-3)/(y+3)`, `2c+4p=70`, `Quadrant IV`, `July, 1908`) — precision/recall call left to strategy.
+
+**Other smoke results were spec-correct (smoke EXPECTATIONS were optimistic; "first hit wins" routed them right, all fail-closed):**
+- 0000→notes_admit_incomplete (note says "undercount", check 5 before CLEAN).
+- 0468→marker_in_answer (answer `?, 0.8816`, check 3 before 5).
+- 0011→low_confidence (confidence `consensus-only` ∉{HIGH,MED}, check 1 before 2 — so the known_dataset_bug list (check 2) is partly shadowed by low_confidence).
+
+**Design consequence worth knowing: the numeric-MCQ mapper (Phase 2) promotes ZERO.** All 96 Phase-0-routed MCQ rows fail the STRICT option parser (`^[A-Z].`/`^([A-Z])`/`^[A-Z])` at line start). Our MCQ stems put options on ONE line (`… A. … B. … C.`) or have NO options in text (e.g. 0017 "least odd prime factor", answer 181). Fail-closed = correct, but means MCQ-value items yield no mapped letters under this parser. If MCQ-value yield is wanted, the option parser needs an inline (non-line-start) pattern — separate spec decision.
+
+**Status: awaiting strategy ruling on the prose gate** (options given: tighten 0.8 to reject ≥2 non-math alphabetic words / promote as-is / hard-list the 6 ids). Provisional CSVs were written then removed so nothing downstream consumes the known-wrong sheet. Script is in repo (`scripts/wolfram_extract.py`) and reproducible.
+
 ## Open questions
 - Exact Kaggle string-matching rules (whitespace, `\text{}` wrappers, trailing zeros, `^\circ` vs `°`)
 - 0587 multi-select format: comma-sep vs concatenated vs sub-boxes
