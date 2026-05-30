@@ -420,3 +420,28 @@ Readable companion to `WOLF_RESULTS.csv` (the full machine-readable scorecard fo
 | 0493 | B22 | MED | 14.67, B, 0.06866, 0.1083 | color-blindness proportions/CI 4-slot; best has all 4;  |
 | 0500 | B22 | MED | iterative method convergence/error bound | AX=b iterative error estimate; MCQ best=J; conceptual |
 | 0504 | B22 | HIGH | -3/2, -3*sqrt(3)/2 | polar (3,4pi/3): x=3cos=-3/2, y=3sin=-3sqrt3/2; MATCH ( |
+| 0507 | B23 | INCONCLUSIVE | INCONCLUSIVE | factorial-sum binomial competition; best=I |
+| 0511 | B23 | MED | arc length = t + 2t^3/3 (integrand 1+2t^2) | ds=sqrt((1+2t^2)^2)=1+2t^2; needs interval for number;  |
+| 0512 | B23 | HIGH | 64p^2 + 64p + 16 | (8p+4)^2=64p^2+64p+16; MATCH (best correct) |
+| 0513 | B23 | HIGH | -1.405, 1.405, 1.751 | alpha=0.08: lower z=-1.405, right z=1.405, two-tail z=1 |
+| 0514 | B23 | MED | definite integral setup for r=2 cap r=4cos(theta) | common-region polar area integral; MCQ best=I |
+| 0517 | B23 | INCONCLUSIVE | INCONCLUSIVE | sum of 3-digit distinct-digit integers mod 1000 competi |
+| 0524 | B23 | MED | Dini derivatives (a,b,a',b' bounds) | Dini upper/lower derivatives of piecewise oscillating f |
+| 0526 | B23 | HIGH | 128x^4 + 16x^2 + 4 | y=8(4x^2)^2+4(4x^2)+4=128x^4+16x^2+4; MATCH (best corre |
+| 0532 | B23 | MED | polar conic r=ed/(1-e cos) form | polar conic with focus at origin, given e and directrix |
+| 0533 | B23 | MED | 0.0563 (p-value) | GMAT one-sample test p-value; best=0.0563 plausible |
+| 0534 | B23 | MED | a,b,c from repeated-root general solution | y=(C1+C2x)e^... -> repeated root -> a,b; particular ->  |
+| 0536 | B23 | MED | LU decomposition of given 3x3 | compact LU factorization; computable; MCQ best=E |
+| 0544 | B23 | HIGH | yes: power function (8/7)x^3 | s(x)=8/(7x^-3)=(8/7)x^3 is a power function; MCQ best=A |
+| 0545 | B23 | HIGH | 400000 | 8000*50=400000; MATCH (best correct) |
+| 0547 | B23 | MED | inscribed rectangle+triangle optimization | area optimization in circle; MCQ best=H |
+| 0549 | B23 | INCONCLUSIVE | INCONCLUSIVE | OEIS sum-of-two-squares count; best=J |
+| 0551 | B23 | HIGH | sqrt(28) | cos=-6/8 -> r=8, x=-6, y=+sqrt(64-36)=sqrt28; MATCH (be |
+| 0552 | B23 | MED | 33150, 36300 | Jeopardy winnings CI 2-slot; best plausible |
+| 0554 | B23 | MED | max entropy rate of random walk (4 edges) | random-walk entropy rate; MCQ best=A; conceptual |
+| 0556 | B23 | MED | chain rule dA/dt = f'(r) h'(t) | related-rates chain-rule statement; MCQ best="C,D" |
+| 0560 | B23 | MED | mean 0, sd 1 (standardized variable) | standardized var properties MCQ; best="C,A,A" |
+| 0561 | B23 | HIGH | 2^26*3^14*5^7*7^4*11^2*13^2*17*19*23*29 | 30! prime factorization verified; MCQ best=E |
+| 0567 | B23 | MED | false-statement about frequency distributions | identify false stat statement; best="A,A"; conceptual |
+| 0569 | B23 | HIGH | (p^2-1)(p^2-p) | /GL_2(F_p)/=(p^2-1)(p^2-p); value verified; MCQ best=B |
+| 0574 | B23 | MED | rank/det property of given 3x3 | matrix A property (det=0, rank 2); MCQ best=E |

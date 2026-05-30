@@ -1,0 +1,26 @@
+id,subject,type,n_ans_slots,wolfram_answer,confidence,computable,notes
+0507,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,factorial-sum binomial competition; best=I
+0511,calculus,MCQ,0,arc length = t + 2t^3/3 (integrand 1+2t^2),MED,YES,ds=sqrt((1+2t^2)^2)=1+2t^2; needs interval for number; MCQ best=I
+0512,algebra,free_single,1,64p^2 + 64p + 16,HIGH,YES,(8p+4)^2=64p^2+64p+16; MATCH (best correct)
+0513,statistics,free_multi,3,"-1.405, 1.405, 1.751",HIGH,YES,"alpha=0.08: lower z=-1.405, right z=1.405, two-tail z=1.751; MATCH (best correct)"
+0514,calculus,MCQ,0,definite integral setup for r=2 cap r=4cos(theta),MED,YES,common-region polar area integral; MCQ best=I
+0517,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,sum of 3-digit distinct-digit integers mod 1000 competition; best=E
+0524,calculus,MCQ,0,"Dini derivatives (a,b,a',b' bounds)",MED,YES,Dini upper/lower derivatives of piecewise oscillating fn; MCQ best=E
+0526,algebra,free_single,1,128x^4 + 16x^2 + 4,HIGH,YES,y=8(4x^2)^2+4(4x^2)+4=128x^4+16x^2+4; MATCH (best correct)
+0532,calculus,MCQ,0,polar conic r=ed/(1-e cos) form,MED,YES,"polar conic with focus at origin, given e and directrix; MCQ best=I"
+0533,statistics,free_single,1,0.0563 (p-value),MED,YES,GMAT one-sample test p-value; best=0.0563 plausible
+0534,calculus,MCQ,0,"a,b,c from repeated-root general solution",MED,YES,"y=(C1+C2x)e^... -> repeated root -> a,b; particular -> c; MCQ best=G"
+0536,linear_algebra,MCQ,0,LU decomposition of given 3x3,MED,YES,compact LU factorization; computable; MCQ best=E
+0544,algebra,MCQ,1,yes: power function (8/7)x^3,HIGH,YES,s(x)=8/(7x^-3)=(8/7)x^3 is a power function; MCQ best=A
+0545,algebra,free_single,1,400000,HIGH,YES,8000*50=400000; MATCH (best correct)
+0547,geometry,MCQ,0,inscribed rectangle+triangle optimization,MED,YES,area optimization in circle; MCQ best=H
+0549,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,OEIS sum-of-two-squares count; best=J
+0551,trigonometry,free_single,1,sqrt(28),HIGH,YES,"cos=-6/8 -> r=8, x=-6, y=+sqrt(64-36)=sqrt28; MATCH (best correct)"
+0552,statistics,free_multi,2,"33150, 36300",MED,YES,Jeopardy winnings CI 2-slot; best plausible
+0554,statistics,MCQ,0,max entropy rate of random walk (4 edges),MED,YES,random-walk entropy rate; MCQ best=A; conceptual
+0556,calculus,MCQ,1,chain rule dA/dt = f'(r) h'(t),MED,MAYBE,"related-rates chain-rule statement; MCQ best=""C,D"""
+0560,statistics,MCQ,3,"mean 0, sd 1 (standardized variable)",MED,MAYBE,"standardized var properties MCQ; best=""C,A,A"""
+0561,number_theory,MCQ,0,2^26*3^14*5^7*7^4*11^2*13^2*17*19*23*29,HIGH,YES,30! prime factorization verified; MCQ best=E
+0567,statistics,MCQ,2,false-statement about frequency distributions,MED,MAYBE,"identify false stat statement; best=""A,A""; conceptual"
+0569,number_theory,MCQ,0,(p^2-1)(p^2-p),HIGH,YES,|GL_2(F_p)|=(p^2-1)(p^2-p); value verified; MCQ best=B
+0574,linear_algebra,MCQ,0,rank/det property of given 3x3,MED,YES,"matrix A property (det=0, rank 2); MCQ best=E"

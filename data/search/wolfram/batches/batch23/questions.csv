@@ -1,0 +1,44 @@
+id,subject,type,n_ans_slots,best_answer,teacher_consensus,question
+0507,number_theory,MCQ,0,I,I,"The value of $\frac{1}{399!}\left(\sum_{i=2}^{200}\frac{199!(399-i)!}{(200-i)!}-\sum_{i=2}^{100}\frac{99!(399-i)!}{(100-i)!}\right)$ can be expressed as $\frac{m}{n}$ where $\gcd(m,n)=1$ . Find the remainder when $m+n$ is divided by $1000$"
+0511,geometry,MCQ,0,I,I,"Find the arc length of the curve, where x=t, y=t^2 and z=2*t^3/3."
+0512,algebra,free_single,1,64p^2 + 64p + 16,64p^2+64p+16,"Expand the expression
+(8 p+4)^2 and combine like terms. Simplify your answer as much as possible. Answer: [ANS]"
+0513,statistics,free_multi,3,"-1.405, 1.405, 1.751",,"Given the significance level $\alpha=0.08$ find the following:
+(a) $\ $ lower-tailed $z$ value $z=$ [ANS]
+(b) $\ $ right-tailed $z$ value $z=$ [ANS]
+(c) $\ $ two-tailed $z$ value $|z|=$ [ANS]"
+0514,calculus,MCQ,0,I,I,Determine a definite integral that represents the region common to $r=2$ and $r=4 \cdot \cos\left(\theta\right)$.
+0517,number_theory,MCQ,0,E,E,Let $S$ denote the sum of all of the three digit positive integers with three distinct digits. Compute the remainder when $S$ is divided by $1000$ .
+0524,calculus,MCQ,0,E,,"Find the Dini derivative of
+$$ f(x)=\begin{cases}ax\sin^2\frac{1}{x}+bx\cos^2\frac{1}{x},&x>0,\\0,&x=0,\quad(a<b,a^{\prime}<b^{\prime}).\\\\a^{\prime}x\sin^2\frac{1}{x}+b^{\prime}x\cos^2\frac{1}{x},&x<0\end{cases}$$."
+0526,algebra,free_single,1,y = 128x^4 + 16x^2 + 4,,"Use substitution to compose $y=8 u^2+4 u+4$ and $u=4x^{2}$. Enter your answer as an equation, and simplify your answer as much as possible. [ANS]"
+0532,algebra,MCQ,0,I,I,"For the following exercises, find the polar equation of the conic with focus
+at the origin and the given eccentricity and directrix.
+Directrix: \(x=-\frac{1}{4} ; \quad e=\frac{7}{2}\)"
+0533,statistics,free_single,1,0.0563,,"A dean in the business school claims that GMAT scores of applicants to the school's MBA program have increased during the past 5 years. Five years ago, the mean and standard deviation of GMAT scores of MBA applicants were 530 and 50, respectively. 29 applications for this year's program were randomly selected and the GMAT scores recorded. If we assume that the distribution of GMAT scores of this year's applicants is the same as that of 5 years ago, find the probability of erroneously concluding that there is not enough evidence to supports the claim when, in fact, the true mean GMAT score is 560. Assume $\alpha$ is 0.05. P(Type II Error)=[ANS]"
+0534,number_theory,MCQ,0,G,G,"Given that the general solution of the differential equation $\mathrm{y^{\prime\prime}+a y^{\prime}+b y=c e^{x}}$ is $\mathrm{y=~ ( \, C_{1}+C_{2} x \, ) ~ \ e^{-x}+e^{x}}$ , what are the values of $\mathrm{a, ~ b, ~ c}$ in order?"
+0536,linear_algebra,MCQ,0,E,E,"Decompose the following matrix into the product $LU$ using a compact format:
+$$
+\left[ \begin{array} {r r r} {{{2}}} & {{{-1}}} & {{{-1}}} \\ {{{-1}}} & {{{2}}} & {{{0}}} \\ {{{3}}} & {{{0}}} & {{{3}}} \\ \end{array} \right].
+$$
+The result is ____."
+0544,algebra,free_single,1,A,A,"Can the following function be written in the form of an exponential function or a power function? If not, be sure you can explain why.
+s(x)=\frac{8}{7x^{-3}} [ANS] A. It is a power function.  B. It is an exponential function.  C. It is neither an exponential nor power function."
+0545,calculus,free_single,1,400000,400000,Suppose that you have zero dollars now and that the average rate of change in your net worth is \$8000 per year. How much money will you have in 50 years? answer=[ANS] dollars
+0547,geometry,MCQ,0,H,H,"Inscribe a rectangle of base $b$ and height $h$ in a circle of radius one, and inscribe an isosceles triangle in the region of the circle cut off by one base of the rectangle (with that side as the base of the triangle). For what value of $h$ do the rectangle and triangle have the same area?"
+0549,number_theory,MCQ,0,J,J,"We now define an algorithm: The definition of a(n) is the number of ways to write n as the sum of two squares, allowing permutations of the squares. Given the input x_list (a series of values): [98, 99, 100, 101, 102, 103, 104, 105, 106, 107], determine the corresponding output sequence y_list."
+0551,trigonometry,free_single,1,\sqrt{28},\sqrt{28},"Suppose $\cos(\alpha)=\frac{-6}{8}$ and $\sin(\alpha)$ is positive. If the point $(-6,y)$ is on the terminal side of the angle $\alpha$ then (without simplifying any square roots) $y=$ [ANS]"
+0552,statistics,free_multi,2,"33150, 36300",,"How much money do winners go home with from the television quiz show Jeopardy? To determine an answer, a random sample of winners was drawn and the amount of money each won was recorded and listed below. Estimate with 96\% confidence the mean winning's for all the show's players.
+\begin{array}{ccccc} 36686 & 37471 & 39504 & 31088 & 31673 \\ 36402 & 36540 & 32475 & 34941 & 38110 \\ 30450 & 35200 & 33608 & 32991 & 33749 \\ \end{array} UCL=[ANS]
+LCL=[ANS]"
+0554,algebra,MCQ,0,A,A,Consider a random walk on a connected graph with 4 edges. What is the highest possible entropy rate? Use base 2 logarithm and return the entropy rate in bits.
+0556,geometry,free_single,1,"C, D",,Let $A=f(r)$ be the area of a circle with radius $r$ and $r=h(t)$ be the radius of the circle at time $t$. Which of the following statements correctly provides a practical interpretation of the composite function $f(h(t))$? Select all that apply if more than one is appropriate. [ANS] A. The length of the radius at time $t$.  B. At what time $t$ the area will be $A=f(r)$.  C. The area of the circle at time $t$.  D. The area of the circle which at time $t$ has radius $h(t)$.  E. At what time $t$ the radius will be $r=h(t)$.  F. The length of the radius of a circle with area $A=f(r)$ at time $t$.  G. None of the above
+0560,statistics,free_multi,3,"C, A, A","C,A,A","A standardized variable always has [ANS] A. mean 0 and changing standard deviation  B. changing mean and standard deviation 1  C. mean 0 and standard deviation 1  D. changing mean and changing standard deviation
+The z-score corresponding to an observed value of a variable tells you the number of standard deviations that the observation is from the mean [ANS] A. True  B. False
+A positive z-score indicates that the observation is [ANS] A. above the mean  B. below the mean"
+0561,number_theory,MCQ,0,E,E,Find the prime factorization of 30!.
+0567,statistics,free_multi,2,"A, A","A,A","Which of the following statements is false? [ANS] A. The intervals in a frequency distribution may overlap to ensure that each observation is assigned to an interval  B. The number of class intervals we select in a frequency distribution depends entirely on the number of observations in the data set  C. Although the frequency distribution provides information about how the numbers in the data set are distributed, the information is more easily understood and imparted by drawing a histogram  D. A frequency distribution counts the number of observations that fall into each of a series of intervals, called classes that cover the complete range of observations
+In general, incomes of employees in large firms tend to be: [ANS] A. positively skewed  B. symmetric  C. negatively skewed  D. none of "
+0569,number_theory,MCQ,0,B,B,"Let $p$ be an odd prime.
+What is the order of $G L_{2} ( \mathbb{F}_{p} )?$"
+0574,linear_algebra,MCQ,0,E,,"Given $A=\left( \begin{matrix} {{{{4}}}} & {{{{-5}}}} & {{{{2}}}} \\ {{{{5}}}} & {{{{-7}}}} & {{{{3}}}} \\ {{{{6}}}} & {{{{-9}}}} & {{{{4}}}} \\ \end{matrix} \right)$ , what are the eigenvectors of $\mathsf{A}$?"

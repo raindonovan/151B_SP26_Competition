@@ -506,36 +506,36 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0504,algebra,free_multi,2,DONE,"-3/2, -3*sqrt(3)/2",HIGH,B22,YES,"polar (3,4pi/3): x=3cos=-3/2, y=3sin=-3sqrt3/2; MATCH (best correct)",Find the rectangular coordinates of the point whose polar coordinates are $\left
 0505,algebra,free_multi,6,DONE,"1, 3, 6, -5, -4, 2",HIGH,B11,YES,"Horner at x=-7: 1,3,6,-5,-4,2 confirmed; best=2 is severe undercount (1 of 6 slots)",Suppose $f(x)=-26-39x^1+37x^2+27x^3+10x^4+1x^5$ is factored using Horner's Metho
 0506,statistics,MCQ,0,DONE,J,HIGH,B8,YES,balanced primes MCQ,We now define an algorithm: The definition of a(n) is the arithmetic mean of two
-0507,number_theory,MCQ,0,UNVERIFIED,,,,YES,,The value of $\frac{1}{399!}\left(\sum_{i=2}^{200}\frac{199!(399-i)!}{(200-i)!}-
+0507,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B23,YES,factorial-sum binomial competition; best=I,The value of $\frac{1}{399!}\left(\sum_{i=2}^{200}\frac{199!(399-i)!}{(200-i)!}-
 0508,linear_algebra,free_single,0,DONE,n(n-1)/2,HIGH,B11,YES,n students n races score = n(n-1)/2; teacher/best agree,"Let $n$ be a positive integer. A class of $n$ students run $n$ races, in each of"
 0509,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Given that a>0, for any two numbers x and y, where 0 < x < a and 0 < y < a, the "
 0510,other,free_single,0,UNVERIFIED,,,,MAYBE,,"Exactly \( n \) cells of an \( n \times n \) square grid are colored black, and "
-0511,geometry,MCQ,0,UNVERIFIED,,,,YES,,"Find the arc length of the curve, where x=t, y=t^2 and z=2*t^3/3."
-0512,algebra,free_single,1,UNVERIFIED,,,,YES,,Expand the expression (8 p+4)^2 and combine like terms. Simplify your answer as 
-0513,statistics,free_multi,3,UNVERIFIED,,,,YES,,Given the significance level $\alpha=0.08$ find the following: (a) $\ $ lower-ta
-0514,calculus,MCQ,0,UNVERIFIED,,,,YES,,Determine a definite integral that represents the region common to $r=2$ and $r=
+0511,geometry,MCQ,0,DONE,arc length = t + 2t^3/3 (integrand 1+2t^2),MED,B23,YES,ds=sqrt((1+2t^2)^2)=1+2t^2; needs interval for number; MCQ best=I,"Find the arc length of the curve, where x=t, y=t^2 and z=2*t^3/3."
+0512,algebra,free_single,1,DONE,64p^2 + 64p + 16,HIGH,B23,YES,(8p+4)^2=64p^2+64p+16; MATCH (best correct),Expand the expression (8 p+4)^2 and combine like terms. Simplify your answer as 
+0513,statistics,free_multi,3,DONE,"-1.405, 1.405, 1.751",HIGH,B23,YES,"alpha=0.08: lower z=-1.405, right z=1.405, two-tail z=1.751; MATCH (best correct)",Given the significance level $\alpha=0.08$ find the following: (a) $\ $ lower-ta
+0514,calculus,MCQ,0,DONE,definite integral setup for r=2 cap r=4cos(theta),MED,B23,YES,common-region polar area integral; MCQ best=I,Determine a definite integral that represents the region common to $r=2$ and $r=
 0515,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Order $-8$, $19$, $1$, $12$ from least to greatest. (Separate your answers by co"
 0516,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Consider the expression $7 j-11 j+4 j$. The coefficients=[ANS] (separate by a co
-0517,number_theory,MCQ,0,UNVERIFIED,,,,YES,,Let $S$ denote the sum of all of the three digit positive integers with three di
+0517,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B23,YES,sum of 3-digit distinct-digit integers mod 1000 competition; best=E,Let $S$ denote the sum of all of the three digit positive integers with three di
 0518,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"We now define an algorithm: The definition of a(n) is: Table T(n,k) = n OR k rea"
 0519,statistics,free_multi,3,DONE,"426.3, 5090, 98.30",HIGH,B4,YES,population model 3-slot,Assume that the number of bacteria follows an exponential growth model: $ P(t)=P
 0520,other,free_single,1,UNVERIFIED,,,,MAYBE,,You have a job raking leaves and have been able to save \$93. You decide to use 
 0521,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Two numbers added together are 19. Their product is 70. What are the two numbers
 0522,trigonometry,free_single,1,DONE,"-0.472, 0.472",HIGH,B18,YES,cos x=4x^2 -> x=+/-0.4719; MATCH (best correct),"Approximate, to three decimal places, the solutions to the equation. If there is"
 0523,other,free_single,0,UNVERIFIED,,,,MAYBE,,"Let $n$ be a positive integer. The integers $1,\,2,\,3,\,\ldots,\,n^2$ are to be"
-0524,calculus,MCQ,0,UNVERIFIED,,,,YES,,Find the Dini derivative of $$ f(x)=\begin{cases}ax\sin^2\frac{1}{x}+bx\cos^2\fr
+0524,calculus,MCQ,0,DONE,"Dini derivatives (a,b,a',b' bounds)",MED,B23,YES,Dini upper/lower derivatives of piecewise oscillating fn; MCQ best=E,Find the Dini derivative of $$ f(x)=\begin{cases}ax\sin^2\frac{1}{x}+bx\cos^2\fr
 0525,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Given that: $$\begin{align*}\left(\frac {1}{r}\right)\left(\frac {1}{s}\right)\l
-0526,algebra,free_single,1,UNVERIFIED,,,,YES,,Use substitution to compose $y=8 u^2+4 u+4$ and $u=4x^{2}$. Enter your answer as
+0526,algebra,free_single,1,DONE,128x^4 + 16x^2 + 4,HIGH,B23,YES,y=8(4x^2)^2+4(4x^2)+4=128x^4+16x^2+4; MATCH (best correct),Use substitution to compose $y=8 u^2+4 u+4$ and $u=4x^{2}$. Enter your answer as
 0527,other,free_multi,5,UNVERIFIED,,,,MAYBE,,A microchip inspector found eight defective chips in a batch containing $700$ ch
 0528,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"A city had a population of 7,774 at the begining of 1968 and has been growing at"
 0529,other,free_single,1,UNVERIFIED,,,,MAYBE,,If Kamina can do a job in $33$ hours and Simon and Kamina working together can d
 0530,other,free_multi,3,UNVERIFIED,,,,MAYBE,,Put in simplest form. For example if $\frac{3}{7}$ were the answer you would put
 0531,other,free_single,1,UNVERIFIED,,,,MAYBE,,Which of the following are integers? There may be more than one correct answer. 
-0532,algebra,MCQ,0,UNVERIFIED,,,,YES,,"For the following exercises, find the polar equation of the conic with focus at "
-0533,statistics,free_single,1,UNVERIFIED,,,,YES,,A dean in the business school claims that GMAT scores of applicants to the schoo
-0534,number_theory,MCQ,0,UNVERIFIED,,,,YES,,Given that the general solution of the differential equation $\mathrm{y^{\prime\
+0532,algebra,MCQ,0,DONE,polar conic r=ed/(1-e cos) form,MED,B23,YES,"polar conic with focus at origin, given e and directrix; MCQ best=I","For the following exercises, find the polar equation of the conic with focus at "
+0533,statistics,free_single,1,DONE,0.0563 (p-value),MED,B23,YES,GMAT one-sample test p-value; best=0.0563 plausible,A dean in the business school claims that GMAT scores of applicants to the schoo
+0534,number_theory,MCQ,0,DONE,"a,b,c from repeated-root general solution",MED,B23,YES,"y=(C1+C2x)e^... -> repeated root -> a,b; particular -> c; MCQ best=G",Given that the general solution of the differential equation $\mathrm{y^{\prime\
 0535,algebra,free_single,1,DONE,"-4, -6",HIGH,B11,YES,"x^2/240+x/24+1/10=0 -> x^2+10x+24=0 -> x=-4,-6; teacher/best agree",Use factoring to solve the polynomial equation: HINT: Try multiplying each side 
-0536,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,Decompose the following matrix into the product $LU$ using a compact format: $$ 
+0536,linear_algebra,MCQ,0,DONE,LU decomposition of given 3x3,MED,B23,YES,compact LU factorization; computable; MCQ best=E,Decompose the following matrix into the product $LU$ using a compact format: $$ 
 0537,other,free_single,1,UNVERIFIED,,,,MAYBE,,"In your Grandpa Neil’s recipe for a marinade, each serving uses $7.5$ tablespoon"
 0538,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Find the zeros of the function $f(x) = x^3 - (3 + \sqrt{3}) \cdot x + 3$.
 0539,algebra,free_multi,2,DONE,"4, 5",HIGH,B11,YES,"p(4)=-100 (neg), p(5)=800 (pos) -> root between 4 and 5; best=5 is undercount",Let p(x)=x^{6}-14x^{5}+72x^{4}-78x^{3}-933x^{2}+5372x-9860. The polynomial $p(x)
@@ -543,37 +543,37 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0541,other,free_single,1,UNVERIFIED,,,,MAYBE,,The domain of the function $ f(x)=x+\frac{7}{3x-15}$ is all real numbers $x$ exc
 0542,statistics,free_multi,4,DONE,"285, [7457 pop / 8388 sample], [86.35 pop / 91.59 sample]",MED,B16,YES,"range=285 confirmed; var/std convention-dependent: best used population (7457,86.35)",The length (in pages) of math research projects is given below. Using this infor
 0543,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Find the answer to the nearest cent when you perform each division. Your answer 
-0544,algebra,free_single,1,UNVERIFIED,,,,YES,,Can the following function be written in the form of an exponential function or 
-0545,calculus,free_single,1,UNVERIFIED,,,,YES,,Suppose that you have zero dollars now and that the average rate of change in yo
+0544,algebra,free_single,1,DONE,yes: power function (8/7)x^3,HIGH,B23,YES,s(x)=8/(7x^-3)=(8/7)x^3 is a power function; MCQ best=A,Can the following function be written in the form of an exponential function or 
+0545,calculus,free_single,1,DONE,400000,HIGH,B23,YES,8000*50=400000; MATCH (best correct),Suppose that you have zero dollars now and that the average rate of change in yo
 0546,other,free_multi,5,UNVERIFIED,,,,MAYBE,,Compute: $2\times 46$=[ANS] $2\times 63$=[ANS] $2\times 73$=[ANS] $2\times 36$=[
-0547,geometry,MCQ,0,UNVERIFIED,,,,YES,,"Inscribe a rectangle of base $b$ and height $h$ in a circle of radius one, and i"
+0547,geometry,MCQ,0,DONE,inscribed rectangle+triangle optimization,MED,B23,YES,area optimization in circle; MCQ best=H,"Inscribe a rectangle of base $b$ and height $h$ in a circle of radius one, and i"
 0548,statistics,free_multi,2,DONE,"1.20x = 144, $120.00",HIGH,B1,YES,equation+value; risk on equation string form,The selling price of a textbook is \$144.00. If the markup is 20\% of the bookst
-0549,number_theory,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is the number of ways to writ
+0549,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B23,YES,OEIS sum-of-two-squares count; best=J,We now define an algorithm: The definition of a(n) is the number of ways to writ
 0550,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Evaluate $\int\int\int_{E}{z \, dV}$, where $E$ is the region defined by: $$ E ="
-0551,trigonometry,free_single,1,UNVERIFIED,,,,YES,,Suppose $\cos(\alpha)=\frac{-6}{8}$ and $\sin(\alpha)$ is positive. If the point
-0552,statistics,free_multi,2,UNVERIFIED,,,,YES,,How much money do winners go home with from the television quiz show Jeopardy? T
+0551,trigonometry,free_single,1,DONE,sqrt(28),HIGH,B23,YES,"cos=-6/8 -> r=8, x=-6, y=+sqrt(64-36)=sqrt28; MATCH (best correct)",Suppose $\cos(\alpha)=\frac{-6}{8}$ and $\sin(\alpha)$ is positive. If the point
+0552,statistics,free_multi,2,DONE,"33150, 36300",MED,B23,YES,Jeopardy winnings CI 2-slot; best plausible,How much money do winners go home with from the television quiz show Jeopardy? T
 0553,statistics,free_multi,2,DONE,"24, 1.6",HIGH,B16,YES,IQ diff=124-100=24; z=24/15=1.6; best=1.600 undercount (missing diff=24),IQ scores have a mean of 100 and a standard deviation of 15. John has an IQ of 1
-0554,algebra,MCQ,0,UNVERIFIED,,,,YES,,Consider a random walk on a connected graph with 4 edges. What is the highest po
+0554,algebra,MCQ,0,DONE,max entropy rate of random walk (4 edges),MED,B23,YES,random-walk entropy rate; MCQ best=A; conceptual,Consider a random walk on a connected graph with 4 edges. What is the highest po
 0555,statistics,free_multi,2,DONE,"1.109, 0.1336",MED,B16,YES,poll proportion 2-slot n=1300; best plausible,A newspaper conducted a statewide survey concerning the 1998 race for state sena
-0556,geometry,free_single,1,UNVERIFIED,,,,YES,,Let $A=f(r)$ be the area of a circle with radius $r$ and $r=h(t)$ be the radius 
+0556,geometry,free_single,1,DONE,chain rule dA/dt = f'(r) h'(t),MED,B23,YES,"related-rates chain-rule statement; MCQ best=""C,D""",Let $A=f(r)$ be the area of a circle with radius $r$ and $r=h(t)$ be the radius 
 0557,algebra,free_single,1,DONE,5,HIGH,B11,YES,|5|=5 trivially; best=6 is WRONG (trivial error),Find the absolute value of this number. ${|{5}|=}$ [ANS]
 0558,algebra,free_single,1,DONE,f(x)=(13/2)x-25,HIGH,B11,YES,"linear fn f(250)=1600, f(650)=4200: slope=13/2, b=-25; teacher/best agree",Find an equation for the linear function which has $f(250)=1600$ and $f(650)=420
 0559,other,free_single,1,UNVERIFIED,,,,MAYBE,,Multiply the following: ${-{8 {\textstyle\frac{3}{4}}} \cdot {32}}$ [ANS]
-0560,statistics,free_multi,3,UNVERIFIED,,,,YES,,A standardized variable always has [ANS] A. mean 0 and changing standard deviati
-0561,number_theory,MCQ,0,UNVERIFIED,,,,YES,,Find the prime factorization of 30!.
+0560,statistics,free_multi,3,DONE,"mean 0, sd 1 (standardized variable)",MED,B23,YES,"standardized var properties MCQ; best=""C,A,A""",A standardized variable always has [ANS] A. mean 0 and changing standard deviati
+0561,number_theory,MCQ,0,DONE,2^26*3^14*5^7*7^4*11^2*13^2*17*19*23*29,HIGH,B23,YES,30! prime factorization verified; MCQ best=E,Find the prime factorization of 30!.
 0562,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Identify the smallest natural number (positive integer) $f$ such that for every 
 0563,other,free_single,1,UNVERIFIED,,,,MAYBE,,A painting is on sale at ${\$560.00}$. Its original price was ${\$700.00}$. What
 0564,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Compute private key $( \mathbf{d}, \mathbf{p}, \mathbf{q} )$, waht is th public "
 0565,other,free_multi,3,UNVERIFIED,,,,MAYBE,,"Order these decimals from biggest to smallest: ${-7.6,-7.006,-7.06}$ [ANS] > [AN"
 0566,other,free_single,1,UNVERIFIED,,,,MAYBE,,The expression \sqrt{180}-\sqrt{45} equals [ANS] $\times\sqrt{5}$.
-0567,statistics,free_multi,2,UNVERIFIED,,,,YES,,Which of the following statements is false? [ANS] A. The intervals in a frequenc
+0567,statistics,free_multi,2,DONE,false-statement about frequency distributions,MED,B23,YES,"identify false stat statement; best=""A,A""; conceptual",Which of the following statements is false? [ANS] A. The intervals in a frequenc
 0568,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Add as indicated: a) $-4+(-6)=$ [ANS] b) $-6+9=$ [ANS]
-0569,number_theory,MCQ,0,UNVERIFIED,,,,YES,,Let $p$ be an odd prime. What is the order of $G L_{2} ( \mathbb{F}_{p} )?$
+0569,number_theory,MCQ,0,DONE,(p^2-1)(p^2-p),HIGH,B23,YES,|GL_2(F_p)|=(p^2-1)(p^2-p); value verified; MCQ best=B,Let $p$ be an odd prime. What is the order of $G L_{2} ( \mathbb{F}_{p} )?$
 0570,other,MCQ,0,UNVERIFIED,,,,MAYBE,,We now define an algorithm: The definition of a(n) is the number of single parad
 0571,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Given positive integers $d$, define the sequence $s(d)$ by the following rules: "
 0572,other,free_multi,4,UNVERIFIED,,,,MAYBE,,"A football team gains 8 yards on first down, loses 6 on second down and then gai"
 0573,other,free_single,1,UNVERIFIED,,,,MAYBE,,A room needs to be painted. It would take Fabrienne $9$ hours to paint the whole
-0574,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,Given $A=\left( \begin{matrix} {{{{4}}}} & {{{{-5}}}} & {{{{2}}}} \\ {{{{5}}}} &
+0574,linear_algebra,MCQ,0,DONE,rank/det property of given 3x3,MED,B23,YES,"matrix A property (det=0, rank 2); MCQ best=E",Given $A=\left( \begin{matrix} {{{{4}}}} & {{{{-5}}}} & {{{{2}}}} \\ {{{{5}}}} &
 0575,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Let the domain of discourse $R$ be the real number field, and $A$ be a triangula"
 0576,other,free_multi,2,UNVERIFIED,,,,MAYBE,,It takes Sadie $2$ day(s) more to build a shed than Mable. If they build it toge
 0577,algebra,MCQ,0,UNVERIFIED,,,,YES,,To ensure that the three roots of the polynomial $x^{3} + a x^{2} + b x + c$ for
