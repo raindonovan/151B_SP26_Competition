@@ -2,7 +2,8 @@
 Mirrors the Kaggle judger (root judger.py) as primary; sympy-numeric fallback only
 fixes PARSE coverage (ascii<->LaTeX, symbolic), never adds leniency beyond value-equality.
 Returns True (agree) / False (disagree) / None (incomparable: e.g. MCQ-letter vs numeric)."""
-import re, sys
+import re, sys, json
+import sympy
 sys.path.insert(0, '.')
 from judger import Judger
 _J = Judger()
@@ -30,12 +31,80 @@ def _strip_wrap(s):
         else: break
     return s
 
+def _prelude(s):
+    """Shared pre-parse string cleanup (verbatim from _to_number's original
+    prelude) plus the round-3 \\boxed{X} -> X strip. Used by both _to_number
+    and _normalize_for_parse so the two functions share one prelude."""
+    s = (s or '').strip().lstrip('$').strip()
+    s = re.sub(r'^[A-Za-z][\w\s]{0,12}=\s*', '', s)
+    s = re.sub(r'\s*(mL|ml|cm|kg|g|units?|dollars?)\s*$', '', s)
+    s = re.sub(r'\\boxed\{([^{}]*)\}', r'\1', s)      # NEW (round-3): boxed strip
+    return s
+
+
+def _normalize_for_parse(s):
+    """Shared pre-sympify prelude. Strips trailing units, short 'x=' LHS, $,
+    and \\boxed{X} -> X (NEW round-3), then applies the existing LaTeX->ascii
+    handling. Returns a string suitable for sympy.sympify(.., rational=True)."""
+    s = _prelude(s)
+    a = _strip_wrap(_latex_to_ascii(s))
+    a = re.sub(r'\bln\b', 'log', a)
+    return a
+
+
+def _to_exact(s):
+    """Exact rational/integer parse. Returns sympy.Rational/Integer or None.
+    Shares _to_number's parse coverage (ascii sympify + parse_latex fallback for
+    nested-brace LaTeX); differs ONLY in post-sympify return type (exact via
+    nsimplify, vs _to_number's float)."""
+    try:
+        ns = _normalize_for_parse(s)
+        v = sympy.sympify(ns, rational=True)
+        if v.is_number:
+            return sympy.nsimplify(v, rational=True)
+    except Exception:
+        pass
+    # parse_latex fallback — same raw-LaTeX path as _to_number (NOT the
+    # ascii-converted _normalize_for_parse output, which strips backslashes).
+    try:
+        from sympy.parsing.latex import parse_latex
+        ps = _prelude(s)
+        if '\\' in ps:
+            v = parse_latex(_strip_wrap(ps))
+            if v is not None and v.is_number:
+                return sympy.nsimplify(v, rational=True)
+    except Exception:
+        pass
+    return None
+
+
+def vals_equal(a, b):
+    """Value-equal under sympy. True iff a and b denote the same number.
+    Used by the MCQ numeric mappers — sympy `==` is structural (Mul(1,1/(4*sqrt(3)))
+    != sqrt(3)/12 despite denoting the same value), so compare by simplification."""
+    try:
+        return bool(sympy.simplify(a - b) == 0)
+    except Exception:
+        return False
+
+
+def load_records(jsonl_path):
+    """Return {id_str: full_record_dict} from a jsonl file, ids 4-zero-padded."""
+    records = {}
+    with open(jsonl_path) as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            d = json.loads(line)
+            records[str(d['id']).zfill(4)] = d
+    return records
+
+
 def _to_number(s):
     """Best-effort -> float, else None."""
     if not s: return None
-    s = s.strip().lstrip('$').strip()
-    s = re.sub(r'^[A-Za-z][\w\s]{0,12}=\s*', '', s)
-    s = re.sub(r'\s*(mL|ml|cm|kg|g|units?|dollars?)\s*$', '', s)
+    s = _prelude(s)
     if not s or any(w in s.lower() for w in ('dne', 'not real', 'infinity', 'undefined', 'none')):
         return None
     from sympy import N
@@ -49,8 +118,7 @@ def _to_number(s):
             candidates.append(parse_latex(_strip_wrap(s)))
         except Exception:
             pass
-    a = _strip_wrap(_latex_to_ascii(s))  # ascii fallback
-    a = re.sub(r'\bln\b', 'log', a)
+    a = _normalize_for_parse(s)        # ascii candidate (shared prelude + latex->ascii)
     try:
         candidates.append(parse_expr(a, transformations=tr, evaluate=True))
     except Exception:

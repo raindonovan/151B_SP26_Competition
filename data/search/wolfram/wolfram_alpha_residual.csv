@@ -1,39 +1,36 @@
 id,question_type,n_ans_slots,confidence,skip_reason,source_wolfram_answer
 0000,free_multi,2,HIGH,notes_admit_incomplete,"4, 16"
-0001,MCQ,0,MED,mcq_options_not_parseable,Unchanged (A)
-0010,MCQ,0,MED,mcq_options_not_parseable,2*pi*rho/(rho^2-a^2) form
+0001,MCQ,0,MED,mcq_options_not_numeric,Unchanged (A)
+0010,MCQ,0,MED,mcq_options_not_numeric,2*pi*rho/(rho^2-a^2) form
 0011,free_single,1,consensus-only,low_confidence,0.939
-0013,MCQ,0,MED,mcq_options_not_parseable,(1/8)(2sec^6(4x)+3sec^4(4x)+6sec^2(4x)+12 ln|tan(4x)|)+C
-0017,MCQ,0,HIGH,mcq_options_not_parseable,181
-0019,MCQ,0,HIGH,mcq_options_not_parseable,181
+0013,MCQ,0,MED,mcq_options_not_numeric,(1/8)(2sec^6(4x)+3sec^4(4x)+6sec^2(4x)+12 ln|tan(4x)|)+C
 0020,free_multi,3,HIGH,notes_admit_incomplete,"228, 229, 250"
 0021,free_multi,2,HIGH,notes_admit_incomplete,"0.2915t+56.93, 67.43"
 0025,free_multi,12,HIGH,notes_admit_incomplete,"8/63, 2/21, 11/63, 17/63, 13/63, 8/63, 8, 14, 25, 42, 55, 63"
 0027,free_multi,2,HIGH,notes_admit_incomplete,"1/3, 2/3, 7/6, 11/6"
-0034,MCQ,0,MED,mcq_options_not_parseable,20 is an outlier (Q3+1.5*IQR=19.5<20)
+0034,MCQ,0,MED,annotation_contamination,20 is an outlier (Q3+1.5*IQR=19.5<20)
 0040,free_single,1,HIGH,notes_admit_incomplete,D = 800 - 50d
 0046,free_multi,7,MED,convention_sensitive,"1.645, 1.719, 1.960, -1.960, 1.719, B, A"
+0048,free_single,1,HIGH,annotation_contamination,C (-2 ~ ln(0.135))
 0068,free_multi,8,HIGH,convention_sensitive,"-2.857, 6.986, -1.082, 3.707, -3.707, A, -12.647, 6.933"
-0069,MCQ,0,HIGH,mcq_options_not_parseable,pi(4-pi)/2
-0080,MCQ,0,HIGH,mcq_options_not_parseable,sqrt(3)/12
+0069,MCQ,0,HIGH,mcq_options_not_numeric,pi(4-pi)/2
+0080,MCQ,0,HIGH,mcq_ambiguous,sqrt(3)/12
 0082,free_multi,4,MED,marker_in_answer,"1.309, 1.677, ?, No"
-0094,MCQ,0,HIGH,mcq_options_not_parseable,4/3
-0109,MCQ,0,HIGH,mcq_options_not_parseable,"(a) 4,2 (b) 5,1,1 (c) 3,-1,1"
-0114,MCQ,0,MED,mcq_options_not_parseable,sin(2^(n+1) a)/(2^(n+1) sin a)
-0123,MCQ,0,HIGH,mcq_options_not_parseable,x^2 cos(y) + y^2 cos(x)
+0094,MCQ,0,HIGH,mcq_options_not_numeric,4/3
+0109,MCQ,0,HIGH,mcq_options_not_numeric,"(a) 4,2 (b) 5,1,1 (c) 3,-1,1"
+0114,MCQ,0,MED,mcq_options_not_numeric,sin(2^(n+1) a)/(2^(n+1) sin a)
+0123,MCQ,0,HIGH,mcq_options_not_numeric,x^2 cos(y) + y^2 cos(x)
 0136,free_multi,2,MED,notes_admit_incomplete,"A, C"
 0146,MCQ,0,MED,annotation_contamination,antiderivative (messy radical integral)
-0147,MCQ,0,HIGH,mcq_options_not_parseable,25*pi/3
+0147,MCQ,0,HIGH,mcq_options_not_numeric,25*pi/3
 0150,MCQ,0,MED,annotation_contamination,"best L2 cubic approx of e^x on [-1,1] (Legendre)"
-0153,MCQ,0,MED,mcq_options_not_parseable,quadratic form standard form via completing square
-0156,MCQ,0,HIGH,mcq_options_not_parseable,"eigenvalues -7, 2, 2"
-0177,MCQ,0,HIGH,mcq_options_not_parseable,pi^2/6
-0178,MCQ,0,HIGH,mcq_options_not_parseable,-4
-0183,MCQ,0,MED,mcq_options_not_parseable,reduction formula for int csc^5(x)dx
+0153,MCQ,0,MED,mcq_options_not_numeric,quadratic form standard form via completing square
+0156,MCQ,0,HIGH,mcq_options_not_numeric,"eigenvalues -7, 2, 2"
+0177,MCQ,0,HIGH,mcq_options_not_numeric,pi^2/6
+0183,MCQ,0,MED,mcq_options_not_numeric,reduction formula for int csc^5(x)dx
 0188,free_multi,3,HIGH,notes_admit_incomplete,"60, 60, 60"
 0192,free_multi,4,HIGH,convention_sensitive,"1.06, (1.88, infty), 0.1449, A"
 0196,free_multi,3,HIGH,notes_admit_incomplete,"14.7447, 10.3244, 35"
-0211,MCQ,0,HIGH,mcq_options_not_parseable,181
 0233,free_multi,4,HIGH,convention_sensitive,"1.96, -1.96, -5.18, B"
 0238,free_multi,3,HIGH,notes_admit_incomplete,"-61, 61, 62"
 0239,free_multi,2,HIGH,notes_admit_incomplete,"35, 3.450"
@@ -41,177 +38,165 @@ id,question_type,n_ans_slots,confidence,skip_reason,source_wolfram_answer
 0252,free_single,1,MED,prose_or_nonanswer,normal populations + equal variances + independence
 0257,free_multi,3,HIGH,convention_sensitive,"2.52, 3.00, A"
 0262,free_multi,3,HIGH,notes_admit_incomplete,"850-50t, 1480-140t, 7"
-0263,MCQ,0,HIGH,mcq_options_not_parseable,-63/16
 0265,free_multi,2,MED,convention_sensitive,"A, D"
-0267,MCQ,0,HIGH,mcq_options_not_parseable,k = -1/2
+0267,MCQ,0,HIGH,mcq_ambiguous,k = -1/2
 0271,free_single,1,HIGH,notes_admit_incomplete,"-4, 0, 4"
-0272,MCQ,0,HIGH,mcq_options_not_parseable,x + sqrt(x^2-1)
-0279,MCQ,0,MED,mcq_options_not_parseable,Taylor series of f'(x) (sigma form)
+0272,MCQ,0,HIGH,mcq_options_not_numeric,x + sqrt(x^2-1)
+0279,MCQ,0,MED,annotation_contamination,Taylor series of f'(x) (sigma form)
 0283,free_single,1,MED,annotation_contamination,114 (target HR)
 0287,free_multi,2,HIGH,notes_admit_incomplete,"212, 136"
-0290,MCQ,0,HIGH,mcq_options_not_parseable,2
-0295,MCQ,0,HIGH,mcq_options_not_parseable,8*pi/15
+0290,MCQ,0,HIGH,mcq_options_not_numeric,2
+0295,MCQ,0,HIGH,mcq_options_not_numeric,8*pi/15
 0297,free_multi,4,MED,convention_sensitive,"0.2372, (-inf,-1.881)U(1.881,inf), 0.8126, C"
 0304,MCQ,0,MED,annotation_contamination,residue-theorem contour integral (involved)
-0306,MCQ,0,HIGH,mcq_options_not_parseable,1
+0306,MCQ,0,HIGH,mcq_options_not_numeric,1
 0317,MCQ,0,HIGH,known_dataset_bug,D
 0318,free_multi,2,HIGH,notes_admit_incomplete,"8, 0.562"
 0319,free_multi,4,HIGH,convention_sensitive,"False, True, True, False"
-0320,free_multi,2,HIGH,notes_admit_incomplete,"approaches normal (limit 1), 3.73"
-0321,MCQ,0,HIGH,mcq_options_not_parseable,a = 1
+0320,free_multi,2,HIGH,annotation_contamination,"approaches normal (limit 1), 3.73"
+0321,MCQ,0,HIGH,mcq_options_not_numeric,a = 1
 0337,MCQ,0,MED,annotation_contamination,"rank condition on a,b (computable per options)"
 0340,free_single,1,MED,annotation_contamination,R^2 definition (multiple true statements)
-0348,MCQ,0,MED,mcq_options_not_parseable,int arcsin(4x)/sqrt(4x+1) dx (messy)
-0351,MCQ,0,HIGH,mcq_options_not_parseable,12.287
+0348,MCQ,0,MED,annotation_contamination,int arcsin(4x)/sqrt(4x+1) dx (messy)
 0353,free_multi,4,HIGH,prose_or_nonanswer,"8, C, 5 and 7, D"
-0355,MCQ,0,HIGH,mcq_options_not_parseable,"inflection point (-3, -26/9)"
-0356,MCQ,0,MED,mcq_options_not_parseable,Laurent series of 1/(z^2+1) at z=-1 and z=inf
+0355,MCQ,0,HIGH,mcq_options_not_numeric,"inflection point (-3, -26/9)"
+0356,MCQ,0,MED,mcq_options_not_numeric,Laurent series of 1/(z^2+1) at z=-1 and z=inf
 0365,free_single,1,MED,prose_or_nonanswer,"x in [-36,36], y in [0,6]"
 0366,MCQ,0,MED,annotation_contamination,solution-space/rank statement (computable per options)
-0389,MCQ,0,HIGH,mcq_options_not_parseable,(x^2+5x+5)^2-1
-0394,MCQ,0,MED,mcq_options_not_parseable,"int x*arctan(2x)^2 dx (by parts, messy)"
+0389,MCQ,0,HIGH,mcq_options_not_numeric,(x^2+5x+5)^2-1
+0394,MCQ,0,MED,annotation_contamination,"int x*arctan(2x)^2 dx (by parts, messy)"
 0398,MCQ,0,MED,annotation_contamination,transition/coordinate matrix (computable per options)
-0400,MCQ,0,MED,mcq_options_not_parseable,determinant distribution of random Bernoulli matrix
+0400,MCQ,0,MED,mcq_answer_not_numeric,determinant distribution of random Bernoulli matrix
 0409,free_multi,2,MED,slot_mismatch,prediction-interval + mean-CI at x=3
-0414,MCQ,0,MED,mcq_options_not_parseable,int 3/(4x^2 sqrt(5x^2-2x+1))dx (messy)
-0430,MCQ,0,HIGH,mcq_options_not_parseable,1
-0433,MCQ,0,HIGH,mcq_options_not_parseable,4cos^3(t)-3cos(t)
+0414,MCQ,0,MED,annotation_contamination,int 3/(4x^2 sqrt(5x^2-2x+1))dx (messy)
+0433,MCQ,0,HIGH,mcq_options_not_numeric,4cos^3(t)-3cos(t)
 0435,free_multi,3,HIGH,notes_admit_incomplete,"0.4457, 0.5368, A"
 0437,free_single,1,HIGH,notes_admit_incomplete,"76.37, 79.63"
 0438,free_multi,9,HIGH,notes_admit_incomplete,"5, 9, 1, 10, 2, 0, 10, x^3y^7, 1"
-0440,MCQ,0,MED,mcq_options_not_parseable,5/2
 0444,free_multi,6,HIGH,notes_admit_incomplete,"113, 35, 112, 61, 148, 43"
 0446,free_multi,2,HIGH,notes_admit_incomplete,"1.87, 0.972"
 0449,free_multi,3,MED,convention_sensitive,"3.5850, 0.0003460, B"
 0459,free_multi,5,HIGH,marker_in_answer,"sin^2(A), cos(A)/sin(A), sec^2(A), ..."
 0461,free_multi,2,HIGH,convention_sensitive,"2, 302"
 0464,MCQ,0,MED,annotation_contamination,parallel-system exponential reliability (computable)
-0465,MCQ,0,HIGH,mcq_options_not_parseable,8/9
 0468,free_multi,2,MED,marker_in_answer,"?, 0.8816"
 0469,free_multi,10,HIGH,prose_or_nonanswer,"s^2, 0.1575A, 0.1575s^2, C, 81, square feet, 14.175, dollars, 19.0575, dollars"
 0470,free_multi,6,HIGH,notes_admit_incomplete,"1.96, 2.201, 2.326, 2.718, 2.576, 3.106"
 0477,free_multi,2,MED,annotation_contamination,"A, C (leading + open-ended to avoid)"
 0490,free_multi,4,MED,marker_in_answer,"23, ..."
 0491,free_multi,5,MED,prose_or_nonanswer,"1255.37, 1091.15, 1419.59, No, Central Limit Theorem"
-0500,MCQ,0,MED,mcq_options_not_parseable,iterative method convergence/error bound
+0500,MCQ,0,MED,mcq_options_not_numeric,iterative method convergence/error bound
 0503,free_multi,3,HIGH,notes_admit_incomplete,"y=-43000x+833000, 446000, 2019"
 0505,free_multi,6,HIGH,notes_admit_incomplete,"1, 3, 6, -5, -4, 2"
 0511,MCQ,0,MED,annotation_contamination,arc length = t + 2t^3/3 (integrand 1+2t^2)
-0514,MCQ,0,MED,annotation_contamination,definite integral setup for r=2 cap r=4cos(theta)
+0514,MCQ,0,MED,mcq_options_not_numeric,definite integral setup for r=2 cap r=4cos(theta)
 0524,MCQ,0,MED,annotation_contamination,"Dini derivatives (a,b,a',b' bounds)"
-0532,MCQ,0,MED,mcq_options_not_parseable,polar conic r=ed/(1-e cos) form
+0532,MCQ,0,MED,mcq_options_not_numeric,polar conic r=ed/(1-e cos) form
 0533,free_single,1,MED,annotation_contamination,0.0563 (p-value)
-0534,MCQ,0,MED,mcq_options_not_parseable,"a,b,c from repeated-root general solution"
-0536,MCQ,0,MED,mcq_options_not_parseable,LU decomposition of given 3x3
+0534,MCQ,0,MED,mcq_answer_not_numeric,"a,b,c from repeated-root general solution"
+0536,MCQ,0,MED,mcq_options_not_numeric,LU decomposition of given 3x3
 0539,free_multi,2,HIGH,notes_admit_incomplete,"4, 5"
 0542,free_multi,4,MED,slot_mismatch,"285, [7457 pop / 8388 sample], [86.35 pop / 91.59 sample]"
 0544,free_single,1,HIGH,prose_or_nonanswer,yes: power function (8/7)x^3
-0547,MCQ,0,MED,mcq_options_not_parseable,inscribed rectangle+triangle optimization
+0547,MCQ,0,MED,mcq_answer_not_numeric,inscribed rectangle+triangle optimization
 0553,free_multi,2,HIGH,notes_admit_incomplete,"24, 1.6"
 0554,MCQ,0,MED,annotation_contamination,max entropy rate of random walk (4 edges)
 0556,free_single,1,MED,prose_or_nonanswer,chain rule dA/dt = f'(r) h'(t)
 0560,free_multi,3,MED,annotation_contamination,"mean 0, sd 1 (standardized variable)"
-0561,MCQ,0,HIGH,mcq_options_not_parseable,2^26*3^14*5^7*7^4*11^2*13^2*17*19*23*29
+0561,MCQ,0,HIGH,mcq_options_not_numeric,2^26*3^14*5^7*7^4*11^2*13^2*17*19*23*29
 0567,free_multi,2,MED,slot_mismatch,false-statement about frequency distributions
-0569,MCQ,0,HIGH,mcq_options_not_parseable,(p^2-1)(p^2-p)
-0574,MCQ,0,MED,mcq_options_not_parseable,rank/det property of given 3x3
+0569,MCQ,0,HIGH,mcq_options_not_numeric,(p^2-1)(p^2-p)
+0574,MCQ,0,MED,mcq_options_not_numeric,rank/det property of given 3x3
 0577,MCQ,0,MED,annotation_contamination,condition 2a^3-9ab+27c=0 (roots in AP)
-0579,MCQ,0,HIGH,mcq_options_not_parseable,e^(8/3)
-0580,MCQ,0,HIGH,mcq_options_not_parseable,2/3
-0581,MCQ,0,MED,mcq_options_not_parseable,max of y from y'+2(lnx+1)y=0
+0579,MCQ,0,HIGH,mcq_options_not_numeric,e^(8/3)
+0581,MCQ,0,MED,mcq_options_not_numeric,max of y from y'+2(lnx+1)y=0
 0585,free_multi,5,PARTIAL,low_confidence,"-0.2235, 2.262, -2.262, No"
 0587,free_multi,4,HIGH,slot_mismatch,"B, C, D, E, F, J, C, A, B, B"
-0594,MCQ,0,MED,mcq_options_not_parseable,expectation/variance of given discrete X
+0594,MCQ,0,MED,mcq_options_not_numeric,expectation/variance of given discrete X
 0595,free_multi,2,MED,slot_mismatch,"A, D, E, G, probability"
 0599,free_single,1,HIGH,convention_sensitive,1.81
-0600,MCQ,0,MED,mcq_options_not_parseable,"eigenvalues of block matrix [[0,A],[B,0]]"
+0600,MCQ,0,MED,mcq_options_not_numeric,"eigenvalues of block matrix [[0,A],[B,0]]"
 0601,free_multi,2,HIGH,slot_mismatch,(3s-1)(2s+1)
 0603,free_multi,3,MED,slot_mismatch,median least affected by outlier etc
-0606,MCQ,0,HIGH,mcq_options_not_parseable,181
 0608,free_multi,4,HIGH,notes_admit_incomplete,"B, A, A, 1981"
 0613,MCQ,0,MED,annotation_contamination,beta linear combo coefficients (solve system)
-0614,MCQ,0,MED,mcq_options_not_parseable,x(x-a)(x-b)(x-c)+1 factorable condition
-0616,MCQ,0,HIGH,mcq_options_not_parseable,y=C1 cos x+C2 sin x -(1/3)sin 2x
-0618,MCQ,0,MED,mcq_options_not_parseable,volume rotating arcsin region about x-axis
+0614,MCQ,0,MED,mcq_options_not_numeric,x(x-a)(x-b)(x-c)+1 factorable condition
+0616,MCQ,0,HIGH,mcq_options_not_numeric,y=C1 cos x+C2 sin x -(1/3)sin 2x
+0618,MCQ,0,MED,mcq_options_not_numeric,volume rotating arcsin region about x-axis
 0620,free_multi,4,HIGH,notes_admit_incomplete,"4/sqrt(7), 16/7, 2.167, B"
 0622,free_multi,4,PARTIAL,low_confidence,"3.854, 2.567, Yes"
-0626,MCQ,0,MED,mcq_options_not_parseable,complex path integral of |z|
+0626,MCQ,0,MED,mcq_options_not_numeric,complex path integral of |z|
 0633,free_multi,2,HIGH,slot_mismatch,"B, D, 8"
 0657,free_multi,8,HIGH,convention_sensitive,"172.52, 187.48, 172.87, 187.13, 0, 5.167, -10.33, 10.33"
-0658,MCQ,0,MED,mcq_options_not_parseable,best degree-2 uniform (Chebyshev) approx of 4x^3+2x^2+x+1
+0658,MCQ,0,MED,mcq_options_not_numeric,best degree-2 uniform (Chebyshev) approx of 4x^3+2x^2+x+1
 0661,free_multi,2,MED,marker_in_answer,"r=4+h/1000, w=28800000/..."
 0666,free_multi,2,HIGH,notes_admit_incomplete,"76*1.532^t, 42.68"
-0667,MCQ,0,MED,mcq_options_not_parseable,particular solution of y''[x+(y')^2]=y'
-0677,MCQ,0,MED,mcq_options_not_parseable,mean home runs = 2
+0667,MCQ,0,MED,mcq_options_not_numeric,particular solution of y''[x+(y')^2]=y'
+0677,MCQ,0,MED,mcq_options_not_numeric,mean home runs = 2
 0681,free_multi,4,HIGH,notes_admit_incomplete,"28900, 170, 135, 205"
-0690,MCQ,0,HIGH,mcq_options_not_parseable,5.2340
+0690,MCQ,0,HIGH,mcq_no_match,5.2340
 0691,free_single,1,MED,convention_sensitive,"(19.67, 26.99)"
-0703,MCQ,0,MED,mcq_options_not_parseable,int 6/sin^6(3x) dx (messy)
+0703,MCQ,0,MED,annotation_contamination,int 6/sin^6(3x) dx (messy)
 0715,free_multi,4,HIGH,slot_mismatch,"5, 7, 9, 13, 8.5, 6, 7, 8, 9, 10, 11, 8.5"
 0718,free_multi,3,HIGH,annotation_contamination,"65761800, 72704000, median(better)"
 0721,free_multi,3,HIGH,convention_sensitive,"D, A, A"
-0729,MCQ,0,MED,mcq_options_not_parseable,eigenvalues of block-diagonal 4x4
-0732,MCQ,0,HIGH,mcq_options_not_parseable,-4
+0729,MCQ,0,MED,mcq_options_not_numeric,eigenvalues of block-diagonal 4x4
 0733,free_multi,4,MED,convention_sensitive,"68, 247, 97, 17"
 0735,free_multi,7,MED,slot_mismatch,5-number summary + IQR
 0738,free_multi,4,MED,slot_mismatch,hypothesis-test conclusions
-0740,free_single,1,HIGH,annotation_contamination,5184/(81cos^2 t - 64 sin^2 t)
-0741,MCQ,0,MED,mcq_options_not_parseable,solve (1+tanx)/(1-tanx)=1+sin2x
+0741,MCQ,0,MED,mcq_options_not_numeric,solve (1+tanx)/(1-tanx)=1+sin2x
 0742,free_single,1,MED,annotation_contamination,241.0 (regression prediction)
 0745,free_multi,8,HIGH,marker_in_answer,"2sinC cosC, cosAcosB-sinAsinB, ..."
 0749,free_multi,6,PARTIAL,low_confidence,"5, 5, 5, 5, 5, is, 14/9, 19/14, 24/19, 29/24, 34/29, is not, 9+5n, (-1)^(n+1)(5n+9)"
 0753,free_multi,4,MED,marker_in_answer,"..., 16.56"
-0755,MCQ,0,MED,mcq_options_not_parseable,steady-state of difference equation
+0755,MCQ,0,MED,mcq_options_not_numeric,steady-state of difference equation
 0758,free_single,1,MED,prose_or_nonanswer,household-size sampling concept
 0759,free_single,1,MED,annotation_contamination,normal distribution (CLT)
-0760,MCQ,0,MED,mcq_options_not_parseable,(1/4)ln((1+x)/(1-x)) - (1/2)arctan(x) type
-0768,MCQ,0,MED,mcq_options_not_parseable,inverse of piecewise function
-0779,MCQ,0,MED,mcq_options_not_parseable,Dirichlet-type continuity at points
-0783,MCQ,0,MED,mcq_options_not_parseable,2*int sin^5(-2x)cos^2(2x)dx (messy)
+0760,MCQ,0,MED,mcq_options_not_numeric,(1/4)ln((1+x)/(1-x)) - (1/2)arctan(x) type
+0768,MCQ,0,MED,mcq_options_not_numeric,inverse of piecewise function
+0779,MCQ,0,MED,mcq_options_not_numeric,Dirichlet-type continuity at points
+0783,MCQ,0,MED,annotation_contamination,2*int sin^5(-2x)cos^2(2x)dx (messy)
 0787,free_multi,3,MEDIUM,low_confidence,"148,178,452, 41.55, 46.97"
-0791,MCQ,0,MED,mcq_options_not_parseable,sin(na/2)cos((n+1)a/2)/sin(a/2)
+0791,MCQ,0,MED,mcq_options_not_numeric,sin(na/2)cos((n+1)a/2)/sin(a/2)
 0793,free_multi,4,HIGH,convention_sensitive,"1.35, (1.49, inf), 0.0895, D"
 0800,free_single,1,MED,annotation_contamination,140 (sample size)
-0804,MCQ,0,MED,mcq_options_not_parseable,int x sin(mx)/(x^4+a^4) via residues
-0807,MCQ,0,HIGH,mcq_options_not_parseable,(1/2)sec(2*phi)
-0810,MCQ,0,HIGH,mcq_options_not_parseable,y=C1cos x+C2 sin x -(x/2)cos x
+0804,MCQ,0,MED,mcq_options_not_numeric,int x sin(mx)/(x^4+a^4) via residues
+0807,MCQ,0,HIGH,mcq_options_not_numeric,(1/2)sec(2*phi)
+0810,MCQ,0,HIGH,mcq_options_not_numeric,y=C1cos x+C2 sin x -(x/2)cos x
 0813,free_multi,2,MED,slot_mismatch,small non-normal sample (no CI)
 0814,free_multi,10,MED,marker_in_answer,"5,4.726,0.9451,1.224,30,23.16,0.77..."
-0819,MCQ,0,HIGH,mcq_options_not_parseable,tan(x/2) - 2 ln(cos(x/2)) + C
-0824,MCQ,0,MED,mcq_options_not_parseable,trapezoidal erf approx
-0825,MCQ,0,MED,mcq_options_not_parseable,int_0^pi tan(theta+ia)dtheta = +/- i*pi
+0819,MCQ,0,HIGH,mcq_options_not_numeric,tan(x/2) - 2 ln(cos(x/2)) + C
+0824,MCQ,0,MED,mcq_options_not_numeric,trapezoidal erf approx
+0825,MCQ,0,MED,mcq_options_not_numeric,int_0^pi tan(theta+ia)dtheta = +/- i*pi
 0828,free_multi,2,MED,convention_sensitive,"99.63, 110.4"
-0831,MCQ,0,MED,mcq_options_not_parseable,int 1/sin^5(8x)dx (messy)
+0831,MCQ,0,MED,annotation_contamination,int 1/sin^5(8x)dx (messy)
 0834,free_multi,3,HIGH,notes_admit_incomplete,"pi/4, 3*pi/2, -19*pi/6"
-0837,MCQ,0,HIGH,mcq_options_not_parseable,pi^2/6 - 1
+0837,MCQ,0,HIGH,mcq_options_not_numeric,pi^2/6 - 1
 0838,free_single,1,MED,convention_sensitive,"(23.66, 28.34)"
-0839,MCQ,0,HIGH,mcq_options_not_parseable,pi/2
-0847,MCQ,0,MED,mcq_options_not_parseable,Poisson E(X^n) recurrence proof
-0848,MCQ,0,HIGH,mcq_options_not_parseable,(1+sqrt(5))/2
-0853,MCQ,0,HIGH,mcq_options_not_parseable,8 E(3/4) = 9.6885
+0839,MCQ,0,HIGH,mcq_options_not_numeric,pi/2
+0847,MCQ,0,MED,mcq_options_not_numeric,Poisson E(X^n) recurrence proof
+0848,MCQ,0,HIGH,mcq_no_match,(1+sqrt(5))/2
+0853,MCQ,0,HIGH,mcq_options_not_numeric,8 E(3/4) = 9.6885
 0858,free_multi,4,PARTIAL,low_confidence,"2.300, 1.691, Yes"
 0859,free_multi,4,MED,annotation_contamination,"1, 2, 2, 4 (quadrants)"
-0861,MCQ,0,MED,mcq_options_not_parseable,tridiagonal array index formula
-0875,MCQ,0,HIGH,mcq_options_not_parseable,a=2 or a=-10
-0876,MCQ,0,MED,mcq_options_not_parseable,soap-mixing exponential decay
-0878,MCQ,0,HIGH,mcq_options_not_parseable,70
-0879,MCQ,0,HIGH,mcq_options_not_parseable,6*pi^2
-0881,MCQ,0,HIGH,mcq_options_not_parseable,6
+0861,MCQ,0,MED,mcq_answer_not_numeric,tridiagonal array index formula
+0875,MCQ,0,HIGH,mcq_options_not_numeric,a=2 or a=-10
+0876,MCQ,0,MED,mcq_options_not_numeric,soap-mixing exponential decay
+0879,MCQ,0,HIGH,mcq_options_not_numeric,6*pi^2
 0885,free_multi,4,HIGH,notes_admit_incomplete,"18, 139.875, 18, B"
 0886,free_multi,2,HIGH,convention_sensitive,"A, C"
 0888,MCQ,0,MED,annotation_contamination,A from AP=PB (similarity)
-0891,MCQ,0,MED,mcq_options_not_parseable,max existence interval of Cauchy problem
+0891,MCQ,0,MED,mcq_options_not_numeric,max existence interval of Cauchy problem
 0894,free_multi,8,MEDIUM,low_confidence,"0.008, 1.783, 2.013, -0.091, 0.283, -0.100, 0.272, 10"
-0899,MCQ,0,MED,mcq_options_not_parseable,int tan(x)/sqrt(sin^4+cos^4) dx (messy)
+0899,MCQ,0,MED,annotation_contamination,int tan(x)/sqrt(sin^4+cos^4) dx (messy)
 0903,free_multi,2,MED,slot_mismatch,median area = 0.50
 0905,free_multi,2,MED,slot_mismatch,best-fit model identification
 0914,free_multi,2,HIGH,notes_admit_incomplete,"(0.190, 0.247)"
 0917,free_multi,3,HIGH,convention_sensitive,"189.8, 246.4, 43"
-0918,MCQ,0,HIGH,mcq_options_not_parseable,(5+sqrt(33))/2 = 5.372
-0921,MCQ,0,MED,mcq_options_not_parseable,zeros of (1-tanx)(1+sin2x)-tanx+cos2x-1
-0922,MCQ,0,HIGH,mcq_options_not_parseable,4*pi*i
+0918,MCQ,0,HIGH,mcq_options_not_numeric,(5+sqrt(33))/2 = 5.372
+0921,MCQ,0,MED,mcq_options_not_numeric,zeros of (1-tanx)(1+sin2x)-tanx+cos2x-1
+0922,MCQ,0,HIGH,mcq_options_not_numeric,4*pi*i
 0923,free_multi,3,MED,marker_in_answer,"93, 48, ..."
 0929,free_multi,3,HIGH,convention_sensitive,"5.860, (-0.78, 3.18), A"
-0930,MCQ,0,MED,mcq_options_not_parseable,n-order determinant value
-0939,MCQ,0,HIGH,mcq_options_not_parseable,200
+0930,MCQ,0,MED,mcq_options_not_numeric,n-order determinant value
 0941,free_multi,6,MED,slot_mismatch,study-design conclusions

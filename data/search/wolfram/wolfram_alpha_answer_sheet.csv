@@ -6,6 +6,8 @@ id,answer,question_type,n_ans_slots,confidence,promotion_class,source_wolfram_an
 0012,"2c + 4p = 70, 11",free_multi,2,HIGH,clean_value,"2c + 4p = 70, 11",B2
 0014,ln(35)/ln(3),free_single,1,HIGH,clean_value,ln(35)/ln(3),B19
 0015,"8, NONE",free_multi,2,HIGH,clean_value,"8, NONE",B16
+0017,C,MCQ,0,HIGH,mcq_letter_mapped_numeric,181,B9
+0019,E,MCQ,0,HIGH,mcq_letter_mapped_numeric,181,B18
 0024,1,free_single,1,HIGH,clean_value,1,B9
 0029,38.2,free_single,1,HIGH,clean_value,38.2,B9
 0030,"2944, 664",free_multi,2,HIGH,clean_value,"2944, 664",B13
@@ -15,7 +17,6 @@ id,answer,question_type,n_ans_slots,confidence,promotion_class,source_wolfram_an
 0042,"No, Yes, A",free_multi,3,HIGH,clean_value,"No, Yes, A",B13
 0043,"3/8, 14, 28",free_multi,3,HIGH,clean_value,"3/8, 14, 28",B15
 0044,"True, True, True, False",free_multi,4,HIGH,clean_value,"True, True, True, False",B13
-0048,C (-2 ~ ln(0.135)),free_single,1,HIGH,clean_value,C (-2 ~ ln(0.135)),B19
 0049,0.0143,free_single,1,HIGH,clean_value,0.0143,B9
 0050,"140A+150B=5930, 3A+4B=142",free_multi,2,HIGH,clean_value,"140A+150B=5930, 3A+4B=142",B16
 0054,1,free_single,0,MED,clean_value,1,B14
@@ -64,6 +65,7 @@ id,answer,question_type,n_ans_slots,confidence,promotion_class,source_wolfram_an
 0171,20,free_single,1,HIGH,clean_value,20,B9
 0172,1320/3721,free_single,1,HIGH,clean_value,1320/3721,B20
 0176,(p-6k-m)/8,free_single,1,HIGH,clean_value,(p-6k-m)/8,B14
+0178,C,MCQ,0,HIGH,mcq_letter_mapped_numeric,-4,B20
 0179,"29,3,21,1,21,4,19,4,23,3",free_multi,10,HIGH,clean_value,"29,3,21,1,21,4,19,4,23,3",B17
 0180,(1/2)m - 7/2,free_single,1,HIGH,clean_value,(1/2)m - 7/2,B20
 0181,A,MCQ,0,HIGH,clean_letter,A,B8
@@ -76,6 +78,7 @@ id,answer,question_type,n_ans_slots,confidence,promotion_class,source_wolfram_an
 0206,4,free_single,1,HIGH,clean_value,4,B20
 0208,"16.2, 720/(49*pi)",free_multi,2,HIGH,clean_value,"16.2, 720/(49*pi)",B9
 0210,"-(49sqrt3+16sqrt33)/15, 2x/(x^2+1)",free_multi,2,HIGH,clean_value,"-(49sqrt3+16sqrt33)/15, 2x/(x^2+1)",B15
+0211,I,MCQ,0,HIGH,mcq_letter_mapped_numeric,181,B14
 0214,"11, F, 10, T",free_multi,4,HIGH,clean_value,"11, F, 10, T",B10
 0216,60,free_single,1,HIGH,clean_value,60,B20
 0218,\arcsin\!(\frac{7}{10}),free_single,1,HIGH,clean_value,\arcsin\!(\frac{7}{10}),B8
@@ -90,6 +93,7 @@ id,answer,question_type,n_ans_slots,confidence,promotion_class,source_wolfram_an
 0247,"\frac{2409}{65}, \frac{2474}{1+\frac{2409}{65}e^{-0.53t}}, 2473.84",free_multi,3,HIGH,clean_value,"\frac{2409}{65}, \frac{2474}{1+\frac{2409}{65}e^{-0.53t}}, 2473.84",B8
 0248,180,free_single,0,MED,clean_value,180,B14
 0253,E,MCQ,0,MED,clean_letter,E,B14
+0263,E,MCQ,0,HIGH,mcq_letter_mapped_numeric,-63/16,B10
 0264,256*pi*t^2,free_single,1,HIGH,clean_value,256*pi*t^2,B20
 0269,"1.789, 0.3198, B",free_multi,3,HIGH,clean_value,"1.789, 0.3198, B",B10
 0273,"-cos^2(x), 1, 2cos^2(x)",free_multi,3,HIGH,clean_value,"-cos^2(x), 1, 2cos^2(x)",B15
@@ -113,6 +117,7 @@ id,answer,question_type,n_ans_slots,confidence,promotion_class,source_wolfram_an
 0339,G,MCQ,0,MED,clean_letter,G,B14
 0343,"D, A, C, B, E",free_multi,5,MED,clean_value,"D, A, C, B, E",B17
 0345,"-5/6, 5/6",free_multi,2,HIGH,clean_value,"-5/6, 5/6",B10
+0351,A,MCQ,0,HIGH,mcq_letter_mapped_numeric,12.287,B21
 0362,(6x-5y)(6x+5y),free_single,1,HIGH,clean_value,(6x-5y)(6x+5y),B14
 0367,"60.3, 46.3, 53.3",free_multi,3,HIGH,clean_value,"60.3, 46.3, 53.3",B14
 0369,"3/4, 5, 2",free_multi,3,HIGH,clean_value,"3/4, 5, 2",B10
@@ -139,13 +144,16 @@ id,answer,question_type,n_ans_slots,confidence,promotion_class,source_wolfram_an
 0418,"2.958, 1.751, 0.001530, B",free_multi,4,MED,clean_value,"2.958, 1.751, 0.001530, B",B15
 0421,"-9*sqrt(5)/20, -sqrt(5)/20",free_multi,2,HIGH,clean_value,"-9*sqrt(5)/20, -sqrt(5)/20",B10
 0427,E,MCQ,0,MED,clean_letter,E,B14
+0430,E,MCQ,0,HIGH,mcq_letter_mapped_numeric,1,B22
 0432,"1.202, 2.129, 4.344, 5.271",free_single,1,MED,clean_value,"1.202, 2.129, 4.344, 5.271",B22
+0440,G,MCQ,0,MED,mcq_letter_mapped_numeric,5/2,B22
 0447,x <= 4,free_single,1,HIGH,clean_value,x <= 4,B11
 0448,"x^3-4x^2-6x+30, x^2-9x+20",free_multi,2,MED,clean_value,"x^3-4x^2-6x+30, x^2-9x+20",B18
 0451,"0.1290,0.1935,0.2097,14,0.1774,0.06452",free_multi,6,MED,clean_value,"0.1290,0.1935,0.2097,14,0.1774,0.06452",B22
 0452,42,free_single,1,MED,clean_value,42,B22
 0454,"1.5, 0.9375",free_multi,2,HIGH,clean_value,"1.5, 0.9375",B8
 0456,"-7.740, A, B",free_multi,3,MED,clean_value,"-7.740, A, B",B15
+0465,H,MCQ,0,HIGH,mcq_letter_mapped_numeric,8/9,B22
 0466,26.88,free_single,1,HIGH,clean_value,26.88,B22
 0467,"0.02667w+0.03333, 100<=w<=220, 0<=C<=6, 4.967",free_multi,4,MED,clean_value,"0.02667w+0.03333, 100<=w<=220, 0<=C<=6, 4.967",B15
 0473,"[-7, -3]",free_single,1,HIGH,clean_value,"[-7, -3]",B22
@@ -175,12 +183,14 @@ id,answer,question_type,n_ans_slots,confidence,promotion_class,source_wolfram_an
 0557,5,free_single,1,HIGH,clean_value,5,B11
 0558,f(x)=(13/2)x-25,free_single,1,HIGH,clean_value,f(x)=(13/2)x-25,B11
 0578,"7.62, 9.00, 95.44",free_multi,3,HIGH,clean_value,"7.62, 9.00, 95.44",B1
+0580,D,MCQ,0,HIGH,mcq_letter_mapped_numeric,2/3,B24
 0582,1035,free_single,1,HIGH,clean_value,1035,B24
 0584,"7z, 6w",free_multi,2,HIGH,clean_value,"7z, 6w",B8
 0586,"1.899, -0.9423, 0.1109, -0.02966",free_multi,4,MED,clean_value,"1.899, -0.9423, 0.1109, -0.02966",B16
 0591,"1.081, 1.683, 1.819, -0.832, 3.162, -0.322, 4.123, 1.326",free_multi,8,HIGH,clean_value,"1.081, 1.683, 1.819, -0.832, 3.162, -0.322, 4.123, 1.326",B4
 0593,19.4,free_single,1,HIGH,clean_value,19.4,B11
 0602,"-70.8, 0.719, 53.6",free_multi,3,MED,clean_value,"-70.8, 0.719, 53.6",B16
+0606,E,MCQ,0,HIGH,mcq_letter_mapped_numeric,181,B11
 0607,"0, 0, 4, 0, 0, 14, 6, 6, 20, -6, -6, 0, -4, -4, 10, -4, -4, -12",free_multi,18,HIGH,clean_value,"0, 0, 4, 0, 0, 14, 6, 6, 20, -6, -6, 0, -4, -4, 10, -4, -4, -12",B11
 0611,1.356,free_single,1,HIGH,clean_value,1.356,B18
 0615,"14, 9",free_multi,2,MED,clean_value,"14, 9",B24
@@ -212,7 +222,9 @@ id,answer,question_type,n_ans_slots,confidence,promotion_class,source_wolfram_an
 0716,19/33,free_single,1,HIGH,clean_value,19/33,B12
 0723,"-sqrt(3)/2, -sqrt(2)/2",free_multi,2,HIGH,clean_value,"-sqrt(3)/2, -sqrt(2)/2",B12
 0725,"41.30, 13.28, A",free_multi,3,MED,clean_value,"41.30, 13.28, A",B16
+0732,H,MCQ,0,HIGH,mcq_letter_mapped_numeric,-4,B25
 0739,Q/(1-Z),free_single,1,HIGH,clean_value,Q/(1-Z),B25
+0740,5184/(81cos^2 t - 64 sin^2 t),free_single,1,HIGH,clean_value,5184/(81cos^2 t - 64 sin^2 t),B25
 0748,"222.51, 186.49, 79.43, 66.57, 50.05, 41.95, 31.01, 25.99, 20.79, 3, 11.345, B",free_multi,12,HIGH,clean_value,"222.51, 186.49, 79.43, 66.57, 50.05, 41.95, 31.01, 25.99, 20.79, 3, 11.345, B",B5
 0754,60x^2 + 65x,free_single,1,MED,clean_value,60x^2 + 65x,B26
 0762,2x(55x+21),free_single,1,HIGH,clean_value,2x(55x+21),B12
@@ -244,7 +256,9 @@ id,answer,question_type,n_ans_slots,confidence,promotion_class,source_wolfram_an
 0863,1/t^69,free_single,1,HIGH,clean_value,1/t^69,B28
 0865,7/x - 8,free_single,1,HIGH,clean_value,7/x - 8,B28
 0872,"infinity, 0",free_multi,2,HIGH,clean_value,"infinity, 0",B13
+0878,I,MCQ,0,HIGH,mcq_letter_mapped_numeric,70,B28
 0880,"35/37, 35/12",free_multi,2,HIGH,clean_value,"35/37, 35/12",B13
+0881,D,MCQ,0,HIGH,mcq_letter_mapped_numeric,6,B28
 0883,656.1,free_single,1,MED,clean_value,656.1,B28
 0884,g(x)=(x-59)^2+74,free_single,1,HIGH,clean_value,g(x)=(x-59)^2+74,B8
 0895,70*(2/7)^((x-10)/20),free_single,1,HIGH,clean_value,70*(2/7)^((x-10)/20),B28
@@ -259,4 +273,5 @@ id,answer,question_type,n_ans_slots,confidence,promotion_class,source_wolfram_an
 0927,"False,True,True,True,False,False",free_multi,6,HIGH,clean_value,"False,True,True,True,False,False",B13
 0931,"3, -3",free_multi,2,HIGH,clean_value,"3, -3",B28
 0936,275/16,free_single,1,HIGH,clean_value,275/16,B13
+0939,E,MCQ,0,HIGH,mcq_letter_mapped_numeric,200,B29
 0942,36,free_single,1,HIGH,clean_value,36,B29

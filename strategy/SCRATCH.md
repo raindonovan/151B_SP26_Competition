@@ -102,6 +102,129 @@ Wolf shipped **B9-B16** during this session (~144 HIGH/MED Wolfram verifications
 - Aggressive/conservative are NOT canonical labels — Tier 1/2/3/4 from `NORMALIZATION_RULES.md` is the actual axis.
 
 ---
+## STOP TRACE — claude_vscode — 2026-05-30 (round-3 extraction, Phase B blocked)
+
+**Status: BUILD HALTED at Phase B Wolfram smoke gate. Nothing committed. Stash NOT popped.**
+Phase A (gold_equiv shared helper) PASSED fully. Phase B Wolfram fired a STOP:
+6 smoke misroutes + acceptance check #10 fail. Phase C (web_search) NOT started
+(execution order gates it behind Phase B passing).
+
+### What PASSED (Phase A + most of Phase B)
+- Phase A regression {2112,'448/3','-63/16','0.685','50%','\frac{5}{2}','\boxed{8}'}:
+  _to_number vs _to_exact agree None-vs-not-None and value-equal. PASS.
+- gold_equiv built-in 12-case self-test: PASS (no regression).
+- Wolfram acceptance 11/12 PASS, including the headline FIX-1 target:
+  **check #11 annotation_contamination==34 AND syntax_unparseable==0 — EXACT PASS.**
+- Envelope: sheet=276 (exp ~278), residual=201 (exp ~199), mcq_letter_mapped=15 (exp ~18).
+- Smoke PASS: 0048, 0831 (annotation), 0017→C, 0019→E (phase2 promote), 0001
+  (mcq_options_not_numeric), NEG 0218/0841/0323 in sheet.
+
+### The 6 misroutes — two root causes
+
+**ROOT CAUSE 1 — `_to_exact` lacks `_to_number`'s parse_latex fallback (impl gap).**
+The spec's `_to_exact` pseudocode uses plain `sympy.sympify(ns)`; `_to_number` has an
+extra `parse_latex` branch for nested-brace LaTeX. So `_to_exact('\frac{\sqrt{3}}{12}')`
+→ None while `_to_number` → 0.1443. Spec PROSE says they should "differ only in float
+vs exact post-sympify behavior" — which implies `_to_exact` SHOULD share the parse_latex
+branch. The pseudocode under-specified it. Affected:
+  - 0080 (want mcq_ambiguous): opts A=`\frac{1}{4\sqrt{3}}` and G=`\frac{\sqrt{3}}{12}`
+    are BOTH √3/12. If _to_exact parsed them, wolfram √3/12 matches both → mcq_ambiguous
+    (exactly the spec expectation). **This misroute is fixed by giving _to_exact the
+    parse_latex fallback.** Currently → mcq_options_not_numeric.
+
+**ROOT CAUSE 2 — spec/expectation conflicts the impl can't satisfy as written:**
+  - 0267 (want mcq_ambiguous): options are compound piecewise-CDF LaTeX, genuinely
+    non-numeric even WITH parse_latex. A numeric mapper cannot make these ambiguous-by-value.
+    → mcq_options_not_numeric. Spec expectation looks wrong for the structured mapper.
+  - 0114, 0807 (NEG controls, want in sheet): options are SYMBOLIC expressions with free
+    variables (n, a, φ). Not numbers — no numeric phase can promote them. Round-3 has no
+    symbolic-equivalence MCQ phase. → mcq_options_not_numeric. Cannot reach sheet under
+    the phases as specified.
+  - 0297, 0793 (NEG controls, want in sheet): free_multi whose QUESTION contains
+    'variance'/'standard deviation' without 'sample variance/standard' → Phase 7
+    convention_sensitive fires (round-1 behavior, unchanged). FIX 1 is only the annotation
+    predicate; these are caught upstream by convention. Either they're invalid annotation-
+    negative-controls, or Phase 7 needs narrowing. → convention_sensitive.
+
+### Acceptance check #10 (neg-controls all in sheet): FAIL value=4
+Missing from sheet: 0114, 0807 (symbolic MCQ), 0297, 0793 (convention). 0218/0841/0323 OK.
+
+### DECISIONS NEEDED FROM STRATEGY (build stays halted until resolved)
+1. **_to_exact parse_latex fallback**: add it (matches the "differ only in post-sympify"
+   prose; fixes 0080; but changes envelope — annotation count / web_search Phase 1C all
+   re-derive, needs full re-run + re-check)? Y/N.
+2. **0267 expectation**: keep wanting mcq_ambiguous (impl says options_not_numeric — they're
+   compound piecewise)? Correct the smoke expectation?
+3. **0114/0807**: do these need a NEW symbolic-equivalence MCQ phase (not in round-3 spec),
+   or should they be dropped from the negative-control list?
+4. **0297/0793**: narrow Phase 7 convention gate, or drop them from the negative-control list
+   (they're caught by convention, not annotation — arguably not valid FIX-1 neg-controls)?
+
+### State
+- gold_equiv.py, wolfram_extract.py MODIFIED locally (uncommitted).
+- web_search_extract.py NOT created (Phase C gated).
+- 4 output CSVs NOT written (Phase B self-STOPped before write).
+- Stash stash@{0} "round-3 parked: SCORES.md deletion + session_logs" still parked.
+- Source SHAs verified unchanged start→checkpoint (WOLF 019b428a, private bd48cf7e).
+- HEAD 3c73b4f == origin/main.
+
+### ROUND-2 UPDATE (2026-05-30) — after applying authorized Fixes 1-4
+Fixes 1-4 applied. Result: **ALL 12 acceptance checks PASS** (annotation==34 exact,
+syntax==0, neg-controls value=3). Smoke 13/15. Two remaining smoke fails — BUT both
+items still land in **residual** (fail-closed intact, no wrong promotion); only the
+`skip_reason` LABEL differs from the expectation. New root cause beyond the 4 fixes:
+
+- **0080** (want mcq_ambiguous, got mcq_no_match): with parse_latex, opts A=`1/(4√3)` and
+  G=`√3/12` are value-equal to wolfram √3/12 — BUT phase2_map uses STRUCTURAL `w == ov`
+  (sympy Mul identity), which is False even for G==wolfram. Value test `simplify(w-ov)==0`
+  → hits {A,G} → would be mcq_ambiguous. **The spec's `==` is a structural-vs-value defect.**
+  Fix candidate: phase2_map compares by value, e.g. `(w-ov)` zero via `sympy.simplify(...)==0`
+  or `bool((w-ov).is_zero)`. (Verify 0017/0019 still map clean; verify amb-rate <25%.)
+
+- **0267** (want mcq_options_not_numeric, got mcq_no_match): FIX 1 and FIX 2 CONFLICT.
+  parse_latex extracts the leading `-1/2` from each 212-char compound piecewise-CDF option,
+  so the options now parse as "numeric" → can never be options_not_numeric. With value
+  comparison they'd be mcq_ambiguous (6 opts share -1/2). To honor FIX 2, `_to_exact` would
+  need to REJECT compound/multi-clause LaTeX (return None on `\begin{aligned}`/piecewise).
+
+DECISIONS NEEDED (2 more, both small; build halted, nothing committed):
+  D1 — phase2_map comparison: switch structural `==` to value equality? (fixes 0080)
+  D2 — 0267: (a) make `_to_exact` reject compound/piecewise LaTeX → options_not_numeric, OR
+       (b) just correct the smoke expectation to mcq_no_match (current behavior; still
+       residual, fail-closed holds), OR (c) accept mcq_ambiguous.
+  NOTE: 0080 and 0267 both already route to RESIDUAL correctly — the only open question is
+  the skip_reason label, not promotion correctness. Lowest-stakes possible STOP.
+
+### ROUND-3 UPDATE (2026-05-30) — after D1 (value equality) + D2 applied
+D1+D2 applied. 0080 now correctly mcq_ambiguous ✓. ALL 12 acceptance checks PASS
+(annotation==34, syntax==0, neg-controls=3). Phase2 amb-rate 2% (<25%). Smoke 14/15.
+ONE label mismatch: **0267 got mcq_ambiguous, D2 expected mcq_no_match.**
+Cause: D2's expectation predated D1. D2's note assumed parse_latex's extracted -1/2
+"doesn't match Wolfram's answer" — but Wolfram's 0267 answer IS -1/2 (`k = -1/2`), so
+under D1 value-equality the 6 options that parse to -1/2 (A,C,D,F,H,I) DO match → ambiguous.
+0267 still routes to RESIDUAL (fail-closed intact). The accurate label is mcq_ambiguous;
+the D2 expectation (mcq_no_match) is stale post-D1.
+DECISION NEEDED (1 line): correct 0267 smoke expectation mcq_no_match -> mcq_ambiguous?
+(That's the only thing between here and a clean Phase B → Phase C → commit.)
+
+### RESOLVED (2026-05-30) — round-3 extraction CLEAN, committed
+0267 expectation flipped to mcq_ambiguous (authorized). Full clean build:
+- Phase A: regression + new \frac{\sqrt{3}}{12} case + 12-case self-test all PASS.
+- Phase B Wolfram: 15/15 smoke, 12/12 acceptance. sheet=276, residual=201,
+  annotation_contamination=34, syntax_unparseable=0, mcq_letter_mapped_numeric=15,
+  mcq_ambiguous=2, phase2 amb-rate 2%.
+- Phase C web_search: 22/22 smoke, 10/10 acceptance. promoted=47 (exp ~48; the −1
+  is one FREE item → free_unrecognized_form instead of clean_value_other, within the
+  parse_latex-shift tolerance), residual=27. Phase1A=35, clean_letter=4,
+  clean_value_numeric=5, clean_value_other=2, mcq_letter_mapped_numeric=1, Phase3=0.
+- Source SHAs unchanged start→end (WOLF 019b428a, private bd48cf7e, search 684e0323).
+- 4 CSVs (CRLF, 4-pad ids) + 3 scripts committed in one commit; pushed; stash popped.
+
+Net spec defects caught by the smoke gate + fixed this session (all strategy-authorized):
+  FIX1 _to_exact parse_latex fallback; FIX2/3/4 corrected smoke/neg-control sets;
+  D1 phase2 value-equality (vals_equal) replacing structural ==; D2 0267 label.
+
+---
 ## Agent signoff — claude_vscode — 2026-05-29 (build_master_gold_v2)
 
 > **⚠️ BUILD ROLLED BACK (8dd73f8).** The artifacts below (`master_gold_v2.csv`,

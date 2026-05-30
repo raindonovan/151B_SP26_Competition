@@ -6,17 +6,22 @@ over the frozen 477-id DONE universe:
   data/search/wolfram/wolfram_alpha_answer_sheet.csv  (promoted rows)
   data/search/wolfram/wolfram_alpha_residual.csv      (skipped rows + reason)
 
-Spec authored by claude_strategy. Fail-closed throughout: any structural doubt
-routes a row to residual rather than promoting a wrong value. Re-uses ONLY
-`_slots` and `_to_number` from scripts/gold_equiv.py (no re-implemented parsing).
+Round-3 (claude_strategy spec):
+  FIX 1 — annotation predicate is per-slot with an interval pre-check
+          (looks_like_interval) and a math-token whitelist (MATH_TOKENS);
+          unbalanced parens fail CLOSED to 'syntax_unparseable'.
+  FIX 2 — the regex option parser is dropped; MCQ mapping uses the structured
+          `options` list from private.jsonl (via load_records) and value-exact
+          comparison through _to_exact.
 
-The earlier ad-hoc structural_screen.py / normalize_delta.py (commits 9e10af7,
-b3dd057) were REVERTED for cause and are NOT resurrected here — this is fresh.
+Fail-closed throughout: any structural doubt routes a row to residual rather
+than promoting a wrong value. Re-uses ONLY `_slots`, `_to_number`, `_to_exact`,
+`load_records` from scripts/gold_equiv.py (no re-implemented parsing).
 """
-import csv, hashlib, json, re, sys
+import csv, hashlib, re, sys
 
 sys.path.insert(0, '.')
-from gold_equiv import _slots, _to_number  # the ONLY shared parsing primitives
+from gold_equiv import _slots, _to_number, _to_exact, load_records, vals_equal
 
 WOLF = 'data/search/wolfram/WOLF_RESULTS.csv'
 PRIV = 'private.jsonl'
@@ -42,95 +47,105 @@ CONV_NOTES = ['convention-dependent', 'pop/sample', 'variance convention',
 PROSE_TOKENS = ['in', 'is', 'are', 'the', 'an', 'and', 'or', 'with',
                 'where', 'this', 'that', 'then', 'of']
 PROSE_RE = re.compile(r'\b(' + '|'.join(PROSE_TOKENS) + r')\b', re.I)
-# 0.4 annotation pattern: "<stuff-no-parens> ( <stuff> )" with trailing ).
-ANNOT_RE = re.compile(r'^[^()]+\s*\([^)]+\)\s*$')
 MCQ_LETTERSET_RE = re.compile(r'^[A-Z](,[A-Z])*$')
+
+# --- FIX 1: math-token whitelist + interval pre-check + per-slot predicate --
+MATH_TOKENS = {
+    # trig + inverse + hyperbolic
+    'sin', 'cos', 'tan', 'sec', 'csc', 'cot',
+    'sinh', 'cosh', 'tanh', 'sech', 'csch', 'coth',
+    'arcsin', 'arccos', 'arctan', 'arccsc', 'arcsec', 'arccot',
+    'asin', 'acos', 'atan',
+    # log/exp
+    'log', 'ln', 'lg', 'exp',
+    # functions
+    'sqrt', 'abs', 'floor', 'ceil', 'max', 'min', 'mod', 'lcm', 'gcd',
+    'det', 'tr', 'rank', 'sgn', 'round',
+    # named Greek
+    'pi', 'phi', 'psi', 'chi', 'eta', 'mu', 'nu', 'xi', 'rho', 'tau', 'zeta',
+    'alpha', 'beta', 'gamma', 'delta', 'epsilon', 'theta', 'iota', 'kappa',
+    'lambda', 'omicron', 'sigma', 'upsilon', 'omega',
+    # LaTeX commands
+    'frac', 'dfrac', 'tfrac', 'cdot', 'times', 'div', 'pm', 'mp', 'leq', 'geq',
+    'neq', 'approx', 'equiv', 'infty', 'infin', 'infinity', 'inf', 'oo', 'sum',
+    'prod', 'int', 'lim', 'partial', 'nabla', 'vec', 'hat', 'bar', 'tilde',
+    'boxed', 'mathbb', 'mathcal', 'mathrm', 'mathbf', 'mathit',
+    'left', 'right', 'displaystyle', 'overline', 'underline', 'overrightarrow',
+    # set notation
+    'union', 'cup', 'cap', 'intersect', 'subset', 'supset',
+    # math keywords
+    'undefined', 'dne', 'und', 'none', 'iff', 'iif',
+    'imaginary', 'real', 'complex', 'rational', 'irrational',
+}
+
+
+def looks_like_interval(slot):
+    s = slot.strip()
+    if not s or s[0] not in '[(' or s[-1] not in '])':
+        return False
+    depth = 0
+    has_top_level_comma = False
+    for ch in s:
+        if ch in '([':
+            depth += 1
+        elif ch in ')]':
+            depth -= 1
+            if depth < 0:
+                return False
+        elif ch == ',' and depth == 1:
+            has_top_level_comma = True
+    return depth == 0 and has_top_level_comma
+
+
+def annotation_verdict(slot):
+    """Returns 'annotation' | 'syntax_unparseable' | None (clean)."""
+    s = slot.strip()
+    if looks_like_interval(s):
+        return None
+    if not s.endswith(')'):
+        return None
+    depth = 0
+    open_idx = -1
+    for i in range(len(s) - 1, -1, -1):
+        if s[i] == ')':
+            depth += 1
+        elif s[i] == '(':
+            depth -= 1
+            if depth == 0:
+                open_idx = i
+                break
+    if open_idx == -1:
+        return 'syntax_unparseable'   # fail CLOSED on unbalanced
+    body = s[:open_idx].strip()
+    inner = s[open_idx + 1:-1]
+    if re.match(r'^[A-Z](,[A-Z])*$', body):
+        return 'annotation'
+    alpha_words = re.findall(r'[A-Za-z]{3,}', inner)
+    if alpha_words and not all(w.lower() in MATH_TOKENS for w in alpha_words):
+        return 'annotation'
+    return None
 
 
 def sha(path):
     return hashlib.sha256(open(path, 'rb').read()).hexdigest()
 
 
-def annot_paren_is_nonmath(answer):
-    """0.4: the parenthetical content is non-numeric/non-mathematical."""
-    if not ANNOT_RE.match(answer.strip()):
-        return False
-    m = re.search(r'\(([^)]+)\)\s*$', answer.strip())
-    if not m:
-        return False
-    inner = m.group(1).strip()
-    # mathematical/numeric if _to_number parses it, or it's a pure
-    # numeric/operator/relation string (digits, math ops, ~, letters used as
-    # math like ln). Non-math => words like 'quadrants'.
-    if _to_number(inner) is not None:
-        return False
-    # treat as math if it contains only math-ish chars (no alpha words >2 long
-    # except known math fns), else non-math.
-    if re.search(r'[~=<>]|\bln\b|\blog\b|sqrt|\bpi\b', inner):
-        return False
-    # any alphabetic word of length >= 3 that isn't a math fn => annotation
-    words = re.findall(r'[A-Za-z]{3,}', inner)
-    return len(words) > 0
-
-
-def load_questions():
-    q = {}
-    for line in open(PRIV):
-        line = line.strip()
-        if not line:
-            continue
-        r = json.loads(line)
-        q['%04d' % int(r['id'])] = r['question']
-    return q
-
-
-# --- Phase 2 option parsing ----------------------------------------------
-OPT_PATTERNS = [
-    re.compile(r'^([A-Z])\.', re.M),
-    re.compile(r'^\(([A-Z])\)', re.M),
-    re.compile(r'^([A-Z])\)', re.M),
-]
-
-
-def parse_options(question):
-    """Strict single-pass option parser. Returns list[(letter, rhs)] or None."""
-    for pat in OPT_PATTERNS:
-        matches = list(pat.finditer(question))
-        if len(matches) < 2:
-            continue
-        letters = [m.group(1) for m in matches]
-        # contiguous prefix A.. with N>=2, no gaps, document order
-        expected = [chr(ord('A') + i) for i in range(len(letters))]
-        if letters != expected:
-            continue
-        pairs = []
-        for i, m in enumerate(matches):
-            start = m.end()
-            end = matches[i + 1].start() if i + 1 < len(matches) else len(question)
-            rhs = question[start:end].strip()
-            pairs.append((m.group(1), rhs))
-        return pairs
-    return None
-
-
-def phase2_map(row, question):
-    """Numeric-only MCQ mapper. Returns ('promote', letter) or ('residual', reason)."""
-    if question is None:
-        return ('residual', 'mcq_options_not_parseable')
-    pairs = parse_options(question)
-    if pairs is None:
-        return ('residual', 'mcq_options_not_parseable')
-    opt_vals = []
-    for _letter, rhs in pairs:
-        v = _to_number(rhs)
-        if v is None:
-            return ('residual', 'mcq_options_not_numeric')
-        opt_vals.append(v)
-    w = _to_number(row['wolfram_answer'])
+# --- FIX 2: structured-options MCQ mapper --------------------------------
+def phase2_map(row, jsonl_record):
+    """Numeric-only MCQ mapper using the structured `options` list.
+    Returns ('promote', letter) or ('residual', reason)."""
+    opts = (jsonl_record or {}).get('options')
+    if not isinstance(opts, list) or len(opts) < 2 \
+       or not all(isinstance(o, str) and o.strip() for o in opts):
+        return ('residual', 'mcq_options_missing_or_invalid')
+    letters = [chr(ord('A') + i) for i in range(len(opts))]
+    opt_vals = [_to_exact(o) for o in opts]
+    if any(v is None for v in opt_vals):
+        return ('residual', 'mcq_options_not_numeric')
+    w = _to_exact(row['wolfram_answer'])
     if w is None:
-        return ('residual', 'mcq_no_match')
-    hits = [pairs[i][0] for i, ov in enumerate(opt_vals)
-            if abs(w - ov) / max(1.0, abs(ov)) < 1e-6]
+        return ('residual', 'mcq_answer_not_numeric')
+    hits = [letters[i] for i, ov in enumerate(opt_vals) if vals_equal(w, ov)]
     if len(hits) == 1:
         return ('promote', hits[0])
     if len(hits) == 0:
@@ -156,9 +171,15 @@ def structural_screen(row, question):
     # 3
     if any(mk in ans for mk in MARKERS):
         return ('residual', 'marker_in_answer')
-    # 4
-    if annot_paren_is_nonmath(ans):
-        return ('residual', 'annotation_contamination')
+    # 4 annotation contamination / syntax (FIX 1: per-slot, after _slots split,
+    #   with interval pre-check; unbalanced parens fail closed)
+    slots = _slots(ans) if typ == 'free_multi' else [ans]
+    for slot in slots:
+        v = annotation_verdict(slot)
+        if v == 'annotation':
+            return ('residual', 'annotation_contamination')
+        if v == 'syntax_unparseable':
+            return ('residual', 'syntax_unparseable')
     # 5
     nlow = notes.lower()
     if any(k in nlow for k in NOTES_INCOMPLETE) or NOTES_INCOMPLETE_RE.search(notes):
@@ -202,6 +223,30 @@ def structural_screen(row, question):
     return ('CLEAN', None)
 
 
+# --- smoke gate (FIX-spec ids; STOP on any misroute) ----------------------
+WOLF_SMOKE = {
+    '0048': ('residual', 'annotation_contamination'),
+    '0831': ('residual', 'annotation_contamination'),
+    '0017': ('sheet', 'mcq_letter_mapped_numeric'),
+    '0019': ('sheet', 'mcq_letter_mapped_numeric'),
+    '0080': ('residual', 'mcq_ambiguous'),               # D1: value-equal hits {A,G} -> ambiguous
+    '0267': ('residual', 'mcq_ambiguous'),               # D2 post-D1: 6 opts value-match -1/2 -> ambiguous
+    '0001': ('residual', 'mcq_options_not_numeric'),
+}
+WOLF_SMOKE_ANSWER = {'0017': 'C', '0019': 'E'}
+# FIX 3+4: 0114/0807 (symbolic MCQ, no symbolic phase) and 0297/0793 (convention-caught
+# upstream, never reach annotation_verdict) dropped — they don't exercise the predicate.
+WOLF_NEG = ['0218', '0841', '0323']
+
+RESID_ENUM = {
+    'notes_admit_incomplete', 'mcq_options_missing_or_invalid', 'low_confidence',
+    'convention_sensitive', 'marker_in_answer', 'annotation_contamination',
+    'prose_or_nonanswer', 'known_dataset_bug', 'slot_mismatch', 'syntax_unparseable',
+    'mcq_options_not_numeric', 'mcq_answer_not_numeric', 'mcq_no_match', 'mcq_ambiguous',
+}
+PROMO_ENUM = {'clean_value', 'clean_letter', 'mcq_letter_mapped_numeric'}
+
+
 def main():
     sha_wolf_start, sha_priv_start = sha(WOLF), sha(PRIV)
     print('== provenance ==')
@@ -214,34 +259,39 @@ def main():
     assert len(U) == 477, f'universe freeze FAILED: len(U)={len(U)} != 477'
     print('universe |U| =', len(U), '(frozen)')
 
-    questions = load_questions()
+    records = load_records(PRIV)
 
     sheet_rows, resid_rows = [], []
     promo_counts, skip_counts = {}, {}
     mapped_attempts, mapped_ambiguous = 0, 0
+    route_map = {}   # rid -> ('sheet', promotion_class, answer) | ('residual', skip_reason)
 
     for row in U:
         rid = row['id']
-        q = questions.get(rid)
+        rec = records.get(rid)
+        q = rec.get('question') if rec else None
         verdict, info = structural_screen(row, q)
 
         if verdict == 'residual':
             resid_rows.append(_resid(row, info))
             skip_counts[info] = skip_counts.get(info, 0) + 1
+            route_map[rid] = ('residual', info)
             continue
 
         if verdict == 'PHASE2':
             mapped_attempts += 1
-            res, val = phase2_map(row, q)
+            res, val = phase2_map(row, rec)
             if res == 'promote':
                 pc = 'mcq_letter_mapped_numeric'
                 sheet_rows.append(_sheet(row, val, pc))
                 promo_counts[pc] = promo_counts.get(pc, 0) + 1
+                route_map[rid] = ('sheet', pc, val)
             else:
                 if val == 'mcq_ambiguous':
                     mapped_ambiguous += 1
                 resid_rows.append(_resid(row, val))
                 skip_counts[val] = skip_counts.get(val, 0) + 1
+                route_map[rid] = ('residual', val)
             continue
 
         # CLEAN -> Phase 1 promotion
@@ -255,13 +305,45 @@ def main():
             pc = 'clean_value'
         sheet_rows.append(_sheet(row, ans, pc))
         promo_counts[pc] = promo_counts.get(pc, 0) + 1
+        route_map[rid] = ('sheet', pc, ans)
 
-    # --- fail-closed acceptance ------------------------------------------
+    # --- smoke gate (BEFORE acceptance / write) --------------------------
+    print('\n== wolfram smoke gate ==')
+    smoke_fail = []
+    for sid, (want_dest, want_reason) in WOLF_SMOKE.items():
+        got = route_map.get(sid)
+        if got is None:
+            smoke_fail.append(f'{sid}: not in universe');
+            print(f'  [FAIL] {sid}: not found'); continue
+        got_dest = got[0]
+        got_reason = got[1]
+        ok = (got_dest == want_dest and got_reason == want_reason)
+        if ok and sid in WOLF_SMOKE_ANSWER:
+            ok = (got[2] == WOLF_SMOKE_ANSWER[sid])
+        ans_note = f" answer={got[2]}" if got_dest == 'sheet' else ''
+        print(f'  [{"PASS" if ok else "FAIL"}] {sid}: {got_dest}/{got_reason}{ans_note}'
+              f'  (want {want_dest}/{want_reason}'
+              + (f' ans={WOLF_SMOKE_ANSWER[sid]}' if sid in WOLF_SMOKE_ANSWER else '') + ')')
+        if not ok:
+            smoke_fail.append(f'{sid}: got {got_dest}/{got_reason}, want {want_dest}/{want_reason}')
+    for nid in WOLF_NEG:
+        got = route_map.get(nid)
+        ok = got is not None and got[0] == 'sheet'
+        print(f'  [{"PASS" if ok else "FAIL"}] NEG {nid}: {got[0] if got else "MISSING"}/{got[1] if got else "-"} (want sheet, no skip)')
+        if not ok:
+            smoke_fail.append(f'NEG {nid}: not in sheet (got {got})')
+
+    # --- fail-closed acceptance (12 checks) ------------------------------
     sheet_ids = {r['id'] for r in sheet_rows}
     resid_ids = {r['id'] for r in resid_rows}
     U_ids = {r['id'] for r in U}
-    annot_bad = sum(1 for r in sheet_rows if annot_paren_is_nonmath(r['answer']))
+
+    def _pred_clean(answer, qtype):
+        slots = _slots(answer) if qtype == 'free_multi' else [answer]
+        return all(annotation_verdict(s) is None for s in slots)
+
     marker_bad = sum(1 for r in sheet_rows if any(m in r['answer'] for m in MARKERS))
+    annot_bad = sum(1 for r in sheet_rows if not _pred_clean(r['answer'], r['question_type']))
     fm_bad = sum(1 for r in sheet_rows if r['question_type'] == 'free_multi'
                  and len(_slots(r['answer'])) != _safe_int(r['n_ans_slots']))
     mcq_bad = 0
@@ -273,26 +355,30 @@ def main():
             elif ',' in a and list(a.split(',')) != sorted(a.split(',')):
                 mcq_bad += 1
     conf_bad = sum(1 for r in sheet_rows if r['confidence'].upper() not in {'HIGH', 'MED'})
-    RESID_ENUM = {'low_confidence', 'known_dataset_bug', 'marker_in_answer',
-                  'annotation_contamination', 'notes_admit_incomplete',
-                  'slot_mismatch', 'convention_sensitive', 'prose_or_nonanswer',
-                  'mcq_options_not_parseable', 'mcq_options_not_numeric',
-                  'mcq_no_match', 'mcq_ambiguous'}
     resid_enum_bad = sum(1 for r in resid_rows if r['skip_reason'] not in RESID_ENUM
                          or not r['skip_reason'])
+    neg_present = sum(1 for nid in WOLF_NEG if nid in sheet_ids)
+    n_annot = skip_counts.get('annotation_contamination', 0)
+    n_syntax = skip_counts.get('syntax_unparseable', 0)
+
+    sha_wolf_end, sha_priv_end = sha(WOLF), sha(PRIV)
+    sha_unchanged = (sha_wolf_end == sha_wolf_start and sha_priv_end == sha_priv_start)
 
     checks = [
         ('1 total==477', len(sheet_rows) + len(resid_rows) == 477,
          len(sheet_rows) + len(resid_rows)),
         ('2 disjoint', sheet_ids.isdisjoint(resid_ids), len(sheet_ids & resid_ids)),
-        ('3 union==U', (sheet_ids | resid_ids) == U_ids,
-         len(sheet_ids | resid_ids)),
+        ('3 union==U', (sheet_ids | resid_ids) == U_ids, len(sheet_ids | resid_ids)),
         ('4 no markers in sheet', marker_bad == 0, marker_bad),
-        ('5 no annotation in sheet', annot_bad == 0, annot_bad),
+        ('5 predicate None for every sheet answer', annot_bad == 0, annot_bad),
         ('6 free_multi slotcount', fm_bad == 0, fm_bad),
         ('7 MCQ letterset+sorted', mcq_bad == 0, mcq_bad),
         ('8 confidence in {HIGH,MED}', conf_bad == 0, conf_bad),
-        ('9 residual enum non-empty', resid_enum_bad == 0, resid_enum_bad),
+        ('9 residual enum closed', resid_enum_bad == 0, resid_enum_bad),
+        ('10 neg-controls all in sheet', neg_present == len(WOLF_NEG), neg_present),
+        ('11 annotation==34 AND syntax==0', n_annot == 34 and n_syntax == 0,
+         f'annot={n_annot},syntax={n_syntax}'),
+        ('12 source SHAs unchanged', sha_unchanged, sha_unchanged),
     ]
 
     print('\n== fail-closed acceptance ==')
@@ -301,19 +387,10 @@ def main():
         print(f'  [{"PASS" if ok else "FAIL"}] {name} (value={val})')
         all_pass = all_pass and ok
 
+    mapped_promotions = promo_counts.get('mcq_letter_mapped_numeric', 0)
     amb_rate = (mapped_ambiguous / mapped_attempts) if mapped_attempts else 0.0
-    print(f'\nPhase2 mapped attempts={mapped_attempts}, ambiguous={mapped_ambiguous}'
-          f' ({amb_rate:.0%})')
-
-    # stop conditions
-    sha_wolf_end, sha_priv_end = sha(WOLF), sha(PRIV)
-    stop = []
-    if not all_pass:
-        stop.append('a fail-closed check failed')
-    if amb_rate > 0.25:
-        stop.append(f'mcq_ambiguous rate {amb_rate:.0%} > 25%')
-    if sha_wolf_end != sha_wolf_start or sha_priv_end != sha_priv_start:
-        stop.append('source file SHA changed mid-run')
+    print(f'\nPhase2 mapped attempts={mapped_attempts}, promotions={mapped_promotions},'
+          f' ambiguous={mapped_ambiguous} ({amb_rate:.0%})')
 
     print('\n== promotion_class counts ==')
     for k in sorted(promo_counts):
@@ -323,10 +400,27 @@ def main():
         print(f'  {k}: {skip_counts[k]}')
     print(f'\nanswer_sheet total={len(sheet_rows)}  residual total={len(resid_rows)}')
 
+    # stop conditions
+    stop = []
+    if smoke_fail:
+        stop.append(f'{len(smoke_fail)} smoke misroute(s)')
+    if not all_pass:
+        stop.append('a fail-closed check failed')
+    if mapped_promotions < 10:
+        stop.append(f'Phase2 mapped letters {mapped_promotions} < 10')
+    if amb_rate > 0.25:
+        stop.append(f'mcq_ambiguous rate {amb_rate:.0%} > 25%')
+    if not sha_unchanged:
+        stop.append('source file SHA changed mid-run')
+
     if stop:
         print('\n*** STOP — NOT WRITING OUTPUTS ***')
         for s in stop:
             print('  -', s)
+        if smoke_fail:
+            print('  smoke detail:')
+            for s in smoke_fail:
+                print('   ', s)
         sys.exit(1)
 
     _write_sheet(sheet_rows)
