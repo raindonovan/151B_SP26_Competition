@@ -1,0 +1,47 @@
+id,subject,type,n_ans_slots,best_answer,teacher_consensus,question
+0577,algebra,MCQ,0,F,F,"To ensure that the three roots of the polynomial $x^{3} + a x^{2} + b x + c$ form an arithmetic sequence, what conditions should its coefficients satisfy?"
+0579,trigonometry,MCQ,0,C,C,Evaluate $\lim_{x \to 0^{+}} \left( \left( \frac{ \tan(4 \cdot x) }{ 4 \cdot x } \right)^{\frac{ 1 }{ 2 \cdot x^2 }} \right)$ using L'Hopital's Rule.
+0580,calculus,MCQ,0,D,D,"Compute the limit using L'Hopital's Rule:
+$$
+\lim_{x \to 0} \left( \frac{ 1 }{ x^2 } - \cot(x)^2 \right)
+$$"
+0581,number_theory,MCQ,0,F,F,"Let $y=y \left(x \right)$be such that $y^{\prime}+2 \left(\operatorname{l n} x+1 \right) y=0, y \left(1 \right)=1$, Then the maximum value of $y (x)$ on (0, 1] is ( )."
+0582,algebra,free_single,1,1035,1035,"A pile of logs has $45$ logs in the bottom layer, $44$ logs in the next layer, $43$ logs in the next layer, and so on, until the top layer has $1$ log. How many logs are in the pile? Answer (in logs): [ANS]"
+0594,statistics,MCQ,0,F,F,"Let the probability distribution of the random variable $\mathrm{X}$ be $\mathrm{P} ( \mathbf{X}=1 )=0. 2, \mathrm{P} ( \mathbf{X}=2 )=0. 3, \mathrm{P} ( \mathbf{X}=3 )=0. 5$ . What is the distribution function?"
+0597,geometry,MCQ,0,B,B,"$ABC$ is a triangle with integer side lengths. Extend $\overline{AC}$ beyond $C$ to point $D$ such that $CD=120$ . Similarly, extend $\overline{CB}$ beyond $B$ to point $E$ such that $BE=112$ and $\overline{BA}$ beyond $A$ to point $F$ such that $AF=104$ . If triangles $CBD$ , $BAE$ , and $ACF$ all have the same area, what is the minimum possible area of triangle $ABC$ ?"
+0600,linear_algebra,MCQ,0,I,I,"Let the matrix \( N = \begin{bmatrix} 0 & A \\ B & 0 \end{bmatrix} \), where \( A = \begin{bmatrix} 4 & 1 \\ 3 & 1 \end{bmatrix} \) and \( B = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} \), then \( N^{-1} = \)"
+0603,statistics,free_multi,3,"C, A, B","C,A,B","For each problem, select the best response.
+(a) Which of the following is least affected if an extreme high outlier is added to your data? [ANS] A. The mean.  B. The standard deviation.  C. The median.  D. None of the above.
+(b) What percent of the observations in a distribution lie between the first quartile and the third quartile? [ANS] A. 50\%.  B. 25\%.  C. 75\%.  D. None of the above.
+(c) To make a boxplot of a distribution, you must know [ANS] A. the mean and the standard deviation.  B. the five-number summary.  C. all of the individual observations.  D. None of the above."
+0613,linear_algebra,MCQ,0,I,I,"What is the expression for $\beta$ being linearly represented by $\alpha_{1}, \alpha_{2}, \alpha_{3}, \alpha_{4}$?
+$$
+\beta={\left( \begin{matrix} {{0}} \\ {2} \\ {0} \\ {-1} \\ \end{matrix} \right)} ; \alpha_{1}={\left( \begin{matrix} {1} \\ {1} \\ {1} \\ {1} \\ \end{matrix} \right)}, \alpha_{2}={\left( \begin{matrix} {1} \\ {1} \\ {1} \\ {0} \\ \end{matrix} \right)}, \alpha_{3}={\left( \begin{matrix} {1} \\ {1} \\ {0}\\ {0} \\ \end{matrix} \right)}, \alpha_{4}={\left( \begin{matrix} {1} \\ {0} \\ {0} \\ {0} \\ \end{matrix} \right)}
+$$"
+0614,algebra,MCQ,0,I,I,"Allow the expression $x \left( x-a \right) \left( x-b \right) \left( x-c \right) +1$ to be factored into the product of two polynomials whose coefficients are all integers. Find the integers $a, b, c$ that are non-zero and distinct from each other."
+0615,algebra,free_multi,2,"14, 9","14,9",An amateur cyclist is training for a road race. He rode the first 42-mile portion of his workout at a constant rate. He then reduced his speed by 5 mph for the remaining 27-mile cool-down portion of the workout. Each portion of the workout took equal time. Find the cyclist's rate during the first portion and his rate during the cool-down portion. First Portion: [ANS] mph Cool-Down: [ANS] mph
+0616,trigonometry,MCQ,0,J,J,The general solution of the equation $y''+y= sin 2 x$ is
+0618,trigonometry,MCQ,0,A,A,"The volume of the solid of revolution formed by rotating the region bounded by the curve (y=arcsin x), the line (x=1), and the line (y=0) about the (x)-axis is ( )."
+0625,algebra,free_single,1,5(x + 2)(x + 3),5(x+2)(x+3),"Factor out the greatest common factor first and place it in front. Then factoring the remaining expression as much as possible, and type your result in the second box:
+$5x^2+25x+30=$ [ANS]"
+0626,calculus,MCQ,0,G,G,"Calculate the integral $\int_{-1}^{1} \mid z \mid \mathrm{d} z$, with the integration path as: (1) a straight line segment; (2) the semicircle of the unit circle on the upper half; (3) the semicircle of the unit circle on the lower half."
+0627,geometry,free_single,1,1090,,"Given that the surface area of a sphere is 163 $\pi$ cm $^2$, find its volume.
+Note: Your answer must be a number. No arithmetic operations are allowed.
+The volume of the sphere is [ANS] cm $^3$."
+0631,calculus,MCQ,0,A,A,"Define $C(\alpha)$ to be the coefficient of $x^{1992}$ in the power series about $x=0$ of $(1 + x)^\alpha$. Evaluate \[ \int_0^1 \left( C(-y-1) \sum_{k=1}^{1992} \frac{1}{y+k} \right)\,dy. \]"
+0635,algebra,free_multi,3,"37.60, 0.7460, -25.40",,"Suppose $Q=37.6(0.746)^t$. Give the starting value $a$, the growth factor $b$, and the growth rate $r$ if $Q=a \cdot b^t=a(1+r)^t$. $a=$ [ANS]
+$b=$ [ANS]
+$r=$ [ANS] \%"
+0639,statistics,free_single,1,3.325,3.325,Suppose you calculate a 99\% confidence interval of 14.51 to 21.16. Determine the margin of error. [ANS]
+0644,number_theory,MCQ,0,A,,"How many positive integers $n\le 2010$ satisfy $\phi (n)|n$ , where $ \phi (n)$ is the number of integers less than or equal to $n$ relatively prime to $n$ ?"
+0648,algebra,free_multi,2,"11.51 + 0.83x, 30.60",,"A manufacturer pays its assembly line workers \$11.51 per hour. In addition, workers receive a piece work rate of \$0.83 per unit produced. Write a linear equation for the hourly wages $W$ in terms of the number of units $x$ produced per hour. linear equation: $W=$ [ANS]
+What is the hourly wage for Mike, who produces 23 units in one hour? Mike's wage=[ANS]"
+0653,algebra,free_multi,3,"\dfrac{600 - 45t}{7}, 85.71, 47.14",,"Nicotine leaves the body at a constant rate. At a time of $4$ hours after smoking a cigarette, $60$ mg of nicotine remain in a person's body; $7$ hours later ($11$ hours after smoking the cigarette), there are $15$ mg of nicotine in the body.
+(a) Find a formula for the amount of nicotine $A$ left in the body $t$ hours after smoking a cigarette.
+$A=f(t)=$ [ANS]
+(b) How much nicotine is in the body immediately after smoking. [ANS]
+(c) How much nicotine is in the body $6$ hours after smoking. [ANS]"
+0654,algebra,free_multi,4,"\sqrt{19}, 2, 2, 2","\sqrt{19},2,2,2","Find $\small{f(12), f(-7), f(\pi), \;\mbox{and}\; f(-7.1)}$ for:
+\small{f(x)=\begin{cases}{\sqrt{x+7}}&\text{if}\ x > 7\cr {2}&\text{if}\ x \le 7\end{cases}} You may keep radicals in any answers where appropriate. Use pi to represent $\small{\pi}$.
+$\begin{array}{ccc}\hline \small{f(12)} &=& [ANS] \\ \hline \small{f(-7)} &=& [ANS] \\ \hline \small{f(\pi)} &=& [ANS] \\ \hline \small{f(-7.1)} &=& [ANS] \\ \hline \end{array}$"
+0656,algebra,free_single,1,6x^2 - 23x + 15,,Enter a quadratic polynomial which has roots at 5/6 and 3. [ANS]

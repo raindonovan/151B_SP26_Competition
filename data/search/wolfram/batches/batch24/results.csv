@@ -1,0 +1,26 @@
+id,subject,type,n_ans_slots,wolfram_answer,confidence,computable,notes
+0577,algebra,MCQ,0,condition 2a^3-9ab+27c=0 (roots in AP),MED,YES,arithmetic-sequence roots condition; MCQ best=F
+0579,calculus,MCQ,0,e^(8/3),HIGH,YES,lim (tan4x/4x)^(1/2x^2)=e^(8/3); verified; MCQ best=C
+0580,calculus,MCQ,0,2/3,HIGH,YES,lim(1/x^2-cot^2 x)=2/3; MCQ best=D
+0581,calculus,MCQ,0,max of y from y'+2(lnx+1)y=0,MED,YES,separable ODE y=e^(-2x lnx); max value computable; MCQ best=F
+0582,algebra,free_single,1,1035,HIGH,YES,sum 1..45 = 45*46/2 = 1035; MATCH (best correct)
+0594,statistics,MCQ,0,expectation/variance of given discrete X,MED,YES,discrete distribution moment; MCQ best=F
+0597,geometry,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,triangle extension competition; best=B
+0600,linear_algebra,MCQ,0,"eigenvalues of block matrix [[0,A],[B,0]]",MED,YES,block antidiagonal eigenvalues = +/-sqrt(eig(AB)); MCQ best=I
+0603,statistics,MCQ,3,median least affected by outlier etc,MED,MAYBE,"outlier-robustness MCQ; best=""C,A,B""; conceptual"
+0613,linear_algebra,MCQ,0,beta linear combo coefficients (solve system),MED,YES,express beta in basis; MCQ best=I
+0614,algebra,MCQ,0,x(x-a)(x-b)(x-c)+1 factorable condition,MED,YES,factorization condition; MCQ best=I
+0615,algebra,free_multi,2,"14, 9",MED,YES,"cyclist two-speed word problem; best=14,9 plausible"
+0616,calculus,MCQ,0,y=C1 cos x+C2 sin x -(1/3)sin 2x,HIGH,YES,y''+y=sin2x: y_p=-1/3 sin2x; MCQ best=J
+0618,calculus,MCQ,0,volume rotating arcsin region about x-axis,MED,YES,V=pi*int arcsin^2... computable; MCQ best=A
+0625,algebra,free_single,1,5(x+2)(x+3),HIGH,YES,5x^2+25x+30=5(x+2)(x+3); MATCH (best correct)
+0626,calculus,MCQ,0,complex path integral of |z|,MED,YES,int|z|dz over line vs semicircle; MCQ best=G
+0627,geometry,free_single,1,1090,HIGH,YES,"SA=163pi -> r=sqrt163/2, V=163sqrt163 pi/6=1089.6~1090; MATCH (best correct)"
+0631,calculus,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,Putnam binomial-series integral competition; best=A
+0635,algebra,free_multi,3,"37.60, 0.7460, -25.40",HIGH,YES,"Q=37.6(0.746)^t: a=37.6,b=0.746,r=-25.4%; MATCH (best correct)"
+0639,statistics,free_single,1,3.325,HIGH,YES,ME=(21.16-14.51)/2=3.325; MATCH (best correct)
+0644,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,NO,count n<=2010 with phi(n)|n competition; best=A
+0648,statistics,free_multi,2,"11.51 + 0.83x, 30.60",HIGH,YES,wage W=11.51+0.83x; at x=23 -> 30.60; MATCH (best correct)
+0653,algebra,free_multi,3,"(600-45t)/7, 85.71, 47.14",MED,YES,nicotine linear decay 3-slot; best plausible
+0654,algebra,free_multi,4,"sqrt(19), 2, 2, 2",HIGH,YES,"piecewise f: f(12)=sqrt19, f(-7)=f(pi)=f(-7.1)=2; MATCH (best correct)"
+0656,algebra,free_single,1,6x^2 - 23x + 15,HIGH,YES,"roots 5/6,3: (6x-5)(x-3)=6x^2-23x+15; MATCH (best correct)"

@@ -445,3 +445,28 @@ Readable companion to `WOLF_RESULTS.csv` (the full machine-readable scorecard fo
 | 0567 | B23 | MED | false-statement about frequency distributions | identify false stat statement; best="A,A"; conceptual |
 | 0569 | B23 | HIGH | (p^2-1)(p^2-p) | /GL_2(F_p)/=(p^2-1)(p^2-p); value verified; MCQ best=B |
 | 0574 | B23 | MED | rank/det property of given 3x3 | matrix A property (det=0, rank 2); MCQ best=E |
+| 0577 | B24 | MED | condition 2a^3-9ab+27c=0 (roots in AP) | arithmetic-sequence roots condition; MCQ best=F |
+| 0579 | B24 | HIGH | e^(8/3) | lim (tan4x/4x)^(1/2x^2)=e^(8/3); verified; MCQ best=C |
+| 0580 | B24 | HIGH | 2/3 | lim(1/x^2-cot^2 x)=2/3; MCQ best=D |
+| 0581 | B24 | MED | max of y from y'+2(lnx+1)y=0 | separable ODE y=e^(-2x lnx); max value computable; MCQ  |
+| 0582 | B24 | HIGH | 1035 | sum 1..45 = 45*46/2 = 1035; MATCH (best correct) |
+| 0594 | B24 | MED | expectation/variance of given discrete X | discrete distribution moment; MCQ best=F |
+| 0597 | B24 | INCONCLUSIVE | INCONCLUSIVE | triangle extension competition; best=B |
+| 0600 | B24 | MED | eigenvalues of block matrix [[0,A],[B,0]] | block antidiagonal eigenvalues = +/-sqrt(eig(AB)); MCQ  |
+| 0603 | B24 | MED | median least affected by outlier etc | outlier-robustness MCQ; best="C,A,B"; conceptual |
+| 0613 | B24 | MED | beta linear combo coefficients (solve system) | express beta in basis; MCQ best=I |
+| 0614 | B24 | MED | x(x-a)(x-b)(x-c)+1 factorable condition | factorization condition; MCQ best=I |
+| 0615 | B24 | MED | 14, 9 | cyclist two-speed word problem; best=14,9 plausible |
+| 0616 | B24 | HIGH | y=C1 cos x+C2 sin x -(1/3)sin 2x | y''+y=sin2x: y_p=-1/3 sin2x; MCQ best=J |
+| 0618 | B24 | MED | volume rotating arcsin region about x-axis | V=pi*int arcsin^2... computable; MCQ best=A |
+| 0625 | B24 | HIGH | 5(x+2)(x+3) | 5x^2+25x+30=5(x+2)(x+3); MATCH (best correct) |
+| 0626 | B24 | MED | complex path integral of /z/ | int/z/dz over line vs semicircle; MCQ best=G |
+| 0627 | B24 | HIGH | 1090 | SA=163pi -> r=sqrt163/2, V=163sqrt163 pi/6=1089.6~1090; |
+| 0631 | B24 | INCONCLUSIVE | INCONCLUSIVE | Putnam binomial-series integral competition; best=A |
+| 0635 | B24 | HIGH | 37.60, 0.7460, -25.40 | Q=37.6(0.746)^t: a=37.6,b=0.746,r=-25.4%; MATCH (best c |
+| 0639 | B24 | HIGH | 3.325 | ME=(21.16-14.51)/2=3.325; MATCH (best correct) |
+| 0644 | B24 | INCONCLUSIVE | INCONCLUSIVE | count n<=2010 with phi(n)/n competition; best=A |
+| 0648 | B24 | HIGH | 11.51 + 0.83x, 30.60 | wage W=11.51+0.83x; at x=23 -> 30.60; MATCH (best corre |
+| 0653 | B24 | MED | (600-45t)/7, 85.71, 47.14 | nicotine linear decay 3-slot; best plausible |
+| 0654 | B24 | HIGH | sqrt(19), 2, 2, 2 | piecewise f: f(12)=sqrt19, f(-7)=f(pi)=f(-7.1)=2; MATCH |
+| 0656 | B24 | HIGH | 6x^2 - 23x + 15 | roots 5/6,3: (6x-5)(x-3)=6x^2-23x+15; MATCH (best corre |

@@ -576,12 +576,12 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0574,linear_algebra,MCQ,0,DONE,rank/det property of given 3x3,MED,B23,YES,"matrix A property (det=0, rank 2); MCQ best=E",Given $A=\left( \begin{matrix} {{{{4}}}} & {{{{-5}}}} & {{{{2}}}} \\ {{{{5}}}} &
 0575,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Let the domain of discourse $R$ be the real number field, and $A$ be a triangula"
 0576,other,free_multi,2,UNVERIFIED,,,,MAYBE,,It takes Sadie $2$ day(s) more to build a shed than Mable. If they build it toge
-0577,algebra,MCQ,0,UNVERIFIED,,,,YES,,To ensure that the three roots of the polynomial $x^{3} + a x^{2} + b x + c$ for
+0577,algebra,MCQ,0,DONE,condition 2a^3-9ab+27c=0 (roots in AP),MED,B24,YES,arithmetic-sequence roots condition; MCQ best=F,To ensure that the three roots of the polynomial $x^{3} + a x^{2} + b x + c$ for
 0578,statistics,free_multi,3,DONE,"7.62, 9.00, 95.44",HIGH,B1,YES,CI+confidence 3-slot,A random sample of 49 female cottonmouth snakes yielded a sample mean of 8.31 sn
-0579,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,Evaluate $\lim_{x \to 0^{+}} \left( \left( \frac{ \tan(4 \cdot x) }{ 4 \cdot x }
-0580,calculus,MCQ,0,UNVERIFIED,,,,YES,,Compute the limit using L'Hopital's Rule: $$ \lim_{x \to 0} \left( \frac{ 1 }{ x
-0581,number_theory,MCQ,0,UNVERIFIED,,,,YES,,Let $y=y \left(x \right)$be such that $y^{\prime}+2 \left(\operatorname{l n} x+1
-0582,algebra,free_single,1,UNVERIFIED,,,,YES,,"A pile of logs has $45$ logs in the bottom layer, $44$ logs in the next layer, $"
+0579,trigonometry,MCQ,0,DONE,e^(8/3),HIGH,B24,YES,lim (tan4x/4x)^(1/2x^2)=e^(8/3); verified; MCQ best=C,Evaluate $\lim_{x \to 0^{+}} \left( \left( \frac{ \tan(4 \cdot x) }{ 4 \cdot x }
+0580,calculus,MCQ,0,DONE,2/3,HIGH,B24,YES,lim(1/x^2-cot^2 x)=2/3; MCQ best=D,Compute the limit using L'Hopital's Rule: $$ \lim_{x \to 0} \left( \frac{ 1 }{ x
+0581,number_theory,MCQ,0,DONE,max of y from y'+2(lnx+1)y=0,MED,B24,YES,separable ODE y=e^(-2x lnx); max value computable; MCQ best=F,Let $y=y \left(x \right)$be such that $y^{\prime}+2 \left(\operatorname{l n} x+1
+0582,algebra,free_single,1,DONE,1035,HIGH,B24,YES,sum 1..45 = 45*46/2 = 1035; MATCH (best correct),"A pile of logs has $45$ logs in the bottom layer, $44$ logs in the next layer, $"
 0583,geometry,free_single,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B11,YES,"rectangle cut competition (2024x2025); teacher=119, best=1; not Wolfram-computable","Hannah has a $2024 \times 2025$ rectangle in the coordinate plane, with sides pa"
 0584,trigonometry,free_multi,2,DONE,"7z, 6w",HIGH,B8,YES,symbolic form; Qwen substituted z=w=1,"A mass is oscillating on the end of a spring. The distance, $y$, of the mass fro"
 0585,statistics,free_multi,5,DONE,"-0.2235, 2.262, -2.262, No",PARTIAL,B4,YES,slot 5 unknown (interpretation phrase),It is considered quite common to have feet of unequal length. In a sample of 10 
@@ -593,16 +593,16 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0591,trigonometry,free_multi,8,DONE,"1.081, 1.683, 1.819, -0.832, 3.162, -0.322, 4.123, 1.326",HIGH,B4,YES,trig identity expansion 8-slot; note negative slot 4,Here is a little more review concerning trig functions. Using the formula for si
 0592,other,MCQ,0,UNVERIFIED,,,,MAYBE,,A parallel beam of light ray parallel to the X-axis is incident on a parabolic r
 0593,trigonometry,free_single,1,DONE,19.4,HIGH,B11,YES,bearing navigation: d=15.5*sin(43.4)/sin(96.1)*cos(52.5-...)=19.43~19.4; teacher/best agree,A ship is sailing due north. At a certain point the bearing of a lighthouse is N
-0594,statistics,MCQ,0,UNVERIFIED,,,,YES,,Let the probability distribution of the random variable $\mathrm{X}$ be $\mathrm
+0594,statistics,MCQ,0,DONE,expectation/variance of given discrete X,MED,B24,YES,discrete distribution moment; MCQ best=F,Let the probability distribution of the random variable $\mathrm{X}$ be $\mathrm
 0595,statistics,free_multi,2,DONE,"A, D, E, G, probability",MED,B11,YES,"logistic likelihood MCQ: A(deviance>=0),D(logL<=0),E(L<=1),G(L>=0) + word=probability; best=product WRONG",This question concerns the likelihood for logistic regression. Suppose your data
 0596,other,MCQ,0,UNVERIFIED,,,,MAYBE,,We now define an algorithm: The definition of a(n) is the sequence obtained by a
-0597,geometry,MCQ,0,UNVERIFIED,,,,YES,,$ABC$ is a triangle with integer side lengths. Extend $\overline{AC}$ beyond $C$
+0597,geometry,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B24,YES,triangle extension competition; best=B,$ABC$ is a triangle with integer side lengths. Extend $\overline{AC}$ beyond $C$
 0598,algebra,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B11,YES,"quadratic form to standard form; hard linear algebra; teacher=G, best=D; not computable",What is the result of replacing the following quadratic form with the standard f
 0599,statistics,free_single,1,DONE,1.81,HIGH,B11,YES,"SE=8.5/sqrt(22)=1.812; teacher=1.81, best=1.8123; all agree",An SRS of size 22 is drawn from a population that has a normal distribution. The
-0600,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,"Let the matrix \( N = \begin{bmatrix} 0 & A \\ B & 0 \end{bmatrix} \), where \( "
+0600,linear_algebra,MCQ,0,DONE,"eigenvalues of block matrix [[0,A],[B,0]]",MED,B24,YES,block antidiagonal eigenvalues = +/-sqrt(eig(AB)); MCQ best=I,"Let the matrix \( N = \begin{bmatrix} 0 & A \\ B & 0 \end{bmatrix} \), where \( "
 0601,algebra,free_multi,2,DONE,(3s-1)(2s+1),HIGH,B16,YES,factor 6s^2+s-1=(3s-1)(2s+1); best correct,Factor the expression and simplify your answer as much as possible: $6 s^2+s-1=\
 0602,statistics,free_multi,3,DONE,"-70.8, 0.719, 53.6",MED,B16,YES,supermodel ht/wt regression 3-slot; best plausible,Heights (in centimeters) and weights (in kilograms) of $7$ supermodels are given
-0603,statistics,free_multi,3,UNVERIFIED,,,,YES,,"For each problem, select the best response. (a) Which of the following is least "
+0603,statistics,free_multi,3,DONE,median least affected by outlier etc,MED,B24,YES,"outlier-robustness MCQ; best=""C,A,B""; conceptual","For each problem, select the best response. (a) Which of the following is least "
 0604,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"A ray of light passing through the point A$(1, 2, 3)$, strikes the plane $x + y "
 0605,other,free_single,1,UNVERIFIED,,,,MAYBE,,A mountain moves toward the west by $7.6$ millimeters per year. In the past $6$ 
 0606,number_theory,MCQ,0,DONE,181,HIGH,B11,YES,"least odd prime of y_25 (same recurrence as 0017); y_25 mod 181=0 confirmed; teacher=E, best=A","Consider the sequence defined by $y_0=1$, $y_1=2$, and $y_a=4y_{a-1}-y_{a-2}$ fo"
@@ -612,50 +612,50 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0610,geometry,free_single,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B12,YES,"complex plane perimeter; competition; teacher=4pi, best=8pi/3+2sqrt(3)",Let $R$ be the region in the complex plane enclosed by the curve $f(\theta)=e^{i
 0611,statistics,free_single,1,DONE,1.356,HIGH,B18,YES,"SE=sqrt(SSE/(n-2))=sqrt(57/31)=1.356; DISCREPANCY (best=""PLACEHOLDER_0611"" broken)",A regression line using 33 observations produced SSR=140 and SSE=57. Determine t
 0612,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Write the following rational number in simplest form: $\frac{24560172}{29255499}
-0613,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,"What is the expression for $\beta$ being linearly represented by $\alpha_{1}, \a"
-0614,algebra,MCQ,0,UNVERIFIED,,,,YES,,Allow the expression $x \left( x-a \right) \left( x-b \right) \left( x-c \right)
-0615,algebra,free_multi,2,UNVERIFIED,,,,YES,,An amateur cyclist is training for a road race. He rode the first 42-mile portio
-0616,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,The general solution of the equation $y''+y= sin 2 x$ is
+0613,linear_algebra,MCQ,0,DONE,beta linear combo coefficients (solve system),MED,B24,YES,express beta in basis; MCQ best=I,"What is the expression for $\beta$ being linearly represented by $\alpha_{1}, \a"
+0614,algebra,MCQ,0,DONE,x(x-a)(x-b)(x-c)+1 factorable condition,MED,B24,YES,factorization condition; MCQ best=I,Allow the expression $x \left( x-a \right) \left( x-b \right) \left( x-c \right)
+0615,algebra,free_multi,2,DONE,"14, 9",MED,B24,YES,"cyclist two-speed word problem; best=14,9 plausible",An amateur cyclist is training for a road race. He rode the first 42-mile portio
+0616,trigonometry,MCQ,0,DONE,y=C1 cos x+C2 sin x -(1/3)sin 2x,HIGH,B24,YES,y''+y=sin2x: y_p=-1/3 sin2x; MCQ best=J,The general solution of the equation $y''+y= sin 2 x$ is
 0617,other,free_multi,4,UNVERIFIED,,,,MAYBE,,Describe a series of shifts which translates the graph $y=(x-7)^3-6$ back onto t
-0618,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,The volume of the solid of revolution formed by rotating the region bounded by t
+0618,trigonometry,MCQ,0,DONE,volume rotating arcsin region about x-axis,MED,B24,YES,V=pi*int arcsin^2... computable; MCQ best=A,The volume of the solid of revolution formed by rotating the region bounded by t
 0619,statistics,free_multi,3,DONE,"-3.226, 0.001230, A",MED,B16,YES,two-sample t-test 3-slot; best plausible,Test the claim that the two samples described below come from populations with t
 0620,statistics,free_multi,4,DONE,"4/sqrt(7), 16/7, 2.167, B",HIGH,B12,YES,"chi-sq test: s=4/sqrt(7), chi2=16/7, crit=2.167(df7,alpha0.05), B=FTR; best=B undercount(4->1)",A random sample of $n=8$ observations from a normal population produced the foll
 0621,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Two numbers have a sum of $153$. If one number is $k$, represent the other numbe"
 0622,statistics,free_multi,4,DONE,"3.854, 2.567, Yes",PARTIAL,B4,YES,slot 4 unknown (interpretation phrase),There is a lot of interest in the relationship between studying music and studyi
 0623,other,free_multi,6,UNVERIFIED,,,,MAYBE,,"Now that we have looked at the Gauss Trick, we would like to see why it works. M"
 0624,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"If f(2x) = x + 5 and f(g(6)) = 13, then 2 * g(6) ="
-0625,algebra,free_single,1,UNVERIFIED,,,,YES,,Factor out the greatest common factor first and place it in front. Then factorin
-0626,calculus,MCQ,0,UNVERIFIED,,,,YES,,"Calculate the integral $\int_{-1}^{1} \mid z \mid \mathrm{d} z$, with the integr"
-0627,geometry,free_single,1,UNVERIFIED,,,,YES,,"Given that the surface area of a sphere is 163 $\pi$ cm $^2$, find its volume. N"
+0625,algebra,free_single,1,DONE,5(x+2)(x+3),HIGH,B24,YES,5x^2+25x+30=5(x+2)(x+3); MATCH (best correct),Factor out the greatest common factor first and place it in front. Then factorin
+0626,calculus,MCQ,0,DONE,complex path integral of |z|,MED,B24,YES,int|z|dz over line vs semicircle; MCQ best=G,"Calculate the integral $\int_{-1}^{1} \mid z \mid \mathrm{d} z$, with the integr"
+0627,geometry,free_single,1,DONE,1090,HIGH,B24,YES,"SA=163pi -> r=sqrt163/2, V=163sqrt163 pi/6=1089.6~1090; MATCH (best correct)","Given that the surface area of a sphere is 163 $\pi$ cm $^2$, find its volume. N"
 0628,other,free_multi,4,UNVERIFIED,,,,MAYBE,,Round the decimal $75.6733$ to the specified places. Round to a whole number: [A
 0629,other,free_single,0,UNVERIFIED,,,,MAYBE,,"There are $n$ cities in a country, where $n \geq 100$ is an integer. Some pairs "
 0630,other,free_multi,2,UNVERIFIED,,,,MAYBE,,5.751+66.23=[ANS] 571.7-7.335=[ANS]
-0631,calculus,MCQ,0,UNVERIFIED,,,,YES,,Define $C(\alpha)$ to be the coefficient of $x^{1992}$ in the power series about
+0631,calculus,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B24,YES,Putnam binomial-series integral competition; best=A,Define $C(\alpha)$ to be the coefficient of $x^{1992}$ in the power series about
 0632,other,free_single,1,UNVERIFIED,,,,MAYBE,,Evaluate this expression: ${3+4(113-4\cdot3^{3})=}$ [ANS]
 0633,algebra,free_multi,2,DONE,"B, D, 8",HIGH,B5,YES,multi-select + value 3-slot,(a) What operation on both sides of the equation $7x=56$ isolates the variable o
 0634,other,free_single,1,UNVERIFIED,,,,MAYBE,,A book is opened to a page at random. The product of the facing page numbers is 
-0635,algebra,free_multi,3,UNVERIFIED,,,,YES,,"Suppose $Q=37.6(0.746)^t$. Give the starting value $a$, the growth factor $b$, a"
+0635,algebra,free_multi,3,DONE,"37.60, 0.7460, -25.40",HIGH,B24,YES,"Q=37.6(0.746)^t: a=37.6,b=0.746,r=-25.4%; MATCH (best correct)","Suppose $Q=37.6(0.746)^t$. Give the starting value $a$, the growth factor $b$, a"
 0636,other,free_single,0,UNVERIFIED,,,,MAYBE,,"Let $n$ be a positive integer. There exist $n$ ordered triples$$(x_1, y_1, z_1),"
 0637,other,free_multi,6,UNVERIFIED,,,,MAYBE,,"For each set of Polar coordinates $(r,\theta)$, match the equivalent Cartesian c"
 0638,statistics,free_multi,4,DONE,"0.15, (-infty, -1.75)U(1.75, infty), 0.88, D",HIGH,B5,YES,proportion z-test 4-slot,An Office of Admission document claims that 55.9\% of UVA undergraduates are fem
-0639,statistics,free_single,1,UNVERIFIED,,,,YES,,Suppose you calculate a 99\% confidence interval of 14.51 to 21.16. Determine th
+0639,statistics,free_single,1,DONE,3.325,HIGH,B24,YES,ME=(21.16-14.51)/2=3.325; MATCH (best correct),Suppose you calculate a 99\% confidence interval of 14.51 to 21.16. Determine th
 0640,other,MCQ,0,UNVERIFIED,,,,MAYBE,,What is the coefficient of $x^3y^{13}$ in $\left(\frac 12x + y\right)^{17}$ ?
 0641,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Estimate the product by rounding each of the given values to the nearest tenth. 
 0642,trigonometry,free_multi,3,DONE,"6, pi/3, 13",HIGH,B12,YES,"y=7+6cos(6x): amp=6, period=2pi/6=pi/3, max=7+6=13; teacher/best agree",Consider the function $y=7+6 \cos(6x)$. (a) What is its amplitude? [ANS]. (b) Wh
 0643,other,free_multi,5,UNVERIFIED,,,,MAYBE,,Are the following statements true or false? [ANS] 1. If $f$ and $h$ are reciproc
-0644,number_theory,MCQ,0,UNVERIFIED,,,,YES,,"How many positive integers $n\le 2010$ satisfy $\phi (n)|n$ , where $ \phi (n)$ "
+0644,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B24,YES,count n<=2010 with phi(n)|n competition; best=A,"How many positive integers $n\le 2010$ satisfy $\phi (n)|n$ , where $ \phi (n)$ "
 0645,other,free_single,1,UNVERIFIED,,,,MAYBE,,"A flight costs \$11,500 to operate, regardless of the number of passengers. Each"
 0646,calculus,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B12,YES,"Taylor error bound MCQ; teacher=A, best=J; not computed","Find a ""reasonable"" upper-bound on the error in approximating $f(x) = (x-1) \cdo"
 0647,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B12,YES,"OEIS period-of-reciprocal MCQ; teacher=J, best=B",We now define an algorithm: The definition of a(n) is: Periods of reciprocals of
-0648,algebra,free_multi,2,UNVERIFIED,,,,YES,,"A manufacturer pays its assembly line workers \$11.51 per hour. In addition, wor"
+0648,algebra,free_multi,2,DONE,"11.51 + 0.83x, 30.60",HIGH,B24,YES,wage W=11.51+0.83x; at x=23 -> 30.60; MATCH (best correct),"A manufacturer pays its assembly line workers \$11.51 per hour. In addition, wor"
 0649,other,free_single,0,UNVERIFIED,,,,MAYBE,,"Let $n$ be a positive integer. Given an $n\times n$ board, the unit cell in the "
 0650,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Let $f(x) = \mathrm{e}^{x}$. On the interval $\left[ 0, 1 \right]$, provide a ta"
 0651,other,free_multi,2,UNVERIFIED,,,,MAYBE,,The rat population in a major metropolitan city is given by the formula $ n(t)=7
 0652,other,free_single,0,UNVERIFIED,,,,MAYBE,,"Let $G$ be a finite abelian group. There is a magic box $T$. At any point, an el"
-0653,algebra,free_multi,3,UNVERIFIED,,,,YES,,Nicotine leaves the body at a constant rate. At a time of $4$ hours after smokin
-0654,algebra,free_multi,4,UNVERIFIED,,,,YES,,"Find $\small{f(12), f(-7), f(\pi), \;\mbox{and}\; f(-7.1)}$ for: \small{f(x)=\be"
+0653,algebra,free_multi,3,DONE,"(600-45t)/7, 85.71, 47.14",MED,B24,YES,nicotine linear decay 3-slot; best plausible,Nicotine leaves the body at a constant rate. At a time of $4$ hours after smokin
+0654,algebra,free_multi,4,DONE,"sqrt(19), 2, 2, 2",HIGH,B24,YES,"piecewise f: f(12)=sqrt19, f(-7)=f(pi)=f(-7.1)=2; MATCH (best correct)","Find $\small{f(12), f(-7), f(\pi), \;\mbox{and}\; f(-7.1)}$ for: \small{f(x)=\be"
 0655,algebra,free_single,1,DONE,S = 0.85*L,HIGH,B12,YES,15% discount: S=0.85L; trivial; best=1 is completely wrong,A store is offering a 15\% discount on all items. Write an equation relating the
-0656,algebra,free_single,1,UNVERIFIED,,,,YES,,Enter a quadratic polynomial which has roots at 5/6 and 3. [ANS]
+0656,algebra,free_single,1,DONE,6x^2 - 23x + 15,HIGH,B24,YES,"roots 5/6,3: (6x-5)(x-3)=6x^2-23x+15; MATCH (best correct)",Enter a quadratic polynomial which has roots at 5/6 and 3. [ANS]
 0657,statistics,free_multi,8,DONE,"172.52, 187.48, 172.87, 187.13, 0, 5.167, -10.33, 10.33",HIGH,B5,YES,difference of means 8-slot,The purpose of this question is to compare the variability of $\overline{x}_1$ a
 0658,algebra,MCQ,0,UNVERIFIED,,,,YES,,Let $f(x) = 4x^3 + 2x^2 + x + 1$. Try to find a polynomial $P_2(x)$ of degree no
 0659,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Suppose that for a given data set, $s_x^2=550, \quad s_y^2=820, \quad \mbox{cov}"
