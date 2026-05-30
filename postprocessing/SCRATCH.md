@@ -227,3 +227,11 @@ Batch 2 (web_search_200): 21 GOLD / 1 PARTIAL from 22 UNSEARCHED items.
 - **L12:** scientific notation NOT normalized (`1.5e3` ≠ `1500`). Expand ourselves.
 - **L13 (SAFE):** single negative `a/b` IS auto-handled (`-3/5` ≡ `\frac{-3}{5}`) — `int()` parses the minus. Don't bother converting lone `a/b`.
 **Full per-item-type build spec:** postprocessing/STRICT_NORMALIZER_SPEC.md (recommends a single bundled "strict normalizer" overlay as next high-EV submission).
+
+---
+## Agent signoff — claude_vscode — 2026-05-30 (normalization stack audit)
+**Task:** authorized read-only audit of the 0.713 normalization stack. Deliverables `AUDIT_REPORT.md` + `HISTORICAL_STACK.md` written. No code changed.
+**Executed:** Phase A inventory; Phase B reconstruction (0.713 = run14b SC8 → kitchen_sink_C 0.692 → slot4 0.706 → +8 frac appends, commit 84dcb08 — `normalizer.py` NOT in it); Phase C ran current `normalizer.py` on first 20 items of run14b, scored vs anchor via `grading/grader.py`.
+**Key discoveries:** (1) **DEFECT** — `normalizer.py@5e10eb5 multi_answer_normalize` silently corrupts a correct multi-answer item by over-collecting intermediate boxes (item 15: `8, NONE`→`8, 8,NONE`); blast radius beyond 20 items unmeasured; affects 30_05 slot-4 e2e, not 0.713. (2) "0.713 normalization stack" is a misnomer — `normalizer.py` unscored on Kaggle. (3) Doc contradiction: CLAUDE_VSCODE.md:156 "don't consolidate to single box" vs normalizer/fix_submission_format which do. (4) `per_item_overrides.csv` empty.
+**STOP-rules:** none triggered.
+**Left:** defect NOT fixed (work-unit forbids code change absent trivial fix + strategy auth); A3 accuracy not cleanly assessable with single-numeric proxy on multi-answer subset; report not yet pushed (awaiting Rain approval to push origin/main).

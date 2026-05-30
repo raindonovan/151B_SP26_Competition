@@ -360,3 +360,13 @@ Mitigations applied:
 ### Runtime confirmation
 `git branch --show-current` = main ✓
 Branch `copilot/normalizer-inference-review-20260529` deleted from origin ✓
+
+---
+## claude_vscode signoff — 2026-05-30 — normalization stack audit
+Authorized read-only audit. Deliverables: `postprocessing/AUDIT_REPORT.md` + `postprocessing/HISTORICAL_STACK.md`. No code changed.
+**For strategy attention:**
+1. **DEFECT in current `normalizer.py@5e10eb5`:** `multi_answer_normalize` over-collects intermediate `\boxed{}` → silently corrupts correct multi-answer items (item 15: `8, NONE`→`8, 8,NONE`, no flag). Found on first-20 base-run subset; blast radius unmeasured. **This is the code slated for the `30_05` slot-4 end-to-end Kaggle run** — that run will carry the defect across all multi-answer items. Fix NOT applied (needs strategy auth + it's non-trivial).
+2. **0.713 provenance:** produced by the submission-build pipeline (run14b SC8 → kitchen_sink_C → slot4 undercount → +8 frac appends, commit 84dcb08), NOT by `postprocessing/normalizer.py`, which has never been Kaggle-scored. "0.713 normalization stack" in docs is a misnomer.
+3. **Doc contradiction (unresolved):** `agents/CLAUDE_VSCODE.md:156` "Multi-box tolerant … don't consolidate to single box" vs `normalizer.py`/`fix_submission_format.py` which consolidate.
+4. No scripts deleted since 0.713; `private.jsonl` unchanged (`fc507a7`); `anchor_set_FINAL.csv` updated `d31b7dc` (05-30).
+**Awaiting:** Rain approval to push these report docs to origin/main.
