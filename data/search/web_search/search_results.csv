@@ -130,8 +130,10 @@ item_id,category,search_status,found_answer,source_url,source_type,confidence,no
 128,FREE,GOLD,(y-3)/(y+3),computed,computation,93.67,(y²-9)/(y+3)²=(y-3)(y+3)/(y+3)²=(y-3)/(y+3).
 129,FREE,GOLD,"5/sin(t), \sqrt{7}, -3cos(t), 2\sqrt{2}tan(t)",computed,computation,61.56,r=5/sin(t); r=√7; r=-3cos(t); r=2√2tan(t).
 130,FREE,GOLD,r^{42},computed,computation,93.67,16+13+13=42 → r^42.
+131,FREE,GOLD,1.24,computed,computation,60,z=(0.55-0.53)/sqrt(0.53*0.47/950)=1.235≈1.24 test statistic. (Question asks test stat for p0=0.53 vs p>0.53.)
 135,FREE,GOLD,3/5,trivial,basic math,high,8x+2=3x+5
 137,FREE,GOLD,"2/13, 2/1",computed,computation,89.31,"36/234=2/13, 208/104=2."
+138,FREE,GOLD,7236.81,computed,computation,85,R=0.1641*210^2=7236.81 ft.
 139,FREE,GOLD,"A=201, B=1/(n*(n+1))",computed,computation,87.98,Telescoping sum 1/(n(n+1)) from n=1 to 201.
 141,MCQ,PARTIAL,\boxed{1} (teachers) / 0 (Wolfram),computed,computation,85.56,"CONFLICT: 1=not prime (modern), 50=2*25, 2451=3*19*43... all composite. Wolfram says 0. Teachers say A=\boxed{1}. Likely assumes 1 is prime (old convention). Flag for triage."
 144,MCQ,PARTIAL,5.06577774,computed,series,medium,cube root 130 via Taylor. Option 0 most likely.
@@ -146,11 +148,13 @@ item_id,category,search_status,found_answer,source_url,source_type,confidence,no
 159,FREE,GOLD,"0.07, 0.007, 0.0007",computed,computation,87.98,"7%=0.07, 0.7%=0.007, 0.07%=0.0007."
 163,FREE,GOLD,"A=9, B=-5, C=4",computed,computation,87.98,"(x-5)(x+4)^2-(x-5)^2(x+4) = (x-5)(x+4)(9) = 9(x-5)(x+4). So A=9, B=-5, C=4."
 164,MCQ,NOT_FOUND,,,,,Polynomial with complex sum formula.
+166,FREE,PARTIAL,175(1/4)^n,computed,computation,45,"""drops by a factor of 1/4 each year"": A=175(1/4)^n if ×1/4; A=175(3/4)^n if loses 1/4. Ambiguous phrasing. Flag."
 170,MCQ,GOLD,F,computed,computation,60,Punctured torus pi1=F_2. Connected 3-sheeted covers up to iso = conj classes of index-3 subgroups of F_2 = 7 = option F. (Based count would be 13=C.)
 171,FREE,GOLD,20,computed,math,high,4×5
 172,FREE,GOLD,1320/3721,computed,math,high,sin(2cos⁻¹(11/61))
 174,FREE,GOLD,"7, 7/8",computed,computation,89.31,"sqrt(49)=7, sqrt(49/64)=7/8."
 179,FREE,GOLD,"29 r3, 21 r1, 21 r4",computed,computation,87.98,"177/6=29r3, 127/6=21r1, 151/7=21r4."
+180,FREE,GOLD,(1/2)m - 7/2,computed,computation,85,(7/8)(-4+(4/7)m)=-7/2+(1/2)m.
 182,MCQ,GOLD,"P(A)=0.5177,P(B)=0.4914",https://mathworld.wolfram.com/deMeresProblem.html,MathWorld,high,
 183,MCQ,GOLD,D,computed,computation,85.4,Weierstrass t=tan(x/2): (1/16)*int(1+t^2)^4/t^5 dt=(1/16)*[2t^2+6ln|t|+t^4/4-2/t^2-1/(4t^4)]. Last term -1/(4t^4) matches option D.
 184,MCQ,GOLD,A,https://oeis.org/A048720,OEIS,90,"A048720 carryless GF(2) binary mult table read by antidiagonals. idx 81-90 = [27,32,27,20,27,32,27,20,11,0] = option A."
@@ -158,6 +162,7 @@ item_id,category,search_status,found_answer,source_url,source_type,confidence,no
 186,MCQ,GOLD,3 m/s,computed,computation,85.4,a=v → v dv/dx=v → dv/dx=1 → v=x+C. v(1)=1 → C=0. v(3)=3.
 191,FREE,GOLD,"D, A, C, B, E",computed,computation,87.98,"0=neither pos/neg, pi=irrational, 17/12=rational, -17=integer, 12=natural."
 193,MCQ,PARTIAL,A or C or D,computed,computation,40,"Physics: v=3(t-3)(t+1). In [5,6] v>0 so distance=displacement=|displacement| (A,D true); in 3<t<5 moving +x (C true). Multiple options true; option text truncated. Flag."
+195,FREE,GOLD,"(-2.44, -0.76)",computed,computation,60,"94.2% CI for mu_F-mu_M, pooled var. diff=-1.6, se=0.4137, tc=2.0246 -> (-2.4375,-0.7625)."
 197,FREE,GOLD,"3, 4",computed,computation,87.98,8x^2-56x+115≤19 → (x-3)(x-4)≤0 → between 3 and 4 thousand pens.
 200,MCQ,GOLD,463,https://artofproblemsolving.com/wiki/index.php/1999_AIME_Problems/Problem_14,AoPS,85.4,1999 AIME I Problem 14. Brocard point. m+n=463 confirmed on AoPS and Cheenta.
 204,MCQ,GOLD,E,https://kskedlaya.org/putnam-archive/2023.pdf,competition,95,Putnam 2023 B2: min number of 1-bits in binary of 2023n = 3 = option E.
@@ -167,6 +172,7 @@ item_id,category,search_status,found_answer,source_url,source_type,confidence,no
 222,MCQ,GOLD,C,https://kskedlaya.org/putnam-archive/2010.pdf,competition,95,Putnam 2010 B3: least n = 1005 (need 2010n > 2009*2010/2). Option C.
 223,MCQ,GOLD,A,https://oeis.org/A006769,OEIS,87.33,"OEIS A006769: EDS for 37a1 y^2+y=x^3-x at (0,0). n=23..32: [-620297,2382785,7869898,7001471,-126742987,-398035821,1687054711,-7911171596,-47301104551,43244638645]. Exact match with option A."
 228,FREE,GOLD,v^7,trivial,basic math,high,v^(77/11)
+230,FREE,GOLD,ln(16/50)/ln(1.6),computed,computation,80,16=50(1.6)^x -> x=ln(0.32)/ln(1.6)≈-2.4243.
 231,FREE,GOLD,y=147/31+(16/31)x,computed,regression,high,"b1=128/248=16/31, b0=147/31"
 234,FREE,GOLD,29x^7+6x^5,trivial,basic math,high,
 236,FREE,GOLD,"k=6e, p=-6",computed,computation,87.98,"6*e*s^(-3-3)=6e*s^(-6). Power function with k=6e, p=-6."
@@ -185,12 +191,15 @@ item_id,category,search_status,found_answer,source_url,source_type,confidence,no
 266,MCQ,GOLD,G,computed,computation,85,"Partitions of 2n into <=4 parts, n=40-49 = [4263,4571,4894,5231,5584,5952,6336,6736,7153,7586] = option G."
 268,FREE,GOLD,4450,computed,computation,87.98,550+300*13=4450 dollars.
 274,MCQ,NOT_FOUND,,,,,Permutations of order 3. Needs OEIS computation.
+277,FREE,GOLD,"$38,800.00",computed,computation,85,44232/1.14=38800.00.
 282,FREE,GOLD,e^2,computed,math,high,ln(x⁴)=8
 284,MCQ,PARTIAL,area=54 or 72,computed,abs value region,medium,Complex absolute value region. Need careful case analysis.
 289,FREE,GOLD,"4, 9",computed,computation,87.98,P=12W-8. 40≤12W-8≤100 → 4≤W≤9.
 290,MCQ,PARTIAL,2(sqrt(3)-1),computed,integral,medium,Domain issue
+293,FREE,GOLD,P(t)=2025t-4300,computed,computation,85,"Linear: P(0)=-4300, slope=(3800+4300)/4=2025."
 296,FREE,GOLD,"w=45, A=180, B=270",computed,computation,87.98,4w^2-1260w+48600=0 → w=45. Factory=(270-90)x(360-90)=180x270.
 306,MCQ,GOLD,1,computed,limit,high,
+311,FREE,GOLD,1584.89,computed,computation,80,10^(8.3-5.1)=10^3.2≈1584.89 times more intense.
 314,FREE,GOLD,"7, -8, -4",computed,computation,87.98,"(-28)/(-4)=7, 40/(-5)=-8, (-24)/6=-4."
 315,FREE,GOLD,B,computed,computation,87.98,Telephone directory sample excludes segments of population = undercoverage.
 316,MCQ,NOT_FOUND,,,,,"Competition geometry (integer XY lengths, circle tangent to rays). Needs careful derivation; no clean source found."
@@ -208,9 +217,11 @@ item_id,category,search_status,found_answer,source_url,source_type,confidence,no
 353,FREE,GOLD,t=8,computed,table lookup,high,R=3.4 at t=8
 364,FREE,GOLD,"Y, N, Y, N",computed,computation,87.98,1/(n^2+6) always defined=Y. 1/(n^2-25) undefined at ±5=N. sqrt(n^2+6) always defined=Y. ±n not a function=N.
 368,FREE,GOLD,B or C,computed,computation,87.98,f(5)=17 means 17 people eating at 5:05 PM.
+375,FREE,GOLD,A,computed,computation,90,25-21.28=$3.72 = option A.
 377,MCQ,GOLD,B (251),computed,computation,87.33,Descartes rule: k-term poly has <=k-1 pos and <=k-1 neg roots. 2006 distinct nonzero integer roots needs k>=1004. Construction: roots +-1..+-1003 gives poly in x^2 with 1004 terms. n=1004=4*251. Largest prime factor=251.
 379,FREE,GOLD,$480,computed,math,high,2880/6
 380,FREE,GOLD,"0.075, 0.239, 32000, 16710, 38000, 0.00248, 52000",computed,computation,89.31,Standard metric conversions.
+384,FREE,GOLD,(ln(11/32)-3)/5,computed,computation,85,64e^(5x+3)=22 -> x=(ln(22/64)-3)/5=(ln(11/32)-3)/5≈-0.8136.
 387,FREE,GOLD,-230,computed,math,high,-400-40+930-720
 389,MCQ,GOLD,x^2+5x±5,computed,algebra,high,(x²+5x+5)²-1
 391,MCQ,NOT_FOUND,,,,,"Competition: count of mod-f recurrence sequences q_n q_{n+2}=1+q_{n+1}, sum of residues mod 5. Not yet resolved."
@@ -218,9 +229,11 @@ item_id,category,search_status,found_answer,source_url,source_type,confidence,no
 409,FREE,NOT_FOUND,,,,,Regression interval estimates at 96.2%. Need computation.
 412,FREE,GOLD,(4*sqrt(78)-35)/72,computed,trig sum,high,cos(α-β) with given values
 413,FREE,NOT_FOUND,,,,,LSAT hypothesis test. Need specific data.
+423,FREE,GOLD,-0.5,computed,computation,85,"avg(10,-11,4,7,-7,-6)=-3/6=-0.5."
 427,MCQ,GOLD,520,computed,competition,high,"C=60°, ab=2√1515/3, p+q+r=1520, mod 1000=520"
 428,FREE,GOLD,43/55,computed,computation,87.98,(8/55)÷(8/43) = 43/55.
 431,FREE,GOLD,"m=5, p=42",computed,computation,87.98,Change of base: log_11(42)/log_11(5) = log_5(42).
+432,FREE,GOLD,"1.2036, 2.1294, 4.3452, 5.2710",computed,computation,55,"tan^2x-tanx-4.16=0 -> tanx=2.6 or -1.6. x in [0,2pi]: 1.2036,4.3452 (tan=2.6); 2.1294,5.2710 (tan=-1.6)."
 434,MCQ,NOT_FOUND,,,,,Circle partition sequence. Needs OEIS computation.
 437,FREE,GOLD,"76.37, 79.63",computed,computation,89.65,"95% CI: 78 ± 1.96*(17/sqrt(420)) = 78 ± 1.63 → (76.37, 79.63)."
 440,MCQ,GOLD,5/2,https://mast.queensu.ca/~mikeroth/putnam/handouts/week01.pdf,Putnam 1990,high,
@@ -237,13 +250,18 @@ item_id,category,search_status,found_answer,source_url,source_type,confidence,no
 480,FREE,GOLD,2.5,computed,computation,89.49,h=-|7.5-5|+5=-2.5+5=2.5 ft.
 497,FREE,PARTIAL,"tan48°≈1.1106, arctan48≈88.81°",computed,trig,medium,Needs calc precision
 516,FREE,GOLD,"coefficients: 7,-11,4; result: 0",computed,computation,89.85,"7-11+4=0, so 7j-11j+4j=0."
+522,FREE,GOLD,"-0.472, 0.472",computed,computation,70,cos x=4x^2 -> x≈±0.472 (3dp).
 524,MCQ,NOT_FOUND,,,,,Dini derivative. Advanced real analysis.
+526,FREE,GOLD,y=128x^4+16x^2+4,computed,computation,90,y=8(4x^2)^2+4(4x^2)+4=128x^4+16x^2+4.
 529,FREE,GOLD,429/20,computed,math,high,work rates
 530,FREE,GOLD,8/9,computed,computation,87.98,16/18 = 8/9.
+531,FREE,GOLD,"C, D, F, H",computed,computation,85,"Integers: 58(C), -43261(D), 62120(F), -7(H)."
+533,FREE,PARTIAL,,computed,computation,20,"GMAT one-sample t-test (mu0=530, claim increased, n=29). Sample mean not in available text. Needs full data."
 535,FREE,GOLD,"-4, -6",computed,math,high,x²+10x+24=0
 537,FREE,GOLD,42,computed,math,high,7 servings×6
 546,FREE,GOLD,"92, 126, 146, 72, 172",computed,computation,87.98,Simple multiplication by 2.
 550,MCQ,GOLD,J,computed,computation,90,Triple integral z dV over E = 113/450 = option J. Verified with sympy.
+556,FREE,GOLD,C,computed,computation,70,f(h(t)) = area of circle at time t = option C.
 557,FREE,GOLD,5,trivial,basic math,high,|5|=5
 560,FREE,GOLD,C,computed,computation,87.98,"Standardized variable = mean 0, std dev 1."
 565,FREE,GOLD,"-7.006, -7.06, -7.6",computed,computation,87.98,-7.006 > -7.06 > -7.6.
@@ -259,36 +277,55 @@ item_id,category,search_status,found_answer,source_url,source_type,confidence,no
 601,FREE,GOLD,(2s+1)(3s-1),trivial,basic math,high,6s²+s-1
 603,FREE,GOLD,C,computed,computation,87.98,Median is least affected by extreme outliers.
 605,FREE,GOLD,45.6,trivial,basic math,high,7.6mm*6M yrs
+609,FREE,GOLD,30\sqrt{85},computed,computation,85,dist=3*sqrt(70^2+60^2)=3sqrt(8500)=30sqrt(85)≈276.59 mi.
+611,FREE,GOLD,1.356,computed,computation,80,SE est=sqrt(SSE/(n-2))=sqrt(57/31)=1.356.
 614,MCQ,GOLD,"a=1,b=2,c=3 or a=-1,b=-2,c=-3 etc",computed,factoring,high,x(x-1)(x-2)(x-3)+1=(x²-3x+1)²
 623,FREE,NOT_FOUND,,,,,Gauss trick true/false. Need full question.
 627,FREE,PARTIAL,163*sqrt(163)*pi/6,computed,sphere,medium,SA=163π→V=163√163π/6. Answer not a clean number.
 642,FREE,GOLD,"amp=6, period=pi/3, max=13",computed,math,high,y=7+6cos(6x)
+644,MCQ,GOLD,A,computed,computation,90,"Count n<=2010 with phi(n)|n (n=1,2^a,2^a*3^b) = 41 = option A."
+656,FREE,GOLD,6x^2-23x+15,computed,computation,80,"Roots 5/6,3: (6x-5)(x-3)=6x^2-23x+15."
+659,FREE,GOLD,29.94,computed,computation,75,SSE=(n-1)(sy^2-cov^2/sx^2)=8(820-140^2/550)=6274.9; SE=sqrt(6274.9/7)=29.94.
 660,MCQ,NOT_FOUND,,,,,Complex integral with nested square root.
 671,FREE,GOLD,"1.71, 113.2",computed,computation,89.31,"5.7*0.3=1.71, 56.6/0.5=113.2."
+685,FREE,PARTIAL,,computed,computation,25,Paired t-test scenario selection (CHECK ALL). Need full option list to determine which describe paired/matched data.
+702,FREE,GOLD,-u^4-4u^3+3u^2-6u-8,computed,computation,90,Sum of polynomials combined.
+706,FREE,GOLD,2047.22,computed,computation,85,78^(7/4)≈2047.22.
 710,FREE,GOLD,"arccos(1/8)-3+2pi, -arccos(1/8)-3+2pi",computed,trig eq,high,8cos(x+3)=1
 711,MCQ,NOT_FOUND,,,,,"OEIS minimal 2-covers triangle T(n,k). Need exact OEIS sequence + indexing. Not resolved this pass."
 713,FREE,GOLD,"-3, DNE",computed,math,high,roots
+714,FREE,GOLD,A,computed,computation,90,80*1.05=$84.00 = option A.
 723,FREE,GOLD,"-sqrt(3)/2, -sqrt(2)/2",computed,trig identity,high,"sin(300°)=-√3/2, sin(225°)=-√2/2"
+739,FREE,GOLD,Q/(1-Z),computed,computation,85,Z=1-Q/U -> U=Q/(1-Z).
+740,FREE,GOLD,5184/(81cos^2(t)-64sin^2(t)),computed,computation,65,(x/8)^2-(y/9)^2=1 polar: r^2=1/(cos^2t/64-sin^2t/81)=5184/(81cos^2t-64sin^2t).
 759,FREE,GOLD,C. normal distribution,computed,CLT,high,Central Limit Theorem
+761,FREE,GOLD,5f(n-1)+4,computed,computation,85,Recursive: f(n)=5f(n-1)+4.
 763,FREE,GOLD,"13, 8/3",trivial,basic math,high,"9+4, 8/3"
+775,FREE,GOLD,6sin(x-7)-6,computed,computation,80,"Right 7, down 6, vert stretch 6: y=6sin(x-7)-6."
 786,MCQ,PARTIAL,31877493753 (computed) / not in options,computed,computation,35,"Count multiples of 505000 (=2^3*5^4*101) that are ones-then-zeros, <=505000 digits. Need 4|a (101|R_a) and b>=4. Computed 31877493753; options ~31877746250. Off by ~252499 — boundary discrepancy. Flag."
 789,FREE,GOLD,"8, 8, -8, -8",trivial,basic math,high,
+792,FREE,GOLD,ln(V/T)/ln(h/g),computed,computation,80,Th^t=Vg^t -> (h/g)^t=V/T -> t=ln(V/T)/ln(h/g).
 794,FREE,GOLD,"4.47, 4",computed,computation,89.31,"Data: 2,2,3,3,3,4,4,4,4,4,5,5,5,6,6,6,6,6,7 x2 (n=38). Sum=170. Mean=170/38=4.47. Sorted pos19=pos20=4, median=4."
 795,FREE,GOLD,"a=450, b=2, T=6",computed,exponential,high,P=450*2^(-t/6)
 797,MCQ,GOLD,C (670),computed,computation,89.21,"Competition geometry. BE bisects angle B => AE/EC=AB/BC=1/669. EF||BC => AF/FB=1/669. Vectors: D = (b+c)/671, s=670/671, CD/DF=670."
 803,FREE,GOLD,124,computed,sample size,high,n=(1.96*30/5.3)²≈123.1→124. Range/4=30 for σ.
 805,MCQ,NOT_FOUND,,,,,Prudent walk sequence. Needs OEIS b-file lookup.
 810,MCQ,PARTIAL,C1sinx+C2cosx-xcosx/2,computed,ODE,medium,No exact option match
+812,FREE,GOLD,512/sin^6(2t),computed,computation,55,(xy)^6=8 polar: (r^2 cos t sin t)^6=8 -> 8/(cos t sin t)^6 = 512/sin^6(2t) = r^12.
 814,FREE,NOT_FOUND,,,,,Facial expression study. Need full data.
+822,FREE,GOLD,199.92,computed,computation,70,"r=12in, v=2pi*12*2800 in/min *60/63360=199.92 mph."
 842,FREE,PARTIAL,one-sample t-test,computed,hypothesis test,medium,Need t-stat and p-value computation
 859,FREE,GOLD,"1, 2, 2, 4",computed,math,high,quadrants
 868,MCQ,GOLD,88,computed,number theory,high,125000+10000=135000
 872,FREE,GOLD,infinity,computed,computation,89.31,"As t→-∞, t^2→∞, so t^2+5→∞."
+883,FREE,GOLD,658.4,computed,computation,45,"t_fall+t_sound=7, d=16 t_fall^2, t_sound=d/1125 -> d≈658.4 ft (sound speed 1125 ft/s assumed)."
 884,FREE,GOLD,(x-59)^2+74,trivial,basic math,high,
+895,FREE,GOLD,70(2/7)^((x-10)/20),computed,computation,70,"g(10)=70,g(30)=20: b^20=2/7. g(x)=70(2/7)^((x-10)/20). a≈130.96, b≈0.93928."
 904,MCQ,NOT_FOUND,,,,,Fuzzy relation composition. Needs matrix computation.
 911,MCQ,GOLD,I,computed,computation,75,"Icosahedron bug, closed walks length 7 with <=2 teleports: M=20650, last 3 nonzero digits=265 = option I."
 915,FREE,GOLD,-2,trivial,basic math,high,slope
 920,FREE,GOLD,1008,computed,computation,89.21,1-9: 9 digits. 10-99: 180 digits. 100-372: 819 digits. Total=1008.
+926,FREE,GOLD,2-6t-3t^2,computed,computation,90,f(t+1)=5-3(t+1)^2=2-6t-3t^2.
 930,MCQ,GOLD,E,computed,computation,87.33,"Replace row1 by (1,...,1), row-ops R_k-R_1 => matrix D-uu^T where D=diag(2..n). det=n!(1-Sigma_{i=2}^n 1/i). Matches option E."
 931,FREE,GOLD,"3, -3",trivial,basic math,high,"B=(3,-3)"
 936,FREE,GOLD,275/16,trivial,basic math,high,P(-4)=0
