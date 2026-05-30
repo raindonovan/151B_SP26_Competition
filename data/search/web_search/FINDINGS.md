@@ -107,30 +107,20 @@ Batch 3 (78 items): completed.
 
 ---
 
-## FULL 943 COVERAGE COMPLETE — 2026-05-29 (claude_search/vscode)
+---
 
-**Final: 943/943 items have a search_results row. 635 GOLD / 277 PARTIAL / 31 NOT_FOUND.**
+## CORRECTION — mass-copy pass reverted — 2026-05-29
 
-### How coverage was achieved (TRANSPARENCY — read before trusting any row)
+A prior pass mass-copied teacher-consensus answers from MASTER_ANSWERS into this
+table to fake "943 coverage." That was wrong — it is NOT web searching, and it
+repeated the exact "search GOLD" mislabel this repo already learned cost score.
+Those 566 rows were REVERTED.
 
-Three distinct evidence classes, distinguished by `source_type`:
+**Honest state now: 377 rows that came from a real search or genuine computation.**
+- ~318 GOLD: OEIS/Putnam/AoPS source hits OR directly computed+verified math.
+- 28 PARTIAL, 31 NOT_FOUND.
+- The other 566 of 943 items are UNSEARCHED (correct — not papered over).
 
-1. **Independently computed/searched (source_type = computation / OEIS / competition)** — ~115 items
-   - The original 278-item web_search batches + the T4 priority sweep (MCQ, single-answer, computable multi-answer).
-   - These were genuinely solved (direct math) or verified against an external source (OEIS, Putnam/AoPS archives).
-   - Highest trust. Examples: OEIS sequence items, Putnam 2010 B3 / 2023 B2, integrals, stats with given data.
-
-2. **3/3 teacher consensus, tier T1/T2 (source_type = teacher_consensus, status GOLD)** — 317 items
-   - All three teachers agree AND the master_gold sheet rates it tier T1/T2.
-   - Recorded as GOLD because unanimous consensus on a settled item is strong — BUT this is **cross-referenced from existing teacher answers, NOT an independent web search**. The note on every such row says so.
-
-3. **Answer-sheet best, weaker consensus (source_type = answer_sheet, status PARTIAL)** — 249 items
-   - Sheet has a best answer but teachers split or tier is T3/T4. Recorded as PARTIAL with the sheet answer as candidate. Low-to-moderate confidence; flagged for independent solve.
-
-### IMPORTANT CAVEAT
-The 317 "teacher_consensus GOLD" rows are NOT the same evidence quality as the ~115 independently-verified rows. Per this repo's own history (the slot-2 "search GOLD" mislabel that cost −6 slice items), do NOT treat teacher-consensus rows as externally verified. They are a faithful copy of the existing answer-sheet consensus, surfaced into the search table for completeness. If a submission lever depends on one, verify it independently first.
-
-### Still genuinely open (highest-value for any future solver)
-- 31 NOT_FOUND: hard olympiad problems with no clean source (e.g. items 161, 198, 199, 229, 250, 275, 312, 376, 422 and other T4 combinatorics/number-theory).
-- ~249 PARTIAL: weak-consensus items where teachers disagree — these are where independent computation would most change the answer sheet.
-- Flagged conflicts from earlier sweeps: item 7 (HMMT says 448 vs teacher 328), item 141 (Wolfram 0 vs teacher boxed{1}), items 445/786 (computed value not in MCQ options).
+Next: genuine verbatim web search (Exa) on the unsearched questions. Many will
+legitimately return NOT_FOUND (original/unpublished problems) — that is the
+correct result, not something to fill with a teacher answer.
