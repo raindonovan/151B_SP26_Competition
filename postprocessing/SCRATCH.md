@@ -155,6 +155,61 @@ The grader behavior confirms the following pipeline architecture (refining what'
   - Option C: Find and replace the existing first `\boxed{}` in trace
   - Recommended: Option B for cleanest behavior, Option A if we want to preserve reasoning trace for diagnostics
 
+---
+## Normalizer pipeline built — 2026-05-29 (copilot session + claude_search_02)
+
+### What was built
+Full post-inference normalization stack now exists:
+- `postprocessing/scripts/normalizer.py` — canonical normalizer, 3 modes: conservative/default/aggressive
+- `postprocessing/scripts/hendrycks_local.py` — strict Hendrycks-style extraction/equivalence helpers
+- `postprocessing/scripts/evaluate_normalizer.py` — fixture harness for mode evaluation
+- `postprocessing/per_item_overrides.csv` — per-item escape hatch (empty, ready to fill)
+- `postprocessing/FORMAT_RULE_REGISTRY.csv` — 16 seeded rules with status/evidence/implementation
+- `postprocessing/FORMAT_RULE_AUDIT.md` — map of canonical docs, stale claims, org policy
+- `postprocessing/NORMALIZER_SPEC.md` — design doc, mode semantics, CLI, testing
+
+### Judger changes
+- **Boolean regression fixed**: old judger was coercing `0`/`1` to `False`/`True` for non-TF answers. Fixed.
+- Canonical grading path: `grading/judger.py` (root `judger.py` kept as compatibility shim)
+- Active inference scripts now import from `grading.judger`
+
+### Inference analysis pipeline
+- `inference/scripts/build_review_sheet.py` — takes a run JSONL, outputs per-item review CSV with:
+  raw candidate, normalized candidate, surrogate gold, equivalence outcomes, recommended action
+- `inference/INFERENCE_ANALYSIS_PIPELINE.md` — full workflow doc for private-set review
+
+### CRITICAL: Kaggle judge update (Piazza, ~2026-05-27)
+Kaggle judge was updated to be more adaptive on fractions/decimals and related false negatives.
+judger.py in starter code was also updated (more adaptive/sympy-backed).
+
+**Impact on existing format rules:**
+
+STILL SOLID (structural):
+- MCQ first-box extraction and canonical rewrite
+- Free-form last-box extraction
+- Single-box ordered multi-answer formatting
+- Multi-slot undercount recovery
+
+NOW STALE-RISK (numeric surface):
+- Decimal vs fraction preference → was a confirmed lever (+2 slice items), now may be redundant on new judge
+- Trailing-zero significance → tested neutral before, likely even less important now
+- \\mathrm{} / \\mathbf{} wrapper stripping → judger.py now strips these; Kaggle may too
+- Multi-char label prefixes (Mean=, A=) → new judger may tolerate these better
+
+**ACTION**: Before spending more submission slots on old numeric-surface fixes, verify they still matter against the updated judge. Structural rules are safe to apply regardless.
+
+### Normalizer mode design (for reference)
+- `conservative`: only structural + safe Hendrycks-aligned cleanup. Use for default submission builds.
+- `default`: conservative + metadata-backed fraction promotion (teacher/sheet evidence required). Safe for answer-sheet builds.
+- `aggressive`: default + trailing-zero, wrapper, multi-char prefix stripping, scientific notation, source routing. For targeted probes only.
+
+### Search session results (claude_search_02, 2026-05-29)
+Batch 2 (web_search_200): 21 GOLD / 1 PARTIAL from 22 UNSEARCHED items.
+- Key discovery: OEIS A006769 = item 223 (elliptic divisibility sequence for 37a1)
+- Item 141 CONFLICT: Wolfram=0, teachers=\\boxed{1}. Flag for triage.
+- Competition items 797/377/471/597/930: all solvable by direct math, no web source needed.
+- All 16 computable items (integrals, probability, LS approx, etc.) verified by derivation.
+
 ### TODO from this learning
 
 - Build proper `mcq_override.py` script using Option A or B for MCQ items

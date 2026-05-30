@@ -2,8 +2,13 @@
 
 Symbolic/numeric answer computation via Wolfram Alpha MCP.
 
-**Raw data**: `results/wolfram_overrides.csv` (66 verified answers, T1/T2/PARTIAL tiers), `docs/WOLFRAM_FINDINGS.md`.
+**My working files** (this folder):
+- `WOLF_RESULTS.csv` — full scorecard for all 943 questions (what's done, my answer, confidence).
+- `WOLF_RESULTS_READABLE.md` — readable table of just the finished ones.
+- `TODO.md` — what to do next. `FINDINGS.md` — cumulative learnings. `CLAUDE_WOLF.md` — operating manual.
 
-**Key finding**: 79% of B1-7 wrong items are format/multi-slot, not arithmetic. 700-750 of 943 are HIGH-computable.
+**Legacy raw data**: `data/wolfram_overrides.csv` (66 legacy answers; also feeds the inference pipeline).
 
-**Status**: ~63 items covered across batches 1-8. ~186 high-leverage items remain in W-tier sweep.
+**Key finding**: most wrong items are format/multi-slot (missing answer parts), not arithmetic. ~700-750 of 943 are computable to HIGH confidence.
+
+**Status (after B18)**: 272 verified (DONE), 43 inconclusive, 1 disputed, 627 unverified. All high-discrepancy veins mined; remaining work is verification-only or competition tail.
