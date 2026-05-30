@@ -155,3 +155,12 @@ The search GOLD answers were applied RAW. Many carried labels (Mean=, x=, A=), c
 CORRECTED VERDICT: "search gold applied raw is harmful; search gold normalized (strip labels, preserve multi-answer structure, skip unevaluated/collapsed) is UNTESTED and may help."
 
 This is a textbook "we thought X failed but the format application broke it" error. Confirmed via AWS Bedrock RLFT best-practices: labeled/embedded answers require normalization stripping before strict grading.
+
+---
+## Agent signoff — claude_vscode — 2026-05-30 — Slot 1-4 build + score_inference_vs_sheet
+**Built (authorized):** `scripts/score_inference_vs_sheet.py` (gold_equiv value-equality, raw extraction) + `scripts/build_slots_1_4.py`. Four candidate sheets in `submission/30_05/slot{1..4}_*/sheet.csv` (943 rows each) + per-slot `score_summary.json` + `local_score_vs_anchor.csv`. Report: `submission/30_05/SLOTS_1_4_REPORT.md`.
+**Stack:** base = `submission/csvs/undercount_plus_frac.csv` (0.713) → +anchor(316) → +4/4 bloc(385, non-anchor) → +3/4-xhigh MCQ(23, non-anchor). Override mech: MCQ full-replace `\boxed{L}`, free append.
+**Counts:** overrides 0/316/385/23; pairwise diffs 316/385/23; anchor-agreement 236/316/316/316.
+**Off-estimate confirmed correct (strategy):** A7=385 (anchor∩4/4 only 137 — anchor audited contested not unanimous items); A8=23 (funnel 145→116→40→23; all MCQ are single-slot).
+**Leak STOP cleared:** slot1 byte-content-identical to base (0 diffs); 236 anchor-agreement is the baseline's own accuracy vs gold.
+**Local scores are DIRECTIONAL only** (grader can't resolve <2pp Kaggle deltas). Rain uploads each sheet.csv to Kaggle. Committed pre-Opus.

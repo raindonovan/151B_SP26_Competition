@@ -370,3 +370,9 @@ Authorized read-only audit. Deliverables: `postprocessing/AUDIT_REPORT.md` + `po
 3. **Doc contradiction (unresolved):** `agents/CLAUDE_VSCODE.md:156` "Multi-box tolerant … don't consolidate to single box" vs `normalizer.py`/`fix_submission_format.py` which consolidate.
 4. No scripts deleted since 0.713; `private.jsonl` unchanged (`fc507a7`); `anchor_set_FINAL.csv` updated `d31b7dc` (05-30).
 **Awaiting:** Rain approval to push these report docs to origin/main.
+
+---
+## claude_vscode signoff — 2026-05-30 — Slot 1-4 build (authorized, committed + pushed)
+Built `scripts/score_inference_vs_sheet.py` + `scripts/build_slots_1_4.py`; 4 candidate sheets in `submission/30_05/slot{1..4}_*/` (943 rows each) + report `SLOTS_1_4_REPORT.md`.
+Stack on the 0.713 base: +anchor(316) → +4/4 bloc(385 non-anchor) → +3/4-xhigh MCQ(23 non-anchor).
+**For strategy:** A7=385 / A8=23 were off your rough estimates but confirmed CORRECT (anchor∩4/4=137 → anchor audited contested items; all MCQ are single-slot → A8 funnel 145→116→40→23). Local anchor agreement 236/316/316/316 is **directional only** (grader can't resolve <2pp). Predicted ordering slot4≥3≥2≥1 is a Kaggle hypothesis, untestable locally. Rain uploads. Pre-Opus checkpoint.

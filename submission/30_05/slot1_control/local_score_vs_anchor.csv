@@ -1,0 +1,944 @@
+id,inference_raw,sheet_answer,sheet_source,agree,confidence_tier,comparison_note
+0,"4,16",,,,,no-sheet-row
+1,A,,,,,no-sheet-row
+2,"-1.461, 1.645, A","-1.461, 1.645, A",wolfram_only,True,A,match
+3,B,,,,,no-sheet-row
+4,"-0.5735, 0.8192, -0.7","-7/sqrt(149), 10/sqrt(149), -7/10",wolfram_only,False,A,mismatch
+5,"541.3, 63.25, 135.325, 4.2167, 32.09","541.3, 63.25, 135.325, 4.2167, 32.09",wolfram_only,True,A,match
+6,148.02,,,,,no-sheet-row
+7,56,448/3,web_search_only,False,A,mismatch
+8,420,,,,,no-sheet-row
+9,"L-8x, 6F","L-8x, 6F",wolfram_only,True,A,match
+10,E,,,,,no-sheet-row
+11,0.939,,,,,no-sheet-row
+12,"2c + 4p = 70, 11","2c + 4p = 70, 11",wolfram_only,True,A,match
+13,C,,,,,no-sheet-row
+14,\frac{\log 35}{\log 3},ln(35)/ln(3),wolfram_only,True,A,match
+15,"8,NONE","8, NONE",wolfram_only,True,A,match
+16,501,,,,,no-sheet-row
+17,C,C,wolfram+web_search,True,A+,match
+18,I,,,,,no-sheet-row
+19,E,E,wolfram_only,True,A,match
+20,"228,229,250",,,,,no-sheet-row
+21,"0.2915t + 56.93, 67.43",,,,,no-sheet-row
+22,G,,,,,no-sheet-row
+23,H,,,,,no-sheet-row
+24,1,1,wolfram_only,True,A,match
+25,"\frac{8}{63},\frac{2}{21},\frac{11}{63},\frac{17}{63},\frac{13}{63},\frac{8}{63},8,14,25,42,55,63",,,,,no-sheet-row
+26,I,,,,,no-sheet-row
+27,"\frac{7}{6}, \frac{11}{6}",,,,,no-sheet-row
+28,"2,70,1,768,2,140",,,,,no-sheet-row
+29,38.2,38.2,wolfram_only,True,A,match
+30,"2944, 665","2944, 664",wolfram_only,False,A,mismatch
+31,"-3,42",,,,,no-sheet-row
+32,"10.05, -1, -3.5","sqrt(101), -1, -7/2",wolfram_only,False,A,mismatch
+33,F,F,web_search_only,True,A,match
+34,J,,,,,no-sheet-row
+35,"down, \ln p","down, ln(p)",wolfram_only,False,A,mismatch
+36,40x^{10}y^9,,,,,no-sheet-row
+37,"Tommy, Chucky, 7",,,,,no-sheet-row
+38,B,,,,,no-sheet-row
+39,475,,,,,no-sheet-row
+40,D = 800 - 50d,,,,,no-sheet-row
+41,2112,2112,wolfram+web_search,True,A+,match
+42,"No, Yes, A","No, Yes, A",wolfram_only,True,A,match
+43,"0.375, 14, 28","3/8, 14, 28",wolfram_only,True,A,match
+44,"True, True, True, False","True, True, True, False",wolfram_only,True,A,match
+45,J,,,,,no-sheet-row
+46,"1.645, 1.719, 1.96, -1.96, 1.719, B, A",,,,,no-sheet-row
+47,F,,,,,no-sheet-row
+48,C,,,,,no-sheet-row
+49,0.0143,0.0143,wolfram_only,True,A,match
+50,"140A + 150B = 5930, 3A + 4B = 142","140A+150B=5930, 3A+4B=142",wolfram_only,True,A,match
+51,25452,,,,,no-sheet-row
+52,"231,385",,,,,no-sheet-row
+53,F,,,,,no-sheet-row
+54,1,1,wolfram_only,True,A,match
+55,5x^4,5x^4,wolfram_only,True,A,match
+56,"D,D,A","D, D, A",wolfram_only,True,A,match
+57,4,,,,,no-sheet-row
+58,0,,,,,no-sheet-row
+59,49,,,,,no-sheet-row
+60,"C,A",,,,,no-sheet-row
+61,"0.7600c, 0, 150, 0.6900c + 10.5, 150",,,,,no-sheet-row
+62,"-15,192,0",,,,,no-sheet-row
+63,"15.84, 18.96","15.84, 18.96",wolfram_only,True,A,match
+64,850 - 350 \cos(\frac{\pi}{6} t),,,,,no-sheet-row
+65,"-\dfrac{6}{7}, \dfrac{2}{7}",,,,,no-sheet-row
+66,2354,,,,,no-sheet-row
+67,"7.6(1.09)^t, 13.9, 5.4","7.6(1.09)^t, 13.9, 5.4",wolfram_only,True,A,match
+68,"-2.857, 6.986, -1.082, 3.707, -3.707, A, -12.647, 6.933",,,,,no-sheet-row
+69,G,,,,,no-sheet-row
+70,\dfrac{5}{56},,,,,no-sheet-row
+71,"1.16, 18",,,,,no-sheet-row
+72,"-0.8352, -0.9187, 0.395, -2.3258, Quadrant IV","-0.8352, -0.9187, 0.3950, -2.3258, Quadrant IV",wolfram_only,True,A,match
+73,E,,,,,no-sheet-row
+74,"12.32, 25.08","12.36, 25.04",wolfram_only,False,A,incomparable
+75,x > 21250,x > 21250,wolfram_only,True,A,match
+76,"-4,-11,3,33,-32,9,-14,-13",,,,,no-sheet-row
+77,"C,D,A",,,,,no-sheet-row
+78,A,,,,,no-sheet-row
+79,\dfrac{25}{7},,,,,no-sheet-row
+80,G,,,,,no-sheet-row
+81,79.41,,,,,no-sheet-row
+82,"\text{No}, 1.309, 1.677, \text{No}",,,,,no-sheet-row
+83,6,,,,,no-sheet-row
+84,"-4,5,-11",,,,,no-sheet-row
+85,F,,,,,no-sheet-row
+86,16,,,,,no-sheet-row
+87,"OBSERVATION,OBSERVATION,EXPERIMENT",,,,,no-sheet-row
+88,C,C,wolfram_only,True,A,match
+89,\frac{326}{7},\frac{326}{7},wolfram_only,True,A,match
+90,7n + 1,,,,,no-sheet-row
+91,J,,,,,no-sheet-row
+92,E,,,,,no-sheet-row
+93,,,,,,no-sheet-row
+94,C,,,,,no-sheet-row
+95,12,,,,,no-sheet-row
+96,158,,,,,no-sheet-row
+97,"0, 4, 4","0, 4, 4",wolfram+web_search,True,A+,match
+98,A,,,,,no-sheet-row
+99,"-6,12,-6","-6, 12, -6",wolfram_only,True,A,match
+100,\frac{180}{7},\frac{180}{7},wolfram_only,True,A,match
+101,"C,C,A,C","C, C, A, C",wolfram_only,True,A,match
+102,E,,,,,no-sheet-row
+103,8\sqrt{2},8\sqrt{2},wolfram_only,True,A,match
+104,4.166,2387*pi/1800,wolfram_only,False,A,mismatch
+105,"24, 9.114","24, 9.114",wolfram_only,True,A,match
+106,\frac{13}{6},\frac{13}{6},wolfram_only,True,A,match
+107,J,,,,,no-sheet-row
+108,"72, 12x","72, 12x",wolfram_only,True,A,match
+109,B,,,,,no-sheet-row
+110,"3, 9","3, 9",wolfram_only,True,A,match
+111,8x^3,8x^3,wolfram_only,True,A,match
+112,,,,,,no-sheet-row
+113,\dfrac{-2x^2 - 16x - 7}{25},(-2x^2-16x-7)/25,wolfram_only,True,A,match
+114,D,,,,,no-sheet-row
+115,"11x-1200,11,109,(y+1200)/11,1958",,,,,no-sheet-row
+116,"30, 6",,,,,no-sheet-row
+117,B,B,wolfram_only,True,A,match
+118,\frac{18}{5},\frac{18}{5},wolfram_only,True,A,match
+119,"A,C,B,D","A, C, B, D",wolfram_only,True,A,match
+120,8,8,wolfram_only,True,A,match
+121,35,,,,,no-sheet-row
+122,"1174.8,55",,,,,no-sheet-row
+123,G,,,,,no-sheet-row
+124,H,H,wolfram_only,True,A,match
+125,G,G,wolfram+web_search,True,A+,match
+126,138000,,,,,no-sheet-row
+127,10.7,,,,,no-sheet-row
+128,\dfrac{y - 3}{y + 3},(y-3)/(y+3),wolfram_only,True,A,match
+129,"\dfrac{5}{\sin t}, \sqrt{7}, -3 \cos t, 2\sqrt{2} \tan t","5/sin(t), sqrt(7), -3cos(t), 2sqrt(2)tan(t)",wolfram_only,False,A,mismatch
+130,r^{42},r^42,wolfram_only,True,A,match
+131,0.1084,0.1084,wolfram_only,True,A,match
+132,10.8,,,,,no-sheet-row
+133,"-0.866, 0.5, -1.732, 2","-0.8660, 0.5000, -1.732, 2.000",wolfram_only,True,A,match
+134,"1, 5, 12, 20, 26, 30, 31, 27.63","1, 5, 12, 20, 26, 30, 31, 27.63",wolfram_only,True,A,match
+135,\frac{3}{5},3/5,wolfram_only,True,A,match
+136,"A,C",,,,,no-sheet-row
+137,"2/13,2/1",,,,,no-sheet-row
+138,7237,,,,,no-sheet-row
+139,"201, \dfrac{1}{n(n+1)}",,,,,no-sheet-row
+140,2744,,,,,no-sheet-row
+141,A,,,,,no-sheet-row
+142,"7, 8, 9, 10, 11",,,,,no-sheet-row
+143,"0, -8, 0, 6, 3, 5.196",,,,,no-sheet-row
+144,C,,,,,no-sheet-row
+145,"\frac{x}{5280}, 4.735, 25000",,,,,no-sheet-row
+146,F,,,,,no-sheet-row
+147,I,,,,,no-sheet-row
+148,A,,,,,no-sheet-row
+149,6.85,,,,,no-sheet-row
+150,A,,,,,no-sheet-row
+151,36,,,,,no-sheet-row
+152,J,J,wolfram_only,True,A,match
+153,B,,,,,no-sheet-row
+154,18.75,18.75,wolfram_only,True,A,match
+155,12.17,,,,,no-sheet-row
+156,H,,,,,no-sheet-row
+157,"50 \sin(0.1t) - 7 \cos(0.1t), 46.31","50sin(0.1t)-7cos(0.1t), 46.31",wolfram_only,False,A,mismatch
+158,"A,C","A, C",wolfram_only,True,A,match
+159,"0.07, 0.007, 0.0007",,,,,no-sheet-row
+160,"\frac{22 + x}{y}, \text{multiplicative identity}",,,,,no-sheet-row
+161,\binom{2024}{1012},,,,,no-sheet-row
+162,B,,,,,no-sheet-row
+163,"9,-5,4","9, -5, 4",wolfram_only,True,A,match
+164,G,G,wolfram_only,True,A,match
+165,I,,,,,no-sheet-row
+166,175 \cdot ( \frac{1}{4} )^n,175*(1/4)^n,wolfram_only,True,A,match
+167,"Negative, Negative, Positive, Negative","Negative, Negative, Positive, Negative",wolfram_only,True,A,match
+168,"A,C,B,B",,,,,no-sheet-row
+169,400,,,,,no-sheet-row
+170,J,,,,,no-sheet-row
+171,20,20,wolfram_only,True,A,match
+172,\dfrac{1320}{3721},1320/3721,wolfram_only,True,A,match
+173,C,,,,,no-sheet-row
+174,"7,\frac{7}{8}",,,,,no-sheet-row
+175,I,I,web_search_only,True,A,match
+176,\frac{p - 6k - m}{8},(p-6k-m)/8,wolfram_only,True,A,match
+177,I,,,,,no-sheet-row
+178,C,C,wolfram_only,True,A,match
+179,"29,3,21,1,21,4,19,4,23,3","29,3,21,1,21,4,19,4,23,3",wolfram_only,True,A,match
+180,\frac{1}{2}m - \frac{7}{2},(1/2)m - 7/2,wolfram_only,True,A,match
+181,B,A,wolfram_only,False,A,mismatch
+182,E,E,web_search_only,True,A,match
+183,D,,,,,no-sheet-row
+184,E,A,web_search_only,False,A,mismatch
+185,"T,F,T,F,T","T, F, T, F, T",wolfram_only,True,A,match
+186,D,,,,,no-sheet-row
+187,"0.0281, 0.0067, 0.3825, 0.4512, 22, 18, 2, 35, 30","0.0281,0.0067,0.3825,0.4512,22,18,2,35,30",wolfram_only,True,A,match
+188,"60,60,60",,,,,no-sheet-row
+189,850a + 1200r = 35000,850a + 1200r = 35000,wolfram_only,True,A,match
+190,-\dfrac{21}{8},,,,,no-sheet-row
+191,"D,A,C,B,E",,,,,no-sheet-row
+192,"1.06, (1.88, infty), 0.1449, A",,,,,no-sheet-row
+193,A,,,,,no-sheet-row
+194,"600,\ July,\ 1908,\ 890,\ March,\ 1907","600.0, July, 1908, 890.0, March, 1907",wolfram_only,False,A,mismatch
+195,"-2.445, -0.7553","-2.445, -0.7553",wolfram_only,True,A,match
+196,"14.7447,10.3244,35",,,,,no-sheet-row
+197,"3,4",,,,,no-sheet-row
+198,24,,,,,no-sheet-row
+199,47,,,,,no-sheet-row
+200,I,,,,,no-sheet-row
+201,1(5t + 8)(5t + 8),(5t+8)^2,wolfram_only,True,A,match
+202,\frac{54}{35},,,,,no-sheet-row
+203,I,,,,,no-sheet-row
+204,H,E,web_search_only,False,A,mismatch
+205,"\frac{3}{4}, \frac{11}{20}",,,,,no-sheet-row
+206,4,4,wolfram_only,True,A,match
+207,\frac{14}{5},,,,,no-sheet-row
+208,"16.2, 4.677","16.2, 720/(49*pi)",wolfram_only,False,A,mismatch
+209,B,,,,,no-sheet-row
+210,"-\frac{49\sqrt{3} + 16\sqrt{33}}{15}, \frac{2x}{x^2 + 1}","-(49sqrt3+16sqrt33)/15, 2x/(x^2+1)",wolfram_only,False,A,mismatch
+211,I,I,wolfram_only,True,A,match
+212,J,,,,,no-sheet-row
+213,\dfrac{2}{9},,,,,no-sheet-row
+214,"11, F, 7, T","11, F, 10, T",wolfram_only,False,A,mismatch
+215,752,,,,,no-sheet-row
+216,60,60,wolfram_only,True,A,match
+217,C,,,,,no-sheet-row
+218,\arcsin\!(\frac{7}{10}),\arcsin\!(\frac{7}{10}),wolfram_only,True,A,match
+219,27,,,,,no-sheet-row
+220,A,,,,,no-sheet-row
+221,2750,,,,,no-sheet-row
+222,C,C,web_search_only,True,A,match
+223,A,,,,,no-sheet-row
+224,2643,2643,wolfram_only,True,A,match
+225,"0.6254, 4, 2.776, A","0.6254, 4, 2.776, A",wolfram_only,True,A,match
+226,8,,,,,no-sheet-row
+227,"9, C","A, C",wolfram_only,False,A,mismatch
+228,v^7,,,,,no-sheet-row
+229,2,,,,,no-sheet-row
+230,-2.424,-2.424,wolfram_only,True,A,match
+231,"4.742, 0.5161",y=0.5161x+4.742,wolfram_only,False,A,incomparable
+232,"40,37,3",,,,,no-sheet-row
+233,"1.96, -1.96, -5.18, B",,,,,no-sheet-row
+234,29x^7 + 6x^5,29x^7 + 6x^5,wolfram_only,True,A,match
+235,B,,,,,no-sheet-row
+236,"6e,-6",,,,,no-sheet-row
+237,50,,,,,no-sheet-row
+238,"-61,61,62",,,,,no-sheet-row
+239,"35, 3.45",,,,,no-sheet-row
+240,"12, 4.9, 3.3","12, 4.9, 3.3",wolfram_only,True,A,match
+241,B,,,,,no-sheet-row
+242,"241.2, 239.5, 233, 221.7, 14.89, 6.173",,,,,no-sheet-row
+243,"0.8925,0.2150","0.8925, 0.2150",wolfram_only,True,A,match
+244,F,,,,,no-sheet-row
+245,980,,,,,no-sheet-row
+246,"25, 23, 17, 23, 19",,,,,no-sheet-row
+247,"\frac{2409}{65}, \frac{2474}{1+\frac{2409}{65}e^{-0.53t}}, 2473.84","\frac{2409}{65}, \frac{2474}{1+\frac{2409}{65}e^{-0.53t}}, 2473.84",wolfram_only,True,A,match
+248,180,180,wolfram_only,True,A,match
+249,G,,,,,no-sheet-row
+250,48,,,,,no-sheet-row
+251,172.7,,,,,no-sheet-row
+252,C,C,web_search_only,True,A,match
+253,E,E,wolfram_only,True,A,match
+254,H,,,,,no-sheet-row
+255,A,A,web_search_only,True,A,match
+256,"-30,30",,,,,no-sheet-row
+257,"2.52, 3, A",,,,,no-sheet-row
+258,C,,,,,no-sheet-row
+259,B,,,,,no-sheet-row
+260,"-22,8",,,,,no-sheet-row
+261,4,,,,,no-sheet-row
+262,"850 - 50t, 1480 - 140t, 7",,,,,no-sheet-row
+263,E,E,wolfram+web_search,True,A+,match
+264,256\pi t^2,256*pi*t^2,wolfram_only,False,A,incomparable
+265,"A,D",,,,,no-sheet-row
+266,B,G,web_search_only,False,A,mismatch
+267,C,,,,,no-sheet-row
+268,"4450,14",,,,,no-sheet-row
+269,"1.717, 0.3198, B","1.789, 0.3198, B",wolfram_only,False,A,mismatch
+270,1.255,,,,,no-sheet-row
+271,"-4, 0, 4",,,,,no-sheet-row
+272,B,,,,,no-sheet-row
+273,"-\cos^2 x, 1, 2\cos^2 x","-cos^2(x), 1, 2cos^2(x)",wolfram_only,False,A,mismatch
+274,G,G,wolfram+web_search,True,A+,match
+275,18225,,,,,no-sheet-row
+276,"0.5004, none",,,,,no-sheet-row
+277,38800,38800,wolfram_only,True,A,match
+278,38,,,,,no-sheet-row
+279,J,,,,,no-sheet-row
+280,H,,,,,no-sheet-row
+281,"-0.4618, 0.887, -0.5206, -2.165","-0.4618, 0.8870, -0.5206, -2.1655",wolfram_only,False,A,mismatch
+282,"e^2, -e^2","e^2, -e^2",wolfram_only,True,A,match
+283,114,,,,,no-sheet-row
+284,E,,,,,no-sheet-row
+285,147,735,web_search_only,False,A,mismatch
+286,H,,,,,no-sheet-row
+287,"212,136",,,,,no-sheet-row
+288,"96 \cdot 0.9^n, 27.11, 43",,,,,no-sheet-row
+289,"4,9","4, 9",wolfram_only,True,A,match
+290,C,,,,,no-sheet-row
+291,2304,,,,,no-sheet-row
+292,-2 - \sqrt{3},-2 - sqrt(3),wolfram_only,True,A,match
+293,2025t - 4300,,,,,no-sheet-row
+294,"43.2,7.2,6",,,,,no-sheet-row
+295,C,,,,,no-sheet-row
+296,"45, 180, 270","45, 180, 270",wolfram_only,True,A,match
+297,"0.2372, (-\infty, -1.881)U(1.881, \infty), 0.8126, C",,,,,no-sheet-row
+298,C,,,,,no-sheet-row
+299,"18805.7, \text{no}","18805.7, no",wolfram_only,False,A,mismatch
+300,6500,,,,,no-sheet-row
+301,"0.877, 57.2","0.878, 57.2",wolfram_only,False,A,mismatch
+302,H,,,,,no-sheet-row
+303,C,,,,,no-sheet-row
+304,G,,,,,no-sheet-row
+305,B,B,web_search_only,True,A,match
+306,H,,,,,no-sheet-row
+307,4/3,,,,,no-sheet-row
+308,12,12,wolfram_only,True,A,match
+309,83000,,,,,no-sheet-row
+310,"4k+6,5k-11,5y+4",,,,,no-sheet-row
+311,1585,,,,,no-sheet-row
+312,97,171,web_search_only,False,A,mismatch
+313,-0.4989,-2*sqrt(14)/15,wolfram_only,False,A,mismatch
+314,"7,-8,-4",,,,,no-sheet-row
+315,"B,B,A","B, B, A",wolfram_only,True,A,match
+316,A,,,,,no-sheet-row
+317,D,,,,,no-sheet-row
+318,"8, 0.5625",,,,,no-sheet-row
+319,"F, T, T, F",,,,,no-sheet-row
+320,"approaches 1, 3.73",,,,,no-sheet-row
+321,H,,,,,no-sheet-row
+322,"40, 25, 1000","40, 25, 1000",wolfram_only,True,A,match
+323,"[10,12),[-8,-6),[10,18),[-16,-6)","[10,12), [-8,-6), [10,18), [-16,-6)",wolfram_only,True,A,match
+324,H,H,web_search_only,True,A,match
+325,"280, 14","[0,280], [0,14]",wolfram_only,False,A,mismatch
+326,"0.67,0.36,0.06",,,,,no-sheet-row
+327,7.6,,,,,no-sheet-row
+328,"B,D,A,C",,,,,no-sheet-row
+329,D,J,web_search_only,False,A,mismatch
+330,"26.76, 2614","26.76, 2614",wolfram_only,True,A,match
+331,H,,,,,no-sheet-row
+332,"778,624",,,,,no-sheet-row
+333,"54,62",,,,,no-sheet-row
+334,F,,,,,no-sheet-row
+335,E,,,,,no-sheet-row
+336,D,,,,,no-sheet-row
+337,H,,,,,no-sheet-row
+338,"y-axis,origin",,,,,no-sheet-row
+339,G,G,wolfram_only,True,A,match
+340,"C, E, F",,,,,no-sheet-row
+341,"126, 36",,,,,no-sheet-row
+342,"negative, positive, negative, positive, positive",,,,,no-sheet-row
+343,"D,A,C,B,E","D, A, C, B, E",wolfram_only,True,A,match
+344,-5,,,,,no-sheet-row
+345,"-0.8333, 0.8333","-5/6, 5/6",wolfram_only,False,A,mismatch
+346,"0.7,0.07,0.007",,,,,no-sheet-row
+347,I,,,,,no-sheet-row
+348,D,,,,,no-sheet-row
+349,-\dfrac{2}{15},,,,,no-sheet-row
+350,"11100,11001,1100111,1101110,101001101,101010100",,,,,no-sheet-row
+351,A,A,wolfram_only,True,A,match
+352,68,,,,,no-sheet-row
+353,"8, C, 5 and 7, D",,,,,no-sheet-row
+354,"g, g, t, kg, g",,,,,no-sheet-row
+355,H,,,,,no-sheet-row
+356,F,,,,,no-sheet-row
+357,"320, 0.0657",,,,,no-sheet-row
+358,B,,,,,no-sheet-row
+359,D,,,,,no-sheet-row
+360,D,,,,,no-sheet-row
+361,180 - 7x,,,,,no-sheet-row
+362,(6x-5y)(6x+5y),(6x-5y)(6x+5y),wolfram_only,True,A,match
+363,"10000(0.89)^t, 4970, 19.76",,,,,no-sheet-row
+364,"Y,N,Y,N",,,,,no-sheet-row
+365,C,,,,,no-sheet-row
+366,G,,,,,no-sheet-row
+367,"60.3, 46.3, 53.3","60.3, 46.3, 53.3",wolfram_only,True,A,match
+368,"C,D,D,E",,,,,no-sheet-row
+369,"0.75, 5, 2","3/4, 5, 2",wolfram_only,True,A,match
+370,"-5, 10","-5, 10",wolfram_only,True,A,match
+371,7.407,,,,,no-sheet-row
+372,0.5051,0.51,wolfram_only,False,A,mismatch
+373,"51.13, 56.71","51.13, 56.71",wolfram_only,True,A,match
+374,4000,,,,,no-sheet-row
+375,3.72,,,,,no-sheet-row
+376,,All positive integers n such that v_p(n) != 1 for all primes p = 3 (mod 4),web_search_only,False,A,incomparable
+377,B,,,,,no-sheet-row
+378,"0.000142, 0.00002206, 0.0001199, 0.1554, 15.54","0.0001420,0.00002206,0.0001199,0.1554,15.54",wolfram_only,True,A,match
+379,480,,,,,no-sheet-row
+380,"0.075,0.239,32000,16710,38000,0.00248,52000",,,,,no-sheet-row
+381,2040,2040,wolfram_only,True,A,match
+382,"10.39, 6.111","187/18, 55/9",wolfram_only,False,A,mismatch
+383,80,80,wolfram_only,True,A,match
+384,\frac{\ln(\frac{11}{32}) - 3}{5},(ln(11/32)-3)/5,wolfram_only,True,A,match
+385,"A, A, A","A, A, A",wolfram_only,True,A,match
+386,5,,,,,no-sheet-row
+387,-230,,,,,no-sheet-row
+388,"4.11, 3.523, 2.935, 1.174, 0",,,,,no-sheet-row
+389,F,,,,,no-sheet-row
+390,"\dfrac{3}{25}, -\dfrac{15}{14}",,,,,no-sheet-row
+391,B,,,,,no-sheet-row
+392,81,,,,,no-sheet-row
+393,"\frac{1}{10} \arccos(\frac{x - 6}{16}), [-10, 22]","(1/10)arccos((x-6)/16), -10, 22",wolfram_only,False,A,mismatch
+394,H,,,,,no-sheet-row
+395,"\frac{85}{3}, -\frac{95}{4}, -\frac{10}{7}","\frac{85}{3}, -\frac{95}{4}, -\frac{10}{7}",wolfram_only,True,A,match
+396,"(-\text{inf}, 5), (-3, 5]",,,,,no-sheet-row
+397,"804.2, 2145","256*pi, 2048*pi/3",wolfram_only,False,A,mismatch
+398,A,,,,,no-sheet-row
+399,E,,,,,no-sheet-row
+400,E,,,,,no-sheet-row
+401,"143.2, 240, 52.52, -135","143.2, 240.0, 52.52, -135.0",wolfram_only,True,A,match
+402,J,,,,,no-sheet-row
+403,J,,,,,no-sheet-row
+404,52\%,52,wolfram_only,False,A,incomparable
+405,H,H,web_search_only,True,A,match
+406,-7,,,,,no-sheet-row
+407,C,,,,,no-sheet-row
+408,"\dfrac{5816}{9999}, \dfrac{3017}{99990}, \dfrac{574}{999}, \dfrac{653}{9990}, \dfrac{428}{999}","5816/9999, 3017/99990, 574/999, 653/9990, 428/999",wolfram_only,True,A,match
+409,"(-0.02462, 4.239)",,,,,no-sheet-row
+410,"45, 4",,,,,no-sheet-row
+411,27.37,392*pi/45,wolfram_only,False,A,mismatch
+412,\dfrac{4\sqrt{78} - 35}{72},(4*sqrt(78)-35)/72,wolfram_only,True,A,match
+413,"0.89, (1.83, infty), 0.2008, A","0.89, (1.83, infty), 0.2008, A",wolfram_only,True,A,match
+414,I,,,,,no-sheet-row
+415,"\sqrt{\frac{A}{6}}, A, ( \frac{A}{6} )^{3/2}, A","sqrt(A/6), A, (A/6)^(3/2), A",wolfram_only,False,A,mismatch
+416,"11,16",,,,,no-sheet-row
+417,"1.006, 0.9676, 28, 29.1, 1.039","1.006, 0.9676, 28, 29.10, 1.039",wolfram_only,True,A,match
+418,"2.958, 1.751, 0.00153, B","2.958, 1.751, 0.001530, B",wolfram_only,True,A,match
+419,n^2,,,,,no-sheet-row
+420,H,,,,,no-sheet-row
+421,"-\dfrac{9\sqrt{5}}{20}, -\dfrac{\sqrt{5}}{20}","-9*sqrt(5)/20, -sqrt(5)/20",wolfram_only,True,A,match
+422,20,,,,,no-sheet-row
+423,-\frac{1}{2},,,,,no-sheet-row
+424,"\text{parameter}, \text{parameter}, \text{statistic}, \text{statistic}",,,,,no-sheet-row
+425,7,,,,,no-sheet-row
+426,11,,,,,no-sheet-row
+427,E,E,wolfram_only,True,A,match
+428,"43,55",,,,,no-sheet-row
+429,A,,,,,no-sheet-row
+430,E,E,wolfram_only,True,A,match
+431,"5, 42",,,,,no-sheet-row
+432,"1.202, 2.129, 4.344, 5.271","1.202, 2.129, 4.344, 5.271",wolfram_only,True,A,match
+433,C,,,,,no-sheet-row
+434,A,,,,,no-sheet-row
+435,"0.4457, 0.5368, A",,,,,no-sheet-row
+436,20,,,,,no-sheet-row
+437,"(76.37, 79.63)",,,,,no-sheet-row
+438,"5,9,1,10,2,0,10,x^3y^7,1",,,,,no-sheet-row
+439,-\dfrac{4}{13},,,,,no-sheet-row
+440,G,G,wolfram+web_search,True,A+,match
+441,260,,,,,no-sheet-row
+442,H,,,,,no-sheet-row
+443,G,,,,,no-sheet-row
+444,"113,35,112,61,148,43",,,,,no-sheet-row
+445,D,,,,,no-sheet-row
+446,"1.872, 0.972",,,,,no-sheet-row
+447,x \leq 4,x <= 4,wolfram_only,False,A,incomparable
+448,"x^3 - 4x^2 - 6x + 30, x^2 - 9x + 20","x^3-4x^2-6x+30, x^2-9x+20",wolfram_only,True,A,match
+449,"3.585, 0.000346, B",,,,,no-sheet-row
+450,I,,,,,no-sheet-row
+451,"0.129, 0.1935, 0.2097, 14, 0.1774, 0.06452","0.1290,0.1935,0.2097,14,0.1774,0.06452",wolfram_only,True,A,match
+452,42,42,wolfram_only,True,A,match
+453,2,,,,,no-sheet-row
+454,"1.5, 0.9375","1.5, 0.9375",wolfram_only,True,A,match
+455,C,,,,,no-sheet-row
+456,"-7.74, A, B","-7.740, A, B",wolfram_only,True,A,match
+457,G,,,,,no-sheet-row
+458,3,,,,,no-sheet-row
+459,"\sin^2(A), \dfrac{\cos(A)}{\sin(A)}, \sec^2(A), \dfrac{1}{\tan(A)}, \dfrac{1}{\sin(A)}",,,,,no-sheet-row
+460,"F,F,T,T,T,T,F",,,,,no-sheet-row
+461,"2,302",,,,,no-sheet-row
+462,"-7,8",,,,,no-sheet-row
+463,J,,,,,no-sheet-row
+464,G,,,,,no-sheet-row
+465,H,H,wolfram_only,True,A,match
+466,26.9,26.88,wolfram_only,False,A,mismatch
+467,"0.02667w + 0.03333,\ 100 \leq w \leq 220,\ 0 \leq C \leq 6,\ 4.967","0.02667w+0.03333, 100<=w<=220, 0<=C<=6, 4.967",wolfram_only,False,A,mismatch
+468,"0.6714, 0.8816",,,,,no-sheet-row
+469,"s^2, 0.1575A, 0.1575s^2, C, 81, square feet, 14.175, dollars, 19.0575, dollars",,,,,no-sheet-row
+470,"1.96, 2.201, 2.326, 2.718, 2.576, 3.106",,,,,no-sheet-row
+471,C,,,,,no-sheet-row
+472,I,,,,,no-sheet-row
+473,"[-7,-3]","[-7, -3]",wolfram_only,False,A,incomparable
+474,C,C,web_search_only,True,A,match
+475,0.3333,,,,,no-sheet-row
+476,G,,,,,no-sheet-row
+477,"A,C",,,,,no-sheet-row
+478,-\frac{3}{10},,,,,no-sheet-row
+479,"40.36, 43.64, 40.01, 43.99","40.36, 43.64, 40.01, 43.99",wolfram_only,True,A,match
+480,"2.5,2.5",,,,,no-sheet-row
+481,A,,,,,no-sheet-row
+482,H,,,,,no-sheet-row
+483,A,,,,,no-sheet-row
+484,C,,,,,no-sheet-row
+485,135,,,,,no-sheet-row
+486,B,,,,,no-sheet-row
+487,"-21.1, -0.9636","-21.1, -0.9636",wolfram_only,True,A,match
+488,2025!,,,,,no-sheet-row
+489,385,,,,,no-sheet-row
+490,"23, 410, 23, 410",,,,,no-sheet-row
+491,"1255.37,\ 1091.15,\ 1419.59,\ \text{No},\ \text{Central Limit Theorem}",,,,,no-sheet-row
+492,"81\%, A","A, A",wolfram_only,False,A,mismatch
+493,"14.67, B, 0.06866, 0.1083","14.67, B, 0.06866, 0.1083",wolfram_only,True,A,match
+494,"7,0.062",,,,,no-sheet-row
+495,"100, 100, 200, 0.255, 5.991, B","100, 100, 200, 0.255, 5.991, B",wolfram_only,True,A,match
+496,9.594^\circ,9.594^\circ,wolfram_only,True,A,match
+497,"1.111, 88.81, 88.81, 0.9004","1.111, 88.81, 88.81, 0.9004",wolfram_only,True,A,match
+498,15,,,,,no-sheet-row
+499,"36.9, 0.3225, 32.25, 2.149","36.9, 0.3225, 32.25, 2.149",wolfram_only,True,A,match
+500,J,,,,,no-sheet-row
+501,F,,,,,no-sheet-row
+502,\frac{8}{11},8/11,wolfram_only,True,A,match
+503,"y=-43000x+833000,446000,2019",,,,,no-sheet-row
+504,"-\dfrac{3}{2}, -\dfrac{3\sqrt{3}}{2}","-3/2, -3*sqrt(3)/2",wolfram_only,True,A,match
+505,"1,3,6,-5,-4,2",,,,,no-sheet-row
+506,E,J,wolfram_only,False,A,mismatch
+507,I,,,,,no-sheet-row
+508,\dfrac{n(n-1)}{2},n(n-1)/2,wolfram_only,True,A,match
+509,H,,,,,no-sheet-row
+510,1,,,,,no-sheet-row
+511,I,,,,,no-sheet-row
+512,64p^2 + 64p + 16,64p^2 + 64p + 16,wolfram_only,True,A,match
+513,"-1.405, 1.405, 1.751","-1.405, 1.405, 1.751",wolfram_only,True,A,match
+514,I,,,,,no-sheet-row
+515,"-8, 1, 12, 19",,,,,no-sheet-row
+516,"7, -11, 4, 0",,,,,no-sheet-row
+517,E,,,,,no-sheet-row
+518,E,E,web_search_only,True,A,match
+519,"426.3, 5090, 98.3","426.3, 5090, 98.30",wolfram_only,True,A,match
+520,44,,,,,no-sheet-row
+521,F,,,,,no-sheet-row
+522,"-0.472, 0.472","-0.472, 0.472",wolfram_only,True,A,match
+523,2097150,,,,,no-sheet-row
+524,E,,,,,no-sheet-row
+525,H,,,,,no-sheet-row
+526,y = 128x^4 + 16x^2 + 4,128x^4 + 16x^2 + 4,wolfram_only,False,A,incomparable
+527,"8, 700, x, 25000, 285.7",,,,,no-sheet-row
+528,"43186, 2069",,,,,no-sheet-row
+529,\frac{429}{20},,,,,no-sheet-row
+530,"\frac{8}{9}, \frac{7}{9}, 5",,,,,no-sheet-row
+531,"C, D, F, H",,,,,no-sheet-row
+532,I,,,,,no-sheet-row
+533,0.0564,,,,,no-sheet-row
+534,G,,,,,no-sheet-row
+535,"-6, -4","-4, -6",wolfram_only,False,A,incomparable
+536,E,,,,,no-sheet-row
+537,42,,,,,no-sheet-row
+538,E,,,,,no-sheet-row
+539,"4,5",,,,,no-sheet-row
+540,"A, C, C",,,,,no-sheet-row
+541,5,,,,,no-sheet-row
+542,"285, 7457, 86.35, A",,,,,no-sheet-row
+543,"\$1.43, \$0.54",,,,,no-sheet-row
+544,A,,,,,no-sheet-row
+545,400000,400000,wolfram_only,True,A,match
+546,"92,126,146,72,172",,,,,no-sheet-row
+547,H,,,,,no-sheet-row
+548,"1.20x = 144, $120","1.20x = 144, $120.00",wolfram_only,True,A,match
+549,J,J,web_search_only,True,A,match
+550,J,,,,,no-sheet-row
+551,\sqrt{28},sqrt(28),wolfram_only,True,A,match
+552,"33150, 36300","33150, 36300",wolfram_only,True,A,match
+553,"24, 1.6",,,,,no-sheet-row
+554,A,,,,,no-sheet-row
+555,"1.109, 0.1336","1.109, 0.1336",wolfram_only,True,A,match
+556,C,,,,,no-sheet-row
+557,5,5,wolfram_only,True,A,match
+558,6.5x - 25,f(x)=(13/2)x-25,wolfram_only,False,A,incomparable
+559,-280,,,,,no-sheet-row
+560,"C, A, A",,,,,no-sheet-row
+561,E,,,,,no-sheet-row
+562,H,,,,,no-sheet-row
+563,20,,,,,no-sheet-row
+564,D,,,,,no-sheet-row
+565,"-7.006,-7.06,-7.6",,,,,no-sheet-row
+566,3,,,,,no-sheet-row
+567,"A,A",,,,,no-sheet-row
+568,"-10, 3",,,,,no-sheet-row
+569,B,,,,,no-sheet-row
+570,J,H,web_search_only,False,A,mismatch
+571,E,,,,,no-sheet-row
+572,"8,-6,6,8",,,,,no-sheet-row
+573,\dfrac{17}{72},,,,,no-sheet-row
+574,E,,,,,no-sheet-row
+575,G,,,,,no-sheet-row
+576,"\frac{5}{2},\frac{1}{2}",,,,,no-sheet-row
+577,F,,,,,no-sheet-row
+578,"7.62, 9, 95.44","7.62, 9.00, 95.44",wolfram_only,True,A,match
+579,C,,,,,no-sheet-row
+580,D,D,wolfram_only,True,A,match
+581,F,,,,,no-sheet-row
+582,1035,1035,wolfram_only,True,A,match
+583,1,,,,,no-sheet-row
+584,"7z, 6w","7z, 6w",wolfram_only,True,A,match
+585,"-0.2235, 2.262, -2.262, No",,,,,no-sheet-row
+586,"1.899,-0.9423,0.1109,-0.02966","1.899, -0.9423, 0.1109, -0.02966",wolfram_only,True,A,match
+587,"B, C, D, E, F, J, C, A, B, B",,,,,no-sheet-row
+588,E,,,,,no-sheet-row
+589,D,,,,,no-sheet-row
+590,D,,,,,no-sheet-row
+591,"1.081, 1.683, 1.819, -0.832, 3.162, -0.322, 4.123, 1.326","1.081, 1.683, 1.819, -0.832, 3.162, -0.322, 4.123, 1.326",wolfram_only,True,A,match
+592,I,,,,,no-sheet-row
+593,19.44,19.4,wolfram_only,False,A,mismatch
+594,F,,,,,no-sheet-row
+595,"A,D,E,G,probability",,,,,no-sheet-row
+596,G,G,web_search_only,True,A,match
+597,B,,,,,no-sheet-row
+598,G,,,,,no-sheet-row
+599,1.812,,,,,no-sheet-row
+600,I,,,,,no-sheet-row
+601,(3s - 1)(2s + 1),,,,,no-sheet-row
+602,"-70.78, 0.7188, 53.57","-70.8, 0.719, 53.6",wolfram_only,False,A,mismatch
+603,"C,A,B",,,,,no-sheet-row
+604,J,,,,,no-sheet-row
+605,45.6,,,,,no-sheet-row
+606,E,E,wolfram_only,True,A,match
+607,"(0, 0, 4), (0, 0, 14), (6, 6, 20), (-6, -6, 0), (-4, -4, 10), (-4, -4, -12)","0, 0, 4, 0, 0, 14, 6, 6, 20, -6, -6, 0, -4, -4, 10, -4, -4, -12",wolfram_only,False,A,mismatch
+608,"B,A,A,1981",,,,,no-sheet-row
+609,276.6,,,,,no-sheet-row
+610,12.57,,,,,no-sheet-row
+611,1.356,1.356,wolfram_only,True,A,match
+612,"68,81",,,,,no-sheet-row
+613,I,,,,,no-sheet-row
+614,I,,,,,no-sheet-row
+615,"14,9","14, 9",wolfram_only,True,A,match
+616,J,,,,,no-sheet-row
+617,"\text{left}, 7, \text{up}, 6",,,,,no-sheet-row
+618,A,,,,,no-sheet-row
+619,"-3.226, 0.00123, A","-3.226, 0.001230, A",wolfram_only,True,A,match
+620,"\frac{4}{\sqrt7},\frac{16}{7},2.167,B",,,,,no-sheet-row
+621,153 - k,,,,,no-sheet-row
+622,"3.854, 2.567, Yes",,,,,no-sheet-row
+623,"1,0,0,0,1,1",,,,,no-sheet-row
+624,F,,,,,no-sheet-row
+625,5(x + 2)(x + 3),5(x+2)(x+3),wolfram_only,True,A,match
+626,G,,,,,no-sheet-row
+627,1090,1090,wolfram_only,True,A,match
+628,"76, 75.7, 75.67, 75.673",,,,,no-sheet-row
+629,515,,,,,no-sheet-row
+630,"71.981, 564.365",,,,,no-sheet-row
+631,A,,,,,no-sheet-row
+632,23,,,,,no-sheet-row
+633,"B, D, 8",,,,,no-sheet-row
+634,109,,,,,no-sheet-row
+635,"37.6, 0.746, -25.4","37.60, 0.7460, -25.40",wolfram_only,True,A,match
+636,500050,,,,,no-sheet-row
+637,"A,B,F,C,D,E",,,,,no-sheet-row
+638,"0.15, (-infty, -1.75)U(1.75, infty), 0.88, D","0.15, (-infty, -1.75)U(1.75, infty), 0.88, D",wolfram_only,True,A,match
+639,3.325,3.325,wolfram_only,True,A,match
+640,G,,,,,no-sheet-row
+641,"6.4, 46.08",,,,,no-sheet-row
+642,"6, 1.047, 13","6, pi/3, 13",wolfram_only,False,A,mismatch
+643,"1, 0, 0, 1, 0",,,,,no-sheet-row
+644,A,A,web_search_only,True,A,match
+645,129n - 11500,,,,,no-sheet-row
+646,J,,,,,no-sheet-row
+647,B,J,web_search_only,False,A,mismatch
+648,"11.51 + 0.83x, 30.6","11.51 + 0.83x, 30.60",wolfram_only,True,A,match
+649,300,,,,,no-sheet-row
+650,J,,,,,no-sheet-row
+651,"73, 114.5",,,,,no-sheet-row
+652,,,,,,no-sheet-row
+653,"\dfrac{600 - 45t}{7}, 85.71, 47.14","(600-45t)/7, 85.71, 47.14",wolfram_only,True,A,match
+654,"\sqrt{19},2,2,2","sqrt(19), 2, 2, 2",wolfram_only,True,A,match
+655,0.85L,S = 0.85*L,wolfram_only,False,A,incomparable
+656,6x^2 - 23x + 15,6x^2 - 23x + 15,wolfram_only,True,A,match
+657,"172.52, 187.48, 172.87, 187.13, 0, 5.167, -10.33, 10.33",,,,,no-sheet-row
+658,A,,,,,no-sheet-row
+659,29.94,,,,,no-sheet-row
+660,E,,,,,no-sheet-row
+661,"r = 4 + \frac{h}{1000}, w = \frac{2880000000}{(h + 4000)^2}",,,,,no-sheet-row
+662,23,,,,,no-sheet-row
+663,F,F,web_search_only,True,A,match
+664,"\dfrac{83}{100}, \dfrac{83}{99}",,,,,no-sheet-row
+665,B,,,,,no-sheet-row
+666,"76e^{0.4268t}, 42.68",,,,,no-sheet-row
+667,H,,,,,no-sheet-row
+668,G,G,web_search_only,True,A,match
+669,H,,,,,no-sheet-row
+670,A,,,,,no-sheet-row
+671,"1.71,113.2",,,,,no-sheet-row
+672,D,,,,,no-sheet-row
+673,3497040,,,,,no-sheet-row
+674,8x + 7,8x + 7,wolfram_only,True,A,match
+675,J,B,web_search_only,False,A,mismatch
+676,"D,A,A","D, A, A",wolfram_only,True,A,match
+677,F,,,,,no-sheet-row
+678,13960,13960,wolfram_only,True,A,match
+679,11,11,wolfram_only,True,A,match
+680,"0.035, 0.0525, 0.0775, \text{A}","0.035, 0.0525, 0.0775, A",wolfram_only,False,A,mismatch
+681,"28900,170,135,205",,,,,no-sheet-row
+682,G,,,,,no-sheet-row
+683,-0.65,,,,,no-sheet-row
+684,-1.555,-1.55,wolfram_only,False,A,mismatch
+685,"C, D",,,,,no-sheet-row
+686,D,,,,,no-sheet-row
+687,24500,24500,wolfram_only,True,A,match
+688,6075,,,,,no-sheet-row
+689,"45,43",,,,,no-sheet-row
+690,G,,,,,no-sheet-row
+691,"(19.67, 26.99)",,,,,no-sheet-row
+692,1.24,1.24,wolfram_only,True,A,match
+693,"30,\frac{15}{2},\frac{11}{2}",,,,,no-sheet-row
+694,"6750 + 9x, 36x, 27x - 6750, 250",,,,,no-sheet-row
+695,B,,,,,no-sheet-row
+696,"-8, -81","x+8, -81",wolfram_only,False,A,mismatch
+697,60,,,,,no-sheet-row
+698,-50.92,,,,,no-sheet-row
+699,"6,3",,,,,no-sheet-row
+700,A,,,,,no-sheet-row
+701,21.94,,,,,no-sheet-row
+702,-u^4 - 4u^3 + 3u^2 - 6u - 8,-u^4 - 4u^3 + 3u^2 - 6u - 8,wolfram_only,True,A,match
+703,B,,,,,no-sheet-row
+704,"3.653, 1.645, B","3.652, 1.645, B",wolfram_only,False,A,mismatch
+705,"1, 0, 0, 1",,,,,no-sheet-row
+706,2047.22,,,,,no-sheet-row
+707,"5200,2600",,,,,no-sheet-row
+708,"-\frac{9}{2},\frac{9}{2},-\frac{81}{4}",,,,,no-sheet-row
+709,E,E,web_search_only,True,A,match
+710,"1.838, 4.729","1.838, 4.729",wolfram_only,True,A,match
+711,D,D,web_search_only,True,A,match
+712,"D,D,A",,,,,no-sheet-row
+713,"-3, \text{not real}","-3, not real",wolfram_only,False,A,mismatch
+714,84,,,,,no-sheet-row
+715,"5, 7, 9, 13, 8.5, 6, 7, 8, 9, 10, 11, 8.5",,,,,no-sheet-row
+716,\frac{19}{33},19/33,wolfram_only,True,A,match
+717,7992,,,,,no-sheet-row
+718,"65761800, 72704000, median",,,,,no-sheet-row
+719,E,E,web_search_only,True,A,match
+720,I,,,,,no-sheet-row
+721,"D, A, A",,,,,no-sheet-row
+722,2051325,,,,,no-sheet-row
+723,"-\dfrac{\sqrt{3}}{2}, -\dfrac{\sqrt{2}}{2}","-sqrt(3)/2, -sqrt(2)/2",wolfram_only,True,A,match
+724,3,,,,,no-sheet-row
+725,"41.3, 13.28, \text{A}","41.30, 13.28, A",wolfram_only,False,A,mismatch
+726,"7,48",,,,,no-sheet-row
+727,A,,,,,no-sheet-row
+728,80000,,,,,no-sheet-row
+729,G,,,,,no-sheet-row
+730,I,,,,,no-sheet-row
+731,J,,,,,no-sheet-row
+732,H,H,wolfram_only,True,A,match
+733,"68,247,97,17",,,,,no-sheet-row
+734,"4830,4.83",,,,,no-sheet-row
+735,"28, 42.5, 55, -29, 82, 27, A",,,,,no-sheet-row
+736,\dfrac{\sqrt{30}}{2},,,,,no-sheet-row
+737,2140,,,,,no-sheet-row
+738,"A,C,A,A",,,,,no-sheet-row
+739,\dfrac{Q}{1 - Z},Q/(1-Z),wolfram_only,True,A,match
+740,\dfrac{5184}{81 \cos^2 t - 64 \sin^2 t},5184/(81cos^2 t - 64 sin^2 t),wolfram_only,False,A,incomparable
+741,H,,,,,no-sheet-row
+742,241,,,,,no-sheet-row
+743,430,,,,,no-sheet-row
+744,"26.875, 32.1875",,,,,no-sheet-row
+745,"2 \sin C \cos C, \cos A \cos B - \sin A \sin B, \dfrac{2 \tan C}{1 - \tan^2 C}, \sin A \cos B - \cos A \sin B, \sin A \cos B + \cos A \sin B, \cos A \cos B + \sin A \sin B, \dfrac{1 - \cos x}{\sin x}, \cos^2 C - \sin^2 C",,,,,no-sheet-row
+746,"17417,30856,808694,103863,876259,924095,21108",,,,,no-sheet-row
+747,A,,,,,no-sheet-row
+748,"222.51, 186.49, 79.43, 66.57, 50.05, 41.95, 31.01, 25.99, 20.79, 3, 11.345, B","222.51, 186.49, 79.43, 66.57, 50.05, 41.95, 31.01, 25.99, 20.79, 3, 11.345, B",wolfram_only,True,A,match
+749,"5, 5, 5, 5, 5, is, 14/9, 19/14, 24/19, 29/24, 34/29, is not, 9+5n, (-1)^(n+1)(5n+9)",,,,,no-sheet-row
+750,"36.98\%,\ln(0.95),C,E",,,,,no-sheet-row
+751,31,,,,,no-sheet-row
+752,D,,,,,no-sheet-row
+753,"A, 0.246, A, 16.56",,,,,no-sheet-row
+754,60x^2+65x,60x^2 + 65x,wolfram_only,True,A,match
+755,F,,,,,no-sheet-row
+756,"109.3, 520.2",,,,,no-sheet-row
+757,C,,,,,no-sheet-row
+758,C,,,,,no-sheet-row
+759,C,,,,,no-sheet-row
+760,I,,,,,no-sheet-row
+761,5f(n-1) + 4,,,,,no-sheet-row
+762,2x(55x+21),2x(55x+21),wolfram_only,True,A,match
+763,"13, 2.667",,,,,no-sheet-row
+764,\dfrac{(a + b)(a - b)^4}{c^5},(a+b)(a-b)^4/c^5,wolfram_only,True,A,match
+765,A,,,,,no-sheet-row
+766,"4.3750,7.3333,11.4286",,,,,no-sheet-row
+767,D,,,,,no-sheet-row
+768,G,,,,,no-sheet-row
+769,1620,1620,wolfram_only,True,A,match
+770,"3, 4, 1, 3, 2, 1, 2, 2, 0.5, 2",,,,,no-sheet-row
+771,2,2,wolfram_only,True,A,match
+772,J,H,web_search_only,False,A,mismatch
+773,\dfrac{3a - 14}{3},,,,,no-sheet-row
+774,"24, 28, 33, 39, 42","24, 28, 33, 39, 42",wolfram_only,True,A,match
+775,6\sin(x - 7) - 6,6sin(x-7)-6,wolfram_only,False,A,incomparable
+776,A,,,,,no-sheet-row
+777,8,8,wolfram_only,True,A,match
+778,I,I,web_search_only,True,A,match
+779,F,,,,,no-sheet-row
+780,3t^{14} + 6t^{12} + 9t^{10},,,,,no-sheet-row
+781,\frac{\sqrt{15}}{8},sqrt(15)/8,wolfram_only,True,A,match
+782,-1517,,,,,no-sheet-row
+783,H,,,,,no-sheet-row
+784,\frac{17}{60},,,,,no-sheet-row
+785,"F, T, F, F","False, True, False, False",wolfram_only,False,A,mismatch
+786,C,,,,,no-sheet-row
+787,"148,178,452, 41.55, 46.97",,,,,no-sheet-row
+788,A,,,,,no-sheet-row
+789,"8, 8, -8, -8","8, 8, -8, -8",wolfram_only,True,A,match
+790,-20x^2 + 45x - 25,-20x^2+45x-25=0,wolfram_only,False,A,incomparable
+791,F,,,,,no-sheet-row
+792,\dfrac{\ln(\dfrac{V}{T})}{\ln(\dfrac{h}{g})},,,,,no-sheet-row
+793,"1.35, (1.49, inf), 0.0895, D",,,,,no-sheet-row
+794,"4.47,4","4.47, 4",wolfram_only,True,A,match
+795,"450, 2, 6",,,,,no-sheet-row
+796,F,,,,,no-sheet-row
+797,C,,,,,no-sheet-row
+798,"3924, EXTRANEOUS","3924, EXTRANEOUS",wolfram_only,True,A,match
+799,8096,8096,web_search_only,True,A,match
+800,140,,,,,no-sheet-row
+801,E,,,,,no-sheet-row
+802,\frac{26}{7},26/7,wolfram_only,True,A,match
+803,124,,,,,no-sheet-row
+804,F,,,,,no-sheet-row
+805,G,C,web_search_only,False,A,mismatch
+806,"-0.6551, -0.7556, 0.867, 1.153, -1.324, -1.527","-0.6551, -0.7556, 0.8670, 1.153, -1.324, -1.527",wolfram_only,True,A,match
+807,E,,,,,no-sheet-row
+808,D,D,web_search_only,True,A,match
+809,,,,,,no-sheet-row
+810,F,,,,,no-sheet-row
+811,1.336 \times 10^{-19},,,,,no-sheet-row
+812,\dfrac{512}{\sin^6(2t)},512/sin^6(2t),wolfram_only,False,A,incomparable
+813,"A,C",,,,,no-sheet-row
+814,"5, 4.726, 0.9451, 1.224, 30, 23.16, 0.7719, 35, 27.88, 0.7966",,,,,no-sheet-row
+815,H,,,,,no-sheet-row
+816,"8.7, 10.53",,,,,no-sheet-row
+817,\frac{88}{21},,,,,no-sheet-row
+818,"6b+5a,ab","5a+6b, ab",wolfram_only,True,A,match
+819,E,,,,,no-sheet-row
+820,15,15,wolfram_only,True,A,match
+821,"C,A,A,A",,,,,no-sheet-row
+822,399.8,,,,,no-sheet-row
+823,359,,,,,no-sheet-row
+824,C,,,,,no-sheet-row
+825,D,,,,,no-sheet-row
+826,1800,,,,,no-sheet-row
+827,H,,,,,no-sheet-row
+828,"99.63, 110.4",,,,,no-sheet-row
+829,8464,,,,,no-sheet-row
+830,9.215,44*pi/15,wolfram_only,False,A,mismatch
+831,C,,,,,no-sheet-row
+832,J,,,,,no-sheet-row
+833,"-19/3, 3/4, 8, 40/3",,,,,no-sheet-row
+834,"\frac{\pi}{4},\frac{3\pi}{2},-\frac{19\pi}{6}",,,,,no-sheet-row
+835,126,,,,,no-sheet-row
+836,2025,2025,wolfram_only,True,A,match
+837,D,,,,,no-sheet-row
+838,"(23.66, 28.34)",,,,,no-sheet-row
+839,G,,,,,no-sheet-row
+840,F,,,,,no-sheet-row
+841,"\sin(40 + 8\sqrt{x}), 5 + \sqrt{\sin(8x)}","sin(40+8sqrt(x)), 5+sqrt(sin(8x))",wolfram_only,False,A,mismatch
+842,"65.47, 1.552, 6.052, 1.833, B","65.47, 1.552, 6.052, 1.833, B",wolfram_only,True,A,match
+843,"2y,10",,,,,no-sheet-row
+844,J,,,,,no-sheet-row
+845,5,5,wolfram_only,True,A,match
+846,"3,1,2,3,-2",,,,,no-sheet-row
+847,H,,,,,no-sheet-row
+848,E,,,,,no-sheet-row
+849,4(n + 1),4(n+1),wolfram_only,True,A,match
+850,C,,,,,no-sheet-row
+851,"B, C","B, C",wolfram_only,True,A,match
+852,414.72,,,,,no-sheet-row
+853,C,,,,,no-sheet-row
+854,"-5.875, -\dfrac{47}{6}",,,,,no-sheet-row
+855,"20000,2000",,,,,no-sheet-row
+856,D,H,web_search_only,False,A,mismatch
+857,"A,\ 0.8974,\ 0.9146,\ A,\ 0.9015,\ 0.9221","A, 0.8974, 0.9146, A, 0.9015, 0.9221",wolfram_only,False,A,mismatch
+858,"2.3, 1.691, Yes",,,,,no-sheet-row
+859,"1, 2, 2, 4",,,,,no-sheet-row
+860,22,,,,,no-sheet-row
+861,G,,,,,no-sheet-row
+862,I,I,web_search_only,True,A,match
+863,\dfrac{1}{t^{69}},1/t^69,wolfram_only,True,A,match
+864,"\frac{35}{3},25",,,,,no-sheet-row
+865,\dfrac{7}{x} - 8,7/x - 8,wolfram_only,True,A,match
+866,H,,,,,no-sheet-row
+867,E,,,,,no-sheet-row
+868,E,,,,,no-sheet-row
+869,"20.5, \dfrac{x + y + xy}{2}",,,,,no-sheet-row
+870,D,,,,,no-sheet-row
+871,G,,,,,no-sheet-row
+872,"infinity,0","infinity, 0",wolfram_only,True,A,match
+873,B,,,,,no-sheet-row
+874,J,J,web_search_only,True,A,match
+875,C,,,,,no-sheet-row
+876,C,,,,,no-sheet-row
+877,F,F,web_search_only,True,A,match
+878,I,I,wolfram_only,True,A,match
+879,H,,,,,no-sheet-row
+880,"0.9459, 2.917","35/37, 35/12",wolfram_only,False,A,mismatch
+881,D,D,wolfram_only,True,A,match
+882,"1200,3600",,,,,no-sheet-row
+883,656.1,656.1,wolfram_only,True,A,match
+884,g(x)=(x-59)^2+74,g(x)=(x-59)^2+74,wolfram_only,True,A,match
+885,"18, 139.875, 18, B",,,,,no-sheet-row
+886,"A, C",,,,,no-sheet-row
+887,C,,,,,no-sheet-row
+888,I,,,,,no-sheet-row
+889,"5, 4y",,,,,no-sheet-row
+890,"A,A,C,6",,,,,no-sheet-row
+891,A,,,,,no-sheet-row
+892,69.65,,,,,no-sheet-row
+893,"A,C",,,,,no-sheet-row
+894,"0.008, 1.783, 2.013, -0.091, 0.283, -0.1, 0.272, 10",,,,,no-sheet-row
+895,70 ( \dfrac{2}{7} )^{\frac{x - 10}{20}},70*(2/7)^((x-10)/20),wolfram_only,False,A,incomparable
+896,"F, T, F, F, T, T, F, T","False,True,False,False,True,True,False,True",wolfram_only,False,A,mismatch
+897,84.88,,,,,no-sheet-row
+898,48,48,wolfram_only,True,A,match
+899,D,,,,,no-sheet-row
+900,"1200,3600","1200, 3600",wolfram_only,True,A,match
+901,J,,,,,no-sheet-row
+902,"9, 6","9, 6",wolfram_only,True,A,match
+903,"A,C",,,,,no-sheet-row
+904,D,,,,,no-sheet-row
+905,"B,C",,,,,no-sheet-row
+906,"2, 5","x=2, x=5",wolfram_only,False,A,incomparable
+907,56,,,,,no-sheet-row
+908,"100 \cdot (0.83)^t, 39.39",,,,,no-sheet-row
+909,1520,,,,,no-sheet-row
+910,"1134,16",,,,,no-sheet-row
+911,I,,,,,no-sheet-row
+912,6012,,,,,no-sheet-row
+913,G,,,,,no-sheet-row
+914,"0.1901, 0.2474",,,,,no-sheet-row
+915,-2,,,,,no-sheet-row
+916,"4.243, 8.485, 18","3*sqrt(2), 6*sqrt(2), 18",wolfram_only,False,A,mismatch
+917,"189.8, 246.4, 43",,,,,no-sheet-row
+918,C,,,,,no-sheet-row
+919,\frac{3875}{12012},,,,,no-sheet-row
+920,178,,,,,no-sheet-row
+921,D,,,,,no-sheet-row
+922,B,,,,,no-sheet-row
+923,"y = -6.2x + 297.6, 93, 48",,,,,no-sheet-row
+924,"n = 55 + 0.2t, 2010","n = 55 + 0.2t, 2010",wolfram_only,True,A,match
+925,276,,,,,no-sheet-row
+926,-3t^2 - 6t + 2,-3t^2 - 6t + 2,wolfram_only,True,A,match
+927,"0,1,1,1,0,0","False,True,True,True,False,False",wolfram_only,False,A,mismatch
+928,E,,,,,no-sheet-row
+929,"5.86, (-0.78, 3.18), A",,,,,no-sheet-row
+930,E,,,,,no-sheet-row
+931,"3,-3","3, -3",wolfram_only,True,A,match
+932,26,,,,,no-sheet-row
+933,E,,,,,no-sheet-row
+934,J,D,web_search_only,False,A,mismatch
+935,H,,,,,no-sheet-row
+936,\frac{275}{16},275/16,wolfram_only,True,A,match
+937,640,,,,,no-sheet-row
+938,49.88,,,,,no-sheet-row
+939,E,E,wolfram_only,True,A,match
+940,B,B,web_search_only,True,A,match
+941,"A,C,A,A,B,C",,,,,no-sheet-row
+942,36,36,wolfram_only,True,A,match

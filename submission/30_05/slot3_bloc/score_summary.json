@@ -1,0 +1,13 @@
+{
+  "slot": 3,
+  "dir": "slot3_bloc",
+  "rows": 214606,
+  "overrides_applied": 385,
+  "override_source": {
+    "anchor": 316,
+    "4/4_bloc": 385,
+    "3/4_xhigh_mcq": 0
+  },
+  "agreement_with_anchor": 316,
+  "disagreement_with_raw_inference": 390
+}
