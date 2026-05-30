@@ -148,4 +148,24 @@ RULE: HuggingFace eval datasets (ProofRank/JudgeBench/AI-MO/olympiads/Apex), and
 any "benchmark"/"dataset"/"gold_answer" aggregator, are FORBIDDEN as sources --
 they may literally contain our private answers. Treat a hit there as NOT a source;
 record NOT_FOUND. A real, independent solution page (archive PDF, AoPS wiki text,
-MSE, OEIS b-file) is still required for GOLD.
+MSE, OEIS b-file) is still required for GOLD. (RIMO benchmark also hit on item 383.)
+
+*** TOOLING LIMITATION: AoPS wiki answers render as IMAGES, not text. ***
+When Exa web_fetch_exa reads an artofproblemsolving.com/wiki page, all the LaTeX
+(including the final boxed numeric answer) comes back BLANK/stripped -- only the
+prose survives. So for AIME/Mock-AIME items whose answer lives on AoPS, I can
+read the DERIVATION but not the explicit number. Consistent handling: record
+PARTIAL (source identified + derivation/binomial stated; the indicated option
+noted) rather than GOLD. Examples this pass: 173 (Mock AIME 2 P4 -> 604),
+486 (Mock AIME 4 2006-07 P8 -> C(1008,10), m mod 1000 = 8 = opt[1]),
+471 (Ray Li Mock Geo AIME P3, only the problem PDF found, no answer).
+NEXT-AGENT TIP: to convert these PARTIALs to GOLD, fetch the answer from a
+NON-AoPS mirror that renders numbers as text (Random Math Wiki wiki.randommath.com
+worked for 285/312; some pages on artofproblemsolving COMMUNITY threads, or a
+Google cache) -- or read the AoPS page in a browser. The PARTIAL rows already
+carry the identified source + the indicated option.
+
+## Pass 2026-05-29e batches 4+: ids 419-525 (batch 4)
+2 PARTIAL (471 Ray Li geo, 486 Mock AIME 4 P8), rest NOT_FOUND. Searched 471,
+486, 488 (Turbo-Linetown, no source). This range has several real AIME/Mock-AIME
+problems but their answers are AoPS-image-gated -> PARTIAL not GOLD.
