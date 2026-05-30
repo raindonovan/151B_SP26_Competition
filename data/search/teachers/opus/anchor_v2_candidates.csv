@@ -1,0 +1,317 @@
+id,anchor_answer,opus_answer,agree,anchor_tier,anchor_source,opus_verdict,caphit_forced
+0002,"-1.461, 1.645, A","-1.46,1.645,A",False,A,wolfram_only,contradict,False
+0004,"-7/sqrt(149), 10/sqrt(149), -7/10","-7\sqrt{149}/149,10\sqrt{149}/149,-7/10",True,A,wolfram_only,corroborate,False
+0005,"541.3, 63.25, 135.325, 4.2167, 32.09","541.3,63.25,135.325,4.2167,32.09",True,A,wolfram_only,corroborate,False
+0007,448/3,\dfrac{448}{3},True,A,web_search_only,corroborate,False
+0009,"L-8x, 6F","\dfrac{L}{6F},-\dfrac{4x}{3F}",False,A,wolfram_only,contradict,False
+0012,"2c + 4p = 70, 11","2c+4p=70,11",True,A,wolfram_only,corroborate,False
+0014,ln(35)/ln(3),\log_3 35,False,A,wolfram_only,contradict,False
+0015,"8, NONE","8,NONE",True,A,wolfram_only,corroborate,False
+0017,C,C,True,A+,wolfram+web_search,corroborate,False
+0019,E,E,True,A,wolfram_only,corroborate,False
+0024,1,1,True,A,wolfram_only,corroborate,False
+0029,38.2,38.2,True,A,wolfram_only,corroborate,False
+0030,"2944, 664","2944,664",True,A,wolfram_only,corroborate,False
+0032,"sqrt(101), -1, -7/2","\sqrt{101},-1,-7/2",True,A,wolfram_only,corroborate,False
+0033,F,F,True,A,web_search_only,corroborate,False
+0035,"down, ln(p)","down,\ln(p)",False,A,wolfram_only,contradict,False
+0041,2112,2112,True,A+,wolfram+web_search,corroborate,False
+0042,"No, Yes, A","No,Yes,A",True,A,wolfram_only,corroborate,False
+0043,"3/8, 14, 28","3/8,14,28",True,A,wolfram_only,corroborate,False
+0044,"True, True, True, False","True,True,True,False",True,A,wolfram_only,corroborate,False
+0049,0.0143,\beta \approx 0.0143,,A,wolfram_only,inconclusive,False
+0050,"140A+150B=5930, 3A+4B=142","140A+150B=5930,3A+4B=142",True,A,wolfram_only,corroborate,False
+0054,1,1,True,A,wolfram_only,corroborate,False
+0055,5x^4,y = 5x^4,,A,wolfram_only,inconclusive,False
+0056,"D, D, A","D,D,A",True,A,wolfram_only,corroborate,False
+0063,"15.84, 18.96","18.96,15.84",True,A,wolfram_only,corroborate,False
+0067,"7.6(1.09)^t, 13.9, 5.4","7.6(1.09)^t,13.893,5.384",False,A,wolfram_only,contradict,False
+0072,"-0.8352, -0.9187, 0.3950, -2.3258, Quadrant IV","-0.8352,-0.9187,0.3950,-2.3258,IV",False,A,wolfram_only,contradict,False
+0074,"12.36, 25.04","[12.32,\ 25.08]",,A,wolfram_only,inconclusive,False
+0075,x > 21250,x>21250,,A,wolfram_only,inconclusive,False
+0088,C,C,True,A,wolfram_only,corroborate,False
+0089,\frac{326}{7},46.57,False,A,wolfram_only,contradict,False
+0097,"0, 4, 4","0,4,4",True,A+,wolfram+web_search,corroborate,False
+0099,"-6, 12, -6","-6,12,-6",True,A,wolfram_only,corroborate,False
+0100,\frac{180}{7},180/7,True,A,wolfram_only,corroborate,False
+0101,"C, C, A, C","C,C,A,C",True,A,wolfram_only,corroborate,False
+0103,8\sqrt{2},8\sqrt{2},True,A,wolfram_only,corroborate,False
+0104,2387*pi/1800,4.165,False,A,wolfram_only,contradict,False
+0105,"24, 9.114","24,9.114",True,A,wolfram_only,corroborate,False
+0106,\frac{13}{6},13/6,True,A,wolfram_only,corroborate,False
+0108,"72, 12x","72,12x",True,A,wolfram_only,corroborate,False
+0110,"3, 9","3,9",True,A,wolfram_only,corroborate,False
+0111,8x^3,8x^3,True,A,wolfram_only,corroborate,False
+0113,(-2x^2-16x-7)/25,\dfrac{25-2(x+4)^2}{25},,A,wolfram_only,inconclusive,False
+0117,B,B,True,A,wolfram_only,corroborate,False
+0118,\frac{18}{5},3.6,True,A,wolfram_only,corroborate,False
+0119,"A, C, B, D","A,C,B,D",True,A,wolfram_only,corroborate,False
+0120,8,138,False,A,wolfram_only,contradict,False
+0124,H,H,True,A,wolfram_only,corroborate,False
+0125,G,G,True,A+,wolfram+web_search,corroborate,False
+0128,(y-3)/(y+3),\dfrac{y-3}{y+3},True,A,wolfram_only,corroborate,False
+0129,"5/sin(t), sqrt(7), -3cos(t), 2sqrt(2)tan(t)","5/\sin t,\ \sqrt{7},\ -3\cos t,\ 2\sqrt{2}\tan t",False,A,wolfram_only,contradict,False
+0130,r^42,r^{42},True,A,wolfram_only,corroborate,False
+0131,0.1084,0.1084,True,A,wolfram_only,corroborate,False
+0133,"-0.8660, 0.5000, -1.732, 2.000","-\frac{\sqrt{3}}{2},\frac{1}{2},-\sqrt{3},2",False,A,wolfram_only,contradict,False
+0134,"1, 5, 12, 20, 26, 30, 31, 27.63","1,5,12,20,26,30,31,27.625",False,A,wolfram_only,contradict,False
+0135,3/5,\dfrac{3}{5},True,A,wolfram_only,corroborate,False
+0152,J,J,True,A,wolfram_only,corroborate,False
+0154,18.75,\$18.75,,A,wolfram_only,inconclusive,False
+0157,"50sin(0.1t)-7cos(0.1t), 46.31","7\cos(0.1t)-50\sin(0.1t),-46.31",False,A,wolfram_only,contradict,False
+0158,"A, C","A,C",True,A,wolfram_only,corroborate,False
+0163,"9, -5, 4","9,-5,4",True,A,wolfram_only,corroborate,False
+0164,G,G,True,A,wolfram_only,corroborate,False
+0166,175*(1/4)^n,175\left(\dfrac{1}{4}\right)^n,True,A,wolfram_only,corroborate,False
+0167,"Negative, Negative, Positive, Negative","B,A,B,B",False,A,wolfram_only,contradict,False
+0171,20,20,True,A,wolfram_only,corroborate,False
+0172,1320/3721,\dfrac{1320}{3721},True,A,wolfram_only,corroborate,False
+0175,I,I,True,A,web_search_only,corroborate,False
+0176,(p-6k-m)/8,\dfrac{p-6k-m}{8},True,A,wolfram_only,corroborate,False
+0178,C,C,True,A,wolfram_only,corroborate,False
+0179,"29,3,21,1,21,4,19,4,23,3","29,3,21,1,21,4,19,4,23,3",True,A,wolfram_only,corroborate,False
+0180,(1/2)m - 7/2,\dfrac{m}{2}-\dfrac{7}{2},True,A,wolfram_only,corroborate,False
+0181,A,A,True,A,wolfram_only,corroborate,False
+0182,E,E,True,A,web_search_only,corroborate,False
+0184,A,A,True,A,web_search_only,corroborate,False
+0185,"T, F, T, F, T","T,F,T,F,T",True,A,wolfram_only,corroborate,False
+0187,"0.0281,0.0067,0.3825,0.4512,22,18,2,35,30","1.823, 0.0434, 0.094, 0.082, 40, 38, 2, 49, 47",False,A,wolfram_only,contradict,False
+0189,850a + 1200r = 35000,850a+1200r=35000,True,A,wolfram_only,corroborate,False
+0194,"600.0, July, 1908, 890.0, March, 1907","600,July,1908,890,March,1907",True,A,wolfram_only,corroborate,False
+0195,"-2.445, -0.7553","[-2.44,\ -0.76]",,A,wolfram_only,inconclusive,False
+0201,(5t+8)^2,(5t+8)^2,True,A,wolfram_only,corroborate,False
+0204,E,E,True,A,web_search_only,corroborate,False
+0206,4,4,True,A,wolfram_only,corroborate,False
+0208,"16.2, 720/(49*pi)","16.2,720/(49\pi)",True,A,wolfram_only,corroborate,False
+0210,"-(49sqrt3+16sqrt33)/15, 2x/(x^2+1)","-\frac{16\sqrt{33}+49\sqrt{3}}{15},\ \frac{2x}{1+x^2}",False,A,wolfram_only,contradict,False
+0211,I,I,True,A,wolfram_only,corroborate,False
+0214,"11, F, 10, T","11,F,10,T",True,A,wolfram_only,corroborate,False
+0216,60,60,True,A,wolfram_only,corroborate,False
+0218,\arcsin\!(\frac{7}{10}),\arcsin(7/10),True,A,wolfram_only,corroborate,False
+0222,C,C,True,A,web_search_only,corroborate,False
+0224,2643,2643,True,A,wolfram_only,corroborate,False
+0225,"0.6254, 4, 2.776, A","0.625,4,2.776,A",False,A,wolfram_only,contradict,False
+0227,"A, C","A,C",True,A,wolfram_only,corroborate,False
+0230,-2.424,-2.42,False,A,wolfram_only,contradict,False
+0231,y=0.5161x+4.742,y=\dfrac{147}{31}+\dfrac{16}{31}x,,A,wolfram_only,inconclusive,False
+0234,29x^7 + 6x^5,29x^7+6x^5,True,A,wolfram_only,corroborate,False
+0240,"12, 4.9, 3.3","12,4.9,3.3",True,A,wolfram_only,corroborate,False
+0243,"0.8925, 0.2150","0.8925,0.2150",True,A,wolfram_only,corroborate,False
+0247,"\frac{2409}{65}, \frac{2474}{1+\frac{2409}{65}e^{-0.53t}}, 2473.84","37.0615,\ \frac{2474}{1+37.0615e^{-0.53t}},\ 2473.84",False,A,wolfram_only,contradict,False
+0248,180,\dfrac{16192}{45},False,A,wolfram_only,contradict,False
+0252,C,C,True,A,web_search_only,corroborate,False
+0253,E,E,True,A,wolfram_only,corroborate,False
+0255,A,E,False,A,web_search_only,contradict,False
+0263,E,E,True,A+,wolfram+web_search,corroborate,False
+0264,256*pi*t^2,256\pi t^2,,A,wolfram_only,inconclusive,False
+0266,G,G,True,A,web_search_only,corroborate,False
+0269,"1.789, 0.3198, B","1.787, 0.32, B",False,A,wolfram_only,contradict,False
+0273,"-cos^2(x), 1, 2cos^2(x)","-\cos^2(x),1,2\cos^2(x)",False,A,wolfram_only,contradict,False
+0274,G,G,True,A+,wolfram+web_search,corroborate,False
+0277,38800,"\$38{,}800.00",,A,wolfram_only,inconclusive,False
+0281,"-0.4618, 0.8870, -0.5206, -2.1655","-0.4618,0.8870,-0.5206,-2.1654",False,A,wolfram_only,contradict,False
+0282,"e^2, -e^2",e^2,True,A,wolfram_only,corroborate,False
+0285,735,735,True,A,web_search_only,corroborate,False
+0289,"4, 9","4,9",True,A,wolfram_only,corroborate,False
+0292,-2 - sqrt(3),-2-\sqrt{3},True,A,wolfram_only,corroborate,False
+0296,"45, 180, 270","45,180,270",True,A,wolfram_only,corroborate,False
+0299,"18805.7, no","18805.7,no",True,A,wolfram_only,corroborate,False
+0301,"0.878, 57.2","0.878,57.2",True,A,wolfram_only,corroborate,False
+0305,B,B,True,A,web_search_only,corroborate,False
+0308,12,\dfrac{1980}{169},False,A,wolfram_only,contradict,False
+0312,171,171,True,A,web_search_only,corroborate,False
+0313,-2*sqrt(14)/15,-\dfrac{2\sqrt{14}}{15},True,A,wolfram_only,corroborate,False
+0315,"B, B, A","B,B,A",True,A,wolfram_only,corroborate,False
+0322,"40, 25, 1000","25 ft,40 ft,1000 ft^2",False,A,wolfram_only,contradict,False
+0323,"[10,12), [-8,-6), [10,18), [-16,-6)","[10,12),[-8,-6),[10,18),[-16,-6)",True,A,wolfram_only,corroborate,False
+0324,H,H,True,A,web_search_only,corroborate,False
+0325,"[0,280], [0,14]","[0,280],[0,14]",True,A,wolfram_only,corroborate,False
+0329,J,J,True,A,web_search_only,corroborate,False
+0330,"26.76, 2614","27,2613.92",False,A,wolfram_only,contradict,False
+0339,G,G,True,A,wolfram_only,corroborate,False
+0343,"D, A, C, B, E","D,A,C,B,E",True,A,wolfram_only,corroborate,False
+0345,"-5/6, 5/6","-5/6,5/6",True,A,wolfram_only,corroborate,False
+0351,A,A,True,A,wolfram_only,corroborate,False
+0362,(6x-5y)(6x+5y),(6x-5y)(6x+5y),True,A,wolfram_only,corroborate,False
+0367,"60.3, 46.3, 53.3","60.3,46.3,53.3",True,A,wolfram_only,corroborate,False
+0369,"3/4, 5, 2","3/4,5,2",True,A,wolfram_only,corroborate,False
+0370,"-5, 10","y=-5,10",True,A,wolfram_only,corroborate,False
+0372,0.51,0.51,True,A,wolfram_only,corroborate,False
+0373,"51.13, 56.71","51.05,56.78",False,A,wolfram_only,contradict,False
+0376,All positive integers n such that v_p(n) != 1 for all primes p = 3 (mod 4),2618,,A,web_search_only,inconclusive,True
+0378,"0.0001420,0.00002206,0.0001199,0.1554,15.54","0.000142,\ 0.0000221,\ 0.0001199,\ 0.1553,\ 15.53\%",False,A,wolfram_only,contradict,False
+0381,2040,2040,True,A,wolfram_only,corroborate,False
+0382,"187/18, 55/9","10.39,6.11",False,A,wolfram_only,contradict,False
+0383,80,336,False,A,wolfram_only,contradict,True
+0384,(ln(11/32)-3)/5,\dfrac{\ln(11/32)-3}{5},True,A,wolfram_only,corroborate,False
+0385,"A, A, A","A,A,A",True,A,wolfram_only,corroborate,False
+0393,"(1/10)arccos((x-6)/16), -10, 22","arccos((x-6)/16)/10,-10,22",True,A,wolfram_only,corroborate,False
+0395,"\frac{85}{3}, -\frac{95}{4}, -\frac{10}{7}","85/3,-95/4,-10/7",True,A,wolfram_only,corroborate,False
+0397,"256*pi, 2048*pi/3","256\pi,\dfrac{2048\pi}{3}",True,A,wolfram_only,corroborate,False
+0401,"143.2, 240.0, 52.52, -135.0","450/\pi,\ 240°,\ 165/\pi,\ -135°",False,A,wolfram_only,contradict,False
+0404,52,52,True,A,wolfram_only,corroborate,False
+0405,H,B,False,A,web_search_only,contradict,True
+0408,"5816/9999, 3017/99990, 574/999, 653/9990, 428/999","\dfrac{5816}{9999},\ \dfrac{3017}{99990},\ \dfrac{574}{999},\ \dfrac{653}{9990},\ \dfrac{428}{999}",True,A,wolfram_only,corroborate,False
+0411,392*pi/45,\dfrac{392\pi}{45},True,A,wolfram_only,corroborate,False
+0412,(4*sqrt(78)-35)/72,\dfrac{4\sqrt{78}-35}{72},True,A,wolfram_only,corroborate,False
+0413,"0.89, (1.83, infty), 0.2008, A","0.893,(1.847,infty),0.201,A",False,A,wolfram_only,contradict,False
+0415,"sqrt(A/6), A, (A/6)^(3/2), A","(A/6)^{1/2},A,(A/6)^{3/2},A",False,A,wolfram_only,contradict,False
+0417,"1.006, 0.9676, 28, 29.10, 1.039","1.0056,0.9676,28,29.1,1.0393",False,A,wolfram_only,contradict,False
+0418,"2.958, 1.751, 0.001530, B","2.96, 1.75, 0.0015, B",False,A,wolfram_only,contradict,False
+0421,"-9*sqrt(5)/20, -sqrt(5)/20","-9\sqrt{5}/20,-\sqrt{5}/20",True,A,wolfram_only,corroborate,False
+0427,E,E,True,A,wolfram_only,corroborate,False
+0430,E,E,True,A,wolfram_only,corroborate,False
+0432,"1.202, 2.129, 4.344, 5.271","1.2036,\ 2.1294,\ 4.3452,\ 5.2710",,A,wolfram_only,inconclusive,False
+0440,G,G,True,A+,wolfram+web_search,corroborate,False
+0447,x <= 4,x \leq 4,,A,wolfram_only,inconclusive,False
+0448,"x^3-4x^2-6x+30, x^2-9x+20","x^3-4x^2-6x+30,\ x^2-9x+20",False,A,wolfram_only,contradict,False
+0451,"0.1290,0.1935,0.2097,14,0.1774,0.06452","0.129032258064516,0.193548387096774,0.209677419354839,14,0.177419354838710,0.0645161290322581",False,A,wolfram_only,contradict,False
+0452,42,42,True,A,wolfram_only,corroborate,False
+0454,"1.5, 0.9375","1.50,0.94",False,A,wolfram_only,contradict,False
+0456,"-7.740, A, B","-7.71, A, B",False,A,wolfram_only,contradict,False
+0465,H,H,True,A,wolfram_only,corroborate,False
+0466,26.88,26.9,False,A,wolfram_only,contradict,False
+0467,"0.02667w+0.03333, 100<=w<=220, 0<=C<=6, 4.967","C=0.0267w+0.033,\ A,\ A,\ 4.97",False,A,wolfram_only,contradict,False
+0473,"[-7, -3]","[-7,-3]",,A,wolfram_only,inconclusive,False
+0474,C,C,True,A,web_search_only,corroborate,False
+0479,"40.36, 43.64, 40.01, 43.99","40.36, 43.64, 40.01, 43.99",True,A,wolfram_only,corroborate,False
+0487,"-21.1, -0.9636","-21.1,-0.9637",False,A,wolfram_only,contradict,False
+0492,"A, A","A,A",True,A,wolfram_only,corroborate,False
+0493,"14.67, B, 0.06866, 0.1083","14.67,\ B,\ 0.0687,\ 0.1083",False,A,wolfram_only,contradict,False
+0495,"100, 100, 200, 0.255, 5.991, B","100,100,200,0.255,5.991,B",True,A,wolfram_only,corroborate,False
+0496,9.594^\circ,9.594,,A,wolfram_only,inconclusive,False
+0497,"1.111, 88.81, 88.81, 0.9004","1.1106, 88.8063, 88.8063, 0.9004",False,A,wolfram_only,contradict,False
+0499,"36.9, 0.3225, 32.25, 2.149","36.9, 0.3225, 32.25\%, 2.149",False,A,wolfram_only,contradict,False
+0502,8/11,8/11,True,A,wolfram_only,corroborate,False
+0504,"-3/2, -3*sqrt(3)/2","-3/2,-3\sqrt{3}/2",True,A,wolfram_only,corroborate,False
+0506,J,E,False,A,wolfram_only,contradict,False
+0508,n(n-1)/2,\dfrac{n(n-1)}{2},True,A,wolfram_only,corroborate,False
+0512,64p^2 + 64p + 16,64p^2+64p+16,True,A,wolfram_only,corroborate,False
+0513,"-1.405, 1.405, 1.751","-1.41,1.41,1.75",False,A,wolfram_only,contradict,False
+0518,E,E,True,A,web_search_only,corroborate,False
+0519,"426.3, 5090, 98.30","426.3, 5090, 98.30",True,A,wolfram_only,corroborate,False
+0522,"-0.472, 0.472","-0.472,\ 0.472",,A,wolfram_only,inconclusive,False
+0526,128x^4 + 16x^2 + 4,y=128x^4+16x^2+4,,A,wolfram_only,inconclusive,False
+0535,"-4, -6","x=-4,\ -6",,A,wolfram_only,inconclusive,False
+0545,400000,400000,True,A,wolfram_only,corroborate,False
+0548,"1.20x = 144, $120.00","x+0.20x=144,\$120.00",False,A,wolfram_only,contradict,False
+0549,J,J,True,A,web_search_only,corroborate,False
+0551,sqrt(28),\sqrt{28},True,A,wolfram_only,corroborate,False
+0552,"33150, 36300","36312.45, 33139.28",False,A,wolfram_only,contradict,False
+0555,"1.109, 0.1336","1.11,0.1335",False,A,wolfram_only,contradict,False
+0557,5,5,True,A,wolfram_only,corroborate,False
+0558,f(x)=(13/2)x-25,6.5x-25,,A,wolfram_only,inconclusive,False
+0570,H,E,False,A,web_search_only,contradict,False
+0578,"7.62, 9.00, 95.44","7.62,9.00,95.44",True,A,wolfram_only,corroborate,False
+0580,D,D,True,A,wolfram_only,corroborate,False
+0582,1035,1035,True,A,wolfram_only,corroborate,False
+0584,"7z, 6w","7z,6w",True,A,wolfram_only,corroborate,False
+0586,"1.899, -0.9423, 0.1109, -0.02966","1.8973,-0.9400,0.1110,-0.0297",False,A,wolfram_only,contradict,False
+0591,"1.081, 1.683, 1.819, -0.832, 3.162, -0.322, 4.123, 1.326","2\cos(1),2\sin(1),2\sin(2),2\cos(2),\sqrt{10},\arctan(-1/3),\sqrt{17},\arctan(4)",False,A,wolfram_only,contradict,False
+0593,19.4,19.43,False,A,wolfram_only,contradict,False
+0596,G,G,True,A,web_search_only,corroborate,False
+0602,"-70.8, 0.719, 53.6","-70.777,0.719,53.6\text{ kg}",False,A,wolfram_only,contradict,False
+0606,E,E,True,A,wolfram_only,corroborate,False
+0607,"0, 0, 4, 0, 0, 14, 6, 6, 20, -6, -6, 0, -4, -4, 10, -4, -4, -12","0,0,4,0,0,14,6,6,20,-6,-6,0,-4,-4,10,-4,-4,-12",True,A,wolfram_only,corroborate,False
+0611,1.356,1.356,True,A,wolfram_only,corroborate,False
+0615,"14, 9","14,9",True,A,wolfram_only,corroborate,False
+0619,"-3.226, 0.001230, A","-3.23,\ 0.0015,\ A",False,A,wolfram_only,contradict,False
+0625,5(x+2)(x+3),5(x+2)(x+3),True,A,wolfram_only,corroborate,False
+0627,1090,\dfrac{32\sqrt{3}}{27}\pi,,A,wolfram_only,inconclusive,False
+0635,"37.60, 0.7460, -25.40","37.6,0.746,-25.4",True,A,wolfram_only,corroborate,False
+0638,"0.15, (-infty, -1.75)U(1.75, infty), 0.88, D","0.15,(-infty,-1.751)U(1.751,infty),0.8808,D",False,A,wolfram_only,contradict,False
+0639,3.325,3.325,True,A,wolfram_only,corroborate,False
+0642,"6, pi/3, 13","6,\pi/3,13",True,A,wolfram_only,corroborate,False
+0644,A,A,True,A,web_search_only,corroborate,False
+0647,J,J,True,A,web_search_only,corroborate,False
+0648,"11.51 + 0.83x, 30.60","11.51+0.83x, 30.60",True,A,wolfram_only,corroborate,False
+0653,"(600-45t)/7, 85.71, 47.14","\frac{600-45t}{7},\ \frac{600}{7},\ \frac{330}{7}",False,A,wolfram_only,contradict,False
+0654,"sqrt(19), 2, 2, 2","\sqrt{19},2,2,2",True,A,wolfram_only,corroborate,False
+0655,S = 0.85*L,S = 0.85L,True,A,wolfram_only,corroborate,False
+0656,6x^2 - 23x + 15,6x^2 - 23x + 15,True,A,wolfram_only,corroborate,False
+0663,F,F,True,A,web_search_only,corroborate,False
+0668,G,G,True,A,web_search_only,corroborate,False
+0674,8x + 7,8x+7,True,A,wolfram_only,corroborate,False
+0675,B,B,True,A,web_search_only,corroborate,False
+0676,"D, A, A","D,A,A",True,A,wolfram_only,corroborate,False
+0678,13960,13960,True,A,wolfram_only,corroborate,False
+0679,11,11.00,True,A,wolfram_only,corroborate,False
+0680,"0.035, 0.0525, 0.0775, A","0.035,0.0525,0.0775,A",True,A,wolfram_only,corroborate,False
+0684,-1.55,-1.55,True,A,wolfram_only,corroborate,False
+0687,24500,24500,True,A,wolfram_only,corroborate,False
+0692,1.24,1.24,True,A,wolfram_only,corroborate,False
+0696,"x+8, -81","-8,-81",False,A,wolfram_only,contradict,False
+0702,-u^4 - 4u^3 + 3u^2 - 6u - 8,-u^4-4u^3+3u^2-6u-8,True,A,wolfram_only,corroborate,False
+0704,"3.652, 1.645, B","3.65,1.645,B",False,A,wolfram_only,contradict,False
+0709,E,E,True,A,web_search_only,corroborate,False
+0710,"1.838, 4.729","x \approx 1.8377,\ 4.7287",,A,wolfram_only,inconclusive,False
+0711,D,D,True,A,web_search_only,corroborate,False
+0713,"-3, not real","-3,\text{not real}",False,A,wolfram_only,contradict,False
+0716,19/33,0.5758,False,A,wolfram_only,contradict,False
+0719,E,E,True,A,web_search_only,corroborate,False
+0723,"-sqrt(3)/2, -sqrt(2)/2","-\frac{\sqrt{3}}{2},-\frac{\sqrt{2}}{2}",True,A,wolfram_only,corroborate,False
+0725,"41.30, 13.28, A","41.302,13.277,A",False,A,wolfram_only,contradict,False
+0732,H,H,True,A,wolfram_only,corroborate,False
+0739,Q/(1-Z),U=\dfrac{Q}{1-Z},,A,wolfram_only,inconclusive,False
+0740,5184/(81cos^2 t - 64 sin^2 t),\dfrac{5184}{81\cos^2 t - 64\sin^2 t},,A,wolfram_only,inconclusive,False
+0748,"222.51, 186.49, 79.43, 66.57, 50.05, 41.95, 31.01, 25.99, 20.79, 3, 11.345, B","222.51,186.49,79.43,66.57,50.05,41.95,31.01,25.99,20.791,3,11.345,B",False,A,wolfram_only,contradict,False
+0754,60x^2 + 65x,60x^2 + 65x,True,A,wolfram_only,corroborate,False
+0762,2x(55x+21),110x^2+42x,,A,wolfram_only,inconclusive,False
+0764,(a+b)(a-b)^4/c^5,\dfrac{(a+b)(a-b)^4}{c^5},True,A,wolfram_only,corroborate,False
+0769,1620,1620,True,A,wolfram_only,corroborate,False
+0771,2,2,True,A,wolfram_only,corroborate,False
+0772,H,H,True,A,web_search_only,corroborate,False
+0774,"24, 28, 33, 39, 42","24,28,33,39,42",True,A,wolfram_only,corroborate,False
+0775,6sin(x-7)-6,6\sin(x-7)-6,,A,wolfram_only,inconclusive,False
+0777,8,8,True,A,wolfram_only,corroborate,False
+0778,I,I,True,A,web_search_only,corroborate,False
+0781,sqrt(15)/8,sqrt(15)/8,True,A,wolfram_only,corroborate,False
+0785,"False, True, False, False","False,True,False,False",True,A,wolfram_only,corroborate,False
+0789,"8, 8, -8, -8","8,8,-8,-8",True,A,wolfram_only,corroborate,False
+0790,-20x^2+45x-25=0,-20x^2+45x-25=0,True,A,wolfram_only,corroborate,False
+0794,"4.47, 4","4.47,4",True,A,wolfram_only,corroborate,False
+0798,"3924, EXTRANEOUS","\frac{245274949}{62500},\text{EXTRANEOUS}",False,A,wolfram_only,contradict,False
+0799,8096,8096,True,A,web_search_only,corroborate,False
+0802,26/7,26/7,True,A,wolfram_only,corroborate,False
+0805,C,F,False,A,web_search_only,contradict,False
+0806,"-0.6551, -0.7556, 0.8670, 1.153, -1.324, -1.527","-\frac{\sqrt{869}}{45},-\frac{34}{45},\frac{\sqrt{869}}{34},\frac{34\sqrt{869}}{869},-\frac{45}{34},-\frac{45\sqrt{869}}{869}",False,A,wolfram_only,contradict,False
+0808,D,D,True,A,web_search_only,corroborate,False
+0812,512/sin^6(2t),\dfrac{512}{\sin^6(2t)},,A,wolfram_only,inconclusive,False
+0818,"5a+6b, ab","6b+5a,ab",True,A,wolfram_only,corroborate,False
+0820,15,15,True,A,wolfram_only,corroborate,False
+0830,44*pi/15,9.215,False,A,wolfram_only,contradict,False
+0836,2025,15,False,A,wolfram_only,contradict,False
+0841,"sin(40+8sqrt(x)), 5+sqrt(sin(8x))","\sin(8(5+\sqrt{x})),5+\sqrt{\sin(8x)}",False,A,wolfram_only,contradict,False
+0842,"65.47, 1.552, 6.052, 1.833, B","65.47, 1.5522, 6.051, 1.833, B",False,A,wolfram_only,contradict,False
+0845,5,5,True,A,wolfram_only,corroborate,False
+0849,4(n+1),4(n+1),True,A,wolfram_only,corroborate,False
+0851,"B, C",C,,A,wolfram_only,inconclusive,False
+0856,H,F,False,A,web_search_only,contradict,False
+0857,"A, 0.8974, 0.9146, A, 0.9015, 0.9221","A, 0.897, 0.915, A, 0.902, 0.922",False,A,wolfram_only,contradict,False
+0862,I,I,True,A,web_search_only,corroborate,False
+0863,1/t^69,\dfrac{1}{t^{69}},True,A,wolfram_only,corroborate,False
+0865,7/x - 8,\dfrac{7}{x} - 8,True,A,wolfram_only,corroborate,False
+0872,"infinity, 0","infinity,0",True,A,wolfram_only,corroborate,False
+0874,J,J,True,A,web_search_only,corroborate,False
+0877,F,F,True,A,web_search_only,corroborate,False
+0878,I,J,False,A,wolfram_only,contradict,False
+0880,"35/37, 35/12","35/37,35/12",True,A,wolfram_only,corroborate,False
+0881,D,D,True,A,wolfram_only,corroborate,False
+0883,656.1,656.1,True,A,wolfram_only,corroborate,False
+0884,g(x)=(x-59)^2+74,(x-59)^2+74,,A,wolfram_only,inconclusive,False
+0895,70*(2/7)^((x-10)/20),g(x)=35\sqrt{14}\left(\frac{2}{7}\right)^{x/20},,A,wolfram_only,inconclusive,False
+0896,"False,True,False,False,True,True,False,True","False,True,False,False,True,True,False,True",True,A,wolfram_only,corroborate,False
+0898,48,48,True,A,wolfram_only,corroborate,False
+0900,"1200, 3600","1200,3600",True,A,wolfram_only,corroborate,False
+0902,"9, 6","3,2",False,A,wolfram_only,contradict,False
+0906,"x=2, x=5","x=2, x=5",True,A,wolfram_only,corroborate,False
+0916,"3*sqrt(2), 6*sqrt(2), 18","3\sqrt{2},6\sqrt{2},18",True,A,wolfram_only,corroborate,False
+0924,"n = 55 + 0.2t, 2010","n=55+0.2t,2010",True,A,wolfram_only,corroborate,False
+0926,-3t^2 - 6t + 2,2-6t-3t^2,True,A,wolfram_only,corroborate,False
+0927,"False,True,True,True,False,False","False,True,True,True,False,False",True,A,wolfram_only,corroborate,False
+0931,"3, -3","3,-3",True,A,wolfram_only,corroborate,False
+0934,D,B,False,A,web_search_only,contradict,False
+0936,275/16,275/16,True,A,wolfram_only,corroborate,False
+0939,E,E,True,A,wolfram_only,corroborate,False
+0940,B,B,True,A,web_search_only,corroborate,False
+0942,36,36,True,A,wolfram_only,corroborate,False

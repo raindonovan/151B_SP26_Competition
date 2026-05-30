@@ -1,0 +1,220 @@
+id,opus_answer,sonnet_answer,gpt4_answer,oss_answer,xhigh_answer,opus_matches_majority,qtype,caphit_forced
+0006,148.02,148.02,148.03,148.02,148.02\text{ ft},True,free_single,False
+0008,420\text{ mL},420,420\text{ mL},420\text{ mL},420\text{ mL},True,free_single,False
+0011,0.9391,0.9391,0.939,0.94\text{ (approximately)},0.939,False,free_single,False
+0016,1000,501,501,501,858,False,free_single,False
+0021,"0.2915t+56.9333,\ 67.43","L(t) = 0.2915t + 56.9333, \approx 67.43","L(t)\approx0.21917t+59.4667,\ 67.4","L(t)=0.2918t+56.93,\;67.4","L(t)\approx56.9333+0.291548t,67.43",False,free_multi,False
+0027,"1/3,2/3,7/6,11/6","1/3, 2/3, 7/6, 11/6","\frac13,\frac23,\frac76,\frac{11}{6}","1/3,2/3,7/6,11/6","1/3,2/3,7/6,11/6",True,free_multi,False
+0037,"Tommy,Chucky,February 7","Tommy, Chucky, February 7","Tommy,Chucky,February\ 7","Tommy,Chucky,February 7","Tommy,Chucky,February 7",True,free_multi,False
+0045,F,F,A,A,F,True,MCQ,False
+0046,"1.645,1.72,1.96,-1.96,1.72,B,A","1.645, 1.72, 1.96, -1.96, 1.72, B, A","1.645,1.7193,1.96,-1.96,1.7193,B,A","1.645,1.718,1.96,-1.96,1.718,B,A","1.645,1.719,1.960,-1.960,1.719,B,A",False,free_multi,False
+0051,25452_8,25452_8,25352_8,25452_{8},25452_8,True,free_single,False
+0058,59,31,7,31,59,False,free_single,False
+0061,"0.76c,0,150,0.69c+10.5,150","0.76c, 0, 150, 0.69c+10.50, 150","0.76c,0,150,0.69c+10.5,150","0.76c,0,150,0.69c+10.5,150","0.76c,0,150,114+0.69(c-150),150",True,free_multi,False
+0066,2353.7 \text{ miles},2354,2353.64,2354\text{ miles},2353.7\text{ miles},False,free_single,False
+0068,"-2.857,\ 6.986,\ -1.082,\ 3.707,\ -3.707,\ A,\ -12.648,\ 6.934","-2.857,\ 6.986,\ -1.082,\ 3.707,\ -3.707,\ A,\ -12.646,\ 6.932","-2.857,3.760,-2.011,3.707,-3.707,A,-8.124,2.410","-2.857,6.985,-1.082,3.707,-3.707,No,-12.652,6.938",,False,free_multi,False
+0069,G,G,"\text{None of the listed options; } \int_0^\pi f(x)\,dx=\frac{\pi^2-2\pi}{2}",G,G,True,MCQ,False
+0077,"D,D,A","D,D,A","C,D,A","C,D,A","C,D,A",False,free_multi,False
+0081,79.41,79.41,79.41,\frac{1747}{22},79.4,True,free_single,False
+0082,"1.323,\ 1.677,\ \text{No}","1.323, 1.677, \text{No, there is not sufficient evidence to support the claim}","1.32,1.677,\text{No}","1.32,1.68,No","1.323,1.677,\text{No}",False,free_multi,False
+0083,355,1420,355,165,355,True,free_single,False
+0093,63,sWith,51,57,63,False,free_single,False
+0095,12,\dfrac{16}{3},6,,\frac{9\sqrt{30}}{4},False,free_single,True
+0112,675,600,1038,384,,False,free_single,True
+0115,"11x-1200,11,109,(y+1200)/11,1958","11x-1200,11,109,(y+1200)/11,1958","11x-1200,11,109,(y+1200)/11,1958","y=11x-1200,11,109,x=(y+1200)/11,1958","y=11x-1200,11,109,x=\frac{y+1200}{11},1958",True,free_multi,False
+0122,"1174.8,55","1174.8,55","1174.8,55","1174.8,55","1174.8\text{ lb},55\text{ days}",True,free_multi,False
+0127,10.70,10.7,10.7,5\ln\left(\dfrac{17}{2}\right),10.7,True,free_single,False
+0132,10.8,10.8,10.8,10.8\text{ miles},10.8,True,free_single,False
+0136,"A,C","A,C","A,C","A,B","A,C",True,free_multi,False
+0138,7236.81,7237,7236.81,7236.81\text{ feet},7236.81,True,free_single,False
+0143,"0,-8,0,6,3,3\sqrt{3}","0,-8,0,6,3,3\sqrt{3}","(0,-8),(0,6),(3,3\sqrt3)","(0,-8),(0,6),(3,3\sqrt3)","(0,-8),(0,6),(3,3\sqrt3)",False,free_multi,False
+0144,C,H,E,C,C,True,MCQ,False
+0145,"x/5280,4.73,25000","x/5280,\ 4.735,\ 25000","\frac{x}{5280},4.73,25000","x/5280,4.7348,25000","\frac{x}{5280},4.73,25000",True,free_multi,False
+0149,6.85,6.85,6.85,6.86,6.85\text{ km},True,free_single,False
+0151,36,36,36,1,36,True,free_single,False
+0155,12.17,12.17,12.17\text{ ft},12.17,12.17\text{ ft},True,free_single,False
+0160,"\dfrac{22+x}{y},Identity Property of Multiplication","\dfrac{22+x}{y},\text{Identity Property of Multiplication}","\frac{22+x}{y},\frac{22+x}{y},\text{Identity Property of Multiplication}","\frac{22+x}{y},\text{Multiplicative Identity Property}","\frac{22+x}{y},\text{Identity Property},\text{Multiplication}",False,free_multi,False
+0161,C = \dfrac{\dbinom{2025}{990} + 45}{90},\dbinom{2024}{1012},\binom{2024}{1013},2^{2023},\frac{\binom{2024}{990}+23}{46},False,free_single,False
+0168,"C,C,B,B","A,C,B,B","A,C,B,B","C,C,B,B","A,C,B,B",False,free_multi,False
+0170,F,F,C,7,F,True,MCQ,False
+0177,E,H,H,E,E,True,MCQ,False
+0192,"1.06,(1.8808,infty),0.1449,A","1.06,(1.88, infty),0.1446,A","0.86,(1.88,\mathrm{infty}),0.1953,A","1.059,(1.88, infty),0.144,Do Not Reject H0","1.0585,(1.8808,\text{ infty}),0.1449,\text{A. Do Not Reject }H_0",False,free_multi,False
+0193,A,"A, C, D","A,\ C,\ D","A,\;C,\;D","A,C,D",False,MCQ,False
+0198,24,5,0,24,24,True,free_single,False
+0199,60,27,51,72,60,False,free_single,False
+0215,752,752,752,752,755,True,free_single,False
+0229,\left\lceil \dfrac{n}{2} \right\rceil,n-1,n-2,"\,k=n-1\,",n-1,False,free_single,False
+0233,"1.96,-1.96,-5.18,B","1.96, -1.96, -5.18, B","1.96,-1.96,-5.18","1.96,-1.96,-5.17,B","1.96,-1.96,-5.18,B",True,free_multi,False
+0238,"-61,61,62","-61,\,61,\,62","-61,61,62","-61,61,62","-61,61,62",True,free_multi,False
+0239,"35,3.45","35, 3.45","35,3.449","35,\ \frac{15}{4}\sqrt{\frac{11}{13}}","35,\frac{15}{4}\sqrt{\frac{11}{13}}",False,free_multi,False
+0242,"241.22,239.5,233,221.71,14.89,6.17\%","241.22, 239.5, 233, 162.89, 12.76, 5.29\%","241.22,239.5,233,205.48,14.33,5.94\%","241.22,239.5,233,221.71,14.90,0.062","241.2222,239.5,233,221.7124,14.8900,6.1727\%",False,free_multi,False
+0250,6,cohomological,126,48,210,False,free_single,True
+0259,B,B,\text{Cannot be determined from the information provided},B,,True,free_single,False
+0262,"850-50t,1480-140t,7","850-50t,\ 1480-140t,\ 7","850-50t,1480-140t,7","850-50t,\;1480-140t,\;7","850-50t,1480-140t,7",True,free_multi,False
+0270,1.2553\text{ ft},1.26,\sqrt{1189}-4\sqrt{69},1.26,1.26\text{ ft},False,free_single,False
+0271,"-4, 0, 4","0, 4, -4","-4,0,4","-4,0,4","-4,0,4",True,free_single,False
+0275,9 \cdot 10^{224},2025 \cdot 10^{2024},\text{No such positive integer }k\text{ exists.},\text{No such positive integer }k\text{ exists},10^{225}-1,False,free_single,False
+0276,"(1373/2744, 0),\text{none}","(1373/2744,\ 0),\ \text{none}","\left(\frac{1373}{2744},0\right),\text{ none}","(1373/2744,0),none","\left(\frac{1373}{2744},0\right),\text{none}",False,free_multi,False
+0287,"212,136","212, 136","212,136","212,136","213,136",True,free_multi,False
+0288,"96(0.9)^n,\ 27.11,\ 44","96(0.9)^n,\ 27.113,\ 44","96(0.9)^n,\ 96(0.9)^{12}\approx 27.124,\ 44","96(0.9)^{n},27.1,44","96(0.9)^n,27.113235502176,44",False,free_multi,False
+0294,"42,7,6","42,7,6","43.2, 7.2, 6","43.2,7.2,6","43.2,7.2,6",False,free_multi,False
+0297,"0.24,(-infty,-1.88)U(1.88,infty),0.8104,C","0.24,(-infty, -1.88)U(1.88, infty),0.8104,C","0.237, (-infty, -1.88)U(1.88, infty), 0.813, C","0.237,(-infty, -1.88)U(1.88, infty),0.812,Do Not Reject H0","0.237,(-infty,-1.881)U(1.881,infty),0.8125,\text{C. Do Not Reject }H_0",False,free_multi,False
+0310,"4k+6,5k-11,5y+4","4k+6,\ 5k-11,\ 5y+4","4k+6,\,5k-11,\,5y+4","4k+6,5k-11,5y+4","4k+6,\ 5k-11,\ 5y+4",False,free_multi,False
+0311,1585,10^{3.2} \approx 1585,1585,1.58\times10^{3},1585,True,free_single,False
+0316,A,I,J,A,A,True,MCQ,False
+0317,H,H,H,D,D,True,MCQ,False
+0319,"False,True,True,False","False,True,True,False","\text{False, True, True, False}","False,True,True,False","False, True, True, False",True,free_multi,False
+0320,"\text{returns to normal},3.73","\text{The oxygen level returns to normal}, 3.73","\text{approaches the normal level }(1),\ 3.73","1,3.73","\text{It approaches the normal oxygen level }1,\ 3.73\text{ weeks}",False,free_multi,False
+0328,"B,D,A,C","B,D,A,C","B,D,A,C","iii,i,iv,ii","B, D, A, C",True,free_multi,False
+0338,"y\text{-axis},\text{origin}","\text{y-axis},\text{origin}","\text{(a) y-axis, (b) origin and line }y=x","y\text{-axis},\ \text{origin},\ y=x,\ y=-x","\text{y-axis symmetry},\ \text{origin symmetry}",False,free_multi,False
+0341,"x+125,(\sqrt{x^3}+5)(\sqrt[3]{x}+5)","x+125,\ x^{11/6}+5x^{3/2}+5x^{1/3}+25","x+125,(\sqrt[3]{x}+5)^2","x+125,(\sqrt[3]{x}+5)^{2}","x+125,\;(\sqrt{x^3}+5)(\sqrt[3]{x}+5)",False,free_multi,False
+0342,"negative,positive,negative,positive,positive","negative, positive, negative, positive, positive","\text{negative, positive, negative, positive, positive}","negative,positive,negative,positive,positive","\text{negative}, \text{positive}, \text{negative}, \text{positive}, \text{positive}",True,free_multi,False
+0347,F,F,I,B,F,True,MCQ,False
+0353,"8, C, ""5,7"", D","8, C, 5 \text{ and } 7, D","8,C,5\text{ and }7,D","8,C,5,7,D","8,\ C,\ 5\text{ and }7,\ D",False,free_multi,False
+0354,"milligrams,grams,tons,kilograms,ounces","mg, g, tonnes, kg, g","milligrams, grams, tons, solar masses, ounces","milligrams,grams,tons,solar masses,ounces","milligrams, grams, tons, kilograms, ounces",False,free_multi,False
+0357,"320,0.0657","320, 0.06569","320,\ 0.0657","320,\frac{5}{64\sqrt[4]{2}}","320\text{ mg}, \frac{5}{64\sqrt[4]{2}}\text{ mg}",False,free_multi,False
+0363,"10000(0.89)^t,4969.82,19.76","10000(0.89)^t,\ 4970,\ 19.7534","10000(0.89)^t,4969.81,19.76","10000*(0.89)^t,4973,19.77","10000(0.89)^t, 4969.81290961, 19.7589435",False,free_multi,False
+0365,C,C,\text{C},C,C,True,free_single,False
+0371,7.41,t = \dfrac{200}{27} \approx 7.41 \text{ years},7.41,7.41,\frac{200}{27},True,free_single,False
+0375,A,A,\text{A. \$3.72},3.72,\$3.72,False,free_single,False
+0386,3,3,4,3,4,True,free_single,False
+0388,"4.11,3.52,2.94,1.17,0","4.1, 3.5, 2.9, 1.2, 0","4.11\%, 3.52\%, 2.94\%, 1.17\%, 0\%","4.11\%,3.52\%,2.94\%,1.17\%,0\%","4.11, 3.52, 2.94, 1.17, 0",False,free_multi,False
+0391,B,C,I,B,B,True,MCQ,False
+0396,"(-inf,5),(-3,5]","(-inf,5),(-3,5]","(-\inf,5),\ (-3,5]","(-inf,5),(-3,5]","(-inf,5),(-3,5]",True,free_multi,False
+0409,"[-2.813, 7.027], [-0.081, 4.295]","(-2.86, 7.08), (-0.10, 4.32)","(-5.0535,11.3001),(-0.5134,6.7599)","[-3.77,7.98],[-0.51,4.72]","(-2.813, 7.027),\,(-0.081, 4.295)",False,free_multi,False
+0410,"45°,4","45°, 4 \text{ seconds}","45^\circ, 4\text{ s}","45^\circ,\;4\text{ s}","45^\circ, 4\text{ seconds}",False,free_multi,False
+0419,2n^2 - 2n,n^2,n^2,"2n\,(n-1)",2n(n-1),False,free_single,False
+0422,(N+1)(2N+1)^2,(N+1)(4N^2+2N+1),(N+1)^2(4N+1),\displaystyle\frac{(2N+1)^3+1}{2},(N+1)^2(4N+1),False,free_single,False
+0423,-0.5,-0.5,-\frac{1}{2},-\frac12^\circ,-\frac{1}{2},True,free_single,False
+0424,"parameter,parameter,statistic,statistic","parameter,parameter,statistic,statistic","\text{parameter},\text{parameter},\text{statistic},\text{statistic}","parameter,parameter,statistic,statistic","parameter, parameter, statistic, statistic",True,free_multi,False
+0429,A,A,\$7.05,A,A.\ \$7.05,True,free_single,False
+0434,C,A,A,A,I,False,MCQ,True
+0435,"0.446,0.537,A","0.446, 0.537, A","0.4457, 0.5368, A","0.446,0.537,A","0.4457, 0.5368, A",True,free_multi,False
+0437,"(76.37, 79.63)","(76.37, 79.63)","(76.37, 79.63)","(76.37, 79.63)","(76.37,\ 79.63)",True,free_single,False
+0442,H,H,J,E,"E,H,J",False,MCQ,False
+0443,G,G,\text{No listed option; mathematically }Q(8)\equiv 413 \pmod{1000},G,G,True,MCQ,False
+0445,H,G,E,129,A,False,MCQ,False
+0446,"1.8717,0.9720","1.872, 0.972","\sqrt{\frac{363}{86}},\ \frac{245}{502}","1.873,0.972","\sqrt{\frac{4519}{1290}}, \frac{156645}{161164}",False,free_multi,False
+0449,"3.585,0.0008,B","3.585, 0.0008, B","3.59, 0.0008, B","3.585,0.0004,B","3.59, 0.0008, B",False,free_multi,False
+0453,1350,1013,1350,2,1350,True,free_single,True
+0457,G,C,C,G,G,True,MCQ,False
+0458,2,5,3,3,12,False,free_single,False
+0459,"\sin^2(A),\cos(A)/\sin(A),\sec^2(A),1/\tan(A),1/\sin(A)","\sin^2(A),\ \dfrac{\cos(A)}{\sin(A)},\ \sec^2(A),\ \dfrac{1}{\tan(A)},\ \dfrac{1}{\sin(A)}","\sin^2(A),\frac{\cos(A)}{\sin(A)},\sec^2(A),\frac{1}{\tan(A)},\frac{1}{\sin(A)}","\sin^{2}(A),\frac{\cos(A)}{\sin(A)},\sec^{2}(A),\frac{1}{\tan(A)},\frac{1}{\sin(A)}","\sin^2(A),\frac{\cos(A)}{\sin(A)},\sec^2(A),\frac{1}{\tan(A)},\frac{1}{\sin(A)}",True,free_multi,False
+0463,E,J,J,D,E,False,MCQ,False
+0468,"0.6714,0.8816","0.671, 0.882","0.6714,0.8816","0.671,0.882","0.6713, 0.8816",False,free_multi,False
+0469,"s^2,\ 0.1575A,\ 0.1575s^2,\ C,\ 81 \text{ sq ft},\ \text{area of square with side 9 ft is 81 sq ft},\ \$14.18,\ \text{cost to stain 90 sq ft is }\$14.18,\ \$19.06,\ \text{cost to stain square deck with 11 ft side is }\$19.06","s^2,\ 0.1575A,\ 0.1575s^2,\ C,\ 81,\ \text{A 9-ft square deck has area 81 sq ft},\ 14.175,\ \text{Cost to stain 90 sq ft is \$14.175},\ 19.0575,\ \text{Cost to stain an 11-ft square deck is \$19.0575}","s^2,0.1575A,0.1575s^2,\text{C},81,\text{square feet},14.175,\text{dollars},19.0575,\text{dollars}","s^2,0.1575 A,0.1575 s^2,C,81,14.175,19.0575","s^2,\ 0.1575A,\ 0.1575s^2,\ \text{C},\ 81,\ \text{square feet},\ 14.175,\ \text{dollars},\ 19.0575,\ \text{dollars}",False,free_multi,False
+0470,"1.96, 2.201, 2.326, 2.718, 2.576, 3.106","1.96, 2.201, 2.326, 2.718, 2.576, 3.106","1.960,2.201,2.326,2.718,2.576,3.106","1.96,2.20,2.33,2.72,2.58,3.11","1.960, 2.201, 2.326, 2.718, 2.576, 3.106",True,free_multi,False
+0475,\dfrac{4}{9},1,\frac{2}{3},\frac13,\frac49,False,free_single,False
+0480,"2.5,2.5","2.5,2.5","2.5,2.5","2.5,2.5","2.5\text{ ft}, 2.5\text{ ft}",True,free_multi,False
+0483,A,A,\text{None of the listed options},A,A,True,MCQ,False
+0488,4050,2051326,4050,4050,4050,True,free_single,False
+0489,385,385,385,385,\$385,True,free_single,False
+0490,"23, BTUs per square foot, 410, square feet","23 \text{ BTUs per square foot}, 410 \text{ square feet}","23,\text{BTUs/ft}^2,410,\text{ft}^2","23,\text{BTU/ft}^2,410,\text{ft}^2","23,\ \text{BTUs per square foot},\ 410,\ \text{square feet}",False,free_multi,False
+0491,"1255.37,1091.05,1419.68,No,Central Limit Theorem","1255.37, 1091.05, 1419.69, No, Central Limit Theorem","1255.37,1091.05,1419.69,\text{No},\text{Central Limit Theorem}","1255.37,1091.05,1419.68,No,Central Limit Theorem","1255.37,\ 1091.05,\ 1419.68,\ \text{No},\ \text{Central Limit Theorem}",False,free_multi,False
+0498,89,,15,,89,False,free_single,False
+0503,"y=-43000x+833000,\$446{,}000,2019","y = -43000x + 833000,\ \$446{,}000,\ 2019","y=-43000x+833000,446000,2019","y=-43000x+833000,446000,2019","y=-43000x+833000,\ \$446000,\ 2019",False,free_multi,False
+0510,3/2,2/3,\frac{3}{2},1,\frac32,True,free_single,False
+0516,"7,-11,4,0","7, -11, 4, 0","7,-11,4,0","7,-11,4,0","7,-11,4,0",True,free_multi,False
+0520,44,44,44,44,\$44,True,free_single,False
+0523,2097150,2097150,2097150,762,2097150,True,free_single,False
+0524,I,I,E,H,I,True,MCQ,False
+0525,H,H,H,,H,True,MCQ,False
+0527,"8,700,x,25000,286","8, 700, x, 25000, 286","8,700,25000,\frac{2000}{7}","8,700,x,25000,2000/7","\frac{8}{700},\frac{x}{25000},\frac{2000}{7}",False,free_multi,False
+0528,"43192,2069","43185, 2069","43164,2069","43196,2070","43190, 2069",False,free_multi,False
+0532,I,I,I,I,A,True,MCQ,False
+0533,0.0564,0.0564,0.056,0.057\text{ (approximately)},0.0563,False,free_single,False
+0539,"4,5","4,5","7,8","4,5","4,5",True,free_multi,False
+0540,"C,C,A","A,B,C","A,B,A","A,B,C","\text{undetermined},\text{undetermined},\text{undetermined}",False,free_multi,False
+0542,"285, 8389.25, 91.59, A","285, 8389.25, 91.59, A","285,\frac{59540}{9},\frac{\sqrt{59540}}{3},A","285,\frac{67114}{9},\frac{\sqrt{67114}}{3},A","285, 8389.25, 91.59, A",True,free_multi,False
+0543,"\$1.43,\$0.54","\$1.43,\$0.54","\$1.43,\$0.54","\$0.70,\$0.54","\$1.43, \$0.54",True,free_multi,False
+0544,A,A,\text{A. It is a power function.},A,\text{A},True,free_single,False
+0550,J,J,"\text{None of the listed options; } \iiint_E z\,dV=\frac{109}{450}",D,J,True,MCQ,False
+0556,C,D,C,\text{C and D},"C, D",True,free_single,False
+0571,E,B,F,E,E,True,MCQ,False
+0574,E,CE,\text{C and E},"C,E","C, E",False,MCQ,False
+0583,6,118,119,119,6,False,free_single,False
+0585,"-0.224,\ 2.262,\ -2.262,\ \text{No}","-0.2235, 2.262, -2.262, \text{No}","-0.224,2.262,-2.262,\text{No},\text{fail to reject }H_0","-0.235,2.228,-2.228","-0.224,\ 2.262,\ -2.262,\ \text{Fail to reject }H_0,\ \text{No; insufficient data to support the claim}",False,free_multi,False
+0587,"BCDEFJ,C,ABC,B","B,C,D,E,F,J \quad|\quad C \quad|\quad A,B,C \quad|\quad A,B","\text{a: B,C,D,E,F,J,\ b: C,\ c: A,B,\ d: A}","B,C,D,E,F,J,C,A,B,C,A,C","\text{B,C,D,E,F,J; C; A,B,C; A,B}",False,free_multi,False
+0595,"A,D,E,G,probability","A, D, E, G, \text{probability}","A,D,E,G,probability","A,D,E,G,probability","A,D,E,G,probability",True,free_multi,False
+0599,1.81,1.8123,1.81,1.81,1.81,True,free_single,False
+0601,"3s-1,2s+1","3s-1,2s+1","3s-1,2s+1,(3s-1)(2s+1)","2s+1,3s-1","3s-1,\ 2s+1",True,free_multi,False
+0608,"B,A,A,1981","B,A,A,1981","B,A,A,1981","NO,YES,A,1967","B, A, A, 1981",True,free_multi,False
+0609,30\sqrt{85}\text{ miles},30\sqrt{85} \approx 276.6 \text{ miles},30\sqrt{85}\text{ miles},30\sqrt{85},30\sqrt{85}\text{ miles},True,free_single,False
+0610,\dfrac{8\pi}{3} + 2\sqrt{3},4\pi,4\pi,4\pi,\frac{8\pi}{3}+2\sqrt3,False,free_single,False
+0617,"left,7,up,6","left, 7, up, 6","left,7,up,6","7,6","\text{left}, 7, \text{up}, 6",True,free_multi,False
+0620,"1.5119,2.2857,2.1673,B","1.5119, 2.2857, 2.167, B","\frac{4}{\sqrt7},\frac{16}{7},2.167,\text{B}","\frac{4}{\sqrt7},\frac{16}{7},2.167,B","1.512,\ 2.286,\ 2.167,\ B",False,free_multi,False
+0622,"3.854,\ 2.567,\ \text{Yes}","3.855, 2.567, \text{Yes}","3.85,2.567,\text{Yes}","3.86,2.57,Yes","3.854,\ 2.567,\ \text{Reject }H_0,\ \text{Yes}",False,free_multi,False
+0623,"T,F,F,F,T,T","True,False,False,False,True,True","T,F,F,F,T,T","True,False,False,False,True,True","False, False, False, False, True, True",False,free_multi,False
+0629,515,515,17247,1526,625,False,free_single,False
+0633,"B,D,8","B,D,8","B,D,8","B,D,8","B,D,8",True,free_multi,False
+0636,100^3/2,9901,990100,10101,333400,False,free_single,True
+0641,"6.4,46.08","6.4,46.08","6.4,46.08,46.08","6.4,46.1","6.4, 46.08",True,free_multi,False
+0643,"False,False,False,True,False","True, False, False, True, False","\text{True},\text{False},\text{False},\text{True},\text{False}","F,F,F,T,F","True, False, False, True, False",False,free_multi,False
+0645,129n-11500,129n-11500,129n-11500,129n-11500,P=129n-11500,True,free_single,False
+0646,A,B,A,A,\text{A--J},True,MCQ,False
+0649,300,300,300,1048575,1048575,True,free_single,False
+0651,"73,114.49","73 \text{ million},\ 73e^{0.45} \approx 114.49 \text{ million}","73,\ 114.49","73,\;73e^{0.45}","73\text{ million},\ 114.49\text{ million}",False,free_multi,False
+0652,505,142,163,112,505,False,free_single,False
+0657,"172.517,187.483,172.873,187.127,0,5.1672,-10.334,10.334","172.517, 187.483, 172.873, 187.127, 0, 5.1672, -10.334, 10.334","180-2\sqrt{14},180+2\sqrt{14},180-2\sqrt{12.7},180+2\sqrt{12.7},0,\sqrt{26.7},-2\sqrt{26.7},2\sqrt{26.7}","180-\frac{\sqrt{1400}}{5},\,180+\frac{\sqrt{1400}}{5},\,180-\frac{\sqrt{1270}}{5},\,180+\frac{\sqrt{1270}}{5},\,0,\,\sqrt{\frac{267}{10}},\,-2\sqrt{\frac{267}{10}},\,2\sqrt{\frac{267}{10}}","180-2\sqrt{14},\,180+2\sqrt{14},\,180-2\sqrt{\frac{127}{10}},\,180+2\sqrt{\frac{127}{10}},\,0,\,\sqrt{\frac{267}{10}},\,-2\sqrt{\frac{267}{10}},\,2\sqrt{\frac{267}{10}}",False,free_multi,False
+0659,29.94,29.94,29.91,29.9\text{ (approximately)},29.94,True,free_single,False
+0660,E,E,C,C,E,True,MCQ,False
+0661,"r=4+h/1000, w=2880/(4+h/1000)^2","r=4+h/1000,\ w=2880/(4+h/1000)^2","r=4+\frac{h}{1000},w=\frac{2880}{\left(4+\frac{h}{1000}\right)^2}","r=4+\frac{h}{1000},\;w=\frac{2880}{\left(4+\frac{h}{1000}\right)^{2}}","r=4+\frac{h}{1000},\ w=\frac{2880}{\left(4+\frac{h}{1000}\right)^2}",True,free_multi,False
+0666,"76e^{0.4268t},42.68","76e^{0.4268t},\ 42.68","76e^{\left(\frac{\ln(419/76)}{4}\right)t},million dollars,42.78","76e^{0.4268t},42.7","76e^{\frac{\ln(419/76)}{4}t},\ 42.678\%",False,free_multi,False
+0673,1080,1166400,437400,2184840,1080,False,free_single,False
+0681,"28900,170,135,205","28900, 170, 135, 205","28900,170,135,205","28900,170,135,205","\$28900.00, \$170.00, \$135.00, \$205.00",True,free_multi,False
+0685,"C, D",C and D,C \text{ and } D,"C,\ D",\text{C and D},False,free_single,False
+0688,8098,2055375,2051325,2053351,1030219,False,free_single,True
+0691,"(19.67, 27.00)","(19.67, 26.99)","(19.67, 26.99)","(19.67,\;27.00)","(19.672,\ 26.995)",False,free_single,False
+0694,"6750+9x, 36x, 27x-6750, 250","C(x)=6750+9x,\ R(x)=36x,\ P(x)=27x-6750,\ 250","C(x)=6750+9x,\ R(x)=36x,\ P(x)=27x-6750,\ 250","6750+9x,36x,27x-6750,250","C(x)=6750+9x,\ R(x)=36x,\ P(x)=27x-6750,\ 250",False,free_multi,False
+0705,"True,False,False,True","True,False,False,True","\text{True,False,False,True}","True,False,False,True","True, False, False, True",True,free_multi,False
+0706,2047.22,2047.28,2034.29,2047.23,2047.22,False,free_single,False
+0708,"4.5,-4.5,-20.25","-\dfrac{9}{2},\dfrac{9}{2},-\dfrac{81}{4}","-\frac{9}{2},\frac{9}{2},-\frac{81}{4}","-4.5,4.5,-20.25","-\frac92,\frac92,-\frac{81}{4}",True,free_multi,False
+0714,A,A,\$84.00,84,\$84.00,False,free_single,False
+0715,"5,7,9,13; 8.5; 6,7,9,8,10,11; 8.5","5, 7, 9, 13,\ 8.5,\ 6, 7, 8, 9, 10, 11,\ 8.5","5,7,9,13,\frac{17}{2},6,7,9,8,10,11,\frac{17}{2}","5,7,9,13,8.5,6,7,8,9,10,11,8.5","5,7,9,13,\frac{17}{2},6,7,8,9,10,11,\frac{17}{2}",False,free_multi,False
+0718,"65761800,\ 72704000,\ \text{median}","65761800, 72704000, \text{median}","66206244.\overline{4},72704000,median","65761800,72704000,median","65761800,\ 72704000,\ \text{median}",False,free_multi,False
+0721,"D,A,A","D,A,A","C,A,A","A,C,A","D, A, A",True,free_multi,False
+0722,2769972523,2051325,2079444975,2051325,2077992225,False,free_single,False
+0724,\sqrt{4+\tfrac{16\sqrt{3}}{9}},\dfrac{3\sqrt{3}}{2},2,2,2(\sqrt5-1),False,free_single,True
+0735,"28, 42.5, 55, -29, 82, 27, A","28, 42.5, 55, -29, 82, 27, A","28,42.5,55,-29,82,27,A","28,42.5,55,-29,82,27,True","28, 42.5, 55, -29, 82, 27, True",True,free_multi,False
+0737,2140,2140,2140,2140,\$2140,True,free_single,False
+0745,"2\sin(C)\cos(C),\ \cos(A)\cos(B)-\sin(A)\sin(B),\ \dfrac{2\tan(C)}{1-\tan^2(C)},\ \sin(A)\cos(B)-\cos(A)\sin(B),\ \sin(A)\cos(B)+\cos(A)\sin(B),\ \cos(A)\cos(B)+\sin(A)\sin(B),\ \dfrac{\sin(x)}{1+\cos(x)},\ \cos^2(C)-\sin^2(C)","2\sin(C)\cos(C),\ -\cos(C),\ \frac{2\tan(C)}{1-\tan^2(C)},\ \sin(A)\cos(B)-\cos(A)\sin(B),\ \sin(C),\ \cos(A)\cos(B)+\sin(A)\sin(B),\ \frac{\sin(x)}{1+\cos(x)},\ \cos^2(C)-\sin^2(C)","2\sin C\cos C,\cos A\cos B-\sin A\sin B,\frac{2\tan C}{1-\tan^2 C},\sin A\cos B-\cos A\sin B,\sin A\cos B+\cos A\sin B,\cos A\cos B+\sin A\sin B,\frac{\sin x}{1+\cos x},\cos^2 C-\sin^2 C","2\sin C\cos C,\;\cos A\cos B-\sin A\sin B,\;\frac{2\tan C}{1-\tan^{2}C},\;\sin A\cos B-\cos A\sin B,\;\sin A\cos B+\cos A\sin B,\;\cos A\cos B+\sin A\sin B,\;\frac{\sin x}{1+\cos x},\;\cos^{2}C-\sin^{2}C","2\sin C\cos C,\ \cos A\cos B-\sin A\sin B,\ \frac{2\tan C}{1-\tan^2 C},\ \sin A\cos B-\cos A\sin B,\ \sin A\cos B+\cos A\sin B,\ \cos A\cos B+\sin A\sin B,\ \frac{\sin x}{1+\cos x},\ \cos^2 C-\sin^2 C",False,free_multi,False
+0749,"5\text{,}5\text{,}5\text{,}5\text{,}5,\ \text{is},\ 14/9\text{,}19/14\text{,}24/19\text{,}29/24\text{,}34/29,\ \text{is not},\ 9+5n,\ (-1)^{n+1}(9+5n)","5{,}5{,}5{,}5{,}5,\ \text{is},\ 14/9{,}19/14{,}24/19{,}29/24{,}34/29,\ \text{is not},\ 5n+9,\ (-1)^{n+1}(5n+9)","5,5,5,5,5,\text{is},14/9,19/14,24/19,29/24,34/29,\text{is not},9+5n,(-1)^{n+1}(9+5n)","5,5,5,5,5, is, 14/9,19/14,24/19,29/24,34/29, is not, 9+5n, (-1)^{n+1}(5n+9)","[5,5,5,5,5],\ is,\ [14/9,19/14,24/19,29/24,34/29],\ is\ not,\ 9+5n,\ (-1)^{n+1}(9+5n)",False,free_multi,False
+0750,"36.98,-0.05129,CE","36.98, \ln(0.95)\approx -0.0513, C{,}E","36.98\%,\ln(0.95),C,E","36.98\%,\ln(0.95),C,E","36.98\%,\ \ln(0.95)\approx -0.0513,\ C\text{ and }E",False,free_multi,False
+0751,21,45,31,31,31,False,free_single,False
+0753,"A,0.246,A,16.56","A, 0.246, A \text{ and } B, 16.6","A,0.246,A,16.6","A,0.25,A,16.7","A,\ 0.246,\ A,\ 16.6",False,free_multi,False
+0756,"109.27\text{ ft},520.16\text{ ft}","109.27 \text{ feet}, 520.16 \text{ feet}","109.27\text{ ft},520.16\text{ ft}","109.27\text{ ft},520.16\text{ ft}","109.27\text{ ft}, 520.16\text{ ft}",True,free_multi,False
+0761,5f(n-1)+4,5f(n-1)+4,f(n)=5f(n-1)+4,5 f(n-1)+4,5f(n-1)+4,True,free_single,False
+0766,"4.3750,7.3333,11.4286","4.3750, 7.3333, 11.4286","4.3750,7.3333,11.4286","4.3750,7.3333,11.4286","4.3750, 7.3333\ldots, 11.428571\ldots",True,free_multi,False
+0776,A,A,17\frac{1}{2},A,A.\ 17\frac{1}{2},True,free_single,False
+0786,I,,C,"31\,877\,493\,753",I,False,MCQ,False
+0787,"16784000,40.4,45.9","148{,}165{,}614, \ 42, \ 47","16446944,\ 41.56,\ 46.92","147368000,41.6,46.9","148178452\ \text{tons},\ 41.55\ \text{years},\ 46.97\ \text{years}",False,free_multi,False
+0792,\dfrac{\ln(V/T)}{\ln(h/g)},t = \dfrac{\ln(V/T)}{\ln(h/g)},\frac{\log(V/T)}{\log(h/g)},\displaystyle \frac{\ln(V/T)}{\ln(h/g)},t=\frac{\ln\left(\frac{V}{T}\right)}{\ln\left(\frac{h}{g}\right)},False,free_single,False
+0793,"1.3532,(1.4758,inf),0.0880,D","1.353,(1.476, inf),0.0880,D","1.35,(1.48,\inf),0.0885,D","1.35,(1.5, inf),0.09,Do Not Reject H0","1.353,\ (1.476,\ \text{inf}),\ 0.088,\ \text{D. Do Not Reject }H_0",False,free_multi,False
+0801,G,G,\text{A},G,E,True,MCQ,False
+0809,371,1540,1130,491,371,False,free_single,True
+0810,E,F,\text{None of the above},E,E,True,MCQ,False
+0811,1.336\times10^{-19},1.336 \times 10^{-19},1.336 \times 10^{-19},1.34\times10^{-19}\ \text{grams},1.336 \times 10^{-19}\text{ grams},True,free_single,False
+0814,"5,4.7256,0.9451,1.2244,30,23.1567,0.7719,35,27.8822,0.7966","5, 4.7256, 0.9451, 1.224, 30, 23.1567, 0.7719, 35, 27.8822","5,3.1636,0.6327,0.9293,30,20.4244,0.6808,35,23.5881","5,4.73,0.95,1.22,30,23.16,0.77,35,27.88","5, 4.7256, 0.9451, 1.2244, 30, 23.1567, 0.7719, 35, 27.8822, 0.7966",False,free_multi,False
+0816,"8.7,10.5333","8.7, 10.53","8.7,10.5333\ldots","8.7,\;\frac{158}{15}","8.7,\ 10.533\ldots",False,free_multi,False
+0822,199.92,200,\frac{700\pi}{11},\dfrac{700\pi}{11}\text{ miles per hour},200,False,free_single,False
+0823,281,230,501,1436,281,False,free_single,False
+0825,A,D,D,D,"\text{A if }a>0,\ \text{D if }a<0",False,MCQ,False
+0828,"99.63,110.37","99.63, 110.37","99.63,\mu,110.37","99.63,110.37","99.6, 110.4",True,free_multi,False
+0834,"\pi/4,3\pi/2,-19\pi/6","\dfrac{\pi}{4},\,\dfrac{3\pi}{2},\,-\dfrac{19\pi}{6}","\frac{\pi}{4},\frac{3\pi}{2},-\frac{19\pi}{6}","\frac{\pi}{4},\frac{3\pi}{2},-\frac{19\pi}{6}","\frac{\pi}{4}, \frac{3\pi}{2}, -\frac{19\pi}{6}",True,free_multi,False
+0838,"(23.66, 28.34)","(23.66, 28.34)","(23.66, 28.34)","(23.66,\;28.34)","(23.66, 28.34)",True,free_single,False
+0843,"2y,10","2y,10","2y,10",(2y)^{10},"2y,10",True,free_multi,False
+0858,"2.300,1.691,Yes","2.300, 1.691, \text{Yes}","2.30,1.691,\text{Yes}","2.30,2.03,Yes","2.300,\ 1.691,\ \text{reject }H_0,\ \text{yes}",False,free_multi,False
+0864,"11.67,25","11.67, 25","\frac{35}{3},25","\frac{35}{3},25","\frac{35}{3}^\circ\text{C},\,25^\circ\text{C}",False,free_multi,False
+0868,E,B,\text{No listed option; correct value is }96,E,E,True,MCQ,False
+0869,"20.5,(x+y+xy)/2","20.5,\ \dfrac{x+y+xy}{2}","\frac{41}{2},\frac{x+y+xy}{2}","41/2,\,(x+y+xy)/2","\frac{41}{2}, \frac{x+y+xy}{2}",True,free_multi,False
+0873,G,A,A,G,G,True,MCQ,False
+0894,"0.008,1.783,2.013,-0.091,0.283,-0.100,0.272,10","0.023, 1.484, 2.013, -0.109, 0.301, -0.118, 0.294, 10","0.027,0.465,2.013,-0.131,0.231,-0.133,0.228,10","0.008,1.781,2.013,-0.091,0.283,-0.101,0.273,10","0.008, 1.783, 2.013, -0.091, 0.283, -0.100, 0.272, 10",False,free_multi,False
+0907,400,152,450,120,372,False,free_single,True
+0908,"100(0.83)^t,39.390","100(0.83)^t,\ 39.390","100(0.83)^t,100(0.83)^5,39.390","100(0.83)^t,39.390","100(0.83)^t,\ 39.390",True,free_multi,False
+0911,I,A,J,I,I,True,MCQ,False
+0912,6011.5,6013,6013,6012\text{ ft (approximately)},6012\text{ feet},False,free_single,False
+0914,"0.1901,0.2474","0.190, 0.247","0.1901,0.2474","0.190,0.247","0.1901,0.2474",True,free_multi,False
+0919,\dfrac{3875}{12012},\dfrac{3875}{12012},\frac{3875}{12012},\frac{3875}{12012},\frac{317}{3528},True,free_single,False
+0925,276,276,266,276,276,True,free_single,False
+0929,"6.086,(-0.72\text{, }3.12),A","6.086, (-0.72, 3.12), A","6.086,(-0.72,3.12),A","6.086,(-0.72,3.12),A","6.086,\ (-0.72,\ 3.12),\ A",False,free_multi,False
+0938,49.88,\$49.88,\$49.88,49.88,\$49.88,False,free_single,False
