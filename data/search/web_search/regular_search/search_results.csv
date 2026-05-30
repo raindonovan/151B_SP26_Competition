@@ -86,7 +86,7 @@ item_id,category,search_status,found_answer,source_url,source_type,confidence,no
 74,FREE,NOT_FOUND,,,,,"Cholesterol med before/after LDL, 10 people, paired test. Generic paired-test drill, no source. NOT_FOUND."
 75,FREE,NOT_FOUND,,,,,"Mike Plan A ($1100+11%) vs Plan B ($1450+...) commission comparison. Generic word problem, no source. NOT_FOUND."
 76,FREE,NOT_FOUND,,,,,"Subtract signed integers 6-10, -6-5, etc. Trivial arithmetic drill, no source. NOT_FOUND."
-77,FREE,NOT_FOUND,,,,,"Children crackers eaten while watching two movie types. Generic study word problem, no source. NOT_FOUND."
+77,FREE,PARTIAL,"(a)A block design (b)D crackers eaten (c)A time shown - named study, multi-slot",https://www.gauthmath.com/solution/1811187913609237/,textbook_stats,80,"Crackers/movies human-development study = FIXED named textbook study (Ref 9-3). gauthmath+montgomeryadvertiser host it with STATED answers: (a) block design (children=blocks); (b) response=number of crackers eaten; (c) lurking=time movie shown. Each part stated verbatim for this exact study, but 3-slot assembly -> PARTIAL not GOLD."
 78,MCQ,NOT_FOUND,,,,,"Plane through (2,2,1),(9,3,6) perp to 2x+6y+6z=9; find 5 sqrt2 d (d=dist origin). Shaalaa VERIFIES the plane = 3x+4y-5z=9, but does NOT state '5 sqrt2 d'; getting the option needs a distance computation. Plane verified as strong origin hint; final answer not stated -> NOT_FOUND per verbatim rule."
 79,FREE,NOT_FOUND,,,,,"Add 3+4/7 as improper fraction. Trivial fraction drill, no source. NOT_FOUND."
 80,MCQ,NOT_FOUND,,,,,"Rationalize 4/(sqrt108+2sqrt12+2sqrt27). Generic radical-simplification drill, no source page with stated option. NOT_FOUND."
