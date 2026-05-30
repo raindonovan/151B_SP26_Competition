@@ -1,0 +1,12 @@
+subtype,n_contributing_teachers,n_compared,n_pattern_4,n_pattern_3+1,n_pattern_2+2,n_pattern_2+1+1,n_pattern_1+1+1+1,n_pattern_3,n_pattern_2+1,n_pattern_1+1+1,n_pattern_2,pairwise_xhigh_sonnet,pairwise_xhigh_oss,pairwise_xhigh_gpt4,pairwise_sonnet_oss,pairwise_sonnet_gpt4,pairwise_oss_gpt4
+FREE_multi,2,6,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0
+FREE_multi,3,35,0,0,0,0,0,11,10,14,0,12,11,5,10,2,3
+FREE_multi,4,211,101,38,8,28,36,0,0,0,0,125,124,128,132,125,130
+FREE_num_single,2,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+FREE_num_single,3,8,0,0,0,0,0,2,3,3,0,0,2,3,0,1,3
+FREE_num_single,4,221,124,39,5,31,22,0,0,0,0,140,145,157,150,156,154
+FREE_other_single,4,96,50,18,4,16,8,0,0,0,0,61,61,71,60,62,63
+MCQ_set,4,36,30,4,1,1,0,0,0,0,0,34,31,34,31,33,32
+MCQ_single,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+MCQ_single,3,17,0,0,0,0,0,7,8,2,0,9,6,2,7,3,2
+MCQ_single,4,293,217,46,9,18,3,0,0,0,0,259,261,240,247,238,231

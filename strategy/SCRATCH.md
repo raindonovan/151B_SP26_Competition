@@ -102,6 +102,61 @@ Wolf shipped **B9-B16** during this session (~144 HIGH/MED Wolfram verifications
 - Aggressive/conservative are NOT canonical labels — Tier 1/2/3/4 from `NORMALIZATION_RULES.md` is the actual axis.
 
 ---
+## STOP TRACE — claude_vscode — 2026-05-30 (teacher analysis v3.1, stale hard-checks)
+
+**Status: BUILD HALTED at acceptance. Nothing written, nothing committed. Stash parked.**
+teacher_analysis.py runs all phases cleanly; self-STOPped at acceptance (no outputs).
+7 of 9 acceptance checks PASS. The 2 fails are STALE pre-audit hard-check numbers, NOT
+code bugs — proven below.
+
+### Acceptance results
+PASS: #1 anchor==316, #2 structural-reported, #2h sonnet (2/2/6 EXACT), #3 no-NaN,
+      #4 phase3 pattern-sums==n_compared, #5 Q3 in [0,10] (=9), #7 SHAs unchanged.
+FAIL: #2h oss   — expected mcq_non_letter=6, ACTUAL=5  (blank=7✓ under=12✓)
+      #2h xhigh — expected mcq_non_letter=5, ACTUAL=3  (blank=3✓ under=5✓)
+
+### Proof the ACTUAL counts (oss=5, xhigh=3) are correct
+- My Phase 1 implements the spec pseudocode verbatim (is_mcq='options' in rec;
+  flag if MCQ and not ^[A-Z](,[A-Z])*$).
+- sonnet hard-check matches EXACTLY (2/2/6) — logic is sound.
+- Full enumeration of every flagged item (no false negatives possible):
+  oss mcq_non_letter (5): 0152='874', 0170='7', 0193='A,\;C,\;D', 0445='129',
+                           0786='31\,877\,493\,753'  — all genuine non-letter MCQ answers.
+  xhigh mcq_non_letter (3): 0574='C, E', 0646='\text{A--J}', 0825='\text{A if }a>0,...'.
+- is_mcq definition is not the cause: 'options'-key set and tracker is_mcq set are
+  IDENTICAL (300 items); both yield oss=5, xhigh=3.
+- Only mcq_non_letter differs from expected; blank and under match for both teachers.
+
+Conclusion: the expected oss=6 / xhigh=5 are stale "ChatGPT pre-audit" estimates that
+don't match the current teacher answers.csv (refreshed since the estimate).
+
+### Other phases (computed fine; reported for context, not yet written)
+- structural: sonnet 2/2/6/15, gpt4 0/10/17/18 (CLEAN, no quarantine), oss 7/5/12/16,
+  xhigh 3/3/5/13.  gpt4_corrupted_block = {} (0 blank, 0 template — refresh 378c77f held).
+- Phase3: N=4 unanimous 522/857. (Spec said ~528/932; 857 is the N=4 stratum size here.)
+- Phase4: Q1=50, Q2=30, Q3=9 (in [0,10] ✓), Q4=29.
+
+### DECISION NEEDED (strategy)
+Correct the two hard-check expected values to current-data actuals:
+  oss   mcq_non_letter 6 -> 5
+  xhigh mcq_non_letter 5 -> 3
+(Or, if you believe 6/5 are right, point me at the is_mcq/answer definition that
+produces them — I could not reproduce 6/5 under any reasonable definition.)
+Once confirmed, the build passes and I write all 11 outputs + commit.
+
+### State
+- scripts/teacher_analysis.py written (uncommitted). 0 output files written (self-STOP).
+- Stash stash@{0} "teacher-analysis parked" still parked. HEAD d31b7dc == origin/main.
+- All 7 source SHAs verified unchanged start->checkpoint.
+
+### RESOLVED (2026-05-30) — hard-checks corrected to actuals, build CLEAN, committed
+Strategy authorized oss mcq_non_letter 6->5, xhigh 5->3 (stale estimates; my enumeration
+is ground truth). Re-run: ALL 9 acceptance PASS. 13 outputs written + teacher_analysis.py
+committed in one commit; pushed; stash popped. gpt4 CLEAN (no quarantine). N=4 unanimous
+522/857. Q1=50 Q2=30 Q3=9 Q4=29. teacher_weighting_policy.PROPOSED.md is ADVISORY ONLY
+(needs human pass before downstream consumption). Source SHAs unchanged start->end.
+
+---
 ## STOP TRACE — claude_vscode — 2026-05-30 (round-3 extraction, Phase B blocked)
 
 **Status: BUILD HALTED at Phase B Wolfram smoke gate. Nothing committed. Stash NOT popped.**

@@ -1,0 +1,25 @@
+id,flags,ans
+0009,multi_slot_under_1_of_2,\frac{L-8x}{6F}
+0027,multi_slot_over_4_of_2,"1/3,2/3,7/6,11/6"
+0068,blank,
+0082,multi_slot_under_3_of_4,"1.323,1.677,\text{No}"
+0110,multi_slot_over_3_of_2,"A,3,9"
+0112,blank,
+0143,multi_slot_under_3_of_6,"(0,-8),(0,6),(3,3\sqrt3)"
+0160,multi_slot_over_3_of_2,"\frac{22+x}{y},\text{Identity Property},\text{Multiplication}"
+0259,blank,
+0409,multi_slot_over_3_of_2,"(-2.813, 7.027),\,(-0.081, 4.295)"
+0487,multi_slot_over_3_of_2,"-21.1,\,-0.9636"
+0516,multi_slot_over_4_of_2,"7,-11,4,0"
+0527,multi_slot_under_3_of_5,"\frac{8}{700},\frac{x}{25000},\frac{2000}{7}"
+0574,mcq_non_letter,"C, E"
+0587,multi_slot_under_1_of_4,"\text{B,C,D,E,F,J; C; A,B,C; A,B}"
+0591,multi_slot_over_15_of_8,"2\cos(1),\,2\sin(1),\,2\sin(2),\,2\cos(2),\,\sqrt{10},\,-\arctan\!\left(\frac{1}{3}\right),\,\sqrt{17},\,\arctan(4)"
+0595,multi_slot_over_5_of_2,"A,D,E,G,probability"
+0633,multi_slot_over_3_of_2,"B,D,8"
+0646,mcq_non_letter,\text{A--J}
+0657,multi_slot_over_15_of_8,"180-2\sqrt{14},\,180+2\sqrt{14},\,180-2\sqrt{\frac{127}{10}},\,180+2\sqrt{\frac{127}{10}},\,0,\,\sqrt{\frac{267}{10}},\,-2\sqrt{\frac{267}{10}},\,2\sqrt{\frac{267}{10}}"
+0708,multi_slot_over_3_of_2,"-\frac92,\frac92,-\frac{81}{4}"
+0715,multi_slot_over_12_of_4,"5,7,9,13,\frac{17}{2},6,7,8,9,10,11,\frac{17}{2}"
+0825,mcq_non_letter,"\text{A if }a>0,\ \text{D if }a<0"
+0864,multi_slot_over_3_of_2,"\frac{35}{3}^\circ\text{C},\,25^\circ\text{C}"
