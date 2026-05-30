@@ -1,0 +1,10 @@
+{
+  "slot": "slot5_format_probe",
+  "local_score_v7": 0.9279,
+  "n_extracted": 943,
+  "n_match": 875,
+  "n_degenerate_flags": 0,
+  "degenerate_flags": [],
+  "match_threshold": 0.85,
+  "ready_for_upload": true
+}

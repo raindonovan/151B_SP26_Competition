@@ -9,5 +9,12 @@
     "3/4_xhigh_mcq": 23
   },
   "agreement_with_anchor": 316,
-  "disagreement_with_raw_inference": 392
+  "disagreement_with_raw_inference": 392,
+  "local_score_v7": 0.9989,
+  "n_extracted": 943,
+  "n_match": 942,
+  "n_degenerate_flags": 0,
+  "degenerate_flags": [],
+  "match_threshold": 0.95,
+  "ready_for_upload": true
 }

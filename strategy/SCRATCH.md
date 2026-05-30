@@ -417,3 +417,12 @@ Applied CHATGPT YELLOW fixes: F1 0383/0570 → ship A (content-uncertain, kept f
 **F4-revised metrics (all met):** render_d≠render_b **69/69** · render_c populated **27** · render_a≠render_b **3** (≥2) · sympy parse-fail 0%.
 **v7_FINAL diff vs 33a39b9:** exactly 4 rows (0383/0570 ship_class; 0405/0586 format_status+ship_class); other 939 byte-identical. Distribution: format_suspect **71** · ship A **869** / B **69** / C 5. All A1-A9 + P1-P6 still PASS.
 **For strategy:** answer sheet ready to LOCK. Probe submission = render_d on the 69 → measures Opus-format vs anchor-format directly.
+
+---
+## claude_vscode signoff — 2026-05-30 — slot4_v2 + format probe + local-grade all 3
+Built `slot4_aggressive/30_05_slot4_aggressive_v2.csv` (943, = v7 submission_answer) and `slot5_format_probe/30_05_slot5_format_probe.csv` (943, = slot4_v2 except 69 probe rows use qwen+`\boxed{render_d_opus}`; differs on exactly the 69). Patched slot3's 4 no-box rows (0093/0112/0652/0809) with the v7 rescue box (Option A) — only those 4 changed, other 939 byte-identical.
+**Local grade vs v7 math_answer (DIRECTIONAL, 28pp Kaggle gap):**
+- slot3_bloc: n_extracted **943/943**, n_match 925, local 0.981, no flags → **READY**
+- slot4_aggressive_v2: 943/943, 942, **0.999**, no flags → **READY**
+- slot5_format_probe: 943/943, 875, **0.928**, no flags → **READY** (probe deliberately disagrees with anchor-math on 67/69 — that's the Opus-vs-anchor A/B signal)
+**All 3 ready_for_upload == True. OK TO UPLOAD.** No degenerate flags. Conservative production = slot4_v2 (full v7 ship-A + preserved-B strings). Format probe tests Opus-form vs anchor-form on the 69.
