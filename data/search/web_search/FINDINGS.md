@@ -95,3 +95,34 @@ NOT_FOUND OEIS items (no clean readable b-file / ambiguous / derived):
   506 (mean of consecutive balanced primes - derived from A006562),
   873 (reversion of x(x-1)^2/(1-x+x^3)). For these the answer would require
   computing, which is forbidden -> honest NOT_FOUND.
+
+## Pass 2026-05-29d (claude_vscode) — named-competition prose items
+
+Targeted the competition-prose (non-OEIS) items. GOLD when a MAJOR competition
+problem is character-identical AND a real solution page states the answer:
+- 285 = 735 : 2025 AIME I Problem 15 (Random Math Wiki states boxed 735).
+- 312 = 171 : USA TST 2025 Problem 1, Ana/Banana (Evan Chen sols: 83+89-1=171).
+- 125 = 8   : Putnam 2016 A1, l-th derivative div by 2016 (Putnam sols: j=8;
+              option [6]=\boxed{8} verbatim).
+
+NEW RULE (Rain, this pass) for IDENTIFIED-BUT-MODIFIED competition problems —
+the source page states the governing FORMULA/RULE but a constant was changed or
+a derived sub-question is asked, so the page does NOT state our exact value:
+  -> search_status = PARTIAL. Record source + the stated rule/formula in
+     found_answer/notes; DO NOT compute/pick the option. Leaves the strong
+     signal for a downstream solver without drifting into computation.
+  - 117 PARTIAL: Putnam 2021 A5 (E(z) div by 2021 IFF z not div by 42 nor 46);
+    asks largest z<2021 -> 2020 indicated but left unpicked.
+  - 286 PARTIAL: Putnam 2023 A1 (|p_x''(0)|=x(x+1)(2x+1)/6); threshold 89688.
+
+FABRICATED-AGGREGATION trap (common in this corpus): a real base problem is
+wrapped in a synthetic 'Sum_{n=a}^{b} S(n)' the original never asks. Even when
+the base problem is found verbatim, the aggregate answer is stated nowhere and
+computing it is forbidden -> NOT_FOUND. Examples: 83 (Turbo rotating-arrows,
+base on Scribd IMO mock; Sum_{n=10}^{20} S(n) fabricated), 120 (k(n,p) +
+Sum_{n=11}^{15} fabricated), 58 (altered FE + contrived sum). Record the base
+problem's origin as a hint only.
+
+Geometry-olympiad prose (95, 308, etc.) and original/synthetic olympiad items
+(161, 198, 229, 235, 248, 275) almost never have a findable stated-answer page
+-> NOT_FOUND. Don't over-invest; one targeted Exa search each is enough.

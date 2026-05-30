@@ -56,3 +56,22 @@
   olympiad - likely NOT_FOUND but worth a quick AoPS/archive check). Generic-drill
   items 81-942 not individually searched (low yield, per established pattern).
 - See FINDINGS.md "Pass 2026-05-29c" for the full b-file workflow + gotchas.
+
+---
+## Signoff — claude_vscode (web_search) — 2026-05-29 (pass d, named comps)
+- Worked the competition-prose items. GOLD count 39 -> 42.
+- New GOLD: 285 (2025 AIME I P15=735), 312 (USA TST 2025 P1=171), 125 (Putnam
+  2016 A1=8, verbatim option). New PARTIAL: 117 (Putnam 2021 A5), 286 (Putnam
+  2023 A1) - source+rule recorded, option left for downstream per Rain's call.
+- NEW STATUS VALUE in use: PARTIAL = identified comp + page states rule/formula
+  but not our exact value (modified constant / derived sub-question). Don't
+  compute the option; record the source+rule.
+- Coverage now 138/943 searched: 42 GOLD, 3 PARTIAL, 93 NOT_FOUND.
+- Remaining unsearched ~805 are dominated by generic textbook drills (very low
+  yield) + a tail of original/geometry olympiad prose (no stated-answer pages)
+  + fabricated-aggregation items (base real, Sum synthetic -> NOT_FOUND).
+- BEST NEXT MOVES if continuing: (1) any leftover items whose text names a major
+  competition (AIME/IMO/USAMO/Putnam/TST/HMMT) - fetch the archive/Evan-Chen
+  sols. (2) re-scan for OEIS phrasing in case any slipped the triage. Generic
+  drills 81-942 remain individually unsearched by design (established ~0 yield).
+- See FINDINGS.md "Pass 2026-05-29d".
