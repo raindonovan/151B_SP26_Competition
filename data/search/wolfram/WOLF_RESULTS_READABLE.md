@@ -395,3 +395,28 @@ Readable companion to `WOLF_RESULTS.csv` (the full machine-readable scorecard fo
 | 0381 | B21 | HIGH | 2040 | sum_{k=1}^{120} 17 = 120*17 = 2040; MATCH (best correct |
 | 0384 | B21 | HIGH | (ln(11/32)-3)/5 | 64e^(5x+3)=22 -> x=(ln(11/32)-3)/5; MATCH (best correct |
 | 0394 | B21 | MED | int x*arctan(2x)^2 dx (by parts, messy) | computable by parts; messy closed form; MCQ best=H |
+| 0398 | B22 | MED | transition/coordinate matrix (computable per options) | basis transition matrix problem; MCQ best=A |
+| 0400 | B22 | MED | determinant distribution of random Bernoulli matrix | det of 2x2 Bernoulli(0.4) matrix distribution; MCQ best |
+| 0402 | B22 | INCONCLUSIVE | INCONCLUSIVE | OEIS fully-multiplicative a(p)=floor((p+1)/2); best=J |
+| 0412 | B22 | MED | (4*sqrt(78)-35)/72 | cos(a)=-sqrt32/9 QII, sin(b)=-5/8 QIII; sum/diff identi |
+| 0414 | B22 | MED | int 3/(4x^2 sqrt(5x^2-2x+1))dx (messy) | computable but messy radical integral; MCQ best=I |
+| 0430 | B22 | HIGH | 1 | lim=ln(1+x^2+x^4)/x^2 ->1; verified; MCQ best=E |
+| 0432 | B22 | MED | 1.202, 2.129, 4.344, 5.271 | trig equation roots in [0,2pi]; best has 4 roots; plaus |
+| 0433 | B22 | HIGH | 4cos^3(t)-3cos(t) | cos(3θ)=4cos^3θ-3cosθ; value verified; MCQ best=C |
+| 0434 | B22 | INCONCLUSIVE | INCONCLUSIVE | OEIS circle-partition into 2s and 3s; best=A |
+| 0440 | B22 | MED | 5/2 | min area convex lattice pentagon = 5/2 (known result);  |
+| 0451 | B22 | MED | 0.1290,0.1935,0.2097,14,0.1774,0.06452 | rel-freq table, total=62; best slots plausible (8/62=0. |
+| 0452 | B22 | MED | 42 | chi-sq independence df=(8-1)(7-1)=42; best=42 plausible |
+| 0459 | B22 | HIGH | sin^2(A), cos(A)/sin(A), sec^2(A), ... | fundamental identities: 1-cos^2=sin^2, cot=cos/sin, etc |
+| 0464 | B22 | MED | parallel-system exponential reliability (computable) | L1,L2 parallel exponential lifetime distribution; MCQ b |
+| 0465 | B22 | HIGH | 8/9 | vol under z=2r inside r=cosθ: (2/3)int cos^3=8/9; verif |
+| 0466 | B22 | HIGH | 26.88 | scale 1/64: 0.42*64=26.88~26.9; MATCH (best=26.9) |
+| 0471 | B22 | INCONCLUSIVE | INCONCLUSIVE | triangle circumcircle power-of-point competition; best= |
+| 0473 | B22 | HIGH | [-7, -3] | u^2+10u+21<=0 -> (u+3)(u+7)<=0 -> [-7,-3]; MATCH (best  |
+| 0477 | B22 | MED | A, C (leading + open-ended to avoid) | questionnaire design MCQ; best="A,C"; conceptual |
+| 0481 | B22 | INCONCLUSIVE | INCONCLUSIVE | 7-digit increasing-order count mod competition; best=A |
+| 0483 | B22 | INCONCLUSIVE | INCONCLUSIVE | max x+3y constraint competition; best=A |
+| 0486 | B22 | INCONCLUSIVE | INCONCLUSIVE | increasing sequences AIME competition; best=B |
+| 0493 | B22 | MED | 14.67, B, 0.06866, 0.1083 | color-blindness proportions/CI 4-slot; best has all 4;  |
+| 0500 | B22 | MED | iterative method convergence/error bound | AX=b iterative error estimate; MCQ best=J; conceptual |
+| 0504 | B22 | HIGH | -3/2, -3*sqrt(3)/2 | polar (3,4pi/3): x=3cos=-3/2, y=3sin=-3sqrt3/2; MATCH ( |

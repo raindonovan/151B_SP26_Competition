@@ -397,11 +397,11 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0395,calculus,free_multi,3,DONE,"\frac{85}{3}, -\frac{95}{4}, -\frac{10}{7}",HIGH,B8,YES,rate-of-change fractions,"In 2005, you have 55 CDs in your collection. In 2008, you have 140 CDs. In 2012,"
 0396,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"When expressing sets, you may write “inf” for infinity. Give the interval notati"
 0397,geometry,free_multi,2,DONE,"256*pi, 2048*pi/3",HIGH,B10,YES,sphere r=8: SA=4pi*64=256pi~804.2; V=4/3*pi*512=2048pi/3~2145; teacher/best agree,"As Aragorn views the Dark Lord in a crystal ball of radius 8, he realizes that: "
-0398,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,"Let $\alpha_{1} \!=\! (-1, 0, \ -2 ), \alpha_{2} \!=\! ( 0, 1, 2 ), \quad\alpha_"
+0398,linear_algebra,MCQ,0,DONE,transition/coordinate matrix (computable per options),MED,B22,YES,basis transition matrix problem; MCQ best=A,"Let $\alpha_{1} \!=\! (-1, 0, \ -2 ), \alpha_{2} \!=\! ( 0, 1, 2 ), \quad\alpha_"
 0399,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"For all real numbers $x$ satisfying $x^4+861184\leq 1865x^2$, what is the maximu"
-0400,statistics,MCQ,0,UNVERIFIED,,,,YES,,"Let the random variables ( X_1 ,X_2 ,X_3 ,X_4 ) be independent and identically d"
+0400,statistics,MCQ,0,DONE,determinant distribution of random Bernoulli matrix,MED,B22,YES,det of 2x2 Bernoulli(0.4) matrix distribution; MCQ best=E,"Let the random variables ( X_1 ,X_2 ,X_3 ,X_4 ) be independent and identically d"
 0401,trigonometry,free_multi,4,DONE,"143.2, 240.0, 52.52, -135.0",HIGH,B17,YES,"rad->deg: 5/2=143.2,4π/3=240,11/12=52.52,-3π/4=-135; best correct",Convert from radians to degrees. (a) $\frac{5}{2}$ [ANS] (b) $\frac{4 \pi}{3}$ [
-0402,number_theory,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is: Fully multiplicative with
+0402,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B22,YES,OEIS fully-multiplicative a(p)=floor((p+1)/2); best=J,We now define an algorithm: The definition of a(n) is: Fully multiplicative with
 0403,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Let $$ X=\langle x_{1}, x_{2} \rangle, \quad Y=\langle y_{1}, y_{2}, y_{3} \rang"
 0404,number_theory,free_single,1,DONE,52,HIGH,B10,YES,"prime outcomes {2,3,5}: (6+10+10)/50*100=52%; teacher/best agree","A standard six-sided die was rolled 50 times, and the outcomes are in the table "
 0405,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B18,YES,OEIS partitions 3 kinds; best=B; not computable,We now define an algorithm: The definition of a(n) is the number of partitions o
@@ -411,9 +411,9 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0409,statistics,free_multi,2,DONE,prediction-interval + mean-CI at x=3,MED,B18,YES,"96.2% PI and CI at x=3; best=""(-0.02462, 4.239)"" likely 1 of 2 intervals","For the data set (-1,-3), (2,2), (5,5), (9,7), (10,10), find interval estimates "
 0410,other,free_multi,2,UNVERIFIED,,,,MAYBE,,A searchlight rotates through one complete revolution every 8 seconds. Determine
 0411,geometry,free_single,1,DONE,392*pi/45,HIGH,B10,YES,"arc: r=8, 196deg -> s=8*196pi/180=392pi/45~27.37; teacher correct; best=39246 completely wrong","In a circle of radius 8, the length of the arc that subtends a central angle of "
-0412,trigonometry,free_single,1,UNVERIFIED,,,,YES,,Given $\cos(\alpha)=-\frac{\sqrt{32}}{9}$ and $\alpha$ is in quadrant II and $\s
+0412,trigonometry,free_single,1,DONE,(4*sqrt(78)-35)/72,MED,B22,YES,"cos(a)=-sqrt32/9 QII, sin(b)=-5/8 QIII; sum/diff identity; best plausible",Given $\cos(\alpha)=-\frac{\sqrt{32}}{9}$ and $\alpha$ is in quadrant II and $\s
 0413,statistics,free_multi,4,DONE,"0.89, (1.83, infty), 0.2008, A",HIGH,B3,YES,paired t 4-slot; watch LaTeX \text{A} wrap risk,A company that sponsors LSAT prep courses would like to be able to claim that th
-0414,calculus,MCQ,0,UNVERIFIED,,,,YES,,Compute the integral: $$ \int \frac{ 3 }{ 4 \cdot x^2 \cdot \sqrt{5 \cdot x^2-2 
+0414,calculus,MCQ,0,DONE,int 3/(4x^2 sqrt(5x^2-2x+1))dx (messy),MED,B22,YES,computable but messy radical integral; MCQ best=I,Compute the integral: $$ \int \frac{ 3 }{ 4 \cdot x^2 \cdot \sqrt{5 \cdot x^2-2 
 0415,geometry,free_multi,4,DONE,"sqrt(A/6), A, (A/6)^(3/2), A",HIGH,B18,YES,"s=f(A)=sqrt(A/6) confirmed; MATCH (best has all 4 slots, slot1 correct)",The formula for the volume of a cube with side length $s$ is $V=s^3$. The formul
 0416,other,free_multi,2,UNVERIFIED,,,,MAYBE,,In simplest form: $\begin{array}{cccc}\hline & \frac {462}{672}=& & [ANS] [ANS] 
 0417,statistics,free_multi,5,DONE,"1.006, 0.9676, 28, 29.10, 1.039",MED,B15,YES,ANOVA table 5-slot; best has all 5; MS/F/df plausible,Complete the ANOVA table for a completely randomized design below. $\begin{array
@@ -429,17 +429,17 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0427,number_theory,MCQ,0,DONE,E,MED,B14,YES,a^2+b^2=c^2+ab Heron competition; teacher+best agree=E,"Let $a$ , $b$ , and $c$ be positive real numbers such that $a^2+b^2=c^2+ab$ and "
 0428,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"Divide the fractions, and reduce your answer. \frac{8}{55}\div\frac{8}{43} The r"
 0429,other,free_single,1,UNVERIFIED,,,,MAYBE,,Libby had a ten-dollar bill. Then she spent \$ 2.95 at a store. How much money d
-0430,calculus,MCQ,0,UNVERIFIED,,,,YES,,Evaluate the limit: $$ \lim_{x \to 0}\left(\frac{ \ln\left(1+x+x^2\right)+\ln\le
+0430,calculus,MCQ,0,DONE,1,HIGH,B22,YES,lim=ln(1+x^2+x^4)/x^2 ->1; verified; MCQ best=E,Evaluate the limit: $$ \lim_{x \to 0}\left(\frac{ \ln\left(1+x+x^2\right)+\ln\le
 0431,other,free_multi,2,UNVERIFIED,,,,MAYBE,,"Using a change of base formula, one can write \frac{\log_{11} (42)} {\log_{11}(5"
-0432,trigonometry,free_single,1,UNVERIFIED,,,,YES,,"Solve the equation in the interval $[0,\, 2 \pi]$. If there is more than one sol"
-0433,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,To express $\operatorname{cos} 3\theta$ in terms of $\operatorname{sin} \theta$ 
-0434,geometry,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is the number of ways of part
+0432,trigonometry,free_single,1,DONE,"1.202, 2.129, 4.344, 5.271",MED,B22,YES,"trig equation roots in [0,2pi]; best has 4 roots; plausible","Solve the equation in the interval $[0,\, 2 \pi]$. If there is more than one sol"
+0433,trigonometry,MCQ,0,DONE,4cos^3(t)-3cos(t),HIGH,B22,YES,cos(3θ)=4cos^3θ-3cosθ; value verified; MCQ best=C,To express $\operatorname{cos} 3\theta$ in terms of $\operatorname{sin} \theta$ 
+0434,geometry,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B22,YES,OEIS circle-partition into 2s and 3s; best=A,We now define an algorithm: The definition of a(n) is the number of ways of part
 0435,statistics,free_multi,3,DONE,"0.4457, 0.5368, A",HIGH,B1,YES,CI bounds + MCQ; under-count missing letter,Construct the $99$ \% confidence interval estimate of the population proportion 
 0436,other,free_single,1,UNVERIFIED,,,,MAYBE,,Find an equivalent fraction to $\frac{5}{8}$: ${\frac{5}{8}=\frac{?}{32}}$ The q
 0437,statistics,free_single,1,DONE,"76.37, 79.63",HIGH,B10,YES,"95% CI: ME=1.96*17/sqrt(420)=1.626; (78-1.63,78+1.63)=(76.37,79.63); best=79.63 is undercount",The number of cars sold annually by used car salespeople is normally distributed
 0438,algebra,free_multi,9,DONE,"5, 9, 1, 10, 2, 0, 10, x^3y^7, 1",HIGH,B11,YES,poly terms/coeff/degree 9-slot; slot9=leading coeff=1; best=1 is severe undercount,Determine the following for: $5x^{4} y^{5}+x^{3} y^{7}+2$ a) Determine the term 
 0439,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Add these two fractions: ${-\frac{10}{13}+\frac{6}{13}}$ When needed, use an imp"
-0440,geometry,MCQ,0,UNVERIFIED,,,,YES,,Given any convex pentagon whose vertices (no three of which are collinear) have 
+0440,geometry,MCQ,0,DONE,5/2,MED,B22,YES,min area convex lattice pentagon = 5/2 (known result); MCQ best=G,Given any convex pentagon whose vertices (no three of which are collinear) have 
 0441,other,free_single,1,UNVERIFIED,,,,MAYBE,,You’ve poured $140$ grams of a $6\%$ (by mass) alcohol solution into a large gla
 0442,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Find the gradient of the function $f(x,y) = \frac{ \sqrt{x} + y^2 }{ x \cdot y }"
 0443,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B11,YES,"Q(8) mod 1000 competition problem; not Wolfram-computable; teacher=G, best=No listed option","Let $P(x) = x^4 + 2x^3 + 3x^2 + 4x + 5$ have roots $r_1, r_2, r_3, r_4$ . Given "
@@ -450,60 +450,60 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0448,algebra,free_multi,2,DONE,"x^3-4x^2-6x+30, x^2-9x+20",MED,B18,YES,rational function reduced form 2-slot; best has both polys; plausible,"Is the function below a rational function? If it is, write it in reduced form as"
 0449,statistics,free_multi,3,DONE,"3.5850, 0.0003460, B",MED,B15,YES,wristwatch t-test 3-slot; best has all 3; plausible,$50$ people are randomly selected and the accuracy of their wristwatches is chec
 0450,geometry,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B11,YES,"equiangular hexagon competition problem; teacher=I, best=A; not Wolfram-computable","There is an equiangular hexagon $OUTDIA$ such that $OU=DI$ , $UT=IA$ , $TD=AO$ a"
-0451,statistics,free_multi,6,UNVERIFIED,,,,YES,,Complete the table below. $\begin{array}{ccc}\hline Books read within the past y
-0452,statistics,free_single,1,UNVERIFIED,,,,YES,,A chi-square independence test is to be conducted to decide whether an associati
+0451,statistics,free_multi,6,DONE,"0.1290,0.1935,0.2097,14,0.1774,0.06452",MED,B22,YES,"rel-freq table, total=62; best slots plausible (8/62=0.129 etc)",Complete the table below. $\begin{array}{ccc}\hline Books read within the past y
+0452,statistics,free_single,1,DONE,42,MED,B22,YES,chi-sq independence df=(8-1)(7-1)=42; best=42 plausible (other var=7 values),A chi-square independence test is to be conducted to decide whether an associati
 0453,other,free_single,0,UNVERIFIED,,,,MAYBE,,"Let $a_1$, $a_2$, $r$, and $s$ be positive integers with $r$ and $s$ odd. The se"
 0454,other,free_multi,2,DONE,"1.5, 0.9375",HIGH,B8,MAYBE,GPA trailing zeros,Consider the report cards for Sam and Samantha given below. $\begin{array}{cccc}
 0455,other,free_single,1,UNVERIFIED,,,,MAYBE,,A movie is 115 minutes long. 60 minutes=1 hour Which statement about the movie i
 0456,statistics,free_multi,3,DONE,"-7.740, A, B",MED,B15,YES,two-pond salinity t-test 3-slot; best has all 3; plausible,Samples were collected from two ponds in the Bahamas to compare salinity values 
 0457,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Find the sum of all positive integers $x$ such that there exists integers $a$ an
 0458,other,free_single,0,UNVERIFIED,,,,MAYBE,,$n$ assistants start simultaneously from one vertex of a cube-shaped planet with
-0459,trigonometry,free_multi,5,UNVERIFIED,,,,YES,,Complete the following fundamental identities: $\begin{array}{cccc}\hline 1. & P
+0459,trigonometry,free_multi,5,DONE,"sin^2(A), cos(A)/sin(A), sec^2(A), ...",HIGH,B22,YES,"fundamental identities: 1-cos^2=sin^2, cot=cos/sin, etc; MATCH (best correct)",Complete the following fundamental identities: $\begin{array}{cccc}\hline 1. & P
 0460,other,free_multi,7,UNVERIFIED,,,,MAYBE,,Indicate whether the following statements are True (T) or False (F). You must ge
 0461,statistics,free_multi,2,DONE,"2, 302",HIGH,B11,YES,range rule std=8/4=2; n=(z97*sigma/ME)^2=ceil((2.17*2/0.25)^2)=302; best=3 is completely wrong,Suppose that the minimum and maximum ages for typical textbooks currently used i
 0462,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Let $f(x)=\sqrt{56-x}$ and $g(x)=x^2-x$. Then the domain of $f\circ g$ is equal 
 0463,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Let $f(x)$ be a monotonically increasing function defined on $[a, b]$. Let $E = "
-0464,statistics,MCQ,0,UNVERIFIED,,,,YES,,Let the system $\mathrm{L}$ be formed by two independent subsystems $L1$ and $L2
-0465,geometry,MCQ,0,UNVERIFIED,,,,YES,,Find the volume of the solid that lies under the double cone $z^2 = 4 \cdot x^2 
-0466,statistics,free_single,1,UNVERIFIED,,,,YES,,A model car has a scale factor of $\frac{1}{64}$ The diameter of a tire on the m
+0464,statistics,MCQ,0,DONE,parallel-system exponential reliability (computable),MED,B22,YES,"L1,L2 parallel exponential lifetime distribution; MCQ best=G",Let the system $\mathrm{L}$ be formed by two independent subsystems $L1$ and $L2
+0465,geometry,MCQ,0,DONE,8/9,HIGH,B22,YES,vol under z=2r inside r=cosθ: (2/3)int cos^3=8/9; verified; MCQ best=H,Find the volume of the solid that lies under the double cone $z^2 = 4 \cdot x^2 
+0466,statistics,free_single,1,DONE,26.88,HIGH,B22,YES,scale 1/64: 0.42*64=26.88~26.9; MATCH (best=26.9),A model car has a scale factor of $\frac{1}{64}$ The diameter of a tire on the m
 0467,algebra,free_multi,4,DONE,"0.02667w+0.03333, 100<=w<=220, 0<=C<=6, 4.967",MED,B15,YES,calories-weight linear 4-slot; best has all 4; slope/domain/range plausible,"According to the 1993 World Almanac, the number of calories a person walking at "
 0468,statistics,free_multi,2,DONE,"?, 0.8816",MED,B15,YES,astronaut orientation stat 2-slot; best=0.8816 undercount 1of2; slot needs source,Astronaunts often report that there are times when they become disoriented as th
 0469,geometry,free_multi,10,DONE,"s^2, 0.1575A, 0.1575s^2, C, 81, square feet, 14.175, dollars, 19.0575, dollars",HIGH,B3,YES,10-slot composition; includes units-as-slots,"The area, $A=f(s)$ square feet, of a square wooden deck is a function of the sid"
 0470,statistics,free_multi,6,DONE,"1.96, 2.201, 2.326, 2.718, 2.576, 3.106",HIGH,B15,YES,"z/t for 95/98/99% CI df=11; best=""2.576,3.106"" undercount 2of6 (only 99% CI)",Suppose you have selected a random sample of $n=12$ measurements from a normal d
-0471,geometry,MCQ,0,UNVERIFIED,,,,YES,,"In triangle $ABC,$ $BC=9.$ Points $P$ and $Q$ are located on $BC$ such that $BP="
+0471,geometry,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B22,YES,triangle circumcircle power-of-point competition; best=C,"In triangle $ABC,$ $BC=9.$ Points $P$ and $Q$ are located on $BC$ such that $BP="
 0472,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"On a certain planet, there are exactly 360 days in a year. Find the number of wa"
-0473,algebra,free_single,1,UNVERIFIED,,,,YES,,Solve the following inequality and write your answer using interval notation. u^
+0473,algebra,free_single,1,DONE,"[-7, -3]",HIGH,B22,YES,"u^2+10u+21<=0 -> (u+3)(u+7)<=0 -> [-7,-3]; MATCH (best correct)",Solve the following inequality and write your answer using interval notation. u^
 0474,other,MCQ,0,UNVERIFIED,,,,MAYBE,,How many bit strings of length eight do not contain six consecutive 0s?
 0475,other,free_single,0,UNVERIFIED,,,,MAYBE,,Two points are selected independently and uniformly at random inside a regular h
 0476,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Compute $\int_{0}^{\frac{ 1 }{ 5 }} e^{-2 \cdot x^2} \, dx$ with accuracy $0.000"
-0477,statistics,free_multi,2,UNVERIFIED,,,,YES,,Which of the following must be avoided in designing a questionnaire? [ANS] A. Le
+0477,statistics,free_multi,2,DONE,"A, C (leading + open-ended to avoid)",MED,B22,YES,"questionnaire design MCQ; best=""A,C""; conceptual",Which of the following must be avoided in designing a questionnaire? [ANS] A. Le
 0478,other,free_single,1,UNVERIFIED,,,,MAYBE,,"List all real values of $x$ such that $f(x)=0$. If there are no such real $x$, t"
 0479,statistics,free_multi,4,DONE,"40.36, 43.64, 40.01, 43.99",HIGH,B1,YES,90%+95% CI 4-slot; model emitted only 95% bounds,Construct both a $90$ \% and a $95$ \% confidence interval for $\beta_1$. $\hat{
 0480,other,free_multi,2,UNVERIFIED,,,,MAYBE,,The height inside a camping tent when you are $d$ feet from the edge of the tent
-0481,number_theory,MCQ,0,UNVERIFIED,,,,YES,,Let $N$ denote the number of $7$ digit positive integers have the property that 
+0481,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B22,YES,7-digit increasing-order count mod competition; best=A,Let $N$ denote the number of $7$ digit positive integers have the property that 
 0482,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Set $x^{4} \!-\! 2 x^{2} \!+\! 3 \!=\! c_{0} \!+\! c_{1} ( x \!+\! 2 ) \!+\! c_{
-0483,number_theory,MCQ,0,UNVERIFIED,,,,YES,,"Let $x,y$ be two non-negative real numbers such that $y\sqrt{2016-x^2} + x\sqrt{"
+0483,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B22,YES,max x+3y constraint competition; best=A,"Let $x,y$ be two non-negative real numbers such that $y\sqrt{2016-x^2} + x\sqrt{"
 0484,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Let $\star (x)$ be the sum of the digits of a positive integer $x$ . $\mathcal{S
 0485,other,free_single,1,UNVERIFIED,,,,MAYBE,,Stan and Hilda can mow the lawn in $45$ min if they work together. If Hilda work
-0486,number_theory,MCQ,0,UNVERIFIED,,,,YES,,The number of increasing sequences of positive integers $a_1 \le a_2 \le a_3 \le
+0486,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B22,YES,increasing sequences AIME competition; best=B,The number of increasing sequences of positive integers $a_1 \le a_2 \le a_3 \le
 0487,statistics,free_multi,2,DONE,"-21.1, -0.9636",HIGH,B3,YES,covariance + correlation 2-slot,A sample of four 35-year-old males is asked about the average number of hours pe
 0488,statistics,free_single,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B11,YES,"Linetown orientation competition: 2025-line acyclic orientation count; teacher=4050, best=2025!; not computable","Having won the elections in Linetown, Turbo the Snail has become mayor, and one "
 0489,other,free_single,1,UNVERIFIED,,,,MAYBE,,Angelina's goal for each five-day work week is to have average total sales of \$
 0490,geometry,free_multi,4,DONE,"23, ...",MED,B16,YES,"cooling 6440/280=23 BTU/sqft const; best=""23.00,410.0"" 4-slot, slot1=23 confirmed","The required cooling capacity, in BTUs, for a room air conditioner is directly p"
 0491,statistics,free_multi,5,DONE,"1255.37, 1091.15, 1419.59, No, Central Limit Theorem",MED,B16,YES,flight-miles CI 5-slot; best has all 5; plausible,Following are the number of miles traveled for 30 randomly selected business fli
 0492,statistics,free_multi,2,DONE,"A, A",HIGH,B11,YES,"R^2=0.9^2=0.81=81% variation explained->A; slot2=A; best slot1=81% (value not letter); teacher=A,A","If the coefficient of correlation is 0.90, the percentage of the variation in th"
-0493,statistics,free_multi,4,UNVERIFIED,,,,YES,,"In a study of red/green color blindness, $900$ men and $2650$ women are randomly"
+0493,statistics,free_multi,4,DONE,"14.67, B, 0.06866, 0.1083",MED,B22,YES,color-blindness proportions/CI 4-slot; best has all 4; plausible,"In a study of red/green color blindness, $900$ men and $2650$ women are randomly"
 0494,other,free_multi,2,UNVERIFIED,,,,MAYBE,,It’s given that $1 \text{gram}=1000 \text{milligrams}$. Do the following unit co
 0495,statistics,free_multi,6,DONE,"100, 100, 200, 0.255, 5.991, B",HIGH,B3,YES,chi-sq GoF 6-slot,A multinomial experiment with $k=3$ cells and $n=400$ produced the data shown be
 0496,trigonometry,free_single,1,DONE,9.594^\circ,HIGH,B8,YES,bearing; degree symbol required,"Directions (or bearings) on Earth are measured in degrees, running from zero to "
 0497,trigonometry,free_multi,4,DONE,"1.111, 88.81, 88.81, 0.9004",HIGH,B16,YES,"tan(48d)=1.111, arctan(48)=88.81, tan^-1(48)=88.81, cot(48d)=0.9004; best correct",(a) Evaluate $\tan t$ if $t=48$ degrees. $\tan t=$ [ANS] (b) Evaluate $\arctan z
 0498,statistics,free_single,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B18,YES,list mean8/median13/mode15/range27 competition; best=BROKEN (leaked reasoning text); needs construction,A list of positive integers satisfies the following properties: (A) The mean of 
 0499,statistics,free_multi,4,DONE,"36.9, 0.3225, 32.25, 2.149",HIGH,B4,YES,exponential growth 4-slot,"In July 2005, the internet was linked by a global network of about 352.7 million"
-0500,statistics,MCQ,0,UNVERIFIED,,,,YES,,"Using the iterative method to solve the system of equations $A X = b$, let $x^*$"
+0500,statistics,MCQ,0,DONE,iterative method convergence/error bound,MED,B22,YES,AX=b iterative error estimate; MCQ best=J; conceptual,"Using the iterative method to solve the system of equations $A X = b$, let $x^*$"
 0501,number_theory,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B11,YES,"GCD subset sum competition; teacher=F, best=INVALID; not Wolfram-computable","Let $S_n$ denote the set $\{1, 2,..., n\}$ , and define $f(S)$ , where $S$ is a "
 0502,trigonometry,free_single,1,DONE,8/11,HIGH,B18,YES,period of 2tan(11pi/8 x-...)=pi/(11pi/8)=8/11; MATCH (best correct),Determine the period for the function $y=2 \tan (\frac{11\pi}{8}x-\frac{9\pi}{10
 0503,statistics,free_multi,3,DONE,"y=-43000x+833000, 446000, 2019",HIGH,B11,YES,"slope=-43000, f(9)=446000, depleted year 2019; best=""446000,2019"" missing equation slot",A company set aside a certain amount of money in the year 2000. The company spen
-0504,algebra,free_multi,2,UNVERIFIED,,,,YES,,Find the rectangular coordinates of the point whose polar coordinates are $\left
+0504,algebra,free_multi,2,DONE,"-3/2, -3*sqrt(3)/2",HIGH,B22,YES,"polar (3,4pi/3): x=3cos=-3/2, y=3sin=-3sqrt3/2; MATCH (best correct)",Find the rectangular coordinates of the point whose polar coordinates are $\left
 0505,algebra,free_multi,6,DONE,"1, 3, 6, -5, -4, 2",HIGH,B11,YES,"Horner at x=-7: 1,3,6,-5,-4,2 confirmed; best=2 is severe undercount (1 of 6 slots)",Suppose $f(x)=-26-39x^1+37x^2+27x^3+10x^4+1x^5$ is factored using Horner's Metho
 0506,statistics,MCQ,0,DONE,J,HIGH,B8,YES,balanced primes MCQ,We now define an algorithm: The definition of a(n) is the arithmetic mean of two
 0507,number_theory,MCQ,0,UNVERIFIED,,,,YES,,The value of $\frac{1}{399!}\left(\sum_{i=2}^{200}\frac{199!(399-i)!}{(200-i)!}-

@@ -1,0 +1,45 @@
+id,subject,type,n_ans_slots,best_answer,teacher_consensus,question
+0398,linear_algebra,MCQ,0,A,A,"Let $\alpha_{1} \!=\! (-1, 0, \ -2 ), \alpha_{2} \!=\! ( 0, 1, 2 ), \quad\alpha_{3} \!=\! ( 1, 2, 5 ), \ \beta_{1} \!=\! (-1,$ 1, 0), $\beta_{2} {=} ( 1, \, 0, \, 1 ), \, \beta_{3} {=} ( 0, \, 1, \, 2 ), \, \, \, \xi{=} ( 0, \, 3, \, 5 )$ be a vector in ${\bf R}^{3}$ , $\sigma$ be a linear transformation of ${\bf R}^{3}$ , and $\sigma( \alpha_{1} ) {=} ( 2, 0, \ -1 ), \sigma( \alpha_{2} ) {=} ( 0, 0, 1 ), \sigma( \alpha_{3} ) {=} ( 0, 1, 2 )$ . So what is the matrix of F with respect to $\{\beta_{1}, \beta_{2}, \beta_{3} \}$?"
+0400,statistics,MCQ,0,E,E,"Let the random variables ( X_1 ,X_2 ,X_3 ,X_4 ) be independent and identically distributed, with ( P{X_i=0}=0.6 ) and ( P{X_i =1}=0.4 ), ( i=1,2,3,4 ). Let the determinant ( X=left|{{begin{array}{*{20}c} {X_1 } &amp; {X_2 } {X_3 } &amp; {X_4 } end{array} }} right| ). Then ( P{X=1} ) is ( )."
+0402,number_theory,MCQ,0,J,J,"We now define an algorithm: The definition of a(n) is: Fully multiplicative with a(p) = floor((p+1)/2) for prime p. Given the input x_list (a series of values): [76, 77, 78, 79, 80, 81, 82, 83, 84, 85], determine the corresponding output sequence y_list."
+0412,trigonometry,free_single,1,\dfrac{4\sqrt{78} - 35}{72},\frac{4\sqrt{78}-35}{72},Given $\cos(\alpha)=-\frac{\sqrt{32}}{9}$ and $\alpha$ is in quadrant II and $\sin(\beta)=-\frac{5}{8}$ and $\beta$ is in quadrant III. Use sum and difference formulas to find the following: Note: You are not allowed to use decimals in your answer. $\cos(\alpha-\beta)=$ [ANS]
+0414,calculus,MCQ,0,I,I,"Compute the integral:
+$$
+\int \frac{ 3 }{ 4 \cdot x^2 \cdot \sqrt{5 \cdot x^2-2 \cdot x+1} } \, dx
+$$"
+0430,calculus,MCQ,0,E,E,"Evaluate the limit:
+$$
+\lim_{x \to 0}\left(\frac{ \ln\left(1+x+x^2\right)+\ln\left(1-x+x^2\right) }{ x^2 }\right)
+$$"
+0432,trigonometry,free_single,1,"1.202, 2.129, 4.344, 5.271",,"Solve the equation in the interval $[0,\, 2 \pi]$. If there is more than one solution write them separated by commas.
+Hint: To solve this problem you will have to use the quadratic formula, inverse trigonometric functions and the symmetry of the unit circle. (\tan x) ^2-1 \tan(x)-4.16=0
+$x=$ [ANS]"
+0433,trigonometry,MCQ,0,C,C,To express $\operatorname{cos} 3\theta$ in terms of $\operatorname{sin} \theta$ and $\operatorname{cos} \theta$ is ().
+0434,geometry,MCQ,0,A,A,"We now define an algorithm: The definition of a(n) is the number of ways of partitioning n points on a circle into subsets only of sizes 2 and 3, where the order of the points within each subset matters, and the circle's rotation symmetry is taken into account. Given the input x_list (a series of values): [26, 27, 28, 29, 30, 31, 32, 33, 34, 35], determine the corresponding output sequence y_list."
+0440,geometry,MCQ,0,G,G,Given any convex pentagon whose vertices (no three of which are collinear) have integer coordinates find the minimum possible areas it can cover?
+0451,statistics,free_multi,6,"0.1290, 0.1935, 0.2097, 14, 0.1774, 0.06452",,Complete the table below. $\begin{array}{ccc}\hline Books read within the past year & Frequency & Relative Frequency \\ \hline none & 8 & [ANS] \\ \hline 0-4 & 12 & [ANS] \\ \hline 5-9 & 13 & [ANS] \\ \hline 10-14 & [ANS] & 0.225806451612903 \\ \hline 15-19 & 11 & [ANS] \\ \hline 20-25 & 4 & [ANS] \\ \hline total & 62 & 1 \\ \hline \end{array}$
+0452,statistics,free_single,1,42,42,A chi-square independence test is to be conducted to decide whether an association exists between two variables of a populations. One variable has 8 possible values and the other variable has 7. What are the degrees of freedom for the $\chi^2$-statistic? answer: [ANS]
+0459,trigonometry,free_multi,5,"\sin^2(A), \dfrac{\cos(A)}{\sin(A)}, \sec^2(A), \dfrac{1}{\tan(A)}, \dfrac{1}{\sin(A)}",,"Complete the following fundamental identities:
+$\begin{array}{cccc}\hline 1. & Pythagorean Identity: 1-\cos^2(A) &=& [ANS] \\\hline 2. & Ratio Identity: \cot(A) &=& [ANS] \\\hline 3. & Pythagorean Identity: 1+\tan^2(A) &=& [ANS] \\\hline 4. & Reciprocal Identity: \cot(A) &=& [ANS] \\\hline 5. & Reciprocal Identity: \csc(A) &=& [ANS] \\\hline\end{array}$"
+0464,statistics,MCQ,0,G,G,"Let the system $\mathrm{L}$ be formed by two independent subsystems $L1$ and $L2$ in parallel, and the lifetime of $L1.L2$ follows the exponential distribution of parameters $\alpha, \beta(\alpha\neq\beta)$, respectively. What is the density function of the lifetime $\mathrm{Z}$ of system L?"
+0465,geometry,MCQ,0,H,H,"Find the volume of the solid that lies under the double cone $z^2 = 4 \cdot x^2 + 4 \cdot y^2$, inside the cylinder $x^2 + y^2 = x$, and above the plane $z = 0$."
+0466,statistics,free_single,1,26.9,26.9,"A model car has a scale factor of $\frac{1}{64}$ The diameter of a tire on the model is 0.42 inches. So, the diameter of the tire on an actual car must be [ANS] inches. Your answer must be correct to one decimal place."
+0471,geometry,MCQ,0,C,C,"In triangle $ABC,$ $BC=9.$ Points $P$ and $Q$ are located on $BC$ such that $BP=PQ=2,$ $QC=5.$ The circumcircle of $APQ$ cuts $AB,AC$ at $D,E$ respectively. If $BD=CE,$ then the ratio $\frac{AB}{AC}$ can be expressed in the form $\frac{m}{n},$ where $m,n$ are relatively prime positive integers. Find $m+n.$"
+0473,algebra,free_single,1,"[-7, -3]","[-7,-3]","Solve the following inequality and write your answer using interval notation.
+u^2+13 u+22 \leq 3 u+1 Answer: [ANS]
+Help:"
+0477,statistics,free_multi,2,"A, C","A,C","Which of the following must be avoided in designing a questionnaire? [ANS] A. Leading questions  B. Demographic questions  C. Open-ended questions  D. Dichotomous questions
+When the population is divided into mutually exclusive sets, and then a simple random sample is drawn from each set, this is called: [ANS] A. Slection Bias  B. Simple random sampling  C. Stratified random sampling  D. Cluster sampling"
+0481,number_theory,MCQ,0,A,A,Let $N$ denote the number of $7$ digit positive integers have the property that their digits are in increasing order. Determine the remainder obtained when $N$ is divided by $1000$ . (Repeated digits are allowed.)
+0483,number_theory,MCQ,0,A,A,"Let $x,y$ be two non-negative real numbers such that $y\sqrt{2016-x^2} + x\sqrt{2016-y^2} = 2016$ . Then, the maximum possible value of $x+3y$ can be expressed as $m\sqrt{n}$ , where $n$ is not divisible by the square of any prime. Find $m + n$ ."
+0486,number_theory,MCQ,0,B,B,The number of increasing sequences of positive integers $a_1 \le a_2 \le a_3 \le \cdots \le a_{10} \le 2007$ such that $a_i-i$ is even for $1\le i \le 10$ can be expressed as ${m \choose n}$ for some positive integers $m > n$ . Compute the remainder when $m$ is divided by $1000$ .
+0493,statistics,free_multi,4,"14.67, B, 0.06866, 0.1083",,"In a study of red/green color blindness, $900$ men and $2650$ women are randomly selected and tested. Among the men, $82$ have red/green color blindness. Among the women, $7$ have red/green color blindness. Test the claim that men have a higher rate of red/green color blindness. The test statistic is [ANS]
+Is there sufficient evidence to support the claim that men have a higher rate of red/green color blindness than women? [ANS] A. No  B. Yes
+Construct the $96$ \% confidence interval for the difference between the color blindness rates of men and women. [ANS] $< (p_1-p_2) <$ [ANS]"
+0500,statistics,MCQ,0,J,J,"Using the iterative method to solve the system of equations $A X = b$, let $x^*$ be the exact solution, $\boldsymbol{X}^{(k)}$ the $k$th approximate solution, and $\varepsilon^{(k)} = X^{(k)} - X^{*}$, called the $k$th residual vector. Suppose
+$$
+A = \left[ \begin{array} {c r} 1 & -\frac{1}{2} \\ \\ -\frac{1}{2} & 1 \\ \end{array} \right], \quad b = \left[ \begin{array} {c r} 1 & 1 \\ -\frac{1}{2} & 1 \\ \end{array} \right]^{\mathrm{T}}.
+$$
+Try to the residual vector $\varepsilon^{(k)}$ for both the Jacobi iteration and the Gauss-Seidel iteration is()."
+0504,algebra,free_multi,2,"-\dfrac{3}{2}, -\dfrac{3\sqrt{3}}{2}","-\frac{3}{2},-\frac{3\sqrt{3}}{2}","Find the rectangular coordinates of the point whose polar coordinates are $\left(\small{3,}\normalsize{\frac{4\pi}{3}}\right)$. If appropriate, leave all radicals in your answer.
+$\small{(x,y)}$: ([ANS], [ANS])"
