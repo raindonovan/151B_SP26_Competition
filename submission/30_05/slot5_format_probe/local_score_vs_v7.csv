@@ -487,7 +487,7 @@ id,expected,actual,match
 0485,135,135,True
 0486,B,B,True
 0487,"-21.1, -0.9636","-21.1,-0.9637",False
-0488,4050,2025!,False
+0488,4050,4050,True
 0489,385,385,True
 0490,"23, 410, 23, 410","23, 410, 23, 410",True
 0491,"1255.37,\ 1091.15,\ 1419.59,\ \text{No},\ \text{Central Limit Theorem}","1255.37,\ 1091.15,\ 1419.59,\ \text{No},\ \text{Central Limit Theorem}",True

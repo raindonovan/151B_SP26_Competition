@@ -426,3 +426,11 @@ Built `slot4_aggressive/30_05_slot4_aggressive_v2.csv` (943, = v7 submission_ans
 - slot4_aggressive_v2: 943/943, 942, **0.999**, no flags → **READY**
 - slot5_format_probe: 943/943, 875, **0.928**, no flags → **READY** (probe deliberately disagrees with anchor-math on 67/69 — that's the Opus-vs-anchor A/B signal)
 **All 3 ready_for_upload == True. OK TO UPLOAD.** No degenerate flags. Conservative production = slot4_v2 (full v7 ship-A + preserved-B strings). Format probe tests Opus-form vs anchor-form on the 69.
+
+---
+## claude_vscode signoff — 2026-05-30 — row 0488 patch (v7 + slot4_v2 + probe)
+0488: math=4050 but v7 submission ended in `\boxed{2025!}` (kept as submission_proven). Appended `\n\n\boxed{4050}` (append_last_box) in v7 (+ format_status→untested, strategy→append_last_box, reason set), slot4_v2, and probe. Only row 0488 changed in each; other 942 byte-identical. Regrade: slot4_v2 n_match 942→**943** (local 1.0), probe 875→**876** (local 0.929); both still READY, slot3 unchanged. Q1-Q7 PASS.
+
+### SYSTEMIC BUG (post-deadline) — gold_equiv false-positive on huge magnitudes
+Root cause is more precise than the work-unit framing. `scripts/build_answer_sheet_v7.py` step 2 DOES check value-equality (`value_equal = gold_equiv(math, base_ans)`), but **`gold_equiv("4050", "2025!")` returns `True`** — sympy parses `2025!`→factorial(2025), `float()` of which overflows to `inf`, and the relative-tolerance check `abs((pred-gold)/gold)` with gold=inf → 0 ≤ tol → spurious match. So 0488 was wrongly judged value-equal-to-base → submission_proven → kept `\boxed{2025!}`.
+**Post-deadline fixes:** (1) guard `gold_equiv` against non-finite / overflow magnitudes (reject if either side is inf/nan or |log10(ratio)|>some bound); (2) one-shot scan for other Opus-5th-teacher (and any) rows where `format_status==submission_proven` AND `last_boxed(base) != math_answer` under a *magnitude-sane* check — surface + patch. The work-unit's "tighten submission_proven to also require base last_boxed value-equal math" is right in spirit; the underlying defect is in gold_equiv, so fix there too.
