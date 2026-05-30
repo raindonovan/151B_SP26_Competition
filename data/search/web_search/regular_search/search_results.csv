@@ -268,7 +268,7 @@ item_id,category,search_status,found_answer,source_url,source_type,confidence,no
 224,FREE,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no specific findable source). Batch-2 bulk NOT_FOUND per established pattern; distinctive items in this range were searched.
 225,FREE,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no specific findable source). Batch-2 bulk NOT_FOUND per established pattern; distinctive items in this range were searched.
 226,FREE,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no specific findable source). Batch-2 bulk NOT_FOUND per established pattern; distinctive items in this range were searched.
-227,FREE,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no specific findable source). Batch-2 bulk NOT_FOUND per established pattern; distinctive items in this range were searched.
+227,MCQ,PARTIAL,"A. 9 (df = pairs-1 = 10-1, canonical rule; value is application)",https://online.stat.psu.edu/stat200/book/export/html/186,textbook_stats,72,"Matched-pairs t-test df = (#pairs)-1, canonical (PSU STAT200 paired means). 10 pairs -> 9 = option A. RULE is stated verbatim but the value 9 is a 1-step application (10-1), not a page stating our answer. PARTIAL: A indicated."
 228,FREE,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no specific findable source). Batch-2 bulk NOT_FOUND per established pattern; distinctive items in this range were searched.
 230,FREE,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no specific findable source). Batch-2 bulk NOT_FOUND per established pattern; distinctive items in this range were searched.
 231,FREE,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no specific findable source). Batch-2 bulk NOT_FOUND per established pattern; distinctive items in this range were searched.
@@ -472,7 +472,7 @@ item_id,category,search_status,found_answer,source_url,source_type,confidence,no
 449,FREE,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no findable stated-answer page). Batch-4 bulk NOT_FOUND; distinctive items in range searched.
 450,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no findable stated-answer page). Batch-4 bulk NOT_FOUND; distinctive items in range searched.
 451,FREE,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no findable stated-answer page). Batch-4 bulk NOT_FOUND; distinctive items in range searched.
-452,FREE,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no findable stated-answer page). Batch-4 bulk NOT_FOUND; distinctive items in range searched.
+452,FREE,PARTIAL,"42 (chi-square indep df=(r-1)(c-1)=7*6, canonical rule; value is application)",https://en.wikipedia.org/wiki/Chi-squared_test,textbook_stats,72,"Chi-square test of independence df = (rows-1)(cols-1), canonical. 8x7 -> (8-1)(7-1)=42. RULE stated verbatim everywhere but 42 is a 1-step computation. PARTIAL: 42 indicated, left as application not page-stated."
 453,FREE,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no findable stated-answer page). Batch-4 bulk NOT_FOUND; distinctive items in range searched.
 454,FREE,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no findable stated-answer page). Batch-4 bulk NOT_FOUND; distinctive items in range searched.
 455,FREE,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no findable stated-answer page). Batch-4 bulk NOT_FOUND; distinctive items in range searched.
@@ -583,7 +583,7 @@ item_id,category,search_status,found_answer,source_url,source_type,confidence,no
 564,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no findable stated-answer page). Batch-5 bulk NOT_FOUND; distinctive items searched.
 565,FREE,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no findable stated-answer page). Batch-5 bulk NOT_FOUND; distinctive items searched.
 566,FREE,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no findable stated-answer page). Batch-5 bulk NOT_FOUND; distinctive items searched.
-567,FREE,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no findable stated-answer page). Batch-5 bulk NOT_FOUND; distinctive items searched.
+567,MCQ,GOLD,"A. The intervals in a frequency distribution may overlap...",https://en.wikipedia.org/wiki/Frequency_distribution,textbook_stats,88,"Which statement is FALSE. Canonical rule (Wikipedia non-overlapping intervals; Pearson mutually exclusive, avoid overlap; Vaia overlap causes confusion) = class intervals must NOT overlap. So option A (intervals may overlap) is the FALSE statement -> answer A. Stated verbatim across authoritative pages. GOLD (was NOT_FOUND)."
 568,FREE,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no findable stated-answer page). Batch-5 bulk NOT_FOUND; distinctive items searched.
 569,MCQ,NOT_FOUND,,,,,"MCQ: order of GL_2(F_p) = (p^2-1)(p^2-p). Known formula; computable, no stated verbatim option for general p. NOT_FOUND."
 571,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable exercise (no findable stated-answer page). Batch-5 bulk NOT_FOUND; distinctive items searched.
@@ -819,7 +819,7 @@ item_id,category,search_status,found_answer,source_url,source_type,confidence,no
 810,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
 811,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
 812,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
-813,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
+813,MCQ,GOLD,"A. A non-normal population with a small sample and an unknown population variance.",https://stats.libretexts.org/Courses/Fresno_City_College/Math_11%3A_Elementary_Statistics/07%3A_Estimation/7.02%3A_Estimation_of_a_Population_Mean/7.2.02%3A_Small_Sample_Estimation_of_a_Population_Mean,textbook_stats,85,"When is a CI impossible. Canonical: small sample needs normality (t-interval) or large n (CLT); non-normal + small + unknown var fails both (LibreTexts small samples only if population is normal; Stats.SE in general impossible). Only option A is the impossible case; B/C permit a CI. Answer A. GOLD (was NOT_FOUND)."
 814,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
 815,MCQ,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
 816,FREE,NOT_FOUND,,,,,Generic textbook drill / computable / near-miss (no findable stated-answer page). Batch-7 bulk NOT_FOUND; distinctive items searched.
