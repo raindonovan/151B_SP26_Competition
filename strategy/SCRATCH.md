@@ -384,3 +384,7 @@ Landed `~/cse151b/DataApp/dataapp_outputs/opus/` (DataApp `f437b9e`) into `data/
 **Config:** claude-opus-4-7, temp 0.6, thinking OFF, max_tok 32768, streaming. Targets = 316 anchor + 219 uncovered (not all 943).
 **Process note (honest):** first push `84e659e` landed only `.gitattributes` — `data/search` is gitignored and a non-`-f` `git add` silently skipped the data. Fixed with `git add -f` (the established convention — anchor_set_FINAL.csv etc. are force-added too); files landed in `153e5a7`. Both commits on origin/main.
 **For strategy:** answers.csv now joinable as a 5th teacher; opus_5th_teacher.csv ready for slot 6-10 overlays; anchor_v2 (78 contradictions) for anchor-revision decisions.
+
+---
+## claude_vscode signoff — 2026-05-30 — rename slot CSVs to unique filenames
+`git mv`'d the four `submission/30_05/slot*/sheet.csv` → `30_05_<slot>.csv` (history preserved). Updated production writer `scripts/build_slots_1_4.py` (write_sheet + sanity print) and `SLOTS_1_4_REPORT.md`; added filename convention to new `submission/30_05/README.md`. Remaining `grep sheet.csv` hits are unrelated (`*_answer_sheet.csv`, `score_inference_vs_sheet.py` name/param) or historical signoff prose in `submission/SCRATCH.md` (left as record). Smoke: slot1 renamed CSV = 943 rows [id,response] ✅. Staged specific paths (not `git add -A`) to avoid sweeping pre-existing foreign uncommitted entries (29_05_rejudge deletion, archive/session_logs untracked).

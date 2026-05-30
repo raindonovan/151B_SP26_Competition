@@ -46,7 +46,7 @@ def apply_override(resp, value, is_mcq):
 def write_sheet(slot_n, responses):
     d = OUT / SLOT_DIRS[slot_n]
     d.mkdir(parents=True, exist_ok=True)
-    path = d / "sheet.csv"
+    path = d / f"30_05_{SLOT_DIRS[slot_n]}.csv"  # <date>_<slot>_<descriptor>.csv (unique filenames)
     with open(path, "w", newline="") as f:
         w = csv.writer(f)
         w.writerow(["id", "response"])
@@ -164,7 +164,9 @@ def main():
     print(f"A6 slot2 anchor-agreement >=310 : {json.load(open(OUT/SLOT_DIRS[2]/'score_summary.json'))['agreement_with_anchor']}")
     print(f"A7 slot3 4/4 overrides (~150-250): {len(s3)}")
     print(f"A8 slot4 3/4-xhigh-mcq (~30-100) : {len(s4)}")
-    print(f"all slots 943 rows: {all((sum(1 for _ in open(OUT/SLOT_DIRS[n]/'sheet.csv'))-1)==943 for n in slots)}")
+    import csv as _csv
+    ok = all(sum(1 for _ in _csv.DictReader(open(OUT / SLOT_DIRS[n] / f"30_05_{SLOT_DIRS[n]}.csv"))) == 943 for n in slots)
+    print(f"all slots 943 rows: {ok}")
 
 
 if __name__ == "__main__":

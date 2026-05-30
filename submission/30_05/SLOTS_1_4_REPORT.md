@@ -36,8 +36,8 @@
 - **A8 slot4 = 23** (estimate was ~30-100): funnel `145 (3+1) → 116 (xhigh in 3-cluster) → 40 (MCQ_single) → 23 (non-anchor)`. All 300 MCQ items are single-slot, so MCQ_single isn't the narrowing factor; xhigh-in-3 ∩ non-anchor is.
 
 ## Predicted ordering (if overlays help)
-Expected slot 4 ≥ slot 3 ≥ slot 2 ≥ slot 1 (each overlay adds higher-confidence corrections). This is a HYPOTHESIS to test on Kaggle — local cannot confirm. Anchor-overlay (slot 2) is the highest-confidence layer (audited gold); 4/4 (slot 3) and 3/4+xhigh (slot 4) are progressively more speculative. Rain uploads each `sheet.csv` to Kaggle.
+Expected slot 4 ≥ slot 3 ≥ slot 2 ≥ slot 1 (each overlay adds higher-confidence corrections). This is a HYPOTHESIS to test on Kaggle — local cannot confirm. Anchor-overlay (slot 2) is the highest-confidence layer (audited gold); 4/4 (slot 3) and 3/4+xhigh (slot 4) are progressively more speculative. Rain uploads each slot's `30_05_<slot>.csv` to Kaggle.
 
 ## Files
 - `scripts/score_inference_vs_sheet.py`, `scripts/build_slots_1_4.py`
-- `submission/30_05/slot{1..4}_*/sheet.csv` (943 rows each) + `score_summary.json` + `local_score_vs_anchor.csv`
+- `submission/30_05/slot{1..4}_*/30_05_slot{N}_<descriptor>.csv` (943 rows each) + `score_summary.json` + `local_score_vs_anchor.csv`
