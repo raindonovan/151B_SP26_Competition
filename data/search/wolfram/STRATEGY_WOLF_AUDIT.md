@@ -35,6 +35,10 @@ i.e. the agent down-weighted exactly the items that are genuinely ambiguous. Tha
 the calibration we want.
 
 ## 4. Discrepancy set (the 58 "sheet is wrong" claims) — VALIDATED + directly actionable
+> **CORRECTED 2026-05-30 (see STRATEGY_SCREEN_NORMALIZE.md):** "100% directly actionable" was
+> wrong. Screen-first shows 44 clean / 5 structurally invalid (0027,0082,0468,0753,0923 — literal
+> `?`/`...` or ambiguous slot boundaries) / 9 convention-sensitive. The structural-validity axis
+> (not just table integrity) is where this audit was thin; the screen-normalize doc supersedes.
 Cross-referenced all 58 ids against type/confidence:
 - **Type: 39 free_multi + 19 free_single = 58 free-form. ZERO MCQ.**
 - **Confidence: 54 HIGH + 4 MED.**
