@@ -1,5 +1,13 @@
 # JUDGER & PUBLIC SET — Recovered Knowledge (canonical)
 
+> **⚠️ UPDATE (2026-05-30): the judger trust story below is INVERTED by the judge update.**
+> This doc says "Kaggle ≈ Hendrycks string-match, local sympy judger untrustworthy (~28pp gap)."
+> That was true vs the OLD strict Kaggle grader. Kaggle now does **value-equality** (~1e-8), so
+> the sympy value-equality engine — now named `Grader` in `grading/grader.py` — is our best
+> Kaggle mirror, and the strict Hendrycks mirror is DEPRECATED. The public-set findings below
+> still hold. Final Kaggle confirmation pending (submission/30_05). Canonical: `from grading.grader import Grader`.
+
+
 **Pipeline phase:** GRADING (local-eval side). See `/PIPELINE.md` and `grading/GRADER_SPEC.md`.
 **Why this doc exists:** the local judger and the public set burned us early; what we learned was
 scattered across `data/FINDINGS.md`, `archive/design/{DESIGN,experiments,V0_V4_SUMMARY}.md`,

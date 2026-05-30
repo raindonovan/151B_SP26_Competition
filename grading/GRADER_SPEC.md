@@ -1,5 +1,14 @@
 # GRADER_SPEC — The Grading Phase (canonical)
 
+> **⚠️ UPDATE (2026-05-30): canonical grader = `grading/grader.py` (`Grader`).** The Kaggle
+> grader switched to **value-equality** (~1e-8: `4.000==4`, `0.6==3/5`) around 05-27. So the
+> value-equality engine (`Grader`) is now our Kaggle mirror — NOT the strict Hendrycks
+> `kaggle_like_is_equiv`, which mirrors the RETIRED strict grader and is DEPRECATED. Any text
+> below describing "Kaggle ≈ Hendrycks string-match, NO sympy" is the PRE-update state; the
+> "judger untrustworthy / 28pp gap" framing was that pre-update gap and is now believed closed.
+> Final Kaggle confirmation pending (submission/30_05 #1-vs-#2). Use `from grading.grader import Grader`.
+
+
 **Pipeline phase:** GRADING (final phase, AFTER post-processing). See `/PIPELINE.md`.
 **Answers org-question #6** (grader format, general + per question) and the new grading-phase question
 *"how does the Kaggle grader grade?"*
