@@ -102,6 +102,42 @@ Wolf shipped **B9-B16** during this session (~144 HIGH/MED Wolfram verifications
 - Aggressive/conservative are NOT canonical labels — Tier 1/2/3/4 from `NORMALIZATION_RULES.md` is the actual axis.
 
 ---
+## Agent signoff — claude_vscode — 2026-05-29 (build_master_gold_v2)
+
+### What I tried
+- Read spec `data/answer_sheet/MASTER_GOLD_V2_SPEC.md` (v2.3 FINAL) in full before coding
+- Traced normalizer behavior for multi-select MCQ (id=193 `A,\ C,\ D` → `D` rescue path)
+- Investigated all search data sources to explain T1→T2 apparent demotions
+
+### What I did
+- Wrote `scripts/build_master_gold_v2.py` (386 lines): normalizer-aware teacher clustering via pairwise `gold_equiv`, deterministic representative selection, CONFLICT items emit no gold
+- Ran full build: 943 items, 2950 signal normalizations — CLEAN (0 exceptions, 0 empty outputs)
+- Ran all §8 verification checks
+- Committed + pushed: `data/answer_sheet/master_gold_v2.csv`, `data/answer_sheet/normalization_diagnostic.csv`, `scripts/build_master_gold_v2.py` (commit 7719968)
+
+### What worked
+- Build ran clean on first try
+- T4: 183→129 (−54 ✓), T1+T2: 509→607 (+98 ✓)
+- 81 T4 promotions: 26→T2, 55→T3 — all confirmed as old_agree=1→3 from normalizer fixing delimiter/whitespace differences
+- Only 2 T2→T4 demotions — both legitimate conflicts exposed by normalization (id=134: 27.63 vs 27.625 precision; id=713: 'DNE' vs 'not real' semantic equivalence)
+
+### What didn't work / surprises
+- **T1 drop 102→56 is NOT a regression**: 74 items that were v1-T1 relied on `search_GOLD` from a prior, more complete `data/search/web_search/search_results.csv` that is NO LONGER in the repo (only 14 GOLD items now vs 245 previously). v2 correctly shows these as T2. This is data-state normalization, not a v2 bug.
+- INVALID_MCQ flag appears on some teacher_oss signals where oss gave a numeric answer for MCQ items (ids 152, 170). These items correctly drop oss from their teacher cluster. No bug — handled correctly.
+- Multi-select MCQ items (like id=193) still suffer the normalizer's last-letter rescue (`A,C,D` → `D`). This is the known normalizer limitation documented in the spec. Item 193 promoted to T2 but with `gold_norm='D'` (wrong). Manual override needed for multi-select MCQ items.
+- UNDERCOUNT flags (1089 of 2950 signals): expected behavior — single-string teacher answers wrapped in `\boxed{}` produce 1 box where N expected for free_multi items. Normalizer handles correctly.
+
+### What's left
+- **DATA GAP**: The 74 T1 items need their search_GOLD restored. The prior `search_results.csv` had 245 GOLD items — only 14 are in the current file. Either the prior agent's data was lost or it's in a different path. Re-running the search agent on those items would restore T1 status.
+- **Multi-select MCQ fix**: 18 INVALID_MCQ hits; items like id=193 with multi-letter answers (`A,C,D`) need special handling — the normalizer's MCQ path doesn't support multi-select.
+- `qwen_cross_config_agree` column: not implemented — needs a separate scan of inference JSONLs (the original spec §5 new column). That's a separate agent task.
+
+### Key discoveries
+- v1 was built against a richer search dataset. The T1→T2 delta measures data loss, not v2 regression. Any future session restoring those 245 GOLD search items can re-run v2 and recover T1 status.
+- The 2 legitimate T2→T4 conflicts (ids 134, 713) were previously masked in v1 because v1 used `free_single` qtype for all non-MCQ (due to MASTER_QUESTIONS.csv zero-padded ID join failure). v2 correctly identifies these as `free_multi` and the slot-by-slot comparison exposes the real disagreement.
+- Conflict count: v1=5, v2=17. The +12 new conflicts are real independent-vs-teacher disagreements that string match couldn't see.
+
+---
 ## Git consolidation signoff — claude_vscode — 2026-05-29
 
 ### What was merged
