@@ -1,0 +1,262 @@
+id,answer,question_type,n_ans_slots,confidence,promotion_class,source_wolfram_answer,source_batch
+0002,"-1.461, 1.645, A",free_multi,3,HIGH,clean_value,"-1.461, 1.645, A",B9
+0004,"-7/sqrt(149), 10/sqrt(149), -7/10",free_multi,3,HIGH,clean_value,"-7/sqrt(149), 10/sqrt(149), -7/10",B9
+0005,"541.3, 63.25, 135.325, 4.2167, 32.09",free_multi,5,HIGH,clean_value,"541.3, 63.25, 135.325, 4.2167, 32.09",B2
+0009,"L-8x, 6F",free_multi,2,HIGH,clean_value,"L-8x, 6F",B1
+0012,"2c + 4p = 70, 11",free_multi,2,HIGH,clean_value,"2c + 4p = 70, 11",B2
+0014,ln(35)/ln(3),free_single,1,HIGH,clean_value,ln(35)/ln(3),B19
+0015,"8, NONE",free_multi,2,HIGH,clean_value,"8, NONE",B16
+0024,1,free_single,1,HIGH,clean_value,1,B9
+0029,38.2,free_single,1,HIGH,clean_value,38.2,B9
+0030,"2944, 664",free_multi,2,HIGH,clean_value,"2944, 664",B13
+0032,"sqrt(101), -1, -7/2",free_multi,3,HIGH,clean_value,"sqrt(101), -1, -7/2",B9
+0035,"down, ln(p)",free_multi,2,HIGH,clean_value,"down, ln(p)",B16
+0041,2112,free_single,0,HIGH,clean_value,2112,WEBSEARCH
+0042,"No, Yes, A",free_multi,3,HIGH,clean_value,"No, Yes, A",B13
+0043,"3/8, 14, 28",free_multi,3,HIGH,clean_value,"3/8, 14, 28",B15
+0044,"True, True, True, False",free_multi,4,HIGH,clean_value,"True, True, True, False",B13
+0048,C (-2 ~ ln(0.135)),free_single,1,HIGH,clean_value,C (-2 ~ ln(0.135)),B19
+0049,0.0143,free_single,1,HIGH,clean_value,0.0143,B9
+0050,"140A+150B=5930, 3A+4B=142",free_multi,2,HIGH,clean_value,"140A+150B=5930, 3A+4B=142",B16
+0054,1,free_single,0,MED,clean_value,1,B14
+0055,5x^4,free_single,1,HIGH,clean_value,5x^4,B18
+0056,"D, D, A",free_multi,3,MED,clean_value,"D, D, A",B17
+0063,"15.84, 18.96",free_multi,2,HIGH,clean_value,"15.84, 18.96",B17
+0067,"7.6(1.09)^t, 13.9, 5.4",free_multi,3,HIGH,clean_value,"7.6(1.09)^t, 13.9, 5.4",B8
+0072,"-0.8352, -0.9187, 0.3950, -2.3258, Quadrant IV",free_multi,5,HIGH,clean_value,"-0.8352, -0.9187, 0.3950, -2.3258, Quadrant IV",B8
+0074,"12.36, 25.04",free_single,1,HIGH,clean_value,"12.36, 25.04",B19
+0075,x > 21250,free_single,1,HIGH,clean_value,x > 21250,B14
+0088,C,MCQ,0,MED,clean_letter,C,B14
+0089,\frac{326}{7},free_single,1,HIGH,clean_value,\frac{326}{7},B8
+0097,"0, 4, 4",free_multi,3,HIGH,clean_value,"0, 4, 4",B17
+0099,"-6, 12, -6",free_multi,3,HIGH,clean_value,"-6, 12, -6",B17
+0100,\frac{180}{7},free_single,1,HIGH,clean_value,\frac{180}{7},B8
+0101,"C, C, A, C",free_multi,4,MED,clean_value,"C, C, A, C",B17
+0103,8\sqrt{2},free_single,1,HIGH,clean_value,8\sqrt{2},B8
+0104,2387*pi/1800,free_single,1,HIGH,clean_value,2387*pi/1800,B9
+0105,"24, 9.114",free_multi,2,HIGH,clean_value,"24, 9.114",B9
+0106,\frac{13}{6},free_single,1,HIGH,clean_value,\frac{13}{6},B8
+0108,"72, 12x",free_multi,2,HIGH,clean_value,"72, 12x",B14
+0110,"3, 9",free_multi,2,MED,clean_value,"3, 9",B14
+0111,8x^3,free_single,1,HIGH,clean_value,8x^3,B14
+0113,(-2x^2-16x-7)/25,free_single,1,HIGH,clean_value,(-2x^2-16x-7)/25,B9
+0117,B,MCQ,0,HIGH,clean_letter,B,WEBSEARCH
+0118,\frac{18}{5},free_single,1,HIGH,clean_value,\frac{18}{5},B8
+0119,"A, C, B, D",free_multi,4,MED,clean_value,"A, C, B, D",B17
+0120,8,free_single,0,HIGH,clean_value,8,WEBSEARCH
+0124,H,MCQ,0,HIGH,clean_letter,H,B8
+0125,G,MCQ,0,HIGH,clean_letter,G,WEBSEARCH
+0128,(y-3)/(y+3),free_single,1,HIGH,clean_value,(y-3)/(y+3),B19
+0129,"5/sin(t), sqrt(7), -3cos(t), 2sqrt(2)tan(t)",free_multi,4,HIGH,clean_value,"5/sin(t), sqrt(7), -3cos(t), 2sqrt(2)tan(t)",B17
+0130,r^42,free_single,1,HIGH,clean_value,r^42,B19
+0131,0.1084,free_single,1,HIGH,clean_value,0.1084,B19
+0133,"-0.8660, 0.5000, -1.732, 2.000",free_multi,4,HIGH,clean_value,"-0.8660, 0.5000, -1.732, 2.000",B17
+0134,"1, 5, 12, 20, 26, 30, 31, 27.63",free_multi,8,HIGH,clean_value,"1, 5, 12, 20, 26, 30, 31, 27.63",B2
+0135,3/5,free_single,1,HIGH,clean_value,3/5,B9
+0152,J,MCQ,0,MED,clean_letter,J,B14
+0154,18.75,free_single,1,HIGH,clean_value,18.75,B9
+0157,"50sin(0.1t)-7cos(0.1t), 46.31",free_multi,2,HIGH,clean_value,"50sin(0.1t)-7cos(0.1t), 46.31",B15
+0158,"A, C",free_multi,2,MED,clean_value,"A, C",B17
+0163,"9, -5, 4",free_multi,3,HIGH,clean_value,"9, -5, 4",B17
+0164,G,MCQ,0,MED,clean_letter,G,B14
+0166,175*(1/4)^n,free_single,1,HIGH,clean_value,175*(1/4)^n,B20
+0167,"Negative, Negative, Positive, Negative",free_multi,4,HIGH,clean_value,"Negative, Negative, Positive, Negative",B8
+0171,20,free_single,1,HIGH,clean_value,20,B9
+0172,1320/3721,free_single,1,HIGH,clean_value,1320/3721,B20
+0176,(p-6k-m)/8,free_single,1,HIGH,clean_value,(p-6k-m)/8,B14
+0179,"29,3,21,1,21,4,19,4,23,3",free_multi,10,HIGH,clean_value,"29,3,21,1,21,4,19,4,23,3",B17
+0180,(1/2)m - 7/2,free_single,1,HIGH,clean_value,(1/2)m - 7/2,B20
+0181,A,MCQ,0,HIGH,clean_letter,A,B8
+0185,"T, F, T, F, T",free_multi,5,MED,clean_value,"T, F, T, F, T",B17
+0187,"0.0281,0.0067,0.3825,0.4512,22,18,2,35,30",free_multi,9,MED,clean_value,"0.0281,0.0067,0.3825,0.4512,22,18,2,35,30",B17
+0189,850a + 1200r = 35000,free_single,1,HIGH,clean_value,850a + 1200r = 35000,B20
+0194,"600.0, July, 1908, 890.0, March, 1907",free_multi,6,MED,clean_value,"600.0, July, 1908, 890.0, March, 1907",B15
+0195,"-2.445, -0.7553",free_single,1,MED,clean_value,"-2.445, -0.7553",B18
+0201,(5t+8)^2,free_single,1,HIGH,clean_value,(5t+8)^2,B9
+0206,4,free_single,1,HIGH,clean_value,4,B20
+0208,"16.2, 720/(49*pi)",free_multi,2,HIGH,clean_value,"16.2, 720/(49*pi)",B9
+0210,"-(49sqrt3+16sqrt33)/15, 2x/(x^2+1)",free_multi,2,HIGH,clean_value,"-(49sqrt3+16sqrt33)/15, 2x/(x^2+1)",B15
+0214,"11, F, 10, T",free_multi,4,HIGH,clean_value,"11, F, 10, T",B10
+0216,60,free_single,1,HIGH,clean_value,60,B20
+0218,\arcsin\!(\frac{7}{10}),free_single,1,HIGH,clean_value,\arcsin\!(\frac{7}{10}),B8
+0224,2643,free_single,1,HIGH,clean_value,2643,B20
+0225,"0.6254, 4, 2.776, A",free_multi,4,MED,clean_value,"0.6254, 4, 2.776, A",B15
+0227,"A, C",free_multi,2,HIGH,clean_value,"A, C",B10
+0230,-2.424,free_single,1,HIGH,clean_value,-2.424,B20
+0231,y=0.5161x+4.742,free_single,1,HIGH,clean_value,y=0.5161x+4.742,B20
+0234,29x^7 + 6x^5,free_single,1,HIGH,clean_value,29x^7 + 6x^5,B20
+0240,"12, 4.9, 3.3",free_multi,3,HIGH,clean_value,"12, 4.9, 3.3",B10
+0243,"0.8925, 0.2150",free_multi,2,HIGH,clean_value,"0.8925, 0.2150",B10
+0247,"\frac{2409}{65}, \frac{2474}{1+\frac{2409}{65}e^{-0.53t}}, 2473.84",free_multi,3,HIGH,clean_value,"\frac{2409}{65}, \frac{2474}{1+\frac{2409}{65}e^{-0.53t}}, 2473.84",B8
+0248,180,free_single,0,MED,clean_value,180,B14
+0253,E,MCQ,0,MED,clean_letter,E,B14
+0264,256*pi*t^2,free_single,1,HIGH,clean_value,256*pi*t^2,B20
+0269,"1.789, 0.3198, B",free_multi,3,HIGH,clean_value,"1.789, 0.3198, B",B10
+0273,"-cos^2(x), 1, 2cos^2(x)",free_multi,3,HIGH,clean_value,"-cos^2(x), 1, 2cos^2(x)",B15
+0274,G,MCQ,0,MED,clean_letter,G,B14
+0277,38800,free_single,1,HIGH,clean_value,38800,B20
+0281,"-0.4618, 0.8870, -0.5206, -2.1655",free_multi,4,HIGH,clean_value,"-0.4618, 0.8870, -0.5206, -2.1655",B15
+0282,"e^2, -e^2",free_single,1,MED,clean_value,"e^2, -e^2",B21
+0285,147,free_single,0,MED,clean_value,147,B14
+0289,"4, 9",free_multi,2,HIGH,clean_value,"4, 9",B17
+0292,-2 - sqrt(3),free_single,1,HIGH,clean_value,-2 - sqrt(3),B21
+0296,"45, 180, 270",free_multi,3,HIGH,clean_value,"45, 180, 270",B10
+0299,"18805.7, no",free_multi,2,HIGH,clean_value,"18805.7, no",B14
+0301,"0.878, 57.2",free_multi,2,HIGH,clean_value,"0.878, 57.2",B10
+0308,12,free_single,0,MED,clean_value,12,B14
+0313,-2*sqrt(14)/15,free_single,1,HIGH,clean_value,-2*sqrt(14)/15,B10
+0315,"B, B, A",free_multi,3,MED,clean_value,"B, B, A",B17
+0322,"40, 25, 1000",free_multi,3,HIGH,clean_value,"40, 25, 1000",B10
+0323,"[10,12), [-8,-6), [10,18), [-16,-6)",free_multi,4,MED,clean_value,"[10,12), [-8,-6), [10,18), [-16,-6)",B17
+0325,"[0,280], [0,14]",free_multi,2,HIGH,clean_value,"[0,280], [0,14]",B15
+0330,"26.76, 2614",free_multi,2,MED,clean_value,"26.76, 2614",B17
+0339,G,MCQ,0,MED,clean_letter,G,B14
+0343,"D, A, C, B, E",free_multi,5,MED,clean_value,"D, A, C, B, E",B17
+0345,"-5/6, 5/6",free_multi,2,HIGH,clean_value,"-5/6, 5/6",B10
+0362,(6x-5y)(6x+5y),free_single,1,HIGH,clean_value,(6x-5y)(6x+5y),B14
+0367,"60.3, 46.3, 53.3",free_multi,3,HIGH,clean_value,"60.3, 46.3, 53.3",B14
+0369,"3/4, 5, 2",free_multi,3,HIGH,clean_value,"3/4, 5, 2",B10
+0370,"-5, 10",free_multi,2,HIGH,clean_value,"-5, 10",B17
+0372,0.51,free_single,1,HIGH,clean_value,0.51,B10
+0373,"51.13, 56.71",free_multi,2,MED,clean_value,"51.13, 56.71",B17
+0378,"0.0001420,0.00002206,0.0001199,0.1554,15.54",free_multi,5,MED,clean_value,"0.0001420,0.00002206,0.0001199,0.1554,15.54",B17
+0381,2040,free_single,1,HIGH,clean_value,2040,B21
+0382,"187/18, 55/9",free_multi,2,HIGH,clean_value,"187/18, 55/9",B10
+0383,80,free_single,0,MED,clean_value,80,B14
+0384,(ln(11/32)-3)/5,free_single,1,HIGH,clean_value,(ln(11/32)-3)/5,B21
+0385,"A, A, A",free_multi,3,HIGH,clean_value,"A, A, A",B3
+0393,"(1/10)arccos((x-6)/16), -10, 22",free_multi,3,HIGH,clean_value,"(1/10)arccos((x-6)/16), -10, 22",B17
+0395,"\frac{85}{3}, -\frac{95}{4}, -\frac{10}{7}",free_multi,3,HIGH,clean_value,"\frac{85}{3}, -\frac{95}{4}, -\frac{10}{7}",B8
+0397,"256*pi, 2048*pi/3",free_multi,2,HIGH,clean_value,"256*pi, 2048*pi/3",B10
+0401,"143.2, 240.0, 52.52, -135.0",free_multi,4,HIGH,clean_value,"143.2, 240.0, 52.52, -135.0",B17
+0404,52,free_single,1,HIGH,clean_value,52,B10
+0408,"5816/9999, 3017/99990, 574/999, 653/9990, 428/999",free_multi,5,MED,clean_value,"5816/9999, 3017/99990, 574/999, 653/9990, 428/999",B17
+0411,392*pi/45,free_single,1,HIGH,clean_value,392*pi/45,B10
+0412,(4*sqrt(78)-35)/72,free_single,1,MED,clean_value,(4*sqrt(78)-35)/72,B22
+0413,"0.89, (1.83, infty), 0.2008, A",free_multi,4,HIGH,clean_value,"0.89, (1.83, infty), 0.2008, A",B3
+0415,"sqrt(A/6), A, (A/6)^(3/2), A",free_multi,4,HIGH,clean_value,"sqrt(A/6), A, (A/6)^(3/2), A",B18
+0417,"1.006, 0.9676, 28, 29.10, 1.039",free_multi,5,MED,clean_value,"1.006, 0.9676, 28, 29.10, 1.039",B15
+0418,"2.958, 1.751, 0.001530, B",free_multi,4,MED,clean_value,"2.958, 1.751, 0.001530, B",B15
+0421,"-9*sqrt(5)/20, -sqrt(5)/20",free_multi,2,HIGH,clean_value,"-9*sqrt(5)/20, -sqrt(5)/20",B10
+0427,E,MCQ,0,MED,clean_letter,E,B14
+0432,"1.202, 2.129, 4.344, 5.271",free_single,1,MED,clean_value,"1.202, 2.129, 4.344, 5.271",B22
+0447,x <= 4,free_single,1,HIGH,clean_value,x <= 4,B11
+0448,"x^3-4x^2-6x+30, x^2-9x+20",free_multi,2,MED,clean_value,"x^3-4x^2-6x+30, x^2-9x+20",B18
+0451,"0.1290,0.1935,0.2097,14,0.1774,0.06452",free_multi,6,MED,clean_value,"0.1290,0.1935,0.2097,14,0.1774,0.06452",B22
+0452,42,free_single,1,MED,clean_value,42,B22
+0454,"1.5, 0.9375",free_multi,2,HIGH,clean_value,"1.5, 0.9375",B8
+0456,"-7.740, A, B",free_multi,3,MED,clean_value,"-7.740, A, B",B15
+0466,26.88,free_single,1,HIGH,clean_value,26.88,B22
+0467,"0.02667w+0.03333, 100<=w<=220, 0<=C<=6, 4.967",free_multi,4,MED,clean_value,"0.02667w+0.03333, 100<=w<=220, 0<=C<=6, 4.967",B15
+0473,"[-7, -3]",free_single,1,HIGH,clean_value,"[-7, -3]",B22
+0479,"40.36, 43.64, 40.01, 43.99",free_multi,4,HIGH,clean_value,"40.36, 43.64, 40.01, 43.99",B1
+0487,"-21.1, -0.9636",free_multi,2,HIGH,clean_value,"-21.1, -0.9636",B3
+0492,"A, A",free_multi,2,HIGH,clean_value,"A, A",B11
+0493,"14.67, B, 0.06866, 0.1083",free_multi,4,MED,clean_value,"14.67, B, 0.06866, 0.1083",B22
+0495,"100, 100, 200, 0.255, 5.991, B",free_multi,6,HIGH,clean_value,"100, 100, 200, 0.255, 5.991, B",B3
+0496,9.594^\circ,free_single,1,HIGH,clean_value,9.594^\circ,B8
+0497,"1.111, 88.81, 88.81, 0.9004",free_multi,4,HIGH,clean_value,"1.111, 88.81, 88.81, 0.9004",B16
+0499,"36.9, 0.3225, 32.25, 2.149",free_multi,4,HIGH,clean_value,"36.9, 0.3225, 32.25, 2.149",B4
+0502,8/11,free_single,1,HIGH,clean_value,8/11,B18
+0504,"-3/2, -3*sqrt(3)/2",free_multi,2,HIGH,clean_value,"-3/2, -3*sqrt(3)/2",B22
+0506,J,MCQ,0,HIGH,clean_letter,J,B8
+0508,n(n-1)/2,free_single,0,HIGH,clean_value,n(n-1)/2,B11
+0512,64p^2 + 64p + 16,free_single,1,HIGH,clean_value,64p^2 + 64p + 16,B23
+0513,"-1.405, 1.405, 1.751",free_multi,3,HIGH,clean_value,"-1.405, 1.405, 1.751",B23
+0519,"426.3, 5090, 98.30",free_multi,3,HIGH,clean_value,"426.3, 5090, 98.30",B4
+0522,"-0.472, 0.472",free_single,1,HIGH,clean_value,"-0.472, 0.472",B18
+0526,128x^4 + 16x^2 + 4,free_single,1,HIGH,clean_value,128x^4 + 16x^2 + 4,B23
+0535,"-4, -6",free_single,1,HIGH,clean_value,"-4, -6",B11
+0545,400000,free_single,1,HIGH,clean_value,400000,B23
+0548,"1.20x = 144, $120.00",free_multi,2,HIGH,clean_value,"1.20x = 144, $120.00",B1
+0551,sqrt(28),free_single,1,HIGH,clean_value,sqrt(28),B23
+0552,"33150, 36300",free_multi,2,MED,clean_value,"33150, 36300",B23
+0555,"1.109, 0.1336",free_multi,2,MED,clean_value,"1.109, 0.1336",B16
+0557,5,free_single,1,HIGH,clean_value,5,B11
+0558,f(x)=(13/2)x-25,free_single,1,HIGH,clean_value,f(x)=(13/2)x-25,B11
+0578,"7.62, 9.00, 95.44",free_multi,3,HIGH,clean_value,"7.62, 9.00, 95.44",B1
+0582,1035,free_single,1,HIGH,clean_value,1035,B24
+0584,"7z, 6w",free_multi,2,HIGH,clean_value,"7z, 6w",B8
+0586,"1.899, -0.9423, 0.1109, -0.02966",free_multi,4,MED,clean_value,"1.899, -0.9423, 0.1109, -0.02966",B16
+0591,"1.081, 1.683, 1.819, -0.832, 3.162, -0.322, 4.123, 1.326",free_multi,8,HIGH,clean_value,"1.081, 1.683, 1.819, -0.832, 3.162, -0.322, 4.123, 1.326",B4
+0593,19.4,free_single,1,HIGH,clean_value,19.4,B11
+0602,"-70.8, 0.719, 53.6",free_multi,3,MED,clean_value,"-70.8, 0.719, 53.6",B16
+0607,"0, 0, 4, 0, 0, 14, 6, 6, 20, -6, -6, 0, -4, -4, 10, -4, -4, -12",free_multi,18,HIGH,clean_value,"0, 0, 4, 0, 0, 14, 6, 6, 20, -6, -6, 0, -4, -4, 10, -4, -4, -12",B11
+0611,1.356,free_single,1,HIGH,clean_value,1.356,B18
+0615,"14, 9",free_multi,2,MED,clean_value,"14, 9",B24
+0619,"-3.226, 0.001230, A",free_multi,3,MED,clean_value,"-3.226, 0.001230, A",B16
+0625,5(x+2)(x+3),free_single,1,HIGH,clean_value,5(x+2)(x+3),B24
+0627,1090,free_single,1,HIGH,clean_value,1090,B24
+0635,"37.60, 0.7460, -25.40",free_multi,3,HIGH,clean_value,"37.60, 0.7460, -25.40",B24
+0638,"0.15, (-infty, -1.75)U(1.75, infty), 0.88, D",free_multi,4,HIGH,clean_value,"0.15, (-infty, -1.75)U(1.75, infty), 0.88, D",B5
+0639,3.325,free_single,1,HIGH,clean_value,3.325,B24
+0642,"6, pi/3, 13",free_multi,3,HIGH,clean_value,"6, pi/3, 13",B12
+0648,"11.51 + 0.83x, 30.60",free_multi,2,HIGH,clean_value,"11.51 + 0.83x, 30.60",B24
+0653,"(600-45t)/7, 85.71, 47.14",free_multi,3,MED,clean_value,"(600-45t)/7, 85.71, 47.14",B24
+0654,"sqrt(19), 2, 2, 2",free_multi,4,HIGH,clean_value,"sqrt(19), 2, 2, 2",B24
+0655,S = 0.85*L,free_single,1,HIGH,clean_value,S = 0.85*L,B12
+0656,6x^2 - 23x + 15,free_single,1,HIGH,clean_value,6x^2 - 23x + 15,B24
+0674,8x + 7,free_single,1,HIGH,clean_value,8x + 7,B25
+0676,"D, A, A",free_multi,3,MED,clean_value,"D, A, A",B12
+0678,13960,free_single,1,HIGH,clean_value,13960,B25
+0679,11,free_single,1,HIGH,clean_value,11,B12
+0680,"0.035, 0.0525, 0.0775, A",free_multi,4,MED,clean_value,"0.035, 0.0525, 0.0775, A",B16
+0684,-1.55,free_single,1,HIGH,clean_value,-1.55,B12
+0687,24500,free_single,1,MED,clean_value,24500,B25
+0692,1.24,free_single,1,HIGH,clean_value,1.24,B25
+0696,"x+8, -81",free_multi,2,HIGH,clean_value,"x+8, -81",B12
+0702,-u^4 - 4u^3 + 3u^2 - 6u - 8,free_single,1,HIGH,clean_value,-u^4 - 4u^3 + 3u^2 - 6u - 8,B25
+0704,"3.652, 1.645, B",free_multi,3,HIGH,clean_value,"3.652, 1.645, B",B12
+0710,"1.838, 4.729",free_single,1,HIGH,clean_value,"1.838, 4.729",B25
+0713,"-3, not real",free_multi,2,HIGH,clean_value,"-3, not real",B16
+0716,19/33,free_single,1,HIGH,clean_value,19/33,B12
+0723,"-sqrt(3)/2, -sqrt(2)/2",free_multi,2,HIGH,clean_value,"-sqrt(3)/2, -sqrt(2)/2",B12
+0725,"41.30, 13.28, A",free_multi,3,MED,clean_value,"41.30, 13.28, A",B16
+0739,Q/(1-Z),free_single,1,HIGH,clean_value,Q/(1-Z),B25
+0748,"222.51, 186.49, 79.43, 66.57, 50.05, 41.95, 31.01, 25.99, 20.79, 3, 11.345, B",free_multi,12,HIGH,clean_value,"222.51, 186.49, 79.43, 66.57, 50.05, 41.95, 31.01, 25.99, 20.79, 3, 11.345, B",B5
+0754,60x^2 + 65x,free_single,1,MED,clean_value,60x^2 + 65x,B26
+0762,2x(55x+21),free_single,1,HIGH,clean_value,2x(55x+21),B12
+0764,(a+b)(a-b)^4/c^5,free_single,1,HIGH,clean_value,(a+b)(a-b)^4/c^5,B26
+0769,1620,free_single,1,HIGH,clean_value,1620,B26
+0771,2,free_single,1,HIGH,clean_value,2,B26
+0774,"24, 28, 33, 39, 42",free_multi,5,HIGH,clean_value,"24, 28, 33, 39, 42",B26
+0775,6sin(x-7)-6,free_single,1,HIGH,clean_value,6sin(x-7)-6,B18
+0777,8,free_single,1,HIGH,clean_value,8,B26
+0781,sqrt(15)/8,free_single,1,HIGH,clean_value,sqrt(15)/8,B13
+0785,"False, True, False, False",free_multi,4,HIGH,clean_value,"False, True, False, False",B13
+0789,"8, 8, -8, -8",free_multi,4,HIGH,clean_value,"8, 8, -8, -8",B26
+0790,-20x^2+45x-25=0,free_single,1,HIGH,clean_value,-20x^2+45x-25=0,B13
+0794,"4.47, 4",free_multi,2,HIGH,clean_value,"4.47, 4",B13
+0798,"3924, EXTRANEOUS",free_multi,2,HIGH,clean_value,"3924, EXTRANEOUS",B26
+0802,26/7,free_single,1,HIGH,clean_value,26/7,B18
+0806,"-0.6551, -0.7556, 0.8670, 1.153, -1.324, -1.527",free_multi,6,HIGH,clean_value,"-0.6551, -0.7556, 0.8670, 1.153, -1.324, -1.527",B26
+0812,512/sin^6(2t),free_single,1,HIGH,clean_value,512/sin^6(2t),B18
+0818,"5a+6b, ab",free_multi,2,HIGH,clean_value,"5a+6b, ab",B13
+0820,15,free_single,1,HIGH,clean_value,15,B27
+0830,44*pi/15,free_single,1,HIGH,clean_value,44*pi/15,B13
+0836,2025,free_single,0,HIGH,clean_value,2025,B13
+0841,"sin(40+8sqrt(x)), 5+sqrt(sin(8x))",free_multi,2,HIGH,clean_value,"sin(40+8sqrt(x)), 5+sqrt(sin(8x))",B27
+0842,"65.47, 1.552, 6.052, 1.833, B",free_multi,5,MED,clean_value,"65.47, 1.552, 6.052, 1.833, B",B16
+0845,5,free_single,1,HIGH,clean_value,5,B27
+0849,4(n+1),free_single,1,HIGH,clean_value,4(n+1),B27
+0851,"B, C",free_single,1,HIGH,clean_value,"B, C",B13
+0857,"A, 0.8974, 0.9146, A, 0.9015, 0.9221",free_multi,6,MED,clean_value,"A, 0.8974, 0.9146, A, 0.9015, 0.9221",B16
+0863,1/t^69,free_single,1,HIGH,clean_value,1/t^69,B28
+0865,7/x - 8,free_single,1,HIGH,clean_value,7/x - 8,B28
+0872,"infinity, 0",free_multi,2,HIGH,clean_value,"infinity, 0",B13
+0880,"35/37, 35/12",free_multi,2,HIGH,clean_value,"35/37, 35/12",B13
+0883,656.1,free_single,1,MED,clean_value,656.1,B28
+0884,g(x)=(x-59)^2+74,free_single,1,HIGH,clean_value,g(x)=(x-59)^2+74,B8
+0895,70*(2/7)^((x-10)/20),free_single,1,HIGH,clean_value,70*(2/7)^((x-10)/20),B28
+0896,"False,True,False,False,True,True,False,True",free_multi,8,HIGH,clean_value,"False,True,False,False,True,True,False,True",B13
+0898,48,free_single,1,HIGH,clean_value,48,B28
+0900,"1200, 3600",free_multi,2,MED,clean_value,"1200, 3600",B28
+0902,"9, 6",free_multi,2,HIGH,clean_value,"9, 6",B8
+0906,"x=2, x=5",free_single,1,HIGH,clean_value,"x=2, x=5",B18
+0916,"3*sqrt(2), 6*sqrt(2), 18",free_multi,3,HIGH,clean_value,"3*sqrt(2), 6*sqrt(2), 18",B13
+0924,"n = 55 + 0.2t, 2010",free_multi,2,HIGH,clean_value,"n = 55 + 0.2t, 2010",B7
+0926,-3t^2 - 6t + 2,free_single,1,HIGH,clean_value,-3t^2 - 6t + 2,B28
+0927,"False,True,True,True,False,False",free_multi,6,HIGH,clean_value,"False,True,True,True,False,False",B13
+0931,"3, -3",free_multi,2,HIGH,clean_value,"3, -3",B28
+0936,275/16,free_single,1,HIGH,clean_value,275/16,B13
+0942,36,free_single,1,HIGH,clean_value,36,B29

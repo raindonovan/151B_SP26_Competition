@@ -28,6 +28,10 @@ KNOWN_DATASET_BUG = {'0011', '0317', '0570', '0585', '0622', '0858', '0894'}
 # §5 of RESULTS_SUMMARY.md tags exactly 0542 as the F22 variance-convention item.
 F22_IDS = {'0542'}
 CONV_IDS = {'0542'} | F22_IDS
+# Strategy ruling (2026-05-30, Option 3): hard-list the sentence/concept answers
+# that Phase 0.8's token gate under-catches, routed to residual before the token
+# check. Reversible; leaves the gate logic untouched. See FINDINGS Finding 25.
+PROSE_OR_NONANSWER_EXPLICIT = {'0252', '0469', '0491', '0544', '0556', '0758'}
 
 MARKERS = ('?', '...', '…')
 NOTES_INCOMPLETE = ['undercount', 'missing', 'needs source', 'unknown', 'partial']
@@ -178,6 +182,10 @@ def structural_screen(row, question):
         conv = True
     if conv:
         return ('residual', 'convention_sensitive')
+    # 7.5 (strategy Option 3) explicit prose/non-answer hard-list — between
+    # convention (7) and the token-based prose gate (8).
+    if rid in PROSE_OR_NONANSWER_EXPLICIT:
+        return ('residual', 'prose_or_nonanswer')
     # 8 prose / non-answer (free_single / free_multi only)
     if typ in {'free_single', 'free_multi'}:
         nonnum = False
