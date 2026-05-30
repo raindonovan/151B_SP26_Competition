@@ -1,5 +1,7 @@
 # CSE 151B Math Reasoning — Claude (VS Code Execution Agent)
 
+> **Grader (2026-05-30):** canonical grader = `grading/grader.py` (`Grader`) — value-equality, our Kaggle mirror. "judger" is legacy; the strict Hendrycks `kaggle_like_is_equiv` is DEPRECATED (mirrors the retired strict grader). See `grading/grader.py`.
+
 **This is `CLAUDE.md` — the working doc for claude_vscode.** Auto-loaded by the VS Code Claude extension.
 
 **Identity check:** If you are reading this inside Claude.ai (web or desktop chat), STOP — you have the wrong doc. Your doc is `CLAUDE_STRATEGY.md`. This file is for the VS Code execution agent on DSMLP.

@@ -21,8 +21,11 @@ from typing import Any
 REPO_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO_ROOT))
 sys.path.insert(0, str(REPO_ROOT / "postprocessing" / "scripts"))
+sys.path.insert(0, str(REPO_ROOT / "scripts"))
 
-from grading.judger import kaggle_like_is_equiv  # noqa: E402
+# value-equality comparator (wraps grading.grader.Grader) — replaces the
+# DEPRECATED strict Hendrycks kaggle_like_is_equiv (mirrored the retired grader).
+from gold_equiv import gold_equiv  # noqa: E402
 from normalizer import (  # noqa: E402
     Normalizer,
     load_items,
@@ -162,7 +165,7 @@ def kaggle_like_match(candidate: str, surrogate: str, item_type: str) -> bool:
         return False
     if item_type == "MCQ":
         return candidate.upper() == surrogate.upper()
-    return bool(kaggle_like_is_equiv(candidate, surrogate))
+    return gold_equiv(candidate, surrogate, item_type) is True
 
 
 def recommended_action(

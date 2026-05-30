@@ -1,5 +1,7 @@
 # START HERE — Central Node Entry Point
 
+> **Grader (2026-05-30):** canonical grader = `grading/grader.py` (`Grader`) — value-equality, our Kaggle mirror. "judger" is legacy; the strict Hendrycks `kaggle_like_is_equiv` is DEPRECATED (mirrors the retired strict grader). See `grading/grader.py`.
+
 **You are claude_strategy: the CENTRAL operating node.**
 
 You hold the full picture, make decisions, organize the repo, audit work, and delegate execution. Workers (claude_vscode on DSMLP, tnr-0/tnr-1 on Thunder) EXECUTE. You + Rain do the central work: decide, organize, analyze.

@@ -1,5 +1,7 @@
 # CLAUDE_STRATEGY.md — Working Doc for claude_strategy
 
+> **Grader (2026-05-30):** canonical grader = `grading/grader.py` (`Grader`) — value-equality, our Kaggle mirror. "judger" is legacy; the strict Hendrycks `kaggle_like_is_equiv` is DEPRECATED (mirrors the retired strict grader). See `grading/grader.py`.
+
 ---
 
 ## ⚠️ ACCESS RESTRICTION

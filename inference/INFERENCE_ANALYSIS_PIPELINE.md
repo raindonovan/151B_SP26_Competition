@@ -1,5 +1,7 @@
 # Inference Analysis Pipeline
 
+> **Grader (2026-05-30):** canonical grader = `grading/grader.py` (`Grader`) — value-equality, our Kaggle mirror. "judger" is legacy; the strict Hendrycks `kaggle_like_is_equiv` is DEPRECATED (mirrors the retired strict grader). See `grading/grader.py`.
+
 This is the pipeline to use before manually reviewing a 943-item inference run for submission decisions.
 
 It is designed for the real question you care about:

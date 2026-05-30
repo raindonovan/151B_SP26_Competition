@@ -1,5 +1,7 @@
 # PIPELINE — The Blueprint for This Repo
 
+> **Grader (2026-05-30):** canonical grader = `grading/grader.py` (`Grader`) — value-equality, our Kaggle mirror. "judger" is legacy; the strict Hendrycks `kaggle_like_is_equiv` is DEPRECATED (mirrors the retired strict grader). See `grading/grader.py`.
+
 **This is the HEART of the repo.** Every file, folder, and artifact has a home defined by
 its place in this pipeline. When deciding where something belongs, ask: *which phase produces
 or consumes it?* (Source: Rain's hand-drawn pipeline, 2026-05-28 — `pipeline_diagram.jpeg`.)
