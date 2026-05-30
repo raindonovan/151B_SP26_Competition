@@ -41,3 +41,14 @@ Expected slot 4 ≥ slot 3 ≥ slot 2 ≥ slot 1 (each overlay adds higher-confi
 ## Files
 - `scripts/score_inference_vs_sheet.py`, `scripts/build_slots_1_4.py`
 - `submission/30_05/slot{1..4}_*/30_05_slot{N}_<descriptor>.csv` (943 rows each) + `score_summary.json` + `local_score_vs_anchor.csv`
+
+## Actuals (added post-upload)
+
+| Slot | Predicted Δ | Actual Δ vs slot 1 | Verdict |
+|------|-------------|---------------------|---------|
+| 1 | 0 | 0 | ✅ control valid |
+| 2 | +8 to +15pp | +2.5pp | positive, ~5pp below prediction |
+| 3 | +0.5 to +1.5pp on top of slot 2 | TBD | pending |
+| 4 | +0 to +0.5pp on top of slot 3 | TBD | pending |
+
+See `submission/30_05/SCORES.md` for delta analysis + implications.

@@ -1,7 +1,6 @@
 {
   "slot": 1,
   "dir": "slot1_control",
-  "rows": 259076,
   "overrides_applied": 0,
   "override_source": {
     "anchor": 0,
@@ -9,5 +8,9 @@
     "3/4_xhigh_mcq": 0
   },
   "agreement_with_anchor": 236,
-  "disagreement_with_raw_inference": 328
+  "kaggle_score": 0.713,
+  "submission_date": "2026-05-30",
+  "kaggle_submission_id": null,
+  "delta_vs_base": 0.0,
+  "notes": "Control. Byte-identical to base."
 }

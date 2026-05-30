@@ -388,3 +388,9 @@ Landed `~/cse151b/DataApp/dataapp_outputs/opus/` (DataApp `f437b9e`) into `data/
 ---
 ## claude_vscode signoff — 2026-05-30 — rename slot CSVs to unique filenames
 `git mv`'d the four `submission/30_05/slot*/sheet.csv` → `30_05_<slot>.csv` (history preserved). Updated production writer `scripts/build_slots_1_4.py` (write_sheet + sanity print) and `SLOTS_1_4_REPORT.md`; added filename convention to new `submission/30_05/README.md`. Remaining `grep sheet.csv` hits are unrelated (`*_answer_sheet.csv`, `score_inference_vs_sheet.py` name/param) or historical signoff prose in `submission/SCRATCH.md` (left as record). Smoke: slot1 renamed CSV = 943 rows [id,response] ✅. Staged specific paths (not `git add -A`) to avoid sweeping pre-existing foreign uncommitted entries (29_05_rejudge deletion, archive/session_logs untracked).
+
+---
+## claude_vscode signoff — 2026-05-30 — record slot 1+2 Kaggle scores
+**Scores:** slot1 control = **0.713** (byte-identical to base, control valid); slot2 +anchor = **0.738** (+2.5pp).
+**Docs updated:** REGISTRY rows #37/#38 + Key-findings bullet (new best 0.738; anchor positive but format-precision caps upside → format normalization is now a primary lever); `30_05/SCORES.md` rewritten with actuals + calibration (slot2 ~5pp below the +8-15pp prediction → Kaggle is format-strict on anchor's audit-corrected notation; net ~+7 slice items ≈ 22% yield); `SLOTS_1_4_REPORT.md` Actuals section appended; `score_summary.json` filled for slot1/slot2 (merged kaggle fields onto build provenance).
+**For strategy:** the +2.5pp (not +8-15) is the headline — anchor's audit-aesthetic format is partly grader-hostile; format-normalization over the answer sheet (v7) may dominate ROI vs more inference. Slots 3 (4/4 bloc, expect +0.5-2pp) and 4 (3/4-xhigh MCQ, +0-0.5pp) pending upload. Suggest locking slot2 (0.738) as Pick A now (the old 0.438/0.420 picks are still selected).

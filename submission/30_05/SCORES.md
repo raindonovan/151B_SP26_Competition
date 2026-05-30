@@ -1,56 +1,53 @@
-# 30_05 — Submission Batch (Day 8, deadline eve)
+# 30_05 — Slot 1-4 Kaggle Scores (Day 8, deadline eve)
 
-**Date:** 2026-05-30 · **Status:** ⏳ AWAITING KAGGLE SCORES — fill actuals below
-**Daily limit:** 5 submissions. **Hard deadline:** Sun 2026-05-31.
+**Date:** 2026-05-30
+**Base:** submission/csvs/undercount_plus_frac.csv (0.713)
+**Build report:** submission/30_05/SLOTS_1_4_REPORT.md
 
-## Why this batch
-The 29_05_rejudge experiments were planned but **never submitted**. They are the
-highest-EV use of today's slots: they (a) measure the judge-update lift on our
-proven best and (b) decode which post-processing levers still matter under the
-(locally-verified, not-yet-Kaggle-confirmed) value-equality judge. Slot 4 then
-measures the now-finalized **single-mode normalizer** end-to-end, which has never
-been scored against Kaggle. Slot 5 is reserved for a data-driven call after 1–4.
+## Actuals
 
-## What we believe about the judge (verified locally; Kaggle confirmation = this batch)
-`judge_single_numerical_value` does numeric value-equality at ~1e-8: `4.000==4`,
-`0.6==3/5` PASS; rounded-but-wrong values FAIL. **If confirmed**, surface form
-(decimal/fraction/trailing-zero) is dead as a lever; live levers are
-precision/rounding, parseability, and structural (MCQ first-box, multi-answer
-single-box-ordered, undercount). The single-mode normalizer is built to that belief.
+| Slot | CSV | Overrides | Predicted Δ | Actual | Δ vs slot 1 | Status |
+|------|-----|-----------|-------------|--------|-------------|--------|
+| 1 control | 30_05_slot1_control.csv | 0 | 0.713 (base) | **0.713** | 0 | ✅ control valid |
+| 2 +anchor | 30_05_slot2_anchor.csv | +316 anchor | +8 to +15pp | **0.738** | +0.025 | ✅ positive, below pred |
+| 3 +bloc | 30_05_slot3_bloc.csv | +385 4/4 bloc | +0.5 to +1.5pp | _TBD_ | _TBD_ | pending upload |
+| 4 +aggr | 30_05_slot4_aggressive.csv | +23 3/4+xhigh MCQ | +0 to +0.5pp | _TBD_ | _TBD_ | pending upload |
 
-## The submissions
+## Calibration
 
-| # | CSV | Prior | vs ref | Items changed | Hypothesis | Prediction | **Actual** | Verdict |
-|---|-----|-------|--------|---------------|------------|------------|------------|---------|
-| 1 | `29_05/csvs/PICK_01_control_undercount_plus_frac.csv` | 0.713 (old judge) | — (ref) | — | Judge update lifts our best for free | rises vs 0.713 | _TBD_ | _TBD_ |
-| 2 | `28_05/csvs/slot4_undercount_expand.csv` | 0.706 (old judge) | frac items only: `135,207,529,716,784,817,919,936` | Is the frac/numeric layer redundant now? | ties #1 if exact decimals accepted | _TBD_ | _TBD_ |
-| 3 | `29_05/csvs/undercount_frac_mcq.csv` (build via `29_05/scripts/build_undercount_frac_mcq.py`) | ~0.710 (never scored) | +16 MCQ overrides: `18,117,403,443,457,501,518,589,670,675,682,695,720,727,786,935` | Do MCQ teacher-overrides help under new judge? | ≈ or slightly below #1 | _TBD_ | _TBD_ |
-| 4 | normalizer-e2e on R14 (`run14b_sc8_v1_private943` raw → single-mode normalizer → CSV) | R14 raw = 0.646 | structural normalization of a real run | Does the single-mode normalizer lift a raw inference run? | rises vs 0.646; vs #1 unknown | _TBD_ | _TBD_ |
-| 5 | RESERVED | — | — | data-driven after 1–4 (F22 variance probe, or a refined pick) | — | _TBD_ | _TBD_ |
+| Slot | Predicted | Actual | Match? |
+|------|-----------|--------|--------|
+| 1 | 0.713 (= base) | 0.713 | 🎯 EXACT |
+| 2 | 0.78-0.85 (+8 to +15pp band) | 0.738 (+2.5pp) | ❌ off by ~5pp low |
 
-## Decode logic — what each result tells us
-- **#1 − 0.713** = free lift from the judge update. Large positive ⇒ much historical format-fixing was already absorbed by the judge.
-- **#1 vs #2** isolates the frac/numeric lever:
-  - `#2 == #1` ⇒ numeric-surface layer is **dead** → single-mode normalizer (which drops it) is correct; keep frac only as explicit per-item overrides.
-  - `#2 < #1` by ~0.007 ⇒ frac still lives on rounded-decimal items → re-add as per-item overrides, NOT as a mode.
-- **#3 vs #1** isolates MCQ teacher-overrides: `#3 > #1` ⇒ wire MCQ override into the pipeline; `#3 ≤ #1` ⇒ drop.
-- **#4 vs #1** = the single-mode normalizer's standalone value on a real run vs the answer-sheet pipeline.
+## Why slot 2 underperformed prediction
 
-## Safety floor (decide before submitting)
-The currently-selected Kaggle final picks are still the wrong ones (0.438/0.420).
-**Lock `PICK_01_control_undercount_plus_frac` (0.713) as Pick A now** so we are never
-exposed to the 0.438 at the deadline, regardless of how 1–5 land. Pick B chosen from
-the best of this batch once scored.
+Predicted delta assumed Kaggle's grader uses pure value-equality on anchor
+overrides. Actual indicates Kaggle is format-strict on at least some anchor items.
 
-## Follow-ups once actuals are in (do not skip)
-1. Fill **Actual** + **Verdict** columns.
-2. Append rows to `submission/REGISTRY.md` (master cross-round log).
-3. Update `strategy/SESSION_HANDOFF.md` TL;DR with the new best.
-4. Resolve the format-lever docs in `postprocessing/` per the #1-vs-#2 result
-   (delete/keep the FORMAT_RULES / STRICT_NORMALIZER_SPEC family with confidence).
-5. Set final Kaggle picks (A = floor, B = best of batch).
+Slice math:
+- ~283-item Kaggle slice × 33.5% (anchor in slice) = ~95 anchor items in slice
+- Model already correct on 66.5% of anchor → ~63 silent items
+- Effective effect candidates: ~32 items
+- Net +7 slice items (2.5pp × 283) → ~22% net positive yield
 
-## Notes
-- Slots 1–3 use existing/buildable CSVs (ready now). Slot 4 needs a CSV produced by
-  running the single-mode normalizer over R14's raw output (vscode task).
-- All CSVs must validate before submit: 943 rows, header `id,response`, no dup IDs.
+The missing ~78% of effect candidates are either silent (anchor = model) or
+NEGATIVE (anchor's format didn't pass grader). Aligns with CHATGPT_AUDIT's finding
+that ~25 of 78 anchor-vs-Opus "contradictions" are format/precision artifacts.
+
+## Implications
+
+1. Slot 3 (4/4 bloc) — teacher consensus format tends to be more Kaggle-friendly
+   than anchor's audit-corrected format. Expect +0.5 to +2pp on top of slot 2.
+2. Slot 4 (with 3 Opus flips on 0120/0248/0308) — value-correct overrides on items
+   where anchor was wrong; small but positive.
+3. Format normalization is a primary lever for answer sheet v7. Audit-aesthetic
+   formats should be revised toward Kaggle-friendly formats when known.
+4. 12hr A100 priority — if format is the bottleneck, more inference may have low
+   ROI; format-normalization work over the answer sheet may dominate. Decision
+   deferred until slot 3+4 land.
+
+## Final-pick safety floor
+Lock `30_05_slot2_anchor.csv` (0.738) as Pick A — never be exposed to the old
+0.438/0.420 picks at the deadline. Pick B = best of slots 3-4 once scored (fall
+back to slot 1 / 0.713 if neither beats slot 2).

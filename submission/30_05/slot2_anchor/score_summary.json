@@ -1,7 +1,6 @@
 {
   "slot": 2,
   "dir": "slot2_anchor",
-  "rows": 230384,
   "overrides_applied": 316,
   "override_source": {
     "anchor": 316,
@@ -9,5 +8,10 @@
     "3/4_xhigh_mcq": 0
   },
   "agreement_with_anchor": 316,
-  "disagreement_with_raw_inference": 367
+  "kaggle_score": 0.738,
+  "submission_date": "2026-05-30",
+  "kaggle_submission_id": null,
+  "delta_vs_base": 0.025,
+  "delta_vs_slot1": 0.025,
+  "notes": "+316 anchor overrides; +2.5pp; format-strict grader."
 }

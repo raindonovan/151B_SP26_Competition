@@ -4,6 +4,8 @@
 
 | # | Repo CSV | Score | What it tested |
 |---|---|---|---|
+| 38 | 30_05/slot2_anchor/30_05_slot2_anchor.csv | **0.738** | +316 anchor overrides on top of 0.713 base (+2.5pp; smaller than +8-15pp predicted — Kaggle format-strict on anchor's audit-corrected notation per CHATGPT_AUDIT) |
+| 37 | 30_05/slot1_control/30_05_slot1_control.csv | 0.713 | Control: undercount_plus_frac.csv as-is, byte-identical to 0.713 base; verifies no regression from Day 5→Day 8 |
 | 36 | 29_05/mcq_prepend_fix.csv | 0.703 | 16 MCQ full-replace with teacher majority (only 6 actually flipped vs base; 10 had teacher=base; fusion beats raw teachers on disagreements) |
 | 35 | 29_05/undercount_plus_frac.csv | **0.713** | **Slot 4 + Slot 1 additive stack — NEW BEST** |
 | 34 | 25_08/slot5_combined_all.csv | 0.696 | All 4 overlays stacked (frac+search+mcq+undercount) |
@@ -43,7 +45,9 @@
 | 1 | run08v2_v1_private943.csv | 0.586 | First submission |
 
 ## Key findings
-- **NEW BEST: 0.713 from undercount_plus_frac** (+2.1pp over kitchen_sink 0.692)
+- **NEW BEST: 0.738 from slot2_anchor (#38)** (+2.5pp over the 0.713 base via 316 anchor overrides)
+- **Anchor overlay (slot 2) confirmed positive but format-precision issues cap the upside; format normalization is now a primary lever.** (+2.5pp actual vs +8-15pp predicted — Kaggle is format-strict on some anchor audit-corrected notation.)
+- **NEW BEST (prior): 0.713 from undercount_plus_frac** (+2.1pp over kitchen_sink 0.692)
 - **Slot 1 (frac) and Slot 4 (undercount) levers are FULLY ADDITIVE** — proven by exact prediction match in #35
 - **Kitchen_sink_C's fusion-of-evidence (SC8 + Wolfram + answer sheet + prior teacher overrides) BEATS raw 3-teacher consensus on MCQ items where they disagree.** In #36, of 16 attempted MCQ overrides, only 6 actually flipped (10 had teacher = base letter); those 6 flips netted −1 slice item. Lesson: don't blanket-override MCQ with raw teacher consensus — kitchen_sink already absorbed teacher input upstream. (Statistical caveat: small signal, ~2 slice items affected.)
 - **MCQ full-replace mechanism WORKS** — #36 score moved (not silent no-op), confirming GRADER_SPEC §3 fix is correct
