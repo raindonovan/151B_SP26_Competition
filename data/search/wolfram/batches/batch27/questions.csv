@@ -1,0 +1,54 @@
+id,subject,type,n_ans_slots,best_answer,teacher_consensus,question
+0808,linear_algebra,MCQ,0,D,D,"We now define an algorithm: The definition of a(n) is Blue code for n: in the binary coding of a polynomial over GF(2), substitute x+1 for x. (Consider the binary representation of n as the coefficient vector of a polynomial over the finite field GF(2). Apply the substitution x+1 for x in this polynomial, and then convert the resulting polynomial back to a binary number.) Given the input x_list (a series of values): [57, 58, 59, 60, 61, 62, 63, 64, 65, 66], determine the corresponding output sequence y_list."
+0810,trigonometry,MCQ,0,F,,The general solution of the equation $y''+y= \sin x$ is
+0813,statistics,free_multi,2,"A, C","A,C","Under which of the following circumstances is it impossible to construct a confidence interval for the population mean? [ANS] A. A non-normal population with a small sample and an unknown population variance.  B. A normal population with a small sample and an unknown population variance.  C. A normal population with a large sample and a known population variance.  D. A non-normal population with a large sample and an unknown population variance.
+The use of the standard normal distribution for constructing a confidence interval estimate for the population proportion $p$ requires: [ANS] A. that the sample size is greater than 30  B. $np$ and $n(1-p)$ are both greater than 5  C. $n\hat{p}$ and $n(1-\hat{p}$) are both greater than 5, where $\hat{p}$ denotes the sample proportion  D. $n(p+\hat{"
+0814,statistics,free_multi,10,"5, 4.726, 0.9451, 1.224, 30, 23.16, 0.7719, 35, 27.88, 0.7966",,"A study was conducted to see how people reacted to certain facial expressions. A sample group of $n=36$ was randomly divided into six groups. Each group was assigned to view one picture of a person making a facial expression. Each group saw a different picture, and the different expressions were (1) Surprised (2) Nervous (3) Scared (4) Sad (5) Excited (6) Angry. After viewing the pictures, the subjects were asked to rank the degree of dominance they inferred from the facial expression they saw. (The scale ranged from-10 to 10) The data collected is summarized in the table below.
+$\begin{array}{cccccc}\hline Surprised & Nervous & Scared & Sad & Excited & Angry \\ \hline 1 & 0.3 & 0.5 & 0.9 &-0.8 &-0.7 \\ \hline 0.3 & 0.3 &-0.5 & 0 & 0.6 &-0.9 \\ \hline 0 &-0.3 &-0.4 &-0.3 & 0.1 &-1.5 \\ \hl"
+0819,trigonometry,MCQ,0,E,E,$\int_{{}}^{{}}{\frac{1+\sin x}{1+\cos x}dx}=$
+0820,algebra,free_single,1,15,15,"Simplify the expression:
+$18-6 \div 2$ [ANS]"
+0823,number_theory,free_single,0,359,,"Let \(a\) be a positive integer. We say that \(a\) is bao-good if there exist integers \((s,l)\) such that:
+1. There does not exist a positive integer \(b\) for which
+\[
+    a \mid s^b - l.
+\]
+2. For every proper divisor \(a'\) of \(a\) (that is, \(a' \mid a\) and \(1 \le a' < a\)), there exists a positive integer \(b\) such that
+\[
+    a' \mid s^b - l.
+\]
+Determine the sum of the smallest 20 bao-good positive integers \(a\)."
+0824,calculus,MCQ,0,C,C,"Calculate the integral using the trapezoidal rule
+$$
+y=\int_{0}^{x} \mathrm{e}^{-t^{2}} \, \mathrm{d} t
+$$
+to the approximate values at $x = 0.5, 0.75,$ and $1$ is____."
+0825,calculus,MCQ,0,D,D,"Find the value of the integral $\int_{0}^{\pi} \operatorname{tan}(\theta + \mathrm{i} a) \, \mathrm{d}\theta \quad (a$ is a real number and $a \neq 0)$."
+0828,statistics,free_multi,2,"99.63, 110.4",,Use the given data to find the 95\% confidence interval estimate of the population mean $\mu$. Assume that the population has a normal distribution. IQ scores of professional athletes: Sample size $n=25$ Mean $\overline{x}=105$ Standard deviation $s=13$ [ANS] $< \mu <$ [ANS]
+0831,calculus,MCQ,0,E,E,"Solve the integral:
+$$
+\int \frac{ 1 }{ \sin(8 \cdot x)^5 } \, dx
+$$"
+0837,algebra,MCQ,0,D,D,"Find the value of $I=\int_{0}^{1}f(x)$d$x$ is (), where
+$$f(x)=\begin{cases}x\mathrm{ln}x/(x-1),&0<x<1,\\0,&x=0,\\1,&x=1.\end{cases}$$"
+0838,statistics,free_single,1,"(23.66, 28.34)","(23.66, 28.34)","One of the few negative side effects of quitting smoking is weight gain. Suppose that the weight gain in the 12 months following a cessation in smoking is normally distributed with a standard deviation of 8 pounds. To estimate the mean weight gain, a random sample of 55 quitters was drawn and the sample mean was found to be 26 pounds. Determine the 97\% confidence interval estimate of the mean 12-month weight gain for all quitters. Note: For each confidence interval, enter your answer in the form (LCL, UCL). You must include the parentheses and the comma between the confidence limits.
+Confidence Interval=[ANS]"
+0839,trigonometry,MCQ,0,G,G,"Evaluate $\sum_{n=0}^\infty \mathrm{Arccot}(n^2+n+1)$, where $\mathrm{Arccot}\,t$ for $t \geq 0$ denotes the number $\theta$ in the interval $0 < \theta \leq \pi/2$ with $\cot \theta = t$."
+0840,calculus,MCQ,0,F,F,"Fix an integer $b \geq 2$. Let $f(1) = 1$, $f(2) = 2$, and for each $n \geq 3$, define $f(n) = n f(d)$, where $d$ is the number of base-$b$ digits of $n$. For which values of $b$ does \[ \sum_{n=1}^\infty \frac{1}{f(n)} \] converge?"
+0841,trigonometry,free_multi,2,"\sin\left(40 + 8\sqrt{x}\right), 5 + \sqrt{\sin(8x)}",,"Let $f(x)=\sin{(8x)}$ and $g(x)=5+\sqrt{x}$. Find formulas for:
+(a) $f(g(x))=$ [ANS]
+(b) $g(f(x))=$ [ANS]"
+0845,algebra,free_single,1,5,5,Write the expression with positive exponents and simplify. $ \frac{1}{5^{-1}}$=[ANS]
+0847,statistics,MCQ,0,H,H,"Let the random variable X follow a Poisson distribution with parameter A. Prove that: $\operatorname{E} \ \left( \mathbf{X}^{n} \right)=\lambda\operatorname{E} [ \left( \mathbf{X}+1 \right)^{n-1} ]$. Using this result, $\mathrm{E} \ ( \mathbf{X}^{3} )$ is ____."
+0848,trigonometry,MCQ,0,E,E,Find the minimum value of $y = \frac{ \left(\cos(x)\right)^2 - 4 \cdot \cos(x) + 5 }{ 3 - 2 \cdot \cos(x) }$.
+0849,calculus,free_single,1,4(n + 1),4(n+1),"Express the following sum in closed form. $ \sum\limits_{k=1}^{n} \ 8 \left(\frac{k}{n}\right)$=[ANS]
+Note: Your answer should be in terms of $n$."
+0850,geometry,MCQ,0,C,C,"You have $5$ boxes and $2005$ balls. $286$ , $645$ , and $1074$ of these balls are blue, green, and red, respectively. Suppose the boxes are numbered $1$ through $5$ . You place $1$ blue ball, $3$ green balls, and $3$ red balls in box $1$ . Then $2$ blue balls, $5$ green balls, and $7$ red balls in box $2$ . Similarly, you put $n$ blue balls, $2n + 1$ green balls, and $4n - 1$ red balls in box $n$ for $n = 3$ , $4$ , $5$ . Repeat the entire process (from boxes $1$ to $5$ ) until you run out of one color of balls. How many red balls are in boxes $3$ , $4$ , and $5$ ? (NOTE: After placing the last ball of a certain color in a box, you still place the balls of the other colors in that box. You do not, however, place balls in the following box.)"
+0853,geometry,MCQ,0,C,C,What is the circumference of the ellipse $\frac{x^{2}}{4} + y^{2} = 1$? Provide the result with five significant figures.
+0859,trigonometry,free_multi,4,"1, 2, 2, 4","1,2,2,4","For each angle (in degrees) below, determine the quadrant in which the terminal side of the angle is found. [NOTE: Enter '1' for quadrant I, '2' for quadrant II, '3' for quadrant III, and '4' for quadrant IV.]
+(a) $364^\circ$ is found in quadrant [ANS]
+(b) $118^\circ$ is found in quadrant [ANS]
+(c) $174^\circ$ is found in quadrant [ANS]
+(d) $321^\circ$ is found in quadrant [ANS]"
+0861,linear_algebra,MCQ,0,G,G,The tridiagonal matrix A[1..100][1..100] is stored in a one-dimensional array B[1..298] in row-major order. What is the position of the element A[66][65] in B?
+0862,algebra,MCQ,0,I,I,"We now define an algorithm: The definition of a(n) is the number of ordered length 2 compositions of n (where n is a positive integer) such that at least one of the summands is even. Given the input x_list (a series of values): [66, 67, 68, 69, 70, 71, 72, 73, 74, 75], determine the corresponding output sequence y_list."

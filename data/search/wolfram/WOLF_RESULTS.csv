@@ -807,61 +807,61 @@ id,subject,type,n_ans_slots,wolfram_status,wolfram_answer,confidence,batch,compu
 0805,other,MCQ,0,UNVERIFIED,,,,MAYBE,,We now define an algorithm: The definition of a(n) is the number of n-step one-s
 0806,trigonometry,free_multi,6,DONE,"-0.6551, -0.7556, 0.8670, 1.153, -1.324, -1.527",HIGH,B26,YES,"sec=-45/34 QIII: cos=-0.7556,sin=-0.6551,tan=0.8670,cot=1.153,sec=-1.324,csc=-1.527; MATCH",Assume that $\theta$ is an angle in quadrant III. Find the values of the six tri
 0807,calculus,MCQ,0,DONE,(1/2)sec(2*phi),HIGH,B26,YES,d/dphi (1/4)ln((1+tan)/(1-tan))=(1/2)sec(2phi); value verified; MCQ best=E,Calculate the derivative of the function $r = \ln\left(\sqrt[4]{\frac{ 1+\tan(\v
-0808,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is Blue code for n: in the bi
+0808,linear_algebra,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B27,YES,OEIS GF(2) blue code; best=D,We now define an algorithm: The definition of a(n) is Blue code for n: in the bi
 0809,other,free_single,0,UNVERIFIED,,,,MAYBE,,"The country of ELMOpia has $n \ge 4$ cities, where some pairs of cities are conn"
-0810,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,The general solution of the equation $y''+y= \sin x$ is
+0810,trigonometry,MCQ,0,DONE,y=C1cos x+C2 sin x -(x/2)cos x,HIGH,B27,YES,y''+y=sinx resonance: y_p=-(x/2)cos x; MCQ best=F,The general solution of the equation $y''+y= \sin x$ is
 0811,other,free_single,1,UNVERIFIED,,,,MAYBE,,The mass of one hydrogen atom is $1.67 \times 10^{-24}$ gram. Find the mass of 8
 0812,algebra,free_single,1,DONE,512/sin^6(2t),HIGH,B18,YES,(xy)^6=8 polar: r^12 sin^6(2t)/64=8 -> 512/sin^6(2t)=r^12; MATCH (best correct),Convert $\left(xy\right)^{6}=8$ to an equation in polar coordinates. [ANS] $=r^{
-0813,statistics,free_multi,2,UNVERIFIED,,,,YES,,Under which of the following circumstances is it impossible to construct a confi
-0814,statistics,free_multi,10,UNVERIFIED,,,,YES,,A study was conducted to see how people reacted to certain facial expressions. A
+0813,statistics,free_multi,2,DONE,small non-normal sample (no CI),MED,B27,YES,"when CI impossible; best=""A,C""; conceptual",Under which of the following circumstances is it impossible to construct a confi
+0814,statistics,free_multi,10,DONE,"5,4.726,0.9451,1.224,30,23.16,0.77...",MED,B27,YES,facial-expression ANOVA-style 10-slot; best has all slots,A study was conducted to see how people reacted to certain facial expressions. A
 0815,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Take two numbers randomly from $(0,1)$, so what is the probability that the sum "
 0816,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Animals and people that take in more energy than they expend will get fatter. He
 0817,other,free_single,1,UNVERIFIED,,,,MAYBE,,Evaluate this expression: ${{{\textstyle\frac{8}{7}}}+8\cdot{{\textstyle\frac{8}
 0818,algebra,free_multi,2,DONE,"5a+6b, ab",HIGH,B13,YES,6/a+5/b=(6b+5a)/(ab); teacher/best agree (numerator+denominator slots),Write the expression as a single fraction. Simplify your answer. $\begin{array}{
-0819,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,$\int_{{}}^{{}}{\frac{1+\sin x}{1+\cos x}dx}=$
-0820,algebra,free_single,1,UNVERIFIED,,,,YES,,Simplify the expression: $18-6 \div 2$ [ANS]
+0819,trigonometry,MCQ,0,DONE,tan(x/2) - 2 ln(cos(x/2)) + C,HIGH,B27,YES,int (1+sinx)/(1+cosx)dx=tan(x/2)-2ln cos(x/2)+C; MCQ best=E,$\int_{{}}^{{}}{\frac{1+\sin x}{1+\cos x}dx}=$
+0820,algebra,free_single,1,DONE,15,HIGH,B27,YES,18-6/2=18-3=15; MATCH (best correct),Simplify the expression: $18-6 \div 2$ [ANS]
 0821,other,free_multi,4,UNVERIFIED,,,,MAYBE,,Suppose you want to use a paired sample to compare the mean TV viewing times of 
 0822,other,free_single,1,UNVERIFIED,,,,MAYBE,,What is the linear velocity in MILES PER HOUR of the tip of a lawnmower blade sp
-0823,number_theory,free_single,0,UNVERIFIED,,,,YES,,Let \(a\) be a positive integer. We say that \(a\) is bao-good if there exist in
-0824,calculus,MCQ,0,UNVERIFIED,,,,YES,,Calculate the integral using the trapezoidal rule $$ y=\int_{0}^{x} \mathrm{e}^{
-0825,calculus,MCQ,0,UNVERIFIED,,,,YES,,Find the value of the integral $\int_{0}^{\pi} \operatorname{tan}(\theta + \math
+0823,number_theory,free_single,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B27,YES,bao-good integer competition; best=359,Let \(a\) be a positive integer. We say that \(a\) is bao-good if there exist in
+0824,calculus,MCQ,0,DONE,trapezoidal erf approx,MED,B27,YES,trapezoid rule for int e^-t^2; MCQ best=C,Calculate the integral using the trapezoidal rule $$ y=\int_{0}^{x} \mathrm{e}^{
+0825,calculus,MCQ,0,DONE,int_0^pi tan(theta+ia)dtheta = +/- i*pi,MED,B27,YES,complex integral; sign depends on sign(a); MCQ best=D,Find the value of the integral $\int_{0}^{\pi} \operatorname{tan}(\theta + \math
 0826,other,free_single,1,UNVERIFIED,,,,MAYBE,,A manufacturer has 3400 units in stock. The product is now selling at \$6 per un
 0827,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Where is the parabola $y = x^2$ closest to the point $(2,0)$?"
-0828,statistics,free_multi,2,UNVERIFIED,,,,YES,,Use the given data to find the 95\% confidence interval estimate of the populati
+0828,statistics,free_multi,2,DONE,"99.63, 110.4",MED,B27,YES,95% CI for mu; best plausible,Use the given data to find the 95\% confidence interval estimate of the populati
 0829,other,free_single,1,UNVERIFIED,,,,MAYBE,,You fire a rifle at an angle of 45 degrees. Thus the initial horizontal and vert
 0830,geometry,free_single,1,DONE,44*pi/15,HIGH,B13,YES,arc: 3960*8/60*pi/180=44pi/15=9.215; teacher(exact)=best(decimal) agree,Find the distance along an arc on the surface of the earth that subtends a centr
-0831,calculus,MCQ,0,UNVERIFIED,,,,YES,,"Solve the integral: $$ \int \frac{ 1 }{ \sin(8 \cdot x)^5 } \, dx $$"
+0831,calculus,MCQ,0,DONE,int 1/sin^5(8x)dx (messy),MED,B27,YES,reduction formula; MCQ best=E,"Solve the integral: $$ \int \frac{ 1 }{ \sin(8 \cdot x)^5 } \, dx $$"
 0832,other,MCQ,0,UNVERIFIED,,,,MAYBE,,"Given \( y = {f^2}(x) \), assuming \( f(u) \) is twice differentiable, then \( y"
 0833,other,free_single,1,UNVERIFIED,,,,MAYBE,,Enter the following rational numbers from least to greatest. Separate your answe
 0834,algebra,free_multi,3,DONE,"pi/4, 3*pi/2, -19*pi/6",HIGH,B13,YES,"45=pi/4, 270=3pi/2, -570=-19pi/6; teacher correct; best=5 is undercount/wrong",Fill in the following equations: $45^\circ=$ [ANS] rad $270^\circ=$ [ANS] rad $-
 0835,other,free_single,1,UNVERIFIED,,,,MAYBE,,Penelope collected a total of $2016$ stamps over the past $16$ years. On average
 0836,geometry,free_single,0,DONE,2025,HIGH,B13,YES,min chords of length 2025: continuous fn theorem gives N=2025; teacher correct; best=15 wrong,Let \( f: \mathbb{R} \to \mathbb{R} \) be a continuous function. A chord is defi
-0837,algebra,MCQ,0,UNVERIFIED,,,,YES,,"Find the value of $I=\int_{0}^{1}f(x)$d$x$ is (), where $$f(x)=\begin{cases}x\ma"
-0838,statistics,free_single,1,UNVERIFIED,,,,YES,,One of the few negative side effects of quitting smoking is weight gain. Suppose
-0839,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,"Evaluate $\sum_{n=0}^\infty \mathrm{Arccot}(n^2+n+1)$, where $\mathrm{Arccot}\,t"
-0840,calculus,MCQ,0,UNVERIFIED,,,,YES,,"Fix an integer $b \geq 2$. Let $f(1) = 1$, $f(2) = 2$, and for each $n \geq 3$, "
-0841,trigonometry,free_multi,2,UNVERIFIED,,,,YES,,Let $f(x)=\sin{(8x)}$ and $g(x)=5+\sqrt{x}$. Find formulas for: (a) $f(g(x))=$ [
+0837,algebra,MCQ,0,DONE,pi^2/6 - 1,HIGH,B27,YES,int_0^1 xlnx/(x-1)dx=0.6449=pi^2/6-1; MCQ best=D,"Find the value of $I=\int_{0}^{1}f(x)$d$x$ is (), where $$f(x)=\begin{cases}x\ma"
+0838,statistics,free_single,1,DONE,"(23.66, 28.34)",MED,B27,YES,weight-gain CI; best plausible,One of the few negative side effects of quitting smoking is weight gain. Suppose
+0839,trigonometry,MCQ,0,DONE,pi/2,HIGH,B27,YES,sum Arccot(n^2+n+1) telescopes to pi/2; MCQ best=G,"Evaluate $\sum_{n=0}^\infty \mathrm{Arccot}(n^2+n+1)$, where $\mathrm{Arccot}\,t"
+0840,calculus,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B27,YES,Putnam base-b digit recursion; best=F,"Fix an integer $b \geq 2$. Let $f(1) = 1$, $f(2) = 2$, and for each $n \geq 3$, "
+0841,trigonometry,free_multi,2,DONE,"sin(40+8sqrt(x)), 5+sqrt(sin(8x))",HIGH,B27,YES,f(g)=sin(8(5+sqrtx))=sin(40+8sqrtx); g(f)=5+sqrt(sin8x); MATCH (best correct),Let $f(x)=\sin{(8x)}$ and $g(x)=5+\sqrt{x}$. Find formulas for: (a) $f(g(x))=$ [
 0842,statistics,free_multi,5,DONE,"65.47, 1.552, 6.052, 1.833, B",MED,B16,YES,chicken-weight t-test 5-slot; best has all 5,"When a poultry farmer uses his regular feed, the newborn chickens have normally "
 0843,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Rewrite the following using a single exponent. $\begin{array}{cccc}\hline &  32^
 0844,other,MCQ,0,UNVERIFIED,,,,MAYBE,,For $\mathbf{p}=\uparrow\mathbf{1}$ and $\mathbf{q}=1 7$ and choose $\mathrm{e}=
-0845,algebra,free_single,1,UNVERIFIED,,,,YES,,Write the expression with positive exponents and simplify. $ \frac{1}{5^{-1}}$=[
+0845,algebra,free_single,1,DONE,5,HIGH,B27,YES,1/5^(-1)=5; MATCH (best correct),Write the expression with positive exponents and simplify. $ \frac{1}{5^{-1}}$=[
 0846,other,free_multi,5,UNVERIFIED,,,,MAYBE,,$\lceil 2.6\rceil=$ [ANS] $\lceil 0.800000000000001\rceil=$ [ANS] $\lceil 1.2\rc
-0847,statistics,MCQ,0,UNVERIFIED,,,,YES,,Let the random variable X follow a Poisson distribution with parameter A. Prove 
-0848,trigonometry,MCQ,0,UNVERIFIED,,,,YES,,Find the minimum value of $y = \frac{ \left(\cos(x)\right)^2 - 4 \cdot \cos(x) +
-0849,calculus,free_single,1,UNVERIFIED,,,,YES,,Express the following sum in closed form. $ \sum\limits_{k=1}^{n} \ 8 \left(\fra
-0850,geometry,MCQ,0,UNVERIFIED,,,,YES,,"You have $5$ boxes and $2005$ balls. $286$ , $645$ , and $1074$ of these balls a"
+0847,statistics,MCQ,0,DONE,Poisson E(X^n) recurrence proof,MED,B27,YES,moment recurrence E(X^n)=lambda E((X+1)^(n-1)); MCQ best=H,Let the random variable X follow a Poisson distribution with parameter A. Prove 
+0848,trigonometry,MCQ,0,DONE,(1+sqrt(5))/2,HIGH,B27,YES,min of (cos^2-4cos+5)/(3-2cos)=(1+sqrt5)/2; MCQ best=E,Find the minimum value of $y = \frac{ \left(\cos(x)\right)^2 - 4 \cdot \cos(x) +
+0849,calculus,free_single,1,DONE,4(n+1),HIGH,B27,YES,sum 8(k/n)=8/n*n(n+1)/2=4(n+1); MATCH (best correct),Express the following sum in closed form. $ \sum\limits_{k=1}^{n} \ 8 \left(\fra
+0850,geometry,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B27,YES,boxes/balls pigeonhole competition; best=C,"You have $5$ boxes and $2005$ balls. $286$ , $645$ , and $1074$ of these balls a"
 0851,algebra,free_single,1,DONE,"B, C",HIGH,B13,YES,"y=-5/8 x: (0,0)->B, (-24,15)->C satisfy; teacher/best agree",Consider the equation $y=-\frac{5}{8}x$ Which of the following ordered pairs are
 0852,other,free_single,1,UNVERIFIED,,,,MAYBE,,"Each second, an atom clock runs $0.0008$ second slower than usual. This clock an"
-0853,geometry,MCQ,0,UNVERIFIED,,,,YES,,What is the circumference of the ellipse $\frac{x^{2}}{4} + y^{2} = 1$? Provide 
+0853,geometry,MCQ,0,DONE,8 E(3/4) = 9.6885,HIGH,B27,YES,ellipse x^2/4+y^2=1 circumference=8E(3/4)=9.6885; MCQ best=C,What is the circumference of the ellipse $\frac{x^{2}}{4} + y^{2} = 1$? Provide 
 0854,other,free_multi,2,UNVERIFIED,,,,MAYBE,,If $g(t)=\frac{1}{t+8}-6$ (a) Find $g(0)$. $g(0)=$ [ANS] (b) Exactly solve $g(t)
 0855,other,free_multi,2,UNVERIFIED,,,,MAYBE,,The following table shows the number of canned food collected by a non-profit or
 0856,other,MCQ,0,UNVERIFIED,,,,MAYBE,,Alice and Bob play a game on a board consisting of one row of 2022 consecutive s
 0857,statistics,free_multi,6,DONE,"A, 0.8974, 0.9146, A, 0.9015, 0.9221",MED,B16,YES,M&M weights 6-slot; best has all 6,Weights of 10 red and 36 brown randomly chosen M{\&}M plain candies are listed b
 0858,statistics,free_multi,4,DONE,"2.300, 1.691, Yes",PARTIAL,B6,YES,slot 4 unknown (interpretation phrase),It is widely accepted that people are a little taller in the morning than at nig
-0859,trigonometry,free_multi,4,UNVERIFIED,,,,YES,,"For each angle (in degrees) below, determine the quadrant in which the terminal "
+0859,trigonometry,free_multi,4,DONE,"1, 2, 2, 4 (quadrants)",MED,B27,YES,terminal-side quadrants; best plausible,"For each angle (in degrees) below, determine the quadrant in which the terminal "
 0860,other,free_single,1,UNVERIFIED,,,,MAYBE,,"In a sequence of five integers the third integer is the sum of the previous two,"
-0861,linear_algebra,MCQ,0,UNVERIFIED,,,,YES,,The tridiagonal matrix A[1..100][1..100] is stored in a one-dimensional array B[
-0862,algebra,MCQ,0,UNVERIFIED,,,,YES,,We now define an algorithm: The definition of a(n) is the number of ordered leng
+0861,linear_algebra,MCQ,0,DONE,tridiagonal array index formula,MED,B27,YES,row-major position in B[1..298]; MCQ best=G,The tridiagonal matrix A[1..100][1..100] is stored in a one-dimensional array B[
+0862,algebra,MCQ,0,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,B27,YES,OEIS length-2 compositions; best=I,We now define an algorithm: The definition of a(n) is the number of ordered leng
 0863,algebra,free_single,1,UNVERIFIED,,,,YES,,"Simplify the following expression, and write your answer using only positive exp"
 0864,other,free_multi,2,UNVERIFIED,,,,MAYBE,,Your friend from Paris arrives in New York and the forecast is for a low of 53 a
 0865,algebra,free_single,1,UNVERIFIED,,,,YES,,Translate the following phrase into a math expression or equation (whichever is 

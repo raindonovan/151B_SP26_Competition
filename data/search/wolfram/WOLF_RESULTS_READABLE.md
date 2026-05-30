@@ -520,3 +520,28 @@ Readable companion to `WOLF_RESULTS.csv` (the full machine-readable scorecard fo
 | 0804 | B26 | MED | int x sin(mx)/(x^4+a^4) via residues | contour integral, parametric in m,a; MCQ best=F |
 | 0806 | B26 | HIGH | -0.6551, -0.7556, 0.8670, 1.153, -1.324, -1.527 | sec=-45/34 QIII: cos=-0.7556,sin=-0.6551,tan=0.8670,cot |
 | 0807 | B26 | HIGH | (1/2)sec(2*phi) | d/dphi (1/4)ln((1+tan)/(1-tan))=(1/2)sec(2phi); value v |
+| 0808 | B27 | INCONCLUSIVE | INCONCLUSIVE | OEIS GF(2) blue code; best=D |
+| 0810 | B27 | HIGH | y=C1cos x+C2 sin x -(x/2)cos x | y''+y=sinx resonance: y_p=-(x/2)cos x; MCQ best=F |
+| 0813 | B27 | MED | small non-normal sample (no CI) | when CI impossible; best="A,C"; conceptual |
+| 0814 | B27 | MED | 5,4.726,0.9451,1.224,30,23.16,0.77... | facial-expression ANOVA-style 10-slot; best has all slo |
+| 0819 | B27 | HIGH | tan(x/2) - 2 ln(cos(x/2)) + C | int (1+sinx)/(1+cosx)dx=tan(x/2)-2ln cos(x/2)+C; MCQ be |
+| 0820 | B27 | HIGH | 15 | 18-6/2=18-3=15; MATCH (best correct) |
+| 0823 | B27 | INCONCLUSIVE | INCONCLUSIVE | bao-good integer competition; best=359 |
+| 0824 | B27 | MED | trapezoidal erf approx | trapezoid rule for int e^-t^2; MCQ best=C |
+| 0825 | B27 | MED | int_0^pi tan(theta+ia)dtheta = +/- i*pi | complex integral; sign depends on sign(a); MCQ best=D |
+| 0828 | B27 | MED | 99.63, 110.4 | 95% CI for mu; best plausible |
+| 0831 | B27 | MED | int 1/sin^5(8x)dx (messy) | reduction formula; MCQ best=E |
+| 0837 | B27 | HIGH | pi^2/6 - 1 | int_0^1 xlnx/(x-1)dx=0.6449=pi^2/6-1; MCQ best=D |
+| 0838 | B27 | MED | (23.66, 28.34) | weight-gain CI; best plausible |
+| 0839 | B27 | HIGH | pi/2 | sum Arccot(n^2+n+1) telescopes to pi/2; MCQ best=G |
+| 0840 | B27 | INCONCLUSIVE | INCONCLUSIVE | Putnam base-b digit recursion; best=F |
+| 0841 | B27 | HIGH | sin(40+8sqrt(x)), 5+sqrt(sin(8x)) | f(g)=sin(8(5+sqrtx))=sin(40+8sqrtx); g(f)=5+sqrt(sin8x) |
+| 0845 | B27 | HIGH | 5 | 1/5^(-1)=5; MATCH (best correct) |
+| 0847 | B27 | MED | Poisson E(X^n) recurrence proof | moment recurrence E(X^n)=lambda E((X+1)^(n-1)); MCQ bes |
+| 0848 | B27 | HIGH | (1+sqrt(5))/2 | min of (cos^2-4cos+5)/(3-2cos)=(1+sqrt5)/2; MCQ best=E |
+| 0849 | B27 | HIGH | 4(n+1) | sum 8(k/n)=8/n*n(n+1)/2=4(n+1); MATCH (best correct) |
+| 0850 | B27 | INCONCLUSIVE | INCONCLUSIVE | boxes/balls pigeonhole competition; best=C |
+| 0853 | B27 | HIGH | 8 E(3/4) = 9.6885 | ellipse x^2/4+y^2=1 circumference=8E(3/4)=9.6885; MCQ b |
+| 0859 | B27 | MED | 1, 2, 2, 4 (quadrants) | terminal-side quadrants; best plausible |
+| 0861 | B27 | MED | tridiagonal array index formula | row-major position in B[1..298]; MCQ best=G |
+| 0862 | B27 | INCONCLUSIVE | INCONCLUSIVE | OEIS length-2 compositions; best=I |
