@@ -25,15 +25,18 @@
 (Schema lists 11 named columns; the work-unit's "12" appears to be a miscount.)
 
 ## Source lineage
-anchor_set_FINAL (316) + 4-of-4 teacher bloc (cluster_pattern=='4') + CHATGPT-curated 57 Opus 5th-teacher items + 3 Opus anchor-flips (0120/0248/0308) + 1 quarantine (0187) + 4 no-box rescue items + qwen-voted base (0.713 stack) for the remainder.
+anchor_set_FINAL (316) + 4-of-4 teacher bloc (cluster_pattern=='4') + CHATGPT-curated 57 Opus 5th-teacher items + **4 Opus anchor-flips (0120/0248/0308 + 0836 from CHATGPT secondary review)** + 1 quarantine (0187) + 4 no-box rescue items + qwen-voted base (0.713 stack) for the remainder.
+
+**Secondary-review patch (2026-05-30):** 0836 flipped to Opus value `15` (T1, `anchor_v2_opus_flip_secondary` — anchor refuted by counterexample). REVIEW_FUTURE notes added to 0383 (theorem-level disagreement unresolved) and 0570 (possibly-compromised synthetic prompt); 0405/0586 confirmed-anchor (notes only). No other rows changed.
 
 **Key policy (DECISION 1, B-ship + A-flagging):** `submission_answer` **never regresses a proven string** — for the 57 value-equal anchor↔Opus contradictions we keep the 0.713 base string, but they are still tagged `format_suspect` / ship B so they enter the probe pool. Only the 21 differing contradictions (+3 flips, +untested overrides) get rebuilt submission strings. Math-truth changes can be aggressive; submission-string changes are conservative.
 
 ## Distribution stats (943 rows)
 - **math_source_tier:** T1 308 · T2 410 · T3 39 · T4 182 · T5 4
   - (T3 = exact count of n_agree==3 among the 57 Opus items; the other 18 are n_agree==4 → T2.)
-- **format_status:** submission_proven 773 · format_suspect 74 · untested 95 · known_bad 1
-- **ship_class:** A 864 · B 74 · C 5  (C = 0187 quarantine + 4 no-box T5 rescue items)
+- **format_status:** submission_proven 773 · format_suspect 73 · untested 96 · known_bad 1
+- **ship_class:** A 865 · B 73 · C 5  (C = 0187 quarantine + 4 no-box T5 rescue items)
+- **anchor flips: 4** (0120, 0248, 0308, 0836)
 
 ## How to use for slot 6+ builds
 - **Conservative production sheet:** take `submission_answer` for all `ship_class∈{A}` (and the proven strings of B). This never regresses the 0.713 base and folds in T1/T2/T3 value upgrades.

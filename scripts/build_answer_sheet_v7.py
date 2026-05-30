@@ -28,9 +28,23 @@ OPUS_5TH_TEACHER_57 = {
     "0761":3,"0766":3,"0838":4,"0843":3,"0908":3,"0925":3,"0929":4,
 }
 assert len(OPUS_5TH_TEACHER_57) == 57, len(OPUS_5TH_TEACHER_57)
-FLIPS = {"0120":"138", "0248":"\\dfrac{16192}{45}", "0308":"\\dfrac{1980}{169}"}
+# per-flip: (math_value, math_sources, provenance, reason)
+_FLIP_STD = ("anchor_v2_opus_flip|opus_deep|xhigh", "anchor_v2_opus_flip",
+             "deep Opus trace + cross-corroboration; anchor flip from CHATGPT_AUDIT")
+FLIPS = {
+    "0120": ("138",                _FLIP_STD[0], _FLIP_STD[1], _FLIP_STD[2]),
+    "0248": ("\\dfrac{16192}{45}", _FLIP_STD[0], _FLIP_STD[1], _FLIP_STD[2]),
+    "0308": ("\\dfrac{1980}{169}", _FLIP_STD[0], _FLIP_STD[1], _FLIP_STD[2]),
+    "0836": ("15", "anchor_v2_opus_flip|opus_deep|chatgpt_secondary", "anchor_v2_opus_flip_secondary",
+             "CHATGPT secondary review: anchor logic refuted by counterexample (chord-length divisibility); Opus correct"),
+}
 QUARANTINE = "0187"
-DEEP_SECONDARY = {"0383","0405","0570","0586","0836"}
+REVIEW_NOTES = {
+    "0383": "REVIEW_FUTURE: CHATGPT UNCERTAIN — theorem-level disagreement not closed by Opus trace",
+    "0570": "REVIEW_FUTURE: CHATGPT UNCERTAIN — prompt may be compromised (synthetic OEIS-style); teacher answers split",
+    "0405": "CHATGPT secondary review CONFIRMED anchor via DP recomputation of generating function",
+    "0586": "CHATGPT secondary review CONFIRMED anchor via direct cubic regression",
+}
 CONTRADICTION_CATEGORY_OVERRIDES = {
     "0167":"FORMAT_ARTIFACT","0448":"FORMAT_ARTIFACT","0713":"FORMAT_ARTIFACT",
     "0382":"PRECISION_DIFF","0187":"INCOMPARABLE",
@@ -87,8 +101,8 @@ def main():
 
         # ---- Step 1: math ----
         if i in FLIPS:
-            math, tier, msrc, prov = FLIPS[i], "T1", "anchor_v2_opus_flip|opus_deep|xhigh", "anchor_v2_opus_flip"
-            reason = "deep Opus trace + cross-corroboration; anchor flip from CHATGPT_AUDIT"
+            math, msrc, prov, reason = FLIPS[i]
+            tier = "T1"
         elif i == QUARANTINE:
             math, tier, msrc, prov = qwen_ans, "T4", "qwen_voted", "qwen_voted_raw (anchor quarantined)"
             reason = "anchor row referenced wrong problem family; CHATGPT_AUDIT quarantine"
@@ -97,7 +111,7 @@ def main():
             tier = "T1" if a.get("tier","")=="A" else "T2"
             msrc = "anchor|" + (a.get("source","") or "anchor")
             prov = "anchor_audited"
-            if i in DEEP_SECONDARY: notes = "DEEP-secondary candidate; keep_anchor; future review"
+            notes = REVIEW_NOTES.get(i, "")
         elif i in four_bloc:
             math, tier, msrc, prov = tans["sonnet"].get(i,{}).get("answer",""), "T2", "teacher_4of4", "teacher_4of4"
         elif i in OPUS_5TH_TEACHER_57:
@@ -209,12 +223,15 @@ def main():
     by = {r["id"]:r for r in rows}
     assert by["0187"]["ship_class"]=="C" and by["0187"]["format_status"]=="known_bad", "A4 fail"
     for fid in FLIPS:
-        assert by[fid]["math_source_tier"]=="T1" and by[fid]["provenance_answer"].endswith("opus_flip"), f"A5 fail {fid}"
-        assert by[fid]["math_answer"]==FLIPS[fid], f"A5 value fail {fid}"
+        assert by[fid]["math_source_tier"]=="T1" and "opus_flip" in by[fid]["provenance_answer"], f"A5/P2 fail {fid}"
+        assert by[fid]["math_answer"]==FLIPS[fid][0], f"A5 value fail {fid}"
+    assert by["0836"]["math_answer"]=="15" and by["0836"]["provenance_answer"].endswith("secondary"), "P2 fail 0836"
+    assert "REVIEW_FUTURE" in by["0383"]["notes"], "P3 fail 0383"
+    assert "REVIEW_FUTURE" in by["0570"]["notes"], "P4 fail 0570"
     for oid,na in OPUS_5TH_TEACHER_57.items():
         exp = "T2" if na==4 else "T3"
         assert by[oid]["math_source_tier"]==exp, f"A6 fail {oid}: {by[oid]['math_source_tier']} != {exp}"
-    print("asserts A4/A5/A6: PASS")
+    print("asserts A4/A5/A6/P2/P3/P4: PASS")
     nulls = [r["id"] for r in rows if not all(r[c] for c in ["id","math_answer","submission_answer","math_source_tier","format_status","format_strategy","ship_class"])]
     print("rows with null in required cols:", len(nulls), nulls[:10])
 

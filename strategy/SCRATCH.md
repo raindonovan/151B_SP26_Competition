@@ -402,3 +402,10 @@ Built `data/answer_sheet_v7_FINAL.csv` (943×11, **LFS** 12MB) + `data/answer_sh
 **Distribution:** tier T1 308 / T2 410 / T3 39 / T4 182 / T5 4 · format submission_proven 773 / format_suspect 74 / untested 95 / known_bad 1 · ship A 864 / B 74 / C 5. A2(no nulls)/A4(0187=C,known_bad)/A5(flips T1,opus value)/A6(57 correct T2/T3) all PASS. T3=39 (exact n_agree==3 count); C=5 = 0187 + 4 no-box (per DECISION 2).
 **Two spec notes:** schema has 11 named columns (A2 said 12 — miscount); v7_FINAL is gitignored under data/ so force-added (same convention as the teacher CSVs).
 **For strategy:** the 74-row probe pool (B) is the format-probe submission's candidate set; conservative production sheet = ship A + B's preserved strings (never regresses 0.713). Re-tag B→A as Kaggle data points land (slot 3 + format probe).
+
+---
+## claude_vscode signoff — 2026-05-30 — v7 patch: 0836 flip + REVIEW_FUTURE notes
+Patched `scripts/build_answer_sheet_v7.py`: ANCHOR_FLIPS now 4 (added 0836→"15", T1, prov `anchor_v2_opus_flip_secondary`, CHATGPT secondary counterexample); added REVIEW_NOTES for 0383/0570 (REVIEW_FUTURE) + 0405/0586 (confirmed-anchor). Regenerated v7_FINAL (LFS) + probe_overlay + README.
+**Surgical diff vs e10573c:** exactly 5 rows changed — 0836 (full flip) + 0383/0405/0570/0586 (notes only); other 938 byte-identical.
+**Updated distribution:** format_suspect 74→**73**, untested 95→**96**, ship B 74→**73** / A 864→**865** (0836 left the probe pool — it's now a confirmed flip, not suspect). Tier unchanged (0836 was already T1 anchor-A). C still 5.
+**Acceptance:** P1-P4 + all original A1-A9 PASS (asserts in builder). Probe pool now 73.
