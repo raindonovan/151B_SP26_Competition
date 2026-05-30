@@ -44,7 +44,7 @@ is secondary/auxiliary.
 
 ## Current status (2026-05-30)
 
-- regular_search: 943/943 searched — **57 GOLD / 13 PARTIAL / 873 NOT_FOUND**.
+- regular_search: 943/943 searched — **60 GOLD / 14 PARTIAL / 869 NOT_FOUND**.
 - search_with_compute: scaffolded, **empty** by design (compute not run).
 
 ## Forbidden sources (both tracks)
