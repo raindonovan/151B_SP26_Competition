@@ -627,3 +627,30 @@ Closed the my-audit → Cursor cross-check loop on the Tier-1 normalizer build p
 
 **Files modified**: inference/scripts/compute_r20_vote_dist.py (new), inference/scripts/select_kitchensink_target.py, submission/csvs/picks/kitchensink_target_set.csv, submission/csvs/picks/kitchensink_target_ids.txt (regenerated, content-identical to prior), inference/base_model/R20_eval_v1_sc8_p943_t32k_pp1/analysis/r20_vote_dist.csv (new).
 **HEAD**: 37e9ccf (pushed f7bbff4..37e9ccf).
+
+---
+
+## Agent signoff — Cursor — 2026-05-31
+### What I tried
+- Applied the locked R1 protocol: full-read of v3 plan and flow doc, then symmetric steelman then red-team.
+- Stress-tested the seven explicit high-priority risk targets called out by Rain.
+
+### What I did
+- Read `strategy/RESEARCH_PHASE_FLOW.md` in full and followed its mandatory output format exactly.
+- Read `strategy/PHASE_D_v7_PLAN.md` in full (246 lines) plus optional context files.
+- Wrote `strategy/REVIEW_OF_STRATEGY_V3.md` with five required sections: Steelman, Red-team, AGREE & LOCK, DISAGREE / DIVERGE, GAPS.
+
+### What worked
+- The review produced clear lockable decisions and concrete divergence points with evidence requirements.
+- High-risk areas (pilot A/B noise, route-gate leakage risk, six-LoRA operational fragility, DeepConf production risk) were surfaced with executable mitigations.
+
+### What didn't work
+- None functionally; no blocker in producing the review document under the time box.
+
+### What's left
+- Rain/claude_strategy arbitration on DISAGREE items (DeepConf default, six-LoRA fast-path gate, pilot tie policy, threshold calibration, probability confidence band).
+- If approved, integrate these deltas into v3.1 before execution kickoff.
+
+### Key discoveries
+- v3 is directionally strong and risk-aware, but it still has hidden decision-noise and validation-calibration risks that can consume deadline buffer.
+- DeepConf should likely be promoted only after a no-regression A/B check, not assumed as default production selector.
