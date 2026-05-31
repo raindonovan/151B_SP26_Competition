@@ -25,10 +25,11 @@ Do NOT skip any of these. Locked rule #6 (NO GLOSSING) applies to handoff contex
 ## CURRENT STATE
 
 - **Pick A**: LOCKED at 0.745 (`submission/30_05/slot4_aggressive/30_05_slot4_aggressive_v2.csv`)
-- **Pick B**: PENDING — kitchen-sink running on tnr-1, ETA ~1-1.5h from this handoff. Per Part 7 timing path.
-- **v7 adapter**: COMMITTED to (Rain's decision Day 9). Phase A done. Phase B/C/D pending. Compute envelope per Part 7.
-- **Submission budget**: ~7 slots remaining (2 today + 5 tomorrow per memory #1)
-- **Audit discipline EXTENDED** per memory #24 — strict standard going forward, all agents.
+- **Pick B**: PENDING — kitchen-sink running on tnr-1, ETA ~30-45min from this updated handoff.
+- **v7 adapter**: COMMITTED to. Phase A FULLY CLOSED (claude_strategy 14 parts + Cursor 3 parts). Phase B can be skipped. Phase C/D pending.
+- **Submission budget**: ~7 slots remaining (2 today + 5 tomorrow per memory #1) minus any fired in handoff gap
+- **Audit discipline EXTENDED** per memory #24 + strategy/AUDIT_DISCIPLINE_LOCKED.md.
+- **Latest commit at handoff**: see `git log -5 origin/main` (was e3225fc just before this handoff update)
 
 ---
 
@@ -212,6 +213,29 @@ The fresh session is succeeding if it:
 7. Lands Gradescope code submission cleanly alongside Kaggle picks
 
 ---
+
+
+
+---
+
+## NEW SINCE PREVIOUS HANDOFF (8dacf95 → e3225fc)
+
+**Phase A FULLY CLOSED**:
+- claude_strategy Parts 12-14 added (tier verification, question R, Cursor 3rd-pass audit + Part 8 reframe)
+- Cursor REDO (697a9d7) + 3rd pass (10d0713) — all 8 gap items addressed
+- Quantization claim (Part 11) source-verified
+- Trace-coherence hypothesis (Part 8) reframed: 17/17 random stratified sample coherent, but at-risk subset not preferentially tested → hypothesis neither confirmed nor refuted; conservative-first default treats as real for v7 design
+
+**Net v5 failure-mode triangle status** (PART 14.D):
+1. Training composition (87.72% T1+T2 easy-heavy): VERIFIED REAL
+2. Trace coherence (Sonnet trace + swapped teacher answer): LIVE HYPOTHESIS; treat as real for v7 conservative-first
+3. Deployment mismatch: FALSIFIED (v5 WAS dual-path per slot1/routing_manifest.csv)
+
+V5 break-even fully explained by #1 alone. v7 conservative-first design fixes #1 + #2 (cheap insurance).
+
+**New research question R** (Part 13): epoch/checkpoint selection for transductive SFT. Added to Phase C scope.
+
+**Phase A is officially closed**. Phase B (claude_strategy reads research/ scattered docs) can be skipped — most relevant material was already incorporated.
 
 ## HANDOFF PROMPT (paste this into the fresh session as the first message)
 
