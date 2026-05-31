@@ -444,3 +444,26 @@ Updated: REGISTRY rows #39/#40/#41 + Key-findings (new best 0.745); `30_05/SCORE
 ---
 ## claude_vscode signoff — 2026-05-30 — SESSION_HANDOFF.md Day-8-close rewrite
 Replaced the Day-7 SESSION_HANDOFF.md with a Day-8-close → Day-9-open version drafted from session state (Rain authorized: the referenced verbatim handoff block was not present in chat). New content: deadline banner (2026-05-31, ~12 slots, lock 0.745 Pick A first); ACTIVE STATE = overlay stack near ceiling, pivot to Qwen-only; Day-8 results table (#37-#41) + 3 learnings; TL;DR (best 0.745 = slot4_v2, v7 LOCKED w/ distributions, Opus outputs landed, grader=value-equality, gold_equiv factorial bug); Day-9 north star = Qwen-only path (cross-run consensus / log-weighted SC / 12hr A100, all rule-#11-eligible); pending tasks (lock picks → Qwen Pick B → T1 scan → post-deadline gold_equiv fix → PAT rotation); revised submission budget (format-probe allocation retired); locked-findings + SOP tables refreshed (added Day-8/v7/Opus/grader/local-directional/rule-#11 rows); Day-8 signoff block; preserved Day-7/Day-6 history (condensed). HEAD-SHA line set after commit.
+
+---
+## claude_strategy signoff — 2026-05-31 (Day 9 morning) — T4 cross-run matrix audit + Pick B marginal-accounting infrastructure
+
+T4 audit @CURSOR returned **YELLOW** (matrix itself trusted, 3 corrections to my pre-audit narrative):
+1. NT-13 gold-source breakdown corrected to **7 wolfram_HIGH / 5 search_GOLD / 1 unanimous_teachers** (was 6/5/1 — arithmetic error).
+2. "Other 13 NT-only candidates" reframed as **11 independent + 9 uncertain** (NT-only-26 minus the 6-item NT-13 overlap = 20 remaining, of which 11 are independent-gold).
+3. SLOT_PLAN.md slot-9 rationale rewritten — the prior "11/40 independent of normalizer + NT-13" was a misclassification (9 of those 11 had R20=1 so override no-ops/regresses; 1 had no rescuers; only 1 was a clean rescue candidate). Replaced with the validated TEXAS_OIL_FINDINGS Phase-1 +6/547 measurable baseline + 26/40 unmeasurable-risk rationale. Slot-9 conclusion unchanged.
+
+**Matrix-confirmed numbers (downstream agents use these):**
+- Per-run accuracy: R08=631 / R09=675 / R10=604 / R20=756 / R20b=788 / NT=582 (all on 943).
+- Rescue pool (R20-wrong, others-right) = **90 items**; independent-gold subset = **43**.
+- NT-only rescues = **26 items** (no Thinking corroboration); 17 independent-gold. 6 are in NT-13.
+- All-wrong items = **97**; of these **47** are high-confidence-hard (30 wolfram_HIGH + 17 search_GOLD) — these set the inference-bound ceiling, no post-processing can rescue.
+- R20 vs R20b pairwise agreement = **96.18%** — R20b is largely R20-derivative, not orthogonal. **Do not double-count R20b as independent rescuer in EV calculations.**
+- NT vs Thinking runs = 69-74% agreement → NT is the genuinely orthogonal diversity source.
+
+**New artifact**: `submission/csvs/picks/pickb_marginal_accounting.csv` (943 rows). Canonical table for Cursor Q-F deduplication recommendation. Boolean columns `in_nt13`, `in_revote`, `in_normalizer`, `in_thunder`; only `in_nt13` populated so far. **For Pick B construction**: each new workstream (sweep/normalizer/Thunder) scores marginal-only on IDs not already covered by higher-priority sets. Priority order = NT13 > normalizer > revote > thunder. Update columns as workstream signoffs land.
+
+**Audits remaining today**: claude_vscode sweep verdict (in flight), Tier-1 normalizer verdict (queued post-sweep), tnr-0/1 outputs verdict (~13:42 UTC). All three integrate into the marginal accounting table → Pick B candidate construction.
+
+Files: submission/SLOT_PLAN.md (str_replace, 1 line), submission/csvs/picks/pickb_marginal_accounting.csv (new). Commit + push next.
+
