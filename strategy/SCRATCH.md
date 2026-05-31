@@ -626,4 +626,4 @@ Closed the my-audit → Cursor cross-check loop on the Tier-1 normalizer build p
 - WHY unchanged: verified the margin<=2 criterion adds ZERO items beyond what top<=5+multislot already caught on this 52-item residual (margin-only set empty). Amendment correctly implemented (full criterion + populated columns now match locked spec); just subsumed by existing signals on this residual. Value = populated margin/second columns + spec-correct criterion for future residuals.
 
 **Files modified**: inference/scripts/compute_r20_vote_dist.py (new), inference/scripts/select_kitchensink_target.py, submission/csvs/picks/kitchensink_target_set.csv, submission/csvs/picks/kitchensink_target_ids.txt (regenerated, content-identical to prior), inference/base_model/R20_eval_v1_sc8_p943_t32k_pp1/analysis/r20_vote_dist.csv (new).
-**HEAD**: (filled after push).
+**HEAD**: 37e9ccf (pushed f7bbff4..37e9ccf).
