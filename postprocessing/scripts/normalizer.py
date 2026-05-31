@@ -24,6 +24,17 @@ from typing import Any, Callable, Optional
 
 from hendrycks_local import extract_mcq_letter, is_equiv, strip_string
 
+# ACTION 3 (Cursor BLOCKER 2): canonical value-equality grader for MCQ option matching.
+# grading/grader.py lives at repo root with a root-judger dependency; add the repo root to
+# sys.path so the import resolves regardless of CWD. Import via grading.grader (NOT direct
+# judger) per the spec.
+import os as _os
+import sys as _sys
+_REPO_ROOT = _os.path.dirname(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
+if _REPO_ROOT not in _sys.path:
+    _sys.path.insert(0, _REPO_ROOT)
+from grading.grader import Grader  # noqa: E402
+
 
 BOX_START_RE = re.compile(r"\\boxed\{")
 TEXT_WRAPPER_RE = re.compile(r"^\\text\{\s*([A-Za-z])\s*\}$")
@@ -58,6 +69,7 @@ class Normalizer:
         self.mode = "single"
         self.overrides = self._load_overrides(overrides_path)
         self.custom_overrides: dict[str, Callable[[str, dict], str]] = {}
+        self.grader = Grader()  # ACTION 3: value-equality MCQ option matching
 
     def normalize(self, response: str, item: dict) -> str:
         return self.normalize_with_report(response, item).response
@@ -110,6 +122,14 @@ class Normalizer:
                         first_boxed_letter=joined,
                         last_boxed=all_boxes[-1],
                     )
+                # ACTION 3: a non-letter box (e.g. numeric "3.0") — carry the last box content
+                # forward so mcq_normalize can map it to a letter via value-equality.
+                return ExtractionResult(
+                    candidate=all_boxes[-1],
+                    rescued=False,
+                    all_boxes=all_boxes,
+                    last_boxed=all_boxes[-1],
+                )
         elif all_boxes:
             return ExtractionResult(
                 candidate=all_boxes[-1],
@@ -175,12 +195,34 @@ class Normalizer:
         if not letter:
             letters = self._parse_mcq_letter_set(candidate)
             if letters:
+                # ACTION 4 (Cursor WORRY 3 hedge): collapse duplicated-option answers like
+                # "H, H" / "H,H,H" (same letter repeated) → single letter. Cheap regression
+                # hedge in case value-equality didn't pre-empt it (the 302/839 pattern).
+                if len(set(letters)) == 1:
+                    flags.append("MCQ_DUPLICATE_COLLAPSED")
+                    return letters[0]
                 return ",".join(letters)
+        # ACTION 4 also guards the raw-string form (regex on the cleaned candidate)
+        if not letter and re.fullmatch(r"([A-Za-z])(?:\s*,\s*\1)+", candidate.strip()):
+            flags.append("MCQ_DUPLICATE_COLLAPSED")
+            return candidate.strip()[0].upper()
         if not letter:
+            # ACTION 3 (Cursor BLOCKER 2): map a numeric/value candidate to its option letter
+            # via VALUE-equality (grader.is_equal), not strict string is_equiv. Options may be
+            # wrapped in \boxed{...}; strip the wrapper before comparing.
             numeric_candidate = self.universal_cleanup(candidate)
             options = item.get("options") or []
             for idx, option in enumerate(options):
-                if is_equiv(numeric_candidate, option):
+                opt_val = option
+                box = self.extract_all_boxed(option) if isinstance(option, str) else []
+                if box:
+                    opt_val = box[-1]
+                opt_val = self.universal_cleanup(opt_val)
+                try:
+                    equal = bool(self.grader.is_equal(numeric_candidate, opt_val, options=[]))
+                except Exception:
+                    equal = False
+                if equal:
                     letter = self._letter_for_index(idx)
                     flags.append("MCQ_MAPPED_FROM_OPTION")
                     break
@@ -197,17 +239,49 @@ class Normalizer:
         extraction: ExtractionResult,
         flags: list[str],
     ) -> str:
+        # ACTION 2 (Cursor BLOCKER 3): replicate fix_submission_format.fix_response logic
+        # INLINE (do NOT import that script). Fixes the multi_answer defect where an
+        # intermediate \boxed{8} mid-reasoning + a correct final \boxed{8, NONE} used to be
+        # mis-consolidated into "8, 8,NONE". Priority:
+        #   1. last box already splits cleanly into `expected` non-empty pieces → KEEP it (LAST_BOX_KEPT)
+        #   2. only 1 box → keep as-is (MULTI_RESCUE_ONLY)
+        #   3. multiple boxes, last not clean → consolidate last N unique non-empty values (CONSOLIDATED_N)
+        # UNDERCOUNT_*/OVERCOUNT_* flags preserved for diagnostics.
         expected = self._expected_slot_count(item)
-        cleaned_boxes = [self.universal_cleanup(box) for box in extraction.all_boxes if box.strip()]
-        if cleaned_boxes:
-            if len(cleaned_boxes) < expected:
-                flags.append(f"UNDERCOUNT_{len(cleaned_boxes)}_OF_{expected}")
-                values = cleaned_boxes
-            else:
-                values = cleaned_boxes[:expected]
-                if len(cleaned_boxes) > expected:
-                    flags.append(f"OVERCOUNT_{len(cleaned_boxes)}_TO_{expected}")
-            values = [self._normalize_multi_element(value, item) for value in values]
+        raw_boxes = [box for box in extraction.all_boxes if box.strip()]
+
+        if raw_boxes:
+            last_raw = raw_boxes[-1]
+            last_pieces = [p.strip() for p in last_raw.split(",") if p.strip()]
+            # (1) last box already a clean expected-count comma split → keep it (preserve order/form)
+            if "," in last_raw and len(last_pieces) == expected:
+                flags.append("LAST_BOX_KEPT")
+                values = [self.universal_cleanup(p) for p in last_pieces]
+                values = [self._normalize_multi_element(v, item) for v in values]
+                return ", ".join(values)
+
+            cleaned_boxes = [self.universal_cleanup(box) for box in raw_boxes]
+            # (2) only one box, no clean split → rescue-only, pass through
+            if len(cleaned_boxes) == 1:
+                # the single box may itself be a comma-list; keep as a single element/value
+                flags.append("MULTI_RESCUE_ONLY")
+                return self._normalize_multi_element(cleaned_boxes[0], item)
+
+            # (3) multiple boxes, last not a clean expected-count split → consolidate last N unique
+            unique_vals: list[str] = []
+            seen: set[str] = set()
+            for b in reversed(cleaned_boxes):
+                if b and b not in seen:
+                    seen.add(b)
+                    unique_vals.insert(0, b)
+                if len(unique_vals) == expected:
+                    break
+            if len(unique_vals) < expected:
+                flags.append(f"UNDERCOUNT_{len(unique_vals)}_OF_{expected}")
+            elif len(cleaned_boxes) > expected:
+                flags.append(f"OVERCOUNT_{len(cleaned_boxes)}_TO_{expected}")
+            flags.append(f"CONSOLIDATED_{len(unique_vals)}")
+            values = [self._normalize_multi_element(v, item) for v in unique_vals]
             return ", ".join(values)
 
         if candidate:
@@ -261,6 +335,20 @@ class Normalizer:
                 return response
             return f"\\boxed{{{candidate}}}"
 
+        # ACTION 6 (Cursor WORRY 1) — REBOX SAFETY (behavior unchanged; documentation only):
+        # We append a NEW box with a "Final answer:" text prefix rather than full-replacing.
+        # Why this is SAFE under the value-equality grader: the grader (judger.extract_all_boxed)
+        # takes the LAST CONTIGUOUS GROUP of \boxed{}, where "contiguous" allows only the gap
+        # regex [\s,\$\.\;\:\-\&\\]* between boxes. The word "Final answer:" contains letters
+        # ('F','i','n','a','l','a','n','s','w','e','r') that are NOT in that allowed-gap set, so
+        # it BREAKS contiguity — the appended box forms its own last group and the grader sees
+        # ONLY the new box (not merged with any prior boxes in the response).
+        # Contrast with apply_overrides.py, which FULL-REPLACES the response with a single
+        # \boxed{} (different use case: applying a single-item override value, where we want
+        # zero ambiguity). And contrast with the Day-8 bug: a plain "\n\n\boxed{NEW}" appended
+        # after an existing "$$\boxed{...}$$" block MERGES the two groups (gap is only whitespace/$,
+        # all in the allowed set) → grader reads "old, NEW" with wrong slot count. The
+        # "Final answer:" prefix is precisely what prevents that merge here.
         final_box = f"Final answer: \\boxed{{{candidate}}}"
         if response.rstrip().endswith(final_box):
             return response

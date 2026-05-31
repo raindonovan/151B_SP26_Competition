@@ -106,3 +106,60 @@ def test_hendrycks_equivalence_helpers_match_expected_behavior():
     assert is_equiv(r"\dfrac{1}{2}", r"\frac{1}{2}")
     assert not is_equiv("0.6", r"\frac{3}{5}")
     assert strip_string("x = 5") == "5"
+
+
+# ── ACTION 1 anchor tests (Tier-1 normalizer build; must FAIL on pre-build code) ──
+
+def test_multi_answer_defect_intermediate_plus_final_comma():
+    # item-15 pattern: a 2-slot free_multi where an intermediate \boxed{8} appears
+    # mid-reasoning AND the final \boxed{8, NONE} already has the correct comma-split.
+    # The fixed normalizer must KEEP the final comma'd box (= "8, NONE"), NOT splice
+    # the intermediate box in to produce "8, 8,NONE" / "8, NONE" length-mismatch.
+    norm = Normalizer(mode="single")
+    item = {"id": 15, "question": "part a [ANS] part b [ANS]"}
+    response = r"work \boxed{8} more reasoning, final answers \boxed{8, NONE}"
+    out = norm.normalize_with_report(response, item)
+    assert out.candidate == "8, NONE", out.candidate
+
+
+def test_duplicate_option_collapse_mcq():
+    # MCQ where the response box holds a duplicated option letter "H, H".
+    # Must collapse to the single letter "H".
+    norm = Normalizer(mode="single")
+    item = {"id": 9001, "question": "pick one", "options": ["A"] * 8}  # H = index 7
+    response = r"reasoning \boxed{H, H}"
+    out = norm.normalize_with_report(response, item)
+    assert out.candidate == "H", out.candidate
+
+
+def test_high_confidence_no_box_overrides():
+    # 4 Tier-1 HIGH no-box overrides (229, 308, 383, 498). Each response has NO \boxed{};
+    # the per_item_overrides.csv force_value must drive the final candidate.
+    expected = {"229": "2", "308": "12", "383": "80", "498": "15"}
+    with tempfile.NamedTemporaryFile("w", suffix=".csv", delete=False) as handle:
+        handle.write("id,override_type,value,evidence,added_by,date\n")
+        for iid, val in expected.items():
+            handle.write(f"{iid},force_value,{val},4/4 SC unanimous,unit,2026-05-31\n")
+        path = handle.name
+    try:
+        norm = Normalizer(mode="single", overrides_path=path)
+        for iid, val in expected.items():
+            item = {"id": int(iid), "question": "[ANS]"}
+            response = "long rambling reasoning with no boxed answer at all"
+            out = norm.normalize_with_report(response, item)
+            assert out.candidate == val, (iid, out.candidate)
+            assert "OVERRIDE_FORCE_VALUE" in out.flags, (iid, out.flags)
+            assert f"\\boxed{{{val}}}" in out.response, (iid, out.response[-40:])
+    finally:
+        os.unlink(path)
+
+
+def test_mcq_value_to_letter_via_value_equality():
+    # item-141 pattern: MCQ whose options are numeric-valued; the response boxes a
+    # number "3.0" that is VALUE-equal (not string-equal) to the option "3".
+    # Must map to that option's letter. (3 is option index 2 → "C".)
+    norm = Normalizer(mode="single")
+    item = {"id": 141, "question": "choose", "options": ["1", "2", "3", "4"]}
+    response = r"after computing \boxed{3.0}"
+    out = norm.normalize_with_report(response, item)
+    assert out.candidate == "C", out.candidate

@@ -527,3 +527,42 @@ Closed the my-audit → Cursor cross-check loop on R14 per memory #24. Cursor re
 **Residual risk per Cursor**: causal attribution of R14 effect to rep_penalty alone weakened by stack/version drift. The 15/17 extraction-rescue correlation is strong but not isolated from environment differences.
 
 **Commit + push next.**
+---
+## claude_vscode signoff — 2026-05-31 (Day 9) — Tier-1 normalizer build (9 ACTIONS complete)
+
+**Role**: execution agent on Thunder/dsmlp box. Received 9-ACTION audit-hardened spec from claude_strategy (post two Cursor pre-build passes).
+
+**Relevance**: largest remaining Pick B lever per SLOT_PLAN slot 3/4. HIGH-STAKES per Rain's Day-9 directive ("NORMALISATION IS HIGH STAKES AND NEEDS DEEP AUDIT").
+
+**Pre-flight (memory #19):** HEAD a730553 (pre-pull); normalizer.py md5=1cad2759c8e1fd1b223d5fe26845d537 (pre-build); disk 912G avail; baseline 11/11 PASS.
+
+**ACTIONS executed:**
+
+- **ACTION 1**: added 4 anchor tests. 3 confirmed FAIL on current code (duplicate-option→'H,H', mcq-value-to-letter→'INVALID', multi-answer-defect→'8, 8,NONE'). 1 passed already (no-box-overrides; force_value path was implemented, just no data to drive it). Anchors test the changes.
+- **ACTION 2**: multi_answer_normalize fix replicated fix_submission_format.fix_response logic INLINE (per BLOCKER 3, no import). Behavior: (a) last box has comma + clean split → KEEP (flag LAST_BOX_KEPT); (b) 1 box only → MULTI_RESCUE_ONLY; (c) else consolidate last N unique → CONSOLIDATED_N. UNDERCOUNT_/OVERCOUNT_ preserved.
+- **ACTION 3**: Grader imported via `from grading.grader import Grader` with sys.path workaround. `is_equiv` swapped to `self.grader.is_equal(...)` in mcq_normalize. (See SCOPE DEVIATION below — required extract_answer supplement.)
+- **ACTION 4**: regex `^([A-Z])(?:\s*,\s*\1)+$` collapse in mcq_normalize after letter extraction (plus the letter-set set()==1 path). Flag MCQ_DUPLICATE_COLLAPSED.
+- **ACTION 5**: per_item_overrides.csv populated EXACTLY 4 HIGH items — 229→2, 308→12, 383→80, 498→15. All Qwen-derived (4/4 SC unanimous), Rule #11 compliant. NO 445, NO Wolfram, NO teacher entries.
+- **ACTION 6**: rebox safety documentation comment added — Final-answer-prefix is safe per judger.extract_all_boxed allowed-gap regex; behavior unchanged.
+- **ACTION 7**: evaluate_normalizer.py emits raw_strict / normalized_strict / raw_value / normalized_value / improved_strict / improved_value. Fixture (6 rows): strict 3→4 (+1), value 4→5 (improved_value=+1).
+- **ACTION 8**: flag taxonomy verified clean — 4 spec categories present + distinct (LAST_BOX_KEPT/CONSOLIDATED_N structural, OVERRIDE_FORCE_VALUE no-box rescue, MCQ_MAPPED_FROM_OPTION MCQ value-map, MCQ_DUPLICATE_COLLAPSED dup hedge). Dead-code flags untouched per DO-NOT.
+- **ACTION 9**: 15/15 tests PASS (4 anchors + 11 baseline). Evaluate_normalizer fixture confirms dual metrics. R20 smoke (`run14b_sc8_v1.csv` → `/tmp/normalized_r20.csv`): 943 items, 2.3s wall, 0 exceptions. Anchor verifications: item 15 last box = '8, NONE' ✓ (DEFECT FIXED); 229/308/383/498 have \boxed{value} injected ✓ (OVERRIDE_FORCE_VALUE=4); item 302 → H, 839 → G ✓ (note: 302/839 already had H/G as the contiguous-group representative under judger.extract_all_boxed, so MCQ_DUPLICATE_COLLAPSED=0 on R20 — the dup-collapse logic is a hedge for alternative scenarios). Flag distribution: LAST_BOX_KEPT=239, CONSOLIDATED_*=91.
+
+**Additional no-regression gate (beyond spec, defensive):** Built script comparing normalized R20 vs raw R20 on 547-item independent-gold subset (gold_source ∈ {wolfram_HIGH, search_GOLD, unanimous_teachers}). Result: R20 baseline=444, normalized=446, **delta=+2 PASS**. Zero regression on measurable set. Bigger wins (4 no-box overrides + multi-slot fixes) land disproportionately on T4/T5 unmeasurable items per spec intent.
+
+**SCOPE DEVIATION — flagged for Cursor post-build audit:**
+
+Added `extract_answer` MCQ-fallback fix NOT in the 9-ACTION spec. Necessary supplement to make ACTION 3 fire: for MCQ items where the response has a numeric box (e.g. `\boxed{3}`) rather than a letter box, original extract_answer was discarding the box content entirely and returning empty candidate, so value-equality matching in mcq_normalize had no input to work with. Fix: in extract_answer's MCQ branch, when no letter-box found and no letter-set parses, fall back to the last box content (preserved for downstream value-equality matching). ~8 lines. Only fires on MCQ + no-letter-form. Verified clean.
+
+This is the ONLY deviation from spec. All other ACTIONS executed as written.
+
+**Deliverables (5 files):**
+- postprocessing/scripts/normalizer.py (ACTIONS 2/3/4/6/8 + extract_answer fix)
+- postprocessing/scripts/evaluate_normalizer.py (ACTION 7)
+- postprocessing/per_item_overrides.csv (ACTION 5)
+- tests/test_normalizer.py (ACTION 1)
+- strategy/SCRATCH.md (this signoff)
+
+**Audit handoff**: post-build deep audit fires next per memory #24 (HIGH-STAKES, NO LIGHT AUDIT). Cursor prompt already loaded on Rain's end.
+
+**Recovery note**: this signoff is the API-error retry. Build was complete pre-error; only the commit step failed.
