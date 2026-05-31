@@ -743,3 +743,18 @@ STATUS: ready for Cursor audit; DO NOT upload until Cursor verdict
 - 3 known corrupted sheet_best_answer rows: ids 93, 376, 652. Value starts with "This is a complex or challenging..." (prompt-text pollution).
 - Defensive filter: in any gold-matching step, treat `gold.startswith("This is a")` or empty/None as LOW provenance + force route_eligible=False regardless of tier.
 - Wider scan needed: how many rows match this pattern? Flag if >10.
+
+---
+## claude_strategy note — 2026-05-31 — Slot 4 SPLICE results (REGRESSION, hypothesis rejected)
+
+Kaggle returned: r20_normalized.csv=0.664 · pickb_norm_nt13_v1.csv=0.660.
+
+**Stack hypothesis (SLOT_PLAN.md slot 4: 0.676 mid, range 0.662-0.686) REJECTED.** Actual 0.660 is BELOW range floor and below Pick B 0.664. NT-13 + normalizer disagree on overlapping items in a way that nets ~1 slice item LOSS. The two Qwen-only structural levers are NOT additive; they are subtractive on the scored slice.
+
+**Strategic implications for next-batch (5 slots arriving in ~2h):**
+1. Single-lever Pick B ceiling appears stuck at 0.664 across 3 independent attempts (Conservative-13, normalizer-only, 763-safe).
+2. Naive stacking (normalizer + NT-13) DESTROYS rather than adds. Texas-oil + NT-13 likely similar.
+3. Path to >0.664: (a) a NEW orthogonal lever (kitchen-sink id=724 rescue, thinking-twin SC@16 rescues from 118-target), (b) overlap-aware splice that resolves NT-vs-normalizer conflicts at slice items (requires knowing which items are in slice — unknowable), or (c) v7 LoRA path (in flight via Phase 0).
+4. Pick A = 0.745 unchanged; floor protected.
+
+**Don't ship pickb_norm_nt13_v1 as Pick B.** Keep locked Pick B = Conservative-13 NT-join at 0.664 until a >0.664 candidate is verified.

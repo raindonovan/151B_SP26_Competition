@@ -1,0 +1,22 @@
+{
+  "slot": "D9_S4_pickb_norm_nt13_v1",
+  "date": "2026-05-31",
+  "build_chain": "run14b_sc8_v1.csv → normalizer.py (c6bfdbc) → apply_overrides.py (overrides_nothinking_join_conservative_763safe.csv)",
+  "files": {
+    "r20_normalized.csv": {
+      "kaggle_score": 0.664,
+      "delta_vs_r20_base": "+0.018",
+      "note": "Normalizer-only intermediate; replicates D9_S3 normalizer-only-v1 (0.664)"
+    },
+    "pickb_norm_nt13_v1.csv": {
+      "kaggle_score": 0.660,
+      "delta_vs_intermediate": "-0.004",
+      "delta_vs_pick_b": "-0.004",
+      "verdict": "REGRESSION — hypothesis rejected; stack is subtractive not additive"
+    }
+  },
+  "rule_11": "LEGAL (both Qwen-only)",
+  "hypothesis": "normalizer + NT-13 are structurally orthogonal → 0.676 mid (range 0.662-0.686)",
+  "result": "REJECTED — actual 0.660 below range floor",
+  "implication": "Stack-of-Qwen-levers path closed at 0.664 ceiling. Next-batch Pick B needs new orthogonal lever or overlap-aware splice."
+}

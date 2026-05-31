@@ -98,3 +98,26 @@ info_1, info_3, slot1_reformat_plus_b2_plus_sheet, slotA_dfrac_only, slot3_minus
 - **Lift**: +1.8pp
 - **Projected range**: 0.655-0.678 (LANDED MID-RANGE)
 - **Implication**: Tier-1 normalizer confirmed as Pick B component
+
+## D9_S4_PICKB_NORM_NT13_v1 (2026-05-31)
+
+Two-file slot (intermediate + final from same SPLICE build).
+
+**File 1** (intermediate): `submission/30_05/slotX_pickb_norm_nt13/r20_normalized.csv`
+- **Score**: 0.664
+- **Build**: R20 (`run14b_sc8_v1.csv`, 0.646) → `postprocessing/scripts/normalizer.py` (c6bfdbc; 645 row changes)
+- **Result**: replicates D9_S3 normalizer-only-v1 (0.664) exactly. Normalizer lever confirmed stable.
+- **Rule #11**: LEGAL — Qwen-derived structural only.
+
+**File 2** (final SPLICE): `submission/30_05/slotX_pickb_norm_nt13/pickb_norm_nt13_v1.csv`
+- **Score**: 0.660  ❌ **REGRESSION** vs File 1 (-0.4pp) and vs Pick B 0.664 (-0.4pp)
+- **Build**: File 1 → `apply_overrides.py` with `overrides_nothinking_join_conservative_763safe.csv` (NT-13, 763-safe)
+- **Hypothesis tested**: normalizer + NT-13 are structurally orthogonal/additive → expected 0.676 (range 0.662–0.686)
+- **Result**: HYPOTHESIS REJECTED. Stack is **subtractive**, not additive. NT-13 + normalizer disagree on overlapping items in a way that costs ~1 slice item net.
+- **Rule #11**: LEGAL — both levers Qwen-only.
+- **Strategic implication**: "Stack multiple Qwen-only structural levers" path is **closed at 0.664 ceiling**. Path to >0.664 Pick B requires either (a) a new orthogonal lever (e.g., thinking-twin rescues + kitchen-sink id=724) or (b) overlap-aware splicing that resolves NT-vs-normalizer conflicts at the slice items.
+
+**Current picks state (post Day-9 Slot 4 results):**
+- Pick A = 0.745 `slot4_aggressive_v2` (unchanged)
+- Pick B = 0.664 (best Qwen-only: Conservative-13 NT-join OR normalizer-only-v1 — equivalent)
+- 0.660 candidate NOT a pick (regression).
