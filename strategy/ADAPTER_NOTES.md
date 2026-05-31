@@ -760,3 +760,95 @@ This raises confidence that v7 is fixable. Each of these is concretely addressab
 - T+6h: Decision point — fire Pick B with v7
 
 Leaves 7-8h remaining buffer at end for Pick B iteration, Gradescope code, final lockdown.
+
+---
+
+## PART 9 — Subset-stratified hypothesis testing + routing-dismissal correction (Rain's catch 5/31)
+
+### 9.A) Subset-stratified hypothesis testing (PRIMARY v7 eval direction)
+
+Rain's observation: transductive learning effectiveness may NOT be uniform across the 943. Could be effective on some subsets and useless or harmful on others. The right v7 question isn't "does adapter work" — it's **"for which subsets does adapter work, and where does it fail."**
+
+**Subsets to define and test per-subset performance**:
+- **Question format**: MCQ vs free-form
+- **Answer cardinality**: single-slot vs multi-slot (2-slot, 3-slot, 5-slot, 10-slot)
+- **Trace length**: short (<1000 tokens) vs medium (1000-4000) vs long (4000+)
+- **Tier**: T1/T2/T3/T4/T5 (per memory #23)
+- **Subject category**: algebra / geometry / calculus / statistics / number theory / combinatorics / ...
+- **Difficulty proxies**: low base-SC agreement (≤4/16) vs medium (5-12) vs high (13-16)
+- **Answer type**: numeric (integer/decimal/fraction) / algebraic expression / set / interval/range / textual (T/F or Yes/No)
+- **Wolfram coverage**: items where Wolfram solved vs items where Wolfram failed
+
+**Eval methodology change**: v7 evaluation must produce a PER-SUBSET breakdown table, not just aggregate. Example output:
+```
+Subset            Base    Adapter   Delta    Routing?
+MCQ single        0.81    0.86     +5pp     ROUTE
+Free single       0.62    0.65     +3pp     ROUTE
+Multi-slot 2      0.43    0.41     -2pp     SKIP
+Multi-slot 3+     0.35    0.30     -5pp     SKIP
+T1 (easy)         0.94    0.94      0pp     SKIP (no upside)
+T4 (hard)         0.28    0.42     +14pp    ROUTE
+```
+
+This output enables SELECTIVE deployment: route items in the subsets where adapter helps; pass-through items where it doesn't.
+
+**Multi-adapter ensemble option** (opened up by per-subset analysis):
+- Train narrow specialists per subset (e.g., MCQ adapter, single-slot free adapter, T4 adapter)
+- Each adapter trained on its subset's residual (Qwen-wrong items in that subset)
+- At inference, route per item characteristics to the right specialist
+- More complex but potentially much higher upside than one general adapter
+
+**Critical Phase C research questions added**:
+- G. Has anyone published per-subset effectiveness analyses for LoRA SFT on math reasoning? Which subsets benefit most/least?
+- H. Are there structural reasons (model architecture, training paradigm) that would predict which subsets benefit from SFT memorization?
+- I. AIMO/Kaggle math winners: did any use multi-adapter ensembles or subset-routing?
+- J. Are MCQ and free-form fundamentally different learning problems for SFT, or roughly equivalent?
+
+### 9.B) Routing-dismissal correction
+
+Earlier in this notes file I wrote: "v4 ALREADY attempted selective sampling diversity (trained items low-T tight, untrained items high-T diverse) — still regressed. So pure routing doesn't fix it."
+
+**This was overstatement.** Rain pushed back: just because v4's specific routing implementation regressed doesn't mean the dual-path/selective-routing concept is dead.
+
+**Corrected framing**:
+- v4's specific implementation = MERGED model + temperature-differentiated sampling. That ONE configuration regressed -4.9pp.
+- This is one data point on one routing strategy. It does NOT extend to all routing approaches.
+- v5's deployment (LoRA adapter not merged + items-in-training-set routed to adapter) broke even — a different routing on a different architecture was at least neutral.
+- Selective routing remains viable. The lesson is: v4's combination of merge + temperature was a bad combination, not that routing concept is wrong.
+
+**Routing strategies still on the table for v7** (any of these could be the right answer):
+1. **LoRA-adapter routing** (v5-like): adapter applied only to items in training set
+2. **Subset-routing** (new): adapter applied to subsets where per-subset eval showed gain
+3. **Confidence-gated routing**: adapter answer used only when adapter is confident (high top-logit)
+4. **Multi-adapter ensemble**: multiple specialists, route per item characteristic
+5. **Logit interpolation** (WiSE-FT-style): blend base + adapter logits at decode time
+6. **GenSelect**: have base + adapter both generate, third Qwen call judges which is better
+7. **Item-similarity routing**: train on items A,B,C; at inference, also route items similar to A,B,C (by embedding distance or other measure)
+
+Phase C should examine evidence for/against each of these.
+
+### 9.C) Implication for v7 plan structure
+
+v7 plan now has TWO orthogonal axes (vs single axis I had before):
+
+**Axis 1: training data composition**
+- Mode 1.1: Qwen-wrong residual only (v5-thesis evolved)
+- Mode 1.2: Stratified — proportional sample across subsets (in case adapter learns subset-specific patterns)
+- Mode 1.3: Single-subset focus — train on just MCQ residual, or just T4-hard, etc.
+
+**Axis 2: deployment / routing**
+- Mode 2.1: Items-in-training-set routing (v5-like, dual-path)
+- Mode 2.2: Subset-routing (per per-subset eval results)
+- Mode 2.3: Confidence-gated
+- Mode 2.4: Multi-adapter ensemble (if Axis 1 = 1.3)
+- Mode 2.5: Logit interpolation
+- Mode 2.6: GenSelect
+
+Phase D must pick combinations conservatively. First v7 attempt should be ONE Axis-1 mode + ONE Axis-2 mode, well-validated. Iteration can vary either axis.
+
+**Recommended first v7 attempt** (subject to Phase C/D refinement):
+- Axis 1: Mode 1.1 (Qwen-wrong residual) + coherent trace+answer pairs (Part 8 fix)
+- Axis 2: Mode 2.1 (items-in-training routing) + per-subset evaluation (so we LEARN which subsets to route in v7.2)
+- This is conservative: same architecture as v5 with the two known bugs (training composition + trace coherence) fixed, plus stratified eval to guide future iterations
+
+If first v7 attempt fails or breaks even: the per-subset eval results tell us WHICH subsets to focus on for v7.2 (e.g., maybe MCQ subset is +5pp but multi-slot is -3pp — v7.2 trains on MCQ residual only).
