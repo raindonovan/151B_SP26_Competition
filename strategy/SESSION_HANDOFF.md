@@ -8,6 +8,24 @@
 **Previous handoff** archived at strategy/SESSION_HANDOFF_day9_open.md
 
 ---
+## STATUS UPDATE — fresh session, Day 9 evening
+
+**Audit Action #1 (Part 14 re-verification): COMPLETE.**
+- All four strict re-verification items confirmed (quantization, tier, sample, routing manifest).
+- BONUS: at-risk subset coherence test (Part 8 hypothesis) completed deeply — **Part 8 REFUTED**, 0/11 Frankenstein cases found in direct trace eyeball of the highest-risk subset.
+- Full notes: `strategy/PART_14_REVERIFICATION.md`. Triangle update: `strategy/ADAPTER_NOTES.md` Part 14.E.
+
+**v5 failure-mode triangle updated**:
+1. Training composition (T1+T2 = 87.72%): VERIFIED REAL.
+2. Trace coherence: ~~live hypothesis~~ **REFUTED**.
+3. Deployment mismatch: FALSIFIED.
+
+**v7 design impact**: trace-regeneration descoped. ~1-2h saved.
+
+**Next**: Action #2 (kitchen-sink → Pick B FINAL) and Action #3 (Phase C 4-LLM research prompt design) still pending.
+
+---
+
 
 ## READING ORDER (mandatory before any action)
 

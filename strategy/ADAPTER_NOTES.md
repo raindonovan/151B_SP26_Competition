@@ -1125,3 +1125,28 @@ Three independent v5 failure modes (per Parts 8, 9, 12):
 3. **Dual-path deployment mismatch**: FALSIFIED. v5 WAS deployed dual-path (slot1/routing_manifest.csv = 391/552 split, Cursor REDO Part 2 section 2A).
 
 So v5 break-even is fully explained by #1 alone (training on items base already gets right → no delta under dual-path). #2 may or may not contribute additional regression on the items the adapter DOES touch. #3 was never the problem.
+
+---
+
+## PART 14.E — Independent re-verification of Part 14 + at-risk subset test (Day 9 evening, fresh session)
+
+Full audit in `strategy/PART_14_REVERIFICATION.md`. Summary:
+
+**Strict re-verification of Part 14 (Items A-D)**: all four points (quantization claims, tier distribution, Cursor 17-item sample, routing manifest base=552/adapter=391) ✓ CONFIRMED via direct source reads + independent joins.
+
+**At-risk subset coherence test (NEW deep audit, closes Part 8 hypothesis)**:
+- At-risk subset = items where labeled `\boxed{}` ≠ `teacher_sonnet` in MASTER. Programmatically identified: 20/391 items (5.12%).
+- Decomposition: 14 format-only swaps (`\dfrac`/`\frac`, decimal/fraction) + 5 MCQ letter swaps + 1 algebraically-equivalent expression.
+- Direct trace eyeball on all 11 highest-risk cases (5 MCQ letter swaps + 6 matches-no-teacher): **0/11 Frankenstein**. Every trace conclusion matches its labeled `\boxed{}` answer.
+- This is stronger evidence than Cursor's 17/17 random sample (Part 14.A) because the at-risk subset was preferentially tested, not missed by stratification.
+
+**Part 8 hypothesis status: REFUTED** at the at-risk subset level. v5 training data is trace-coherent across all high-risk cases.
+
+**Updated v5 failure-mode triangle (supersedes Part 14.D)**:
+1. Training composition (T1+T2 = 87.72%): VERIFIED REAL.
+2. Trace coherence: **REFUTED** (this audit). Removed from v7 design requirements.
+3. Deployment mismatch: FALSIFIED.
+
+**v7 design implication**: trace-regeneration-via-dataApp work descoped — saves ~1-2h in Phase D. v5-style data construction is trace-coherent; v7 can use it with composition fix (residual-targeting) without coherence worries.
+
+**Open question for Phase C** (not blocking): identify the mechanism by which v5 traces are coherent despite `teacher_sonnet` swaps. Useful for replicating in v7 dataset build.
