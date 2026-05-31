@@ -82,3 +82,23 @@ It is **not** strong evidence for or against the final NT-943 Pick-B lever, beca
 - **FAIL** as rescue confirmation (`0/2` retained on the rescue-overlap items).
 
 Operational take: treat probe98 as an early noisy precursor, not as a reason to down-rank the later NT-943 lever and not as a reason to trust it blindly. The real Pick-B evidence remains the fully-audited NT-943 run, not this 98-item probe.
+---
+## g. Independent re-audit corroboration (claude_vscode, 2026-05-31, this session)
+
+A second claude_vscode pass re-ran prep+analyzer from the raw (provenance: matched the artifacts above exactly → analyzer deterministic) and independently reproduced every load-bearing number in this doc: bucket A=27/A_lucky=4/B=13/unknown=54, scored 27/44=0.6136, shape_fallback **46/98** (verified), tier skew **47% T5** (T5:46, T2:35, T0:8, T1:4, T4:3, T3:2 — confirms "hard slice, not faithful proxy"), all 98 ⊆ 943, rescue items 5&584 both flip (**0/2**). math_correct agreement 72/98=73.5% with the **24-vs-2 asymmetry** (943-only-correct 24, probe98-only-correct 2). No discrepancies with sections a–f.
+
+### NEW empirical layer — decomposing the 943≫probe98 swing
+The asymmetry is partly explainable, partly genuine variance:
+- **Vote fragmentation:** probe98 had **27/98 items at n_voting≤1** (17 at 0, 10 at 1) vs 943's **7/98** on the same items. probe98's SC aggregation was far less healthy on this hard slice.
+- **Sample length:** 943 ran longer (mean **2554** vs **2194** output tokens; 943 longer on **45/98**). Longer NoThinking samples more often captured full multi-slot answers (id=584: probe98 445-514 tok → `6w`; 943 up to 1919 tok → `7z, 6w`).
+- **Of the 24 "943-only-correct" items:** only **5** had probe98 fragmented votes and **12** had shorter probe98 samples — so **~half the swing is NOT explained by fragmentation/length and is genuine run-to-run sampling variance** on hard T5 items.
+
+### Determinism read (refines §f)
+**MIXED, leaning NOISY** — not "purely random," but not reproducibly deterministic either. ~half the cross-run divergence traces to vote-fragmentation + sample-length (mechanical), ~half is real sampling variance.
+**CONFIG CAVEAT (for T3/ChatGPT):** neither NT run records sampling params (temp/top_p/top_k/min_p/presence_penalty) in its artifacts. So the 24-vs-2 asymmetry *could* be partly a config difference between the two runs rather than pure variance — unresolvable from data alone. If the runs used different decoding, the framing shifts from "NT is noisy" to "NT is config-sensitive."
+
+### Tomorrow-impact (operational)
+- **DOWN-WEIGHT NoThinking in slot 7/8 stacks.** NT-943's join scored a real Kaggle +1.8pp (framework confirmed, valid Pick-B lever) — but per-item rescues are noisy, so treat +1.8pp as *realized value, not a scaling floor*; a re-run could rescue a different ~13.
+- **Morning runs:** the length-driven component supports running **NoThinking on the 17-still-truncated set at HIGHER token budget** (longer samples were more often correct) over trusting a single low-budget NT pass.
+
+**Closes at T2** (ChatGPT parallel audit = the cross-check). The only open Q is the config-vs-variance attribution above, which the artifacts cannot settle.
