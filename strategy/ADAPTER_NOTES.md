@@ -648,3 +648,31 @@ So for v7 design: we want answer + reasoning-trace + format memorization, all su
 ## END OF PHASE A NOTES (with Part 6 deepening)
 
 Synthesize with `ADAPTER_NOTES_CURSOR.md` in Phase D after both committed.
+
+---
+
+## PART 7 — Compute envelope through deadline (locked 5/31)
+
+**Available compute** (per Rain, Day 9 Hour ~T-15):
+- **tnr-1**: BUSY until competition end (kitchen-sink + Pick B firing). OFF TABLE for v7.
+- **tnr-0**: AVAILABLE — 2× A100 80GB. Primary v7 platform.
+- **Additional spin-up**: +1× A100 currently available (theoretical max +2 more if needed).
+- **Effective v7 envelope**: 2 baseline + 1 standby = 3 GPUs max.
+
+**Implications**:
+1. v7 training: 30-60 min on single A100 80GB (extrapolating from v3 35.8min on A100 80GB). Fits comfortably.
+2. tnr-0's 2 GPUs enable PARALLEL work: GPU 0 trains v7, GPU 1 runs held-out base eval / pre-stages adapter inference.
+3. Extra A100 = INSURANCE, not primary. Use for: kitchen-sink rerun if needed, v7 variant in parallel, held-out validation inference.
+4. Setup overhead on tnr-2 (if spun up): 15-25min per v3 log. PAT BURNED per memory #28 — rotate before spawn. Identity guardrail (~/.instance-role chmod 444) MUST be set per memory #5.
+5. **Conservative-first reinforced**: 2× A100 = enough for one solid v7 attempt + eval + integration. Not enough for 3-4 aggressive variants. First attempt MUST be well-designed.
+
+**Refined v7 timing path** (~6-7h end-to-end):
+- T+0 to T+1h: Phase C 4-LLM research (no GPU)
+- T+1h to T+1.5h: Phase D planning (no GPU)
+- T+1.5h to T+3h: Dataset prep (claude_strategy + claude_vscode, no GPU). PARALLEL: tnr-0 GPU 1 pre-stages held-out base eval.
+- T+3h to T+4h: v7 training on tnr-0 GPU 0 (60min budget)
+- T+4h to T+5h: Eval (held-out + memo at inference + smoke + format)
+- T+5h to T+6h: Integration into Pick B + audit
+- T+6h: Decision point — fire Pick B with v7
+
+Leaves 7-8h remaining buffer at end for Pick B iteration, Gradescope code, final lockdown.
