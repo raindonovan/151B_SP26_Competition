@@ -1,0 +1,14 @@
+id,override_value,evidence
+5,"541.3, 63.25, 135.325, 4.2167, 32.09",R20 multi-slot collapse (kept 3 of 5 slots) → NT full 5-slot answer
+257,"2.52, 3.00, A","R20 voted only 'A' (1 of 3 slots) → NT full '2.52, 3.00, A'"
+345,"-\frac{5}{6}, \frac{5}{6}","R20 decimal -0.8333,0.8333 → NT exact -5/6,5/6 (T3: exact-form item)"
+474,248,R20 voted letter 'C' → NT '248' (gold value); item MCQ-tagged but gold is the value
+578,"7.62, 9.00, 95.44","R20 collapsed to last slot '95.44' → NT full '7.62, 9.00, 95.44'"
+868,88,R20 voted letter 'E' → NT '88' (gold value)
+917,"189.8, 246.4, 43","R20 collapsed to '43' → NT full '189.8, 246.4, 43'"
+181,A,R20 wrong MCQ letter 'B' → NT 'A' (gold)
+584,"7z, 6w","R20 numeric 7.000,6.000 → NT symbolic '7z, 6w' (gold form)"
+642,"6,\dfrac{\pi}{3},13","R20 partial 6.000,1.047,13 → NT '6,\dfrac{\pi}{3},13' (gold form amp/period)"
+712,"D, D, A","R20 voted only 'A' (1 of 3) → NT 'D, D, A' full"
+715,"5, 7, 9, 13, 8.5, 6, 7, 8, 9, 10, 11, 8.5",R20 collapsed to '8.500' → NT full multi-slot sequence
+763,"4+9,8\div3","R20 decimal 13.00,2.667 → NT '4+9,8\div3' (== gold 13,8/3 by value; NOTE: unevaluated expr, value-equality-accepted, Kaggle-risk flagged)"

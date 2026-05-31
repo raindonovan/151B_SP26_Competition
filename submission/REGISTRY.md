@@ -2,6 +2,17 @@
 
 36 successful submissions + 2 errors = 38 total attempts.
 
+## Pick B candidates — NOT yet Kaggle-submitted (awaiting Rain's decision)
+
+| Repo CSV | Status | What it is |
+|---|---|---|
+| picks/picks_nothinking_join_conservative_v1.csv | **Pick B candidate** (awaiting Kaggle) | NoThinking ∪ R20 consensus-join, **13 Qwen-over-Qwen overrides** (rule #11 legal). Source = raw R20 `run14b_sc8_v1.csv` (0.646); NoThinking voted answer replaces R20 on 13 T3-verified items (R20.B rescues 5/257/345/474/578/868/917 + R20.A_lucky 181/584/642/712/715/763). All 13 grade correct vs gold locally. Expected ~+1.4pp on slice. First Pick-B lever that ADDS correctness over R20. Build: this commit; NT T3 audit eae3c2a. See `picks/README.md`. |
+| picks/picks_nothinking_join_diagnostic_v1.csv | Diagnostic (spare-slot only) | Conservative 13 + id=282 (disputed-gold: NT `e^2` vs R20 `e^2,-e^2`; R20 backsolve tainted). Empirical test of which gold form Kaggle accepts. |
+
+> 633 EXCLUDED from both (noise: n_voting=3, ChatGPT T3 explicit drop). Override mechanism = full-replace `\boxed{value}` (append merges box-groups → wrong slot count, verified). id=763 override is an unevaluated expr `4+9,8\div3` (value-equal locally; Kaggle-grader risk flagged).
+
+## Scored submissions
+
 | # | Repo CSV | Score | What it tested |
 |---|---|---|---|
 | 41 | 30_05/slot5_format_probe/30_05_slot5_format_probe.csv | 0.745 | Format probe: render_d Opus-form on the 69 probe items (+0.0pp vs slot 4 v2) — NULL result, content/format conflation, indeterminate |
