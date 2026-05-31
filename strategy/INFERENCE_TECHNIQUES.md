@@ -20,7 +20,7 @@
 
 | Technique | Expected impact | GPU cost | Priority | Notes |
 |-----------|----------------|----------|----------|-------|
-| **DeepConf@SC32/64** | +1-3pp (noisy at small N) | HIGH (32-64 samples × 943 items × ~50K tokens) | HIGH | Logprob-weighted SC voting. Needs output_scores=True. Can run 2 days autonomously on Thunder. Fu et al. 2508.15260 |
+| **DeepConf@SC32/64** | +1-3pp (noisy at small N) | HIGH (32-64 samples × 943 items × ~50K tokens) | HIGH | Logprob-weighted SC voting. Needs `logprobs=N` on vLLM `SamplingParams` (NOT plumbed in `run_vllm_sc.py` — confirmed Day 9 audit). Fu et al. 2508.15260. See "Day-9 audit-derived recommendations" below for the targeted contested-slice variant. |
 | **GenSelect (full re-run)** | +1-3pp | MEDIUM (2× base inference) | MEDIUM | Model ranks its own candidates. Prior PoC had truncation issues |
 | **Multi-temperature voting** | +3-5pp (Sun et al.) | MEDIUM | MEDIUM | Vary T across SC samples. Direct empirical support on Qwen3-4B |
 | **Diverse-prompt ensemble** | +2-4pp | MEDIUM | LOW | Dipper-style. Different prompt variants, vote across |
@@ -41,3 +41,21 @@ These inference results exist but haven't been analyzed:
 - **Multi-temp voting**: Sun et al. on Qwen3-4B family. +7.3pp from temperature diversification.
 - **Self-consistency**: Wang et al. 2023. Plateau at N=16-32 for AIME-level.
 - **WiSE-FT for LoRA**: Dang/Baek COLM 2025. Scale lora_alpha by δ (δ=0.5 prior). No retraining.
+
+## Day-9 audit-derived recommendations (filed for post-deadline / future iterations)
+
+**Context**: Day-9 Phase-0 audit found that true log-likelihood SC re-voting on saved Qwen runs is not executable — `inference/scripts/run_vllm_sc.py` builds `SamplingParams` without `logprobs=N`, so per-sample dicts (`response`, `extracted_answer`, `gen_tokens`, `hit_token_cap`, `shape_rejected`, `temperature`) carry no token-level confidence signal. Confirmed against run14b_sc8 (32k) and matches `inference/base_model/FINDINGS.md` DeepConf entry.
+
+**Recommendation R1 — Targeted-slice DeepConf re-run (high ROI, low cost):**
+- Plumb `logprobs=20` into `SamplingParams` in `run_vllm_sc.py` (one-line change).
+- Identify the **contested slice**: items where run14b SC8 margin ≤ 5/8, OR any of {hit_token_cap, shape_rejected, agreement_rate < 1.0}. Expected ~150–250 items.
+- Re-run only the contested slice at SC@16 with logprobs on. Cost: ~30–60 min on A30 (vs. 6–8 hr for full 943 SC@32).
+- Aggregate via DeepConf lowest-group-confidence weighting (Fu 2508.15260) — true logprob-weighted vote.
+- Pick-B eligible (Qwen-only, no teacher overlay).
+
+**Recommendation R2 — Save logprobs by default going forward:**
+- Any future SC run should ship with `logprobs=N` enabled (N=10–20 sufficient). Storage overhead is small relative to response text.
+- Unblocks DeepConf, perplexity-based filtering, and self-RAG-style verification across runs without re-inference.
+
+**Recommendation R3 — Proxy-confidence SC re-vote (interim, no GPU):**
+- For runs already saved without logprobs, a proxy vote can use `gen_tokens` (shorter = often more confident), `hit_token_cap` (penalize truncated), `shape_rejected` (mask), and agreement margin. Weaker than true DeepConf but executable on existing artifacts. Use only as tie-breaker, not standalone selector.
