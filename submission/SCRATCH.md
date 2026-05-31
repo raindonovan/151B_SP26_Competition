@@ -220,4 +220,4 @@ PHASE 3: best deployable H3 applied selectively (override when shortest≠R20): 
 
 VERDICT: **DISCONFIRMED.** Pool exists (oracle 100%) but un-minable by any gold-free Qwen heuristic. Root cause: correct rescues are minority answers; shared config lineage makes wrong answer the majority. **This is WHY NT-943 worked & texas-oil doesn't: NT-943 used independent GOLD to SELECT the 13 items — that selection step is irreplaceable.** NT-943 (+1.8pp, 13) = ceiling of gold-free cross-run Qwen ensembling. **Path to more rescues = MORE INDEPENDENT GOLD (wolfram/search), not more runs / smarter vote.** Report: submission/TEXAS_OIL_DISCONFIRMED.md. Rule-#11 borderline flagged for ChatGPT: cross-mode-agreement (NT∩Thinking) as a selection feature.
 
-DID NOT: build Pick-B CSV (disconfirmed), use gold in any tested heuristic (gold = audit measurement only), generate inference, submit Kaggle, use append mechanism. Commit: (after).
+DID NOT: build Pick-B CSV (disconfirmed), use gold in any tested heuristic (gold = audit measurement only), generate inference, submit Kaggle, use append mechanism. Commit: 2148e37.
