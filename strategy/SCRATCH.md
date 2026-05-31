@@ -508,3 +508,6 @@ Two deliverables in one pass:
 Files: inference/runs/RUN_HISTORY.md (new, ~310 lines)
 Commit + push next.
 
+---
+## claude_vscode signoff — 2026-05-31 — value-equality re-vote sweep ABANDONED
+Spent ~3hr debugging is_equal pairwise clustering cost. Per-pair 0.03-0.19s typical but pathological sympy parses + N² pair growth on multi-form items (500 of 943 items have 2+ distinct forms, up to 8 forms each) put per-run wall-clock at ~30+ min with no clean fix in scope. Optimizations attempted (all real, none sufficient): unique-form dedup before clustering, per-pair SIGALRM timeout guard (is_equal_guarded, 3s cap), single-form skip-gate (~half the items). 302 anchor smoke PASSED (H,H≡H clusters, re-votes to H correct) — the mechanic works, it's just too slow at scale. Strategic call (claude_strategy + Rain): abandon, deferred to post-deadline. WIP script preserved at /tmp/deferred_postdeadline/value_equality_revote.py.WIP (never committed to repo). No partial CSVs written. Pivoting to Tier-1 normalizer build. Net loss accepted: 2-5 items the sweep might have surfaced are largely covered by NT-13 + cross-run 90-item rescue pool + Thunder 118-set + normalizer structural fixes.
