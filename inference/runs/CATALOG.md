@@ -28,44 +28,53 @@ Each session catalogs ONE run. Rough sequence:
 10. Commit + push.
 11. End session. Next session takes the next run.
 
-## Status table (chronological, rough — order doesn't need to be perfect)
+## Status table (chronological by RUN TIMESTAMP — `summary.json.started_at` where available, git first-commit as fallback)
 
 Legend: 🟢 done · 🟡 in progress · ⚪ untouched
 
-| Old name | Proposed R# | Folder | Purpose (guess) | Status | Notes |
-|---|---|---|---|---|---|
-| `starter_results` | R00 | base_model | first attempt? | ⚪ | check if this is real run or stub |
-| `run_vllm_smoke_5_tok2048` | R01 | base_model | smoke | ⚪ | 5 items, 2K tokens — earliest smoke |
-| `run_vllm_smoke_5_tok8192` | R02 | base_model | smoke | ⚪ | 5 items, 8K tokens |
-| `run03_tok8192_20` | R03 | base_model | smoke/eval | ⚪ | 20 items @ 8K |
-| `run04_vllm_parity_20_tok8192` | R04 | base_model | vllm parity check | ⚪ | 20 items @ 8K |
-| `run05_v1_50_tok16384` | R05 | base_model | eval | ⚪ | first 50-item run |
-| `run06_v2mcq_50_tok16384` | R06 | base_model | eval | ⚪ | v2mcq variant |
-| `run07_sc8_v1_50_tok16384` | R07 | base_model | eval | ⚪ | first SC8 run |
-| `run08v2_v1_private943_tok16384` | R08 | base_model | eval | ⚪ | first p943 full eval |
-| `run09sc8_v1_private943_tok16384` | R09 | base_model | eval | ⚪ | SC8 on p943, referenced in submission/ |
-| `run10_v3perslot_private943_tok16384` | R10 | base_model | eval | ⚪ | v3perslot variant |
-| `run11_v2openr1_50_tok16384` | R11 | base_model | eval | ⚪ | openr1 variant |
-| `run13_v2openr1_50_rp110_dsmlp` | R13 | base_model | eval | ⚪ | rp1.10 ablation |
-| `run14b_sc8_v1_private943_tok32k_pp1` | R14 | base_model | eval | ⚪ | **0.646 BEST inference baseline** |
-| `run14b_sc8_v1_private943_tok32k_pp1_v3filtered` | R14b | base_model | eval | ⚪ | v3-filtered variant of R14 |
-| `V0_baseline_fixed50_v1` | R??_baseline | base_model | baseline | ⚪ | early V0/V1/V2/V3/V4 series — chronology TBD |
-| `V1_counting_top_fixed50_v1` | R??_counting | base_model | ablation | ⚪ | counting prompt variant |
-| `V2_counting_bookend_fixed50_v1` | R?? | base_model | ablation | ⚪ | bookend prompt variant |
-| `V3_shape_filter_fixed50_v1` | R?? | base_model | ablation | ⚪ | shape filter |
-| `V4_temp_diversification_fixed50_v1` | R?? | base_model | ablation | ⚪ | multi-temp SC |
-| `expA_run08_perslot_perturbed` | R?? | base_model | ablation | ⚪ | per-slot perturbation experiment |
-| `genselect_poc_results.json` | R?? | base_model | poc | ⚪ | GenSelect proof-of-concept |
-| `genselect_poc_r2_results.json` | R?? | base_model | poc | ⚪ | GenSelect r2 |
-| `genselect_runner.jsonl` | R?? | base_model | poc | ⚪ | GenSelect runner output |
-| `hybrid/` | R?? | base_model | ? | ⚪ | hybrid mode — needs inspection |
-| `no_box_rescue_*` | R?? | base_model | rescue | ⚪ | post-hoc rescue attempts |
-| `sft_v4_adaptive/` | R??_adapter_eval | adapter | sft_eval | ⚪ | adapter inference run for v4 |
-| `sft_v5_checkpoint_comparison.json` | R?? | adapter | sft_eval | ⚪ | v5 checkpoint comparison |
-| `slot1_wolfram_raw_responses` | R?? | (defer) | ? | ⚪ | wolfram-related, may belong in `data/search/wolfram/` not here |
-| `smoke_openr1_v1_1k_5` | R?? | base_model | smoke | ⚪ | openr1 smoke |
-| `tritonai_test_items` | R?? | base_model | ? | ⚪ | triton test items — investigate |
-| `v2_numina_concise_50` | R?? | base_model | eval | ⚪ | numina-concise variant |
+**Locked chronology** (Day 9 2026-05-30). Numeric `runXX` filename convention was NOT applied chronologically: run09 ran BEFORE run10; run12 never existed; "run13" is in fact the 14th run; V-series is mid-development, not earliest; run14b ran 2026-05-22 (the May 27 commit was the LFS-track, not the run).
+
+| Old name | R# | Folder | Run timestamp (UTC) | Purpose | Status | Notes |
+|---|---|---|---|---|---|---|
+| `run03_tok8192_20` | R00 | base_model | 2026-05-01 21:22 | eval | ⚪ | 20 items @ 8K — earliest run on record (git-log fallback; no summary.json) |
+| `starter_results` | R01 | base_model | 2026-05-01 21:25 | starter | ⚪ | initial scaffold output, ~3 min after R00 (git-log fallback) |
+| `run_vllm_smoke_5_tok2048` | R02 | base_model | 2026-05-03 02:17 | smoke | ⚪ | 5 items, 2K tokens — same commit as R03 (git-log fallback) |
+| `run_vllm_smoke_5_tok8192` | R03 | base_model | 2026-05-03 02:17 | smoke | ⚪ | 5 items, 8K tokens |
+| `run04_vllm_parity_20_tok8192` | R04 | base_model | 2026-05-03 02:31 | parity | ⚪ | 20 items @ 8K, vLLM parity check |
+| `run05_v1_50_tok16384` | R05 | base_model | 2026-05-03 16:53 | eval | ⚪ | first 50-item run |
+| `run06_v2mcq_50_tok16384` | R06 | base_model | 2026-05-03 17:16 | eval | ⚪ | v2mcq variant |
+| `run07_sc8_v1_50_tok16384` | R07 | base_model | 2026-05-03 19:23 | eval | ⚪ | first SC8 run |
+| `run08v2_v1_private943_tok16384` | R08 | base_model | 2026-05-04 05:49 | eval | ⚪ | first p943 full eval (single-sample) |
+| `run09sc8_v1_private943_tok16384` | R09 | base_model | 2026-05-04 17:32 | eval | ⚪ | SC8 on p943 (referenced widely in submission/) |
+| `run10_v3perslot_private943_tok16384` | R10 | base_model | 2026-05-05 19:55 | eval | ⚪ | v3perslot variant, single-sample p943 (git-log fallback) |
+| `expA_run08_perslot_perturbed` | R10b | base_model | 2026-05-05 19:55 | ablation | ⚪ | perslot perturbation, ran alongside R10 |
+| `smoke_openr1_v1_1k_5` | R11 | base_model | 2026-05-07 00:23 | smoke | ⚪ | openr1 prompt smoke |
+| `v2_numina_concise_50` | R12 | base_model | 2026-05-09 17:30 | eval | ⚪ | numina-concise variant |
+| `run11_v2openr1_50_tok16384` | R13 | base_model | 2026-05-10 18:12 | eval | ⚪ | openr1 variant |
+| `run13_v2openr1_50_rp110_dsmlp` | R14 | base_model | 2026-05-11 17:27 | ablation | ⚪ | rp1.10 ablation (run12 never existed in this repo) |
+| `V0_baseline_fixed50_v1` | R15 | base_model | 2026-05-12 15:50 | baseline | ⚪ | V-series prompt-engineering ablations begin here |
+| `V1_counting_top_fixed50_v1` | R16 | base_model | 2026-05-13 11:42 | ablation | ⚪ | counting prompt variant |
+| `V2_counting_bookend_fixed50_v1` | R17 | base_model | 2026-05-13 11:43 | ablation | ⚪ | bookend prompt variant |
+| `V3_shape_filter_fixed50_v1` | R18 | base_model | 2026-05-13 20:24 | ablation | ⚪ | shape filter |
+| `V4_temp_diversification_fixed50_v1` | R19 | base_model | 2026-05-13 23:37 | ablation | ⚪ | multi-temp SC (git-log fallback — no summary.json) |
+| `run14b_sc8_v1_private943_tok32k_pp1` | **R20** | base_model | **2026-05-22 13:56** | eval | ⚪ | **0.646 BEST inference baseline**; feeds 0.745 with overlays |
+| `run14b_sc8_v1_private943_tok32k_pp1_v3filtered` | R20b | base_model | 2026-05-22 (derived) | eval | ⚪ | v3-filtered variant of R20 |
+
+**Pick-B-relevant p943 cohort**: R08, R09, R10, R20, R20b. These are the only full-private runs and the only candidates that move tonight's Pick B via cross-run consensus.
+
+**Deferred** (R# assigned when cataloged; not in the strict chronological loop):
+
+| Old name | Folder | Notes |
+|---|---|---|
+| `genselect_poc_results.json` | base_model | GenSelect proof-of-concept |
+| `genselect_poc_r2_results.json` | base_model | GenSelect r2 |
+| `genselect_runner.jsonl` | base_model | GenSelect runner output |
+| `hybrid/` | base_model | hybrid mode — inspect contents first |
+| `no_box_rescue_*` | base_model | post-hoc rescue attempts |
+| `sft_v4_adaptive/` | adapter | adapter inference run for v4 |
+| `sft_v5_checkpoint_comparison.json` | adapter | v5 checkpoint comparison |
+| `tritonai_test_items` | base_model | triton test items — investigate |
+| `slot1_wolfram_raw_responses` | (TBD — likely `data/search/wolfram/`) | wolfram-related, may not belong here |
 
 ## Run artifacts to absorb during catalog work
 
@@ -116,8 +125,30 @@ Use this as the canonical sweep list per run. Don't expand it without checking w
 
 ## R-number registry (collision prevention)
 
-As R-numbers are assigned, log here to prevent reuse:
+R-numbers are RESERVED at chronology-lock time and become CATALOGED when their per-run folder lands. Status="reserved" means R# is taken but the per-run folder hasn't been built yet (run still ⚪ in status table above).
 
-| R# | Assigned to | Date |
+| R# | Assigned to | Status |
 |---|---|---|
-| _none yet_ | | |
+| R00 | run03_tok8192_20 | reserved |
+| R01 | starter_results | reserved |
+| R02 | run_vllm_smoke_5_tok2048 | reserved |
+| R03 | run_vllm_smoke_5_tok8192 | reserved |
+| R04 | run04_vllm_parity_20_tok8192 | reserved |
+| R05 | run05_v1_50_tok16384 | reserved |
+| R06 | run06_v2mcq_50_tok16384 | reserved |
+| R07 | run07_sc8_v1_50_tok16384 | reserved |
+| R08 | run08v2_v1_private943_tok16384 | reserved |
+| R09 | run09sc8_v1_private943_tok16384 | reserved |
+| R10 | run10_v3perslot_private943_tok16384 | reserved |
+| R10b | expA_run08_perslot_perturbed | reserved |
+| R11 | smoke_openr1_v1_1k_5 | reserved |
+| R12 | v2_numina_concise_50 | reserved |
+| R13 | run11_v2openr1_50_tok16384 | reserved |
+| R14 | run13_v2openr1_50_rp110_dsmlp | reserved |
+| R15 | V0_baseline_fixed50_v1 | reserved |
+| R16 | V1_counting_top_fixed50_v1 | reserved |
+| R17 | V2_counting_bookend_fixed50_v1 | reserved |
+| R18 | V3_shape_filter_fixed50_v1 | reserved |
+| R19 | V4_temp_diversification_fixed50_v1 | reserved |
+| R20 | run14b_sc8_v1_private943_tok32k_pp1 | reserved |
+| R20b | run14b_sc8_v1_private943_tok32k_pp1_v3filtered | reserved |
