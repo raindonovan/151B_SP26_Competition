@@ -4,7 +4,7 @@
 
 **Last updated**: 2026-05-30 (Day 8 close — 5 submissions scored, NEW BEST 0.745, overlay stack near ceiling, Pick B path is Qwen-only). Built by claude_vscode from session state; HEAD reference set below.
 
-**HEAD at handoff**: `1814bc3` (Log Day 8 results) → this commit amends/follows it. Update if re-pushed.
+**HEAD at handoff**: `643d1d6` (this handoff commit; follows `1814bc3` Log Day 8 results).
 
 ## ⏰ DEADLINE: 2026-05-31 (tomorrow). Submission budget ~12 slots left.
 
