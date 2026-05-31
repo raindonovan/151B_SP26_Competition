@@ -506,6 +506,145 @@ Phase D MUST decide architecture FIRST, then design v7 accordingly.
 
 ---
 
-## END OF PHASE A NOTES
+---
+
+## PART 6 — DEEPER FINDINGS (Rain pushed back on shallow first pass)
+
+First pass missed critical distinctions. This part captures what I should have surfaced.
+
+### 6.A) The v1 vs v3-v5 paradigm split
+
+**v1 was a fundamentally different paradigm from v3/v4/v5.** I conflated them.
+
+**v1 paradigm: General distillation + MERGED deployment**
+- Training data: EXTERNAL (OpenR1-Math-220k, NuminaMath, Frugal) — NOT competition items
+- 3 separate teacher arms, each trained separately on ~1k items, 1 epoch each
+- LoRA: r=16, α=32 (small capacity), all-linear targets, dropout=0
+- max_seq_length=8192 default, args allow 11000+ for long traces
+- **Deployment: MERGED.** Adapter merged into base weights → produces new model file → loaded directly by vLLM as standalone model. No adapter at inference.
+- Pre-flight checks (rendered chat-template, tokenized example, eval-loss on held-out 8-row batch must be in [0.5,5.0] nats). DISCIPLINE that v5 LOST.
+- Outcome: smoke on openr1 5 items showed 3/5 MISSING `\boxed{}` (60% rambling rate). Catastrophe was rambling pathology at inference, NOT trace truncation alone.
+
+**v3/v4/v5 paradigm: Transductive memorization + LoRA adapter (NOT merged)**
+- Training data: 391-594 actual competition items + teacher-labeled answers
+- LoRA: r=64, α=128 (large capacity)
+- **Deployment: ADAPTER VIA vLLM LoRARequest.** Base weights stay clean; adapter loaded at runtime as a separate weight layer applied to base activations. Detachable.
+- All trained on transductive premise (Piazza-confirmed: training-on-test is allowed)
+
+**The merge-vs-adapter distinction matters because**:
+- MERGED model is a single set of weights — adapter and base are fused. Behavioral changes from training are permanent and global.
+- ADAPTER mode keeps base clean — at inference, vLLM applies the LoRA delta to base activations. Adapter can be detached, swapped, weighted, blended with multiple adapters.
+- Merged models cannot do dual-path (one set of weights, can't selectively apply adapter on some items only).
+- Adapter mode CAN do dual-path: run base on one set of items, run base+adapter on another set.
+- R14 rambling pathology was on MERGED v2 OpenR1 model. v5 was kept as adapter — different deployment, different failure modes.
+
+### 6.B) Dual-path infrastructure ALREADY EXISTS
+
+`inference/scripts/run_hybrid_inference.py` is the dual-path infrastructure I missed first pass.
+
+**Two modes, runnable independently**:
+- `--mode base`: vLLM with base Qwen3-4B-Thinking-2507. Default 943 items, SC=8, 32K tokens.
+- `--mode adapter`: vLLM with base + LoRARequest pointing at adapter checkpoint. Default subset via `--item-ids` file, SC=3, 4K tokens.
+
+The script does NOT have routing logic itself — it generates two separate jsonl files. The routing/combining is downstream (the CSV merging into a single Kaggle submission).
+
+This is exactly the architecture Rain wants for v7. We don't need to build it; we need to use it correctly.
+
+**What we still need to build for v7 selective routing**:
+- A merger script: takes base run jsonl + adapter run jsonl + routing rules → single CSV
+- Routing rules logic: per-item decision of base-answer vs adapter-answer (precedence, confidence threshold, etc.)
+- The smarter we make the merger, the more architecture options we unlock (logit interpolation harder, but answer-level routing easy)
+
+### 6.C) The memo test was MORE NUANCED than I claimed
+
+I framed memo test as "trivial" / "tautology." Actually `scripts/memo_test_v5.py` is well-designed:
+- Tests 4 checkpoints: epoch 8/12/14/16
+- 20 items stratified: 10 MCQ + 10 FREE
+- **SC=3 at T=0.6, max_tokens=4096 — REAL inference-time sampling, not greedy/teacher-forced**
+- Threshold: "3/3 consistent" = all 3 SC samples extract the training label after normalize()
+- Picks best checkpoint by N items passing
+- Reports MCQ vs Free breakdown separately
+
+This DOES test inference-time stability of memorization. It IS NOT a teacher-forced loss check.
+
+**Why it was still misleading**: it told us "adapter reliably produces correct answers on training items at inference time" — which is TRUE and IS the dual-path deployment question. But v5 was actually deployed via `slot1_adapter_v5_plus_run14b_20260525_1623.csv` — a COMBINED dual-path CSV — and the Kaggle result was still ~0.646 (near base, not improved).
+
+**So why did v5 dual-path fail despite passing memo test?**
+
+The v5 training set composition (per memory: 87% T1-easy):
+- 87% of training items were items base Qwen ALREADY got right (T1 = high agreement, easy)
+- Dual-path routing of those items to adapter gives the SAME ANSWER base would have given (correctly)
+- Only ~13% of training items were items base was wrong on
+- Maximum upside: 50 items (13% of 391) where adapter could ADD value
+- But: were those 50 items LABELED CORRECTLY? Were they items where the labeled "correct" answer was genuinely correct on Kaggle?
+
+So v5 dual-path failed not because memo test was wrong, but because **training set wasn't selected for residual coverage**. We routed Qwen-right items to adapter (no change), and Qwen-wrong items mostly weren't in training, so they routed to base unchanged.
+
+The lesson for v7 isn't "redesign memo test" — it's "select training items as Qwen-WRONG residual."
+
+### 6.D) v4 actual Kaggle outcome: 0.597 = REGRESSION
+
+v4 was NOT break-even. Per `UNTRACKED_CHECKPOINTS.md`:
+> "SFT v4 scored 0.597. The winning checkpoint (588) is tracked."
+
+**0.597 vs base 0.646 = -4.9pp regression.**
+
+v4 hyperparams (same as v5 except dropout=0.05 instead of 0, and 8 epochs instead of 16):
+- r=64, α=128, dropout=0.05, lr=2e-4, 8 epochs, wd=0
+- 391-item clean dataset, MCQ options, "xhigh excluded"
+
+**Why v4 regressed and v5 didn't (per the evidence we have):**
+- v4 was likely deployed single-path full-replacement (need to verify, but the regression magnitude suggests it)
+- v5 was deployed dual-path (slot1_adapter_v5_plus_run14b) which got back to break-even
+- So v5's dual-path DID prevent catastrophic regression vs v4's deployment, but failed to ADD value because training set composition was wrong
+
+This is actually evidence FOR the dual-path architecture: it prevents the regression even when adapter doesn't help. Single-path is asymmetric risk (can regress catastrophically); dual-path is symmetric (worst case = base, upside = adapter additions).
+
+### 6.E) Memorization is not binary — what kind matters
+
+I treated memorization as yes/no. It's not. The adapter_v5_run.jsonl evidence shows several layers:
+
+1. **Answer memorization** — does adapter produce the labeled answer? In v5 evidence: high (SC@3 unanimous on many items). YES.
+
+2. **Reasoning-trace memorization** — does adapter produce the SAME reasoning steps it was trained on? Looking at adapter_v5_run.jsonl id=1 response: produces clean derivation `$\bar{x}' = \frac{9/10 \sum w_i x_i}{9/10 \sum w_i} = \bar{x}$`. This is NOT regurgitation — it's structured reasoning. So adapter learned the TYPE of solution, not just the answer string.
+
+3. **Format memorization** — does adapter produce `<think>...</think>\n\n\boxed{ANSWER}`? Yes, consistently in evidence we have.
+
+4. **Surface memorization vs structural learning** — adapter could be (a) literally memorizing the input→output mapping, OR (b) learning the underlying math reasoning. Both produce the same training-set accuracy. The relevant difference is generalization, which we don't measure under dual-path because we don't deploy there.
+
+5. **Memorization robustness** — does memorization survive sampling? v5 memo test shows YES (SC@3 consistent). At T=0.6 the memorized answer dominates.
+
+So for v7 design: we want answer + reasoning-trace + format memorization, all surviving sampling. The v5 memo test already screens for this.
+
+### 6.F) What changed in my mental model after this deeper pass
+
+| Topic | First pass framing | Corrected framing |
+|---|---|---|
+| Memo test | Tautology, says nothing | Multi-sample at inference conditions — IS the right test under dual-path |
+| v5 failure | Bad validation | Bad training set composition (87% T1-easy = not residual) |
+| v4 outcome | "Unclear" | -4.9pp REGRESSION (likely single-path deployment caused it) |
+| v1 | Trace truncation killed it | External-distill paradigm + merged deployment + rambling pathology — different from v3-v5 entirely |
+| Dual-path infrastructure | Need to build | EXISTS in run_hybrid_inference.py; need merger script downstream |
+| Adapter vs merge | Conflated | Distinct deployment modes with different failure profiles |
+| Memorization | Binary | Layered: answer/trace/format/robustness — each separately testable |
+| Validation rule | "Items NOT in training" | Wrong for dual-path. Correct rule: "deployment conditions on items you'll actually route" |
+
+### 6.G) Implications for v7 design (updated)
+
+1. **Architecture default = dual-path with LoRA adapter (not merged)** — confirmed by the evidence. Single-path causes regression (v4); merged causes rambling (v1, R14).
+
+2. **Training set composition = the actual lever** — v5 had right architecture (dual-path), wrong training set (T1-easy). v7's training set MUST be Qwen-wrong residual + verified labels.
+
+3. **Memo test (v5 design) is the right validation** — keep multi-sample at inference conditions, stratified MCQ/Free, threshold N/20. Add per-item routing decision quality (does adapter actually help on each item vs base).
+
+4. **Merger script is the missing piece** — combines base run + adapter run + routing rules → single CSV. Phase D should design this. Simple version: precedence (adapter answer wins if item in adapter target set). Advanced version: confidence-gated routing.
+
+5. **Smoke discipline** — v5 lost the pre-flight gate that v1 had (eval-loss on held-out 8-row batch must be in [0.5,5.0] nats). v7 should restore this.
+
+6. **Gradescope code impact** — `run_inference()` must execute the dual-path: invoke base run, invoke adapter run, invoke merger. Needs to be in the entry point.
+
+---
+
+## END OF PHASE A NOTES (with Part 6 deepening)
 
 Synthesize with `ADAPTER_NOTES_CURSOR.md` in Phase D after both committed.
