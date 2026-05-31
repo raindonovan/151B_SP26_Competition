@@ -42,6 +42,7 @@ After ≥2 p943 runs cataloged:
 - Note failure mode: multi-slot undercount / precision / MCQ-first-box / etc.
 - These feed the structural-normalizer probe list — **NOT new inference runs**
 - Sized roughly at vscode's R20 observation: ~72% of hard-wrong items
+- **NEW (Day 9 ~00:30 Sun, ChatGPT pre-submission audit finding):** R20's raw CSV contains **19 rows with NO `\boxed{}` wrapper at all** — these fail Kaggle grader extraction unconditionally. Tier-1 universal normalizer rule to add: "if response has no `\boxed{}`, detect most-likely answer in response body and wrap it." Conservatively ~6 rescues on slice (19 × 30%). Free lever, higher EV than DeepConf at this point. Build BEFORE other normalizer tiers since it touches the most fundamental extraction failure.
 
 ## Morning-run candidates (specs gated on watchlist evidence)
 
