@@ -29,3 +29,11 @@ Capability-vs-sampling: agreement 25/61, both-wrong 42, tr-only-right 1, NT943-o
 17-TRUNCATED INTERSECTION = 0 (subset predates 32K-truncation analysis) → says NOTHING about the "NoThinking-high-budget-on-17-truncated" morning candidate; that remains untested.
 
 VERDICT: NO new-rescue signal. targeted_rescue is RESEARCH-ONLY, do NOT stack. Closes NT-workstream "more NT passes help" question across probe98(YELLOW)+texas-oil(PARTIAL)+this: they don't. NT value = the single NT-943 join (+1.8pp); path to more = independent gold, not more/curated NT runs. Did NOT build Pick-B candidate (audit only). Closes at T2 (no ChatGPT pass per spawn). Commit: cb1e29e.
+
+---
+## claude_vscode signoff — Day 9 — Thinking-twin slot-composition follow-up — REAL slot-7/8 lever (4 rescues)
+targeted_rescue_20260526T201046Z (THINKING SC@16, 61 hard items, mean 6102 tok) → inference/base_model/TH_targeted_rescue_thinking_sc16_f61/. Twin of the NoThinking-tr. Cataloged both (NT-tr + TH-tr rows). LFS: raw 19MB + ADAPTED 17MB.
+
+5-item check {9,435,479,499,638}: 9/435/479/638 = THINK uniquely correct (R20+NT943 both wrong); 499 = R20-already-correct. **NEW-RESCUE COUNT = 4** (full-61 sweep confirms exactly these 4). ALL 4 on INDEPENDENT gold (0 unverifiable — high precision, unlike texas-oil's 26/40). ∩17-truncated=0, ∩8-seed=0 → all FRESH, distinct multi-slot/precision class. THINK beats NoThinking-twin 20/61 vs 13/61 on identical items (long budget > NoThinking on hard).
+
+VERDICT: high-budget Thinking IS a real slot-7/8 lever. Tomorrow: high-budget (24K+) Thinking SC run on R20-wrong MULTI-SLOT/PRECISION items (NOT the 17-truncated set — mechanism is generation length on multi-part answers, not truncation). Complementary to NT-943. Caveat n=4 on curated slice, rate won't necessarily generalize (NT-943 realized≠scaling-floor lesson). Did NOT build Pick-B (audit only). Closes at T2. Commit: (after).

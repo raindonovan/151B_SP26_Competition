@@ -26,3 +26,5 @@ inference/base_model/R20b_eval_v1_sc8_p943_t32k_v3filt/analysis/analysis.jsonl f
 inference/base_model/R20b_eval_v1_sc8_p943_t32k_v3filt/analysis/analysis_samples.jsonl filter=lfs diff=lfs merge=lfs -text
 inference/base_model/NT_eval_nothinking_sc8_p943_t8k/nothinking_full_943_20260527T000129Z.jsonl filter=lfs diff=lfs merge=lfs -text
 inference/base_model/NT_eval_nothinking_sc8_p943_t8k/nothinking_full_943_ADAPTED.jsonl filter=lfs diff=lfs merge=lfs -text
+inference/base_model/TH_targeted_rescue_thinking_sc16_f61/targeted_rescue_20260526T201046Z.jsonl filter=lfs diff=lfs merge=lfs -text
+inference/base_model/TH_targeted_rescue_thinking_sc16_f61/targeted_rescue_thinking_ADAPTED.jsonl filter=lfs diff=lfs merge=lfs -text
