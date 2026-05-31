@@ -188,3 +188,21 @@ Initial apply_override used the Day-8 append mechanism (`resp + \n\n\boxed{value
 ### DID NOT submit to Kaggle (Rain's decision). DID NOT modify R20 source CSV (read-only). 
 
 ### Commit hash: 64e4eb7 (Pick B consensus-join build). Pushed eae3c2a..64e4eb7. CSVs committed RAW per submission-CSV convention (source 18MB also raw; only submissions/*.csv + v7 sheet are LFS).
+
+---
+## claude_vscode signoff — Day 9 — Pick B slot 2: 763-safe conservative join + expression-form deep-audit sweep
+
+### Expression-form sweep (all 13 conservative items) → only id=763 FLAGGED
+expression_form_audit.csv: 12 SAFE (clean decimals/ints/MCQ-letters/simplest-frac/symbolic 7z,6w/canonical \dfrac{\pi}{3}); 1 FLAG = 763 (`4+9,8\div3`: unevaluated int arith + \div operator). Canonical: `13, \frac{8}{3}` (constant-fold 4+9→13, operator→fraction 8\div3→8/3). sympy-verified value-equal; both auto_judge True vs gold 13,8/3.
+
+### Built: picks_nothinking_join_conservative_763safe_v1.csv (1 item changed vs conservative: 763 only)
+Override CSV overrides_nothinking_join_conservative_763safe.csv (13 rows; 763 value substituted, others verbatim). Applied via canonical full-replace apply_overrides.py.
+
+### 8-POINT DEEP AUDIT — ALL PASS (blockers):
+(a) 943=943 ✓  (b) all 13 single-box full-replace; 763=`\boxed{13, \frac{8}{3}}` ✓  (c) all 930 non-override rows byte-identical to source ✓  (d) order ✓  (e) schema ✓  (f) grader.auto_judge==True for ALL 13 ✓  (g) 763safe vs conservative differ ONLY on 763 ✓  (h) Rule #11: 12 verbatim NT.voted; 763 = NT.voted + universal-tier norm (constant-fold + operator-to-fraction of Qwen's OWN output); no teacher/sheet/Wolfram/anchor ✓
+
+### Slot-2 rationale (SLOT_PLAN.md): disambiguates "Kaggle rejected 763 expr-form" from "join framework failed" → protects tomorrow's 4-slot structural block (slots 3/4/7/8) from mis-allocation. Expected delta vs slot 1: 0 (if grader-friendly) to +0.3-0.7pp (if grader rejected expr).
+
+### DID NOT: submit to Kaggle (Rain orders slots), touch diagnostic 14-item, reopen 282, fire ChatGPT (sweep was trivially-so — single clean canonical-fold, no non-trivial decision per memory #24).
+
+### Commit hash: (filled after commit)

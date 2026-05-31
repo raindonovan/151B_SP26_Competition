@@ -1,0 +1,14 @@
+item_id,current_override,classification,proposed_canonical,value_equality_verified,rationale
+5,"541.3, 63.25, 135.325, 4.2167, 32.09",SAFE,,n/a,"Clean surface form (decimal/int/letter/simplest-frac/symbolic); no unevaluated arith, no risky operator."
+181,A,SAFE,,n/a,"Clean surface form (decimal/int/letter/simplest-frac/symbolic); no unevaluated arith, no risky operator."
+257,"2.52, 3.00, A",SAFE,,n/a,"Clean surface form (decimal/int/letter/simplest-frac/symbolic); no unevaluated arith, no risky operator."
+345,"-\frac{5}{6}, \frac{5}{6}",SAFE,,n/a,"Clean surface form (decimal/int/letter/simplest-frac/symbolic); no unevaluated arith, no risky operator."
+474,248,SAFE,,n/a,"Clean surface form (decimal/int/letter/simplest-frac/symbolic); no unevaluated arith, no risky operator."
+578,"7.62, 9.00, 95.44",SAFE,,n/a,"Clean surface form (decimal/int/letter/simplest-frac/symbolic); no unevaluated arith, no risky operator."
+584,"7z, 6w",SAFE,,n/a,"Clean surface form (decimal/int/letter/simplest-frac/symbolic); no unevaluated arith, no risky operator."
+642,"6,\dfrac{\pi}{3},13",SAFE,,n/a,"Clean surface form (decimal/int/letter/simplest-frac/symbolic); no unevaluated arith, no risky operator."
+712,"D, D, A",SAFE,,n/a,"Clean surface form (decimal/int/letter/simplest-frac/symbolic); no unevaluated arith, no risky operator."
+715,"5, 7, 9, 13, 8.5, 6, 7, 8, 9, 10, 11, 8.5",SAFE,,n/a,"Clean surface form (decimal/int/letter/simplest-frac/symbolic); no unevaluated arith, no risky operator."
+763,"4+9,8\div3",FLAG,"13, \frac{8}{3}","YES (sympy: 4+9==13, 8\div3==8/3; both auto_judge True vs gold 13,8/3)",Unevaluated int arith (4+9) + \div operator → constant-fold to 13 and operator-to-fraction 8/3. Universal-tier normalization of Qwen output.
+868,88,SAFE,,n/a,"Clean surface form (decimal/int/letter/simplest-frac/symbolic); no unevaluated arith, no risky operator."
+917,"189.8, 246.4, 43",SAFE,,n/a,"Clean surface form (decimal/int/letter/simplest-frac/symbolic); no unevaluated arith, no risky operator."
