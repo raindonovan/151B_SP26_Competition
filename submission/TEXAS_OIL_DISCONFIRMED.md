@@ -1,5 +1,8 @@
 # TEXAS OIL AUDIT — Multi-run Qwen ensemble feasibility
 
+> **SUPERSEDED (verdict revised PARTIAL):** this doc tested a PERMISSIVE H3 (single-candidate overrides) → NET −34. Per ChatGPT methodology audit, the REVISED pre-registered H1+H2 selector on a CONSERVATIVE 2+-agreement pool yields +6 local / 0 damage / Rule-#11-legal (40 overrides). See **TEXAS_OIL_FINDINGS.md** for the current verdict. This doc retained as the honest record of why the loose heuristic fails.
+
+
 **Date:** 2026-05-31 (Day 9 close) · **Auditor:** claude_vscode · **Commit:** built on `6a56079`
 **Analyzer/grader:** canonical `analyze_run.py` v3-final-final (761f903) + `grading.grader.Grader` (same as all cohort audits). Pre-commit sanity (b): R20 scored-set acc = 426/498 = **0.8554**, exactly matching the cohort audit → Phase-1 numbers validated.
 **Hypothesis:** the union of correct items across multiple Qwen runs is a Rule-#11-legal pool that a Qwen-only heuristic can mine for a Pick-B rescue set substantially larger than the NT-943 join (13 items, +1.8pp).

@@ -221,3 +221,11 @@ PHASE 3: best deployable H3 applied selectively (override when shortest≠R20): 
 VERDICT: **DISCONFIRMED.** Pool exists (oracle 100%) but un-minable by any gold-free Qwen heuristic. Root cause: correct rescues are minority answers; shared config lineage makes wrong answer the majority. **This is WHY NT-943 worked & texas-oil doesn't: NT-943 used independent GOLD to SELECT the 13 items — that selection step is irreplaceable.** NT-943 (+1.8pp, 13) = ceiling of gold-free cross-run Qwen ensembling. **Path to more rescues = MORE INDEPENDENT GOLD (wolfram/search), not more runs / smarter vote.** Report: submission/TEXAS_OIL_DISCONFIRMED.md. Rule-#11 borderline flagged for ChatGPT: cross-mode-agreement (NT∩Thinking) as a selection feature.
 
 DID NOT: build Pick-B CSV (disconfirmed), use gold in any tested heuristic (gold = audit measurement only), generate inference, submit Kaggle, use append mechanism. Commit: 2148e37.
+
+---
+## claude_vscode signoff — Day 9 — TEXAS OIL REVISED (pre-registered selector) — verdict PARTIAL (was DISCONFIRMED at loose bar)
+ChatGPT methodology audit revised scope: pre-register H1(majority)+H2(SC-tiebreak), CONSERVATIVE 2+-agreement deployable pool, single-run→exploratory, DROP slice projection. Reran:
+- DEPLOYABLE (gold-free selector, all 943, 2+ agree, ≠R20): 40 overrides. Measurable independent subset: helped 5-6 HURT 0. Pre-commit gate: R20 444/547 → texas_oil_v1 450/547 (+6) PASS no-regression. RISK: 26/40 on sheet_dependent (unverifiable).
+- EXPLORATORY single-run rescues: 23 (NT 17 = the NT-943 lever; R10 3 + R08 3 lucky). NOT deployed — need gold-selection.
+- H3 permissive (prior run) = NET −34 (the trap conservative bar avoids; agreement filters minority noise).
+VERDICT PARTIAL: conservative 2+-agreement IS a clean gold-free correctness signal (+6/0-damage/Rule-#11-legal) but 65% unverifiable; doesn't close 8pp gap; complementary to (not competing with) NT-943. Built picks_texas_oil_v1.csv (40 ov) as LOWER-confidence stacking/spare candidate. Docs: TEXAS_OIL_FINDINGS.md (current) + TEXAS_OIL_DISCONFIRMED.md (superseded, retained). Open for ChatGPT: 3+-agreement precision gate, NT-943 overlap for stacking, cross-mode-agreement Rule-#11. Commit: (after).
