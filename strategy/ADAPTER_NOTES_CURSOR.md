@@ -397,3 +397,84 @@ If memo test is meaningful for memorization but v5 is break-even globally, the c
 
 Bottom line:
 - `memo_test_v5.py` is a useful *sanity* instrument (adapter integrity + in-sample consistency under SC sampling), but is not a valid *selection* instrument for expected Kaggle uplift.
+
+---
+
+## Part 3 — Phase A third pass
+
+### Gap A) Quantization per-version table (Part 11 verification)
+
+Method:
+- Read full training scripts for v1/v3/v4/v5 and extracted model-loading + optimizer config from code.
+- Sources:
+  - `inference/adapters/sft_v1_postmortem/scripts/train_qwen3_qlora.py`
+  - `inference/adapters/sft_v3/scripts/train_sft_v3.py`
+  - `inference/adapters/sft_v4/scripts/train_sft_v4.py`
+  - `inference/adapters/sft_v5/scripts/train_sft_v5.py`
+
+| Version | Loading mechanism | Quantization config | torch dtype config | Optimizer |
+|---|---|---|---|---|
+| v1 | `Unsloth FastLanguageModel.from_pretrained(...)` | `load_in_4bit=True` (explicit) | `dtype=None` in loader, training with `bf16=True` in SFTConfig | `adamw_8bit` |
+| v3 | `AutoModelForCausalLM.from_pretrained(...)` | No `load_in_4bit`, no `BitsAndBytesConfig` | `torch_dtype=torch.bfloat16` | `adamw_torch` |
+| v4 | `AutoModelForCausalLM.from_pretrained(...)` | No `load_in_4bit`, no `BitsAndBytesConfig` | `torch_dtype=torch.bfloat16` | `adamw_torch` |
+| v5 | `AutoModelForCausalLM.from_pretrained(...)` | No `load_in_4bit`, no `BitsAndBytesConfig` | `torch_dtype=torch.bfloat16` | `adamw_torch` |
+
+Verification outcome for Part 11 claim:
+- **Confirmed.**
+  - v1 is QLoRA-style (4-bit load + Unsloth path + `adamw_8bit`).
+  - v3/v4/v5 are full bf16 LoRA-style HF loads (no 4-bit quantization in training script + `adamw_torch`).
+
+Notes:
+- No `BitsAndBytesConfig` usage appears in v3/v4/v5 scripts.
+- v1 docstring and loader explicitly call out 4-bit loading path.
+
+### Gap B) Trace-answer coherence audit (Part 8 hypothesis validation sample)
+
+Method:
+- Stratified sample from `data/sft_v5_dataset.jsonl`, tiers via `data/MASTER_ANSWERS.csv`.
+- Targeted ~5 each in T2/T3/T4 (available) + 2 from T5.
+- Sample size: **17**
+  - Tier breakdown: T2=5, T3=5, T4=5, T5=2
+  - Type breakdown: MCQ=12, FREE=5
+
+Sampled item_ids:
+- T2: `1, 3, 13, 15, 23`
+- T3: `69, 88, 111, 125, 127`
+- T4: `10, 89, 164, 182, 317`
+- T5: `14, 184`
+
+Audit procedure per sampled item:
+1. Parse reasoning trace between `<think> ... </think>` where present (or full assistant narrative when trace tags absent).
+2. Identify the trace's reached conclusion.
+3. Extract final `\boxed{...}` label.
+4. Check coherence (trace conclusion aligns with boxed label semantics).
+
+#### Coherence counts
+
+- **MATCH (coherent): 17 / 17**
+- **MISMATCH (incoherent): 0 / 17**
+
+Interpretation for this sample:
+- This sample does **not** surface direct trace-vs-box contradiction cases.
+- It does not refute the broader hypothesis globally; it only says the sampled v5 rows are coherent by this criterion.
+
+#### Mismatch characterization
+
+- No hard mismatches in this sample, so no mismatch table by item_id.
+
+#### Quality caveats observed (not counted as mismatch)
+
+- Some traces are weak-confidence or retrieval-like, but still end on the same boxed target:
+  - `ID 88` (T3, MCQ): trace uses sequence/lookup-style reasoning with low-derivation confidence language, but lands on option C and boxed C.
+  - `ID 184` (T5, MCQ): no `<think>` tags; direct answer block states list matching option E and boxed E.
+- Some traces branch before converging:
+  - `ID 89` (T4, FREE): internal back-and-forth on integer months vs exact fraction, final boxed `326/7` matches final explicit algebraic result.
+
+#### Concentration by tier/type
+
+- Since mismatches were zero in this sample, there is no tier/type concentration pattern for incoherence.
+- Coverage remains skewed toward MCQ (12/17), so this sample is better viewed as a targeted sanity check, not a full-population estimate.
+
+Bottom line from third-pass coherence sample:
+- In this stratified 17-item cut of v5, trace-to-label coherence is high (17/17).
+- The structural coherence risk remains a valid hypothesis to test at larger scale, but it was **not** evidenced in this sample window.
