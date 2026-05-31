@@ -214,3 +214,60 @@ Read in this order: `submission/SLOT_PLAN.md` → `strategy/MORNING_RUNS_WATCHLI
 ### Context state
 
 claude_strategy session at ~870 min, context tight. If continuing in this session post-wake, expect terse responses; if opening a fresh chat, reference this handoff as primary state.
+
+---
+
+## DAY 9 SESSION HANDOFF UPDATE — AUDIT DISCIPLINE (CRITICAL CARRY-FORWARD)
+
+**THIS APPLIES TO ALL WAKE-UP WORK AND ALL FUTURE THUNDER/GPU OPERATIONS, NO EXCEPTIONS.**
+
+### The four-gate protocol (mandatory before any GPU launch)
+
+1. **RESUME-ENABLED**: explicit detection of partial samples.jsonl using JSON-aware count (not `wc -l`)
+2. **LIVE TRACKING**: tmux tracker window with watch on sample count + log tail
+3. **SMOKE TEST**: 5-item gate, ≥4/5 majority-boxed, fail = `sys.exit(1)` hard-stop
+4. **CROSS-MODEL AUDIT (via Cursor GPT-5.5 with `.cursorrules` auto-loaded)**: before fire
+
+### Audit is NEVER optional
+
+Even for:
+- "Small" param changes (e.g. token budget bumps)
+- "Trivial" patches (e.g. quoting fixes)
+- "Same as last time" re-launches
+- Tnr-1 mirror of tnr-0's already-audited prompt (mirror is a NEW artifact)
+
+**Why:** This session, three separate audit catches saved real failures:
+- Thunder pre-flight caught CSV embedded-newline trap (would have produced 59 empty IDs)
+- GPT-5.5 audit caught tracker `$RUN_DIR` BLOCKER (would have broken live monitoring on a 6.5hr run)
+- GPT-5.5 audit caught JSON-aware resume + race-safe push + quoted-paths WORRY items
+- Tnr-1 launched unaudited with old budgets → killed mid-flight (discipline win)
+
+**The pattern that fails:** "I'm only changing 2 params, no audit needed." That's the exact framing that introduced the tracker BLOCKER.
+
+### Audit workflow (Cursor)
+
+1. Draft prompt OR patch
+2. Open Cursor → repo loaded → chat with GPT-5.5 selected (MAX mode, High reasoning, Premium intelligence)
+3. Paste prompt with `@codebase` + `#file:` refs to relevant artifacts
+4. Cursor auto-loads `.cursorrules` → GPT-5.5 knows audit contract, output format (BLOCKER/WORRY/NOTE)
+5. Apply BLOCKERs always; apply WORRYs if cheap
+6. Fire to Thunder agent
+
+### When tnr-1's STEP 5 patch fires
+
+It MUST include:
+- The same RUN_DIR export + hard-fail-on-missing-run-dir-file fixes from tnr-0's re-patched STEP 5
+- Budget bump: `--max-tokens 81920 --thinking-budget 65536`
+- All sampling params unchanged from validated thinking-twin config
+- Race-safe push (rebase+retry) in STEP 6
+- Cross-model audit by GPT-5.5 BEFORE Rain pastes the prompt to tnr-1
+
+### Wake-up audit reminders
+
+If runs complete cleanly: cross-run analysis goes to claude_vscode. Even THAT analysis script should be audited if it touches the GPU or produces submission CSVs.
+
+If runs failed: diagnosis prompt to Thunder agents → audit before sending.
+
+If new spawn prompts needed: draft → audit → fire. Always.
+
+**Discipline > speed. Audits caught real failures multiple times tonight. Don't break the gate.**
