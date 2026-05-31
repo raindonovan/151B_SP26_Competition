@@ -66,3 +66,26 @@ The "11-item locked seed" above was written before the R20 ChatGPT T3 audit. **T
 - Also: 302/839 (the R20 ≥5/8 A_lucky "DeepConf" items) are **duplicate-option overcounts**, not clean DeepConf gold — discount them in DeepConf morning planning.
 
 **LOCKED FINAL ADAPTER SEED = 8 items: [41, 61, 103, 104, 127, 231, 264, 282]** (true math-misses across all 5 levers; 41 & 282 already T3-confirmed). The B∩∩∩∩∩=48 and rock-solid A∩∩∩∩∩=371 are unchanged; only the true-miss/format-recoverable split within the 48 shifts (11→8 true-miss, 37→40 format-recoverable). The filter-dividend=0 verdict and the lever ranking are unaffected.
+
+---
+
+## ChatGPT T3 deep audit verdict — 2026-05-30 ~22:55 PT
+
+**VERDICT: GREEN. Confidence HIGH that filter is dropped from morning planning.**
+
+All numerical claims verified, all spot-checks confirmed:
+- B→A=0 and B→A_lucky=0 (spot-checked 3 B∩B items: 25, 67, 68 — all stay wrong in R20b)
+- A→B=0 and A_lucky→B=0 (spot-checked 3 A→A items: 1, 13, 122 — all stay correct)
+- 55-vote-change count exactly matches
+- B∩∩∩∩∩ = B∩∩∩∩ = 48 (identical, no membership change)
+- Lone truncation-flag change vs R20: item 586
+
+### Methodology nuance (slogan tightening)
+
+The phrase "filter changed zero items' correctness" is **slightly false at row level** — the literal `math_correct` column has 36 flips:
+- **4 A_lucky→A cleanups** on the scored set (already accounted for)
+- **32 math_correct flips inside `unknown`** (the unscored items — items with no Wolfram-HIGH / search-GOLD / unanimous-teacher grounding)
+
+The right slogan: **"no B-side correctness flips" or "no scored wrong→right flips."** The unknown-set flips are real changes in what Qwen voted for, but they're invisible to Kaggle (which scores only on its private 283-item slice, which intersects with our scored set, not unknown).
+
+The 32 unknown-set flips are a curiosity worth a future note: they indicate the filter has measurable effect on items WITHOUT teacher consensus — which is consistent with the filter logic targeting vote-confidence/shape-quality on weakly-grounded items. Not actionable for Pick B (unknown items can't be confirmed correct), but interesting for understanding the filter's behavioral signature.
