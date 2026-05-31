@@ -581,3 +581,32 @@ Closed the my-audit → Cursor cross-check loop on the Tier-1 normalizer build p
 **Carry-forward (non-blocking, post-deadline only)**:
 - Cursor's corner-case observation re extract_answer scope deviation: in theory could degrade on items where boxed content is junk + textual rescue letter would have been correct. Not observed in current data. Research note for post_deadline audits if extract_answer pathway ever re-touched.
 
+
+---
+## claude_strategy signoff — 2026-05-31 (Day 9) — Slot3 normalizer-only Kaggle result
+
+**Submitted**: submission/30_05/slot3_normalizer_only/normalizer_only_v1.csv (HEAD fb5f5d1, audit-cleared GREEN per 59c6861 build + Cursor cross-check)
+**Kaggle slot**: D9_S3_NORMALIZER_ONLY_v1
+**Result**: **0.664**
+**Baseline (R20 raw)**: ~0.646
+**Lift**: +1.8pp
+**Projected range**: 0.655-0.678 → landed at 0.664, dead-center of projection
+
+**Interpretation**:
+- Local +2 on 547-item independent-gold = +0.4pp accounted for ~20% of observed Kaggle gain
+- Remaining ~+1.4pp came from unmeasurable T4/T5 sheet_dependent subset (where audit predicted bigger wins from 4 no-box overrides + multi-slot fixes)
+- Calibration model empirically validated — our projection accuracy is trustworthy for downstream Pick B stacking decisions
+
+**Strategic implication**:
+- Tier-1 normalizer is a confirmed Pick B component (+1.8pp clean addition vs R20 raw)
+- Pick A still locked at 0.745 (unaffected; slot3 is diagnostic, not picks)
+- Pick B math: R20 base → +normalizer 0.664 → +Thunder rescues (post-land) → +NT-13 join → potentially +kitchen-sink. Each tested in isolation = stackable attribution-clean.
+- Plausible Pick B range: 0.68-0.71 depending on Thunder correct-rescue rate
+
+**Budget burn**: slot 3 of 5 today used. 2 today's slots remaining + 6 competition-total remaining.
+
+**Stage 8 lessons captured** (anchor-process improvements):
+1. Future audit Stage 4 anchors should use Hendrycks `extract_last_boxed_content` (Kaggle's actual extractor), NOT `extract_all_boxed[-1]` — they agree on single-box cases but diverge on multi-box-in-last-group patterns
+2. Empty flag set does NOT guarantee byte-identical to source — normalizer rebox is no-op-when-MCQ-already-correct (early return) but applies for non-MCQ-already-correct cases; flag taxonomy tracks attribution-class events, not all changes
+3. 117 MCQ items (~12%) have multi-identical-letter-box patterns in slot3 output; benign because Grader.is_equal handles ('H,H' == 'H' = True) and Hendrycks extracts cleanly on Kaggle. Worth knowing for any downstream analysis that consumes judger output directly.
+

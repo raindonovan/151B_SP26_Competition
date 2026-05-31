@@ -86,3 +86,15 @@
 
 ## Never-submitted (in archive/submissions_never_sent/)
 info_1, info_3, slot1_reformat_plus_b2_plus_sheet, slotA_dfrac_only, slot3_minus_rescue_med, trackA/B day3+day4
+
+## D9_S3_NORMALIZER_ONLY_v1 (2026-05-31)
+- **File**: submission/30_05/slot3_normalizer_only/normalizer_only_v1.csv
+- **Commit**: fb5f5d1 (build at 59c6861, audit-cleared GREEN)
+- **Hypothesis**: clean-attribution Kaggle test of Tier-1 normalizer (4 HIGH overrides + structural fixes)
+- **Levers**: Tier-1 normalizer only (no other lever stacked)
+- **Rule #11**: COMPLIANT (Qwen-derived: R20 base + 4 SC-unanimous overrides)
+- **Result**: **0.664**
+- **Baseline (R20 raw)**: ~0.646
+- **Lift**: +1.8pp
+- **Projected range**: 0.655-0.678 (LANDED MID-RANGE)
+- **Implication**: Tier-1 normalizer confirmed as Pick B component
