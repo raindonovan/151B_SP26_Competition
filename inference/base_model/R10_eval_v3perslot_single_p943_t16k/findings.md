@@ -110,3 +110,31 @@ After R20:
 - id=127 (also flagged truncation-suspect) → possibly OUT
 - id=282 (extra-root error), id=41 (rambling) → confirmed IN
 - Final true-miss seed projection: **5-8 items**, refined at R20
+
+---
+
+## Adapter training approach by failure mode (locked Day 9 22:15 PT)
+
+For each item in the true-miss seed, training approach depends on failure mode. Add a `training_approach` column to per_item adapter exemplar files when building tomorrow's training set.
+
+| Failure mode | Seed items (R8∩R9∩R10, may shrink at R20) | Training approach | Risk |
+|---|---|---|---|
+| Rambling / never converges | 41, 61 | Tight decisive Sonnet traces, mid-length (40-75th pct correct lengths). 1-2 self-verify steps. Goal: termination behavior. | LOW |
+| Spurious reasoning path | 282 (extra-root: e², -e² vs gold e²) | "Mistake + correction" pattern — show spurious step, catch via domain/constraint check. One-mistake-plus-correction transfers better than straight-path (May 13 research). | MEDIUM — may not generalize beyond specific constraint type |
+| Truncation-driven | 117, 127 (CONFIRM AT R20) | **NOT adapter scope.** If 32K rescues → fix is inference-time token budget. Move out of seed. | N/A |
+| Multi-slot/format quirks | 103, 104, 231, 264, 868 (need per-item triage at R20) | NOT adapter scope — these are normalizer territory (tier 2 class-based or tier 3 item-specific via per_item_overrides.csv) | N/A |
+| High-reasoning differentiation | (none confirmed) | AVOID — stylistic confusion + distribution drift risk. SFT shifts token patterns, not reasoning style. | HIGH |
+
+### Training data construction principles (May 23 research consensus)
+
+- Single-teacher style consistency (Sonnet preferred per research; v3+ design choice)
+- Correctness-gated traces only
+- 40-75th percentile trace length (shortest-correct underperforms)
+- 1-2 self-verify steps preferred (excess verification hurts)
+- One-mistake-plus-correction pattern transfers better than straight-path
+- 3-5 epochs (Light-R1, LIMO pattern)
+- ~15-25 training examples on ~5-8 items max (2-3 paraphrase traces per item)
+
+### Open verification gap
+
+**Claim to verify with Rain (Day 9 22:15 PT):** Does our v3/v4/v5 SFT history specifically show "Sonnet traces work on Qwen" as a finding distinct from architecture-fix failures? Or is Sonnet-as-teacher currently a research-consensus prior we haven't empirically isolated yet? If the latter, the adapter run tomorrow is also a teacher-isolation experiment.
