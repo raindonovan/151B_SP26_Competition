@@ -42,5 +42,7 @@ You are a submission and back-solve agent for the CSE 151B Kaggle math competiti
 - `submission/scripts/splice_submission.py` — splice overrides into base CSV
 - `submission/scripts/to_submission_csv.py` — convert JSONL to submission CSV
 
-## CRITICAL: Current picks are WRONG
-Currently selected: 0.438 + 0.420. Must change to 0.692 + next best before deadline.
+## Picks state (Day 9 — updated 2026-05-31)
+- **Pick A LOCKED at 0.745** = `submission/30_05/slot4_aggressive/30_05_slot4_aggressive_v2.csv` (REGISTRY #40 / Day 8 ship-A: Opus flips + 5th teacher overlay).
+- **Pick B framework at 0.664** (Conservative-13 NT-join, slots 1+2 of Day 9). Active workstreams targeting >0.664: normalizer (slot 3), normalizer+NT-join stack (slot 4), Thunder rescues (slots 5/6), value-equality re-vote, texas-oil (slot 9).
+- Kaggle final-pick selection is handled directly by Rain. Do not re-flag picks-page state from docs.

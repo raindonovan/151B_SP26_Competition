@@ -33,6 +33,10 @@ runs/
     └── pace/              ← Programmatic Answer-label Comp. Evaluation     [TODO populate]
 ```
 
+## Cross-run correctness matrix
+
+`CROSS_RUN_MATRIX.csv` — 944-row (header + 943 items) × 6-run correctness matrix (R08/R09/R10/R20/R20b/NT). Schema: `id, R08, R09, R10, R20, R20b, NT, total_correct, gold_source, R20_wrong_others_right`. **Canonical source** lives at `submission/csvs/picks/cross_run_correctness_matrix.csv` (where it was first authored). This file is a byte-identical mirror so AUDIT_TEMPLATES T4 references resolve. Either path can be read; keep them in sync if the matrix is regenerated.
+
 ## Per-run folder contents
 
 Each run folder should have:

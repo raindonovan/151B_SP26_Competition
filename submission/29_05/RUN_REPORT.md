@@ -248,4 +248,4 @@ This run is designed to confirm/refute three specific findings from 25_08:
 - Best score (pre-result): 0.706 (slot4_undercount_expand from 25_08)
 - Distance to leader (0.85): ~41 slice items short
 - Submissions remaining today: TBD per daily budget; these 2 likely tomorrow's allocation
-- Final picks (current, WRONG): 0.438 + 0.420 — still need replacing before 5/31
+- Final picks (Day 9 lock state): Pick A 0.745 slot4_aggressive_v2 (REGISTRY #40), Pick B 0.664 Conservative-13 NT-join. Picks-page selection handled by Rain directly.

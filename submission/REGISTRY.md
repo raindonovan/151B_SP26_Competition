@@ -77,7 +77,7 @@
 - Strip neutral: #26 = #25 (both 0.692) — strip neither helps nor hurts
 - MED = +0.3pp: #26 (0.692) vs #27/#29 (0.689)
 - Order matters: #4 (0.614) vs #5 (0.438) = −17.6pp
-- CURRENT PICKS ARE WRONG: 0.438 + 0.420 selected — CHANGE to 0.713 + something diverse BEFORE 5/31
+- CURRENT PICKS STATE (Day 9 lock): Pick A = 0.745 slot4_aggressive_v2; Pick B = 0.664 Conservative-13 NT-join (active workstreams targeting higher). Kaggle picks-page selection handled by Rain. The 0.438 / 0.420 entries above are historical scores from early diagnostic submissions, NOT current pick selections.
 
 ## Naming mismatches (Kaggle vs Repo)
 - slot1_kitchen_sink_CCCCCC → slot1_kitchen_sink_C.csv

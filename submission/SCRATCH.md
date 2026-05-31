@@ -4,7 +4,7 @@ Drop anything here. Rain will sort it later.
 
 ---
 
-- CURRENT PICKS ARE WRONG: 0.438 + 0.420 selected. Must change to 0.692 + next best before deadline.
+- PICKS STATE (Day 9 lock 2026-05-31): Pick A LOCKED 0.745 (slot4_aggressive_v2). Pick B 0.664 (Conservative-13 NT-join, slots 1+2). Workstreams pushing for >0.664: normalizer (slot 3), stack (slot 4), Thunder rescues (slots 5/6), value-equality re-vote, texas-oil (slot 9). Picks-page selection handled by Rain.
 - Strip is neutral: #26 (0.692) = #25 (0.692 without strip).
 - MED overrides = +0.3pp: #26 (0.692) vs #27/#29 (0.689 without MED).
 - Whitehill 2017 (1707.01825) Section 3: accuracy oracle attack on unknown subset. Our accuracy metric gives ~8 bits per submission. 29 submissions × 8 bits = 232 bits of information about the test set.
