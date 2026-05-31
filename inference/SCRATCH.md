@@ -403,4 +403,6 @@ SC is the dominant Pick-B lever. Tokens second. v3 shape-filter and v3-perslot p
 - Cohort plateaued: hard_clean 0.8125 (R20=R20b), B∩=48, adapter seed=11, rock-solid=371 — all LOCKED. No remaining p943 lever in this cohort moves them; the morning levers (DeepConf/SC@32/NoThinking/high-budget) are the only untried ones.
 
 ### Commit hash
-(filled after commit)
+59cd151 (R20b deep audit; rebased onto strategy 904c818 R20-T3 YELLOW + 2d17481 morning candidates). LFS run jsonl 155MB already remote + analysis.jsonl 31MB + samples 20MB pushed. Pushed 904c818..59cd151.
+
+### POST-PUSH CORRECTION (R20-T3 landed during my session): adapter seed 11→8. ChatGPT R20-T3 reclassified 167 (option-mapping, like id=9), 345 (precision/exact-form, like id=89), 591 (undercount, like id=12) as FORMAT-RECOVERABLE not true-miss — exactly the newcomers I flagged for T3 to verify. **LOCKED FINAL ADAPTER SEED = 8: [41, 61, 103, 104, 127, 231, 264, 282].** Also 302/839 are duplicate-option overcounts, not clean DeepConf. Applied the correction to R20b findings.md (appended CORRECTION section). B∩∩∩∩∩=48 and A∩∩∩∩∩=371 unchanged; only the true-miss split (11→8) within the 48 shifts. Filter-dividend=0 and lever ranking unaffected.

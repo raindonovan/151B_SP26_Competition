@@ -54,3 +54,15 @@ Identical B set to R20 (the filter moved nothing in/out of B). ~79% format-recov
 - **The filter is a pure vote-cleanup, not a correctness lever.** It touched 55 voted answers but every gold-scored change was A_lucky→A (already correct, now cleanly so). Zero wrong→right. This is the cleanest possible "this lever is dead for Pick B" signal: it can't help Kaggle because it doesn't change any item's correctness, only its vote-margin.
 - **The 5-run cohort accuracy plateaued** at hard_clean 0.8125 (R20=R20b) and B∩=48. The adapter seed (11) and the rock-solid set (371) are now LOCKED — no further p943 lever in this cohort moves them.
 - Lever ranking (final, at fixed v1): **SC +33 ≫ tokens +7 ≫ filter 0 ≫ prompt-variant −11.** SC is the dominant lever; tokens second; the shape-filter and the v3-perslot prompt are both non-levers (0 and negative).
+
+
+---
+## CORRECTION (post-R20-T3, ChatGPT YELLOW verdict on R20 — applied here for consistency)
+
+The "11-item locked seed" above was written before the R20 ChatGPT T3 audit. **T3 reclassified the 3 heuristic-newcomers (167, 345, 591) as FORMAT-RECOVERABLE, not true misses** — exactly the verification I flagged for T3. Corrected:
+- **id=167**: option-mapping/gold-quality issue (like id=9) → `per_item_overrides.csv`.
+- **id=345**: `-0.8333,0.8333` vs exact `-5/6,5/6` — precision/exact-form (like id=89) → class-based normalizer.
+- **id=591**: undercount/partial multi-slot (like id=12) → universal multi-slot normalizer.
+- Also: 302/839 (the R20 ≥5/8 A_lucky "DeepConf" items) are **duplicate-option overcounts**, not clean DeepConf gold — discount them in DeepConf morning planning.
+
+**LOCKED FINAL ADAPTER SEED = 8 items: [41, 61, 103, 104, 127, 231, 264, 282]** (true math-misses across all 5 levers; 41 & 282 already T3-confirmed). The B∩∩∩∩∩=48 and rock-solid A∩∩∩∩∩=371 are unchanged; only the true-miss/format-recoverable split within the 48 shifts (11→8 true-miss, 37→40 format-recoverable). The filter-dividend=0 verdict and the lever ranking are unaffected.
