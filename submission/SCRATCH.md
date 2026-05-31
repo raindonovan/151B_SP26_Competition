@@ -244,4 +244,4 @@ Spot-checks confirm precision: id=2 multi-slotâ†’letter A, id=12 '2c+4p=70,11'â†
 
 WALL-TIME: 172s/item (thinking-twin observed, SC@16, single A100). 118 items = ~339 min single-A100, **~113 min across 3 A100s parallel**. Could halve with SC@8 if Thunder time tight.
 
-DID NOT: run inference (Thunder not up), include R20-correct items, touch 17-truncated, build Pick-B. Just the target list. Commit: (after).
+DID NOT: run inference (Thunder not up), include R20-correct items, touch 17-truncated, build Pick-B. Just the target list. Commit: a23ea1b.
