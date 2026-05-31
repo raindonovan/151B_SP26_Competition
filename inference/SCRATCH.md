@@ -321,3 +321,44 @@ hard_independent_CLEAN n=16 acc=0.7500 (HIGHEST: wolfram 6/7, search 6/9). unani
 
 ### Commit hash
 304517e (R10 deep audit; LFS 2 objects/49MB: run jsonl 16MB + analysis.jsonl 31MB pushed). Pushed 51c6117..304517e.
+
+---
+## claude_vscode signoff — Day 9 — T2 DEEP audit R20 (the 0.646 best-inference baseline; SC@8 32K; completes 4-way matrix)
+
+### What was done
+Cataloged run14b_sc8_v1_private943_tok32k_pp1 → inference/base_model/R20_eval_v1_sc8_p943_t32k_pp1/ (git mv jsonl 150MB + summary + exact-match infra log). Analyzer v3-final-final, Kaggle 0.646. Numbers match my lock-session pressure-test exactly (deterministic). README + deep findings.md (token-effect vs R09, 4-way intersection, final adapter seed).
+
+### Gates: a✅ b✅(7544) c✅ d✅ e✅ f✅ g✅ h✅ i✅ — ALL PASS. Verification triple ✅ (547==547). Wall-clock 4:41.
+
+### Bucket: A=426 A_lucky=14 B=58 unknown=445 | scored acc 0.8554 (HIGHEST: R08 .8173 R09 .8474 R10 .7952)
+hard_independent_CLEAN n=16 acc=0.8125 (HIGHEST; wolfram 6/7 search 7/9; trend .625→.6875→.75→.8125). unanimous_teachers 398/403=0.9876 (HIGHEST).
+
+### (d) A_lucky=14, DeepConf territory GREW: ≥5/8 = 3 items (296 5/8, 839 6/8, 302 7/8) vs R09's 1. SC@32 (1-4/8)=11. (302/839 voted==gold by value, format-adjacent; 296 clean multi-slot-order.) DeepConf slightly stronger morning lever at 32K, pool still small.
+
+### (f) TRUNCATION — the token headline: R20 trunc=17 (R08 119, R09 93). 32K RESCUED 72 of the 89 always-truncated-at-16K. Only 17 still truncate → want >32K (65536): [93,112,161,204,229,275,308,312,376,383,445,498,586,652,724,799,809]. Prediction check: id=117 RESCUED at 32K (now A correct) ✓; id=127 NOT rescued (true miss).
+
+### B=58, ~46 (79%) format-recoverable. id=41 now converges to wrong number 4048 (was rambling non-answer at 16K) — clearer true-miss.
+
+### (g) CROSS-RUN R09→R20 (TOKEN effect, fixed SC/v1): A→A 417, A→B 1, B→A 5, B→A_lucky 2, B→B 51, A_lucky→B 6. Token dividend = 7. LEVER RANKING at fixed v1: SC +33 ≫ tokens +7 ≫ prompt-variant −11.
+
+### (h) 4-WAY R08∩R09∩R10∩R20:
+- A∩A∩A∩A = 371 strict (rock-solid, NOT adapter/normalizer candidates; ~75% of scored set).
+- B∩B∩B∩B = 48 (was 53 triple-core; 117 rescued at 32K + a few →A_lucky).
+- 9 of 10 R8∩R9∩R10 true-miss seed survive R20; id=117 rescued (predicted).
+- B∩B∩B∩B recoverability: 37 format-recoverable (normalizer), **11 true-miss = FINAL ADAPTER TARGET SEED: [41, 61, 103, 104, 127, 167, 231, 264, 282, 345, 591]**. Heuristic-classified — recommend T3 confirm before adapter training (esp. 167/345/591, newly added vs R10 seed). id=9 correctly excluded (gold-split, R08-T3).
+
+### Cross-ref sweep: full-name run14b_sc8_v1_private943_tok32k_pp1 = 0 replacements (exit 0). Bare 'run14b' SKIPPED — ~40 hits across 18 docs (CSV names, R20b v3filtered, the 0.745-feeder refs); sweeping would corrupt critical references. Per prompt's explicit warning.
+
+### Artifact moves: jsonl+summary git mv; ALSO moved infrastructure/logs/run14b_sc8_v1_private943_tok32k_pp1.log into the R20 folder (per CATALOG absorb-list; updated that list entry to 'MOVED ... done'). Left run14b_launcher.sh / _smoke / _autorestart / _20260518 logs in infrastructure/ (tooling/other-run, not this run's artifact).
+
+### LFS: jsonl 150MB + analysis.jsonl 30MB + analysis_samples.jsonl 20MB → tracked on new paths before staging. analysis.csv 2.3MB raw.
+
+### Surprises about the 0.646 baseline
+- Tokens are SECOND-ORDER: 16K→32K bought only +7 SCORED items vs SC's +33. R20's edge over R09 (0.646 vs 0.614 Kaggle) comes mostly from the 72 truncation-rescues landing on the FULL set (many in unknown/T4-T5, off the hard-gate), i.e. 32K saves long-derivation items 16K cut off.
+- The 0.745 Pick A sits on a baseline with 0.8554 independent-gold scored accuracy — strong clean floor; overlays add teacher-corroborated items on top.
+- Final adapter seed is only ~11 items — the "wrong-on-math across EVERY lever (single/SC × v1/v3perslot × 16K/32K)" set is tiny. Most failures are format (normalizer) or token (high-budget), not capability.
+
+### Housekeeping note (NOT acted on, out of scope): inference/scripts/_pressure_test_R14/ (the lock-session pressure-test on this same run, committed at 761f903) is now redundant with R20's canonical analysis/. Candidate for cleanup post-deadline — flagging, not removing.
+
+### Commit hash
+(filled after commit)

@@ -59,7 +59,7 @@ Legend: 🟢 done · 🟡 in progress · ⚪ untouched
 | `V2_counting_bookend_fixed50_v1` | R17 | base_model | 2026-05-13 11:43 | ablation | ⚪ | bookend prompt variant |
 | `V3_shape_filter_fixed50_v1` | R18 | base_model | 2026-05-13 20:24 | ablation | ⚪ | shape filter |
 | `V4_temp_diversification_fixed50_v1` | R19 | base_model | 2026-05-13 23:37 | ablation | ⚪ | multi-temp SC (git-log fallback — no summary.json) |
-| `run14b_sc8_v1_private943_tok32k_pp1` | **R20** | base_model | **2026-05-22 13:56** | eval | ⚪ | **0.646 BEST inference baseline**; feeds 0.745 with overlays |
+| `run14b_sc8_v1_private943_tok32k_pp1` | **R20** | base_model | **2026-05-22 13:56** | eval | 🟢 | **0.646 BEST inference baseline**; feeds 0.745 with overlays; cataloged → inference/base_model/R20_eval_v1_sc8_p943_t32k_pp1/ |
 | `run14b_sc8_v1_private943_tok32k_pp1_v3filtered` | R20b | base_model | 2026-05-22 (derived) | eval | ⚪ | v3-filtered variant of R20 |
 
 **Pick-B-relevant p943 cohort**: R08, R09, R10, R20, R20b. These are the only full-private runs and the only candidates that move tonight's Pick B via cross-run consensus.
@@ -82,7 +82,7 @@ Legend: 🟢 done · 🟡 in progress · ⚪ untouched
 
 These artifacts live OUTSIDE `inference/` but belong to specific runs. As each run is cataloged, move (or link + reference) them into the run folder:
 
-- `infrastructure/logs/run14b_sc8_v1_private943_tok32k_pp1.log` → goes with R14
+- `infrastructure/logs/run14b_sc8_v1_private943_tok32k_pp1.log` → MOVED into inference/base_model/R20_eval_v1_sc8_p943_t32k_pp1/ (done)
 - `submission/csvs/run14b_sc8_v1.csv` → submission derived from R14, leave in submission/ but link both ways
 - `submission/csvs/run09sc8_probe_b_reversed.csv` → derived from R09
 - `submission/csvs/run09sc8_format_fixed.csv` → derived from R09
@@ -152,5 +152,5 @@ R-numbers are RESERVED at chronology-lock time and become CATALOGED when their p
 | R17 | V2_counting_bookend_fixed50_v1 | reserved |
 | R18 | V3_shape_filter_fixed50_v1 | reserved |
 | R19 | V4_temp_diversification_fixed50_v1 | reserved |
-| R20 | run14b_sc8_v1_private943_tok32k_pp1 | reserved |
+| R20 | run14b_sc8_v1_private943_tok32k_pp1 | cataloged |
 | R20b | run14b_sc8_v1_private943_tok32k_pp1_v3filtered | reserved |
