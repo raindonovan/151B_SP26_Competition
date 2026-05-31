@@ -173,3 +173,227 @@ This note is based on a full read of adapter-related sources requested in Phase 
 - The dominant lesson is methodological: next adapter attempt fails fast unless it beats base on non-training held-out items.
 - The second lesson is scoping: adapter should be built and judged as a targeted-error lever, not a broad global-improvement lever.
 - The third lesson is separation-of-concerns: keep format recovery in normalizer; reserve adapter capacity for genuine math misses.
+
+---
+
+## Part 2 — Phase A redo, gap fills
+
+### 1) v5 log reads (full) + extracted trajectory/anomalies
+
+Files fully read:
+- `inference/adapters/sft_v5/logs/adapter_v5_run.log`
+- `inference/adapters/sft_v5/logs/memo_test.log`
+- `inference/adapters/sft_v5/logs/preflight_smoke.log`
+
+Supplemental for requested loss/grad trajectory (because the 3 requested logs are inference/preflight/memo logs, not trainer-step logs):
+- `inference/adapters/sft_v5/training.log`
+
+#### 1A. Training trajectory (loss/grad/lr) from `training.log`
+
+- Parsed 313 trainer snapshots (`loss`, `grad_norm`, `learning_rate`, `entropy`, `epoch`) from the log stream.
+- Overall trajectory:
+  - `loss`: 0.9858 -> 0.000131 (min 0.000039)
+  - `grad_norm`: 3.712 -> 0.001323 (min 0.000671)
+  - `learning_rate`: 1.013e-05 -> 5.373e-07 late in run snapshots
+  - `epoch` coverage in snapshots: 0.05 -> 15.97
+- Anchor points:
+  - epoch ~1.02: loss 0.2559, grad 0.3716
+  - epoch ~4.03: loss 0.05217, grad 0.5337
+  - epoch ~8.01: loss 0.007375, grad 0.09479
+  - epoch ~12.04: loss 0.000698, grad 0.002431
+  - epoch ~14.03: loss 0.000070, grad 0.002576
+- Final trainer summary line:
+  - `train_runtime=1736s`, `train_loss=0.0571`, `mean_token_accuracy=1`, `epoch=16`.
+
+Interpretation:
+- Optimization converged strongly (very low late-step losses, near-zero gradients).
+- No evidence in trainer metrics of instability (no NaN/OOM/traceback), so the break-even outcome is not explained by failed optimization dynamics.
+
+#### 1B. `preflight_smoke.log` findings
+
+- Final gate summary: 7/7 PASS (`Prompt format`, `Model load`, `Generation smoke`, `Shape filter`, `Resume`, `Adapter consistency`, `Output format`).
+- Smoke generation examples showed boxed outputs on all tested items (`5/5 produced \boxed{}`).
+- Adapter-consistency mini-test: 5/5 items were `3/3` match.
+- Notable operational signal: one very slow probe (`ID 10`, ~98s in adapter-consistency section), but still successful.
+- Minor warnings only (vLLM env warning, NCCL teardown warning), no execution-blocking errors.
+
+#### 1C. `memo_test.log` per-checkpoint/per-item outcomes
+
+Test set in log:
+- MCQ IDs: `[1, 3, 10, 13, 23, 34, 38, 47, 53, 69]`
+- FREE IDs: `[14, 15, 31, 39, 42, 48, 52, 56, 59, 60]`
+
+Per-checkpoint results:
+- Epoch 8 (`checkpoint-784`): 19/20, failed `ID 13` (`label C`, got `['C','D','D']`)
+- Epoch 12 (`checkpoint-1176`): 20/20
+- Epoch 14 (`checkpoint-1372`): 19/20, failed `ID 10` (`label E`, got `['C','C','E']`)
+- Epoch 16 (`checkpoint-1568`): 19/20, failed `ID 10` (`label E`, got `['C','E','E']`)
+- Winner: epoch 12; log explicitly states: `No merge -- keep as LoRA adapter.`
+
+This is meaningful as an in-training consistency test, but not sufficient as deployment selection (details in section 6).
+
+#### 1D. `adapter_v5_run.log` trajectory/anomalies
+
+- This file is full adapter inference run telemetry (391 adapter-routed IDs, SC=3), not trainer loss/grad logs.
+- Completion summary: `Done. 391 items written`.
+- Throughput/timing behavior:
+  - average wall/item ~8.77s
+  - p95 ~25.32s
+  - max ~68.97s (`ID 336`)
+- SC consistency:
+  - vote distribution: 388 items with `3/3`, 3 items with `2/3` (`IDs 10, 147, 831`).
+- Warnings observed are operational (vLLM env + NCCL cleanup), not quality-failure signals.
+
+### 2) Full read of `inference/results/hybrid/`
+
+Fully read files/subdirs:
+- root files: `adapter_targets.txt`, `adapter_v5_run.jsonl`, `sc16_base_run.jsonl`, `sc16_priority.txt`, `sc16_targets.txt`
+- subdirs: `dsmlp-A30/`, `slot1/`, `tnr-A/`, `tnr-B/`
+- also read: `slot1/routing_manifest.csv`, `slot1/submission.csv`
+
+#### 2A. ID-set/routing structure
+
+- `adapter_targets.txt`: 391 IDs (min 1, max 942)
+- `sc16_priority.txt`: 153 IDs
+- `sc16_targets.txt`: 176 IDs
+- Set relations:
+  - `sc16_priority` is subset of `sc16_targets` (153/153)
+  - `sc16_targets` and `adapter_targets` are disjoint (0 overlap)
+- `slot1/routing_manifest.csv`: 943 rows -> `adapter=391`, `base=552` (exact dual-path partition).
+
+#### 2B. `adapter_v5_run.jsonl` characterization (391 items, dual-path adapter branch artifact)
+
+- Mode is uniformly `adapter`.
+- Voting quality:
+  - avg votes 2.992 / avg n_voting 3.000
+  - `no_voted_answer=0`
+  - distribution: 388 items `3/3`; 3 items `2/3`
+- Trace/format presence:
+  - For sampled items (IDs `1,3,10,13,14,15,23,31,34,38`), all 3 samples/item contained reasoning tags and `\boxed{}`.
+  - `voted_answer` present for all sampled items.
+
+Sampled 10-item spot check (requested 5-10):
+- ID 1: `3/3`, voted `A`, trace+boxed present in all 3 samples.
+- ID 3: `3/3`, voted `B`, trace+boxed present in all 3.
+- ID 10: `2/3`, voted `E`, trace+boxed present in all 3 (one dissent sample).
+- ID 13: `3/3`, voted `C`, trace+boxed present in all 3.
+- ID 14: `3/3`, voted `\frac{\log 35}{\log 3}`, trace+boxed present in all 3.
+- ID 15: `3/3`, voted `8,NONE`, trace+boxed present in all 3.
+- ID 23: `3/3`, voted `H`, trace+boxed present in all 3.
+- ID 31: `3/3`, voted `-3,42`, trace+boxed present in all 3.
+- ID 34: `3/3`, voted `J`, trace+boxed present in all 3.
+- ID 38: `3/3`, voted `B`, trace+boxed present in all 3.
+
+#### 2C. Other hybrid artifacts
+
+- `sc16_base_run.jsonl`: 43 rows, avg votes 8.651, avg n_voting 12.349, no empty voted answers.
+- `tnr-A/a1_serial_sc16_weak128_*.jsonl`: 127 parseable rows + 1 malformed line (confirmed), avg votes 10.425 / n_voting 14.717.
+- `tnr-A/a2_serial_sc16_hardest30_*.jsonl`: 30 rows, avg votes 9.233 / n_voting 15.5.
+- `tnr-B/nothinking_probe98_*.jsonl`: 98 rows, 17 rows with empty voted answer.
+- `dsmlp-A30/adapter_rescue_61_*.jsonl`: 61 rows, avg votes 6.82 / n_voting 16.
+- `dsmlp-A30/adapter_smoke_*.jsonl`: 1 row, 16/16 vote.
+
+### 3) v5 dataset tier verification (391 items)
+
+Verified by joining:
+- `data/sft_v5_dataset.jsonl` (`item_id`)
+- `data/MASTER_ANSWERS.csv` (`item_id`, `sheet_tier`)
+
+Counts (all 391 mapped; missing=0):
+- T1: 2 (0.51%)
+- T2: 341 (87.21%)
+- T3: 31 (7.93%)
+- T4: 7 (1.79%)
+- T5: 10 (2.56%)
+
+Claim check:
+- "87% T1-easy" is imprecise if interpreted as T1 only (actual T1 is 0.51%).
+- The observed distribution strongly supports "easy-heavy" if interpreted as `T1+T2`: 343/391 = **87.72%**.
+
+### 4) MERGE-vs-ADAPTER per-version table (v1/v3/v4/v5)
+
+| Version | Deployment mode used in eval/inference | Evidence (training artifact) | Evidence (inference loading path) |
+|---|---|---|---|
+| v1 | **Merged** | `sft_v1_postmortem/logs/train_*` save `final_adapter`, then `logs/merge_*` run `merge_and_unload` and save `.../merged` | `sft_v1_postmortem/logs/smoke_openr1_v1_1k_5.log` initializes model at `training/checkpoints/openr1_v1_1k/merged` |
+| v3 | **Merged** (intended/evaluated path) | `sft_v3/scripts/merge_adapter.py` explicit LoRA -> merged BF16 flow; `SFT_V3_TRAINING_LOG.md` says hand merged model for full inference | Merge script sanity checks no adapter files in output; v3 notes/logs describe merged deployment handoff |
+| v4 | **Merged** | v4 flow produced merged model artifact used by adaptive run | `inference/results/sft_v4_adaptive/run_meta.json` has `"model": "sft_v4_epoch6_merged"` |
+| v5 | **Adapter (unmerged)** | `memo_test.log` winner line: `No merge -- keep as LoRA adapter.` | `inference/scripts/run_hybrid_inference.py` in adapter mode uses `enable_lora=True` + `LoRARequest(..., args.adapter_path)` |
+
+Important locked distinction:
+- `sft_v4_adaptive` is merged-model routing.
+- v5 hybrid path is live adapter loading (LoRARequest), not merged.
+
+### 5) `run_hybrid_inference.py` content analysis (dual-path routing)
+
+#### 5A. Base vs adapter mode behavior
+
+- Shared core:
+  - Reads items from `private.jsonl`, builds chat prompt with `SYSTEM_PROMPT`, runs SC sampling, writes one JSONL row per item.
+- `--mode base`:
+  - No LoRA request; plain base model generation.
+  - Applies shape filter (`apply_shape_filter`) to reject no-box / invalid multi-box samples before voting.
+- `--mode adapter`:
+  - Requires `--adapter-path`.
+  - Enables LoRA in vLLM (`enable_lora`, `max_lora_rank`) and passes `LoRARequest` at generation call.
+  - Shape filter is disabled (`rejected = [False]*n`) in adapter branch.
+
+#### 5B. Input contract
+
+- Requires `private.jsonl` items keyed by `id` with at least:
+  - `question`
+  - optional `options` for MCQ formatting path
+- Optional `--item-ids` file: one integer ID/line for targeted subsets.
+- Optional decode-control params: `thinking_budget`, `top_k`, `min_p`, penalties, `--system-prompt`, `--no-thinking`, etc.
+
+#### 5C. Output format
+
+One JSONL row/item with fields:
+- `id`, `mode`, `voted_answer`, `votes`, `n_voting`, `shape_fallback`
+- `response` (picked full trace)
+- `samples`, `sample_extracted`, `sample_n_output_tokens`
+- `wall_seconds`, `timestamp`
+
+#### 5D. Where combination happens
+
+- There is **no base+adapter combination inside this script**.
+- Script runs one mode at a time and emits per-item results.
+- Combination/routing is external (e.g., `slot1/routing_manifest.csv` + assembled submission artifacts in `inference/results/hybrid/slot1/`).
+
+### 6) `memo_test_v5.py` analysis + reconciliation with break-even
+
+#### 6A. Is the test trivial?
+
+Not fully trivial:
+- It uses inference-like machinery, not teacher-forced decoding:
+  - vLLM generation
+  - SC sampling (`n=3`)
+  - temperature/top-p/max_tokens controls
+  - LoRARequest for each checkpoint
+- It tests both MCQ and free-form items (10+10), and requires strict `3/3` per item.
+
+So the test has operational meaning as "adapter can reliably regenerate training labels under inference sampling."
+
+#### 6B. Why it still fails as deployment gate
+
+Because it is still in-training-only:
+- All 20 IDs are sampled from `data/sft_v5_dataset.jsonl` labels.
+- Success criterion is label replication on seen examples, not unseen generalization.
+- Checkpoint ranking is therefore dominated by memorization consistency, not Kaggle-relevant lift.
+
+#### 6C. Reconciliation with v5 break-even
+
+If memo test is meaningful for memorization but v5 is break-even globally, the consistent explanation is:
+
+1) **Gate mismatch** (primary):
+- The test measured exactly what v5 optimized for (seen-item recall), not the real objective (unseen/private improvement).
+
+2) **Training-set composition mismatch** (structural):
+- Verified distribution is 87.72% T1+T2 (easy-heavy), with only 12.28% in T3/T4/T5.
+- This biases adaptation toward easy-pattern reinforcement rather than persistent hard-miss correction.
+
+3) **Dual-path deployment context**:
+- In production hybrid routing, adapter handles the 391 trained IDs while base handles 552 others.
+- Global score lift requires either strong improvements on adapter-routed IDs or no regressions plus base gains elsewhere; in-practice v5 was near break-even.
+
+Bottom line:
+- `memo_test_v5.py` is a useful *sanity* instrument (adapter integrity + in-sample consistency under SC sampling), but is not a valid *selection* instrument for expected Kaggle uplift.
