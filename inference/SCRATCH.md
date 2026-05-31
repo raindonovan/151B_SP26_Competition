@@ -178,3 +178,37 @@ analysis.jsonl (29M) + analysis_samples.jsonl (20M) both >10MB and were filter:u
 ### Commit hash
 761f903 (rebased onto strategy's 3b5bd69 AUDIT_TEMPLATES + cace2a9 CATALOG R-numbering; LFS 2 objects/50MB pushed). Pushed 3b5bd69..761f903.
 NOTE: R14 in my prompts == R20 in the now-locked chronological catalog (cace2a9). The pressure-test ran on run14b_sc8_v1_private943_tok32k_pp1 = R20, the 0.646 baseline. Output dir kept as _pressure_test_R14 (matches the prompt's naming); the run is R20.
+
+---
+## claude_vscode signoff — Day 9 — T1 SHALLOW BATCH R00-R07 + scripts/rename_run.sh
+
+### Step 0: scripts/rename_run.sh (68 lines, +x)
+Cross-ref sweep tool. Args: $1=old_name, $2=new_ref. Loops the canonical 25-doc list (CATALOG calls it "27 docs"; the fenced list has 25 entries — used verbatim, did not expand per the "don't expand without Rain" note). Per doc: grep -Fo count; sed -i "s|old|new|g" if >0 (| delimiter so paths in $2 are safe); per-doc + grand-total report. set -euo pipefail; skips missing docs.
+NOTE: Step-0 spec says $2 = bare run id ("NOT a path"); the T1 template line 69 + this prompt's step 6 call it WITH a path (inference/base_model/{slug}). Tool is agnostic (replaces literal $2). I followed the TEMPLATE invocation (path) since that's the literal per-run instruction. Flag for strategy if bare-slug refs were intended instead.
+
+### 8 runs cataloged (old → new path) — all base_model, all git mv (none >10MB, no LFS needed; largest R07=5.9MB)
+R00: run03_tok8192_20            → inference/base_model/R00_eval_v1_single_f20_t8k/
+R01: starter_results            → inference/base_model/R01_starter_v1_single_f5_t8k/
+R02: run_vllm_smoke_5_tok2048   → inference/base_model/R02_smoke_v1_single_f5_t2k/
+R03: run_vllm_smoke_5_tok8192   → inference/base_model/R03_smoke_v1_single_f5_t8k/
+R04: run04_vllm_parity_20_tok8192 → inference/base_model/R04_parity_v1_single_f20_t8k/
+R05: run05_v1_50_tok16384       → inference/base_model/R05_eval_v1_single_f50_t16k/
+R06: run06_v2mcq_50_tok16384    → inference/base_model/R06_eval_v2mcq_single_f50_t16k/
+R07: run07_sc8_v1_50_tok16384   → inference/base_model/R07_eval_v1_sc8_f50_t16k/
+Each: README.md (≤2 para: name/R#/date/config/purpose) + findings.md (≤1 para). git mv'd .jsonl (+ .summary.json for R04-R07; R00/R01/R02/R03 had none).
+
+### Cross-ref sweep: GRAND TOTAL = 0 replacements across all 8
+These dev/smoke/parity runs are NOT referenced in any of the 25 cross-ref docs (expected — they predate the docs). Sweep ran clean per run; tool validated against real files (skips/counts correct).
+
+### CATALOG.md: status ⚪→🟢 (8 rows) + registry reserved→cataloged (8 rows). R08+ untouched (verified ⚪/reserved).
+
+### Slug decisions (locked): purpose=eval/smoke/parity/starter; variant=v1 (v1-baseline) / v2mcq (v2-mcq-commit); decoding=single (non-SC) except R07=sc8; items=f5/f20/f50; tokens=t2k/t8k/t16k.
+- R00/R01: no summary.json; date from locked chronology (2026-05-01), config from row-0 schema. R01 starter has no token field logged → t8k (era default), noted in its README.
+- R02/R03: no summary.json but run_id in rows; 2K/8K from filename, dates from CATALOG.
+
+### Anything unusual
+- None of the 8 are "secretly real evals" — they ARE what the chronology says (smokes 5-item, parity 20-item, evals 50-item). R07 is the first SC8 (8 samples) — genuine ancestor of the p943 SC8 cohort but itself dev-only (50 items).
+- The "27 docs" label vs 25 actual entries in the cross-ref fenced list (see rename_run.sh note).
+
+### Commit hash
+(filled after batch commit)

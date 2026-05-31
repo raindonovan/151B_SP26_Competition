@@ -38,14 +38,14 @@ Legend: 🟢 done · 🟡 in progress · ⚪ untouched
 
 | Old name | R# | Folder | Run timestamp (UTC) | Purpose | Status | Notes |
 |---|---|---|---|---|---|---|
-| `run03_tok8192_20` | R00 | base_model | 2026-05-01 21:22 | eval | ⚪ | 20 items @ 8K — earliest run on record (git-log fallback; no summary.json) |
-| `starter_results` | R01 | base_model | 2026-05-01 21:25 | starter | ⚪ | initial scaffold output, ~3 min after R00 (git-log fallback) |
-| `run_vllm_smoke_5_tok2048` | R02 | base_model | 2026-05-03 02:17 | smoke | ⚪ | 5 items, 2K tokens — same commit as R03 (git-log fallback) |
-| `run_vllm_smoke_5_tok8192` | R03 | base_model | 2026-05-03 02:17 | smoke | ⚪ | 5 items, 8K tokens |
-| `run04_vllm_parity_20_tok8192` | R04 | base_model | 2026-05-03 02:31 | parity | ⚪ | 20 items @ 8K, vLLM parity check |
-| `run05_v1_50_tok16384` | R05 | base_model | 2026-05-03 16:53 | eval | ⚪ | first 50-item run |
-| `run06_v2mcq_50_tok16384` | R06 | base_model | 2026-05-03 17:16 | eval | ⚪ | v2mcq variant |
-| `run07_sc8_v1_50_tok16384` | R07 | base_model | 2026-05-03 19:23 | eval | ⚪ | first SC8 run |
+| `run03_tok8192_20` | R00 | base_model | 2026-05-01 21:22 | eval | 🟢 | 20 items @ 8K — earliest run on record (git-log fallback; no summary.json); cataloged → inference/base_model/R00_eval_v1_single_f20_t8k/ |
+| `starter_results` | R01 | base_model | 2026-05-01 21:25 | starter | 🟢 | initial scaffold output, ~3 min after R00 (git-log fallback); cataloged → inference/base_model/R01_starter_v1_single_f5_t8k/ |
+| `run_vllm_smoke_5_tok2048` | R02 | base_model | 2026-05-03 02:17 | smoke | 🟢 | 5 items, 2K tokens — same commit as R03 (git-log fallback); cataloged → inference/base_model/R02_smoke_v1_single_f5_t2k/ |
+| `run_vllm_smoke_5_tok8192` | R03 | base_model | 2026-05-03 02:17 | smoke | 🟢 | 5 items, 8K tokens; cataloged → inference/base_model/R03_smoke_v1_single_f5_t8k/ |
+| `run04_vllm_parity_20_tok8192` | R04 | base_model | 2026-05-03 02:31 | parity | 🟢 | 20 items @ 8K, vLLM parity check; cataloged → inference/base_model/R04_parity_v1_single_f20_t8k/ |
+| `run05_v1_50_tok16384` | R05 | base_model | 2026-05-03 16:53 | eval | 🟢 | first 50-item run; cataloged → inference/base_model/R05_eval_v1_single_f50_t16k/ |
+| `run06_v2mcq_50_tok16384` | R06 | base_model | 2026-05-03 17:16 | eval | 🟢 | v2mcq variant; cataloged → inference/base_model/R06_eval_v2mcq_single_f50_t16k/ |
+| `run07_sc8_v1_50_tok16384` | R07 | base_model | 2026-05-03 19:23 | eval | 🟢 | first SC8 run; cataloged → inference/base_model/R07_eval_v1_sc8_f50_t16k/ |
 | `run08v2_v1_private943_tok16384` | R08 | base_model | 2026-05-04 05:49 | eval | ⚪ | first p943 full eval (single-sample) |
 | `run09sc8_v1_private943_tok16384` | R09 | base_model | 2026-05-04 17:32 | eval | ⚪ | SC8 on p943 (referenced widely in submission/) |
 | `run10_v3perslot_private943_tok16384` | R10 | base_model | 2026-05-05 19:55 | eval | ⚪ | v3perslot variant, single-sample p943 (git-log fallback) |
@@ -131,14 +131,14 @@ R-numbers are RESERVED at chronology-lock time and become CATALOGED when their p
 
 | R# | Assigned to | Status |
 |---|---|---|
-| R00 | run03_tok8192_20 | reserved |
-| R01 | starter_results | reserved |
-| R02 | run_vllm_smoke_5_tok2048 | reserved |
-| R03 | run_vllm_smoke_5_tok8192 | reserved |
-| R04 | run04_vllm_parity_20_tok8192 | reserved |
-| R05 | run05_v1_50_tok16384 | reserved |
-| R06 | run06_v2mcq_50_tok16384 | reserved |
-| R07 | run07_sc8_v1_50_tok16384 | reserved |
+| R00 | run03_tok8192_20 | cataloged |
+| R01 | starter_results | cataloged |
+| R02 | run_vllm_smoke_5_tok2048 | cataloged |
+| R03 | run_vllm_smoke_5_tok8192 | cataloged |
+| R04 | run04_vllm_parity_20_tok8192 | cataloged |
+| R05 | run05_v1_50_tok16384 | cataloged |
+| R06 | run06_v2mcq_50_tok16384 | cataloged |
+| R07 | run07_sc8_v1_50_tok16384 | cataloged |
 | R08 | run08v2_v1_private943_tok16384 | reserved |
 | R09 | run09sc8_v1_private943_tok16384 | reserved |
 | R10 | run10_v3perslot_private943_tok16384 | reserved |
