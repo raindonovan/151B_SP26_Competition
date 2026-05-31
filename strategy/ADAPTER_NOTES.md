@@ -1078,3 +1078,50 @@ This was a selection-time consideration, NOT a postmortem conclusion. v3 ended u
 v5 ended up at epoch 12 (ckpt-1176, 20/20 memo test, deployed). If earlier epochs had higher generalization on adjacent-but-unseen items (the dual-path adapter case where we ROUTE the trained items but the model is still asked to apply learned patterns), we may have selected a suboptimal checkpoint. v7 should test this — train through 16 epochs, evaluate at multiple checkpoints per per-subset methodology (Part 9), not just pick the latest-with-high-memo-test.
 
 This question is now part of the Phase C 4-LLM research dive scope. NOT a hyperparameter critique of v5 retrospectively — it's a methodology question for v7 selection.
+
+---
+
+## PART 14 — Cursor 3rd-pass audit + Part 8 hypothesis status reframe (Day 9 late)
+
+### 14.A) Cursor 3rd-pass verdict (commit 10d0713)
+
+Per locked rule #9, audited Cursor's Part 3 — Phase A third pass.
+
+**Item A (quantization per-version table)**: VERIFIED. Part 11 claim confirmed from source. v1 = Unsloth + load_in_4bit + adamw_8bit (QLoRA). v3/v4/v5 = AutoModelForCausalLM + torch_dtype=bf16 + adamw_torch (full bf16 LoRA, no BitsAndBytesConfig). Memory #12 is now backed by source verification.
+
+**Item B (trace-answer coherence sample)**: 17/17 coherent in stratified-by-tier sample. Cursor's framing was epistemically careful — explicitly stated this does NOT refute the broader hypothesis, just that the random 17 sampled rows are coherent. Coverage: T2=5, T3=5, T4=5, T5=2; MCQ-heavy (12/17). Specific IDs listed in Part 3.
+
+### 14.B) Reframe: Part 8 trace-coherence hypothesis status
+
+**Status: HYPOTHESIS NEITHER CONFIRMED NOR REFUTED.**
+
+Rationale:
+- The hypothesis (Part 8) is specific: items where Sonnet was wrong → another teacher's final answer was swapped in → reasoning trace and labeled \boxed{} don't match.
+- This is a TARGETED subset of the v5 dataset, not the full distribution.
+- Cursor's random stratification (by tier) doesn't preferentially sample from the at-risk subset. If the swapped-answer items are ~5-15% of the dataset (estimate based on teacher disagreement rates), a random 17-item draw could easily miss them entirely.
+- 17/17 coherent under random stratification is real evidence that the broader corpus has structurally coherent reasoning. It is NOT evidence that the specific swapped-answer construction class is coherent — that class wasn't preferentially tested.
+
+### 14.C) Proper targeted test (for future verification, not blocking v7 design)
+
+Methodology that WOULD test the hypothesis directly:
+1. For each of the 391 items in `data/sft_v5_dataset.jsonl`, identify the labeled `\boxed{}` answer
+2. Look up that item in `data/search/teachers/sonnet/item_XXXX.md` — extract Sonnet's teacher answer
+3. Flag items where labeled answer ≠ Sonnet's teacher answer → this is the **at-risk subset**
+4. Sample 15-20 items FROM THE AT-RISK SUBSET (or all of them if N < 20)
+5. For each: check if the reasoning trace (Sonnet's trace per construction) actually arrives at the labeled answer (someone else's answer) — i.e., look for mid-trace pivot, ambiguity, or trace conclusion ≠ box
+
+This test is NOT BLOCKING for v7 design decisions tonight. We can:
+- Treat Part 8 as a live hypothesis (conservative: assume coherent training data matters; use trace regeneration via dataApp or filter at-risk items)
+- OR treat Cursor's 17/17 as sufficient signal that coherence isn't broken at scale (aggressive: use existing v5 data construction)
+
+Given conservative-first principle (Part 10) + Rain's specific memory of the construction issue, default for v7: **assume the hypothesis is real, build v7 data with matched trace+answer pairs**. Cheaper to be safe than sorry on training data quality.
+
+### 14.D) Net v5 failure mode status
+
+Three independent v5 failure modes (per Parts 8, 9, 12):
+
+1. **Training composition (T1+T2 = 87.72% easy-heavy)**: VERIFIED REAL. Cursor REDO Part 2 section 3 + Part 12.
+2. **Trace coherence (Sonnet-trace + swapped-teacher-answer)**: HYPOTHESIS, not falsified, not confirmed. 17/17 random stratified sample coherent (Cursor 3rd pass), but at-risk subset not preferentially tested. v7 default: assume real.
+3. **Dual-path deployment mismatch**: FALSIFIED. v5 WAS deployed dual-path (slot1/routing_manifest.csv = 391/552 split, Cursor REDO Part 2 section 2A).
+
+So v5 break-even is fully explained by #1 alone (training on items base already gets right → no delta under dual-path). #2 may or may not contribute additional regression on the items the adapter DOES touch. #3 was never the problem.
