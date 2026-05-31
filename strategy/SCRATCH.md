@@ -566,3 +566,18 @@ This is the ONLY deviation from spec. All other ACTIONS executed as written.
 **Audit handoff**: post-build deep audit fires next per memory #24 (HIGH-STAKES, NO LIGHT AUDIT). Cursor prompt already loaded on Rain's end.
 
 **Recovery note**: this signoff is the API-error retry. Build was complete pre-error; only the commit step failed.
+
+---
+## claude_strategy + @CURSOR signoff — 2026-05-31 (Day 9) — Tier-1 normalizer build AUDIT CLOSED (GREEN)
+
+Closed the my-audit → Cursor cross-check loop on the Tier-1 normalizer build per memory #24 (HIGH-STAKES, DEEP AUDIT).
+
+**Pre-audit (claude_strategy)**: verified build at c6bfdbc in audit container. 15/15 tests PASS (4 anchors + 11 baseline). ACTION 5 overrides CSV: exactly 4 entries 229=2, 308=12, 383=80, 498=15, Rule #11 compliant. ACTION 3 Grader.is_equal swap verified at line 222. ACTION 4 duplicate-option regex + flag verified at lines 198-207. ACTION 2 multi_answer_normalize inline (no fix_submission_format import) verified. R20 smoke replicated: 943 items, 0 exceptions, all anchors confirmed (item 15='8, NONE', 229/308/383/498 boxed-values injected, 302→H, 839→G). Flag distribution matches claude_vscode's report. No-regression gate: 444→446 on 547 independent-gold = +2 PASS. INVALID_MCQ=1 investigated: item 445 with empty all_boxes + sheet_dependent gold; pre-existing flag, not regression, not caused by scope deviation.
+
+**Cursor cross-check verdict**: GREEN with one non-blocking reproducibility note. All load-bearing implementation claims independently verified. Scope deviation (extract_answer MCQ non-letter boxed fallback): minimality + necessity + regression-risk assessed: low-but-nonzero in a specific corner case (non-letter boxed junk + better unboxed textual letter later), NOT observed on R20 audit, item 445 confirms not cause there. Non-blocking note: Cursor couldn't run pytest in its runtime, validated via direct script/report checks instead — does not change go/no-go.
+
+**Combined verdict: GREEN. Gate cleared for Pick B construction using normalizer output.**
+
+**Carry-forward (non-blocking, post-deadline only)**:
+- Cursor's corner-case observation re extract_answer scope deviation: in theory could degrade on items where boxed content is junk + textual rescue letter would have been correct. Not observed in current data. Research note for post_deadline audits if extract_answer pathway ever re-touched.
+
