@@ -2,131 +2,102 @@
 
 > Read this FIRST when resuming a claude_strategy chat. Detailed findings live in their canonical homes; this is the index.
 
-**Last updated**: 2026-05-30 (Day 8 close — 5 submissions scored, NEW BEST 0.745, overlay stack near ceiling, Pick B path is Qwen-only). Built by claude_vscode from session state; HEAD reference set below.
+**Last updated:** 2026-05-31 ~00:45 PT (Day 9 close — deep-audit cohort complete, Pick B framework validated on Kaggle at 0.664, structural normalizer build scheduled for 05:00 Sun)
 
-**HEAD at handoff**: `643d1d6` (this handoff commit; follows `1814bc3` Log Day 8 results).
+**HEAD at handoff:** see latest commit on `main`. Previous Day 8 handoff archived at `strategy/SESSION_HANDOFF_day8_close.md`.
 
-## ⏰ DEADLINE: 2026-05-31 (tomorrow). Submission budget ~12 slots left.
+**Time-to-deadline:** ~23 hours
 
-The single most important manual action: **deselect the old 0.438 / 0.420 Kaggle picks and lock the 0.745 sheet as Pick A** so we are never exposed to a stale pick at the deadline. This is a Rain-only UI step.
+---
 
-## ⚡ ACTIVE STATE (Day 8 close): overlay stack near ceiling, pivot to Qwen-only
+## State summary
 
-Day 8 ran the 30_05 slot sweep (control → anchor → 4/4 bloc → full-v7 ship-A → format probe). Results below establish the **external-evidence overlay ceiling at ≈ +3.2pp over 0.713**, with diminishing returns. The strategic consequence: **all remaining upside (and Pick B specifically, per rule #11) must come from the Qwen-only inference path** — not from more teacher/anchor/Opus overlays.
+- **Pick A:** LOCKED at 0.745 (R20 + overrides + teacher overlay)
+- **Pick B candidates:** slots 1 + 2 both scored **0.664** on Kaggle — framework CONFIRMED
+- **Kaggle slots remaining:** 8 of 10 (3 current-pool expire ~18:50 Sun PT + 5 reset-pool refresh at Kaggle daily reset)
+- **Deep-audit cohort (R08, R09, R10, R20, R20b):** all 5 closed, all T3-verified
+- **NoThinking 943:** elevated to Pick B candidate, T1.5 + T3 verified, 13 unique-correct items confirmed
+- **Final adapter-target seed:** **8 items** [41, 61, 103, 104, 127, 231, 264, 282] (post-T3 corrections from initial heuristic 11)
+- **17-item still-truncated-at-32K set:** [93, 112, 161, 204, 229, 275, 308, 312, 376, 383, 445, 498, 586, 652, 724, 799, 809] — high-budget probe target
 
-### Day 8 Kaggle results (5 submissions — REGISTRY #37-#41)
-| Slot | CSV | Score | Δ base | Verdict |
-|---|---|---|---|---|
-| 1 control | 30_05_slot1_control.csv | 0.713 | 0.000 | ✅ control valid, no regression Day5→8 |
-| 2 +anchor | 30_05_slot2_anchor.csv | 0.738 | +0.025 | ✅ positive (far below +8-15pp predicted — grader format-strict) |
-| 3 +4/4 bloc | 30_05_slot3_bloc.csv | 0.738 | +0.025 | ❌ NULL — zero leverage on top of anchor |
-| 4 v2 ship-A | 30_05_slot4_aggressive_v2.csv | **0.745** | +0.032 | ✅ **NEW BEST (Day 8)** — full v7 ship-A (Opus flips + 5th teacher) |
-| 5 format probe | 30_05_slot5_format_probe.csv | 0.745 | +0.032 | ❌ NULL — render_d Opus-form indeterminate |
+## Tonight's submissions (Day 9 close)
 
-Detail: `submission/30_05/SCORES.md` + `submission/30_05/SLOTS_1_4_REPORT.md`.
+| Slot | CSV | Kaggle | Delta vs R20 baseline (0.646) |
+|---|---|---|---|
+| 1 | `picks_nothinking_join_conservative_v1.csv` | **0.664** | +1.8pp |
+| 2 | `picks_nothinking_join_conservative_763safe_v1.csv` | **0.664** | +1.8pp (identical) |
 
-### 3 key learnings (Day 8)
-1. **4/4 teacher bloc = NULL leverage on top of anchor** (0.738→0.738). Those items were already correct in the anchor base or sit off the ~283 scored slice.
-2. **Opus = +0.7pp, the only lever beyond anchor.** The 4 anchor flips + 57-item 5th-teacher overlay are what make slot 4 v2 the best (0.745). Small (~2 slice items) but real.
-3. **Format probe = NULL.** render_d (Opus form) vs render_b (anchor form) gave no net change. Content/format conflation makes the A/B indeterminate — can't isolate "format accepted" from "value already counted."
+**Interpretation:** Framework confirmed. 763 expression-form vs canonical form scored identically (either not on slice or grader handles both — future builds don't need disambiguator companions for expression items).
 
-Net: anchor (+2.5) → Opus (+0.7) → 4/4 flat → format probe flat. **Overlay ceiling ≈ +3.2pp; diminishing returns evident.**
+**Slice-landing rate calibration:** ~5 of 13 rescues landed on the 283-item slice = **38% rate**, vs my 30% prior. Use 35-40% for future slot estimates.
 
-## TL;DR — Where we are
+## ⏰ 05:00 Sun decisions (in priority order)
 
-- **Best score: 0.745** (`submission/30_05/slot4_aggressive/30_05_slot4_aggressive_v2.csv` = full v7 ship_class=A; REGISTRY #40). +3.2pp over the 0.713 base. Gap to leader (~0.85) ≈ 10.5pp.
-- **Pick A = 0.745** (slot 4 v2) — the safety floor / best-so-far. **Pick B path is Qwen-derived ONLY (rule #11)** — no teacher/anchor/Opus overlays eligible.
-- **v7 answer sheet is LOCKED.** `data/answer_sheet_v7_FINAL.csv` (943×11): math_answer (truth) vs submission_answer (Kaggle string), with format_status / format_strategy / ship_class. Distribution: tier T1 308 / T2 410 / T3 39 / T4 182 / T5 4; format_status submission_proven 773 / format_suspect 71 / untested 98 / known_bad 1; ship A 869 / B 69 / C 5. Schema + lineage: `data/ANSWER_SHEET_v7_README.md`.
-- **Opus 4.7 production outputs landed** in `data/search/teachers/opus/` (535 items: answers.csv, results.csv, items.jsonl, anchor_v2_candidates.csv [316], opus_5th_teacher.csv [219], README). These fed the v7 flips + 5th-teacher overlay.
-- **Kaggle grader is value-equality** (numeric ~1e-8 rel-tolerance via sympy/LaTeX): `4.000==4`, `0.6==3/5` PASS. Canonical engine = `grading/grader.py`. Strict-Hendrycks is DEPRECATED. The local grader is DIRECTIONAL ONLY (use ordering, not magnitudes — it cannot resolve sub-2pp Kaggle deltas).
-- **Known bug (post-deadline fix queued):** `gold_equiv` factorial overflow — `gold_equiv("4050","2025!")` returns True (factorial → inf → rel-tolerance passes), which wrongly marked row 0488 submission_proven. Patched manually in v7/slot4_v2/format probe (appended `\boxed{4050}`). Root cause logged; do NOT trust `gold_equiv` on factorial/overflow surfaces.
+Read in this order: `submission/SLOT_PLAN.md` → `strategy/MORNING_RUNS_WATCHLIST.md` → this section
 
-## Tomorrow's north star (Day 9)
+### 1. Structural normalizer build (HIGHEST EV remaining lever)
+- **Build at 05:00-08:00 Sun.** Three tiers per cohort findings:
+  - **Tier 1 universal** (highest priority, build first): includes **NEW: wrap-on-detect for 19 unboxed rows** (R20 source rows with no `\boxed{}` — fail Kaggle extraction unconditionally; ~6 expected slice rescues at 38% rate). Also: multi-slot collapse, MCQ-first-box, duplicate-option overcount (id 302/839 pattern), trailing-zero/precision rules.
+  - **Tier 2 class-based**: detect "exact form expected" from question text (rescues id=89/345 pattern); detect "N quantities expected" for slot-count alignment.
+  - **Tier 3 per-item overrides** via `postprocessing/per_item_overrides.csv` (schema'd, currently empty). Seeds: id=9 (gold split-form), id=167 (option-mapping), id=345 (precision), id=591 (undercount).
+- **Expected delta vs 0.646 baseline:** +2-3pp on its own (priors are lower bounds because Day-8 append bug suppressed historical measurement — see POST_DEADLINE_AUDITS.md A1).
 
-**The Qwen-only path is the only remaining upside.** Three mechanisms, in priority order:
-1. **Inference-audit cross-run consensus** — for each item, scan all Qwen runs (SC8/SC16/SC32/nothinking) and promote cross-run-agreeing answers. This is the Bucket A / Bucket B classification from `strategy/HOW_WE_KNOW_CORRECTNESS.md`.
-2. **Phase-0 log-weighted self-consistency** — re-aggregate existing SC samples with log-weighting rather than plain majority vote.
-3. **The 12hr A100 run** — if available, a longer/higher-SC Qwen run on the contested items.
+### 2. Morning runs on 3 Thunder A100s in parallel (~05:00-09:30 Sun)
+- Read `strategy/MORNING_RUNS_WATCHLIST.md` decision algorithm
+- Candidate ranking (from Day 9 evidence):
+  - **High-budget probe on 17 still-truncated items** (81920/65536 tokens): ~30 min A100, low engineering, concrete target
+  - **SC@32 on contested slice**: ~45 min A100, no engineering, ~11-14 A_lucky candidates
+  - **NoThinking on the 17 still-truncated items**: leverages tonight's NoThinking-works finding on the items most likely to need it
+  - **DeepConf**: thinner than predicted (R20 had only 3 items at >=5/8); deprioritize unless V-series shows multi-temp signal (unlikely tonight)
+- **Adapter eval (SFT v5 ckpt-1176)**: separate Thunder if available; default-include for cross-run diversity
+- **Adapter training on 8-item seed**: low priority given tiny target count; only if structural normalizer + morning runs aren't producing expected delta
 
-All three are Qwen-derived and therefore Pick-B-eligible under rule #11. The teacher/anchor/Opus overlay path is exhausted (ceiling +3.2pp) and is NOT eligible for Pick B.
+### 3. Sunday submissions (slots 3-8 per SLOT_PLAN.md)
+- Sun ~10:30: slot 3 = full normalizer on R20 (~0.669 expected)
+- Sun ~12:00: slot 4 = normalizer + NT join stack (~0.676 expected, first true Pick-B frontrunner)
+- Sun ~13:00: slot 5 = best morning-run winner
+- Sun ~14:30: slot 6 = second-best morning-run winner
+- Sun ~16:00: slot 7 = slot 4 + slot 5 stack (ceiling test, ~0.681 expected)
+- Sun ~18:00: slot 8 = slot 4 + slot 6 OR normalizer v2 (finalist alternative)
+- Sun ~20:00: slot 9 = diagnostic 14 (282 calibration) ONLY IF SPARE
+- Sun ~22:00: slot 10 = emergency reserve / last-built finalist
 
-## Pending tasks (in priority order)
+### 4. Gradescope code submission (deadline Sun 23:59 PT)
+- Single `run_inference()` entry point per memory #17
+- Add all group members to Gradescope
+- Public GitHub repo + README (GPU type, inference time, weight setup)
+- Verification: top-10 = full private re-run; rest = 200 random Qs
 
-1. **Lock Kaggle picks** — deselect 0.438 / 0.420; set Pick A = 0.745 (slot 4 v2). Rain-only UI step. **Do this first — it's the deadline safety floor.**
-2. **Build the Qwen-only Pick B candidate** — cross-run consensus + log-weighted SC over existing runs. This is the only path with Pick-B upside (rule #11). If it clears 0.745, it's Pick A and 0.745 becomes Pick B; if it clears 0.713 but not 0.745, it's a diverse Pick B.
-3. **Run the T1 inference scan** (Bucket A/B per `HOW_WE_KNOW_CORRECTNESS.md`) over the v7 T4/T5 items (182+4 = 186) — the items where v7 still falls back to base/qwen, i.e., where Qwen consensus could promote truth.
-4. **Post-deadline:** fix the `gold_equiv` factorial-overflow bug in `scripts/gold_equiv.py` (guard against non-finite parse results before rel-tolerance compare).
-5. **PAT rotation** — Rain to revoke the burned classic token end of competition (Sun 5/31). See `SECURITY.md` 2026-05-29 (c).
+## Discipline lock-ins (read before any big decision)
 
-## Submission budget
+- **Memory #24 extended Day 9:** "DEEP AUDITS NO LIGHT AUDITS unless trivially so — applies to ALL big decisions, not just runs. claude_vscode same standard."
+- **Locked audit pattern (high-stakes):** my-audit -> ChatGPT cross-check -> synthesize
+- **Memory #11 (Pick B):** Qwen-derived only (output + format norm; no teacher overrides in submission_answer)
+- **Memory #25 (LB-subset lens):** Kaggle score = ~283-item slice; prefer robust picks over slice-tuned overrides
+- **Memory #2 (judger gap):** 28pp local-vs-Kaggle gap; local scores directional only
+- **Memory #30 + `strategy/POST_DEADLINE_AUDITS.md`:** A1 historical-override audit pending; Day-8 append bug means historical priors are LOWER BOUNDS
 
-~12 slots remaining before 5/31 deadline. Day 8 spent 5 (the overlay sweep). Revised allocation:
-- ~6-8 for the **Qwen-only path** (cross-run consensus variants, log-weighted SC, A100 run) — this is where upside lives now.
-- ~2 for score-locks (ensure Pick A = highest scored CSV at deadline).
-- ~2 reserve (emergency, re-probe).
+## Open questions (deferred)
 
-The format-probe slot allocation from the Day-7 plan is **retired** — Day 8's format probe was NULL and the overlay path is exhausted.
+- Sonnet-on-Qwen empirical validation (A6 — tomorrow's adapter, if trained, IS this experiment)
+- Diagnostic 14 (282) submission deferred to slot 9 / only-if-spare
+- 19-unboxed-rows: ~6 expected slice rescues — embedded in tier-1 normalizer build
 
-## Locked findings (canonical homes — do not duplicate, just reference)
+## Anti-patterns to avoid (Day 9 lessons)
 
-| Finding | Home |
-|---|---|
-| Day 8 results + overlay ceiling +3.2pp + 3 learnings | `submission/30_05/SCORES.md`, `submission/REGISTRY.md` (#37-#41) |
-| v7 answer sheet schema, lineage, distribution | `data/ANSWER_SHEET_v7_README.md` |
-| Opus 4.7 production outputs (535 items) | `data/search/teachers/opus/README` |
-| Kaggle grader = value-equality (1e-8 rel-tol); grader.py canonical | `postprocessing/FINDINGS.md` |
-| Tier-1 items graded wrong on format (F7) | `postprocessing/FINDINGS.md` |
-| Normalization audit: 0.713 came from submission-build pipeline, not normalizer.py | `postprocessing/AUDIT_REPORT.md`, `postprocessing/HISTORICAL_STACK.md` |
-| Kaggle scores on ~283 LB slice, not 943; final ranking is 943 | `submission/RED_ALERT_LB_SUBSET.md` |
-| Math-vs-format mental model, two-bucket SFT framework | `strategy/HOW_WE_KNOW_CORRECTNESS.md` |
-| OPL bulk-override empirically disconfirmed (Day 7) | `data/search/opl/findings.md` |
+- **Don't re-investigate the phantom normalization stack** (resolved Day 7, merged 620301c)
+- **Don't reintroduce Day-8 append override mechanism** for multi-slot — use canonical full-replace via `apply_overrides.py`
+- **Don't add 282 to automatic Pick-B joins** without further evidence (disputed gold; can probe via slot 9)
+- **Don't isolate per-format-rule contributions on Kaggle** — offline-testable; preserve slots
+- **Don't burn slots on individual rule isolation** — bundle the full normalizer into one submission for aggregate measurement
 
-## Locked SOPs
+## Where to find things
 
-| SOP | What it says | Where |
-|---|---|---|
-| **GIT BOOTSTRAP** | One-command setup for any fresh Claude sandbox: `curl -sSL .../setup_git.sh \| bash -s -- "$PAT"`. Run FIRST in every session. | `scripts/setup_git.sh` + root `CLAUDE.md` |
-| CREDENTIALS RULE (rev. 2026-05-29) | Never embed PAT in spawn prompts or committed files. Rain MAY provide PAT in chat for that Claude's runtime. Fine-grained ≤7-day. | `CLAUDE.md` + `SECURITY.md` |
-| GOLD-RULE | File findings in canonical home same session. Folder map in CLAUDE.md. | `CLAUDE.md` |
-| Agent lifecycle | Role&Relevance in spawn prompt; mandatory SCRATCH.md signoff before ending. | `CLAUDE.md` |
-| Terminology | "test set" = ~283 slice; "FINAL test set" = 943. | `CLAUDE.md` |
-| Local grader DIRECTIONAL ONLY | Local judger/grader ~28pp more lenient than Kaggle; use ordering not magnitudes; never for accuracy decisions. | `submission/30_05/SLOTS_1_4_REPORT.md` |
-| Pick B rule #11 | Pick B must be Qwen-derived ONLY (no teacher/anchor/Opus overlays). | this doc + `submission/30_05/SCORES.md` |
-
-## Tool-set notes for next claude_strategy
-
-Opus 4.7 chat UI has a **"Code" chip** at the bottom of the message input. When enabled, claude_strategy gets `bash_tool / create_file / view / str_replace` and can clone-edit-push directly. When disabled, falls back to GitHub MCP (read-only; writes 403) + VSCODE COMMIT BLOCK relay.
-
-**Verify on first message**: run an `ls` or innocuous bash command. If bash_tool isn't available, tell Rain to check the Code chip.
-
-**claude_vscode** is the persistent execution runtime (this session's author). It holds a separate clone at `/home/raindonovan/151B_SP26_Competition` — commits there must be pushed to be visible on other clones (Day-8 lesson: a real commit looked "missing" on Rain's PC only because it was unpushed).
-
-## Recent session signoff
-
-### Day 8 (2026-05-30, claude_vscode — execution runtime)
-
-**Math work (the actual competition stuff):**
-- Built and scored the **30_05 slot sweep** (5 submissions): control 0.713, anchor 0.738, 4/4 bloc 0.738, full-v7 ship-A **0.745 (NEW BEST)**, format probe 0.745. Logged in `submission/REGISTRY.md` #37-#41, `submission/30_05/SCORES.md`, `SLOTS_1_4_REPORT.md`.
-- Established the **overlay ceiling ≈ +3.2pp over 0.713** with diminishing returns: anchor +2.5, Opus +0.7, then 4/4 and format probe both NULL. Strategic consequence: pivot to Qwen-only for all remaining upside and for Pick B (rule #11).
-- Built **`data/answer_sheet_v7_FINAL.csv`** (943×11) — the math/submission split master with format_status / ship_class, plus `answer_sheet_v7_probe_overlay.csv` (69 rows) and `ANSWER_SHEET_v7_README.md`. Applied YELLOW audit fixes (0383/0570 content-uncertain ship-A; 0405/0586 secondary-confirmed untested ship-A), added the 0836 anchor flip (CHATGPT secondary review), and patched row 0488 (`\boxed{4050}` math truth) after catching the gold_equiv factorial-overflow bug.
-- Landed **Opus 4.7 production outputs** (535 items) into `data/search/teachers/opus/` from the DataApp build — anchor_v2_candidates (316), opus_5th_teacher (219), full items.jsonl.
-- Built `scripts/score_inference_vs_sheet.py` (reusable value-equality scorer) and `scripts/build_slots_1_4.py` / `scripts/build_answer_sheet_v7.py`.
-
-**Audit / infrastructure work:**
-- Completed the **normalization-stack audit** (`postprocessing/AUDIT_REPORT.md` + `HISTORICAL_STACK.md`): the 0.713 stack comes from the **answer-sheet/submission-build pipeline, NOT `normalizer.py`**. Documented a `normalizer.py` defect (multi_answer_normalize over-collects boxes). Established that the 4 root `judger.py` edits (commit c07e149) are **inert** (tested: zero verdict changes); `grading/grader.py` is canonical.
-- Surfaced and self-corrected a missing-on-PC commit (separate-clone / unpushed root cause) and an incomplete Opus commit (`git add` skipped gitignored data/search → fixed with `git add -f` in `153e5a7`).
-
-**Known issues logged:**
-- `gold_equiv` factorial-overflow bug (post-deadline fix queued, Pending #4).
-- Day 8's overlay ceiling means Pick B has NO upside path unless the Qwen-only work clears 0.745.
-
-### What's left for next claude_strategy
-- See Pending tasks above. **#1 (lock Kaggle picks)** is the deadline safety floor — do it first. **#2 (Qwen-only Pick B)** is the only remaining upside path.
-- The teacher/anchor/Opus overlay path is **exhausted** (+3.2pp ceiling). Do not spend slots re-probing it.
-- Read `submission/30_05/SCORES.md` before planning Day 9 slots.
-
-### Day 7 (2026-05-29, claude_strategy)
-- Confirmed best score 0.713 (29_05 undercount_plus_frac.csv). Resolved the "phantom normalization stack" fork (it was real and pushed at `origin/copilot/normalizer-inference-review-20260529`, commit c07e149; merged to main at 620301c). OPL bulk-override empirically disconfirmed (0/39 T1-promoted). Built `undercount_frac_mcq.csv`. Revised CREDENTIALS RULE; shipped `scripts/setup_git.sh`. wolf agent landed B9-B16 (~144 Wolfram verifications). Full detail: git history + `data/search/opl/findings.md`.
-
-### Day 6 (2026-05-28, claude_strategy)
-- Documented F7 (tier-1 graded wrong on format). Wrote HOW_WE_KNOW_CORRECTNESS.md. Locked NORMALIZATION_RULES.md. MCQ append-bug identified (AMBER #3). Designed wolfram/ workflow.
+- **Tonight's full picture:** read this doc, then `submission/REGISTRY.md`, then `submission/SLOT_PLAN.md`
+- **The deep audits:** `inference/base_model/R{08,09,10,20,20b}_*/findings.md` (each has its own ChatGPT T3 verdict appended)
+- **NoThinking audit:** `inference/base_model/NT_eval_nothinking_sc8_p943_t?/findings.md`
+- **Audit templates:** `strategy/AUDIT_TEMPLATES.md` (T1, T2, T3, T4 + paste-fill spawn prompts)
+- **Pre-flight discipline:** `infrastructure/pre_flight/` + memory #19
+- **Post-deadline audit queue:** `strategy/POST_DEADLINE_AUDITS.md` (A1-A6)
+- **Morning planning detail:** `strategy/MORNING_RUNS_WATCHLIST.md`
+- **Submission strategy:** `submission/SLOT_PLAN.md` (the 10-slot locked plan)
