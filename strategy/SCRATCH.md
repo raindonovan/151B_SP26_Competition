@@ -485,3 +485,26 @@ T1-shallow audit on V0-V3 + V4-special-handling per Rain's "Suggested Workflow" 
 
 **No new inference experiments tonight.** Execute queued workstreams: Tier-1 normalizer + value-equality re-vote sweep + Thunder. R14 (rep_penalty=1.10) audit available as ~20-min follow-up if Rain wants.
 
+
+---
+## claude_strategy signoff — 2026-05-31 (Day 9 morning) — R14 audit + comprehensive RUN_HISTORY.md narrative
+
+Two deliverables in one pass:
+
+**1. R14 audit (rep_penalty=1.1 ablation)**
+- R14 = `run13_v2openr1_50_rp110_dsmlp`, fixed50, single-sample, OpenR1-v2-16K SFT-MERGED model, rep_penalty=1.1
+- R13 = `run11_v2openr1_50_tok16384`, same model/slice/budget, rep_penalty=1.0 (the comparator)
+- Headline: R13 0.14 → R14 **0.48** (+24 items). MCQ went 0/17 → 13/17. missing_boxed went 30/50 → 1/50. avg_gen_tokens 9308 → 3600.
+- **Lever rescues a FAILED SFT, not base Qwen**. The OpenR1-v2 SFT was the rambling-without-boxes failure (max_seq_length=4096 truncation in training). rep_penalty=1.1 breaks the loop.
+- **Does NOT generalize to base Qwen3-Thinking** (which doesn't have the rambling failure). Sun et al. recommend rep_penalty=1.0 for this model.
+- **Closed for tonight.** Useful research-writeup material: documents the SFT v1/v2 failure mode and a known rescue. No new private-set marginal IDs.
+
+**2. RUN_HISTORY.md** — comprehensive narrative for every cataloged + reserved run
+- Path: `inference/runs/RUN_HISTORY.md`
+- Covers R00-R20b (cohort + smokes), R10b/R11-R14 (SFT failure era), R15-R19 (V-series), NT_* (NoThinking probes), TH_* (Thinking-twin), tnr-0/1 (in-flight), and adapters
+- 8 sections including a Part 8 TLDR that consolidates everything we know about inference levers for tonight's Pick B construction
+- Companion to CATALOG.md (the dry rename table); this is the prose version
+
+Files: inference/runs/RUN_HISTORY.md (new, ~310 lines)
+Commit + push next.
+
