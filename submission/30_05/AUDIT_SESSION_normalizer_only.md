@@ -4,8 +4,9 @@
 **Author**: claude_strategy
 **Date**: 2026-05-31 (Day 9 final day)
 **Time budget**: deadline Sun 23:59 PT, ~12h remaining
-**Slot allocation**: proposed `slot3_normalizer_only` (Rain to confirm/relabel)
-**Slot budget burned today so far**: UNKNOWN — Rain to populate
+**Slot allocation**: `slot3_normalizer_only` (confirmed)
+**Slot budget today**: 2/5 already burned, 3 remaining (this fires as slot 3 of 5)
+**Slot budget competition-total**: 8 remaining across remainder of competition (including today's 3)
 
 ---
 
