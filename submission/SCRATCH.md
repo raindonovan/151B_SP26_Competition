@@ -229,3 +229,19 @@ ChatGPT methodology audit revised scope: pre-register H1(majority)+H2(SC-tiebrea
 - EXPLORATORY single-run rescues: 23 (NT 17 = the NT-943 lever; R10 3 + R08 3 lucky). NOT deployed — need gold-selection.
 - H3 permissive (prior run) = NET −34 (the trap conservative bar avoids; agreement filters minority noise).
 VERDICT PARTIAL: conservative 2+-agreement IS a clean gold-free correctness signal (+6/0-damage/Rule-#11-legal) but 65% unverifiable; doesn't close 8pp gap; complementary to (not competing with) NT-943. Built picks_texas_oil_v1.csv (40 ov) as LOWER-confidence stacking/spare candidate. Docs: TEXAS_OIL_FINDINGS.md (current) + TEXAS_OIL_DISCONFIRMED.md (superseded, retained). Open for ChatGPT: 3+-agreement precision gate, NT-943 overlap for stacking, cross-mode-agreement Rule-#11. Commit: 7284501.
+
+---
+## claude_vscode signoff — Day 9 — Thinking-SC probe TARGET SET compiled (118 items)
+For tomorrow's high-budget Thinking SC Thunder run, backed by thinking-twin's 4 verified rescues. submission/csvs/picks/thinking_probe_target_set.csv (id, gold, R20_voted, R20_correct, qualifying_criteria, tier).
+
+DEFINITION: R20-wrong items matching C1-C4 UNION minus X1-X4.
+- C1 multi-slot (comma/multi-box): 106 · C2 decimal-precision (≥2 dp): 59 · C3 MCQ-collapse (R20 letter, gold not): 23 · C4 expression (operator+var, e.g. L-8x,6F): 37 (items can match multiple).
+- EXCLUDED: NT-943 join (13), 8-item adapter seed, 17-truncated set, R20-already-correct.
+- SIZE = 118 (in the 80-200 sanity band ✓). Tier: T5 100, T4 7, T0 6, T3 3, T2 2.
+
+VALIDATION: all 4 thinking-twin rescues (9,435,479,638) ARE present → criteria correctly capture the proven mechanism.
+Spot-checks confirm precision: id=2 multi-slot→letter A, id=12 '2c+4p=70,11'→'11', id=26 letter I vs 232 — all genuine R20-wrong long-generation candidates.
+
+WALL-TIME: 172s/item (thinking-twin observed, SC@16, single A100). 118 items = ~339 min single-A100, **~113 min across 3 A100s parallel**. Could halve with SC@8 if Thunder time tight.
+
+DID NOT: run inference (Thunder not up), include R20-correct items, touch 17-truncated, build Pick-B. Just the target list. Commit: (after).
