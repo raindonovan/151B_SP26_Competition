@@ -18,7 +18,7 @@ Sources of gold answers (confidence ordered):
 - **Answer sheet T1**: items with ≥95% posterior from Bayesian back-solve — medium confidence
 
 ### Stage 2: Run base inference
-- SC@8 with Qwen3-4B-Thinking-2507 (existing runs: run10, run14b)
+- SC@8 with Qwen3-4B-Thinking-2507 (existing runs: run14b only; prior doc versions listed run10 — that was an error, run10/R10 is single-sample v3-perslot)
 - Future: SC@32/64 with DeepConf logprob weighting
 - Future: GenSelect (model judges its own candidates)
 - Future: multi-temperature voting

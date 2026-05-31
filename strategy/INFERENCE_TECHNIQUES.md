@@ -6,7 +6,7 @@
 
 | Technique | Runs | Result | Notes |
 |-----------|------|--------|-------|
-| SC@8 (base model, T=0.6) | run10, run14b | 0.646 (best inference-only) | Our primary inference method. Plateau at N=8 |
+| SC@8 (base model, T=0.6) | run14b (R20) | 0.646 (best inference-only) | Our primary inference method. Plateau at N=8. NOTE: prior versions of this doc listed "run10, run14b" — run10 (R10) is single-sample v3-perslot at Kaggle 0.424, NOT SC@8; only run14b (R20) is SC@8 |
 | SC@8 NoThinking | nothinking_sc8 | UNANALYZED | Prefill-based (enable_thinking is no-op on this model). Results exist, never scored or analyzed |
 | SFT v3 adapter | sftv3_epoch8 | 0.452 | Broken — collapsed to repetition |
 | SFT v4 adaptive | sftv4_adaptive | 0.597 | Below base — regression |
