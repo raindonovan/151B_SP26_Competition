@@ -717,3 +717,12 @@ FOLLOW-UP for strategy (no auto-edit): SESSION_HANDOFF does NOT reference strate
 ---
 ## claude_strategy session-start — 2026-05-31 — Phase 0 kickoff (post-ACCEPT execution)
 Fresh claude_strategy session spawned at 2026-05-31T21:45:07Z (~T-2h to deadline). Read 6 scoped artifacts per continuation brief (SESSION_HANDOFF @ HEAD, PHASE_D_v7_PLAN @ d84de5b, V3_2_PATCH_NOTES @ 27e7a5f, v5_decomp_summary @ 308310e, REVIEW_OF_V3_2_REAUDIT @ bc932f8, build_pickb_final_splice.py @ 27e7a5f). Tool verification: bash_tool ✓ / web_search ✓ / git read+write via PAT ✓ (this commit IS the write-access proof). Phase 0 vscode manifest prompt drafted; held for Rain fire auth. Splice script edge case acknowledged (diff_count==overrides_applied false-fails on adapter==PickA byte-match); queued for separate vscode prompt before Phase 6.
+
+---
+## claude_vscode signoff — 2026-05-31 — Day-9 slot 4: Normalizer + NT-13 SPLICE stack (READY FOR CURSOR AUDIT)
+File: submission/30_05/slotX_pickb_norm_nt13/pickb_norm_nt13_v1.csv (md5: 5234f4c95fec645caf3b61df38d4933c)
+Build chain: run14b_sc8_v1.csv → normalizer(--items private.jsonl) → +NT-13(763-safe, apply_overrides) → final
+Self-verification: 943 rows ✓ · schema id,response ✓ · id order preserved across src/norm/final ✓ · normalizer changed 645 rows vs R20 · NT-13: 13 overrides applied, 0 unexpected diffs, 0 missing ✓ · all 13 are clean \boxed{value} full-replace ✓ · non-override rows byte-identical to normalizer output ✓ · OVERRIDE_FORCE_VALUE=4 (per-item overrides fired) ✓
+Anomalies: normalizer changed 645 rows vs the recipe's ~342 "slot-3 reference" — NOT a fault: the 342 reference predates the current Tier-1 normalizer (c6bfdbc: multi-slot consolidation + 4 no-box force_value overrides + dup-option/value-equality MCQ), which legitimately touches more rows. 645 is correct for the current normalizer. Also: pre-flight run14b wc-l=352778 not 944 — purely embedded-newline inflation in responses; csv.DictReader confirms 943 data rows, schema id,response, unique ids.
+Commit: 77b2ad7
+STATUS: ready for Cursor audit; DO NOT upload until Cursor verdict
