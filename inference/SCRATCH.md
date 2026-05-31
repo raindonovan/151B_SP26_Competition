@@ -320,4 +320,4 @@ hard_independent_CLEAN n=16 acc=0.7500 (HIGHEST: wolfram 6/7, search 6/9). unani
 - B∩B∩B true-miss core is only 10 of 53 — most "consistently wrong" items are format-recoverable, NOT adapter material. Adapter target set is small and tightening.
 
 ### Commit hash
-(filled after commit)
+304517e (R10 deep audit; LFS 2 objects/49MB: run jsonl 16MB + analysis.jsonl 31MB pushed). Pushed 51c6117..304517e.
