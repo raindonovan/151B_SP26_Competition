@@ -701,3 +701,10 @@ Closed the my-audit → Cursor cross-check loop on the Tier-1 normalizer build p
 **For v3.1:** NOT a blocker — adapter is net-POSITIVE on hard items (the worry was net-negative). But the signal is thin (8 real wins, memorization-inflated), so v7 should treat "adapter helps T3/T4/T5 wrong-residual" as a weak prior backed by 8 concrete items (89/184/317/404/429/463/762/776), not a strong lever. The 6 format-artifact "wins" should be attributed to the normalizer, not the adapter, in any EV accounting.
 
 **Files**: inference/scripts/compute_v5_decomp.py (new), data/v5_per_item_decomp.csv (new, 391 rows + strict-hedge cols), data/v5_decomp_summary.md (new). HEAD: 308310e.
+
+---
+
+## Agent signoff — Cursor — 2026-05-31 (v3.2 Part A re-audit)
+- VERDICT: **ACCEPT — execute**
+- Review artifact: `strategy/REVIEW_OF_V3_2_REAUDIT.md`
+- Re-audit commit SHA: `bc932f8`
