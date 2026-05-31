@@ -681,6 +681,13 @@ Closed the my-audit → Cursor cross-check loop on the Tier-1 normalizer build p
 - The two highest-risk interaction checks passed cleanly: B4 does not weaken A4, and B1 does not conflict with A3.
 
 ---
+
+## Agent signoff — Cursor — 2026-05-31 (combined v3.2 + B2 audit)
+- VERDICT: **REPLAN — issues require v3.3** (missing claimed C1-C4 artifacts in current repo state).
+- Review artifact: `strategy/REVIEW_OF_V3_2_AND_B2.md`
+- Commit SHA: `9208123`
+
+---
 ## claude_vscode signoff — 2026-05-31 — Phase 0 patch B2: v5 adapter-vs-base per-item decomposition
 
 **Top-line finding (1-2 sentences):** Under the value-equality grader (Kaggle's), the v5 adapter is **net +7 on the 391 trained set, and ALL +7 land on hard items (T3/T4/T5): 8 real-capability wins vs 1 loss** — so the adapter DID help where v7 plans to target wrong-residual. BUT this is WEAK evidence: 379/391 (97%) both_correct = memorization (adapter trained on these items), absolute numbers are single-digit, and the is_equiv-strict version overstated to +12/+9 because 6 "wins" were format-artifacts already covered by the Tier-1 normalizer.
