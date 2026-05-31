@@ -271,3 +271,26 @@ If runs failed: diagnosis prompt to Thunder agents → audit before sending.
 If new spawn prompts needed: draft → audit → fire. Always.
 
 **Discipline > speed. Audits caught real failures multiple times tonight. Don't break the gate.**
+
+---
+
+## DAY 9 SESSION HANDOFF — ADDRESSING CONVENTION (CRITICAL)
+
+**Every prompt drafted for Cursor (audit agent) MUST begin with `@CURSOR`** at the top of the message.
+
+This extends the existing identity-address rule (memory #9 rule 5: "IDENTITY-ADDRESS every prompt at top: 'TO: CLAUDE_VSCODE' / 'TO: CHATGPT_AUDIT' etc"). The agents now in active use:
+
+| Address tag | Agent / destination | Where |
+|---|---|---|
+| `TO: CLAUDE_THUNDER_TNR0` | tnr-0 Thunder execution | VS Code SSH window (marker tnr-0) |
+| `TO: CLAUDE_THUNDER_TNR1` | tnr-1 Thunder execution | VS Code SSH window (marker tnr-1) |
+| `TO: CLAUDE_VSCODE` | DSMLP execution / build | VS Code DSMLP window |
+| `TO: CLAUDE_DATAAPP` | DataApp pipeline | VS Code DSMLP window 2 |
+| `@CURSOR` | Cursor audit agent (GPT-5.5) | Cursor IDE chat |
+
+**Why:** Tonight's identity guardrail caught real failure modes (SSH-label-vs-marker mismatch, wrong-prompt-to-wrong-instance). The same risk applies cross-tool: a Cursor audit prompt accidentally pasted to a Thunder window would either fail (no @codebase) or — worse — be interpreted as an instruction by the Thunder agent. Explicit addressing prevents that.
+
+**Active runs at this handoff update:**
+- tnr-0: full inference running with audited re-patched STEP 5 (81920/65536 budgets, RUN_DIR export fix, hard-fail guard)
+- tnr-1: full inference running with audited re-patched STEP 5 (same fixes applied)
+- Both ETA dawn (~08:30 PT)
