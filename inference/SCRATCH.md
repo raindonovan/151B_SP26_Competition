@@ -406,3 +406,37 @@ SC is the dominant Pick-B lever. Tokens second. v3 shape-filter and v3-perslot p
 59cd151 (R20b deep audit; rebased onto strategy 904c818 R20-T3 YELLOW + 2d17481 morning candidates). LFS run jsonl 155MB already remote + analysis.jsonl 31MB + samples 20MB pushed. Pushed 904c818..59cd151.
 
 ### POST-PUSH CORRECTION (R20-T3 landed during my session): adapter seed 11→8. ChatGPT R20-T3 reclassified 167 (option-mapping, like id=9), 345 (precision/exact-form, like id=89), 591 (undercount, like id=12) as FORMAT-RECOVERABLE not true-miss — exactly the newcomers I flagged for T3 to verify. **LOCKED FINAL ADAPTER SEED = 8: [41, 61, 103, 104, 127, 231, 264, 282].** Also 302/839 are duplicate-option overcounts, not clean DeepConf. Applied the correction to R20b findings.md (appended CORRECTION section). B∩∩∩∩∩=48 and A∩∩∩∩∩=371 unchanged; only the true-miss split (11→8) within the 48 shifts. Filter-dividend=0 and lever ranking unaffected.
+
+---
+## claude_vscode signoff — Day 9 — T1.5 HYBRID audit NoThinking-943 (NT, out-of-cohort) — VERDICT: ELEVATE
+
+### What was done
+Cataloged nothinking_full_943_20260527T000129Z (NoThinking SC@8 943, prefill bypass, May 27, untouched 3 days) → inference/base_model/NT_eval_nothinking_sc8_p943_t8k/. NOT R-series (NT prefix). git mv from hybrid/tnr-B/. Analyzer v3-final-final + focused cross-run vs R20.
+
+### SCHEMA MISMATCH → prep adapter (analyzer NOT modified, per instruction)
+NoThinking jsonl schema differs: `samples`=list of STRINGS (not dicts), per-sample data in parallel arrays (sample_extracted, sample_n_output_tokens), no is_mcq/options/max_new_tokens/hit_token_cap. Analyzer crashed at line 267 (`s.get` on str) — CONFIRMED, reported, did NOT touch analyzer. Wrote one-off `inference/scripts/prep_nothinking_for_analyzer.py` restructuring → expected SC schema (truncation synth from n_tokens>=8192-10; is_mcq from MASTER; options=None handled by auto_judge.is_equal as in R08/R10). Analyzer ran on the _ADAPTED.jsonl. Both raw+adapted kept in folder.
+
+### Gates: a✅ b✅(7544) c✅ d✅ e✅ f✅ g✅ h✅ i✅ — ALL PASS (on adapted). Verification triple ✅ (547==547). 6:25.
+
+### Standalone NoThinking is WEAKER (expected): A=363 A_lucky=66 B=69 unknown=445, scored acc 0.7289 (R20 0.8554). unanimous_teachers 0.8089 (R20 0.988) — the gap is easy-consensus items. hard_clean 0.75 (wolfram 5/7, search 7/9). DIRTY 0.32 (HIGHER than R20 0.19 — NoThinking better on messy T4/T5). Truncated=9 (R20 17, no reasoning phase). A_lucky=66 (R20 14) — diversity engine.
+
+### CROSS-RUN vs R20 (LOAD-BEARING):
+- e1 R20→NT: A→A 348, A→A_lucky 50, A→B 28; A_lucky→A 7; B→A 8, B→A_lucky 10, B→B 40.
+- e2 UNIQUE-CORRECT (NT.A, R20 not-A) = **15** ≥10 ✓: [5,181,257,282,345,474,578,584,633,642,712,715,763,868,917]. Genuine: ~13 multi-slot wins where R20's vote collapsed to one slot, PLUS id=282 (NT e^2==gold, R20 e^2,-e^2 — NoThinking AVOIDED the spurious extra-root that made 282 an adapter-seed item!) + id=345 (NT exact -5/6,5/6 vs R20 decimal).
+- e3 R20 wins NT misses (R20.A∩NT.B) = 28 — NT broadly weaker; consensus join must weight R20 PRIMARY.
+- e4 both-B = 40 (NT recovers 8 of R20's 48 cross-lever-B incl 282/345/474/868; adds no new permanent misses).
+- e5 agreement = 335/498 = 67.3% → 32.7% ensemble headroom.
+
+### f orthogonality (5 both-B): 4/5 DIFFERENT wrong answers (only id=12 undercount shared). 41: NT 2024 vs R20 4048 (both wrong, opposite directions). GENUINELY ORTHOGONAL, not a weaker copy.
+
+### VERDICT: **ELEVATE** — NoThinking ∪ R20 consensus = Pick-B candidate (ZERO GPU).
+15 unique-correct ≥10 + orthogonal failures + 67% agreement. Recommend T3 verify the 15 before building the join CSV. JOIN DESIGN: R20 primary; take NT only where R20∈B AND NT∈A with NT sample agreement (NOT equal-weight union — would import the 28 R20-wins-NT-misses). It's the ONLY Pick-B lever in the whole audit that ADDS correctness over R20 (SC/tokens/filter were R20-internal aggregation; NoThinking brings orthogonal solves). Top picks for join: 282 (rescues adapter-seed), 345 (format), + 13 multi-slot.
+
+### Surprises: NoThinking does BETTER on hard/dirty (0.32 vs 0.19) + WORSE on easy (0.81 vs 0.99) — skipping reasoning hurts straightforward items but avoids over-thinking spirals (incl the 282 extra-root). A_lucky=66 = ideal raw material for DeepConf/SC@32-on-NoThinking ensemble.
+
+### LFS: raw jsonl 45MB + adapted 39MB → LFS. analysis.jsonl 4.7MB + samples 9.7MB are <10MB (NoThinking = no traces = small) → committed RAW. analysis.csv 0.97MB raw.
+
+### Cross-ref sweep: full timestamp name = 0 (exit 0). Bare 'nothinking'/'nothinking_full_943' SKIPPED (appears in data/candidates_nothinking_breakdown.md as analysis prose; too broad; the candidates file is a different artifact). 98-probe + targeted_rescue variants left in hybrid/tnr-B/ (deferred per instruction).
+
+### Commit hash
+(filled after commit)

@@ -61,6 +61,7 @@ Legend: 🟢 done · 🟡 in progress · ⚪ untouched
 | `V4_temp_diversification_fixed50_v1` | R19 | base_model | 2026-05-13 23:37 | ablation | ⚪ | multi-temp SC (git-log fallback — no summary.json) |
 | `run14b_sc8_v1_private943_tok32k_pp1` | **R20** | base_model | **2026-05-22 13:56** | eval | 🟢 | **0.646 BEST inference baseline**; feeds 0.745 with overlays; cataloged → inference/base_model/R20_eval_v1_sc8_p943_t32k_pp1/ |
 | `run14b_sc8_v1_private943_tok32k_pp1_v3filtered` | R20b | base_model | 2026-05-22 (derived) | eval | 🟢 | v3-filtered variant of R20; cataloged → inference/base_model/R20b_eval_v1_sc8_p943_t32k_v3filt/ |
+| `nothinking_full_943_20260527T000129Z` | NT | base_model | 2026-05-27 00:01 | eval | 🟢 | NoThinking-mode SC@8 943 (prefill bypass); OUT-OF-cohort, orthogonal to R-series; cataloged → inference/base_model/NT_eval_nothinking_sc8_p943_t8k/ — ELEVATED: 15 unique-correct vs R20, Pick-B consensus-join candidate |
 
 **Pick-B-relevant p943 cohort**: R08, R09, R10, R20, R20b. These are the only full-private runs and the only candidates that move tonight's Pick B via cross-run consensus.
 
