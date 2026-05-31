@@ -211,4 +211,4 @@ These dev/smoke/parity runs are NOT referenced in any of the 25 cross-ref docs (
 - The "27 docs" label vs 25 actual entries in the cross-ref fenced list (see rename_run.sh note).
 
 ### Commit hash
-(filled after batch commit)
+13c4cea (rebased onto origin 8a96854 MORNING_RUNS_WATCHLIST; pushed 8a96854..13c4cea). Brief detached-HEAD detour during rebase-with-stash — reattached main via branch -f, verified all 8 R0x folders intact before push.
