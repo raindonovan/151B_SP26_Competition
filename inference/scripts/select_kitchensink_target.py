@@ -51,8 +51,19 @@ def main():
     with open(repo_root / 'postprocessing/per_item_overrides.csv') as f:
         for r in csv.DictReader(f):
             high_overrides.add(int(r['id']))
-    
-    print(f"Inputs: {len(r20_rows)} R20 rows, Thunder118={len(thunder_118)}, NT-13={len(nt13)}, HIGH-overrides={len(high_overrides)}")
+
+    # ---- Cursor amendment (a): true vote_margin from raw R20 SC samples ----
+    # r20_vote_dist.csv computed by compute_r20_vote_dist.py (DSMLP-local LFS file).
+    vote_dist = {}
+    with open(repo_root / 'inference/base_model/R20_eval_v1_sc8_p943_t32k_pp1/analysis/r20_vote_dist.csv') as f:
+        for r in csv.DictReader(f):
+            vote_dist[int(r['item_id'])] = {
+                'top': int(r['top_vote_count']),
+                'second': int(r['second_vote_count']),
+                'margin': int(r['vote_margin']),
+            }
+
+    print(f"Inputs: {len(r20_rows)} R20 rows, Thunder118={len(thunder_118)}, NT-13={len(nt13)}, HIGH-overrides={len(high_overrides)}, vote_dist={len(vote_dist)}")
     
     # ---- Step 1: residual universe (R20-wrong, NOT in Thunder118, NOT in NT-13, NOT in HIGH overrides) ----
     # OPERATIONAL: use math_correct=='False' instead of literal bucket B/A_lucky
@@ -73,24 +84,27 @@ def main():
         item = items.get(iid, {})
         
         top_vote = int(r['sc_vote_size']) if r['sc_vote_size'] else None
-        # vote_margin requires second-place vote count, which isn't in this CSV.
-        # Use top<=5 alone as close_vote signal (margin requires raw samples; defer).
-        close_vote = top_vote is not None and top_vote <= 5
-        
+        # Cursor amendment (a): full close_vote criterion using TRUE vote_margin from raw
+        # R20 SC samples — close_vote = (top_vote_count <= 5) OR (vote_margin <= 2).
+        vd = vote_dist.get(iid)
+        second_vote = vd['second'] if vd else None
+        vote_margin = vd['margin'] if vd else None
+        close_vote = (top_vote is not None and top_vote <= 5) or (vote_margin is not None and vote_margin <= 2)
+
         is_multi_slot = (
             (item.get('question', '').count('[ANS]') >= 2)
             or (r['category'] == 'free_multi')
         )
         multi_slot_precision_risk = is_multi_slot
-        
+
         if close_vote or multi_slot_precision_risk:
             candidates.append({
                 'id': iid,
                 'reason_close_vote': close_vote,
                 'reason_multi_slot_precision': multi_slot_precision_risk,
                 'top_vote_count': top_vote if top_vote is not None else '',
-                'second_vote_count': '',  # not available in analysis CSV
-                'vote_margin': '',  # not available without raw samples
+                'second_vote_count': second_vote if second_vote is not None else '',
+                'vote_margin': vote_margin if vote_margin is not None else '',
                 'r20_bucket': r['bucket'],
                 'gold_source': r['gold_source'],
                 'in_thunder118': False,

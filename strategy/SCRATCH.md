@@ -610,3 +610,20 @@ Closed the my-audit → Cursor cross-check loop on the Tier-1 normalizer build p
 2. Empty flag set does NOT guarantee byte-identical to source — normalizer rebox is no-op-when-MCQ-already-correct (early return) but applies for non-MCQ-already-correct cases; flag taxonomy tracks attribution-class events, not all changes
 3. 117 MCQ items (~12%) have multi-identical-letter-box patterns in slot3 output; benign because Grader.is_equal handles ('H,H' == 'H' = True) and Hendrycks extracts cleanly on Kaggle. Worth knowing for any downstream analysis that consumes judger output directly.
 
+
+---
+## claude_vscode signoff — 2026-05-31 — R20 vote_margin compute + kitchen-sink target_set amendment (Cursor a)
+
+**Task**: compute true vote_margin from raw R20 SC@8 samples (LFS file, DSMLP-local) + update select_kitchensink_target.py close_vote criterion to full spec (top<=5 OR margin<=2).
+
+**Pre-flight friction (resolved):** pull aborted on local collisions — 4 "modified" tracked files (.gitattributes, REGISTRY, both SCRATCHs) were byte-IDENTICAL to origin (0 diff), 3 untracked kitchensink files IDENTICAL to origin, plus a Thunder-synced thinking_probe_tnr1 dir + a differing local KITCHEN_SINK_DISPATCH_PLAN.md. Also hit an LFS smudge failure on incoming thinking_probe_tnr1/samples.jsonl (pointer committed on origin but object not fetchable — Thunder LFS not yet pushed / budget). Resolved: backed up the differing files to /tmp, removed identical-to-origin blockers, moved foreign Thunder artifacts aside, completed ff with GIT_LFS_SKIP_SMUDGE=1 (pointers-only, non-destructive — the samples.jsonl object fetches later when available). HEAD a730553-era local → f7bbff4. NOTE: ~/.instance-role file does NOT exist on this box (flagged; task substance confirmed mine — CPU work on local R20 LFS file, no GPU).
+
+**Result:**
+- Built inference/scripts/compute_r20_vote_dist.py. Output r20_vote_dist.csv (943 items, columns item_id/top/second/margin/n_unique). Votes grouped by per-sample extracted_answer exact string (SC vote semantics). Cross-validated: top_vote_count matches analysis.csv sc_vote_size on all spot-checks (0→8, 2→4, 12→5, 302→8).
+- vote_margin distribution (943): margin=0: 59, =1: 82, =2: 66, =3: 48, >=4: 688. close (<=2)=207, decisive (>=4)=688.
+- Updated select_kitchensink_target.py: close_vote = (top<=5) OR (margin<=2); populated second_vote_count + vote_margin (were blank placeholders).
+- Re-ran: residual=52, target=27 (UNCHANGED vs prior 27). ADDED: none. REMOVED: none. Independent-gold subset=12.
+- WHY unchanged: verified the margin<=2 criterion adds ZERO items beyond what top<=5+multislot already caught on this 52-item residual (margin-only set empty). Amendment correctly implemented (full criterion + populated columns now match locked spec); just subsumed by existing signals on this residual. Value = populated margin/second columns + spec-correct criterion for future residuals.
+
+**Files modified**: inference/scripts/compute_r20_vote_dist.py (new), inference/scripts/select_kitchensink_target.py, submission/csvs/picks/kitchensink_target_set.csv, submission/csvs/picks/kitchensink_target_ids.txt (regenerated, content-identical to prior), inference/base_model/R20_eval_v1_sc8_p943_t32k_pp1/analysis/r20_vote_dist.csv (new).
+**HEAD**: (filled after push).
