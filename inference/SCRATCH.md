@@ -362,3 +362,45 @@ hard_independent_CLEAN n=16 acc=0.8125 (HIGHEST; wolfram 6/7 search 7/9; trend .
 
 ### Commit hash
 b3901c4 (R20 deep audit; rebased onto strategy 43e14bd/2f50042 R10-T3 followups — which PREDICTED id=117 rescued at R20 32K; my R20 audit CONFIRMS it ✓). LFS run jsonl 150MB already remote + analysis.jsonl 30MB + samples 20MB pushed. Pushed 43e14bd..b3901c4.
+
+---
+## claude_vscode signoff — Day 9 — T2 DEEP audit R20b (v3 sample-filter; FINAL of 5; cohort COMPLETE)
+
+### What was done
+Cataloged run14b_sc8_v1_private943_tok32k_pp1_v3filtered → inference/base_model/R20b_eval_v1_sc8_p943_t32k_v3filt/ (git mv jsonl 155MB; no summary.json). Schema was raw-SC-compatible (full samples array + voted_answer + per-sample shape_rejected + v3_samples_kept/rejected) → analyzer SC path ran directly, NO prep step needed. Kaggle 0.646 (REGISTRY #14).
+
+### Gates: a✅ b✅(7544) c✅ d✅ e✅ f✅(flagged) g✅ h✅ i✅ — ALL PASS. Verification triple ✅ (547==547). 4:42.
+
+### Bucket: A=430 A_lucky=10 B=58 unknown=445 | scored acc 0.8635 (highest LOCAL; R20 .8554)
+hard_independent_CLEAN n=16 acc=0.8125 (IDENTICAL to R20; filter didn't touch hard set). unanimous_teachers 401/403=0.9950 (highest — where the filter's local gain lands).
+
+### Filter does real work: rejected ≥1 sample on 142 items, changed voted_answer on 55 vs R20. NOT a no-op.
+
+### (f) truncated=16 vs R20's 17 — FLAGGED: filter swapped one item's canonical sample (rejected the truncated one R20 voted; non-truncated won). Trivial.
+
+### (g) CROSS-RUN R20→R20b (FILTER effect) — LOAD-BEARING:
+A→A 426, **A_lucky→A 4**, A_lucky→A_lucky 10, B→B 58. **B→A=0, B→A_lucky=0, A→B=0, A_lucky→B=0.**
+**FILTER DIVIDEND = 0.** Filter's ONLY gold-scored effect is A_lucky→A (cleans 4 already-correct vote-fragile items). Moves NOTHING wrong→right. Local +0.8pp is pure vote-cleanup; **Kaggle FLAT 0.646==R20**. 
+**VERDICT: v3 shape-filter is NOT a Pick-B improvement. DROP from morning planning.** Cleanest possible "dead lever" signal — can't help Kaggle because it changes no item's correctness.
+
+### (h) 5-WAY R08∩R09∩R10∩R20∩R20b — COHORT COMPLETE:
+- A∩∩∩∩∩ = 371 strict (373 w/ lucky) — definitive rock-solid; NOT adapter/normalizer.
+- B∩∩∩∩∩ = 48 — identical to R20's 4-way B∩ (filter changed nothing in wrong set).
+- ALL 11 R20 true-miss seed survive R20b, INCLUDING heuristic-newcomers 167/345/591 (all still B∩∩∩∩∩).
+- **LOCKED FINAL ADAPTER TARGET SEED (true-miss in B∩∩∩∩∩): [41, 61, 103, 104, 127, 167, 231, 264, 282, 345, 591]** (11). Other 37 of 48 = format-recoverable (normalizer, NOT adapter). Recommend T3 confirm the 11 (41/282 already T3-done; verify newcomers 167/345/591). id=9 correctly excluded; id=117 correctly removed at R20 (32K rescue).
+
+### FINAL LEVER RANKING (at fixed v1, full cohort): SC +33 ≫ tokens +7 ≫ filter 0 ≫ prompt-variant −11.
+SC is the dominant Pick-B lever. Tokens second. v3 shape-filter and v3-perslot prompt are both non-levers (0 / negative).
+
+### Cross-ref sweep: full-name run14b_sc8_v1_private943_tok32k_pp1_v3filtered = 0 replacements (exit 0). SKIPPED 'run14b_v3filtered'/'v3filtered' (7 hits across 5 docs, all the CSV name run14b_v3filtered.csv — would corrupt). Per R20 pattern.
+
+### LFS: jsonl 155MB + analysis.jsonl 30MB + analysis_samples.jsonl 20MB → tracked before staging. analysis.csv 2.2MB raw.
+
+### ALL 5 DEEP-COHORT RUNS NOW CATALOGED (R08 R09 R10 R20 R20b 🟢). CROSS_RUN_MATRIX inputs complete. Strategy can build the matrix + finalize Pick B / adapter seed.
+
+### Surprises
+- The filter is the cleanest "dead lever" in the cohort: 55 voted-answer changes, but every gold-scored one is A_lucky→A (already correct). Zero correctness change → Kaggle flat by construction.
+- Cohort plateaued: hard_clean 0.8125 (R20=R20b), B∩=48, adapter seed=11, rock-solid=371 — all LOCKED. No remaining p943 lever in this cohort moves them; the morning levers (DeepConf/SC@32/NoThinking/high-budget) are the only untried ones.
+
+### Commit hash
+(filled after commit)

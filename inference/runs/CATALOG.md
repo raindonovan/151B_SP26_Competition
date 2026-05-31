@@ -60,7 +60,7 @@ Legend: 🟢 done · 🟡 in progress · ⚪ untouched
 | `V3_shape_filter_fixed50_v1` | R18 | base_model | 2026-05-13 20:24 | ablation | ⚪ | shape filter |
 | `V4_temp_diversification_fixed50_v1` | R19 | base_model | 2026-05-13 23:37 | ablation | ⚪ | multi-temp SC (git-log fallback — no summary.json) |
 | `run14b_sc8_v1_private943_tok32k_pp1` | **R20** | base_model | **2026-05-22 13:56** | eval | 🟢 | **0.646 BEST inference baseline**; feeds 0.745 with overlays; cataloged → inference/base_model/R20_eval_v1_sc8_p943_t32k_pp1/ |
-| `run14b_sc8_v1_private943_tok32k_pp1_v3filtered` | R20b | base_model | 2026-05-22 (derived) | eval | ⚪ | v3-filtered variant of R20 |
+| `run14b_sc8_v1_private943_tok32k_pp1_v3filtered` | R20b | base_model | 2026-05-22 (derived) | eval | 🟢 | v3-filtered variant of R20; cataloged → inference/base_model/R20b_eval_v1_sc8_p943_t32k_v3filt/ |
 
 **Pick-B-relevant p943 cohort**: R08, R09, R10, R20, R20b. These are the only full-private runs and the only candidates that move tonight's Pick B via cross-run consensus.
 
@@ -153,4 +153,4 @@ R-numbers are RESERVED at chronology-lock time and become CATALOGED when their p
 | R18 | V3_shape_filter_fixed50_v1 | reserved |
 | R19 | V4_temp_diversification_fixed50_v1 | reserved |
 | R20 | run14b_sc8_v1_private943_tok32k_pp1 | cataloged |
-| R20b | run14b_sc8_v1_private943_tok32k_pp1_v3filtered | reserved |
+| R20b | run14b_sc8_v1_private943_tok32k_pp1_v3filtered | cataloged |
