@@ -1049,3 +1049,32 @@ What Cursor DID add that I had missed in my own pass:
 - Hybrid set relations (sc16_targets ∩ adapter_targets = 0, disjoint)
 - slot1/routing_manifest.csv = exact 943 split into adapter=391 + base=552 (confirms dual-path WAS deployed at inference)
 - v3 merged-mode verification (training log + submission CSV evidence)
+
+---
+
+## PART 13 — Open research question added (training dynamics / checkpoint selection)
+
+### 13.A) New question R: epoch / checkpoint selection in transductive SFT
+
+Surfaced during repo search for "trained too aggressively for memorization" claim (Day 9, ~T-13h to deadline).
+
+**Source artifact**: `inference/adapters/sft_v3/SFT_V3_TRAINING_LOG.md:385` notes during v3 checkpoint selection:
+
+> "Epoch 4 (checkpoint-152): loss=0.04, high memorization, less overfit — likely best generalization"
+
+This was a selection-time consideration, NOT a postmortem conclusion. v3 ended up using a later epoch checkpoint per the training plan. The note suggests awareness that more epochs might hurt generalization, but the decision was not made on this axis.
+
+**The locked research question for Phase C**:
+
+> R. **Epoch / checkpoint selection for transductive SFT**: In a transductive setting (training on items we will see again at inference, dual-path deployment), at what epoch does memorization peak give way to overfitting that hurts generalization on related-but-unseen items? Is there published evidence on the "valley of generalization" trajectory for small (391-item) LoRA adapter training on math reasoning models? Specifically:
+> - Does the published Fast-Math-R1 "10 epochs is crucial" guidance assume held-out generalization context, or transductive?
+> - Are there documented cases where earlier epoch checkpoints (4-6 epochs) outperformed later ones (12-16) on transductive deployment?
+> - How should checkpoint selection criteria differ between transductive and held-out deployment?
+> - Is the "memo test" pass rate (in-training label reproduction) anti-correlated with generalization at higher epochs?
+> - What's the validation methodology to detect this trajectory without spending a Kaggle slot per checkpoint?
+
+**Why this matters for v7**:
+
+v5 ended up at epoch 12 (ckpt-1176, 20/20 memo test, deployed). If earlier epochs had higher generalization on adjacent-but-unseen items (the dual-path adapter case where we ROUTE the trained items but the model is still asked to apply learned patterns), we may have selected a suboptimal checkpoint. v7 should test this — train through 16 epochs, evaluate at multiple checkpoints per per-subset methodology (Part 9), not just pick the latest-with-high-memo-test.
+
+This question is now part of the Phase C 4-LLM research dive scope. NOT a hyperparameter critique of v5 retrospectively — it's a methodology question for v7 selection.
