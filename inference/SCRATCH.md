@@ -285,3 +285,39 @@ First real test of the pipefail fix: PASSED (script ran the full doc list to com
 
 ### Commit hash
 38eca28 (rebased onto strategy b658ba9/efdb3b2 R08-T3 followups; LFS 2 objects/66MB pushed: analysis.jsonl 27MB + analysis_samples.jsonl 39MB; run jsonl 130MB already on remote from prior LFS).
+
+---
+## claude_vscode signoff — Day 9 — T2 DEEP audit R10 (v3-perslot prompt effect, single-sample)
+
+### What was done
+Cataloged run10_v3perslot_private943_tok16384 → inference/base_model/R10_eval_v3perslot_single_p943_t16k/ (git mv jsonl 16MB + summary). Analyzer v3-final-final (single-sample path). README + deep findings.md with cross-run g1/g2/g3/g4.
+
+### Gates: a✅ b✅(n/a single-sample) c✅ d✅ e✅ f✅ g✅ h✅ i✅ — ALL PASS. Verification triple ✅ (547==547). Wall-clock 38s.
+
+### Bucket: A=396 A_lucky=0 B=102 unknown=445 | scored acc 0.7952 (LOWEST of 3: R08 .8173, R09 .8474)
+hard_independent_CLEAN n=16 acc=0.7500 (HIGHEST: wolfram 6/7, search 6/9). unanimous_teachers 367/403=0.9107 (LOWEST). Kaggle 0.424 (REGISTRY #2, worst p943). v3-perslot helped hard multi-part items but hurt the broad easy set.
+
+### B=102, ~81 (79%) format-recoverable (multi-slot 46 — INFLATED by per-slot prompt encouraging per-part boxing vs single-last-box grader; MCQ-letter 18, fraction 13, undercount 4; true miss 21).
+### Truncated=110 (between R08 119 and R09 93).
+
+### CROSS-RUN (3 runs now):
+- g1 R10 vs R08 (PROMPT effect): A→A 373, A→B **34 (regression)**, B→A **23 (saved)**, B→B 68. **NET −11 — v3-perslot breaks more than it fixes.** vs R09 SC dividend +21/0-regression. SC >> prompt-variant as a lever.
+- g2 R10 vs R09: R10-wins-R09-misses=12, R09-wins-R10-misses=38. **SC strictly dominates.** The 12 R10-wins overlap R09's A_lucky list (vote-fragile items a lucky single sample caught) — reinforce SC@32 set, not v3-perslot.
+- g3 A∩A∩A = 372 (rock-solid across both prompts + SC/no-SC; NOT adapter/normalizer candidates).
+- g4 B∩B∩B = 53 (CORE bucket B). Recoverability split: 43 format-recoverable (normalizer), **10 TRUE-MISS = real adapter targets: [41, 61, 103, 104, 117, 127, 231, 264, 282, 868]** (41 already T3-confirmed). Will tighten at R20/R20b (32K may rescue truncated ones e.g. 117/127).
+
+### Adapter notes: id=9 (gold-split, R08-T3) NOT in B∩B∩B, stays excluded. id=68 (R08-T3 true-miss) classified fraction-form here due to truncated R10 response — defer to R08-T3 (true miss).
+
+### Cross-ref sweep: full-name run10_v3perslot_private943_tok16384 = 0 replacements (exit 0). SKIPPED short 'run10_v3perslot' (2 hits, both run10_v3perslot_private943.csv — CSV refs) and bare 'run10' (5 hits: 2 CSV + 3 prose 'run10,run14b'; too broad, would corrupt). Judgment per R09 pattern.
+
+### DOC-CONFLATION FLAG for strategy: INFERENCE_TECHNIQUES.md L9 + TEST_PIPELINE.md L21 list "run10, run14b" as SC@8→0.646. R10 is SINGLE-SAMPLE (method vllm, no samples array), Kaggle 0.424. 0.646 belongs to R14b/R20 alone. R10 mislabeled as SC@8 in those 2 docs. Did NOT auto-fix (broad bare-run10 sweep too risky); flagging for manual correction.
+
+### LFS: jsonl 16MB + analysis.jsonl 31MB → tracked on new paths before staging. analysis.csv 5.4MB raw.
+
+### Surprises
+- v3-perslot is net-NEGATIVE (−11) yet HELPS hard-independent (0.75 vs R08 0.625) — trades broad easy accuracy for a few hard multi-part wins. Bad trade → 0.424 Kaggle. Dev arc correctly abandoned it.
+- Per-slot prompt INFLATES multi-slot B (46 vs R08's 19): prompt-induced per-part boxing fights the single-last-box grader. Clean structural-normalizer (undercount) illustration.
+- B∩B∩B true-miss core is only 10 of 53 — most "consistently wrong" items are format-recoverable, NOT adapter material. Adapter target set is small and tightening.
+
+### Commit hash
+(filled after commit)

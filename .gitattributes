@@ -16,3 +16,5 @@ inference/base_model/R08_eval_v1_single_p943_t16k/analysis/analysis.jsonl filter
 inference/base_model/R09_eval_v1_sc8_p943_t16k/run09sc8_v1_private943_tok16384.jsonl filter=lfs diff=lfs merge=lfs -text
 inference/base_model/R09_eval_v1_sc8_p943_t16k/analysis/analysis.jsonl filter=lfs diff=lfs merge=lfs -text
 inference/base_model/R09_eval_v1_sc8_p943_t16k/analysis/analysis_samples.jsonl filter=lfs diff=lfs merge=lfs -text
+inference/base_model/R10_eval_v3perslot_single_p943_t16k/run10_v3perslot_private943_tok16384.jsonl filter=lfs diff=lfs merge=lfs -text
+inference/base_model/R10_eval_v3perslot_single_p943_t16k/analysis/analysis.jsonl filter=lfs diff=lfs merge=lfs -text

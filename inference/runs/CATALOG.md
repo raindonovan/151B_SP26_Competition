@@ -48,7 +48,7 @@ Legend: 🟢 done · 🟡 in progress · ⚪ untouched
 | `run07_sc8_v1_50_tok16384` | R07 | base_model | 2026-05-03 19:23 | eval | 🟢 | first SC8 run; cataloged → inference/base_model/R07_eval_v1_sc8_f50_t16k/ |
 | `run08v2_v1_private943_tok16384` | R08 | base_model | 2026-05-04 05:49 | eval | 🟢 | first p943 full eval (single-sample); cataloged → inference/base_model/R08_eval_v1_single_p943_t16k/ |
 | `run09sc8_v1_private943_tok16384` | R09 | base_model | 2026-05-04 17:32 | eval | 🟢 | SC8 on p943 (referenced widely in submission/); cataloged → inference/base_model/R09_eval_v1_sc8_p943_t16k/ |
-| `run10_v3perslot_private943_tok16384` | R10 | base_model | 2026-05-05 19:55 | eval | ⚪ | v3perslot variant, single-sample p943 (git-log fallback) |
+| `run10_v3perslot_private943_tok16384` | R10 | base_model | 2026-05-05 19:55 | eval | 🟢 | v3perslot variant, single-sample p943 (git-log fallback); cataloged → inference/base_model/R10_eval_v3perslot_single_p943_t16k/ |
 | `expA_run08_perslot_perturbed` | R10b | base_model | 2026-05-05 19:55 | ablation | ⚪ | perslot perturbation, ran alongside R10 |
 | `smoke_openr1_v1_1k_5` | R11 | base_model | 2026-05-07 00:23 | smoke | ⚪ | openr1 prompt smoke |
 | `v2_numina_concise_50` | R12 | base_model | 2026-05-09 17:30 | eval | ⚪ | numina-concise variant |
@@ -141,7 +141,7 @@ R-numbers are RESERVED at chronology-lock time and become CATALOGED when their p
 | R07 | run07_sc8_v1_50_tok16384 | cataloged |
 | R08 | run08v2_v1_private943_tok16384 | cataloged |
 | R09 | run09sc8_v1_private943_tok16384 | cataloged |
-| R10 | run10_v3perslot_private943_tok16384 | reserved |
+| R10 | run10_v3perslot_private943_tok16384 | cataloged |
 | R10b | expA_run08_perslot_perturbed | reserved |
 | R11 | smoke_openr1_v1_1k_5 | reserved |
 | R12 | v2_numina_concise_50 | reserved |
