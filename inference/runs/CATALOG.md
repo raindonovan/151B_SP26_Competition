@@ -3,6 +3,8 @@
 > **Purpose**: single source of truth for every inference run we've done. As we work through them session-by-session (one run per session per Rain's Day-7 rule), this catalog gets the run's: old name → new name → status → key finding link.
 >
 > **Out of scope**: SFT TRAINING runs (those stay in `inference/adapters/`). This catalog is INFERENCE only (with-adapter or base-model), plus smoke tests.
+>
+> **AUDIT-SCORE REFRAME (C6, Day 9)**: `analyze_run.py`'s audit score is for per-item bucket labels (A / A_lucky_sample / B / unknown). It is NOT a Kaggle-mirror. The local judger has a known ~28pp gap, and the restricted independent-gold subset (wolfram_HIGH / search_GOLD / unanimous_teachers) is systematically easier than the full LB slice. Read bucket labels and per-source accuracy, not the headline rate, as a Kaggle predictor.
 
 ## Naming convention
 

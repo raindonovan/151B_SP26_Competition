@@ -9,3 +9,5 @@ inference/results/run14b_sc8_v1_private943_tok32k_pp1.BACKUP_20260522_065113.jso
 inference/results/run14b_sc8_v1_private943_tok32k_pp1_v3filtered.jsonl filter=lfs diff=lfs merge=lfs -text
 data/search/teachers/opus/items.jsonl filter=lfs diff=lfs merge=lfs -text
 data/answer_sheet_v7_FINAL.csv filter=lfs diff=lfs merge=lfs -text
+inference/scripts/_pressure_test_R14/analysis.jsonl filter=lfs diff=lfs merge=lfs -text
+inference/scripts/_pressure_test_R14/analysis_samples.jsonl filter=lfs diff=lfs merge=lfs -text
