@@ -62,6 +62,7 @@ Legend: 🟢 done · 🟡 in progress · ⚪ untouched
 | `run14b_sc8_v1_private943_tok32k_pp1` | **R20** | base_model | **2026-05-22 13:56** | eval | 🟢 | **0.646 BEST inference baseline**; feeds 0.745 with overlays; cataloged → inference/base_model/R20_eval_v1_sc8_p943_t32k_pp1/ |
 | `run14b_sc8_v1_private943_tok32k_pp1_v3filtered` | R20b | base_model | 2026-05-22 (derived) | eval | 🟢 | v3-filtered variant of R20; cataloged → inference/base_model/R20b_eval_v1_sc8_p943_t32k_v3filt/ |
 | `nothinking_full_943_20260527T000129Z` | NT | base_model | 2026-05-27 00:01 | eval | 🟢 | NoThinking-mode SC@8 943 (prefill bypass); OUT-OF-cohort, orthogonal to R-series; cataloged → inference/base_model/NT_eval_nothinking_sc8_p943_t8k/ — ELEVATED: 15 unique-correct vs R20, Pick-B consensus-join candidate |
+| `nothinking_probe98_20260526T065456Z` | NT-probe98 | base_model | 2026-05-26 06:58 | probe | 🟡 | Early 98-item NoThinking slice; exact source of `data/candidates_nothinking_98.txt`; cataloged → inference/base_model/NT_probe98_eval_nothinking_sc8_f98_t8k/ — lineage PASS, but NOT a stable mirror of NT-943 (`28/98` exact voted matches; `27/44` vs `37/44` on the scored subset) |
 
 **Pick-B-relevant p943 cohort**: R08, R09, R10, R20, R20b. These are the only full-private runs and the only candidates that move tonight's Pick B via cross-run consensus.
 
@@ -88,7 +89,7 @@ These artifacts live OUTSIDE `inference/` but belong to specific runs. As each r
 - `submission/csvs/run09sc8_probe_b_reversed.csv` → derived from R09
 - `submission/csvs/run09sc8_format_fixed.csv` → derived from R09
 - `submission/csvs/run09sc8_v1_private943.csv` → derived from R09
-- `data/candidates_nothinking_breakdown.md` + `data/candidates_nothinking_98.txt` → analysis OF a NoThinking inference run (need to identify which run)
+- `data/candidates_nothinking_breakdown.md` + `data/candidates_nothinking_98.txt` → analysis OF `nothinking_probe98_20260526T065456Z` (cataloged → `inference/base_model/NT_probe98_eval_nothinking_sc8_f98_t8k/`)
 - `data/candidates_sc16_hardest30_breakdown.md` → analysis of an SC16 hardest-30 run
 - `data/candidates_pertier_breakdown.md` → cross-run analysis
 

@@ -17,7 +17,8 @@ None — auto_judge handles None via is_equal, as the single-sample R08/R10 audi
 
 Usage:
   python3 inference/scripts/prep_nothinking_for_analyzer.py \
-    --in  <nothinking.jsonl> --out <adapted.jsonl> [--budget 8192]
+        --in  <nothinking.jsonl> --out <adapted.jsonl> [--budget 8192] \
+        [--run-id NT_eval_nothinking_sc8_p943_t8k]
 """
 from __future__ import annotations
 import argparse, csv, json, os, sys
@@ -30,6 +31,7 @@ def main():
     p.add_argument("--in", dest="inp", required=True)
     p.add_argument("--out", required=True)
     p.add_argument("--budget", type=int, default=BUDGET_DEFAULT)
+    p.add_argument("--run-id", default="NT_eval_nothinking_sc8_p943_t8k")
     p.add_argument("--master-answers", default="data/MASTER_ANSWERS.csv")
     args = p.parse_args()
 
@@ -64,7 +66,7 @@ def main():
                 })
             is_mcq = (cat.get(iid) == "MCQ")
             out.write(json.dumps({
-                "run_id": "NT_eval_nothinking_sc8_p943_t8k",
+                "run_id": args.run_id,
                 "id": iid,
                 "is_mcq": is_mcq,
                 "options": None,            # NoThinking row has none; auto_judge handles None

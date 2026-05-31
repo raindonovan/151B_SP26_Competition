@@ -440,3 +440,36 @@ NoThinking jsonl schema differs: `samples`=list of STRINGS (not dicts), per-samp
 
 ### Commit hash
 c4d07b6 (NT T1.5 audit + prep_nothinking_for_analyzer.py; rebased onto strategy 2c7089d R20b-T3 GREEN). LFS 2 run jsonls/86MB pushed; analysis.jsonl+samples committed RAW (<10MB, no traces). Pushed 2c7089d..c4d07b6.
+
+---
+## claude_vscode signoff — Day 9 — T2 NoThinking probe98 audit — VERDICT: YELLOW
+
+### What I tried
+- Located the deferred probe artifacts outside `inference/base_model/` by following the NT-943 README back to `inference/results/hybrid/tnr-B/`.
+- Reused the existing NoThinking adapter/analyzer path instead of hand-scoring the probe.
+- Compared probe98 directly against NT-943 on the exact same 98 ids, then split by `no_box`, `weak_ab`, and `t1_control`.
+
+### What I did
+- Verified `inference/results/hybrid/tnr-B/nothinking_probe98_20260526T065456Z.jsonl` matches `data/candidates_nothinking_98.txt` exactly (98/98 ids, no extras).
+- Fixed `inference/scripts/prep_nothinking_for_analyzer.py` so `--run-id` is configurable; validated it on probe98.
+- Generated `inference/base_model/NT_probe98_eval_nothinking_sc8_f98_t8k/nothinking_probe98_ADAPTED.jsonl` plus analyzer artifacts in that folder.
+- Wrote README/findings for the new catalog folder and updated `inference/runs/CATALOG.md` to identify the probe as the source of the 98-id candidate files.
+
+### What worked
+- Provenance is now locked: the 98-id candidate files are analysis of `nothinking_probe98_20260526T065456Z`.
+- The old NoThinking adapter path is reusable after the run-id fix; analyzer ran cleanly on the probe with no schema edits to the analyzer.
+- The audit cleanly distinguishes lineage from stability: probe98 is same family/config path, but behaviorally noisy.
+
+### What didn't work
+- probe98 is NOT a stable mirror of NT-943: only `28/98` exact voted-answer matches, `14/98` exact sample-extracted multiset matches.
+- On the scored subset, NT-943 is `37/44` voted-correct while probe98 is only `27/44`.
+- The probe overlaps only 2 of the 15 NT rescue ids (`5`, `584`) and fails both, so it cannot validate the rescue lever.
+
+### What's left
+- Commit and push this catalog/audit work.
+- If anyone wants a stronger early-phase NT stability read, the next useful slice is NOT this probe; it would need either the targeted_rescue NT run or another shared-id comparison with meaningful hard-clean coverage.
+
+### Key discoveries
+- `data/candidates_nothinking_breakdown.md` and `data/candidates_nothinking_98.txt` are definitively tied to `nothinking_probe98_20260526T065456Z`.
+- `shape_fallback` is the dominant failure mode in probe98 (`46/98`), not truncation (`0`) or missing boxes (`0`).
+- The probe's apparent all-rows bucket agreement with NT-943 (`85/98`) is misleading because `54/54` `unknown -> unknown` rows dominate it; on the real scored slice the agreement is much worse (`31/44` buckets, `32/44` math correctness).
