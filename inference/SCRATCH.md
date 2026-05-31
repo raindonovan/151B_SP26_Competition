@@ -176,4 +176,5 @@ analysis.jsonl (29M) + analysis_samples.jsonl (20M) both >10MB and were filter:u
 48/67 hard-wrong items at T4/T5 are format-recoverable (undercount collapse / precision tolerance / representation), NOT adapter-B. hard_independent_DIRTY acc 0.19 is mostly the missing structural normalizer, not Qwen math failure. bucket_b_review_needed=58 flags these for human triage until the normalizer lands.
 
 ### Commit hash
-(filled below after commit)
+761f903 (rebased onto strategy's 3b5bd69 AUDIT_TEMPLATES + cace2a9 CATALOG R-numbering; LFS 2 objects/50MB pushed). Pushed 3b5bd69..761f903.
+NOTE: R14 in my prompts == R20 in the now-locked chronological catalog (cace2a9). The pressure-test ran on run14b_sc8_v1_private943_tok32k_pp1 = R20, the 0.646 baseline. Output dir kept as _pressure_test_R14 (matches the prompt's naming); the run is R20.
