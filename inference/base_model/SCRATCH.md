@@ -28,4 +28,4 @@ Capability-vs-sampling: agreement 25/61, both-wrong 42, tr-only-right 1, NT943-o
 
 17-TRUNCATED INTERSECTION = 0 (subset predates 32K-truncation analysis) → says NOTHING about the "NoThinking-high-budget-on-17-truncated" morning candidate; that remains untested.
 
-VERDICT: NO new-rescue signal. targeted_rescue is RESEARCH-ONLY, do NOT stack. Closes NT-workstream "more NT passes help" question across probe98(YELLOW)+texas-oil(PARTIAL)+this: they don't. NT value = the single NT-943 join (+1.8pp); path to more = independent gold, not more/curated NT runs. Did NOT build Pick-B candidate (audit only). Closes at T2 (no ChatGPT pass per spawn). Commit: (after).
+VERDICT: NO new-rescue signal. targeted_rescue is RESEARCH-ONLY, do NOT stack. Closes NT-workstream "more NT passes help" question across probe98(YELLOW)+texas-oil(PARTIAL)+this: they don't. NT value = the single NT-943 join (+1.8pp); path to more = independent gold, not more/curated NT runs. Did NOT build Pick-B candidate (audit only). Closes at T2 (no ChatGPT pass per spawn). Commit: cb1e29e.
