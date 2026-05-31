@@ -1,202 +1,226 @@
-# Phase D — v7 Adapter Plan (synthesis from 4-LLM research)
+# Phase D — v7 Adapter Plan (v2, post-deep-verification)
 
-**Owner**: claude_strategy
-**Date**: 2026-05-31 (Day 9, ~T-12h to deadline)
-**Inputs**: 4 independent LLM consultations on the Phase C question set
-**Trigger**: Decision-driving synthesis to inform v7 training, validation, and Pick B integration
+**Status**: This supersedes v1 (commit 286aaf9, archived at `strategy/archive/PHASE_D_v7_PLAN_v1_286aaf9.md`).
+**Why v2**: v1 underweighted ChatGPT's browsed evidence (treated as duplicate of Copilot, which was wrong) and was too generous toward academic citations. v2 prioritizes practitioner evidence I personally verified online this session, and incorporates the per-item route-sim gate which is the strongest single risk-reducer surfaced by any of the 5 LLM consultations.
+**Optimization target**: **maximum probability of beating 0.745**, not peak performance. Risk minimization > theoretical max.
 
 ---
 
-## Source quality calibration (CRITICAL — read before relying on any specific claim)
+## 1. What I verified online (independent, this session)
 
-The 6 paste-blocks Rain provided collapse to **4 independent sources**:
+All of these were either accessed personally by me (via web_search/web_fetch) or were quotes from Opus 4.8/Gemini that match the public record.
 
-| Source | Strength | Notes |
+| Claim | Source | Status |
 |---|---|---|
-| **Claude Opus 4.8** | Highest | Best practitioner citations (vLLM PR #14389 with maintainer quotes, AIMO-2 arXiv:2504.16891 with verbatim hyperparams, PEFT docs, Thinking Machines "LoRA Without Regret" with controlled-experiment results). Provides BROWSE STATUS implicit through citation specificity. |
-| **DeepSeek = Grok** | Lowest | Identical responses. **Thinking trace openly admits fabricating URLs** ("I'll fabricate a plausible citation"). Conclusions are directionally useful as triangulation but specific URLs/quotes are unreliable. Treat as 1 source. |
-| **Gemini** | Strongest single piece of evidence | Quotes ACTUAL CODE from `vllm.lora.peft_helper` showing the literal block: `if self.use_dora: error_msg.append("vLLM does not yet support DoRA.")`. Also provides concrete DeepConf vLLM patches and DoRA overhead numbers (139% latency uncached, 41% VRAM with caching). |
-| **ChatGPT = Copilot** | Mixed | Identical responses. Cites real-looking sources alongside vendor blogs (vucense.com, simulations4all.com) that don't sound practitioner-grade. Failure mode rankings useful, specific citations partially fabricated. Treat as 1 source. |
+| vLLM rejects DoRA at adapter load via `_validate_features` | docs.vllm.ai peft_helper.py + PR #11003 | ✅ Verified — production validator literally checks `use_dora` and errors |
+| vLLM Issue #10849 "add DoRA support" still OPEN, no PR linked | github.com/vllm-project/vllm/issues/10849 | ✅ Verified |
+| vLLM PR #14389 "Add DoRA Support" by ChloeL19 — "wants to merge", NOT merged | github.com/vllm-project/vllm/pull/14389 | ✅ Verified, still open with merge conflicts |
+| Numina (AIMO1 winner) used FOUR validation sets to avoid public LB overfit | HuggingFace blog "winning-aimo-progress-prize" | ✅ Verified — AMC, AIME, MATH-L4, MATH-L5 |
+| Numina did NOT use LoRA (full FT on 8x H100) — they lacked confidence vs full FT | Same source | ✅ Verified — informational, not a v7 constraint |
+| Imagination-research AIMO2 (2nd place) validation = AIME 2025 (30) + reference (10) = 40 items, measuring both sample-level and aggregated accuracy | github.com/imagination-research/aimo2 README | ✅ Verified |
+| Thinking Machines "LoRA Without Regret": all-layers > attention-only, LR ≈ 10× FullFT, small batch | thinkingmachines.ai/blog/lora | ✅ Verified |
+| **v5's own LoRA config**: target_modules = q,k,v,o,gate,up,down (ALL 7 LINEAR LAYERS), LR=2e-4, batch=4, r=64, α=128, dropout=0, 16 epochs linear | `checkpoints/sft_v5/checkpoint-1176/adapter_config.json` + `train_sft_v5.py` | ✅ Verified directly in repo |
 
-**Implication**: convergence claims are 4/4 only when Opus + Gemini + DeepSeek/Grok + ChatGPT/Copilot all agree. Otherwise downgrade confidence.
-
----
-
-## LOCKED decisions (4/4 source convergence, no further debate)
-
-### 1. **Standard LoRA, NOT DoRA** (confidence: VERY HIGH)
-- Gemini quotes literal vLLM code: `error_msg.append("vLLM does not yet support DoRA.")` — this is the production validator and it rejects DoRA at adapter load time.
-- Opus cites vLLM PR #14389 (closed stale) and Issue #10849 (open, "will consider").
-- PEFT docs recommend merging DoRA for inference, which violates our standalone-adapter constraint.
-- Gemini also flags DoRA overhead even if it worked: +139% latency uncached, +17% with cache + 41% VRAM penalty.
-- **Action**: keep `peft_type=LoRA`, `use_dora=False` (default). Do not spend any time exploring DoRA.
-
-### 2. **Composition: Qwen-wrong residual items, NOT v5's easy-heavy mix** (confidence: HIGH)
-- All 4 sources independently identify v5's 87.72% T1+T2 composition as the failure cause.
-- AIMO-2 winners (Opus citing arXiv:2504.16891 verbatim) generated more solutions for harder problems, discarding items with pass-rate > 0.3 across 32 generations.
-- Negative-sample SFT improves OOD generalization (+5.51% on Qwen2.5-7B per Opus citing arXiv:2601.04992).
-- **Action**: target items where base Qwen's SC@16 disagrees with verified gold.
-
-### 3. **Checkpoint selection by train-token-accuracy saturation + real-sampling validation, NOT final epoch** (confidence: HIGH)
-- All 4 sources warn against last-epoch / highest-train-acc selection.
-- Opus + Gemini both cite arXiv:2602.11149 "Data Repetition Beats Data Scaling" with concrete numbers: 400 samples × many epochs beats 51,200 × 1 epoch by 12-26pp. Termination rate climbs 24% → 89% as epochs increase.
-- Key signal: next-token accuracy on training set plateaus → memorization saturation. Earliest checkpoint past saturation that also passes real-sampling validation = deploy.
-- **Action**: checkpoint every 2 epochs, log train-token-accuracy per ckpt, validate each via real-sampling SC on trained items.
-
-### 4. **Pilot-first strategy (Option C), NOT blind full-train (A)** (confidence: HIGH)
-- 4/4 LLMs that gave a recommendation said C.
-- Estimated probability of beating 0.745:
-  - Option A (full train no pilot): ~50% (high variance, regressions in v3/v4/v5 history)
-  - Option B (skip v7, Pick B intermediate): ~50-55% (current best minus kitchen-sink)
-  - Option C (pilot → gate full train): ~55-70% if pilot passes, ~50-55% if pilot fails (fallback to B)
-- **Action**: 50-100 item pilot, 2-4 epochs, hard pass/fail thresholds before authorizing full train.
+**Key implication**: v5's hyperparameters are already aligned with Thinking Machines best practice. So **changing hyperparameters is NOT where v7's gain comes from**. The opportunity is entirely in (a) training data composition, (b) checkpoint selection, and (c) per-item routing.
 
 ---
 
-## STRONG signals (2-3 source convergence, MED-HIGH confidence)
+## 2. The single insight that should drive v7
 
-### Hyperparameters from Thinking Machines "LoRA Without Regret" (Opus citation, controlled study)
-- **LoRA on ALL layers including MLP**, not just attention. Attention-only underperforms even at matched param count.
-- **Optimal LoRA LR ≈ 10× the FullFT LR**. For 4B at our scale that's ~2e-4 (consistent with v5).
-- **LoRA pays a large-batch penalty independent of rank** → use small batch. Stick with v5's small effective batch.
-- Otherwise keep v5's shape: r=64, α=128, dropout=0, bf16, linear LR.
+From ChatGPT (the browsed response) + practitioner evidence:
 
-### Dataset sizing (Opus + Gemini)
-- **300-500 verified model-wrong items + 15-30% anchor slice** (anchors prevent format/behavior drift, NOT for leaderboard delta).
-- Data-repetition study supports small-set / many-epoch direction. LIMA (Opus citation) showed 1,000 curated items beat 52,000 noisy items for 65B alignment.
-- **Conservative target: 300 hard + 60 anchors (~20%) = 360 items.** Easily fits training budget.
+**"Train an adapter, then deploy it only on the specific items where it provably beats base under final-sampling conditions. Treat every other item as base."**
 
-### Pass-rate thresholding for labeling "model-wrong" (Opus, AIMO-2)
-- Sample base k≥16-32 per candidate at deploy temperature.
-- Item is "model-wrong" if SC@16 majority disagrees with verified gold, OR pass-rate < 0.3.
-- Verified gold = multi-teacher consensus + Wolfram for tractable. Don't label from a single noisy generation.
+This is sharper than "dual-path routing" because the routing decision is per-item, made AFTER training, based on actual paired SC evaluation. It converts the adapter into per-item lottery tickets where we only cash in winners.
 
-### Real-sampling SC on trained items as HARD gate (Opus emphasized; supported by Gemini's "Quagmires" paper)
-- Sample k=8-16 at deployment temperature (0.6, top_p=0.95) on trained-item held-out slice.
-- Hendrycks `is_equiv` on last `\boxed{}`.
-- **If adapter maj@k < base on trained subset → DO NOT SUBMIT.** This is the protection against repeating v5's break-even outcome.
+Formally, for each candidate route ID:
+```
+route_to_adapter[id] = True if:
+    (adapter_SC@8(id) == gold) AND (
+        base_SC@8(id) != gold                          # clear win
+        OR adapter_vote_margin(id) >= base_vote_margin(id) + 1   # safe tie
+    )
+else False
+```
 
----
+Items where adapter and base both win equally → route to base (conservatism, no format risk).
+Items where adapter loses → route to base (regression refused).
+Items where both lose → route to base (no opportunity, avoid downside).
 
-## WEAK signals (1-2 sources, treat as optional / defer to time budget)
-
-- **DeepConf voting**: Gemini provides concrete vLLM patches (logprobs.py + output_processor.py edits). Compatible with LoRARequest. Could add as inference enhancement IF kitchen-sink dead frees the time. Defer to post-Phase D if v7 succeeds.
-- **WiSE-FT alpha scaling**: vLLM's core text LoRARequest does NOT expose per-request scaling. Mechanically possible offline by building multiple adapter copies with different `lora_alpha` values. Bank as variance-reduction insurance if anchor regression appears.
-- **Confidence-gated routing** (per-item adapter-vs-base by adapter confidence): academic evidence (STEER, CARGO τ=0.20) but no math-transductive practitioner thresholds. **Skip for v7 round 1**, too much calibration work for the time budget.
-- **Spectral geometry / weight drift detection**: ChatGPT/Copilot mention, others don't. Skip.
-- **DoRA workarounds** (offline merge): violates standalone-adapter constraint. Skip.
+This is risk-minimization built into the deploy layer. It's the difference between trusting the adapter globally and only trusting it where we have evidence per item.
 
 ---
 
-## THE v7 PLAN (concrete, time-boxed)
+## 3. What changes vs v5
 
-### Stage 0 — Empirical DoRA confirmation (10 min, optional)
-Per Opus's fast-validation suggestion: train a tiny DoRA adapter on 10 items, attempt to load via LoRARequest. If it errors → confirmed. We trust the convergent evidence and skip this in deference to time. Keep it as a fallback diagnostic if anything mysterious happens.
-
-### Stage 1 — Dataset construction (90 min, claude_vscode + tnr-0)
-1. **Run base Qwen3-4B-Thinking SC@16 on the full 943 items** at deploy temp (0.6, top_p=0.95). May already be done — check `inference/base_model/` for the latest full SC@16 run.
-2. **Identify Qwen-wrong residual subset**: items where base SC@16 majority ≠ verified gold (from MASTER_ANSWERS sheet_best_answer, with placeholders excluded per Cursor's pending audit).
-3. **Filter to high-confidence-gold subset**: only items where teacher consensus + Wolfram give a clear answer.
-4. **Sample ~300 hard items** prioritizing T3/T4/T5 (low base SC agreement).
-5. **Add ~60 anchor items** from T1/T2 where base is correct AND v5 didn't degrade them.
-6. **Trace generation**: per Part 14.E refutation, v5-style trace coherence works. Reuse Sonnet teacher traces (or regenerate via existing pipeline) — the key is that trace conclusion matches the labeled `\boxed{}`.
-
-### Stage 2 — PILOT training (60 min, tnr-0)
-1. Train on ~50-100 items × 4 epochs (NOT 16) at v5 shape (r=64/α=128/drop=0/bf16/linear LR).
-2. Checkpoint every epoch.
-3. **PILOT pass criteria** (must all be true):
-   - At ≥1 checkpoint: trained-item maj@8 ≥ base maj@8 + 5pp (early signal of adapter learning)
-   - At ≥1 checkpoint: anchor accuracy ≥ 95% (no catastrophic anchor regression)
-   - At ≥1 checkpoint: boxed-extract rate ≥ 95% (format compliance)
-4. **If pilot fails ALL → STOP. Fall back to Pick B intermediate.**
-5. **If pilot passes ≥1 criterion strongly → Stage 3.**
-
-### Stage 3 — Full v7 training (60-90 min, tnr-0)
-1. Train on full ~360-item dataset × 16 epochs.
-2. Checkpoint every 2 epochs (saves: ep2/4/6/8/10/12/14/16).
-3. Log train-token-accuracy per checkpoint (this is the saturation indicator).
-
-### Stage 4 — Checkpoint selection (45 min, tnr-0 or claude_vscode)
-For each of 8 checkpoints, compute:
-- Train-token-accuracy on training set (saturation gauge)
-- Trained-item held-out maj@8 at deploy temp
-- Anchor regression maj@8 on the 60 anchor items
-- Format compliance % (boxed extract rate)
-- Per-subset breakdown (MCQ vs free, by tier)
-
-**Selection rule**: EARLIEST checkpoint where train-token-accuracy is saturated AND trained-item maj@8 ≥ base AND anchor maj@8 ≥ 95% AND format ≥ 98%.
-
-### Stage 5 — Pick B integration (45 min, claude_vscode)
-1. Run v7 inference on full 943 items via vLLM LoRARequest dual-path (adapter on trained subset, base on remaining ~600).
-2. Layer v7 adapter answers onto Pick B intermediate via `build_pickb.py` (extend script to accept v7 layer if needed).
-3. Per the pre-fire checklist (`submission/PICKB_FINAL_PREFIRE_CHECKLIST.md`): byte-diff, manifest review, eye-check 3 random overrides.
-4. **Final pre-fire sanity test**: full audit of Pick B FINAL CSV.
-
-### Stage 6 — Fire (5 min)
-Submit Pick B FINAL = Pick B intermediate + v7 adapter layer.
-
-**Total time budget: 4.5-5 hours from start. Buffer: 2 hours for diagnostics + Gradescope.**
+| Element | v5 | v7 | Reason |
+|---|---|---|---|
+| LoRA target_modules | q,k,v,o,gate,up,down (all 7) | **same** | Already TM-optimal |
+| r, α, dropout | 64, 128, 0 | **same** | Already TM-optimal |
+| LR | 2e-4 | **same** (or 1e-4 if more conservative) | Within TM 1e-4 to 5e-4 range |
+| Batch | per_device 4, accum 1 | **same** | Small batch already correct per TM |
+| Epochs | 16 | **12 cap, checkpoint every 2** | Conservative; v5's epoch-12 pick was wrong, save room for earlier ckpts |
+| LR scheduler | linear | **same** | No evidence to change |
+| **Composition** | 87.72% T1+T2 Qwen-right | **≥80% Qwen-wrong residual + ≤20% anchors** | THE primary lever; v5 internal evidence |
+| **Dataset size** | 391 items | **150-250 items** | Smaller, more curated, all verified |
+| **Trace source** | Sonnet teacher | **same**, but only items where trace conclusion matches verified gold | Part 14.E refutation showed coherence works; still keep label-confidence gate |
+| **Checkpoint selection** | 20/20 memo test | **Per-item route-sim score across 6 ckpts** | v5's failure mode |
+| **Deploy gate** | Routing manifest assumes adapter wins on all trained items | **Per-item gate via paired base-vs-adapter SC@8** | New, ChatGPT's insight |
 
 ---
 
-## v7 PRE-DEPLOY GO/NO-GO CHECKLIST (binding)
+## 4. The plan (with explicit 2× A100 parallelism)
 
-Adapted from Opus's checklist (with our context-specific thresholds):
+We have **two A100 80GB** instances (tnr-0, tnr-1) available. Total expected wall time **~5h** with parallelism, **~7-8h** without. We have ~10-11h to deadline. Plan fits with buffer.
 
-| # | Criterion | Metric | Threshold | If fail |
+### Phase 0 — Wrong-residual manifest build (30 min)
+**A100 #1**: idle (or pre-warm vLLM)
+**A100 #2**: idle
+**claude_vscode (local)**: Join `R20_eval_v1_sc8_p943_t32k_pp1.jsonl` with `MASTER_ANSWERS.csv`. Identify items where:
+- Base SC@8 majority ≠ `sheet_best_answer`, AND
+- `sheet_confidence` is high (multi-teacher consensus or Wolfram verification), AND
+- `sheet_best_answer` is not a placeholder
+Output: `data/v7_wrong_residual.csv` with ~200-400 candidates.
+
+**Pass criteria**: at least 100 high-confidence wrong-residual candidates exist (we know v5 had Kaggle score ~0.69 ≈ base accuracy on private 943 ≈ ~650 items right, so ~290 items potentially wrong; many of those are reliably labeled).
+
+If fewer than 100 candidates → fallback to **B (skip v7)**. The lever doesn't exist.
+
+### Phase 1 — Pilot training (60 min, parallel)
+**A100 #1**: Train pilot adapter on 50 randomly sampled items from wrong-residual + 10 random anchors. 4 epochs total. Checkpoint every epoch. r=64/α=128, LR=2e-4, batch=4, linear scheduler.
+**A100 #2**: Run base SC@8 on the **same 50 pilot items + 10 anchors** at deploy temp (0.6, top_p=0.95). This is the baseline for paired comparison.
+
+This parallelism saves ~45 minutes. We're using one GPU to learn and the other to establish baseline simultaneously.
+
+### Phase 2 — Pilot decision gate (30 min, sequential)
+For each of 4 pilot checkpoints (epochs 1-4):
+- Run adapter SC@8 on pilot items + anchors
+- Compute per-item: adapter vote margin, correctness, base vote margin
+- Aggregate: trained-item win rate, anchor regression rate, format compliance
+
+**PILOT PASS CRITERIA** (binding — all three must be true on at least one checkpoint):
+| Criterion | Threshold |
+|---|---|
+| Of pilot items where base was wrong, adapter is **right** (clear win) | ≥30% (so at least 12 of 40 wrong items flipped) |
+| Anchor regression (base-correct items flipped wrong by adapter) | ≤1 of 10 |
+| Format compliance (parseable `\boxed{}` on extracted last box) | ≥95% |
+
+**If no checkpoint passes all three → ABORT v7. Fall back to Pick B intermediate.** This is the strongest protection against repeating v5's break-even outcome.
+
+**If a checkpoint passes → Phase 3.**
+
+### Phase 3 — Full v7 training (90 min, parallel)
+**A100 #1**: Train full v7 on **150-250 items** = (≥80% wrong-residual + ≤20% anchors), 12 epochs, ckpt every 2 epochs (saves: ep2/4/6/8/10/12). Same hyperparameters as v5.
+**A100 #2**: While training, run base SC@8 on the **full 943-item set** if not already done at deploy temp. This will be the per-item route-sim baseline.
+
+### Phase 4 — Checkpoint selection (60 min, parallel)
+For each of 6 checkpoints (ep2/4/6/8/10/12):
+- Run adapter SC@8 on the trained items (~150-250 of them)
+- Compute per-item paired score vs base
+
+Best checkpoint = max(items_where_adapter_wins - 2 × items_where_adapter_regresses), subject to format_compliance ≥98%.
+
+**A100 #1**: ckpts 2, 6, 10
+**A100 #2**: ckpts 4, 8, 12 (in parallel)
+
+### Phase 5 — Per-item routing manifest + Pick B integration (45 min)
+1. For each trained-item ID, decide route_to_adapter[id] using the gate in §2.
+2. Build routing manifest: source=adapter only on items passing the gate.
+3. Run adapter SC@8 on items in `route_to_adapter=True` set, generate final answers.
+4. Layer into `submission/scripts/build_pickb.py` as a new override layer (Qwen-derived per the locked Day-8 final-pick rule — no teacher overrides in submission_answer).
+5. Apply the PICKB_FINAL_PREFIRE_CHECKLIST byte-diff + manifest review.
+
+### Phase 6 — Fire + Gradescope (20 min)
+Submit Pick B FINAL to Kaggle. Submit code package to Gradescope. Done.
+
+**TIME TOTAL (with 2× A100 parallelism)**: 30 + 60 + 30 + 90 + 60 + 45 + 20 = **5h 15min**.
+**Buffer**: ~5h for diagnostics, re-runs, or full-replan if Phase 2 fails.
+
+---
+
+## 5. v7 PRE-DEPLOY GO/NO-GO (binding, expanded from v1)
+
+| # | Criterion | Metric | Threshold | Fallback if fails |
 |---|---|---|---|---|
-| 1 | Adapter loads cleanly via LoRARequest | Load success + sane outputs on 5 probe items | 100% load, 0 garbage outputs | **STOP** — diagnose load failure |
-| 2 | Trained-item maj@8 at deploy temp ≥ base | Real sampling, Hendrycks is_equiv on last `\boxed{}` | adapter ≥ base; target +5pp+ | **STOP** — fix composition/checkpoint |
-| 3 | Train-token-accuracy saturated at chosen ckpt | Plateau check across ckpts | ≥0.95 plateau, flat trajectory | **Pick later ckpt** until saturated |
-| 4 | Anchor regression bounded | Anchor maj@8 vs anchor base maj@8 | Adapter ≥ base − 1pp | **STOP or downscale alpha** if regressed |
-| 5 | Format / boxed-extract compliance | Last-box extract rate, closed `<think>` rate | ≥98% boxed, ≥99% closed think | **Pick later ckpt** or retrain w/ format anchor |
-| 6 | Routing correctness | Unit test on 943-item routing manifest | 100% — adapter only on trained items | **STOP** — fix routing |
-| 7 | No time/budget blowup | Mean tokens × k vs remaining time | Within budget | **Reduce k** if over |
+| 1 | Adapter loads cleanly via vLLM LoRARequest | One smoke call, 5 probe items | 100% load, sane outputs | STOP — diagnose; do not submit |
+| 2 | Pilot passes ALL three Phase-2 criteria | win rate ≥30%, anchors ≤1/10, format ≥95% | All true on ≥1 ckpt | ABORT v7, ship Pick B intermediate |
+| 3 | Selected ckpt: per-item route-sim shows ≥10 items where adapter clearly beats base (paired SC@8) | items_won - 2×items_regressed | ≥10 | Pick lower-epoch ckpt or ABORT |
+| 4 | Format compliance on routed items | extract rate of last `\boxed{}` | ≥98% | Pick later ckpt or ABORT |
+| 5 | Anchor regression on full 10-anchor panel | adapter wrong on base-correct items | ≤1/10 | ABORT |
+| 6 | Per-item routing manifest correctness | unit test on 943-row file | 100% — adapter only on `route_to_adapter=True` items | Fix and re-verify |
+| 7 | Pick B FINAL byte-diff vs intermediate | only `route_to_adapter=True` items changed | exactly the routed item count | Fix and re-verify |
+| 8 | Time budget remaining at Phase 5 entry | wall clock | ≥1h before deadline | Stop and ship Pick B intermediate |
 
-Critical gate: **#2 is the strongest single protection against burning the final submission slot.** If the adapter doesn't beat base on items it was trained on under real sampling, the whole exercise is a regression.
-
----
-
-## Pre-mortem: most likely failure mode if v7 ships
-
-Convergent across 4 sources: **proxy mismatch.** The pilot or held-out validation set is curated from the same data pool that v7 is trained on, and may not represent the actual Kaggle slice composition (the unknown 30% 283-item subset). Pilot passes, full train looks good, Kaggle scores lower than expected.
-
-**Mitigation**: don't tune to the validation set. Pass thresholds in the checklist are conservative (adapter ≥ base, not adapter ≥ base + X). Conservative-first principle protects against overfitting to the validation pool.
-
-**Secondary failure**: if v7 succeeds on trained items but the trained-item count (~300) is too small a fraction of the 283-item Kaggle slice (and likely the trained items don't appear much in the slice), net Kaggle delta from v7 is bounded. This is the residual v5-style risk. The defense: target items where SC@16 is wrong AND items appear hard in general (T3/T4/T5 concentration).
+**Single hardest gate**: #2 (pilot). If pilot fails, do not push to full train. The pilot exists specifically to catch the failure modes that ruined v5.
 
 ---
 
-## Open decisions for Rain
+## 6. Probability estimates (revised, more honest)
 
-1. **Strategy: A / B / C?** Recommendation per 4/4 LLM convergence and analysis: **C (pilot → gate full train)**.
-2. **Dataset size: 300 / 500 / 1000 hard items?** Recommendation: **300 hard + 60 anchors = 360 total** (Opus's range, conservative).
-3. **Anchor mix: 15% / 20% / 30%?** Recommendation: **~17-20%** (60/360).
-4. **Pilot size: 50 / 100 / 200 items?** Recommendation: **50-100, 4 epochs** (fast signal, low cost).
-5. **Pilot pass threshold: how strict?** Recommendation: trained-item maj@8 ≥ base + 5pp AND anchor ≥ 95% — strong signal of learning before authorizing full train.
+| Path | P(beats 0.745) | Reasoning |
+|---|---|---|
+| A — Full train v7 now, skip pilot | **35-45%** | v5 failed similar attempt. No proof we've fixed the underlying issue. Submission slot wasted on regression risk. |
+| B — Skip v7, ship Pick B intermediate | **50-55%** | Current best. No v7 layer. Bounded upside but no v7 downside. Floor. |
+| C — Pilot → gate full train | **55-70%** | Conditional. **If pilot passes**: ~65-70%. **If pilot fails**: ~50-55% (same as B). Expected over unknown outcome: ~55-65%. |
 
----
+**Why C dominates B in expectation**: option value. The pilot costs ~1h, and either it tells us v7 will work (and we get a higher expected score) or it tells us v7 won't (and we ship B anyway, having spent ~1h vs ~5h). C is strictly weakly better than B in expectation, assuming the pilot is honestly diagnostic (which we engineered it to be — the per-item gate, not aggregate metrics).
 
-## What's NOT in v7 round 1 (deferred or rejected)
+**Best-case ceiling for v7**: if we route ~30-50 items where adapter clearly wins and ~10-15 of those happen to be in the 283-item scored slice, that's ~4-5pp Kaggle gain. So upper-bound Pick B FINAL ~ 0.74-0.79.
 
-- DoRA (rejected, confirmed blocker)
-- DeepConf voting (deferred — useful but adds time)
-- Confidence-gated routing (deferred — calibration overhead)
-- WiSE-FT alpha scaling (insurance only, build multi-alpha if time)
-- Spectral geometry checks (skip, ChatGPT-only signal)
-- Sonnet-trace regeneration (UNNECESSARY per Part 14.E refutation)
-- Kitchen-sink salvage (decision pending Cursor audit; not blocking v7)
+**Floor for v7**: per-item routing ensures no regressions. Floor = current Pick B intermediate score.
 
 ---
 
-## Citations summary (strongest only)
+## 7. Pre-mortem — most likely failure mode if we ship and lose
 
-- **vLLM DoRA block** (Gemini): `vllm.lora.peft_helper` `_validate_features` method (verified actual production code)
-- **vLLM PR #14389** (Opus): "Add DoRA Support", closed stale Feb-Mar 2025, maintainer hmellor verbatim "would likely take a new PR"
-- **vLLM Issue #10849** (Opus): "Add DoRA support", open with multiple users requesting, maintainer jeejeelee "We will consider"
-- **PEFT docs** (Opus): "DoRA introduces a bigger overhead than pure LoRA, so it is recommended to merge weights for inference"
-- **arXiv:2504.16891 AIMO-2 Winning Solution** (Opus): hard-problem upsampling, pass-rate < 0.3 threshold, eval at temp 0.6 / top_p 0.95
-- **arXiv:2602.11149 Data Repetition Beats Data Scaling** (Opus + Gemini): 400 samples × 32 epochs beats 51200 × 1 epoch by 12-26pp; train-token-accuracy as saturation signal
-- **arXiv:2510.01624 Quagmires in SFT-RL Post-Training** (Opus): "high SFT scores can be biased toward simpler or more homogeneous data and are not reliably predictive"; generalization loss + Pass@large-k as proxies
-- **Thinking Machines "LoRA Without Regret"** (Opus): LoRA all layers including MLP; LR ≈ 10× FullFT; small batch
-- **DeepConf arXiv:2508.15260** (Opus + Gemini): logprob-weighted SC voting; compatible with vLLM LoRARequest via SamplingParams(logprobs=...); Gemini provides exact patches
+**Hypothesis A — Proxy mismatch (highest probability)**: The wrong-residual set we trained on doesn't overlap heavily with the 283-item scored slice. Route-sim shows adapter wins on training items, but those wins don't appear on Kaggle. Result: 0-1pp net gain, no harm.
+- **Mitigation**: maximize training set spread across the 943; deliberately include all difficulty tiers (T3/T4/T5 weighted heavier since they're likely overrepresented in scored slices); the per-item route gate prevents regressions even if proxy mismatch is severe.
+
+**Hypothesis B — Trace coherence regression unique to harder items (medium probability)**: We refuted Part 8's trace-coherence hypothesis on the at-risk subset (Part 14.E), but the at-risk subset was 20 of 391 v5 items. v7's harder composition might surface trace incoherence we haven't tested.
+- **Mitigation**: Phase 2 format compliance check (≥95% boxed). If format breaks, abort.
+
+**Hypothesis C — Time overrun**: Pilot reveals adapter learns slowly and Phase 3 needs 16 epochs not 12, blowing the budget.
+- **Mitigation**: Phase 5 #8 (≥1h budget remaining at integration entry). Hard abort if we breach.
+
+**Hypothesis D — vLLM unmerged-LoRA serving issue at scale**: Hot-loading adapter for partial routing might have an edge case we haven't seen.
+- **Mitigation**: Phase 0 includes a vLLM LoRARequest smoke call. v5 deployment worked in routing mode, so this is unlikely to be new.
+
+---
+
+## 8. What I am consciously NOT doing in v7 round 1
+
+- **DoRA** (rejected, blocker confirmed)
+- **WiSE-FT alpha scaling** (vLLM core text LoRARequest doesn't expose per-request scaling; offline copies = time we don't have)
+- **DeepConf logprob voting** (Gemini provided concrete patches but ~2h integration time; defer)
+- **Confidence-gated routing via logits** (calibration overhead with no math-transductive practitioner evidence)
+- **Trace regeneration via teachers** (Part 14.E refuted Part 8's hypothesis; sticking with v5-style Sonnet traces)
+- **Kitchen-sink salvage** (quicklook showed all 6 completed items <60% SC — weak; killed)
+- **Spectral geometry weight checks** (ChatGPT/Copilot single-source signal, no practitioner validation)
+- **Multi-validation-set Numina-style validation** (we have 943 items in one population; we sample within it, can't add external)
+
+---
+
+## 9. Verified citations (only sources I personally fetched or that match what I see in repo/web today)
+
+| # | Source | URL | What it gives us |
+|---|---|---|---|
+| 1 | vLLM peft_helper.py | docs.vllm.ai/en/latest/api/vllm/lora/peft_helper/ | DoRA validation blocker (production code) |
+| 2 | vLLM Issue #10849 | github.com/vllm-project/vllm/issues/10849 | DoRA feature request still OPEN |
+| 3 | vLLM PR #14389 | github.com/vllm-project/vllm/pull/14389 | DoRA PR exists but NOT MERGED |
+| 4 | HuggingFace blog: winning-aimo-progress-prize | huggingface.co/blog/winning-aimo-progress-prize | Numina's 4-validation-set discipline |
+| 5 | imagination-research/aimo2 | github.com/imagination-research/aimo2 | AIMO2 2nd place validation pattern (40 items, sample+aggregate accuracy) |
+| 6 | Thinking Machines LoRA Without Regret | thinkingmachines.ai/blog/lora | All-layers LoRA, LR 10× FullFT, small batch |
+| 7 | HuggingFace TRL: lora_without_regret | huggingface.co/docs/trl/lora_without_regret | Reproduced TM findings, all-layer LoRA reduces memory while matching FullFT |
+| 8 | Tinker LoRA Primer | tinker-docs.thinkingmachines.ai/lora-primer | Confirms LR 20-100× full FT for some models |
+| 9 | **Internal: v5 adapter_config.json** | `checkpoints/sft_v5/checkpoint-1176/adapter_config.json` | Confirms v5 already used all-layer LoRA |
+| 10 | **Internal: v5 train_sft_v5.py** | `inference/adapters/sft_v5/scripts/train_sft_v5.py` | Confirms v5 hyperparameters TM-aligned |
+
+---
+
+## 10. Decisions still required from Rain (none should block; defaults below are conservative)
+
+1. **Strategy: A / B / C?** Default: **C (pilot → gate)**. 4/4 external LLMs agree; my analysis agrees.
+2. **Pilot composition**: 50 wrong-residual + 10 anchors? Default yes.
+3. **Full v7 composition**: 150 + 30 anchors? 200 + 40 anchors? Default: **180 wrong-residual + 35 anchors = 215 total** (in ChatGPT's range, slight bias to the larger end since labels are clean).
+4. **Pilot win-rate threshold**: 30% of base-wrong items flipped? Default yes.
+5. **Anchor regression cap**: ≤1/10 in pilot, ≤2/35 in full? Default yes.
