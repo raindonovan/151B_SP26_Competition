@@ -1,82 +1,97 @@
-# Phase D — v7 Adapter Plan (v3, post-3-LLM-followup-and-verification)
+# Phase D — v7 Adapter Plan (v3.1, post-symmetric-review patch)
 
-**Status**: Supersedes v2 (commit 49e8da6, archived). v1 also archived. v3 incorporates the follow-up answers from Opus 4.8, ChatGPT (browsed), and Gemini, plus my own independent web verification of Qwen3-4B dense architecture, Numina + imagination-research practitioner patterns, Thinking Machines LoRA Without Regret, and vLLM multi-LoRA capabilities at 6-slot parallel serving.
+**Status**: Supersedes v3 (commit 249be05, archived at `strategy/archive/PHASE_D_v7_PLAN_v3_249be05.md`). v3.1 integrates 10 patches from the R1 symmetric review:
+- 5 from Cursor's review of v3 (`strategy/REVIEW_OF_STRATEGY_V3.md` @ 204380c): A1-A5
+- 5 from claude_strategy's review of Cursor's research (`strategy/REVIEW_OF_CURSOR_RESEARCH.md` @ 536e4a4): B1-B5
+
 **Optimization target**: **maximum probability of beating 0.745**. Risk minimization > peak performance.
 
 ---
 
-## 1. What changed in v3 vs v2 (and why)
+## 1. What changed in v3.1 vs v3
 
-| Change | Driver | Impact |
-|---|---|---|
-| Dual-variant pilot (80/20 vs 95/5 in parallel) | ChatGPT explicit endorsement + Gemini confirming VRAM cost ≈ 0 | 2× shots on goal at no marginal cost |
-| Pilot reframed as **plumbing + A/B selection, NOT accuracy gate** | Opus's strongest reframe | Pilot can't predict full-train accuracy at different item count; final gate is per-item route-sim on full train |
-| Pilot size dropped 50 → 30 | Opus literature check (no <50-item pilot validates to full train) | Saves ~20 min, frees buffer |
-| **Phase 4 collapsed via 6-LoRA simultaneous serving** | Gemini's confirmation `max_loras=6 max_lora_rank=64` costs only 1.54 GB on A100 80GB | ~30 min saved, eliminates cold-start variance |
-| **Offline DeepConf added to Phase 5** | Gemini pivot from V1 patches to offline post-processing | ~20 min for +confidence-weighted voting, near-zero risk |
-| GPU utilization tightened — both GPUs busy in every phase | Rain's "don't ignore 2× A100" directive | Total wall time ~4h50m vs 5h15m in v2 |
-| vLLM version pinned: **0.10.2 or 0.11.1** | Gemini's regression survey | Avoids 0.6.4 async slot lockout + 4 other known bugs |
-| Operational flags locked: `--enforce-eager`, `--max-loras` = pool size | Gemini's gotcha list | Prevents CUDA graph hangs + LRU eviction bugs |
-| MoE concern resolved: Qwen3-4B verified dense | Independent web verification (official Qwen blog) | FlashInfer assertion bug doesn't apply |
+| # | Patch | Source | Why | Impact |
+|---|---|---|---|---|
+| A1 | DeepConf demoted to side-channel | Cursor D1, G4 | Gemini's formulas correct but no empirical evidence DeepConf helps in our setup; risk of subtle parameter miscalibration | Plain SC@8 majority is production default; DeepConf runs in parallel as instrumentation; only promotes if it shows net-positive on locked validation slice with zero regressions |
+| A2 | Pilot A/B tie-break pre-declared | Cursor D3 | Avoid decision tax under deadline pressure when pilots are near-tie | If Pilot B does NOT strictly beat A on ALL criteria (≥+5pp flip rate AND ≤+1 anchor regression AND ≤1% format failures AND ≤+20% avg length), default to A (80/20, conservative). No real-time debate. |
+| A3 | 6-LoRA pre-flight micro-benchmark gate | Cursor D2, G5 | Gemini's 1.54 GB VRAM math is theoretical; real-world scheduler/cache behavior at 6-slot serving unverified | Before committing Phase 4, run 5-10 item soak test across all 6 IDs. Pass: throughput floor met + error-free + deterministic parsing. Fail: fall back to sequential immediately. |
+| A4 | Route-gate gold provenance audit | Cursor G1 | Current gate uses `MASTER_ANSWERS.sheet_best_answer` without confidence tagging; weak-confidence gold could induce false positives | Phase 0 tags gold by source (Wolfram-verified > 2-teacher consensus > single-teacher > heuristic backsolve). Phase 5 route gate uses HIGH-confidence gold only (Wolfram OR ≥2-teacher). Lower-confidence items don't route or require stricter margin. |
+| A5 | Pilot bootstrap CI on flip rate | Cursor D4, G3 | Tiny-N pilot (30 items) point-estimate can mislead; need uncertainty bounds | Phase 2 computes 95% bootstrap CI on flip rate. Threshold treated as heuristic with CI, not point-estimate truth. |
+| B1 | Phase 4 trace-coherence check | My D1 (R1) | Cursor's 17/17 sample insufficient to refute global pattern at 391-scale; at 5% incoherence rate, 17-item sample misses 50% of the time | Phase 4 extracts `<think>` conclusion vs `\boxed{}` for all trained items + held-out cross-check. Abort threshold: ≤2% incoherence rate to pass. |
+| B2 | Phase 0 includes v5 per-item adapter-vs-base decomposition | My D2, G1 (R3) | v5 was break-even but no decomposition of WHERE adapter helped/hurt; this is direct empirical evidence for wrong-residual targeting | Phase 0 computes per-item adapter_voted vs base_voted vs gold on v5's 391-item set. Output: 4-way classification table (adapter_win, adapter_loss, both_correct, both_wrong) by tier + item type. Informs v7 composition choice with evidence not assumption. |
+| B3 | Single-teacher Sonnet trace policy | My D3 (R6) | v3 dataset's teacher heterogeneity (366 Sonnet + 104 GPT-5.4 + 23 GPT-OSS) is confounded with quality/selection in prior break-even; eliminate as v7 variable | All v7 wrong-residual trace generation uses Sonnet only. Teacher heterogeneity studies parked to post-deadline. |
+| B4 | Tier-mix-aware sampling within wrong-residual | My G4 (R2) | If scored 283-slice mirrors full population (87.72% T1+T2), v7's wrong-residual T3+T4+T5-heavy composition could train on items NOT in scored slice | Phase 0 selects wrong-residual with proportionality to expected scored-slice tier composition where possible. Default: maintain at least 30% T1+T2 wrong-residual items (covers easy items that fail base SC@8). |
+| B5 | Expanded held-out cross-check (broad-vs-targeted probe) | My G6 (R7) | "Targeted-error lever" framing assumed correct; should probe broad-adapter generalization on held-out items outside wrong-residual | tnr-1's held-out validation slice (Phase 4) expanded from 10-15 to 15-20 items, with ~5 of those being items OUTSIDE the wrong-residual set (base-correct items at deploy temp). Probes whether adapter regresses or holds steady on items it wasn't trained on. |
 
-What did NOT change vs v2:
-- LoRA hyperparameters (r=64/α=128/drop=0, LR=2e-4, batch=4, all 7 linear layers) — v5 already TM-optimal
-- Composition lever: Qwen-wrong residual targeting
-- Strategy: Option C (pilot → gate)
-- Per-item route-sim as the production gate
+**Unchanged vs v3**: dual-variant pilot design (Phase 1), LoRA hyperparameters (r=64/α=128/drop=0, LR=2e-4), v5 deployment posture (unmerged LoRA via LoRARequest), 2× A100 parallelism across all phases, vLLM 0.10.2/0.11.1 + --enforce-eager + --max-loras=pool flags, ~5h total budget.
 
 ---
 
-## 2. Verified citations (sources I personally fetched or directly read in repo)
+## 2. Source convergence summary
 
-| # | Source | Status | What it gives |
-|---|---|---|---|
-| 1 | docs.vllm.ai/en/latest/api/vllm/lora/peft_helper/ | ✅ Personally fetched | DoRA validator blocks `use_dora` |
-| 2 | github.com/vllm-project/vllm/pull/11003 | ✅ Personally fetched | DoRA explicitly listed as unsupported feature in PEFTHelper |
-| 3 | github.com/vllm-project/vllm/pull/14389 | ✅ Personally fetched | DoRA PR "wants to merge", NOT merged |
-| 4 | github.com/vllm-project/vllm/issues/10849 | ✅ Personally fetched | Open with "keep-open" label, no PR linked |
-| 5 | huggingface.co/blog/winning-aimo-progress-prize | ✅ Personally fetched | Numina used 4 validation sets (AMC, AIME, MATH-L4, MATH-L5); did NOT use LoRA |
-| 6 | github.com/imagination-research/aimo2 | ✅ Personally fetched | AIMO2 2nd place; validation = AIME 2025 (30) + ref (10) = 40 items; sample+aggregate accuracy; NO LoRA per ChatGPT's independent check |
-| 7 | thinkingmachines.ai/blog/lora | ✅ Personally fetched | All-layer LoRA + LR ≈10× FullFT + small batch |
-| 8 | qwenlm.github.io/blog/qwen3 | ✅ Personally fetched | Qwen3-4B is DENSE (not MoE — Qwen3 MoE is only 30B-A3B and 235B-A22B) |
-| 9 | docs.vllm.ai/en/v0.9.2/examples/offline_inference/multilora_inference.html | ✅ Personally fetched | Multi-LoRA offline inference supported |
-| 10 | **Internal: v5 adapter_config.json** | ✅ Read in repo | v5 already uses all 7 linear layers |
-| 11 | Gemini follow-up (multi-LoRA VRAM math) | ✅ Receipt this session | 6 × 64 × 28 × 7 × 2 × 2560 × 2 bytes = 1.54 GB pre-allocated |
-| 12 | Gemini follow-up (DeepConf formulas) | ✅ Receipt this session | Token c_i, trajectory C_t, LGC score S_t, weighted aggregation R(a) |
-| 13 | ChatGPT follow-up (imagination-research no-LoRA) | ✅ Receipt this session | Their --finetuning_type full confirms no adapter precedent |
-| 14 | Opus follow-up (data repetition on Qwen3-4B) | ✅ Receipt this session | arXiv:2602.11149 tested on Qwen3-4B specifically; negative trajectories don't degrade |
+**v3.1 represents convergence across 5 independent research sources** (counted as agreeing only where evidence overlaps):
+
+| Decision | Cursor (internal repo) | Opus 4.8 | ChatGPT (browsed) | Gemini | My own web verification |
+|---|---|---|---|---|---|
+| Wrong-residual targeting | ✓ (87.72% T1+T2 was error) | ✓ (negative trajectories OK) | ✓ (target persistent misses) | — | — |
+| Unmerged LoRA (no DoRA) | ✓ (v5 was adapter, others merged) | ✓ (Pattern A > Pattern B) | — | ✓ (DoRA blocked in PEFTHelper) | ✓ (PR #11003) |
+| Held-out validation as selection gate | ✓ (memo_test was anti-signal) | ✓ (pilot ≠ accuracy gate) | ✓ (deploy-like eval) | — | — |
+| Per-item route gate | ✓ (v5 dual-path routing precedent) | ✓ (Pattern A routing) | ✓ (no global replacement) | — | — |
+| LoRA bf16, NOT QLoRA | ✓ (v5 script direct read) | — | — | — | ✓ (v5 adapter_config.json) |
+| Dual-variant pilot (80/20 vs 95/5) | — | — | ✓ (explicit "run both") | ✓ (VRAM cost ≈ 0) | — |
+| 6-LoRA simultaneous serving | — | — | — | ✓ (1.54 GB math) | ✓ (docs.vllm.ai) |
+| Token budget headroom (81920/65536) | ✓ (v1 truncation cautionary) | — | — | — | — |
+| Qwen3-4B is dense | — | — | — | ✓ (MoE FlashInfer N/A) | ✓ (Qwen blog) |
+| Plain SC majority as production default | — | — | — | — | (Cursor + my synthesis) |
+
+The strongest decisions have 3+ independent source convergence. v3.1 is the integration of all converged decisions.
 
 ---
 
 ## 3. The plan with 2× A100 utilization (per phase)
 
-### Phase 0 — Wrong-residual manifest build (30 min) — **both GPUs busy**
-- **claude_vscode**: Join `R20_eval_v1_sc8_p943_t32k_pp1.jsonl` with `MASTER_ANSWERS.csv`. Identify items where base SC@8 majority ≠ `sheet_best_answer` AND `sheet_confidence` is high (multi-teacher consensus or Wolfram). Output: `data/v7_wrong_residual.csv` with target ~200-400 candidates.
-- **tnr-0**: Run base SC@16 on items 0-471 (first half of 943) at deploy temp 0.6 / top_p 0.95 / k=16. This upgrades our route-sim baseline from SC@8 to SC@16 for tighter vote-margin signal.
-- **tnr-1**: Run base SC@16 on items 472-942 (second half) at same params. Sets up `--enforce-eager --enable-lora --max-loras=2` on vLLM 0.10.2+ (or 0.11.1).
+### Phase 0 — Wrong-residual manifest build + v5 decomposition (60 min) — **both GPUs busy**
 
-**Phase 0 pass criteria**: ≥100 high-confidence wrong-residual candidates. If <100 → fall back to Option B (skip v7).
+- **claude_vscode** (~45 min): build wrong-residual manifest with gold provenance tagging (A4), tier-mix-aware sampling (B4), and v5 per-item decomposition (B2):
+  - Join `R20_eval_v1_sc8_p943_t32k_pp1.jsonl` (base SC@8) with `MASTER_ANSWERS.csv`.
+  - Tag each gold by source: HIGH (Wolfram OR ≥2-teacher), MED (single-teacher), LOW (heuristic backsolve).
+  - For v7 training set: select wrong-residual items (base SC@8 majority ≠ HIGH/MED gold) with tier-mix-aware sampling — maintain at least 30% T1+T2 within wrong-residual set, 70% T3+T4+T5 (B4).
+  - **NEW B2**: also compute per-item adapter_v5 vs base_R20 vs gold for v5's 391 trained items. Output 4-way classification by tier + MCQ/free-form. Save to `data/v5_per_item_decomp.csv`.
+  - Output: `data/v7_wrong_residual.csv` with columns `item_id`, `tier`, `gold_provenance`, `is_mcq`, `route_eligible` (true if HIGH-confidence gold).
+- **tnr-0** (60 min): base SC@16 on items 0-471 at deploy temp (0.6/0.95/16). vLLM launch: `--enforce-eager --enable-lora --max-loras=2 --max-lora-rank=64`.
+- **tnr-1** (60 min): base SC@16 on items 472-942 at same params.
+
+**Phase 0 pass criteria** (hard):
+- ≥100 wrong-residual candidates with HIGH-confidence gold (A4 gate)
+- B2 decomposition completed (no failure of compute path)
+- Both base SC@16 runs completed across full 943
+
+If <100 HIGH-confidence wrong-residual → fall back to Option B (skip v7).
 
 ### Phase 1 — Dual pilot training (45 min) — **both GPUs busy**
-- **tnr-0**: Pilot A — 30 items (24 wrong-residual + 6 anchors = 80/20), 4 epochs, ckpt every epoch. Hyperparameters identical to v5.
-- **tnr-1**: Pilot B — 30 items (28 wrong-residual + 2 anchors = ~95/5), 4 epochs, ckpt every epoch.
+Unchanged from v3 except item composition reflects tier-mix-aware sampling (B4) and is gold-provenance filtered (A4).
 
-### Phase 2 — Pilot eval + A/B select (30 min) — **both GPUs busy**
-- **tnr-0**: Run paired base-vs-adapter SC@8 on Pilot A's 30 items + 10 anchors at deploy temp.
-- **tnr-1**: Run paired base-vs-adapter SC@8 on Pilot B's 30 items + 10 anchors at deploy temp.
+- **tnr-0**: Pilot A — 30 items (24 wrong-residual + 6 anchors = 80/20), 4 epochs, single Sonnet teacher (B3).
+- **tnr-1**: Pilot B — 30 items (28 wrong-residual + 2 anchors = ~95/5), 4 epochs, single Sonnet teacher (B3).
 
-**Pilot evaluation rubric** (per ChatGPT's calibration):
+### Phase 2 — Pilot eval + A/B select (40 min) — **both GPUs busy**
 
-| Pilot metric | Plumbing check | Directional gate |
+- **tnr-0**: paired base-vs-adapter SC@8 on Pilot A's 30 items + 10 anchors.
+- **tnr-1**: paired base-vs-adapter SC@8 on Pilot B's 30 items + 10 anchors.
+- **NEW A5**: each pilot eval includes 95% bootstrap CI computation on flip rate (5 lines of resampling code).
+
+**Pilot evaluation rubric** (per ChatGPT's calibration + A5 CI):
+
+| Metric | Plumbing check | Directional gate |
 |---|---|---|
 | Loss descends across 4 epochs | Required | — |
 | Adapter loads cleanly via LoRARequest | Required | — |
 | Format compliance (parseable last `\boxed{}`) | ≥95% | ≥98% for green |
-| Base-wrong residual flips correct under SC@8 | — | **≥30% = ship-worthy direction; 20-30% gray zone (only ship with zero anchor regression); <20% = abort** |
+| Base-wrong residual flips correct under SC@8 | — | ≥30% point estimate AND CI lower bound ≥20% = ship; 20-30% point estimate gray; <20% abort |
 | Anchor regression (base-correct → adapter-wrong) | ≤2/10 | ≤1/10 for green |
 | Net residual gain (flips − regressions) | — | ≥+20% of pilot |
 
-**A/B winner selection rule** (from ChatGPT):
+**A/B winner selection rule** (A2, deterministic, no real-time debate):
 ```
 if (pilot_B.flip_rate >= pilot_A.flip_rate + 5pp
     AND pilot_B.anchor_regressions <= pilot_A.anchor_regressions + 1
@@ -84,163 +99,159 @@ if (pilot_B.flip_rate >= pilot_A.flip_rate + 5pp
     AND pilot_B.avg_length <= pilot_A.avg_length * 1.20):
     winner = "B (95/5, aggressive)"
 else:
-    winner = "A (80/20, conservative)"
+    winner = "A (80/20, conservative)"   # default
 
-if both fail plumbing OR both <20% flip rate:
+if both fail plumbing OR both CI-lower-bound <20%:
     ABORT v7, ship Pick B intermediate
 ```
 
 ### Phase 3 — Full v7 train of winner (90 min) — **both GPUs busy**
-- **tnr-0**: Train full v7 on **180-200 items** (≥80% wrong-residual + ≤20% anchors per winning composition). 12 epochs, checkpoint every 2 epochs (saves: ep2/4/6/8/10/12). Same hyperparameters as v5. Log train-token-accuracy per checkpoint.
+Unchanged from v3 except trace generation uses single Sonnet teacher (B3).
+
+- **tnr-0**: train full v7 on 180-200 items (≥80% wrong-residual + ≤20% anchors per winning composition), 12 epochs, checkpoint every 2 epochs, single Sonnet teacher.
 - **tnr-1**: 
-  - First 60 min: write + smoke-test the offline DeepConf script (LGC over 512-token windows, R(a) = |T_a| × μ(S_t) weighted aggregation, per Gemini's formulas).
-  - Last 30 min: run additional base sampling on hardest residual items (T4/T5) at SC@32 or SC@16 with higher k for tighter route-sim baseline on most-leveraged items.
+  - First 60 min: write + smoke-test offline DeepConf script (LGC over 512-token windows, per Gemini's formulas). NOTE per A1: this is now SIDE-CHANNEL, not production default.
+  - Last 30 min: prepare expanded held-out validation slice (B5): 15-20 items including ~5 base-correct items outside wrong-residual scope.
 
-### Phase 4 — Multi-LoRA simultaneous checkpoint eval (30 min) — **both GPUs busy**
-**THE BIG COLLAPSE** — per Gemini's confirmation, all 6 checkpoints fit in one vLLM instance:
-- **tnr-0**: `vllm serve <base> --enforce-eager --enable-lora --max-loras=6 --max-lora-rank=64`. Load all 6 v7 checkpoints (ep2/4/6/8/10/12) as separate `lora_int_id`s (1-6). For each item in trained set, dispatch 6 parallel SC@8 requests (one per checkpoint). SGMV kernel batches these into single fused forward passes.
-  - Compute per-checkpoint per-item: `adapter_correct`, `adapter_vote_margin`, `format_compliant`, `train_token_acc`.
-- **tnr-1**: Same multi-LoRA eval on **held-out validation slice** — items from the wrong-residual set that were NOT in the trained set (~10-15 items). This is our cross-check that the adapter generalizes to similar problems, not just memorizes trained ones.
+### Phase 4 — Multi-LoRA checkpoint eval with pre-flight + trace coherence (45 min) — **both GPUs busy**
 
-**Checkpoint selection rule**:
+**NEW A3 pre-flight (10 min)**:
+- **tnr-0**: launch vLLM with `--max-loras=6 --max-lora-rank=64`. Load all 6 v7 checkpoints (ep2/4/6/8/10/12). Run 5-item soak test dispatching SC@8 across all 6 IDs in parallel.
+- Pass: zero errors + throughput ≥0.5 sample/sec/checkpoint + parsing deterministic (all 6 produce `\boxed{}`-compliant outputs).
+- Fail: kill vLLM, restart with `--max-loras=1`, fall back to sequential checkpoint eval (Phase 4 takes 90 min instead of 35).
+
+**Main multi-LoRA eval (30 min if pre-flight pass)**:
+- **tnr-0**: dispatch parallel SC@8 across all 6 checkpoints for each item in trained set. SGMV kernel batches.
+- **tnr-1**: same multi-LoRA eval on **expanded held-out cross-check** (B5) — 15-20 items, ~5 outside wrong-residual.
+
+**NEW B1 trace-coherence check (5 min, in parallel)**:
+- For all trained items + held-out items on selected best checkpoint, extract `<think>` conclusion vs `\boxed{}` and flag mismatches.
+- Abort threshold: ≤2% incoherence rate to pass.
+
+**Checkpoint selection rule** (unchanged from v3):
 ```
 best_ckpt = argmax over ckpts of (
     items_where_adapter_wins - 2 × items_where_adapter_regresses
 ), subject to:
     format_compliance >= 98%
+    trace_coherence_rate >= 98% (NEW B1)
     train_token_accuracy plateaued (delta vs prev ckpt < 1pp)
 ```
 
-**Capacity overflow trigger** (Opus's check): if train-token-accuracy NEVER plateaus across all 6 checkpoints, that's evidence we need TWO adapters. In that case, train a second variant on the disjoint half of items in a hot patch (~45 min budget) — if time permits. Otherwise, ship the best of the six anyway.
+### Phase 5 — Per-item routing + plain SC majority as production default (45 min) — **both GPUs busy**
 
-### Phase 5 — Per-item routing + offline DeepConf integration (45 min) — **both GPUs busy**
-- **tnr-0**: For each item in `route_to_adapter=True` set per the per-item gate, run adapter SC@8 at deploy temp. Save all 8 trajectories with `logprobs=True, top_logprobs=20`.
-- **tnr-1**: Apply offline DeepConf voting (per Gemini's formulas):
-  ```
-  For each item with 8 trajectories:
-    For each trajectory:
-      c_i = -mean(log P of top-20 vocab) at each generation position
-      C_t = mean(c_i) over all generated tokens (including <think>)
-      S_t = LGC = min over sliding windows of size 512 tokens
-    Group by parsed final \boxed{} answer
-    R(a) = |T_a|^1.0 × mean(S_t over T_a)
-    final_answer = argmax(R(a))
-  ```
-  Replace raw SC@8 majority with DeepConf weighted majority on adapter outputs.
+**A1 change**: production answer selection defaults to plain SC@8 majority on the best checkpoint's adapter outputs. DeepConf runs in parallel as instrumentation; only promotes to production if it shows net-positive on locked validation slice with zero regressions.
 
-**Per-item routing rule** (the deploy gate):
+- **tnr-0**: for each item in `route_to_adapter=True` set per A4-revised gate (HIGH-confidence gold only), run adapter SC@8 at deploy temp. Save trajectories with `logprobs=True, top_logprobs=20`.
+- **tnr-1**: compute both (a) plain SC@8 majority [production] and (b) offline DeepConf weighted aggregation [instrumentation]. Compare:
+  - If DeepConf > plain SC on net-correct-flips AND zero regressions on held-out slice → promote DeepConf to production.
+  - Otherwise → ship plain SC majority. DeepConf stays as side-channel data.
+
+**Per-item routing rule** (A4-revised):
 ```python
-def route_to_adapter(item_id, paired_eval):
-    a_correct = paired_eval[item_id]["adapter_majority"] == gold
-    b_correct = paired_eval[item_id]["base_majority"] == gold
+def route_to_adapter(item_id, paired_eval, gold_meta):
+    if gold_meta[item_id]["provenance"] not in ("WOLFRAM", "TWO_PLUS_TEACHER"):
+        return False  # NEW A4: only HIGH-confidence gold can route
+    a_correct = paired_eval[item_id]["adapter_majority"] == gold[item_id]
+    b_correct = paired_eval[item_id]["base_majority"] == gold[item_id]
     a_margin = paired_eval[item_id]["adapter_vote_margin"]
     b_margin = paired_eval[item_id]["base_vote_margin"]
     if a_correct and not b_correct:
-        return True   # clear win
+        return True   # clear win on HIGH-confidence item
     if a_correct and b_correct and a_margin >= b_margin + 1:
-        return True   # safe tie with margin
-    return False     # base wins, both wrong, or tied without margin
+        return True   # safe tie with margin on HIGH-confidence item
+    return False     # default to base
 ```
-
-Layer adapter answers (only on `route_to_adapter=True` items) into `submission/scripts/build_pickb.py` as a Qwen-derived override layer (per Day-8 final-pick rule).
 
 ### Phase 6 — Fire + Gradescope (20 min)
 Apply `PICKB_FINAL_PREFIRE_CHECKLIST`. Submit Pick B FINAL to Kaggle. Submit code to Gradescope.
 
-**Total wall time**: 30 + 45 + 30 + 90 + 30 + 45 + 20 = **290 min (~4h50m)**.
-**Buffer to deadline**: ~5h. Generous for diagnostics + unexpected debugging.
+**Total wall time**: 60 + 45 + 40 + 90 + 45 + 45 + 20 = **345 min (~5h45m)**.
+**Buffer to deadline**: ~4h. Tighter than v3 but still generous.
 
 ---
 
-## 4. v7 PRE-DEPLOY GO/NO-GO checklist (binding, expanded)
+## 4. v7 PRE-DEPLOY GO/NO-GO checklist (binding, expanded for v3.1)
 
 | # | Criterion | Threshold | Fallback if fails |
 |---|---|---|---|
-| 1 | Phase 0: ≥100 high-confidence wrong-residual candidates | hard | ABORT v7, ship Pick B intermediate |
-| 2 | Phase 1: at least one pilot loads and trains without error | hard | ABORT, ship Pick B intermediate |
-| 3 | Phase 2: at least one pilot has flip rate ≥20% AND anchor regression ≤2/10 AND format ≥95% | hard | ABORT, ship Pick B intermediate |
-| 4 | Phase 3: full train completes 12 epochs, all 6 ckpts saved | hard | Use whatever ckpts saved; pick best per route-sim |
-| 5 | Phase 4: per selected ckpt, items_won - 2 × items_regressed ≥ 10 | hard | Lower threshold to ≥5 OR ABORT |
-| 6 | Phase 4: format compliance ≥98% on selected ckpt | hard | Pick later/earlier ckpt |
-| 7 | Phase 4: held-out cross-check on tnr-1 — adapter wins on ≥30% of held-out items | soft (warning, not abort) | Reduce confidence in routing aggressiveness |
-| 8 | Phase 5: routing manifest contains correct route_to_adapter=True/False per item | hard | Fix and re-verify |
-| 9 | Phase 5: DeepConf weighted majority computed for each routed item | hard | Fall back to plain SC@8 majority |
-| 10 | Phase 6: ≥1h budget remaining at Phase 5 entry | hard | Stop and ship Pick B intermediate |
+| 1 | Phase 0: ≥100 wrong-residual candidates with HIGH-confidence gold (A4) | hard | ABORT v7, ship Pick B intermediate |
+| 2 | Phase 0: v5 per-item decomposition (B2) completed | soft (warning) | Proceed with reduced confidence in composition |
+| 3 | Phase 0: both base SC@16 splits (0-471, 472-942) completed | hard | Delay Phase 1 until complete |
+| 4 | Phase 1: at least one pilot loads and trains without error | hard | ABORT, ship Pick B intermediate |
+| 5 | Phase 2: at least one pilot has CI lower bound ≥20% flip rate AND anchor regression ≤2/10 AND format ≥95% | hard | ABORT, ship Pick B intermediate |
+| 6 | Phase 3: full train completes 12 epochs, all 6 ckpts saved | hard | Use whatever ckpts saved; pick best per route-sim |
+| 7 | Phase 4: 6-LoRA pre-flight passes (A3) | soft | Fall back to sequential checkpoint eval |
+| 8 | Phase 4: selected ckpt has items_won - 2 × items_regressed ≥ 10 | hard | Lower threshold to ≥5 OR ABORT |
+| 9 | Phase 4: selected ckpt has format compliance ≥98% | hard | Pick later/earlier ckpt |
+| 10 | Phase 4: selected ckpt has trace coherence ≥98% (B1) | hard | Pick later/earlier ckpt or ABORT |
+| 11 | Phase 4: held-out cross-check shows adapter wins on ≥30% of held-out wrong-residual items AND ≤1 regression on outside-residual items (B5) | soft | Reduce confidence in routing aggressiveness |
+| 12 | Phase 5: route_to_adapter manifest contains only HIGH-confidence gold items (A4) | hard | Fix and re-verify |
+| 13 | Phase 5: plain SC majority computed for each routed item | hard | Cannot ship without |
+| 14 | Phase 5: DeepConf side-channel computed; promote only if net-positive zero-regression (A1) | soft | Ship plain SC majority |
+| 15 | Phase 6: ≥1h budget remaining at Phase 5 entry | hard | Stop and ship Pick B intermediate |
 
 ---
 
-## 5. Probability estimates (revised honestly)
+## 5. Probability estimates (v3.1 revised, with overlap uncertainty acknowledged)
 
 | Path | P(beats 0.745) | Notes |
 |---|---|---|
 | A — Full train v7 now, skip pilot | 35-45% | v5 failed similar attempt |
 | B — Skip v7, ship Pick B intermediate | 50-55% | Floor (no v7 downside, no v7 upside) |
-| **C — Dual pilot → A/B select → single full train → multi-LoRA ckpt eval → per-item route + offline DeepConf** | **60-70%** | The current plan. C strictly weakly dominates B in expectation. |
+| **C — v3.1 with all 10 patches** | **63-72%** | Conditional on roughly uniform overlap of trained items with scored 283-slice. If overlap concentrates in items adapter helps: ceiling ~75%. If overlap concentrates in items adapter doesn't help: floor remains Pick B intermediate ~50-55%. Per-item gate (A4) and trace-coherence abort (B1) protect floor. |
 
-If pilot passes: ~65-70%. If pilot fails: ~50-55% (= B). Expected over unknown outcome: 60-65%.
-
-Best-case ceiling: if route gates ~30-50 items where adapter wins clearly, and ~10-15 happen to land in scored 283 slice, ~4-5pp Kaggle gain → ~0.74-0.79.
-Floor: per-item routing + ChatGPT's conservative gate prevents regressions → floor ≈ Pick B intermediate.
+Best-case ceiling: routed wins land in scored 283-slice → ~0.74-0.79.
+Floor: per-item routing prevents regressions → floor ≈ Pick B intermediate.
 
 ---
 
-## 6. Pre-mortem (most-likely failure modes)
+## 6. Pre-mortem (most-likely failure modes, v3.1)
 
-**A — Proxy mismatch** (highest): training items don't overlap heavily with the 283-item scored slice. Adapter wins on trained items but those wins don't appear on Kaggle. **Mitigation**: per-item routing means no regressions either; floor ≈ Pick B. Bias trained items toward T3/T4/T5 (more likely overrepresented in scored slice).
+**A — Proxy mismatch** (highest): training items don't overlap heavily with scored 283-slice. **Mitigation**: A4 (provenance gate) + per-item routing means no regressions; floor ≈ Pick B. B4 tier-mix-aware sampling reduces this risk.
 
-**B — Trace incoherence on harder items**: Part 14.E refuted Part 8's hypothesis on at-risk subset (20 of 391 v5 items). v7's harder composition may surface trace incoherence we haven't tested. **Mitigation**: Phase 4 format compliance ≥98%. If breaks, abort.
+**B — Trace incoherence at full-train scale**: Cursor's 17/17 sample insufficient. **Mitigation**: B1 trace-coherence check in Phase 4 with abort threshold ≤2%.
 
-**C — Time overrun**: pilot reveals slow learning; Phase 3 needs more epochs. **Mitigation**: hard ≥1h buffer check at Phase 5 entry. Abort if breached.
+**C — Time overrun**: pilot reveals slow learning; multiple hidden serials. **Mitigation**: hard ≥1h buffer at Phase 5 entry. v3.1 wall time 5h45m vs 5h v3 — buffer reduced from 5h to 4h, still generous.
 
-**D — vLLM multi-LoRA edge case at 6-slot serving**: Gemini's 6-slot math is theoretical. Could hit unknown serving bug. **Mitigation**: fall back to sequential ckpt eval (Phase 4 takes 90 min instead of 30; still fits budget).
+**D — 6-LoRA serving edge case**: Gemini's math is theoretical. **Mitigation**: A3 pre-flight micro-benchmark gate. Sequential fallback adds ~50 min, still fits.
 
-**E — DeepConf offline post-processing bug**: Gemini's formulas could be subtly wrong (β=1.0, α=1.0, W=512 are educated defaults). **Mitigation**: keep plain SC@8 majority as fallback; DeepConf is a nice-to-have, not core.
+**E — Pilot A/B near-tie + decision tax**: **Mitigation**: A2 deterministic default-to-A rule, no real-time debate.
 
----
+**F — Gold label corruption**: **Mitigation**: A4 HIGH-confidence-only routing. Lower-confidence items don't route.
 
-## 7. Explicit NOT in v7 round 1
-
-- DoRA (rejected, blocker confirmed)
-- vLLM source patching for online DeepConf (3-4h risk per Gemini; offline pivot used instead)
-- WiSE-FT alpha scaling (vLLM core doesn't expose per-request scaling)
-- Confidence-gated routing via logits (no math-transductive practitioner threshold)
-- Weight-merging adapters / TIES / DARE (Pattern B in Opus's framework — interference risk + violates merge lockout)
-- Two full-train adapters by default (only if capacity overflow trigger fires per Opus)
-- Kitchen-sink salvage (d6ea23e quicklook shows weak signal; killed)
-- Spectral geometry weight checks (ChatGPT/Copilot single-source, no practitioner validation)
-- Multi-validation-set Numina-style external benchmarks (we have one 943-item population)
-- Trace regeneration (Part 14.E refuted Part 8)
+**G — DeepConf parameter miscalibration**: **Mitigation**: A1 side-channel posture, plain SC majority is production default.
 
 ---
 
-## 8. Operational notes for execution agents
+## 7. Closure protocol for Cursor's 5 open questions (per G5)
 
-**vLLM launch flags (every inference run)**:
-```
-vllm serve Qwen/Qwen3-4B-Thinking-2507 \
-  --enforce-eager \
-  --enable-lora \
-  --max-loras={pool_size_for_this_phase} \
-  --max-lora-rank=64
-```
-- Phase 4: `--max-loras=6` (6 v7 checkpoints)
-- Phase 5: `--max-loras=1` (winning checkpoint only)
-- Pilot Phase 1-2: `--max-loras=1` per process (separate processes on tnr-0 and tnr-1)
+From `ADAPTER_NOTES_CURSOR.md` "Open questions / unknowns to resolve before proposing v7":
 
-**vLLM version**: 0.10.2 or 0.11.1 (per Gemini).
-
-**Logprobs**: enable on all SC inference runs in Phase 4 and Phase 5 (`logprobs=True, top_logprobs=20`) so offline DeepConf has the data it needs.
-
-**Sampling**: temperature=0.6, top_p=0.95, top_k=20 (Qwen3 official). All SC runs at k=8 unless specified.
+| Cursor question | v3.1 status |
+|---|---|
+| Which item set defines targeted memorization scope? | CLOSED — Phase 0 wrong-residual manifest with A4 gold provenance gate + B4 tier-mix-aware sampling |
+| What held-out protocol best predicts Kaggle improvement? | CLOSED — Phase 4 multi-LoRA paired eval on trained items + tnr-1 cross-check on held-out (B5) |
+| Should deployment use route-by-item or confidence agreement? | CLOSED — per-item route-sim with A4 high-confidence gold gate |
+| How much of prior underperformance is data curation vs decoding stack? | PARKED — addressed indirectly by B2 v5 decomposition; full causal analysis post-deadline |
+| Is teacher-source consistency materially causal? | CLOSED (by design) — B3 locks single Sonnet teacher; heterogeneity studies post-deadline |
 
 ---
 
-## 9. Decisions still required from Rain (defaults sound)
+## 8. Explicit NOT in v7 round 1
 
-1. **Authorize C (this plan)?** Default: YES.
-2. **Pilot composition exact numbers**: 30 items each, 24+6 vs 28+2. Default: as-spec.
-3. **Full train item count**: 180-200. Default: 200 (more is safer if labels are clean).
-4. **Held-out cross-check size on tnr-1**: 10-15 items. Default: 12.
-5. **Capacity overflow trigger threshold**: train-token-acc delta vs prev ckpt < 1pp on all 6 = no plateau. Default: yes.
+Unchanged from v3 (DoRA, vLLM source patching, WiSE-FT, confidence-gated routing via logits, weight-merging adapters, two full-train adapters by default, kitchen-sink, spectral geometry, Numina-style external benchmarks, trace regeneration).
 
-(Operational decisions like vLLM version are locked above.)
+**NEW in v3.1**: DeepConf-as-production-default (demoted to side-channel per A1).
+
+---
+
+## 9. Operational notes for execution agents
+
+Unchanged from v3. vLLM 0.10.2 or 0.11.1, `--enforce-eager`, `--max-loras` = pool size per phase, `logprobs=True top_logprobs=20`, temperature=0.6/top_p=0.95/top_k=20.
+
+**NEW for v3.1**: 
+- Phase 0 outputs include `data/v5_per_item_decomp.csv` (B2) and `data/v7_wrong_residual.csv` with `gold_provenance` column (A4).
+- Phase 4 pre-flight: 5-item soak test before committing all 6 IDs (A3).
+- Phase 4 trace-coherence check on selected ckpt outputs (B1).
+- Phase 5 production answer = plain SC@8 majority (A1).
