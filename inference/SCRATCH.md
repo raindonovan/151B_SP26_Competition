@@ -439,4 +439,4 @@ NoThinking jsonl schema differs: `samples`=list of STRINGS (not dicts), per-samp
 ### Cross-ref sweep: full timestamp name = 0 (exit 0). Bare 'nothinking'/'nothinking_full_943' SKIPPED (appears in data/candidates_nothinking_breakdown.md as analysis prose; too broad; the candidates file is a different artifact). 98-probe + targeted_rescue variants left in hybrid/tnr-B/ (deferred per instruction).
 
 ### Commit hash
-(filled after commit)
+c4d07b6 (NT T1.5 audit + prep_nothinking_for_analyzer.py; rebased onto strategy 2c7089d R20b-T3 GREEN). LFS 2 run jsonls/86MB pushed; analysis.jsonl+samples committed RAW (<10MB, no traces). Pushed 2c7089d..c4d07b6.
