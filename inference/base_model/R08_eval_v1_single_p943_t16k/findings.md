@@ -50,3 +50,34 @@ Top B examples (clean-gold tiers first): id=12 `2c+4p=70, 11` boxes both parts b
 - **Analyzer single-sample path is clean** — the key risk this audit was meant to exercise (R20 was SC-only). All gates a/c/d/f/g + verification triple pass. No single-sample bug; downstream p943 deep audits are unblocked.
 - **extracted_empty=1** (one item with no extractable answer at all) — vs 0 on R20. Single-sample + truncation occasionally yields a response with no box and no fallback-able number.
 - Truncation (119) dwarfs every other failure mode at 16K — the single biggest "free" lever for this run would be tokens, not prompt or SC.
+
+---
+
+## ChatGPT T3 deep audit verdict — 2026-05-30 ~21:15 PT
+
+**VERDICT: GREEN. Confidence HIGH for matrix use.**
+
+Numerical consistency: all headline numbers match analysis.csv exactly. No arithmetic drift.
+
+B-item classification spot-check (top 10): 8/10 confirmed format-recoverable or gold-side (12, 26, 33, 9, 5, 25, 67, 61). **2/10 confirmed as true math misses: id=41 and id=68.** These two are real Bucket B candidates for adapter targeting.
+
+### Gold-quality flag (NEW — cross-cutting, affects adapter design)
+
+**id=9** is a confirmed gold-side artifact, NOT a Qwen miss:
+- Qwen output: `\frac{L-8x}{6F}` (single fraction expression)
+- Gold sheet (`MASTER_ANSWERS.csv`): `L-8x, 6F` (two-slot split)
+- Both are mathematically equivalent — the fraction's numerator and denominator are the two slots
+- The gold sheet uses an unusual 2-slot split that Qwen's natural single-fraction form doesn't match
+- **Structural normalizer cannot fix this** — it would need item-specific knowledge that the answer is expected as numerator+denominator separately, which isn't available for the held-out test set
+- **CRITICAL for adapter design**: do NOT use id=9 as a Bucket-B exemplar. Training on `id=9 → L-8x, 6F` would teach Qwen to artificially split fractions, hurting other items
+
+### Adapter-exemplar exclusion list (seeded; will grow as T3/T4 audits surface more)
+- id=9 (gold split-form issue)
+
+### True-Bucket-B confirmed candidates from R08 (ChatGPT-validated, top 10 subset)
+- id=41 (response rambles, never converges)
+- id=68 (8-slot formatting issue with `\ ` spacing — vscode flagged as recoverable but ChatGPT confirmed true miss; format issue is in the gold itself, not fixable)
+
+Truncation spot-check (items 41, 120): both confirmed real truncation events — count of 119 reflects real cap hits, not analyzer inflation.
+
+Cross-ref sweep 0-count for R08: confirmed correct (first p943 deep audit, no prior references in the 25-doc list use the long jsonl name).
