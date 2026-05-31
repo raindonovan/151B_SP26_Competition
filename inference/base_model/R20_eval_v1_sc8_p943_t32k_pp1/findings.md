@@ -68,3 +68,41 @@ Sampling: T=0.6, top_p=0.95, top_k=20, presence_penalty=1.0, repetition_penalty=
 - **The 0.745 Pick A is built on a baseline whose own scored accuracy is 0.8554** on independent gold — the overlay stack (anchor/Opus) then adds the teacher-corroborated items on top. R20 is a strong, clean floor.
 - **DeepConf got more attractive at 32K** (3 vs 1 high-conf-lost items) — worth noting for the morning DeepConf-vs-SC@32 decision, though both pools are small.
 - Final adapter seed is just ~11 items — the "consistently wrong on math across every lever" set is tiny; the bulk of apparent failures are format (structural-normalizer) or token (high-budget re-run), not model capability.
+
+---
+
+## ChatGPT T3 deep audit verdict — 2026-05-30 ~22:35 PT
+
+**VERDICT: YELLOW (1 fix). Confidence HIGH.**
+
+All numerical claims verified exactly: bucket counts, transition counts (417/1/5/2/6/51), truncation rescue (72-of-89), id=117 prediction, 4-way A∩∩∩∩=371 / B∩∩∩∩=48.
+
+### Specific transition items (newly traceable)
+- The lone R09→R20 A→B regression: **item 435**
+- The 6 A_lucky→B items in R09→R20: **[9, 12, 257, 495, 924, 929]** (these are vote-volatile under token increase — worth a future investigation)
+
+### Adapter seed correction (LOAD-BEARING)
+
+**The reported 11-item seed is overstated. All 3 heuristic newcomers (167, 345, 591) are FORMAT-RECOVERABLE, not true misses:**
+
+- **id=167**: Qwen outputs (B, A, B, B) across the 4 runs. ChatGPT verified semantically correct against the original option mapping in `private.jsonl`. This is a **gold-quality / option-mapping issue** similar to id=9. Treatment: `per_item_overrides.csv` entry.
+- **id=345**: Qwen gives `-0.8333, 0.8333` (decimal approx); gold expects exact `-5/6, 5/6`. **Precision/format pattern identical to id=89** — class-based normalizer tier 2 ("detect exact-form expectation from question text").
+- **id=591**: undercount / partial multi-slot extraction. Pattern identical to id=12 — universal multi-slot normalizer (tier 1).
+
+### FINAL ADAPTER TARGET SEED (locked, T3-corrected)
+
+**8 items: `[41, 61, 103, 104, 127, 231, 264, 282]`**
+
+- T3-confirmed genuine misses: 41 (rambling, R08 T3), 282 (extra-root error, R10 T3), 127 (NOT rescued at 32K, R20 T3 implicit confirmation)
+- Inherited from R8∩R9∩R10 seed (T3-spot-checked only at cohort level): 61, 103, 104, 231, 264 — **recommend per-item T3 spot-check before training** if time permits
+
+### NEW failure-mode finding: duplicate-option overcounts
+
+**id=302 and id=839**: Qwen outputs `H,H` and `G,G` respectively for MCQ items. 7/8 and 6/8 samples correct individually but vote loses to the duplicated form. **Not simple value-equality/sympy fixable.** This is a specific normalizer rule: "collapse duplicate adjacent MCQ options." Adds to tier-1 universal normalizer requirements alongside multi-slot collapse and MCQ-first-box.
+
+### Truncation hard-floor (post-32K) confirmation
+
+The 17 still-truncated items at 32K — ChatGPT spot-checked id=93 and id=652 — confirmed they are **genuinely >32K-hungry**, long incomplete reasoning blobs even at 32K. Not analyzer artifacts. High-budget (81920) probe is the right morning candidate for these.
+
+### Truncated set (locked, T3-validated)
+[93, 112, 161, 204, 229, 275, 308, 312, 376, 383, 445, 498, 586, 652, 724, 799, 809]
