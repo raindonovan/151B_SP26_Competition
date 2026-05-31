@@ -188,38 +188,82 @@ Differences from v4/v5 mistakes:
 
 ## PART 3 — Open questions for the 4-LLM research dive (Phase C)
 
-### 3.A) The memo-test tautology — DEEPER EXPLANATION
+### 3.A) Deployment architecture drives validation — corrected framing
 
-**The v5 trap, mechanically explained:**
+**PRIOR DRAFT WAS WRONG. RAIN CORRECTED (2026-05-31)**:
 
-The memo test asked: "does the adapter produce correct answers on 20 items it was trained on?" After 16 epochs, the model has seen each of those 20 items literally 16 times. Loss drove to ~0.002 (near-perfect prediction of training tokens). The model's PARAMETERS now encode those answers — that's mechanically what training did.
+An earlier version of this section said "what v5 should have measured: on the 552 items NOT in training, does adapter beat base?" That framing implicitly assumed single-path deployment (adapter replaces base across the full 943). Under DUAL-PATH deployment — adapter routes ONLY for items Qwen base gets wrong, base handles the rest — that statement is irrelevant. Adapter never sees the 552, so we don't care if it beats base on them.
 
-Asking "did the model memorize?" is asking "did training do what training mechanically does?" The answer is always yes for ANY adequately-trained model. A randomly-initialized network trained on those 20 items for enough epochs would also score 20/20 on them. **The test discriminates nothing.**
+**What the relevant validation actually is under dual-path**:
 
-What it SHOULD have measured: the competition is 943 items. v5 trained on 391. **552 items are NOT in training.** The relevant question is: among those 552, does adapter beat base? Memorization on the trained 391 says nothing about that.
+The only question: "On items adapter was trained on, does it produce the correct answer AT INFERENCE TIME (with real sampling, not teacher-forced training conditions)?"
 
-**Why we fell into the trap (4 reasons that interact):**
+If yes → dual-path deployment locks in adapter-right on those items. Base handles everything else. Net = strict improvement over base.
 
-1. **Transductive task confusion**: competition explicitly allows training on test items (Piazza-confirmed). Makes "held-out validation" FEEL paradoxical — why hold out when we're allowed to train on everything?
-2. **Memorization-as-goal philosophy**: for "memorization SFT", training-set accuracy seems like the right metric. It isn't — even memorization fails if generalization gradient is poisoned.
-3. **No predefined success criterion**: we didn't write down "viability means X measurable Y" BEFORE running the test. Without that, any number on any test looks like signal.
-4. **Time pressure**: quick test, looks good, ship it. Skipped slower validation.
+**The actual v5 failures (corrected)**:
 
-**The deeper rule that emerges (LOCKED for v7):**
+1. **Training data composition was wrong target**: v5 trained on 87% T1-easy items = mostly items Qwen base already gets right. Under dual-path, these items route to base anyway → adapter memorizing them gains nothing. Training set should have been Qwen-WRONG items only.
 
-A validation test is meaningful only if it satisfies ALL of:
-1. **Independence**: test items NOT in training set
-2. **Representativeness**: test items from same distribution we care about (the 943)
-3. **Comparison**: against a meaningful baseline (base Qwen on same items)
-4. **Right metric**: measures what we actually care about (correctness, not just format)
+2. **Deployment model didn't match training intent**: v5 was deployed single-path (adapter replaces base on full 943). On items NOT in training, adapter REGRESSED vs base. Net = break-even because gains on trained items were cancelled by losses on untrained items.
 
-Memo test failed (1), (3), and arguably (4). Future tests must pass all 4.
+3. **Memo test would have been meaningful under dual-path** (if v5 had been deployed dual-path): asking "does adapter produce correct answer at inference for items we trained it on?" IS the deployment question if we route only those items to adapter. NOT a tautology under that architecture.
 
-**Subtle reconciliation with transductive task philosophy:**
+**The genuine concern with memo tests** (under dual-path, this is what we actually need to be careful about):
 
-It IS valid to train on test items + measure adapter on those same test items via Kaggle score. The Kaggle score IS the held-out validation. The TRAP is when we use a LOCAL memo test as a proxy for that Kaggle score, expecting it to predict success. Local memo test = "did training run?" Kaggle score = "does adapter help?". They're different questions.
+Training time = teacher-forced loss computation. Inference time = autoregressive sampling with real decoding params (temperature, top-p, etc). Memorization can fail to transfer. The memo test must mirror deployment conditions:
+- Generate with sampling (temperature, top-p), not greedy/teacher-forced
+- Multiple SC samples per item to check consistency
+- Verify the model's generation patterns are stable enough that the memorized answer reliably emerges
+- Verify generation doesn't catastrophically fail (no-box, ramble, missing `</think>`)
 
-For v7's pre-Kaggle validation: must hold out items LOCALLY that adapter never sees, scored against teacher gold, to validate BEFORE burning Kaggle slot.
+So memo test design under dual-path = "training items + inference conditions + multi-sample consistency check + format compliance check."
+
+**Revised validation criteria under dual-path** (replacing my earlier 4-criterion rule, which was written for single-path):
+
+1. **Same items as deployment**: test items = adapter's training items (because that's what adapter will see at inference)
+2. **Same conditions as deployment**: inference time with real sampling, not teacher-forced training conditions
+3. **Right comparison**: did "Qwen-wrong on this item" convert to "adapter-right on this item"? (Not "adapter beat base" in the abstract)
+4. **Right metric**: correctness per verified gold (Wolfram_HIGH / unanimous_teachers), not just format presence
+
+The previous "test items NOT in training" rule (which I wrote earlier) was correct ONLY for single-path full-replacement. For dual-path, it's the wrong rule.
+
+### 3.A.1) Architecture options to consider (Rain's "keep minds open" directive)
+
+PRIMARY (the v7 thesis from sft_v5 findings):
+- **Dual-path with selective routing**: train adapter on Qwen-wrong items; at inference, route only those items to adapter. Base handles everything else. Clean attribution, low risk.
+
+ALTERNATIVES to evaluate in Phase C research dive:
+- **Single-path full-replacement (the v5 deployment that failed)**: might work if training data is dramatically better (Qwen-wrong items only, broader coverage). v5's failure doesn't mean this is dead; v5's specific training data was wrong.
+- **Logit interpolation (WiSE-FT-style)**: at every decode step, blend base + adapter logits with some weight δ. Lets us "dial in" adapter influence. Per memory: "scale lora_alpha by delta (delta=0.5 prior, no retraining)". Untested for math.
+- **Confidence-gated routing**: use adapter answer ONLY when adapter's top-logit confidence exceeds threshold; else fall back to base. Self-policing.
+- **Multi-adapter ensemble**: multiple narrow specialists (one per category/tier), route per item characteristics.
+- **In-context learning instead of SFT**: bake verified answers into prompts via retrieval; no training needed. Faster iteration.
+- **GenSelect at inference**: have base + adapter both generate, use a third call (also Qwen, same model) to judge which is better. Memory #18 says GenSelect is allowed (same-model multi-pass).
+
+The PRIMARY (dual-path) is the path we lean toward because it's cleanest and aligns most closely with v5 postmortem learning. But Phase C research must surface what OTHER teams actually did.
+
+### 3.A.2) The deeper validation principle (restated under dual-path)
+
+A validation test is meaningful only if it tests THE DEPLOYMENT QUESTION. For dual-path:
+- The deployment question is "for items in adapter's training set, does adapter at INFERENCE TIME produce the verified correct answer reliably?"
+- Inference time = autoregressive sampling with real decoding params (not teacher-forced)
+- Reliably = multiple samples agree, not just one lucky generation
+- Verified correct answer = the labeled gold (Wolfram_HIGH / unanimous_teachers), not the adapter's own training signal
+
+For single-path full-replacement: would also need generalization to untrained items (the original framing). This is why dual-path is conceptually simpler.
+
+For logit interpolation / confidence-gated / GenSelect: validation needs to test the BLEND, not the adapter alone. More complex.
+
+### 3.A.3) Why this matters for v7 design
+
+The deployment architecture choice changes EVERYTHING downstream:
+- Training data selection (Qwen-wrong only for dual-path; broader for full-replacement)
+- Training duration (more epochs = better memorization for dual-path; risk of overfit for full-replacement)
+- Validation strategy (memo-at-inference for dual-path; held-out generalization for full-replacement)
+- Integration into Pick B (routing logic for dual-path; full CSV replacement for full-replacement)
+- run_inference() code complexity (dual-path needs routing logic in code; full-replacement is simpler)
+
+Phase D MUST decide architecture FIRST, then design v7 accordingly.
 
 ### 3.B) Cheap validation methods to brainstorm + decide
 
