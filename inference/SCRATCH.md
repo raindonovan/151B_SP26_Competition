@@ -361,4 +361,4 @@ hard_independent_CLEAN n=16 acc=0.8125 (HIGHEST; wolfram 6/7 search 7/9; trend .
 ### Housekeeping note (NOT acted on, out of scope): inference/scripts/_pressure_test_R14/ (the lock-session pressure-test on this same run, committed at 761f903) is now redundant with R20's canonical analysis/. Candidate for cleanup post-deadline — flagging, not removing.
 
 ### Commit hash
-(filled after commit)
+b3901c4 (R20 deep audit; rebased onto strategy 43e14bd/2f50042 R10-T3 followups — which PREDICTED id=117 rescued at R20 32K; my R20 audit CONFIRMS it ✓). LFS run jsonl 150MB already remote + analysis.jsonl 30MB + samples 20MB pushed. Pushed 43e14bd..b3901c4.
