@@ -51,10 +51,11 @@ All candidates Qwen-only → Pick-B eligible under rule #11.
 |---|---|---|---|
 | **DeepConf SC@16 + `logprobs=20`** on contested slice | ≥20 A_lucky_sample items with n_samples_math_correct ≥ 5/8 | ~60 min A100 | ~30 min vLLM source mod (R1 from strategy/INFERENCE_TECHNIQUES.md) |
 | **Plain SC@32** on contested slice | ≥30 A_lucky_sample items with n_samples_math_correct 1–4/8 | ~45 min A100 | none (use existing run_vllm_sc.py) |
-| **NoThinking-mode SC@8 on 943** (prefill, per memory #20 — NOT `enable_thinking=False`) | ≥30 all-p943-wrong items + want orthogonal diversity for consensus | ~60 min A100 | minor (prefill addition) |
-| **High-budget re-run on truncated** | ≥10 truncated items in cohort | ~30 min A100 | none |
+| **NoThinking 943 audit + consensus join** — full 943 NoThinking-SC results already exist on disk (`inference/results/hybrid/tnr-B/nothinking_full_943_20260527T000129Z.jsonl`, May 27 untouched). T1-shallow audit + cross-run join vs R20. **ZERO GPU cost** for the audit; the value is consensus with R20. Threshold: ≥10 unique-correct items vs R20 → Pick B candidate (NoThinking ∪ R20 consensus). | ≥10 unique-correct vs R20 | ~0 (audit) / +60 min A100 if fresh re-run wanted | minor (T1 catalog + cross-join script) |
+| **GenSelect re-test (fix candidate-window bug)** — POC failed due to candidate inputs truncated to ~500 chars (per inference/runs/selection/genselect_poc/findings.md). The "Qwen bad at self-verification" conclusion was unvalidated — the bug masked the test. Fix candidate window, smoke-test 5 items per discipline rule, then 943 if smoke passes. | smoke shows Qwen-as-judge produces sensible outputs on full-length candidates | ~60 min A100 | ~30 min code (increase candidate-window budget + smoke-test wrapper) |
+| **High-budget re-run on truncated** (target: 17 R20-still-truncated items at 81920/65536 tokens) | already-known 17 items: [93,112,161,204,229,275,308,312,376,383,445,498,586,652,724,799,809] | ~30 min A100 | none |
 | **Multi-temp SC sweep** on contested (Sun et al. Qwen3-4B +7.3pp) | If single-temp SC shows consistent same-failures across all p943 runs | ~60 min A100 | minor (multi-temp wrapper) |
-| **Adapter eval (SFT v5 ckpt-1176)** | Default-include for cross-run diversity even if standalone is at break-even | ~60 min A100 | none |
+| **Adapter eval (SFT v5 ckpt-1176)** | Default-include for cross-run diversity even if standalone is at break-even; per memory entry SFT v5 trained QLoRA ckpt-1176 (ep12) 505MB LFS, never tested vs R20 baseline | ~60 min A100 | none |
 
 ## Decision algorithm at 05:00 Sun
 
