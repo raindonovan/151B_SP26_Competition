@@ -248,4 +248,4 @@ run08v2_v1_private943_tok16384 (the run jsonl name) isn't referenced in the doc 
 - unanimous_teachers 0.945 < R20's 0.988 — single-sample at half budget agrees with consensus less; still healthy (≥0.90).
 
 ### Commit hash
-(filled after commit)
+fe753b3 (R08 deep audit + rename_run.sh pipefail fix; LFS 2 objects pushed: run jsonl 17MB + analysis.jsonl 33MB).
