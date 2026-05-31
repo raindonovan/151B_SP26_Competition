@@ -188,6 +188,194 @@ Differences from v4/v5 mistakes:
 
 ## PART 3 — Open questions for the 4-LLM research dive (Phase C)
 
+### 3.A) The memo-test tautology — DEEPER EXPLANATION
+
+**The v5 trap, mechanically explained:**
+
+The memo test asked: "does the adapter produce correct answers on 20 items it was trained on?" After 16 epochs, the model has seen each of those 20 items literally 16 times. Loss drove to ~0.002 (near-perfect prediction of training tokens). The model's PARAMETERS now encode those answers — that's mechanically what training did.
+
+Asking "did the model memorize?" is asking "did training do what training mechanically does?" The answer is always yes for ANY adequately-trained model. A randomly-initialized network trained on those 20 items for enough epochs would also score 20/20 on them. **The test discriminates nothing.**
+
+What it SHOULD have measured: the competition is 943 items. v5 trained on 391. **552 items are NOT in training.** The relevant question is: among those 552, does adapter beat base? Memorization on the trained 391 says nothing about that.
+
+**Why we fell into the trap (4 reasons that interact):**
+
+1. **Transductive task confusion**: competition explicitly allows training on test items (Piazza-confirmed). Makes "held-out validation" FEEL paradoxical — why hold out when we're allowed to train on everything?
+2. **Memorization-as-goal philosophy**: for "memorization SFT", training-set accuracy seems like the right metric. It isn't — even memorization fails if generalization gradient is poisoned.
+3. **No predefined success criterion**: we didn't write down "viability means X measurable Y" BEFORE running the test. Without that, any number on any test looks like signal.
+4. **Time pressure**: quick test, looks good, ship it. Skipped slower validation.
+
+**The deeper rule that emerges (LOCKED for v7):**
+
+A validation test is meaningful only if it satisfies ALL of:
+1. **Independence**: test items NOT in training set
+2. **Representativeness**: test items from same distribution we care about (the 943)
+3. **Comparison**: against a meaningful baseline (base Qwen on same items)
+4. **Right metric**: measures what we actually care about (correctness, not just format)
+
+Memo test failed (1), (3), and arguably (4). Future tests must pass all 4.
+
+**Subtle reconciliation with transductive task philosophy:**
+
+It IS valid to train on test items + measure adapter on those same test items via Kaggle score. The Kaggle score IS the held-out validation. The TRAP is when we use a LOCAL memo test as a proxy for that Kaggle score, expecting it to predict success. Local memo test = "did training run?" Kaggle score = "does adapter help?". They're different questions.
+
+For v7's pre-Kaggle validation: must hold out items LOCALLY that adapter never sees, scored against teacher gold, to validate BEFORE burning Kaggle slot.
+
+### 3.B) Cheap validation methods to brainstorm + decide
+
+**The constraint**: must validate adapter quality WITHOUT burning Kaggle slot, in <30 min, on commodity Thunder hardware. Brainstorm pool — pick best 2-3 for v7:
+
+1. **Held-out subset accuracy** [primary candidate]
+   - 30-50 items from wrong-Qwen pool, NOT in training
+   - Run base + adapter, compare accuracy
+   - Cost: ~5-10 min on A100
+   - Quality: directly measures what we care about (correctness on unseen items from same distribution)
+
+2. **Format compliance check** [primary candidate — catches v1-style failures]
+   - Sample 10-20 outputs from adapter
+   - Check `\boxed{}` presence, missing `</think>`, ramble patterns, missing-box rate
+   - Cost: ~2-5 min
+   - Quality: catches catastrophic failures fast; doesn't measure correctness
+
+3. **Single-token-loss check** [quick, indirect]
+   - Feed test item, measure cross-entropy loss on correct-answer position
+   - Compare adapter loss vs base loss on same items
+   - Adapter should have lower loss on training items (memorization) AND on similar held-out items (generalization)
+   - Cost: ~1-2 min per item
+   - Quality: indirect signal; reveals "model is more confident" but not "model is more correct"
+
+4. **Logit comparison** [diagnostic]
+   - For test item, look at top-5 logits from base vs adapter
+   - Did adapter shift probability mass toward correct answer?
+   - Does it still consider other answers plausible (good) or did it collapse to single answer (overfitting)?
+   - Cost: ~1 min per item
+   - Quality: helps interpret WHY adapter is doing what it does
+
+5. **Anchor item regression test** [primary candidate — catastrophic-forgetting catch]
+   - 5-10 items where base ALREADY gets right (R1/R2 items)
+   - Adapter must ALSO get right on these
+   - Cost: ~2-3 min
+   - Quality: catches catastrophic forgetting (adapter learning hard items but breaking easy ones)
+
+6. **Item-similarity test** [generalization probe]
+   - Pick test items SIMILAR to training items (same category, same difficulty)
+   - Adapter should beat base on these if it learned generalizable patterns
+   - Cost: ~5-10 min
+   - Quality: distinguishes "memorized specific items" from "learned category-level patterns"
+
+7. **Held-out tier check** [stratified probe]
+   - Train on T2/T3 items, hold out 10 from each tier
+   - Measure adapter accuracy on held-out per-tier
+   - Cost: ~5 min
+   - Quality: shows whether adapter learns tier-level structure
+
+8. **Catastrophic forgetting check** [variant of #5]
+   - Adapter performance on items base Qwen excelled at
+   - If much worse → forgetting is real
+   - Cost: ~5 min
+   - Quality: focuses specifically on the failure mode where adapter trades base ability for new ability
+
+9. **NoThinking baseline** [interesting diagnostic]
+   - Run adapter without thinking-mode prefill
+   - If accuracy similar to with-thinking → model truly memorized (skip reasoning)
+   - If accuracy drops a lot → model is doing some reasoning
+   - Cost: ~5 min
+   - Quality: helps characterize what adapter learned
+
+10. **Confidence calibration** [advanced]
+    - For items adapter is "confident" (high top-logit), is it more often right than base?
+    - If confidence is meaningful → trust selective routing
+    - If confidence is meaningless → routing is risky
+    - Cost: ~10 min
+    - Quality: validates routing strategy specifically
+
+**Recommended cheap-test bundle for v7 (to be confirmed in Phase D)**:
+- Pre-training: format pre-check on dataset + tokenizer round-trip + token length profile
+- Post-training mandatory: (1) Held-out subset accuracy + (2) Anchor regression test + (3) Format compliance check
+- Optional diagnostic: logit comparison on a few hand-picked items if results are surprising
+
+### 3.C) Effective smoke tests by phase
+
+**Pre-training smoke (before committing to full run, ~10 min total)**:
+
+1. **Dataset preflight** (~1 min):
+   - All items parseable as JSON
+   - 100% have `</think>` and `\boxed{}`
+   - Token-length distribution: max ≤ max_seq_length (no truncation)
+   - No duplicate items
+   - Labels present and non-empty
+
+2. **Dry run** (~3 min): 
+   - Train for 2 steps with full config
+   - Verify loss is finite (not NaN)
+   - Loss in plausible range (0.5-5.0 nats)
+   - Gradient norms not exploding
+   - Memory fits in GPU
+
+3. **Tokenizer round-trip** (~1 min):
+   - Encode then decode test items
+   - Verify no info loss
+   - Verify chat template correctly applied
+   - Verify special tokens (`<|im_start|>`, `</think>`, etc.) present
+
+4. **Forward-pass smoke** (~2 min):
+   - Single forward pass on 3 items
+   - Logits shape correct
+   - No NaN/inf in logits
+   - Top-5 logits reasonable (not all uniform)
+
+5. **Pre-flight gate check** (memory #19, 1 min):
+   - Disk free ≥8GB
+   - GPU memory free as expected
+   - Output paths writable
+   - Model/adapter paths valid
+
+**Mid-training smoke (during training, every N steps)**:
+
+1. **Loss curve monitor**:
+   - Smooth descent (no spikes after warmup)
+   - Grad norms stable (0.02-0.5 range typical)
+   - Mean token accuracy rising
+   - Trigger pause if loss diverges or grad norms explode
+
+2. **Optional periodic eval on held-out** (every 1-2 epochs):
+   - Run adapter on 10-item held-out set
+   - Track accuracy over epochs
+   - Identify epoch where accuracy peaks (early stopping signal)
+
+**Post-training smoke (before integration, ~15 min)**:
+
+1. **Format compliance** (~3 min):
+   - 10 items, check no-box rate, missing-think rate, ramble patterns
+   - Threshold: <10% no-box rate (per memory #19 + v3 gate)
+
+2. **Anchor regression** (~3 min):
+   - 5 R1/R2 items base gets right
+   - Adapter must also get right
+   - Threshold: 100% pass (zero regression on base-easy items)
+
+3. **Held-out subset accuracy** (~10 min):
+   - 30-50 items from wrong-Qwen pool, NOT in training
+   - Compute accuracy: adapter vs base
+   - Threshold: adapter ≥ base + epsilon (else don't integrate)
+
+4. **rp=1.1 pathology monitor** (per sft_v5 carry-forward):
+   - If missing_boxed > 10% on held-out → fallback eval with rp=1.1
+   - Decision rule per sft_v5 findings (≥50% rescue → SFT pathology)
+
+**Integration smoke (before adding to Pick B, ~5 min)**:
+
+1. **Per-item check on top-20 wrong-Qwen items**:
+   - Adapter answers each item
+   - Compare to Wolfram_HIGH / unanimous_teachers gold
+   - Manual eye-check on top-5
+
+2. **No-regression on Pick B baseline**:
+   - Run Pick B candidate WITH and WITHOUT adapter overlay
+   - On independent-gold subset: must not regress
+
+### 3.D) Existing 7 research questions (unchanged)
+
 1. **Validation methodology for transductive SFT on math competitions**:
    - When training items = test items (intentional), how do top teams validate adapter quality?
    - Held-out subset strategies that don't waste training data?
