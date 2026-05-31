@@ -17,7 +17,8 @@
 |---|---|---|
 | **T1 — Shallow batch catalog** | Dev/smoke/ablation runs (R00–R07, R10b, R11–R19) | Multiple runs per session (4–6 in a batch) |
 | **T2 — Deep audit (p943)** | Pick-B-relevant runs (R08, R09, R10, R20, R20b) | ONE run per session, full discipline |
-| **T3 — ChatGPT per-run audit** | After every T2 deep audit only | One per deep run, ≤10 min |
+| **T3 — ChatGPT DEEP per-run audit** | After every T2 deep audit (mandatory, one per p943 run) | One per deep run, 15–20 min |
+| **T4 — ChatGPT FINAL cross-run sanity** | Once after CROSS_RUN_MATRIX.csv is built (~02:00 Sun) | Once total, 20–25 min |
 
 ---
 
@@ -180,53 +181,207 @@ DO NOT in this session:
 ```
 TO: CHATGPT_AUDIT
 FROM: CLAUDE_STRATEGY
-SUBJECT: Per-run audit on R{NN} {OLD_NAME} findings — p943 deep cohort
+SUBJECT: DEEP per-run audit on R{NN} {OLD_NAME} findings + analyzer
+         artifacts — p943 deep cohort
 
 WALL TIME:
   - Now: {TIME_PT}
   - Hard deadline: Sun May 31 23:59 PT
-  - Audit budget for YOU: 5-10 min. Light per-run pass. Analyzer was
-    full-audited at commit {V3_FINAL_HASH}; this is per-run sanity, not
-    analyzer methodology review.
-  - Output cap: 200 words.
+  - Audit budget for YOU: 15-20 min. This is a DEEP per-run pass.
+    Analyzer code is locked at commit 761f903 (or whatever the v3-
+    final-final hash is — verify in repo); you're auditing the
+    FINDINGS PROSE plus the ANALYSIS ARTIFACTS for this specific run.
+  - Output cap: 400 words.
 
 CONTEXT
-R{NN} is one of the Pick-B-relevant p943 cohort (R08, R09, R10, R20,
-R20b). Analyzer v3-final is locked. You're checking the findings prose
-against the analyzer artifacts for THIS specific run only.
+R{NN} is one of the 5 p943 deep-cohort runs (R08, R09, R10, R20, R20b).
+These 5 are the ONLY runs that feed CROSS_RUN_MATRIX, which decides:
+Pick B candidate selection, adapter target set (true Bucket B),
+structural-normalizer probe list (format-recoverable items), and
+morning-run pickups. Every deep run gets a deep audit because a single
+miscategorized B item could mean a wrong adapter target or a missed
+format probe.
 
 ARTIFACTS
 Repo: beepbeeepimajeep/151B_SP26_Competition
 Commit: {COMMIT_HASH}
 
-Read:
+Read fully:
   inference/base_model/R{NN}_{SLUG}/findings.md
+  inference/base_model/R{NN}_{SLUG}/README.md
   inference/base_model/R{NN}_{SLUG}/analysis/analysis.csv
-  inference/base_model/R{NN}_{SLUG}/analysis/analysis_samples.jsonl (skim)
-  inference/base_model/R{NN}_{SLUG}/analysis/analysis.jsonl (spot-check)
+  inference/base_model/R{NN}_{SLUG}/analysis/analysis.jsonl  (spot-check)
+  inference/base_model/R{NN}_{SLUG}/analysis/analysis_samples.jsonl  (SC only)
 
-CHECK ONLY:
-1. Do findings.md headline numbers match analysis.csv (bucket counts,
-   accuracies)?
-2. Do cited (item_id, sample_index) pairs in the A_lucky_sample list
-   exist in analysis_samples.jsonl with sample_correct=True?
-3. Do the B items flagged "format-recoverable" actually show math-right
-   in the response trace from analysis.jsonl?
-4. ONE THING the findings missed about this run that cross-run analysis
-   will need? Or "none".
+For cross-run context (skip for R08, first in cohort):
+  Prior R-folders' analysis.csv to compare bucket patterns
 
-OUTPUT (exactly, ≤200 words):
-VERDICT: GREEN / YELLOW / RED
-DISCREPANCIES (findings vs artifacts): [list or "none"]
-A_lucky_sample VALIDITY: [confirmed / N invalid]
-B-ITEM CLASSIFICATION: [accurate / N misclassified]
-ONE MISSING THING: [single item or "none"]
+AUDIT DIMENSIONS:
+
+1. NUMERICAL CONSISTENCY (findings.md ↔ analysis.csv):
+   - Bucket counts (A, A_lucky_sample, B, unknown) match exactly
+   - hard_independent_CLEAN n + acc match
+   - unanimous_teachers n + acc match
+   - All counts in findings derivable from the artifacts
+
+2. A_lucky_sample VALIDITY (SC runs only — skip for R08 single-sample):
+   - Each cited (item_id, sample_index) pair exists in
+     analysis_samples.jsonl with sample_correct=True
+   - Sort order matches findings' claimed sort (n_samples_math_correct
+     high → low)
+   - Spot-check 3 traces in analysis.jsonl: confirm math reasoning
+     actually leads to gold answer
+
+3. B-ITEM CLASSIFICATION (LOAD-BEARING):
+   - For each B item findings flags format-recoverable: read response
+     trace; confirm the math IS right in the body
+   - For each B item findings flags true_B: confirm Qwen genuinely
+     didn't solve
+   - Misclassifications corrupt adapter target set AND normalizer
+     probe list. This is the highest-value check.
+
+4. TRUNCATED ITEMS:
+   - Count matches findings
+   - Spot-check 2: did math get cut off, or did model just stop
+     reasoning? Different failure modes; both worth flagging.
+
+5. CROSS-RUN PATTERNS (R09+ only):
+   - Items this run gets right that prior cohort runs got wrong: do
+     they look genuinely flippable (longer tokens / different prompt
+     / SC helped), or noise?
+   - Items this run gets wrong that prior runs got right: regression
+     pattern — what's the common feature?
+
+6. UNEXPECTED FINDINGS:
+   - Anything in the data findings.md MISSED?
+   - Specifically: items at unusual buckets (e.g., A_lucky_sample
+     with n=8/8 correct but voted wrong — implies analyzer voting
+     bug OR shape filter issue)
+   - Output-format failure modes not yet catalogued
+
+OUTPUT FORMAT (exactly this, ≤400 words):
+
+VERDICT: GREEN (matrix-ready) / YELLOW (N fixes) / RED (re-do)
+NUMERICAL CONSISTENCY: [pass / list discrepancies]
+A_lucky_sample VALIDITY: [confirmed / N invalid; specifics]
+B-ITEM CLASSIFICATION ACCURACY: [N/M correct / misses listed]
+TRUNCATION SPOT-CHECK: [pattern observed]
+CROSS-RUN PATTERN (n/a for R08): [insight or none]
+UNEXPECTED FINDING: [single most important; or "none"]
+CONFIDENCE this run is matrix-ready: low / med / high
 
 DO NOT:
   - Re-litigate analyzer methodology (locked)
   - Suggest schema changes
-  - Comment on chronology
+  - Comment on chronology or other runs' R-numbers
   - Style review
+```
+
+---
+
+## T4 — ChatGPT FINAL cross-run matrix sanity audit (once, after all 5 deep audits)
+
+Fire ONCE, after CROSS_RUN_MATRIX.csv is built (~02:00 Sun expected).
+This is the LAST audit before we use the matrix to decide Pick B
+candidates, adapter targets, structural-normalizer probes, and
+morning-run pickups. Mistakes here propagate to all four downstream
+workstreams.
+
+```
+TO: CHATGPT_AUDIT
+FROM: CLAUDE_STRATEGY
+SUBJECT: FINAL SANITY — CROSS_RUN_MATRIX.csv + 5-run p943 cohort
+         synthesis (last audit before downstream decisions)
+
+WALL TIME:
+  - Now: {TIME_PT} (~02:00 Sun expected)
+  - Hard deadline: Sun May 31 23:59 PT (~21 hr from this audit)
+  - Audit budget for YOU: 20-25 min.
+  - Output cap: 500 words.
+
+CONTEXT
+You've audited all 5 p943 runs (R08, R09, R10, R20, R20b) at deep T3
+level — each individually cleared. Now their bucket columns are
+stitched into CROSS_RUN_MATRIX.csv (943 rows × 5 runs). The matrix
+feeds:
+  - Pick B candidate selection (cross-run consensus on math_correct)
+  - Adapter target set (items wrong across ALL p943 runs = true B)
+  - Structural-normalizer probe list (format-recoverable B items)
+  - Morning-run candidates (per strategy/MORNING_RUNS_WATCHLIST.md
+    thresholds)
+
+ARTIFACTS
+Repo: beepbeeepimajeep/151B_SP26_Competition
+Commit: {COMMIT_HASH}
+
+Read fully:
+  inference/runs/CROSS_RUN_MATRIX.csv
+  inference/base_model/R08_*/findings.md (and R09, R10, R20, R20b)
+  strategy/MORNING_RUNS_WATCHLIST.md
+  Any cross-run synthesis doc claude_strategy committed
+
+AUDIT DIMENSIONS:
+
+1. MATRIX INTERNAL CONSISTENCY:
+   - Every row has 5 bucket entries (one per run)
+   - item_id alignment correct (no off-by-one)
+   - Bucket label set clean ({A, A_lucky_sample, B, unknown})
+   - No NA / empty cells
+
+2. ADAPTER TARGET SET (B-or-A_lucky in ALL 5 runs):
+   - Count seems sane (Rain estimated 25-50 true B items)
+   - Spot-check 3: do they look genuinely hard, or
+     format-recoverable that all 5 runs failed identically?
+
+3. PICK B CANDIDATE (consensus on math_correct):
+   - Items A in ≥3 of 5 runs = trustworthy consensus A
+   - Compare consensus count to individual-run A counts; should
+     overlap significantly with R20's A set (R20 = best run)
+   - Items where consensus says A but R20 says B: A_lucky_sample-
+     recovered items, candidates for Pick B uplift
+
+4. FORMAT-RECOVERABLE SET (structural-normalizer probes):
+   - Across all 5 deep audits, how many distinct items flagged
+     format-recoverable?
+   - Distinct failure modes (multi-slot / MCQ-first-box / precision)?
+   - Distribution suggests probe priority for the 3 normalizer slots
+
+5. MORNING-RUN SIGNAL CHECK
+   (vs strategy/MORNING_RUNS_WATCHLIST.md thresholds):
+   - Count A_lucky_sample with n_samples_math_correct ≥ 5/8 across
+     R09/R10/R20/R20b (R08 single-sample exempt)
+   - Count truncated items at 16K (R08/R09/R10) vs 32K (R20)
+   - Count all-p943-wrong items
+
+6. RED FLAGS:
+   - Any run with vastly different bucket distribution? (Suggests
+     analyzer bug or run pathology — block matrix use until resolved.)
+   - Any item with all 5 buckets='unknown'? (Sanity: ~445 unknowns
+     per run if alignment correct.)
+   - Any cell that looks like a copy-paste error from the wrong run?
+
+OUTPUT FORMAT (exactly this, ≤500 words):
+
+VERDICT: GREEN (matrix ready for ALL 4 downstream uses) /
+         YELLOW (N issues block specific uses — list which) /
+         RED (matrix not usable)
+INTERNAL CONSISTENCY: [pass / issues listed]
+ADAPTER TARGET COUNT: [N items + qualitative assessment]
+PICK B CONSENSUS COUNT: [N items A in ≥3/5 + delta vs R20-alone]
+STRUCTURAL NORMALIZER PROBE LIST SIZE: [N + top failure modes]
+MORNING-RUN SIGNAL: [GO if thresholds met / NO-GO if signals weak]
+RED FLAGS: [list or "none"]
+ONE THING TO INVESTIGATE BEFORE USING MATRIX: [single item or "none"]
+DOWNSTREAM READINESS (mark each):
+  - Pick B build: ready / blocked
+  - Adapter targeting: ready / blocked
+  - Normalizer probes: ready / blocked
+  - Morning runs: ready / blocked
+
+DO NOT:
+  - Re-audit individual runs (already T3-cleared)
+  - Comment on analyzer methodology
+  - Suggest new submission strategies
 ```
 
 ---
@@ -235,8 +390,10 @@ DO NOT:
 
 1. **Identity header populated**: `TO:` is the correct agent, `FROM: CLAUDE_STRATEGY`
 2. **All `{PLACEHOLDERS}` filled**: zero `{...}` strings remain in the final fenced block
-3. **Wall-time updated** on T3 audits (current PT)
-4. **Commit hash filled** on T3 (otherwise ChatGPT can't read the artifacts)
+3. **Wall-time updated** on T3/T4 audits (current PT)
+4. **Commit hash filled** on T3/T4 (otherwise ChatGPT can't read the artifacts)
 5. **Batch size sanity** on T1: 4–6 shallow runs max per batch (more = context bloat for vscode)
 6. **One run only** on T2 (the per-session discipline for deep)
 7. **R# matches CATALOG.md** for the run being cataloged (no surprises)
+8. **T3 fires AFTER every T2** (mandatory; not optional now per Day-9 discipline)
+9. **T4 fires ONCE after CROSS_RUN_MATRIX exists** (final gate before downstream decisions)
