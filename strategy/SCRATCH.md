@@ -654,3 +654,28 @@ Closed the my-audit → Cursor cross-check loop on the Tier-1 normalizer build p
 ### Key discoveries
 - v3 is directionally strong and risk-aware, but it still has hidden decision-noise and validation-calibration risks that can consume deadline buffer.
 - DeepConf should likely be promoted only after a no-regression A/B check, not assumed as default production selector.
+
+---
+
+## Agent signoff — Cursor — 2026-05-31 (v3.1 integration cross-check)
+### What I tried
+- Ran a fast (10-min cap) integration-only audit of v3.1 against required patch sets.
+
+### What I did
+- Read `strategy/PHASE_D_v7_PLAN.md` (v3.1) and verified A1-A5 from `REVIEW_OF_STRATEGY_V3.md`.
+- Checked B1-B5 interactions for regressions against A1-A5.
+- Wrote `strategy/REVIEW_OF_V3_1_INTEGRATION.md` with the required 3 sections.
+
+### What worked
+- All A1-A5 patches are correctly integrated.
+- No B1-B5 regressions detected against A1-A5.
+- Core v3 design points are preserved in v3.1.
+
+### What didn't work
+- No blockers encountered.
+
+### What's left
+- Rain/claude_strategy can treat this as a clean integration pass and proceed.
+
+### Key discoveries
+- The two highest-risk interaction checks passed cleanly: B4 does not weaken A4, and B1 does not conflict with A3.
