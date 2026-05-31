@@ -473,3 +473,11 @@ c4d07b6 (NT T1.5 audit + prep_nothinking_for_analyzer.py; rebased onto strategy 
 - `data/candidates_nothinking_breakdown.md` and `data/candidates_nothinking_98.txt` are definitively tied to `nothinking_probe98_20260526T065456Z`.
 - `shape_fallback` is the dominant failure mode in probe98 (`46/98`), not truncation (`0`) or missing boxes (`0`).
 - The probe's apparent all-rows bucket agreement with NT-943 (`85/98`) is misleading because `54/54` `unknown -> unknown` rows dominate it; on the real scored slice the agreement is much worse (`31/44` buckets, `32/44` math correctness).
+
+## claude_thunder_tnr1 signoff — 2026-05-31 — Thinking-probe inference
+- Tried: SC@16 Thinking-mode on 59 R20-wrong multi-slot/precision items (slice 59-117 of thinking_probe_target_set)
+- Did: Full run inference/base_model/thinking_probe_tnr1_20260531T065534Z/, 59 items, SC@16, max-tokens 81920, thinking-budget 65536, TP=2, 2×A100 80GB
+- Worked: 59/59 items completed, 0 truncations, 0 empty samples, ~19/59 rescued by slot-aware gold match (~32%), wall time ~4.0h avg 245s/item. 16MB samples.jsonl pushed via LFS commit ecc7adf.
+- Didn't: Exact-string rescue count is 0 (multi-slot gold format mismatch) — slot-aware needed for real count. Several near-misses due to formatting differences (e.g. ID 736 sqrt formatting, ID 705 True/False formatting).
+- Left: inference/base_model/thinking_probe_tnr1_20260531T065534Z/samples.jsonl + inference.log + summary.txt on main. Cross-run analysis with tnr-0 pending.
+- Discoveries: One outlier item (ID 453, 2982s) drove early ETA inflation — rest were 18-694s. avg settled at 245s. Budget 81920/65536 produced 0 truncations vs prior runs at 49152/24576.
