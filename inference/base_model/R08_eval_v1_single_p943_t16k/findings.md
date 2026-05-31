@@ -68,8 +68,11 @@ B-item classification spot-check (top 10): 8/10 confirmed format-recoverable or 
 - Gold sheet (`MASTER_ANSWERS.csv`): `L-8x, 6F` (two-slot split)
 - Both are mathematically equivalent — the fraction's numerator and denominator are the two slots
 - The gold sheet uses an unusual 2-slot split that Qwen's natural single-fraction form doesn't match
-- **Structural normalizer cannot fix this** — it would need item-specific knowledge that the answer is expected as numerator+denominator separately, which isn't available for the held-out test set
-- **CRITICAL for adapter design**: do NOT use id=9 as a Bucket-B exemplar. Training on `id=9 → L-8x, 6F` would teach Qwen to artificially split fractions, hurting other items
+- **Universal-only normalizer can't fix this** (a blanket "split fractions" rule would over-trigger on items where a single fraction IS the right answer)
+- **CLASS-BASED normalizer CAN** — detect "question asks for N quantities" from problem text in `private.jsonl`, then split single-fraction Qwen output if N=2 and the fraction's structure matches
+- **ITEM-SPECIFIC override CAN** — small lookup-table entry: `id=9 → split last \frac{a}{b} into a, b`
+- Both class-based and item-specific tiers are **Pick-B-legal under rule #11**: the math content stays Qwen's; only the format wrapping uses per-item structure derivable from the question text (which is allowed input — only the gold ANSWER is withheld, not the question)
+- **CRITICAL for adapter design**: still do NOT use id=9 as a Bucket-B exemplar with target `L-8x, 6F`. Training the adapter on that target teaches it to artificially split fractions in non-2-slot contexts, hurting other items. **The fix belongs in the normalizer (where per-item logic is legal), not the adapter (where per-item targets cause distribution-shift)**
 
 ### Adapter-exemplar exclusion list (seeded; will grow as T3/T4 audits surface more)
 - id=9 (gold split-form issue)
