@@ -852,3 +852,89 @@ Phase D must pick combinations conservatively. First v7 attempt should be ONE Ax
 - This is conservative: same architecture as v5 with the two known bugs (training composition + trace coherence) fixed, plus stratified eval to guide future iterations
 
 If first v7 attempt fails or breaks even: the per-subset eval results tell us WHICH subsets to focus on for v7.2 (e.g., maybe MCQ subset is +5pp but multi-slot is -3pp — v7.2 trains on MCQ residual only).
+
+---
+
+## PART 10 — Locked decisions + PEFT variant investigation (Rain's lock 5/31)
+
+### 10.A) LOCKED decisions (skip investigation, save time)
+
+1. **PARADIGM**: SFT. Not RL, not in-context learning, not other paradigms.
+2. **DEPLOYMENT**: Standalone LoRA adapter (NOT merged). Evidence already strong:
+   - v1 merged → catastrophic rambling pathology
+   - v4 merged-adaptive → -4.9pp regression
+   - v5 adapter (LoRARequest) → break-even
+   - Merge-mode adds risk without offsetting benefit; adapter mode is reversible, supports dual-path, supports vLLM LoRARequest natively
+3. **ARCHITECTURE FAMILY**: PEFT (parameter-efficient fine-tuning). NOT full fine-tuning, not soft prompts.
+
+These locks COLLAPSE several Phase C research questions that are no longer needed:
+- ~~Single-path vs dual-path deployment debate~~ — dual-path locked
+- ~~Adapter vs merge deployment~~ — adapter locked
+- ~~SFT vs RL vs in-context~~ — SFT locked
+- ~~GenSelect as primary~~ — secondary at most (still mention as deployment-time option)
+
+Phase C should focus only on questions that affect the locked path.
+
+### 10.B) PEFT variant investigation — MUST DO in Phase C
+
+Three variants to compare:
+
+**LoRA** (Hu et al. 2021) — what v3/v4/v5 used:
+- Decompose weight update as ΔW = BA (low-rank product, B ∈ R^{d×r}, A ∈ R^{r×k})
+- Parameters: r (rank), α (scaling), target_modules, dropout
+- v3-v5 used: r=64, α=128, target modules = q/k/v/o + gate/up/down
+
+**QLoRA** (Dettmers et al. 2023) — also what v3-v5 used:
+- LoRA + 4-bit base model quantization (NF4 dtype + double quantization)
+- Reduces base model memory ~4× without performance loss on most tasks
+- Allows training on smaller GPUs (consumer hardware feasibility)
+- For our use case: 4B model on 80GB A100 — quantization not strictly needed, but doesn't hurt
+
+**DoRA** (Liu et al. 2024) — NOT YET TRIED — the variant Rain wants us to investigate:
+- Decompose pretrained weight W into magnitude vector m + direction matrix V (W = m * V/||V||)
+- Apply LoRA only to the direction component V
+- Magnitude m is learned separately as full vector (not low-rank)
+- Reportedly outperforms LoRA at same rank on multiple benchmarks (per original paper)
+- More expressive than LoRA at low ranks; closes the gap to full fine-tuning
+
+**Research questions for Phase C** (PRIMARY now):
+
+K. **Does DoRA outperform LoRA for math reasoning specifically?** Most DoRA benchmarks are NLU (GLUE, etc.). Need evidence on math.
+
+L. **DoRA vs LoRA at our specific config (r=64, α=128, Qwen3-4B-class)** — what's the published delta?
+
+M. **DoRA compatibility with our infrastructure**:
+- PEFT library: supports DoRA since v0.10 (need to verify our pinned version)
+- Unsloth: DoRA support status?
+- vLLM LoRARequest: does it support DoRA adapters at inference, or only LoRA?
+- If vLLM doesn't support DoRA at inference: dealbreaker (we lose the adapter deployment mechanism)
+
+N. **DoRA training cost vs LoRA**: how much extra wall time? Memory footprint?
+
+O. **DoRA inference cost vs LoRA**: latency overhead?
+
+P. **DoRA for memorization-style tasks** (our specific use case = targeted memorization on Qwen-wrong items): does DoRA's higher expressivity help or hurt memorization-focused training?
+
+Q. **QLoRA vs LoRA at our scale**: do we need 4-bit quantization for 4B model on 80GB A100? Or can we use full bf16 LoRA for cleaner training? Trade-off analysis.
+
+**Why investigation is justified despite time pressure**:
+- v3/v4/v5 ALL used QLoRA-with-LoRA. Same PEFT variant across 4 attempts. We've never tested DoRA.
+- If DoRA-vs-LoRA delta is meaningful (e.g., +2-3pp on math), it's a free win on v7
+- Verification time is small (~15min of research read) vs potential gain
+- BUT must verify infrastructure compatibility first (M) — if vLLM doesn't support DoRA at inference, drop immediately
+
+### 10.C) Implications for v7 plan
+
+- Phase C research dive now includes 7 questions (K-Q) on PEFT variants — concrete + actionable
+- Phase D v7 design needs explicit PEFT variant choice as an explicit decision (currently default = LoRA per v5 lineage; should we switch to DoRA?)
+- v7 first attempt could explore DoRA IF infrastructure compatible:
+  - Train one adapter with LoRA (familiar, low-risk)
+  - Train one adapter with DoRA (if compatible, novel, potential gain)
+  - Compare on per-subset eval
+  - Use winner for Pick B
+- This adds ~30-60min for parallel DoRA training on tnr-0 GPU 1 while LoRA trains on GPU 0 — fits in compute envelope
+
+**Required pre-flight before any v7 training launches**:
+- Verify PEFT version supports DoRA
+- Verify vLLM LoRARequest supports DoRA at inference (or find alternative inference path for DoRA adapter)
+- If verification fails: stay with LoRA, drop DoRA from v7
