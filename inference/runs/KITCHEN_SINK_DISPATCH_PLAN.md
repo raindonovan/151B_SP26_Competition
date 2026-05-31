@@ -102,10 +102,12 @@ HF_HOME=$HOME/hf_cache python3 -u inference/scripts/run_hybrid_inference.py \
 **Selection procedure:**
 
 **Step 1**: Build base residual universe U
-- Start with R20 rows where `bucket == "B"` or `bucket == "A_lucky_sample"` (R20-wrong or vote-lost risk)
+- Start with R20 rows where `math_correct == 'False'` (R20-wrong universe = 187 items)
+  - **OPERATIONAL OVERRIDE** (approved Cursor final-lock + post-target-set audit): Original spec said "bucket == 'B' or bucket == 'A_lucky_sample'" (72 items). That filter is too narrow — it excludes items where `bucket == 'unknown'` (gold uncertain or sheet_dependent) which Thunder explicitly covered (62 of Thunder 118 are sheet_dependent). The bucket filter is artificially narrow vs Thunder's operational universe. Using `math_correct == 'False'` aligns the kitchen-sink universe with Thunder's. Stop rule's measurable-gold gate protects against false signal from the broader pool.
 - Remove IDs already rescued by:
   - Thunder landed rescues (tnr-0/1 delta-positive vs R20)
   - NT-13 conservative join IDs
+  - **HIGH-confidence per_item_overrides** (229/308/383/498) — already covered by Tier-1 normalizer's force_value step; budget-efficient to not waste kitchen-sink GPU on them
 - Remove IDs present in Thunder 118 set (explicit requirement)
 
 **Step 2**: Compute rescue-potential signal per remaining item
