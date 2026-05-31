@@ -66,3 +66,47 @@
 - **Biggest surprise: the v3-perslot prompt is net-negative** (−11 vs R08) yet *helps* the hard-independent subset (0.75 vs 0.625). A per-slot prompt seems to trade broad easy-item accuracy for a few hard multi-part wins — a bad trade at 16K. Confirms why it scored 0.424 on Kaggle (worst p943).
 - SC (R09) > prompt-variant (R10) decisively as a lever; the chronological arc correctly abandoned v3-perslot after this run.
 - Multi-slot B inflation (46) under a per-slot prompt is a clean illustration that prompt-induced per-part boxing fights the single-last-box grader — a structural-normalizer (undercount collapse) would recover much of it.
+
+---
+
+## ChatGPT T3 deep audit verdict — 2026-05-30 ~22:05 PT
+
+**VERDICT: GREEN. Confidence HIGH for matrix use.**
+
+All numerics confirmed exactly: bucket counts, transition counts (373/34/23/68), A∩A∩A=372, B∩B∩B=53.
+
+### Methodology nuance: "R10 over R09: 12 wins" is definition-sensitive
+
+**Two valid definitions, both meaningful:**
+- **Strict A-only**: items where R09 in B AND R10 in A → **5 items**
+- **Non-A (A_lucky_sample counts as miss)**: items where R09 either-B-or-A_lucky AND R10 in A → **12 items**
+
+The 12 is the more strategically useful frame: it captures "items where R10's single sample landed on math R09's vote missed." But 7 of those 12 are R09 A_lucky_sample items — R10's "wins" are mostly vote-fragile SC@32 candidates, not prompt-variant advantage. Strict A-vs-B = 5 is the conservative read.
+
+**ALWAYS specify the definition** when citing this number in downstream analysis (CROSS_RUN_MATRIX, T4 audit, morning-runs planning).
+
+### Spot-check on true-miss core [41, 61, 103, 104, 117, 127, 231, 264, 282, 868]
+
+ChatGPT spot-checked 2:
+- **id=117**: repeated truncation/non-answer vs gold B across all 3 runs. **Truncation-driven.** Likely rescued at R20's 32K. Expected to leave the true-miss seed at R20.
+- **id=282**: consistently emits `e^2, -e^2` when gold is just `e^2`. **Extra-root reasoning error** — Qwen's chain includes a spurious negative-root path. **Stays in the seed; ideal adapter exemplar candidate.**
+
+### 34 A→B regressions confirmed real (spot-checked 3)
+
+- id=52: undercount (`231,385` → `385`) — single-slot collapse
+- id=403: MCQ wrong letter (J → H)
+- id=712: multi-slot collapse (`D,D,A` → `A`)
+
+**The v3-perslot prompt damages multiple failure-mode categories simultaneously**, not a single bug. Structural prompt-grader mismatch, not fixable. The dev-arc decision to abandon it is empirically correct.
+
+### Multi-slot B inflation (46 vs R08's 19)
+
+ChatGPT notes the exact "46" isn't directly auditable from analysis.csv (no `failure_mode` column with a `multi_slot` subtype). The proxies (emitted-field counts) show strong inflation over R08, which supports the directional claim. **Worth a future analyzer enhancement: add a `failure_mode` subtype column to analysis.csv for downstream queryability.** Out of scope for tonight.
+
+### Adapter-seed projection going into R20
+
+After R20:
+- id=117 (truncation) → likely OUT of true-miss seed (rescued at 32K)
+- id=127 (also flagged truncation-suspect) → possibly OUT
+- id=282 (extra-root error), id=41 (rambling) → confirmed IN
+- Final true-miss seed projection: **5-8 items**, refined at R20
