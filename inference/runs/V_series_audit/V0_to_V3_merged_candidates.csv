@@ -1,0 +1,48 @@
+id,is_mcq,gold,category_tags,consistent_vote_lost,n_runs_voted_wrong,n_runs_any_correct,n_runs_vote_lost
+29,False,"['442.857142857143', '332.142857142857']",multi_slot_undercount|multi_box_pattern,False,4,0,0
+48,True,I,multi_box_pattern|revote_candidate_any,True,4,4,4
+53,True,C,multi_box_pattern,False,0,4,0
+54,True,F,multi_box_pattern,False,0,4,0
+56,False,"['A', 'C']",multi_slot_undercount|multi_box_pattern|revote_candidate_any,False,1,4,1
+93,False,"['20/[5+3*cos(t)]', '90/[4-sin(t)]']",multi_box_pattern,False,3,0,0
+121,True,H,multi_box_pattern,False,0,4,0
+129,True,D,multi_box_pattern,False,0,4,0
+142,True,C,multi_box_pattern,False,0,4,0
+154,True,F,multi_box_pattern,False,0,4,0
+156,False,"['40.25', '45']",multi_box_pattern,False,0,4,0
+195,False,"['x**4+7*x**2+5', '-5']",multi_box_pattern,False,4,0,0
+199,False,"['250', '6']",multi_box_pattern,False,0,4,0
+218,False,['572.00'],multi_box_pattern,False,0,4,0
+223,True,E,multi_box_pattern,False,0,4,0
+231,False,"['255', '80.3922', '66', '0.682353', '0.764706', '0.431373', '808080']",multi_box_pattern,False,4,0,0
+243,False,['16/9'],multi_box_pattern,False,0,4,0
+269,False,['5.93295878967653'],multi_box_pattern,False,4,0,0
+332,True,C,multi_box_pattern|revote_candidate_any|no_box_rescue_candidate|vote_fragmentation,False,1,4,1
+340,True,G,multi_box_pattern,False,0,4,0
+364,True,G,multi_box_pattern,False,0,4,0
+403,True,I,multi_box_pattern,False,0,4,0
+446,False,"['(80, -160, 320)']",multi_box_pattern,False,4,0,0
+570,False,['0.07'],multi_box_pattern,False,0,4,0
+577,False,"['D', 'D', 'A']",multi_box_pattern,False,0,4,0
+581,False,['2/9'],multi_box_pattern,False,0,4,0
+599,False,"['25/343', '11 4/7']",multi_box_pattern|revote_candidate_any|vote_fragmentation,False,4,1,1
+610,False,['16'],multi_box_pattern,False,0,4,0
+634,True,D,multi_box_pattern,False,0,4,0
+671,False,"['4+tan(x)', 'tan(4+x)']",multi_box_pattern,False,0,0,0
+701,False,"['0', '0', '(2, 3)', 'NONE']",multi_box_pattern,False,4,0,0
+712,False,"['2 x-4-2*3', 'x-3']",multi_box_pattern,False,0,4,0
+759,False,"['12+20/4', '>', '(12+20)/4']",multi_slot_undercount|multi_box_pattern,False,4,0,0
+766,False,"['8', '-2', '16', '-3']",multi_box_pattern,False,0,4,0
+782,False,"['25', '16']",multi_box_pattern,False,0,4,0
+785,False,"['17', '4', '25', '4']",multi_box_pattern,False,0,4,0
+830,True,C,multi_box_pattern,False,4,0,0
+844,False,['C'],multi_box_pattern,False,0,4,0
+891,True,H,multi_box_pattern,False,0,4,0
+893,False,"['A', 'A']",multi_box_pattern,False,0,4,0
+922,False,['32'],multi_box_pattern,False,0,4,0
+960,False,"['480', '4800', '48000']",multi_box_pattern,False,0,4,0
+974,True,G,multi_box_pattern,False,0,4,0
+1023,True,C,multi_box_pattern,False,0,4,0
+1040,False,['495'],multi_box_pattern,False,4,0,0
+1078,False,['BCD'],multi_box_pattern,False,4,0,0
+1081,False,"['     8000', '       62']",multi_box_pattern,False,0,4,0

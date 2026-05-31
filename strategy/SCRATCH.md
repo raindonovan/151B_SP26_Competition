@@ -467,3 +467,21 @@ T4 audit @CURSOR returned **YELLOW** (matrix itself trusted, 3 corrections to my
 
 Files: submission/SLOT_PLAN.md (str_replace, 1 line), submission/csvs/picks/pickb_marginal_accounting.csv (new). Commit + push next.
 
+
+---
+## claude_strategy signoff — 2026-05-31 (Day 9 morning) — V-series audit (R15-R19) per POST_DEADLINE_AUDITS A2
+
+T1-shallow audit on V0-V3 + V4-special-handling per Rain's "Suggested Workflow" plan. Output at `inference/runs/V_series_audit/`.
+
+**Verdict: CLOSED, no incremental juice for competition tonight.**
+
+**Key finding**: Oracle@8 is essentially saturated on fixed50. Across 4 runs × 50 items, net legitimate oracle gain = 1-2 items (after excluding id 48 dataset bug and id 599 string-vs-value-equal). Vote-aggregation is NOT the dominant lever even on the easier public set.
+
+**Numbers**: V0 0.700 → V1/V2/V3 all 0.720 (+1 item each, within fixed50 noise floor ±3 questions). V4 ABORTED (5/50 final). V3 shape_filter has lowest agreement (0.875 p50) creating vote fragility but NOT oracle rescues — fragmented samples are correlated-wrong.
+
+**Marginal IDs vs Pick B workstreams**: V-series uses PUBLIC-set IDs (disjoint from private-set IDs in NT-13 / cross-run matrix / normalizer). Category signal aligns (multi-slot/no-box/fragmentation all in normalizer scope), specific IDs don't apply.
+
+**Files**: AUDIT_SUMMARY.md + 4 per-run candidate CSVs + V0_to_V3_merged_candidates.csv (47 tagged items).
+
+**No new inference experiments tonight.** Execute queued workstreams: Tier-1 normalizer + value-equality re-vote sweep + Thunder. R14 (rep_penalty=1.10) audit available as ~20-min follow-up if Rain wants.
+

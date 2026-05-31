@@ -1,0 +1,51 @@
+id,is_mcq,voted,gold,voted_correct,any_sample_correct,n_correct_samples,agreement,n_boxes_max,no_box_count,shape_fallback,oracle_lost,category_tags
+29,False,332.1,"['442.857142857143', '332.142857142857']",False,False,0,0.500,6,0,False,False,multi_slot_undercount|multi_box_pattern
+48,True,E,I,False,True,2,0.750,1,0,False,True,multi_box_pattern|revote_candidate_any
+53,True,C,C,True,True,8,1.000,2,0,False,False,multi_box_pattern
+54,True,F,F,True,True,8,1.000,3,0,False,False,multi_box_pattern
+56,False,C,"['A', 'C']",False,True,3,0.625,4,0,False,True,multi_slot_undercount|multi_box_pattern|revote_candidate_any
+93,False,"20 / (5 + 3 \cos \theta), 90 / (4 - \sin \theta)","['20/[5+3*cos(t)]', '90/[4-sin(t)]']",False,False,0,0.250,16,0,False,False,multi_box_pattern
+121,True,H,H,True,True,8,1.000,3,0,False,False,multi_box_pattern
+129,True,D,D,True,True,8,1.000,3,0,False,False,multi_box_pattern
+142,True,C,C,True,True,8,1.000,1,0,False,False,multi_box_pattern
+154,True,F,F,True,True,6,0.750,2,0,False,False,multi_box_pattern
+156,False,"40.25, 45.00","['40.25', '45']",True,True,8,0.750,3,0,False,False,multi_box_pattern
+169,False,5730,['5730'],True,True,8,1.000,1,0,False,False,
+195,False,"x^4 + 7x^2 + 5, -5","['x**4+7*x**2+5', '-5']",False,False,0,0.750,23,0,False,False,multi_box_pattern
+199,False,"250, 6","['250', '6']",True,True,6,0.500,5,0,False,False,multi_box_pattern
+218,False,572.00,['572.00'],True,True,8,1.000,5,0,False,False,multi_box_pattern
+223,True,E,E,True,True,4,0.500,1,0,False,False,multi_box_pattern
+231,False,"255, 80.39, 66, 174, 195, 110, 808080","['255', '80.3922', '66', '0.682353', '0.764706', '0.431373', '808080']",False,False,0,0.500,24,0,False,False,multi_box_pattern
+243,False,\frac{16}{9},['16/9'],True,True,8,1.000,2,0,False,False,multi_box_pattern
+269,False,5.933,['5.93295878967653'],False,False,0,1.000,3,0,False,False,multi_box_pattern
+332,True,C,C,True,True,8,1.000,2,0,False,False,multi_box_pattern|revote_candidate_any|no_box_rescue_candidate|vote_fragmentation
+340,True,G,G,True,True,8,1.000,1,0,False,False,multi_box_pattern
+364,True,G,G,True,True,8,1.000,1,0,False,False,multi_box_pattern
+403,True,I,I,True,True,8,1.000,2,0,False,False,multi_box_pattern
+446,False,"80, -160, 320","['(80, -160, 320)']",False,False,0,0.875,1,0,False,False,multi_box_pattern
+570,False,0.07,['0.07'],True,True,8,0.500,4,0,False,False,multi_box_pattern
+577,False,"D, D, A","['D', 'D', 'A']",True,True,8,1.000,9,0,False,False,multi_box_pattern
+581,False,\frac{2}{9},['2/9'],True,True,8,1.000,2,0,False,False,multi_box_pattern
+599,False,"\frac{25}{343}, 11\frac{4}{7}","['25/343', '11 4/7']",False,False,0,1.000,29,0,False,False,multi_box_pattern|revote_candidate_any|vote_fragmentation
+610,False,16,['16'],True,True,8,1.000,1,0,False,False,multi_box_pattern
+634,True,D,D,True,True,4,0.500,3,0,False,False,multi_box_pattern
+668,False,"16, 9","['16', '9']",True,True,8,1.000,1,0,False,False,
+671,False,"4 + \tan(x), \tan(4 + x)","['4+tan(x)', 'tan(4+x)']",True,False,0,1.000,9,0,False,False,multi_box_pattern
+701,False,"0, 0, 2, 3, NONE","['0', '0', '(2, 3)', 'NONE']",False,False,0,0.250,51,0,False,False,multi_box_pattern
+712,False,"2x - 10, x - 3","['2 x-4-2*3', 'x-3']",True,True,7,0.875,2,0,False,False,multi_box_pattern
+759,False,>,"['12+20/4', '>', '(12+20)/4']",False,False,0,1.000,3,0,False,False,multi_slot_undercount|multi_box_pattern
+766,False,"8.000, -2.000, 16.000, -3.000","['8', '-2', '16', '-3']",True,True,8,0.500,12,0,False,False,multi_box_pattern
+782,False,"25, 16","['25', '16']",True,True,8,0.750,6,0,False,False,multi_box_pattern
+785,False,"17, 4, 25, 4","['17', '4', '25', '4']",True,True,8,0.750,13,0,False,False,multi_box_pattern
+830,True,B,C,False,False,0,1.000,2,0,False,False,multi_box_pattern
+844,False,C,['C'],True,True,8,1.000,3,0,False,False,multi_box_pattern
+891,True,H,H,True,True,8,1.000,2,0,False,False,multi_box_pattern
+893,False,"A, A","['A', 'A']",True,True,8,1.000,11,0,False,False,multi_box_pattern
+922,False,32,['32'],True,True,8,0.625,4,0,False,False,multi_box_pattern
+936,False,20,['C'],False,False,0,1.000,1,0,False,False,
+960,False,"480, 4800, 48000","['480', '4800', '48000']",True,True,8,0.750,8,0,False,False,multi_box_pattern
+974,True,G,G,True,True,8,1.000,2,0,False,False,multi_box_pattern
+1023,True,C,C,True,True,8,1.000,2,0,False,False,multi_box_pattern
+1040,False,1,['495'],False,False,0,0.375,1,7,False,False,multi_box_pattern
+1078,False,"B, C, D",['BCD'],False,False,0,1.000,2,0,False,False,multi_box_pattern
+1081,False,"8000, 62","['     8000', '       62']",True,True,8,0.625,8,0,False,False,multi_box_pattern
