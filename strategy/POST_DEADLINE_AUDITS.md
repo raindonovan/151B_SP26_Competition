@@ -95,3 +95,18 @@ Post-deadline: fix the candidate window, run a proper smoke test (5 items first 
 Day 9 surfaced a verification gap: while research consensus (May 23 multi-source review) supports single-teacher Sonnet-preferred for SFT on Qwen3-4B-Thinking-2507, we don't have a clean isolated experiment in our project history showing that Sonnet traces specifically produce coherent Qwen outputs. The v3/v4/v5 SFT runs either failed for architectural reasons or used non-Sonnet traces (e.g., v2 OpenR1 worked with R1 traces).
 
 Post-deadline: if the 8-item adapter is built and trained tomorrow, its results will themselves be the Sonnet-on-Qwen empirical test. Document the findings explicitly in the research write-up.
+
+## A7 — Past A100 throughput optimization investigation
+
+**Priority:** Medium (operational improvement; informs future Thunder runs)
+**Triggered by:** Day 9 close — Rain recalled a previous A100 config that produced significant speedup, realized mid-run. Specific config not surfaced in repo search (inference/SCRATCH.md, strategy/SCRATCH.md, run findings, production_commands.md, infrastructure/scripts/).
+
+**Investigation surface:**
+- Search past chat transcripts (claude_strategy or claude_thunder sessions) for "speedup", "throughput", "perf", "gpu-util" notes from May ~14-24
+- Check if there's an older `requirements_thunder.txt` or launcher script with non-default vLLM flags
+- Compare wall times across same-config runs (R09 vs R20 etc.) to detect hardware-utilization gaps
+- Identify the specific flag(s) that mattered: was it `--gpu-memory-utilization`? `--max-num-seqs`? `--enforce-eager` off? `--swap-space`?
+
+**Why deferred:** Tonight's runs are end-game critical. Conservative known-safe config (matches thinking-twin) over potentially-faster but untested optimization. Locked Day 9 close per "don't risk failure on adapter/inference now" discipline.
+
+**Carry-forward:** Once identified, document in `agents/CLAUDE_THUNDER.md` §Common Gotchas and `infrastructure/pre_flight/production_commands.md`.
