@@ -187,4 +187,4 @@ Initial apply_override used the Day-8 append mechanism (`resp + \n\n\boxed{value
 
 ### DID NOT submit to Kaggle (Rain's decision). DID NOT modify R20 source CSV (read-only). 
 
-### Commit hash: (filled after commit)
+### Commit hash: 64e4eb7 (Pick B consensus-join build). Pushed eae3c2a..64e4eb7. CSVs committed RAW per submission-CSV convention (source 18MB also raw; only submissions/*.csv + v7 sheet are LFS).
