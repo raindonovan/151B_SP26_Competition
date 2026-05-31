@@ -938,3 +938,52 @@ Q. **QLoRA vs LoRA at our scale**: do we need 4-bit quantization for 4B model on
 - Verify PEFT version supports DoRA
 - Verify vLLM LoRARequest supports DoRA at inference (or find alternative inference path for DoRA adapter)
 - If verification fails: stay with LoRA, drop DoRA from v7
+
+---
+
+## PART 11 — CRITICAL FACTUAL CORRECTION: quantization per version (Rain's catch 5/31)
+
+I (and Cursor's notes) referred to v3/v4/v5 as "QLoRA" throughout. **This is WRONG.** Direct read of training scripts shows:
+
+| Version | Quantization | Optimizer | Loading mechanism |
+|---|---|---|---|
+| **v1** | **QLoRA — 4-bit (true)** | `adamw_8bit` | `FastLanguageModel.from_pretrained(..., load_in_4bit=True)` via Unsloth prequantized model |
+| **v3** | **LoRA (full bf16, NO quantization)** | `adamw_torch` | `AutoModelForCausalLM.from_pretrained(..., torch_dtype=torch.bfloat16, device_map="auto")` — no `quantization_config`, no `load_in_4bit` |
+| **v4** | **LoRA (full bf16, NO quantization)** | `adamw_torch` | Same as v3 |
+| **v5** | **LoRA (full bf16, NO quantization)** | `adamw_torch` | Same as v3/v4 |
+
+**Why this matters:**
+
+1. **Memory #12 had this wrong** — said "QLoRA" for v5. Corrected (memory #12 now reflects v5 = full bf16 LoRA).
+
+2. **Cross-version comparisons need this correction** — v1's catastrophic outcome cannot be cleanly compared to v3/v4/v5 outcomes because v1 used QLoRA (with all its noise) and v3/v4/v5 used full bf16 LoRA. The training stack itself differs across the lineage.
+
+3. **The "QLoRA" file naming for v1** (`train_qwen3_qlora.py`) is accurate for v1 only. The file persisted as a v1 postmortem artifact; v3/v4/v5 use different scripts that don't have QLoRA in the name.
+
+4. **bitsandbytes installation in v3** (per training log) is misleading — package was present in environment but only `adamw_8bit` would have used it; v3 used `adamw_torch` instead so bitsandbytes was effectively unused at runtime.
+
+### 11.A) v7 implications
+
+**Quantization choice for v7 is now a deliberate decision, not inherited default**:
+
+- **bf16 LoRA (default, v3-v5 lineage)**: clean gradients, ~8GB base memory, well-tested in our codebase
+- **QLoRA (4-bit base + LoRA, v1 lineage)**: ~2GB base memory, some quantization noise during training, NF4 + double-quantization is the modern default
+- **bf16 DoRA**: clean gradients + magnitude-direction decomposition; new variant to investigate
+- **Q-DoRA (4-bit + DoRA)**: quantized + decomposed; not common, may have numerical issues
+
+For our use case (4B model on 80GB A100, memorization-style targeted training, no memory pressure):
+- **Recommended default**: bf16 LoRA (match v3-v5) — clean baseline, fewer variables to debug
+- **Experiment in parallel** (if compute allows): bf16 DoRA on tnr-0 GPU 1
+- **QLoRA**: only if a specific Phase C finding motivates it (e.g., "QLoRA acts as regularization, helps for small dataset memorization" — would need evidence)
+
+### 11.B) Updated Phase C question Q (reframe)
+
+Previously question Q: "QLoRA vs LoRA at our scale: do we need 4-bit quantization for 4B model on 80GB A100?"
+
+Reframed: "Given v3/v4/v5 used bf16 LoRA (not QLoRA as previously misclaimed), is there evidence that 4-bit QLoRA would change outcomes vs bf16 LoRA for math reasoning at our scale? Or is the bf16 LoRA baseline the right starting point?"
+
+### 11.C) Audit-discipline reflection
+
+This was a Part 6-style miss caught by Rain. Even after the discipline lock-in (rule #6: NO GLOSSING), I'd extracted r=64, α=128, dropout, epochs, lr, schedule — but glossed past the model-loading line that distinguishes QLoRA from full bf16. The quantization config is not just a parameter — it's the foundational training stack choice that determines what other parameters even mean.
+
+For future audits: when extracting hyperparams from a training script, the LOADING SECTION must be read explicitly as part of the config extraction. Model loading determines what training is.
