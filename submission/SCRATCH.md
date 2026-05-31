@@ -205,4 +205,4 @@ Override CSV overrides_nothinking_join_conservative_763safe.csv (13 rows; 763 va
 
 ### DID NOT: submit to Kaggle (Rain orders slots), touch diagnostic 14-item, reopen 282, fire ChatGPT (sweep was trivially-so — single clean canonical-fold, no non-trivial decision per memory #24).
 
-### Commit hash: (filled after commit)
+### Commit hash: 15cbdd2 (slot-2 763-safe build + expression-form sweep). Pushed ed4aaed..15cbdd2. CSV raw per submission convention.
