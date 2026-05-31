@@ -46,7 +46,7 @@ Legend: 🟢 done · 🟡 in progress · ⚪ untouched
 | `run05_v1_50_tok16384` | R05 | base_model | 2026-05-03 16:53 | eval | 🟢 | first 50-item run; cataloged → inference/base_model/R05_eval_v1_single_f50_t16k/ |
 | `run06_v2mcq_50_tok16384` | R06 | base_model | 2026-05-03 17:16 | eval | 🟢 | v2mcq variant; cataloged → inference/base_model/R06_eval_v2mcq_single_f50_t16k/ |
 | `run07_sc8_v1_50_tok16384` | R07 | base_model | 2026-05-03 19:23 | eval | 🟢 | first SC8 run; cataloged → inference/base_model/R07_eval_v1_sc8_f50_t16k/ |
-| `run08v2_v1_private943_tok16384` | R08 | base_model | 2026-05-04 05:49 | eval | ⚪ | first p943 full eval (single-sample) |
+| `run08v2_v1_private943_tok16384` | R08 | base_model | 2026-05-04 05:49 | eval | 🟢 | first p943 full eval (single-sample); cataloged → inference/base_model/R08_eval_v1_single_p943_t16k/ |
 | `run09sc8_v1_private943_tok16384` | R09 | base_model | 2026-05-04 17:32 | eval | ⚪ | SC8 on p943 (referenced widely in submission/) |
 | `run10_v3perslot_private943_tok16384` | R10 | base_model | 2026-05-05 19:55 | eval | ⚪ | v3perslot variant, single-sample p943 (git-log fallback) |
 | `expA_run08_perslot_perturbed` | R10b | base_model | 2026-05-05 19:55 | ablation | ⚪ | perslot perturbation, ran alongside R10 |
@@ -139,7 +139,7 @@ R-numbers are RESERVED at chronology-lock time and become CATALOGED when their p
 | R05 | run05_v1_50_tok16384 | cataloged |
 | R06 | run06_v2mcq_50_tok16384 | cataloged |
 | R07 | run07_sc8_v1_50_tok16384 | cataloged |
-| R08 | run08v2_v1_private943_tok16384 | reserved |
+| R08 | run08v2_v1_private943_tok16384 | cataloged |
 | R09 | run09sc8_v1_private943_tok16384 | reserved |
 | R10 | run10_v3perslot_private943_tok16384 | reserved |
 | R10b | expA_run08_perslot_perturbed | reserved |

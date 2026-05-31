@@ -212,3 +212,40 @@ These dev/smoke/parity runs are NOT referenced in any of the 25 cross-ref docs (
 
 ### Commit hash
 13c4cea (rebased onto origin 8a96854 MORNING_RUNS_WATCHLIST; pushed 8a96854..13c4cea). Brief detached-HEAD detour during rebase-with-stash — reattached main via branch -f, verified all 8 R0x folders intact before push.
+
+---
+## claude_vscode signoff — Day 9 — T2 DEEP audit R08 (first p943 single-sample baseline)
+
+### What was done
+Cataloged run08v2_v1_private943_tok16384 → inference/base_model/R08_eval_v1_single_p943_t16k/ (git mv jsonl+summary; no infra logs matched). Ran analyzer v3-final-final — FIRST exercise of the single-sample (is_sc=False) auto-detect path (R20 was SC-only). Wrote README + deep findings.md per MORNING_RUNS_WATCHLIST.
+
+### Gates: a✅ b(n/a, single-sample) c✅ d✅ e✅ f✅ g✅ h✅ i✅ — ALL PASS
+- (a) 943 + 20 meta ✅  (b) single-sample → no analysis_samples.jsonl (correct; gate b is SC-only)
+- (c-new-fixed) hard_independent_CLEAN n=16 acc=0.6250 ∈[0.60,0.95] ✅ (low edge; wolfram 3/7, search 7/9)
+- (c-info) DIRTY n=78 acc=0.2051 (normalizer gap)
+- (d) A_lucky_sample=0 ✅ + n_samples_math_correct ∈{0,1} for all 943 ✅ (explicit single-sample confirmation)
+- (f) truncated=119 ✅  (g) preview 0 ✅  (h) scored 498 ✅  (i) wolfram/search T4/T5 78/78 ✅
+- Verification triple: labels clean, sum-identity 547==547, 0 forbidden reads ✅
+- Single-sample path is CLEAN — no bug. Downstream p943 deep audits (R09/R10/R20b) unblocked. Analyzer wall-clock 36s (single-sample = 1 judge pass/item vs SC's ~9).
+
+### Bucket: A=407 A_lucky_sample=0 B=91 unknown=445 | scored acc 0.8173 | unanimous_teachers 381/403=0.9454
+(Kaggle for the derived CSV run08v2_v1_private943.csv = REGISTRY #1, 0.586 — post-processed, not re-run through analyzer with --kaggle-score since it's a derivative.)
+
+### B=91: ~63 (69%) format-recoverable (multi-slot 33, fraction-form 16, MCQ-letter 14), 28 likely true miss. 22 of the 91 are ALSO truncated.
+### Truncated=119 (vs R20's 17 — half token budget, 16K vs 32K, as predicted). 118/119 math-wrong. High-budget re-run targets.
+
+### BUG FOUND + FIXED in scripts/rename_run.sh (my own, from T1 session)
+`n=$(grep -Fo "$OLD" "$doc" | wc -l)` aborted under `set -o pipefail` whenever grep matched zero (grep exit 1 → pipefail → script exit). Fixed: `n=$( { grep -Fo ... || true; } | wc -l ...)`. IMPACT: T1 batch sweeps exited early — BUT I re-verified with an authoritative grep that none of the 8 T1 runs NOR run08v2 appear in any of the 25 cross-ref docs, so T1's reported "0 replacements" was CORRECT despite the early exit. The fix matters for R09+ which WILL have real references. Re-ran all 8 T1 + R08 under the fixed script: all exit 0, all 0 replacements (confirmed correct).
+
+### Cross-ref sweep (R08, bare-slug form per strategy clarification): 0 replacements.
+run08v2_v1_private943_tok16384 (the run jsonl name) isn't referenced in the doc list; the submission CSVs use the shorter `run08v2_v1_private943` name and live in submission/csvs/ (not in the 25-doc sweep list). REGISTRY.md references the CSV name, not the run name.
+
+### LFS (locked rule): jsonl 17MB + analysis.jsonl 33MB both >10MB → git-lfs-tracked on their new paths before staging (verified pointer content, not raw blobs). analysis.csv 5.7MB raw.
+
+### Surprises
+- extracted_empty=1 (R20 had 0) — single-sample + truncation can yield no box and no fallback number.
+- Truncation (119) is the dominant failure mode at 16K — biggest free lever for THIS run is tokens, not prompt/SC.
+- unanimous_teachers 0.945 < R20's 0.988 — single-sample at half budget agrees with consensus less; still healthy (≥0.90).
+
+### Commit hash
+(filled after commit)

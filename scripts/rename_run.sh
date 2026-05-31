@@ -56,8 +56,9 @@ for doc in "${DOCS[@]}"; do
     echo "  SKIP (missing): $doc"
     continue
   fi
-  # count literal matches (grep -F, fixed string; -o for per-occurrence count)
-  n=$(grep -Fo "$OLD" "$doc" | wc -l | tr -d ' ')
+  # count literal matches (grep -F, fixed string; -o per-occurrence).
+  # `|| true` so a zero-match grep (exit 1) doesn't trip `set -o pipefail`.
+  n=$( { grep -Fo "$OLD" "$doc" || true; } | wc -l | tr -d ' ')
   if [ "$n" -gt 0 ]; then
     # use | as sed delimiter so paths in $NEW don't clash with /
     sed -i "s|$OLD|$NEW|g" "$doc"
