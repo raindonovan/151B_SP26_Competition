@@ -1,296 +1,218 @@
-# SESSION_HANDOFF.md — claude_strategy session state
+# SESSION_HANDOFF — Day 9 mid-day → fresh session
 
-> Read this FIRST when resuming a claude_strategy chat. Detailed findings live in their canonical homes; this is the index.
-
-**Last updated:** 2026-05-31 ~00:45 PT (Day 9 close — deep-audit cohort complete, Pick B framework validated on Kaggle at 0.664, structural normalizer build scheduled for 05:00 Sun)
-
-**HEAD at handoff:** see latest commit on `main`. Previous Day 8 handoff archived at `strategy/SESSION_HANDOFF_day8_close.md`.
-
-**Time-to-deadline:** ~23 hours
-
----
-
-## State summary
-
-- **Pick A:** LOCKED at 0.745 (R20 + overrides + teacher overlay)
-- **Pick B candidates:** slots 1 + 2 both scored **0.664** on Kaggle — framework CONFIRMED
-- **Kaggle slots remaining:** 8 of 10 (3 current-pool expire ~18:50 Sun PT + 5 reset-pool refresh at Kaggle daily reset)
-- **Deep-audit cohort (R08, R09, R10, R20, R20b):** all 5 closed, all T3-verified
-- **NoThinking 943:** elevated to Pick B candidate, T1.5 + T3 verified, 13 unique-correct items confirmed
-- **Final adapter-target seed:** **8 items** [41, 61, 103, 104, 127, 231, 264, 282] (post-T3 corrections from initial heuristic 11)
-- **17-item still-truncated-at-32K set:** [93, 112, 161, 204, 229, 275, 308, 312, 376, 383, 445, 498, 586, 652, 724, 799, 809] — high-budget probe target
-
-## Tonight's submissions (Day 9 close)
-
-| Slot | CSV | Kaggle | Delta vs R20 baseline (0.646) |
-|---|---|---|---|
-| 1 | `picks_nothinking_join_conservative_v1.csv` | **0.664** | +1.8pp |
-| 2 | `picks_nothinking_join_conservative_763safe_v1.csv` | **0.664** | +1.8pp (identical) |
-
-**Interpretation:** Framework confirmed. 763 expression-form vs canonical form scored identically (either not on slice or grader handles both — future builds don't need disambiguator companions for expression items).
-
-**Slice-landing rate calibration:** ~5 of 13 rescues landed on the 283-item slice = **38% rate**, vs my 30% prior. Use 35-40% for future slot estimates.
-
-## ⏰ 05:00 Sun decisions (in priority order)
-
-Read in this order: `submission/SLOT_PLAN.md` → `strategy/MORNING_RUNS_WATCHLIST.md` → this section
-
-### 1. Structural normalizer build (HIGHEST EV remaining lever)
-- **Build at 05:00-08:00 Sun.** Three tiers per cohort findings:
-  - **Tier 1 universal** (highest priority, build first): includes **NEW: wrap-on-detect for 19 unboxed rows** (R20 source rows with no `\boxed{}` — fail Kaggle extraction unconditionally; ~6 expected slice rescues at 38% rate). Also: multi-slot collapse, MCQ-first-box, duplicate-option overcount (id 302/839 pattern), trailing-zero/precision rules.
-  - **Tier 2 class-based**: detect "exact form expected" from question text (rescues id=89/345 pattern); detect "N quantities expected" for slot-count alignment.
-  - **Tier 3 per-item overrides** via `postprocessing/per_item_overrides.csv` (schema'd, currently empty). Seeds: id=9 (gold split-form), id=167 (option-mapping), id=345 (precision), id=591 (undercount).
-- **Expected delta vs 0.646 baseline:** +2-3pp on its own (priors are lower bounds because Day-8 append bug suppressed historical measurement — see POST_DEADLINE_AUDITS.md A1).
-
-### 2. Morning runs on 3 Thunder A100s in parallel (~05:00-09:30 Sun)
-- Read `strategy/MORNING_RUNS_WATCHLIST.md` decision algorithm
-- Candidate ranking (from Day 9 evidence):
-  - **High-budget probe on 17 still-truncated items** (81920/65536 tokens): ~30 min A100, low engineering, concrete target
-  - **SC@32 on contested slice**: ~45 min A100, no engineering, ~11-14 A_lucky candidates
-  - **NoThinking on the 17 still-truncated items**: leverages tonight's NoThinking-works finding on the items most likely to need it
-  - **DeepConf**: thinner than predicted (R20 had only 3 items at >=5/8); deprioritize unless V-series shows multi-temp signal (unlikely tonight)
-- **Adapter eval (SFT v5 ckpt-1176)**: separate Thunder if available; default-include for cross-run diversity
-- **Adapter training on 8-item seed**: low priority given tiny target count; only if structural normalizer + morning runs aren't producing expected delta
-
-### 3. Sunday submissions (slots 3-8 per SLOT_PLAN.md)
-- Sun ~10:30: slot 3 = full normalizer on R20 (~0.669 expected)
-- Sun ~12:00: slot 4 = normalizer + NT join stack (~0.676 expected, first true Pick-B frontrunner)
-- Sun ~13:00: slot 5 = best morning-run winner
-- Sun ~14:30: slot 6 = second-best morning-run winner
-- Sun ~16:00: slot 7 = slot 4 + slot 5 stack (ceiling test, ~0.681 expected)
-- Sun ~18:00: slot 8 = slot 4 + slot 6 OR normalizer v2 (finalist alternative)
-- Sun ~20:00: slot 9 = diagnostic 14 (282 calibration) ONLY IF SPARE
-- Sun ~22:00: slot 10 = emergency reserve / last-built finalist
-
-### 4. Gradescope code submission (deadline Sun 23:59 PT)
-- Single `run_inference()` entry point per memory #17
-- Add all group members to Gradescope
-- Public GitHub repo + README (GPU type, inference time, weight setup)
-- Verification: top-10 = full private re-run; rest = 200 random Qs
-
-## Discipline lock-ins (read before any big decision)
-
-- **Memory #24 extended Day 9:** "DEEP AUDITS NO LIGHT AUDITS unless trivially so — applies to ALL big decisions, not just runs. claude_vscode same standard."
-- **Locked audit pattern (high-stakes):** my-audit -> ChatGPT cross-check -> synthesize
-- **Memory #11 (Pick B):** Qwen-derived only (output + format norm; no teacher overrides in submission_answer)
-- **Memory #25 (LB-subset lens):** Kaggle score = ~283-item slice; prefer robust picks over slice-tuned overrides
-- **Memory #2 (judger gap):** 28pp local-vs-Kaggle gap; local scores directional only
-- **Memory #30 + `strategy/POST_DEADLINE_AUDITS.md`:** A1 historical-override audit pending; Day-8 append bug means historical priors are LOWER BOUNDS
-
-## Open questions (deferred)
-
-- Sonnet-on-Qwen empirical validation (A6 — tomorrow's adapter, if trained, IS this experiment)
-- Diagnostic 14 (282) submission deferred to slot 9 / only-if-spare
-- 19-unboxed-rows: ~6 expected slice rescues — embedded in tier-1 normalizer build
-
-## Anti-patterns to avoid (Day 9 lessons)
-
-- **Don't re-investigate the phantom normalization stack** (resolved Day 7, merged 620301c)
-- **Don't reintroduce Day-8 append override mechanism** for multi-slot — use canonical full-replace via `apply_overrides.py`
-- **Don't add 282 to automatic Pick-B joins** without further evidence (disputed gold; can probe via slot 9)
-- **Don't isolate per-format-rule contributions on Kaggle** — offline-testable; preserve slots
-- **Don't burn slots on individual rule isolation** — bundle the full normalizer into one submission for aggregate measurement
-
-## Where to find things
-
-- **Tonight's full picture:** read this doc, then `submission/REGISTRY.md`, then `submission/SLOT_PLAN.md`
-- **The deep audits:** `inference/base_model/R{08,09,10,20,20b}_*/findings.md` (each has its own ChatGPT T3 verdict appended)
-- **NoThinking audit:** `inference/base_model/NT_eval_nothinking_sc8_p943_t?/findings.md`
-- **Audit templates:** `strategy/AUDIT_TEMPLATES.md` (T1, T2, T3, T4 + paste-fill spawn prompts)
-- **Pre-flight discipline:** `infrastructure/pre_flight/` + memory #19
-- **Post-deadline audit queue:** `strategy/POST_DEADLINE_AUDITS.md` (A1-A6)
-- **Morning planning detail:** `strategy/MORNING_RUNS_WATCHLIST.md`
-- **Submission strategy:** `submission/SLOT_PLAN.md` (the 10-slot locked plan)
+**Handoff date**: 2026-05-31 (Day 9, ~T-13.5h to deadline)
+**Outgoing session pace**: ~1400 min
+**Incoming session focus**: Phase C 4-LLM research dive → Phase D v7 plan → execution → Pick B FINAL → final lockdown
+**Project**: CSE 151B SP26 Kaggle math competition
+**Repo**: beepbeeepimajeep/151B_SP26_Competition
+**Previous handoff** archived at strategy/SESSION_HANDOFF_day9_open.md
 
 ---
 
-## DAY 9 SESSION HANDOFF — 2026-05-31 ~02:30 PT (claude_strategy → wake-up Rain)
+## READING ORDER (mandatory before any action)
 
-### Active state at handoff
+1. **userMemories** (provided automatically) — 30 entries; pay attention to #5 (multi-agent), #10 (LFS routing), #12 (v5 is BF16 LoRA not QLoRA), #19 (pre-flight), #24 (audit discipline EXTENDED), #28 (PAT)
+2. **strategy/CLAUDE.md** — role doc
+3. **strategy/AUDIT_DISCIPLINE_LOCKED.md** — the 10 rules locked Day 9 (5 new after Rain pushed back on shallow audit)
+4. **strategy/ADAPTER_NOTES.md** — 11 parts, ~900 lines, ALL adapter intel for v7 planning
+5. **strategy/ADAPTER_NOTES_CURSOR.md** — Cursor's parallel notes (Part 1 + Part 2 redo if landed)
+6. **This file**
 
-**Two Thunder runs in flight (parallel):**
-- **tnr-0**: items 0-58 (IDs 2..418) of `submission/csvs/picks/thinking_probe_target_set.csv`
-- **tnr-1**: items 59-117 (IDs 435..929)
-
-**Config (hard-tier validated, post-smoke-pass bump):**
-- SC=16, Thinking-mode, TP=2 on 2× A100
-- `--max-tokens 81920 --thinking-budget 65536`
-- `--temperature 0.6 --top-p 0.95 --top-k 20 --repetition-penalty 1.1`
-- `--mcq-format letters`
-
-**ETA**: ~6.5 hr each, parallel → wake-up dawn (~08:30 PT).
-
-**Output paths**:
-- tnr-0: `inference/base_model/thinking_probe_tnr0_20260531T065751Z/samples.jsonl`
-- tnr-1: `inference/base_model/thinking_probe_tnr1_<timestamp>/samples.jsonl`
-- Both pushed to origin/main with race-safe rebase-retry (fix coded in STEP 6).
-
-### What auto-happens when runs complete (coded into spawn prompts)
-
-1. samples.jsonl written, summary.txt generated
-2. LFS-track if >10MB
-3. `git add` → commit → race-safe push (rebase + retry up to 3x)
-4. Signoff appended to `inference/SCRATCH.md`
-5. Tmux window 0 shows "=== RUN COMPLETE <timestamp> ===" when done
-
-### Smoke results (passed gate, recorded here for analysis ref)
-
-**tnr-0 smoke (5/5 boxed, default-tier budgets 49152/24576):**
-- ID 2: A 12/16 ✓
-- ID 9: `\frac{L-8x}{6F}` 2/2 valid — WRONG (gold = `L-8x, 6F`; validation anchor MISSED at default budget)
-- ID 12: 11 16/16 ✓
-- ID 21: 67.4 15/16 ✓
-- ID 25: long LaTeX 2/3 valid — TRUNCATION-HEAVY at default budget
-
-**Key concern at default budget**: 40% of items hit token-cap truncation; voting unreliable on truncated items. **Why we bumped to hard-tier config for full run.**
-
-### Wake-up checklist
-
-1. **Check both runs completed cleanly:**
-   ```bash
-   cd ~/151B_SP26_Competition && git pull
-   ls -lh inference/base_model/thinking_probe_tnr0_*/samples.jsonl
-   ls -lh inference/base_model/thinking_probe_tnr1_*/samples.jsonl
-   wc -l inference/base_model/thinking_probe_tnr*/samples.jsonl   # expect 59 each
-   ```
-   If either is <59: instance crashed or smoke failed at step 5 fresh-fire. Check inference/SCRATCH.md signoff entries.
-
-2. **Cross-run analysis** (hand to claude_vscode on DSMLP):
-   - Merge tnr0 + tnr1 samples.jsonl (disjoint 118 items)
-   - Run analyzer → extract SC-majority `\boxed{}` per item
-   - Cross-ref vs R20 + NT-943 + thinking-twin existing rescues
-   - **Identify NEW rescues**: correct here AND R20 wrong AND NT-943 wrong AND on independent gold
-   - **Validation anchors to check explicitly**: ID 9, 435, 479, 638 (the thinking-twin verified-4). If all 4 replicate at high budget = mechanism robust. If <2 replicate = mechanism didn't replicate at scale; calibrate expectations.
-
-3. **Build Pick B candidates** (once rescues known):
-   - `picks_thunderprobe_strict.csv` = R20 + NT-943 join + verified Thunder rescues
-   - `picks_thunderprobe_plus_texas.csv` = above + 6 texas-oil verified rescues (lower-confidence)
-
-4. **Submission schedule** (Sunday May 31, deadline 22:00 PT — ~14 hours left at wake):
-   - Slot 7 (~10:30 PT): strict variant
-   - Slot 8 (~12:00 PT): combined variant
-   - Slot 9 (~14:00 PT): normalizer build (still pending — see deferred)
-   - Slot 10 (~17:00 PT): best-of stack
-   - Final Pick A locked at 0.745. Final Pick B lock by ~21:00 PT.
-
-### Locked Pick A (do NOT change)
-
-- 0.745 — R20 + NT-943 join + teacher overrides + Opus 5th-teacher overlay
-- Submission CSV in `submission/csvs/picks/` — see REGISTRY.md for filename
-- This is the deadline floor; everything else is upside
-
-### Deferred / NOT-tonight items (per "ignore post-deadline" Day 9 rule)
-
-- Normalizer build (originally planned ~05:00 PT) — push to Slot 9 mid-Sunday
-- A1-A7 post-deadline audits in `strategy/POST_DEADLINE_AUDITS.md`
-- PAT rotation (all PATs expire <24h anyway per Rain)
-- Cursor/Copilot consolidation decisions
-
-### Key uncertainties at handoff
-
-1. **Will ID 9 replicate at high budget?** Validation anchor missed at default. At 81920/65536 should have 16/16 valid samples → cleaner vote. If still wrong at high budget: mechanism didn't replicate, calibrate Pick B expectations down.
-2. **Thunder push race**: both runs push to origin/main near-simultaneously. Mitigation: rebase-retry in STEP 6 (coded). If one push fails 3 retries, agent reports back; manual fix at wake.
-3. **Tnr-1's anchors (435, 479, 638)**: untested at smoke. Full-run is the test.
-
-### Discipline wins logged this session (preserve as memory carry-forward)
-
-1. Identity guardrail caught SSH-label-vs-marker mismatch on first deployment — paid for itself
-2. Pre-flight 7-step caught CSV embedded-newline trap (shell pipeline broken) — Thunder agent surfaced the bug, applied Python fix
-3. GPT-5.5 audit via Cursor caught 3 WORRY items (JSON-aware resume, push race, quoted paths) on tnr-1 prompt before fire
-4. Smoke gate caught the truncation issue → bumped to hard-tier config before committing 4-5hr
-5. `.cursorrules` committed (ae6b7f9) — Cursor auto-loads contract every chat; cross-vendor audit pipeline durable
-
-### Files modified this session (all on origin)
-
-- `agents/CLAUDE_THUNDER.md` (ae3845d) — Day 9 contract: targeted-probe inference scope, identity guardrails, spawn boilerplate, 12 gotchas
-- `strategy/POST_DEADLINE_AUDITS.md` (77eadda) — A7 added (past A100 throughput investigation)
-- `.cursorrules` (ae6b7f9) — Cursor operating contract
-- Tnr-0 + tnr-1 inference outputs (LFS-tracked) — landing post-run
-
-### HEAD at handoff time
-
-`ae6b7f9` (or later if any auto-pushes from running Thunder agents have landed by wake).
-
-### Context state
-
-claude_strategy session at ~870 min, context tight. If continuing in this session post-wake, expect terse responses; if opening a fresh chat, reference this handoff as primary state.
+Do NOT skip any of these. Locked rule #6 (NO GLOSSING) applies to handoff context just as it does to file audits.
 
 ---
 
-## DAY 9 SESSION HANDOFF UPDATE — AUDIT DISCIPLINE (CRITICAL CARRY-FORWARD)
+## CURRENT STATE
 
-**THIS APPLIES TO ALL WAKE-UP WORK AND ALL FUTURE THUNDER/GPU OPERATIONS, NO EXCEPTIONS.**
-
-### The four-gate protocol (mandatory before any GPU launch)
-
-1. **RESUME-ENABLED**: explicit detection of partial samples.jsonl using JSON-aware count (not `wc -l`)
-2. **LIVE TRACKING**: tmux tracker window with watch on sample count + log tail
-3. **SMOKE TEST**: 5-item gate, ≥4/5 majority-boxed, fail = `sys.exit(1)` hard-stop
-4. **CROSS-MODEL AUDIT (via Cursor GPT-5.5 with `.cursorrules` auto-loaded)**: before fire
-
-### Audit is NEVER optional
-
-Even for:
-- "Small" param changes (e.g. token budget bumps)
-- "Trivial" patches (e.g. quoting fixes)
-- "Same as last time" re-launches
-- Tnr-1 mirror of tnr-0's already-audited prompt (mirror is a NEW artifact)
-
-**Why:** This session, three separate audit catches saved real failures:
-- Thunder pre-flight caught CSV embedded-newline trap (would have produced 59 empty IDs)
-- GPT-5.5 audit caught tracker `$RUN_DIR` BLOCKER (would have broken live monitoring on a 6.5hr run)
-- GPT-5.5 audit caught JSON-aware resume + race-safe push + quoted-paths WORRY items
-- Tnr-1 launched unaudited with old budgets → killed mid-flight (discipline win)
-
-**The pattern that fails:** "I'm only changing 2 params, no audit needed." That's the exact framing that introduced the tracker BLOCKER.
-
-### Audit workflow (Cursor)
-
-1. Draft prompt OR patch
-2. Open Cursor → repo loaded → chat with GPT-5.5 selected (MAX mode, High reasoning, Premium intelligence)
-3. Paste prompt with `@codebase` + `#file:` refs to relevant artifacts
-4. Cursor auto-loads `.cursorrules` → GPT-5.5 knows audit contract, output format (BLOCKER/WORRY/NOTE)
-5. Apply BLOCKERs always; apply WORRYs if cheap
-6. Fire to Thunder agent
-
-### When tnr-1's STEP 5 patch fires
-
-It MUST include:
-- The same RUN_DIR export + hard-fail-on-missing-run-dir-file fixes from tnr-0's re-patched STEP 5
-- Budget bump: `--max-tokens 81920 --thinking-budget 65536`
-- All sampling params unchanged from validated thinking-twin config
-- Race-safe push (rebase+retry) in STEP 6
-- Cross-model audit by GPT-5.5 BEFORE Rain pastes the prompt to tnr-1
-
-### Wake-up audit reminders
-
-If runs complete cleanly: cross-run analysis goes to claude_vscode. Even THAT analysis script should be audited if it touches the GPU or produces submission CSVs.
-
-If runs failed: diagnosis prompt to Thunder agents → audit before sending.
-
-If new spawn prompts needed: draft → audit → fire. Always.
-
-**Discipline > speed. Audits caught real failures multiple times tonight. Don't break the gate.**
+- **Pick A**: LOCKED at 0.745 (`submission/30_05/slot4_aggressive/30_05_slot4_aggressive_v2.csv`)
+- **Pick B**: PENDING — kitchen-sink running on tnr-1, ETA ~1-1.5h from this handoff. Per Part 7 timing path.
+- **v7 adapter**: COMMITTED to (Rain's decision Day 9). Phase A done. Phase B/C/D pending. Compute envelope per Part 7.
+- **Submission budget**: ~7 slots remaining (2 today + 5 tomorrow per memory #1)
+- **Audit discipline EXTENDED** per memory #24 — strict standard going forward, all agents.
 
 ---
 
-## DAY 9 SESSION HANDOFF — ADDRESSING CONVENTION (CRITICAL)
+## WHAT WAS DONE THIS SESSION (chronological, all pushed)
 
-**Every prompt drafted for Cursor (audit agent) MUST begin with `@CURSOR`** at the top of the message.
+- ecc6ebb: `submission/scripts/build_pickb.py` Pick B pipeline (smoke-tested)
+- b71bb64: ADAPTER_NOTES.md Parts 1-5 (per-attempt summaries + cross-cutting)
+- bc38b5a → 57a54a9: Parts 3.A-3.C expanded (memo test tautology, cheap-validation methods, smoke-test phases)
+- 667de5c: Architectural correction (dual-path under Rain's directive — single-path framing was wrong)
+- 360f92c: Part 6 deeper findings (Rain pushed back on shallow first pass — caught v1 vs v3-v5 paradigm split, dual-path infrastructure already exists, v4 = -4.9pp regression, memo test reframe)
+- 9cbe721: strategy/AUDIT_DISCIPLINE_LOCKED.md — 10 rules, 5 new
+- ab679b0: Part 7 compute envelope
+- 61b2ef6: Part 8 trace-answer mismatch (Rain's catch — Sonnet trace + swapped teacher answer = incoherent training)
+- f562870 → ea860bf: Part 9 subset-stratified hypothesis testing + routing-dismissal correction
+- 4039c6b: Part 10 SFT + standalone adapter LOCKED; investigate DoRA/LoRA/QLoRA
+- c58e694: Part 11 CRITICAL CORRECTION — v3/v4/v5 are full bf16 LoRA, NOT QLoRA
 
-This extends the existing identity-address rule (memory #9 rule 5: "IDENTITY-ADDRESS every prompt at top: 'TO: CLAUDE_VSCODE' / 'TO: CHATGPT_AUDIT' etc"). The agents now in active use:
+Memory #12 updated to reflect v5 = bf16 LoRA. Memory #24 updated with the 10-rule audit discipline.
 
-| Address tag | Agent / destination | Where |
+---
+
+## KEY DECISIONS LOCKED (with rationale)
+
+1. **SFT paradigm** for v7 (not RL/in-context/other). Rain Day 9.
+2. **Standalone LoRA adapter** (not merged). Evidence: v1 merged=catastrophe, v4 merged-adaptive=-4.9pp, v5 adapter=break-even.
+3. **Full bf16 LoRA** as default (not QLoRA). Continuity with v3-v5 lineage; no memory pressure on A100 80GB.
+4. **LoRA primary, DoRA low-priority parallel** (Rain reframe to reliability over performance). LoRA has 4+ years math validation; DoRA less evidence + infra-compatibility risk.
+5. **Dual-path deployment**: items-in-training-set routing (v5-style).
+6. **Audit discipline EXTENDED**: NO GLOSSING / NO SKIPPING / NOTES as I go / Cursor same standard / DEEP no light.
+7. **v7 first attempt = conservative**: same architecture as v5 with two known bugs fixed (training composition + trace coherence) + per-subset evaluation methodology.
+8. **3 independent failure modes** identified for v5 — v7 must fix all three:
+   - Training composition (87% T1-easy → use Qwen-wrong residual)
+   - Trace coherence (Sonnet trace + swapped answer = Frankenstein → coherent trace+answer pairs)
+   - Deployment (full-replacement exposed both → dual-path routing)
+
+---
+
+## IMMEDIATE NEXT 3 ACTIONS (priority order)
+
+1. **Audit Cursor's REDO** when they push. Verify against strategy/AUDIT_DISCIPLINE_LOCKED.md. If shallow → FLAG + require 3rd pass. If deep → integrate into Phase D synthesis. Cursor REDO prompt was drafted (see chat history) and given to Rain to paste.
+
+2. **Monitor kitchen-sink → Pick B FINAL fire**. tnr-1 kitchen-sink ETA ~1-1.5h from handoff. When complete: audit per stop-rule (+1 net correct with zero regressions on measurable indep-gold; size-aware to 12 items). Integrate via `python3 submission/scripts/build_pickb.py --variant final --thunder-stance intermediate --include-kitchensink --kitchensink-run-dir inference/base_model/kitchensink_20260531T135417Z --out-dir submission/30_05/pickb_final`. Audit candidate. Fire to Kaggle.
+
+3. **Design Phase C 4-LLM research prompt**. HIGH-STAKES — needs careful crafting. 20 questions across 4 categories. See strategy/ADAPTER_NOTES.md Part 3 + new questions A-Q. Demand practical anchors ("someone did it this way on math competition"), not abstract surveys. Output goes into Phase D plan.
+
+---
+
+## OPEN QUESTIONS (for Phase C research, the 4-LLM dive)
+
+**Trace coherence (Part 8, A-F)**:
+- A. Trace coherence as SFT data quality — how much does mismatched reasoning hurt reasoning model SFT?
+- B. Best teacher trace source for math (Sonnet vs GPT-5.4 vs GPT-OSS vs others)
+- C. Trace regeneration strategies when no teacher matches
+- D. Trace+answer alignment auto-detection
+- E. Multi-teacher trace ensemble value
+- F. Memorization quality with coherent vs incoherent training
+
+**Per-subset effectiveness (Part 9, G-J)**:
+- G. Published per-subset SFT effectiveness analyses for math?
+- H. Structural predictors of which subsets benefit
+- I. AIMO/Kaggle winners with multi-adapter ensembles or subset-routing?
+- J. MCQ vs free-form as fundamentally different learning problems?
+
+**PEFT variants (Part 10/11, K-Q)**:
+- K. DoRA outperform LoRA for math reasoning specifically?
+- L. DoRA vs LoRA at our config (r=64 α=128 Qwen3-4B)
+- M. DoRA infrastructure compatibility (PEFT, Unsloth, vLLM LoRARequest at inference) — GATING
+- N. DoRA training cost vs LoRA
+- O. DoRA inference latency overhead
+- P. DoRA for memorization-style tasks
+- Q. QLoRA reconsidered — v3-v5 used bf16 LoRA (Part 11 correction); does QLoRA evidence motivate revisit?
+
+**Original (Part 3.D, not collapsed by locks)**:
+- Validation methodology for transductive SFT (still relevant)
+- Confidence-gated routing implementations
+- Qwen3-4B-Thinking-2507 adapter sweet spots
+- Training data composition for "Qwen-wrong items" SFT
+- WiSE-FT for LoRA validation on math
+- DeepConf voting (Fu et al. arxiv 2508.15260)
+- Practical "someone did it this way" anchors from AIMO/Kaggle math gold medalists
+
+---
+
+## OPEN TASKS / PENDING WORK
+
+| Task | Owner | Status |
 |---|---|---|
-| `TO: CLAUDE_THUNDER_TNR0` | tnr-0 Thunder execution | VS Code SSH window (marker tnr-0) |
-| `TO: CLAUDE_THUNDER_TNR1` | tnr-1 Thunder execution | VS Code SSH window (marker tnr-1) |
-| `TO: CLAUDE_VSCODE` | DSMLP execution / build | VS Code DSMLP window |
-| `TO: CLAUDE_DATAAPP` | DataApp pipeline | VS Code DSMLP window 2 |
-| `@CURSOR` | Cursor audit agent (GPT-5.5) | Cursor IDE chat |
+| Cursor Phase A REDO | @CURSOR | Prompt drafted in chat, waiting for Rain to paste |
+| Kitchen-sink monitoring + Pick B FINAL build/fire | claude_strategy | Pending ETA T+1-1.5h |
+| Phase C 4-LLM research prompt design | claude_strategy (fresh) | Pending — HIGH STAKES, needs careful crafting |
+| Phase C 4-LLM research execution | Rain (manual 4-LLM orchestration) | After prompt drafted |
+| Phase D v7 plan synthesis | claude_strategy (fresh) | After Phase C results |
+| v7 dataset preparation | claude_strategy + claude_vscode (+ dataApp if needed) | After Phase D plan |
+| v7 training launch | tnr-0 | After dataset ready |
+| v7 eval (per-subset, held-out, format, anchor) | claude_strategy | After training |
+| v7 integration into Pick B | claude_strategy + build_pickb.py | After eval |
+| Gradescope code submission (separate track) | Rain + claude_strategy | Sunday May 31 23:59 PT |
 
-**Why:** Tonight's identity guardrail caught real failure modes (SSH-label-vs-marker mismatch, wrong-prompt-to-wrong-instance). The same risk applies cross-tool: a Cursor audit prompt accidentally pasted to a Thunder window would either fail (no @codebase) or — worse — be interpreted as an instruction by the Thunder agent. Explicit addressing prevents that.
+---
 
-**Active runs at this handoff update:**
-- tnr-0: full inference running with audited re-patched STEP 5 (81920/65536 budgets, RUN_DIR export fix, hard-fail guard)
-- tnr-1: full inference running with audited re-patched STEP 5 (same fixes applied)
-- Both ETA dawn (~08:30 PT)
+## CONTEXT TO REMEMBER (tribal knowledge)
+
+- **Rain is UCSD CS undergrad learning SWE**. Continuous narrative reasoning + audit discipline + treat decisions as teaching moments.
+- **Audit discipline LOCKED** per memory #24 + strategy/AUDIT_DISCIPLINE_LOCKED.md. NO exceptions.
+- **PAT BURNED** per memory #28 — rotate before any new Thunder spin-up. Rain pastes PAT in chat for ephemeral runtime.
+- **LFS budget exceeded is NEVER a blocker** per memory #10 — always route around.
+- **Compute**: tnr-1 BUSY through deadline. tnr-0 = 2× A100 80GB available. 1× A100 spin-ups available, Rain happy to spin up as needed. ~15-25min setup each.
+- **Identity guardrail** per memory #5: Thunder boxes have ~/.instance-role chmod 444; prompts start with EXPECTED_ROLE check. New tnr-2 must have this.
+- **Final picks must be Qwen-derived** per memory #11. Adapter answers ARE Qwen-derived (Qwen base + Qwen-trained adapter).
+- **Submission discipline**: every submission audited per 8-stage session. Narrative paragraph for every run/audit.
+- **Prompt delivery**: ONE prompt at a time, paste-ready fenced block, status board at END every response per memory #9.
+
+---
+
+## WHAT TO AVOID / DON'T DO
+
+- **DO NOT re-investigate the "phantom normalization stack"** — resolved Day 7, merged 620301c (memory #30)
+- **DO NOT call v3/v4/v5 "QLoRA"** — they're full bf16 LoRA. Only v1 was QLoRA (Part 11 correction)
+- **DO NOT propose single-path full-replacement** — locked dual-path (v4 -4.9pp)
+- **DO NOT propose merged-adapter** — locked standalone (v1 catastrophe + R14 merge-pathology)
+- **DO NOT propose general distillation training** — locked transductive
+- **DO NOT propose memo-test-only validation** — must use held-out at inference + per-subset eval + anchor regression
+- **DO NOT default rp=1.1 on base Qwen** — SFT pathology rescue lever only
+- **DO NOT propose teacher overrides in final-pick submission_answer** — locked rule #11. Adapter answers OK (Qwen-derived).
+- **DO NOT skip .log files** when auditing — locked rule #6. Even 300KB+ logs read FULLY.
+- **DO NOT defer LFS issues** — locked rule #10. Route around.
+- **DO NOT spin up Thunder instances speculatively** — ~15-25min setup each.
+- **DO NOT bury the Cursor REDO request** — it's the gating item for Phase D synthesis quality.
+
+---
+
+## VERIFY BEFORE ASSUMING (state to re-confirm in fresh session)
+
+- [ ] Kitchen-sink status: `git log -5 origin/main` for newer commits; check `inference/base_model/kitchensink_20260531T135417Z/` for output files
+- [ ] Cursor REDO status: check if `strategy/ADAPTER_NOTES_CURSOR.md` has been updated with Part 2 (gap fills)
+- [ ] Latest pushed commit: was c58e694 (Part 11) before this handoff move; check `git log -10 origin/main`
+- [ ] Slot budget remaining (memory #1): 2 today + 5 tomorrow minus any submissions fired since handoff
+- [ ] PAT validity if making API calls
+- [ ] Thunder tnr-0 idle (`tnr ls` or similar) before any v7 dispatch
+- [ ] Memory edits #12 and #24 reflect the corrections (v5 = bf16 LoRA, audit discipline extended)
+
+---
+
+## FILES TO REVIEW (navigation cheat sheet)
+
+| File | Why |
+|---|---|
+| `strategy/ADAPTER_NOTES.md` (Parts 1-11) | All v7 design intel — read fully, NOT skimmed |
+| `strategy/ADAPTER_NOTES_CURSOR.md` | Cursor's parallel notes — Part 2 gap fills after REDO |
+| `strategy/AUDIT_DISCIPLINE_LOCKED.md` | The 10 audit rules — read once, apply always |
+| `inference/runs/adapters/sft_v5/findings.md` | v5 canonical postmortem |
+| `inference/scripts/run_hybrid_inference.py` | Dual-path infrastructure (--mode base / --mode adapter) |
+| `inference/results/hybrid/` | Adapter dual-path execution evidence (adapter_v5_run.jsonl etc.) |
+| `submission/scripts/build_pickb.py` | Pick B constructor |
+| `inference/runs/KITCHEN_SINK_DISPATCH_PLAN.md` | Kitchen-sink locked spec |
+| `submission/30_05/slot4_aggressive/30_05_slot4_aggressive_v2.csv` | Pick A locked |
+| `docs/SUBMISSION_REGISTRY.md` | Submission history + scores |
+
+---
+
+## AGENT IDENTITIES
+
+- **Rain**: user. UCSD CS undergrad. Final-week. Locks decisions, expects narrative reasoning + audit discipline.
+- **claude_strategy** (me/successor): claude.ai. Central node. Spec/direction; verify from repo; never write full implementation code.
+- **claude_vscode**: LOCAL on Rain's machine, IDE-embedded. NOT DSMLP.
+- **tnr-0**: Thunder 2× A100 80GB. ~/.instance-role chmod 444.
+- **tnr-1**: Thunder 2× A100 80GB. BUSY through deadline.
+- **Cursor** (@CURSOR): IDE agent. Co-investigator. Same discipline standard.
+
+---
+
+## SUCCESS CRITERIA FOR FRESH SESSION
+
+The fresh session is succeeding if it:
+1. Audits Cursor REDO without looking the other way on shallow output
+2. Gets Pick B FINAL fired with correct stack
+3. Designs Phase C research prompt producing actionable v7-specific guidance (not abstract surveys)
+4. Synthesizes Phase D v7 plan with conservative-first principle
+5. Catches own shallow audits per locked rules
+6. Keeps Rain in continuous narrative + status board per response
+7. Lands Gradescope code submission cleanly alongside Kaggle picks
+
+---
+
+## HANDOFF PROMPT (paste this into the fresh session as the first message)
+
+> I'm continuing the CSE 151B SP26 Kaggle math competition work mid-Day-9 from a prior claude_strategy session. Before responding, read in this order: my userMemories (provided), then strategy/CLAUDE.md, strategy/AUDIT_DISCIPLINE_LOCKED.md, strategy/ADAPTER_NOTES.md (all 11 parts), strategy/ADAPTER_NOTES_CURSOR.md, then strategy/SESSION_HANDOFF.md. Confirm you've read them and summarize the 3 immediate next actions and the 8 locked decisions before proposing anything new. Then we continue from the IMMEDIATE NEXT 3 ACTIONS in priority order.
