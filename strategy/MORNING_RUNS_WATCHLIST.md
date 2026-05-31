@@ -59,10 +59,11 @@ All candidates Qwen-only → Pick-B eligible under rule #11.
 ## Decision algorithm at 05:00 Sun
 
 1. Read `CROSS_RUN_MATRIX.csv`; count items per threshold above.
-2. Rank candidates by `(items_addressable / GPU_minutes)`.
-3. Pick top 2–3 that fit the 05:00 → 09:30 Sun window (4.5 hr).
-4. Fire on 3 Thunder A100s **in parallel** (one run per GPU; no GPU-budget constraint).
-5. Adapter training on a 4th Thunder if separable; otherwise queue after morning runs finish (~10:30 Sun).
+2. **Check param-lever evidence** if V-series (R15–R19) or R14 (run13_rp110) shallow batch has been cataloged: scan their READMEs for which sampling params helped/hurt. Multi-temp SC candidate gets stronger evidence base if V4_temp_diversification showed gains; rep-penalty tweaks get evidence base from R14. **If V-series not yet cataloged at 05:00, the multi-temp candidate is evaluated on Qwen3-4B research priors alone** (Sun et al. +7.3pp), no V-series boost.
+3. Rank candidates by `(items_addressable / GPU_minutes)`.
+4. Pick top 2–3 that fit the 05:00 → 09:30 Sun window (4.5 hr).
+5. Fire on 3 Thunder A100s **in parallel** (one run per GPU; no GPU-budget constraint).
+6. Adapter training on a 4th Thunder if separable; otherwise queue after morning runs finish (~10:30 Sun).
 
 ## Hard skip rule
 

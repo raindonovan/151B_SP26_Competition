@@ -61,8 +61,17 @@ PER-RUN LOOP (for each run in batch):
   4. Write README.md (≤2 paragraphs). Required fields:
      - Original name + R#
      - Run date (UTC, from summary.json.started_at or git first-commit)
-     - Config: model, method, n_samples, max_new_tokens, temperature,
-       n_items
+     - Config: model, method, n_samples, max_new_tokens, **temperature,
+       top_p, top_k, presence_penalty, repetition_penalty**, n_items
+       (capture ALL sampling params — V-series R15–R19 + R14
+       run13_rp110 are explicit param-lever ablations; the param
+       deltas vs baseline (T=0.6/top_p=0.95/top_k=20/pp=1.0/rp=1.0)
+       are the POINT of those runs and must be visible in README)
+     - **Param-lever flag**: if this run's name or summary indicates
+       a sampling-param ablation (rp110, temp_diversification,
+       counting_top, shape_filter, etc.), add a one-line "PARAM
+       LEVER" section noting WHICH params differ from baseline +
+       what the run was probing
      - Purpose: one sentence on why this run existed in dev arc
   5. Write findings.md (≤1 paragraph). Either the headline result OR
      "No findings beyond development iteration" if it was scaffolding.
