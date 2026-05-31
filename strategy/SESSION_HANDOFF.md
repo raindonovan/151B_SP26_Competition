@@ -101,3 +101,116 @@ Read in this order: `submission/SLOT_PLAN.md` → `strategy/MORNING_RUNS_WATCHLI
 - **Post-deadline audit queue:** `strategy/POST_DEADLINE_AUDITS.md` (A1-A6)
 - **Morning planning detail:** `strategy/MORNING_RUNS_WATCHLIST.md`
 - **Submission strategy:** `submission/SLOT_PLAN.md` (the 10-slot locked plan)
+
+---
+
+## DAY 9 SESSION HANDOFF — 2026-05-31 ~02:30 PT (claude_strategy → wake-up Rain)
+
+### Active state at handoff
+
+**Two Thunder runs in flight (parallel):**
+- **tnr-0**: items 0-58 (IDs 2..418) of `submission/csvs/picks/thinking_probe_target_set.csv`
+- **tnr-1**: items 59-117 (IDs 435..929)
+
+**Config (hard-tier validated, post-smoke-pass bump):**
+- SC=16, Thinking-mode, TP=2 on 2× A100
+- `--max-tokens 81920 --thinking-budget 65536`
+- `--temperature 0.6 --top-p 0.95 --top-k 20 --repetition-penalty 1.1`
+- `--mcq-format letters`
+
+**ETA**: ~6.5 hr each, parallel → wake-up dawn (~08:30 PT).
+
+**Output paths**:
+- tnr-0: `inference/base_model/thinking_probe_tnr0_20260531T065751Z/samples.jsonl`
+- tnr-1: `inference/base_model/thinking_probe_tnr1_<timestamp>/samples.jsonl`
+- Both pushed to origin/main with race-safe rebase-retry (fix coded in STEP 6).
+
+### What auto-happens when runs complete (coded into spawn prompts)
+
+1. samples.jsonl written, summary.txt generated
+2. LFS-track if >10MB
+3. `git add` → commit → race-safe push (rebase + retry up to 3x)
+4. Signoff appended to `inference/SCRATCH.md`
+5. Tmux window 0 shows "=== RUN COMPLETE <timestamp> ===" when done
+
+### Smoke results (passed gate, recorded here for analysis ref)
+
+**tnr-0 smoke (5/5 boxed, default-tier budgets 49152/24576):**
+- ID 2: A 12/16 ✓
+- ID 9: `\frac{L-8x}{6F}` 2/2 valid — WRONG (gold = `L-8x, 6F`; validation anchor MISSED at default budget)
+- ID 12: 11 16/16 ✓
+- ID 21: 67.4 15/16 ✓
+- ID 25: long LaTeX 2/3 valid — TRUNCATION-HEAVY at default budget
+
+**Key concern at default budget**: 40% of items hit token-cap truncation; voting unreliable on truncated items. **Why we bumped to hard-tier config for full run.**
+
+### Wake-up checklist
+
+1. **Check both runs completed cleanly:**
+   ```bash
+   cd ~/151B_SP26_Competition && git pull
+   ls -lh inference/base_model/thinking_probe_tnr0_*/samples.jsonl
+   ls -lh inference/base_model/thinking_probe_tnr1_*/samples.jsonl
+   wc -l inference/base_model/thinking_probe_tnr*/samples.jsonl   # expect 59 each
+   ```
+   If either is <59: instance crashed or smoke failed at step 5 fresh-fire. Check inference/SCRATCH.md signoff entries.
+
+2. **Cross-run analysis** (hand to claude_vscode on DSMLP):
+   - Merge tnr0 + tnr1 samples.jsonl (disjoint 118 items)
+   - Run analyzer → extract SC-majority `\boxed{}` per item
+   - Cross-ref vs R20 + NT-943 + thinking-twin existing rescues
+   - **Identify NEW rescues**: correct here AND R20 wrong AND NT-943 wrong AND on independent gold
+   - **Validation anchors to check explicitly**: ID 9, 435, 479, 638 (the thinking-twin verified-4). If all 4 replicate at high budget = mechanism robust. If <2 replicate = mechanism didn't replicate at scale; calibrate expectations.
+
+3. **Build Pick B candidates** (once rescues known):
+   - `picks_thunderprobe_strict.csv` = R20 + NT-943 join + verified Thunder rescues
+   - `picks_thunderprobe_plus_texas.csv` = above + 6 texas-oil verified rescues (lower-confidence)
+
+4. **Submission schedule** (Sunday May 31, deadline 22:00 PT — ~14 hours left at wake):
+   - Slot 7 (~10:30 PT): strict variant
+   - Slot 8 (~12:00 PT): combined variant
+   - Slot 9 (~14:00 PT): normalizer build (still pending — see deferred)
+   - Slot 10 (~17:00 PT): best-of stack
+   - Final Pick A locked at 0.745. Final Pick B lock by ~21:00 PT.
+
+### Locked Pick A (do NOT change)
+
+- 0.745 — R20 + NT-943 join + teacher overrides + Opus 5th-teacher overlay
+- Submission CSV in `submission/csvs/picks/` — see REGISTRY.md for filename
+- This is the deadline floor; everything else is upside
+
+### Deferred / NOT-tonight items (per "ignore post-deadline" Day 9 rule)
+
+- Normalizer build (originally planned ~05:00 PT) — push to Slot 9 mid-Sunday
+- A1-A7 post-deadline audits in `strategy/POST_DEADLINE_AUDITS.md`
+- PAT rotation (all PATs expire <24h anyway per Rain)
+- Cursor/Copilot consolidation decisions
+
+### Key uncertainties at handoff
+
+1. **Will ID 9 replicate at high budget?** Validation anchor missed at default. At 81920/65536 should have 16/16 valid samples → cleaner vote. If still wrong at high budget: mechanism didn't replicate, calibrate Pick B expectations down.
+2. **Thunder push race**: both runs push to origin/main near-simultaneously. Mitigation: rebase-retry in STEP 6 (coded). If one push fails 3 retries, agent reports back; manual fix at wake.
+3. **Tnr-1's anchors (435, 479, 638)**: untested at smoke. Full-run is the test.
+
+### Discipline wins logged this session (preserve as memory carry-forward)
+
+1. Identity guardrail caught SSH-label-vs-marker mismatch on first deployment — paid for itself
+2. Pre-flight 7-step caught CSV embedded-newline trap (shell pipeline broken) — Thunder agent surfaced the bug, applied Python fix
+3. GPT-5.5 audit via Cursor caught 3 WORRY items (JSON-aware resume, push race, quoted paths) on tnr-1 prompt before fire
+4. Smoke gate caught the truncation issue → bumped to hard-tier config before committing 4-5hr
+5. `.cursorrules` committed (ae6b7f9) — Cursor auto-loads contract every chat; cross-vendor audit pipeline durable
+
+### Files modified this session (all on origin)
+
+- `agents/CLAUDE_THUNDER.md` (ae3845d) — Day 9 contract: targeted-probe inference scope, identity guardrails, spawn boilerplate, 12 gotchas
+- `strategy/POST_DEADLINE_AUDITS.md` (77eadda) — A7 added (past A100 throughput investigation)
+- `.cursorrules` (ae6b7f9) — Cursor operating contract
+- Tnr-0 + tnr-1 inference outputs (LFS-tracked) — landing post-run
+
+### HEAD at handoff time
+
+`ae6b7f9` (or later if any auto-pushes from running Thunder agents have landed by wake).
+
+### Context state
+
+claude_strategy session at ~870 min, context tight. If continuing in this session post-wake, expect terse responses; if opening a fresh chat, reference this handoff as primary state.
