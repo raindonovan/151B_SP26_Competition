@@ -651,6 +651,90 @@ Synthesize with `ADAPTER_NOTES_CURSOR.md` in Phase D after both committed.
 
 ---
 
+---
+
+## PART 8 — TRACE-ANSWER MISMATCH (Rain's catch, 5/31) — CRITICAL v7 design constraint
+
+**The mismatch (Rain's memory of v3/v4/v5 data construction):**
+
+Training data construction used Sonnet for the REASONING TRACE on every item. But when Sonnet's final answer was WRONG for a question being trained, the team would swap in the correct answer from another teacher (GPT-5.4 or GPT-OSS). The reasoning trace was NOT regenerated to match — it stayed as Sonnet's (incorrect) chain of thought.
+
+Result: training examples like
+```
+<think>
+[Sonnet's trace concluding "...therefore the answer is B"]
+</think>
+
+\boxed{A}    ← swapped in from another teacher
+```
+
+The reasoning doesn't lead to the labeled answer. The model trains on incoherent examples.
+
+**What the model would learn from this pattern:**
+
+1. "Reasoning patterns are decorative" — the final box is what matters, the trace doesn't have to derive it
+2. Pattern-match against trace shape (math-looking content) without doing actual derivation work
+3. Trust labeled answers over self-derived ones — increases likelihood of producing answers from a "memorized lookup" rather than from reasoning
+
+This is **directly consistent** with the adapter_v5_run.jsonl evidence (Part 6.E): adapter produces structured reasoning that LOOKS like derivation but might be pattern-matched against training data, with the answer arriving via memorized lookup, not via the displayed reasoning.
+
+**Evidence trail to verify the mismatch claim:**
+
+- v5 dataset (`data/sft_v5_dataset.jsonl`): I verified earlier that 391/391 items have `source='sonnet'` — every trace from Sonnet
+- v3 dataset (per Cursor's read): "Sonnet 366, GPT-5.4 104, GPT-OSS 23" — most traces from Sonnet, some from others
+- Need to verify: when source='sonnet' but final answer != Sonnet's actual answer, is the trace's conclusion misaligned with the boxed answer? Would need to either parse trace conclusions or check answer-history per item.
+
+**For v7 design (this becomes a primary constraint):**
+
+Training examples must have COHERENT trace+answer pairs:
+- Reasoning trace must actually arrive at the labeled answer through valid math
+- If teacher X got answer A and teacher Y got answer B, use trace from whichever teacher matches the verified-correct answer
+- If NO teacher's natural trace matches the verified-correct answer, REGENERATE the trace (don't construct a Frankenstein)
+
+**Fallback options for trace regeneration (Rain's note):**
+
+1. **dataApp** has proven it can quickly generate responses — not ideal but available
+2. **Wolfram step-by-step output** — for items where Wolfram has HIGH confidence, its derivation could become a trace template (would need formatting layer)
+3. **Multi-teacher consensus trace** — pick the teacher whose answer matches verified-correct AND whose trace is coherent
+4. **Self-derivation from Qwen at high SC** — for items where Qwen does converge on correct answer in some SC samples, harvest those traces
+
+**Critical Phase C research questions added (these are now PRIMARY, not secondary):**
+
+A. **Trace coherence as SFT data quality**: how much does trace+answer mismatch hurt SFT for reasoning models like Qwen3-Thinking? Is there published research on this specifically?
+
+B. **Best teacher trace source**: does one teacher (Sonnet vs GPT-5.4 vs GPT-OSS vs others) produce systematically better reasoning traces for math? Are there benchmarks or comparisons?
+
+C. **Trace regeneration strategies**: when no teacher's natural trace matches verified-correct answer, what's the best fallback? Wolfram-derived? LLM-regenerated? Hand-crafted? Hybrid?
+
+D. **Trace+answer alignment auto-detection**: how to detect mismatch automatically? Parse trace conclusion, compare to labeled answer? Other approaches?
+
+E. **Multi-teacher trace ensemble**: any value in showing multiple correct traces per item during training? Or does this confuse memorization?
+
+F. **Memorization quality**: does coherent trace+answer pair training produce qualitatively different memorization vs incoherent? Specifically, does it produce a model that actually DERIVES the answer in trace at inference, vs one that pattern-matches and bypasses?
+
+**Implication for v7 plan timing:**
+
+If we determine via Phase C that trace regeneration is necessary for items where Sonnet got the answer wrong:
+- Add ~1-2h to dataset prep phase (run dataApp or alternative to regenerate)
+- Could pre-stage dataApp generation in parallel with claude_strategy doing other work
+- Trade-off: better training data quality vs more time spent before training
+
+**Implication for the v5 postmortem:**
+
+v5's break-even outcome (not regression, but no gain) may be partially attributable to:
+1. 87% T1-easy training (Qwen already gets these right)
+2. Trace-answer mismatch on the items where Sonnet was wrong (poisoned training signal)
+3. Single-path deployment that exposed both issues to the full 943
+
+These are independent failure modes. v7 needs to address ALL THREE simultaneously:
+- Train on Qwen-wrong residual (not T1-easy)
+- COHERENT trace+answer pairs (no Frankenstein)
+- Dual-path deployment (route only trained items to adapter)
+
+This raises confidence that v7 is fixable. Each of these is concretely addressable.
+
+---
+
 ## PART 7 — Compute envelope through deadline (locked 5/31)
 
 **Available compute** (per Rain, Day 9 Hour ~T-15):
