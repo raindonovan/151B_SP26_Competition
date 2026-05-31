@@ -987,3 +987,65 @@ Reframed: "Given v3/v4/v5 used bf16 LoRA (not QLoRA as previously misclaimed), i
 This was a Part 6-style miss caught by Rain. Even after the discipline lock-in (rule #6: NO GLOSSING), I'd extracted r=64, α=128, dropout, epochs, lr, schedule — but glossed past the model-loading line that distinguishes QLoRA from full bf16. The quantization config is not just a parameter — it's the foundational training stack choice that determines what other parameters even mean.
 
 For future audits: when extracting hyperparams from a training script, the LOADING SECTION must be read explicitly as part of the config extraction. Model loading determines what training is.
+
+---
+
+## PART 12 — v5 tier distribution VERIFIED + v7 dataset implication (Cursor REDO 697a9d7)
+
+### 12.A) Verified tier distribution for v5 training set
+
+Cursor's REDO performed the verification I requested. Joined `data/sft_v5_dataset.jsonl` with `data/MASTER_ANSWERS.csv` by item_id. All 391 mapped.
+
+**Exact distribution:**
+| Tier | Count | % |
+|---|---|---|
+| T1 | 2 | 0.51% |
+| T2 | 341 | 87.21% |
+| T3 | 31 | 7.93% |
+| T4 | 7 | 1.79% |
+| T5 | 10 | 2.56% |
+
+### 12.B) "87% T1-easy" claim correction
+
+Memory #12 previously said "87% T1-easy training is structural." **This was imprecise.**
+
+Correct framing:
+- "T1-easy" interpreted as T1-only is **FALSE** (actual T1 = 0.51%)
+- "Easy-heavy" interpreted as T1+T2 is **TRUE** (87.72%)
+- The substantive conclusion (training data biased toward Qwen-easy items) is unchanged, but the precision matters
+
+Memory #12 updated to reflect the verified tier distribution.
+
+### 12.C) v7 dataset selection implication
+
+The tier distribution explains the v5 break-even mechanically under dual-path:
+
+- 87.72% of v5 training (343 items in T1+T2) = items base Qwen mostly gets right anyway
+- Under dual-path routing: those items go to adapter → adapter returns answer base would have returned → no Kaggle delta on those items
+- 12.28% of v5 training (48 items in T3+T4+T5) = items where adapter could ADD value
+- Adapter trained only on 48 hard items but tested in dual-path on the entire 391 trained set
+
+So adapter "memorized" 343 easy items it didn't need to + only 48 hard items where it could have helped. The arithmetic naturally produces break-even.
+
+**v7 dataset strategy implication:**
+- Concentrate training on items where adapter could add value: T3+T4+T5 (across the full 943, not just v5's training set)
+- Need to count: how many T3+T4+T5 items exist in the full 943?
+- Filter further to items where Qwen also gets wrong (the residual): items where Qwen SC disagrees with answer-sheet
+- This produces a much smaller, more targeted training set (estimate ~100-200 items)
+- Smaller dataset = faster training, more epochs without structural overfitting, cleaner per-subset evaluation
+
+### 12.D) Cursor REDO depth audit (per locked rule #9)
+
+Cursor's REDO addressed 6 of 8 gap items deeply (697a9d7 commit). Audit verdict:
+- DEPTH where executed: meets standard
+- SCOPE: 75% coverage (6 of 8)
+- Missing: Item #5 (quantization per-version table verification, Part 11) and Item #6 (trace-answer coherence audit, Part 8)
+- Third pass prompt drafted for the 2 missing items; not a full redo
+
+What Cursor DID add that I had missed in my own pass:
+- Verified tier distribution (Part 12.A)
+- Per-checkpoint per-item memo test failures (concrete IDs and outputs)
+- Training trajectory confirmation (no optimization instability)
+- Hybrid set relations (sc16_targets ∩ adapter_targets = 0, disjoint)
+- slot1/routing_manifest.csv = exact 943 split into adapter=391 + base=552 (confirms dual-path WAS deployed at inference)
+- v3 merged-mode verification (training log + submission CSV evidence)
