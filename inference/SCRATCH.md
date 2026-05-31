@@ -481,3 +481,30 @@ c4d07b6 (NT T1.5 audit + prep_nothinking_for_analyzer.py; rebased onto strategy 
 - Didn't: Exact-string rescue count is 0 (multi-slot gold format mismatch) — slot-aware needed for real count. Several near-misses due to formatting differences (e.g. ID 736 sqrt formatting, ID 705 True/False formatting).
 - Left: inference/base_model/thinking_probe_tnr1_20260531T065534Z/samples.jsonl + inference.log + summary.txt on main. Cross-run analysis with tnr-0 pending.
 - Discoveries: One outlier item (ID 453, 2982s) drove early ETA inflation — rest were 18-694s. avg settled at 245s. Budget 81920/65536 produced 0 truncations vs prior runs at 49152/24576.
+
+---
+## claude_thunder_tnr0 signoff — 2026-05-31 — Thinking-probe inference
+### What I tried
+- SC@16 Thinking-mode inference on items 0-58 (lowest 59 IDs sorted ascending) of `submission/csvs/picks/thinking_probe_target_set.csv` (118 items total; tnr-1 took the upper 59).
+- Initial config (49152 / 24576) → smoke OK; bumped per claude_strategy patch to high-tier budget (81920 / 65536) before full run.
+### What I did
+- State fix: preserved 371 commits of pre-reorg local main as `tnr-local-main-may27-preserve` branch on origin before hard-reset to origin/main.
+- Pre-flight 7-step (incl. extraction fix — CSV has embedded newlines in LaTeX fields, shell `cut/sort` silently produced 59 empty lines; switched to Python `csv` parser).
+- Smoke (5 items) → pass; full run launched in `tmux` with `RUN_DIR` env-exported per claude_strategy's blocker fix.
+- Full run: 5.17 hr wall time, 0 truncations, 0 empties, 944 samples total.
+- Push: LFS budget initially exhausted; surfaced per LFS rule; budget bumped externally; retried; merge conflict in `.gitattributes` resolved by keeping both tnr-0 and tnr-1 LFS patterns; commit `fad3fc4` pushed.
+### What worked
+- Smoke: 5/5 items, majority boxed (gate ≥ 4/5).
+- Full run health: 0/944 truncation despite 28138-token max seen. Budget headroom 3×.
+- Vote concentration: 53/59 items at n_voting ≥ 10 (strong consensus).
+### What didn't work
+- 2 items had n_voting=1 (IDs 9, 416); 4 items at n_voting 2-9 (IDs 25, others). Mostly multi-slot/multi-form LaTeX where extractor or aggregator failed to converge — model reasoning was correct in raw samples (per ID 9 / 25 diagnostic dump).
+- Shape fallback fired on 43/59 items (73%) — normal for multi-slot/precision-tier items but worth noting in cross-run analysis.
+- One outlier: ID 194 took ~1150s (~19 min) wall; cumulative-frequency-style problem.
+### What's left
+- claude_strategy: cross-run analysis with tnr-1 (`inference/base_model/thinking_probe_tnr1_20260531T065534Z/`) for the rescue audit. My loose-norm rough audit showed ≥5-7 rescues + 2 surface-level regressions, but all "regressions" are multi-slot artifacts not true wrong answers; canonical per-slot scoring needed.
+### Key discoveries
+- **CSV with embedded newlines + shell `cut`/`sort` silently produces empty output.** This affects the spawn-prompt boilerplate; future probes should use Python CSV parser for ID extraction. Filed under "discipline win" for spawn-prompt patches.
+- **Multi-`\boxed{}` answers (multi-slot `[ANS] [ANS]` questions) confuse the SC aggregator.** ID 9: all 16 samples correctly wrote `\boxed{L-8x}` and `\boxed{6F}`, but n_voting=1 because each sample's extracted form was just `6F` (last box) yet voted_answer reconstructs the joined fraction. Worth instrumenting.
+- **shape_fallback at 73% on this slice suggests the multi-slot/precision target set is exactly the bucket where SC consensus is hardest** — the bumped token budget didn't help that, only helped per-sample reasoning depth.
+- State-fix discipline win: rather than hard-resetting and losing 12 local commits, preserved as feature branch first.
