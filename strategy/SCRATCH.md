@@ -726,3 +726,20 @@ Self-verification: 943 rows ✓ · schema id,response ✓ · id order preserved 
 Anomalies: normalizer changed 645 rows vs the recipe's ~342 "slot-3 reference" — NOT a fault: the 342 reference predates the current Tier-1 normalizer (c6bfdbc: multi-slot consolidation + 4 no-box force_value overrides + dup-option/value-equality MCQ), which legitimately touches more rows. 645 is correct for the current normalizer. Also: pre-flight run14b wc-l=352778 not 944 — purely embedded-newline inflation in responses; csv.DictReader confirms 943 data rows, schema id,response, unique ids.
 Commit: 77b2ad7
 STATUS: ready for Cursor audit; DO NOT upload until Cursor verdict
+
+---
+## claude_strategy note — 2026-05-31 — Kitchen-sink audit findings (durable, for next-batch Pick B)
+
+**Rescue candidate (Qwen-only, Rule #11 LEGAL):**
+- id=724 · gold="2" · MED provenance (sheet_n_agree=5) · T5 · base R20 wrong
+- KS voted="2" with 9/16 agreement (56.2%) — value-equality match to gold
+- Stage for next Pick B candidate stack as +1 override (NT-13 + normalizer + 724 → 14-item override)
+- Source: inference/base_model/audit/kitchensink_quicklook_20260531T183049Z/quicklook_pooled.json
+
+**Trap to AVOID:**
+- id=275 · KS voted "9 \cdot 10^{224}" but gold="18225" and R20 already correct. Including would lose a slice item.
+
+**MASTER data-quality issue (flag for v7 manifest + any gold-matching workflow):**
+- 3 known corrupted sheet_best_answer rows: ids 93, 376, 652. Value starts with "This is a complex or challenging..." (prompt-text pollution).
+- Defensive filter: in any gold-matching step, treat `gold.startswith("This is a")` or empty/None as LOW provenance + force route_eligible=False regardless of tier.
+- Wider scan needed: how many rows match this pattern? Flag if >10.
