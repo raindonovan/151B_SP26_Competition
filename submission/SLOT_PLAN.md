@@ -16,7 +16,7 @@
 | 6 | Sun ~14:30 | Second-best morning-run winner | Two distinct inference levers, not one noisy hit | 0.648 / 0.660 / 0.672 | Different changed set vs slot 5 |
 | 7 | Sun ~16:00 | Slot 4 + slot 5 stack | Ceiling test | 0.666 / 0.681 / 0.692 | 4 and 5 both positive |
 | 8 | Sun ~18:00 | Slot 4 + slot 6 OR normalizer v2 | Finalist alternative | 0.664 / 0.679 / 0.690 | Distinct value vs slot 7 |
-| 9 | Sun ~20:00 | Diagnostic 14 (+id=282) — **only if spare** | 282 grader-ambiguity resolution; research-grade calibration | 0.649 / 0.663 / 0.670 | ≥2 unused slots remaining AND no higher-EV unseen B candidate |
+| 9 | Sun ~20:00 | **Texas-oil** (`picks_texas_oil_v1.csv`, 40 overrides) — swap from diagnostic-14 (Day-9 lock) | 2+-agreement gold-free Qwen ensemble; 11/40 independent of normalizer + NT-13 per overlap audit (IDs 55, 169, 177, 184, 489, 502, 537, 647, 655, 812, 887) | (vs Pick-B-best at slot 8) +0.0pp / +0.4pp / +0.7pp | Fire only if Pick B at slot 8 hasn't hit ceiling AND ≥1 unused slot remains. Drop if slot 4/7 already cleared ~0.685. Diagnostic-14 retired (per overlap audit: 282 calibration is niche, slot better-spent on texas-oil residual) |
 | 10 | Sun ~22:00 | Emergency reserve / last-built finalist | Deadline insurance for surprise candidates | n/a | Last 2-3 hours only |
 
 **Slots 1-5** consume the current-pool (5 slots expiring ~18:50 Sun PT).
