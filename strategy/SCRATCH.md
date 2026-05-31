@@ -511,3 +511,19 @@ Commit + push next.
 ---
 ## claude_vscode signoff — 2026-05-31 — value-equality re-vote sweep ABANDONED
 Spent ~3hr debugging is_equal pairwise clustering cost. Per-pair 0.03-0.19s typical but pathological sympy parses + N² pair growth on multi-form items (500 of 943 items have 2+ distinct forms, up to 8 forms each) put per-run wall-clock at ~30+ min with no clean fix in scope. Optimizations attempted (all real, none sufficient): unique-form dedup before clustering, per-pair SIGALRM timeout guard (is_equal_guarded, 3s cap), single-form skip-gate (~half the items). 302 anchor smoke PASSED (H,H≡H clusters, re-votes to H correct) — the mechanic works, it's just too slow at scale. Strategic call (claude_strategy + Rain): abandon, deferred to post-deadline. WIP script preserved at /tmp/deferred_postdeadline/value_equality_revote.py.WIP (never committed to repo). No partial CSVs written. Pivoting to Tier-1 normalizer build. Net loss accepted: 2-5 items the sweep might have surfaced are largely covered by NT-13 + cross-run 90-item rescue pool + Thunder 118-set + normalizer structural fixes.
+
+---
+## claude_strategy signoff — 2026-05-31 (Day 9 morning) — R14 audit Cursor cross-check verdict (YELLOW)
+
+Closed the my-audit → Cursor cross-check loop on R14 per memory #24. Cursor returned **YELLOW** with 3 actionable items + 1 fast-verification request, all addressed.
+
+**Verdict (Cursor)**: matrix correct, methodology partially clean (env stack drift), interpretation supported but not causal-proven, non-generalization claim defensible. Closure: YELLOW (close for competition; keep sft_v5 eval-protocol carry-forward).
+
+**Actions taken:**
+1. RUN_HISTORY.md PART 3 R14 section updated: changed "only delta" to "intended primary delta; environment stack differs (vLLM/torch/GPU)"; unit clarification (+34 percentage points, +17 items, no mixed units); causal attribution breakdown added.
+2. Item-level overlap analysis (Cursor's fast verification): of 17 R13-wrong → R14-right flips, **15 are PURE EXTRACTION RESCUE** (R13 had no box), **2 are reasoning gains** (785, 936). 14 additional items had box-recovery without correctness. → R14 effect is ~88% extraction-path, ~12% reasoning.
+3. inference/runs/adapters/sft_v5/findings.md appended with the pathology-monitor eval-protocol checklist: log missing_boxed/avg_gen_tokens per run; if missing_boxed >10%, fallback decode at rp=1.1 to test extraction rescue; do NOT default to rp=1.1 on base Qwen.
+
+**Residual risk per Cursor**: causal attribution of R14 effect to rep_penalty alone weakened by stack/version drift. The 15/17 extraction-rescue correlation is strong but not isolated from environment differences.
+
+**Commit + push next.**

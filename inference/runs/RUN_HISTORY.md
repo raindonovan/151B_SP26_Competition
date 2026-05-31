@@ -144,29 +144,39 @@ These four runs are all on **failed SFT v1 / v2 models** — pre-v3/v4/v5 era. D
 - **Status**: Closed. Lever (repetition_penalty=1.0 on broken SFT) confirmed broken.
 
 ### R14 — `run13_v2openr1_50_rp110_dsmlp` (reserved) — REP-PENALTY RESCUE
-- **What it was**: R13's twin with **repetition_penalty=1.1** (the only delta). Same OpenR1-v2-16K merged model, same fixed50, 16K cap, v1-baseline prompt, single sample.
+- **What it was**: R13's twin with **repetition_penalty=1.1** (the intended primary delta). Same OpenR1-v2-16K merged model, same fixed50, 16K cap, v1-baseline prompt, single sample.
 - **What it tested**: Does rep_penalty=1.1 break the model out of the rambling loop?
 
-**R14 AUDIT FINDINGS (this session, Day 9):**
+**R14 AUDIT FINDINGS (this session, Day 9; Cursor cross-check YELLOW per commit history):**
 
 Headline comparison **R13 (rep_penalty=1.0) → R14 (rep_penalty=1.1)** on same OpenR1-v2 merged model, same fixed50:
 
 | Metric | R13 (rp=1.0) | R14 (rp=1.1) | Δ |
 |---|---|---|---|
-| Overall accuracy | 7/50 = **0.14** | 24/50 = **0.48** | **+0.34** |
-| MCQ accuracy | 0/17 = **0.00** | 13/17 = **0.76** | **+0.76** |
-| Free accuracy | 7/33 = 0.21 | 11/33 = 0.33 | +0.12 |
-| missing_boxed | 30/50 (60%) | 1/50 (2%) | **−58pp** |
+| Overall accuracy | 7/50 = **0.14** | 24/50 = **0.48** | **+34 percentage points; +17 items** |
+| MCQ accuracy | 0/17 = **0.00** | 13/17 = **0.76** | **+76 percentage points; +13 items** |
+| Free accuracy | 7/33 = 0.21 | 11/33 = 0.33 | +12 percentage points; +4 items |
+| missing_boxed | 30/50 (60%) | 1/50 (2%) | **−58 percentage points; −29 items** |
 | cutoffs | 5 | 1 | −4 |
 | avg_gen_tokens | 9308 | 3600 | **−61%** |
 | gen_tokens p50 | 13973 | 1907 | −86% |
 
-- **rep_penalty=1.1 dramatically rescued the rambling failure mode.** Boxed-answer rate went from 40% to 98%; MCQ accuracy from 0% to 76%.
-- avg_gen_tokens collapsed from 9308 to 3600 — the model stopped looping and produced concise answers.
-- **BUT**: this is on a **failed SFT model**, not the base Qwen3-Thinking. The lever rescues a *broken* model; it's not a free improvement on the working base.
-- **Caveat for base Qwen3-4B-Thinking-2507**: Sun et al. (paper referenced in research priors) recommends `presence_penalty>0` and `repetition_penalty=1.0` for this model. Adding rep_penalty=1.1 on the base would likely HURT (the working model has no rambling problem to fix). We have no R14-on-base-model data; do not generalize.
+**Causal attribution (post Cursor cross-check):**
+- Of the 17 R13-wrong → R14-right flips: **15 are PURE EXTRACTION RESCUE** (R13 had no `\boxed{}`, R14 produced one) — `rp=1.1` broke the no-box repetition loop.
+- Only **2/17 are reasoning/normalization gains** (items 785, 936, both FREE, both had boxes in R13 already; R14 spent slightly more tokens and got the right answer).
+- 14 ADDITIONAL items had box-recovery without correctness recovery (R14 produced a box but the boxed value was still wrong) — so R14 recovered boxes on 29 of R13's 30 no-box items, of which 15 became correct (~52% box-rescue conversion).
+- **Conclusion**: R14's headline gain is ~88% extraction-path recovery, ~12% reasoning quality.
 
-**Status**: **CLOSED.** R14 is a useful lesson for "if SFT model rambles, try rep_penalty=1.1 as rescue" but is not a Pick B lever for tonight (we're using R20's base-Qwen SC@8, which doesn't have the failure mode). No new marginal IDs.
+**Methodology caveat (Cursor cross-check Q2)**: rep_penalty is the INTENDED PRIMARY DELTA, but R13 vs R14 runtime stack differs (vLLM/torch/GPU/CUDA versions, model path string). Per Cursor: "only delta" was slightly overstated. Causal attribution to rep_penalty alone is weakened by stack drift, though the magnitude of the effect (60% → 2% missing_boxed) and the alignment with the known OpenR1-v2 rambling mode strongly support the headline interpretation.
+
+- **Root cause of R13's failure**: OpenR1-Math-220k traces truncated at max_seq_length=4096 during SFT training. Model learned to ramble without ever closing out the answer. See `inference/adapters/UNTRACKED_OPENR1_V2.md`.
+- **BUT**: this is on a **failed SFT model**, not the base Qwen3-Thinking. The lever rescues a *broken* model's extraction path; it's not a free improvement on the working base.
+- **Caveat for base Qwen3-4B-Thinking-2507**: Sun et al. (paper referenced in research priors) recommends `presence_penalty>0` and `repetition_penalty=1.0` for this model. Adding rep_penalty=1.1 on the base would likely HURT (the working model has no rambling problem to fix). We have no R14-on-base-model data; do not generalize.
+- **Cursor cross-check Q4**: non-generalization to base Qwen is DEFENSIBLE — no cohort evidence shows base Qwen needs rp=1.1 rescue; V-series (R15-R19) on base Qwen had rp=1.0 and produced 0.70-0.72, no rambling failure to rescue.
+
+**Status**: **CLOSED for competition decisioning (Cursor YELLOW closure).** R14 is a useful lesson for "if SFT model rambles, try rep_penalty=1.1 as rescue" but is not a Pick B lever for tonight. No new marginal IDs.
+
+**Carry-forward (Cursor ACTION 2)**: sft_v5 (current active adapter, kept un-merged) eval protocol gets a missing_boxed pathology monitor. See `inference/runs/adapters/sft_v5/findings.md` for the checklist. **This is operational guardrail, not a new experiment.**
 
 ---
 

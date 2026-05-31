@@ -56,3 +56,26 @@ Rain pointed out (2026-05-28): if v5 can memorize its training items reliably, t
 - Q: Was v5 actually merged or kept as adapter? **A: Kept as LoRA adapter (no merge). Per memo test winner notes.**
 - Q: Was there a v6? **A: NO. sft/ folder has v1_postmortem, v3, v4, v5. No v6.**
 - Q: What did v4 train on exactly? **A: I don't have this nailed down. Need to read sft/v4/ folder. My earlier "3-arm teacher" claim conflated v1 (the May 6 catastrophe with NuminaMath+OpenR1+Frugal arms) with v4. Pending.**
+
+---
+
+## Eval-protocol carry-forward from R14 cross-check (2026-05-31 Day 9)
+
+**Origin**: R14 audit (rep_penalty=1.1 rescue of OpenR1-v2-16K SFT-merged rambling) flagged that SFT-merged models with truncated training traces exhibit catastrophic "no-box" output that rp=1.1 rescues at the extraction-path level. Cursor cross-check (T-template YELLOW) recommended an eval-protocol guardrail for sft_v5 even though sft_v5 is kept as ADAPTER (not merged), to detect the pathology if it surfaces.
+
+**Pathology monitor checklist for ANY sft_v5 (or future SFT) inference eval:**
+
+1. **Log per-run**: `missing_boxed`, `missing_boxed_mcq`, `missing_boxed_free`, `avg_gen_tokens`, `cutoffs`.
+2. **Trigger threshold**: if `missing_boxed > ~10% of slice size`, the rambling pathology is likely active.
+3. **Fallback decode**: in that case, run a SECOND eval pass with `repetition_penalty=1.1` (single-sample or SC@N as appropriate) on the same slice. Compare:
+   - missing_boxed (should drop materially if pathology was active)
+   - avg_gen_tokens (should drop)
+   - overall_accuracy (should rise IF the no-box items had recoverable answers in the trace)
+4. **Decision rule**: if fallback rp=1.1 rescues ≥50% of the no-box failures, the model has the OpenR1-v2 pathology; treat results from the baseline rp=1.0 run as understating capability. If fallback rescue is <20%, the no-box failures are model-capability gaps, not extraction-path gaps.
+5. **Do NOT default to rp=1.1 on base Qwen evals.** This is a rescue lever for SFT-pathology only — base Qwen3-4B-Thinking-2507 does not exhibit the rambling mode (V-series confirms rp=1.0 produces 0.70-0.72 on fixed50 with no extraction failures).
+
+**Why this is a carry-forward, not a closed item**: sft_v5 is kept as adapter (not merged into base weights). The R14 evidence came from a MERGED adapter, so the pathology mechanism (merge-induced trace-truncation echo) doesn't directly apply. But sft_v5 has not been evaluated under inference at scale, and if/when it is, the monitor needs to be in place to detect any rambling residue.
+
+**Anti-recommendation**: Do NOT proactively run sft_v5 with rp=1.1 — only on observed pathology. Proactive use risks suppressing legitimate reasoning that the working base model needs.
+
+Per the R14 cross-check residual risk: causal attribution of the R14 effect to rep_penalty alone is weakened by stack/version drift between R13 and R14 (vLLM/torch/GPU versions differ). The 15/17 extraction-rescue finding (R13-wrong → R14-right where R13 had no box) is strongly correlated with the rep_penalty change but not isolated from it.
