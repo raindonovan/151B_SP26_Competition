@@ -206,3 +206,18 @@ Override CSV overrides_nothinking_join_conservative_763safe.csv (13 rows; 763 va
 ### DID NOT: submit to Kaggle (Rain orders slots), touch diagnostic 14-item, reopen 282, fire ChatGPT (sweep was trivially-so — single clean canonical-fold, no non-trivial decision per memory #24).
 
 ### Commit hash: 15cbdd2 (slot-2 763-safe build + expression-form sweep). Pushed ed4aaed..15cbdd2. CSV raw per submission convention.
+
+---
+## claude_vscode signoff — Day 9 — TEXAS OIL audit (multi-run Qwen ensemble) — DISCONFIRMED
+
+Hypothesis: union of correct items across 6 Qwen runs (R08/R09/R10/R20/R20b/NT) = Rule-#11 pool a Qwen-only heuristic can mine for >13-item Pick-B rescue. 3-phase deep audit.
+
+PHASE 1: rescue pool (R20 wrong, ≥1 other right) = 90 all-gold / **43 independent-gold** (other 47 on sheet_dependent = unreliable). >25 → continued. Matrix: submission/csvs/picks/cross_run_correctness_matrix.csv. Per-run acc sanity OK (R20 scored 0.8554 matches cohort).
+
+PHASE 2: heuristic correct-pick rate on the 43-item independent pool: H1 majority 14%, H2 SC-weighted 14%, H3 canonical/shortest 25.6%, H4 hybrid 11.6%, H5 ORACLE 100%. STRUCTURAL FAILURE: R20's WRONG answer is the cross-run majority/co-majority on 41/43; correct answer is strict MINORITY on 35/43 (4 of 6 runs share v1 config lineage → agree on same wrong answer). Majority/SC heuristics vote FOR the error.
+
+PHASE 3: best deployable H3 applied selectively (override when shortest≠R20): helped 11, HURT 45, **NET −34**. Damages 4× what it rescues. NO picks_texas_oil_v1.csv built (would regress 0.8554 baseline; pre-commit gate f would fail). Short-circuited.
+
+VERDICT: **DISCONFIRMED.** Pool exists (oracle 100%) but un-minable by any gold-free Qwen heuristic. Root cause: correct rescues are minority answers; shared config lineage makes wrong answer the majority. **This is WHY NT-943 worked & texas-oil doesn't: NT-943 used independent GOLD to SELECT the 13 items — that selection step is irreplaceable.** NT-943 (+1.8pp, 13) = ceiling of gold-free cross-run Qwen ensembling. **Path to more rescues = MORE INDEPENDENT GOLD (wolfram/search), not more runs / smarter vote.** Report: submission/TEXAS_OIL_DISCONFIRMED.md. Rule-#11 borderline flagged for ChatGPT: cross-mode-agreement (NT∩Thinking) as a selection feature.
+
+DID NOT: build Pick-B CSV (disconfirmed), use gold in any tested heuristic (gold = audit measurement only), generate inference, submit Kaggle, use append mechanism. Commit: (after).
