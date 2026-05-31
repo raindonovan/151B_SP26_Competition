@@ -284,4 +284,4 @@ First real test of the pipefail fix: PASSED (script ran the full doc list to com
 - Truncation still material (93) even with SC — tokens remain a real ceiling at 16K.
 
 ### Commit hash
-(filled after commit)
+38eca28 (rebased onto strategy b658ba9/efdb3b2 R08-T3 followups; LFS 2 objects/66MB pushed: analysis.jsonl 27MB + analysis_samples.jsonl 39MB; run jsonl 130MB already on remote from prior LFS).
