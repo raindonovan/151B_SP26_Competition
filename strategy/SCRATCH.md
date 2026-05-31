@@ -679,3 +679,18 @@ Closed the my-audit → Cursor cross-check loop on the Tier-1 normalizer build p
 
 ### Key discoveries
 - The two highest-risk interaction checks passed cleanly: B4 does not weaken A4, and B1 does not conflict with A3.
+
+---
+## claude_vscode signoff — 2026-05-31 — Phase 0 patch B2: v5 adapter-vs-base per-item decomposition
+
+**Top-line finding (1-2 sentences):** Under the value-equality grader (Kaggle's), the v5 adapter is **net +7 on the 391 trained set, and ALL +7 land on hard items (T3/T4/T5): 8 real-capability wins vs 1 loss** — so the adapter DID help where v7 plans to target wrong-residual. BUT this is WEAK evidence: 379/391 (97%) both_correct = memorization (adapter trained on these items), absolute numbers are single-digit, and the is_equiv-strict version overstated to +12/+9 because 6 "wins" were format-artifacts already covered by the Tier-1 normalizer.
+
+**Anomalies discovered:**
+1. **is_equiv overstates adapter wins by ~75%** (14 strict-wins → 8 value-wins). 6 strict-wins (ids 14/118/132/302/556/839) were base value-equal-but-format-divergent (trailing-zero, H,H≡H dup-option, ln/log, decimal-vs-fraction) — these are NORMALIZER territory, not adapter-unique. Used value-equality as primary metric, kept *_strict columns as hedge.
+2. **Memorization confound**: adapter was trained on exactly these 391; base already correct on ~97%. The decomp measures marginal-over-base on the training set, NOT held-out generalization — so "+7 hard" is an optimistic ceiling, not a transfer estimate.
+3. ID format mismatch (sft_v5 zero-padded '0001' vs adapter-run int 1) — normalized to int; 391/391 align, all covered by MASTER + R20.
+4. private.jsonl path in prompt (/home/dvaneetv/...) didn't exist; used repo-root private.jsonl (has options). MASTER has no T0-string tier; mapped sheet_tier 0-5 → T0-T5.
+
+**For v3.1:** NOT a blocker — adapter is net-POSITIVE on hard items (the worry was net-negative). But the signal is thin (8 real wins, memorization-inflated), so v7 should treat "adapter helps T3/T4/T5 wrong-residual" as a weak prior backed by 8 concrete items (89/184/317/404/429/463/762/776), not a strong lever. The 6 format-artifact "wins" should be attributed to the normalizer, not the adapter, in any EV accounting.
+
+**Files**: inference/scripts/compute_v5_decomp.py (new), data/v5_per_item_decomp.csv (new, 391 rows + strict-hedge cols), data/v5_decomp_summary.md (new). HEAD: (after push).
