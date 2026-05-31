@@ -249,3 +249,39 @@ run08v2_v1_private943_tok16384 (the run jsonl name) isn't referenced in the doc 
 
 ### Commit hash
 fe753b3 (R08 deep audit + rename_run.sh pipefail fix; LFS 2 objects pushed: run jsonl 17MB + analysis.jsonl 33MB).
+
+---
+## claude_vscode signoff — Day 9 — T2 DEEP audit R09 (first SC@8 on p943; R08's SC twin)
+
+### What was done
+Cataloged run09sc8_v1_private943_tok16384 → inference/base_model/R09_eval_v1_sc8_p943_t16k/ (git mv jsonl 130MB + summary). Ran analyzer v3-final-final (SC path), Kaggle 0.614. README + deep findings.md w/ first real A_lucky_sample + first cross-run (vs R08) transitions.
+
+### Gates: a✅ b✅(7544) c✅ d✅ e✅ f✅ g✅ h✅ i✅ — ALL PASS. Verification triple ✅ (547==547).
+Wall-clock 7:47 (SC, ~9 judge passes/item).
+
+### Bucket: A=422 A_lucky_sample=18 B=58 unknown=445 | scored acc 0.8474 (R08 0.8173, SC +3.0pp)
+hard_independent_CLEAN n=16 acc=0.6875 (wolfram 4/7, search 7/9). unanimous_teachers 397/403=0.9851 (R08 0.9454 — SC recovers consensus agreement).
+
+### A_lucky_sample (18) — first DeepConf signal
+DeepConf gold (≥5/8 correct, lost vote): 1 item = id 763 (6/8). SC@32 candidates (1-4/8): 17 items (403,721,584,924,12,416,495,535,712,715,9,120,181,257,642,929,935). (item_id, winning_sample_idx) tuples captured in findings table d for adapter-trace harvest.
+
+### B=58, ~40 (69%) format-recoverable (multi-slot 23, MCQ-letter 9, fraction-form 6, undercount 2; true miss 18).
+
+### Truncated=93 (R08 was 119 — SC's 8 samples mean ≥1 often completes at 16K). 89 truncated in BOTH R08+R09 = strongest high-budget (>16K) re-run set; R08-only 30, R09-only 4.
+
+### CROSS-RUN vs R08 (the SC dividend at fixed tokens+prompt):
+A→A 401 · A→B **0** (no regression) · A→A_lucky 6 · B→A **21 (SC saved)** · B→A_lucky 12 · B→B 58.
+SC dividend = 21 (B→A) + 12 (B→A_lucky) = 33 items where SC surfaced correct math R08 missed. SC cost = 0 regressions, only 6 clean→vote-fragile. **SC is STRICTLY POSITIVE at fixed tokens/prompt.** The 18 vote-fragile (12 B→A_lucky + 6 A→A_lucky) = DeepConf/SC@32 target set.
+
+### Cross-ref sweep: full-name run09sc8_v1_private943_tok16384 = 0 replacements (clean, fixed script exit 0). SHORT-name run09sc8_v1_private943 sweep DELIBERATELY SKIPPED — its only 2 hits (REGISTRY.md L45, CLAUDE_STRATEGY.md L227) are both `run09sc8_v1_private943.csv` (submission CSV refs); sweeping would corrupt to nonexistent `R09_..._t16k.csv`. CSVs stay in submission/csvs/, README cross-links. (Prompt's "skip if over-match" judgment.)
+First real test of the pipefail fix: PASSED (script ran the full doc list to completion, exit 0).
+
+### LFS: jsonl 130MB + analysis.jsonl 27MB + analysis_samples.jsonl 39MB all >10MB → tracked on new paths before staging. analysis.csv 4.9MB raw.
+
+### Surprises about SC at SAME token budget
+- SC is strictly Pareto-positive here: 0 A→B, 33 items gained. The cost is only "vote-fragility" (6 items), never lost correctness.
+- DeepConf gold is only 1 item (763) — at 16K+v1, ≥5/8-correct usually also wins the plain vote; the lossy cases sit at 1-4/8 (the SC@32 lane). So at THIS config DeepConf logprob-weighting has a thin direct payoff; SC@32 (more samples) is the bigger lever for the 17 minority-correct items.
+- Truncation still material (93) even with SC — tokens remain a real ceiling at 16K.
+
+### Commit hash
+(filled after commit)
