@@ -4,6 +4,14 @@ from typing import Any
 import torch
 from transformers import TrainerCallback
 
+# _LNC loaded lazily inside qc_match_with_rung (import-path safety net — Cursor risk #1)
+def _get_lnc():
+    try:
+        from latex2sympy2_extended.latex2sympy2 import NormalizationConfig as _LNC
+    except ImportError:
+        from latex2sympy2_extended import NormalizationConfig as _LNC
+    return _LNC
+
 
 # FIX 1 — LAST \boxed{} from Response section only, brace-depth parser
 def extract_boxed(md_text):
@@ -31,37 +39,85 @@ def extract_boxed(md_text):
     return None  # unclosed
 
 
-# FIX 2 — LaTeX whitespace normalization; '\\\\' EXCLUDED (matrix rows preserved)
-_LATEX_WS_TOKENS = [
-    '\\,', '\\:', '\\;', '\\!', '\\ ',           # math spaces + backslash-space
-    '~',                                          # non-breaking
-    '\\quad', '\\qquad', '\\enspace',
-    '\\thinspace', '\\medspace', '\\thickspace',
-    '\\negthinspace', '\\negmedspace', '\\negthickspace',
-]
+# REPLACE norm_string — fraction variants, \left/\right strip, \text{}, LaTeX WS
 def norm_string(x):
     s = str(x)
-    for tok in _LATEX_WS_TOKENS:
+    s = re.sub(r'\\(?:dfrac|tfrac|cfrac)\b', r'\\frac', s)
+    s = s.replace('\\left', '').replace('\\right', '')
+    s = re.sub(r'\\text\{([^}]*)\}', r' \1 ', s)
+    for tok in ['\\,', '\\:', '\\;', '\\!', '\\ ', '~', '\\quad', '\\qquad', '\\enspace',
+                '\\thinspace', '\\medspace', '\\thickspace',
+                '\\negthinspace', '\\negmedspace', '\\negthickspace']:
         s = s.replace(tok, ' ')
     return re.sub(r'\s+', '', s)
 
 
-# QC chain — order locked: exact -> norm_string -> numeric -> math-verify
-def qc_match(sonnet_boxed, gold):
-    s, g = str(sonnet_boxed).strip(), str(gold).strip()
-    if not s or not g: return False
-    if s == g: return True
-    if norm_string(s) == norm_string(g): return True
+# Tuple-aware comparator
+def _top_split(t):
+    out, buf, depth = [], '', 0
+    for c in t:
+        if c in '({[': depth += 1
+        elif c in ')}]': depth -= 1
+        if c == ',' and depth == 0:
+            out.append(buf); buf = ''
+        else:
+            buf += c
+    if buf: out.append(buf)
+    return [x.strip() for x in out if x.strip()]
+
+def _slot_eq(a, b):
+    if a == b: return True
+    if norm_string(a) == norm_string(b): return True
     try:
-        if abs(float(s) - float(g)) < 1e-6: return True
+        if abs(float(a) - float(b)) < 1e-6: return True
     except Exception: pass
+    return False
+
+def tuple_match(s, g):
+    sp, gp = _top_split(s), _top_split(g)
+    if len(sp) != len(gp) or len(sp) < 2: return False
+    return all(_slot_eq(sp[i], gp[i]) for i in range(len(sp)))
+
+
+# QC chain — exact -> norm_string -> numeric -> tuple -> mv parse ladder
+# Returns (matched: bool, rung: str) for per-item rung logging
+def qc_match_with_rung(sonnet_boxed, gold):
+    s, g = str(sonnet_boxed).strip(), str(gold).strip()
+    if not s or not g: return (False, 'empty')
+    if s == g: return (True, 'exact')
+    if norm_string(s) == norm_string(g): return (True, 'norm_string')
+    try:
+        if abs(float(s) - float(g)) < 1e-6: return (True, 'numeric')
+    except Exception: pass
+    if tuple_match(s, g): return (True, 'tuple')
+    # Math-verify parse ladder — STRICT: both parses non-empty before verify
     try:
         from math_verify import parse, verify
         from math_verify.parser import ExprExtractionConfig, LatexExtractionConfig
-        E = [LatexExtractionConfig(), ExprExtractionConfig()]
-        return bool(verify(parse(g, extraction_config=E), parse(s, extraction_config=E)))
-    except Exception:
-        return False
+        _LNC = _get_lnc()
+        norm = _LNC(basic_latex=True, units=True, malformed_operators=True, nits=True, boxed='all')
+        E = [LatexExtractionConfig(normalization_config=norm, boxed_match_priority=0), ExprExtractionConfig()]
+        rungs = [
+            ('mv_raw',       s, g),
+            ('mv_boxed',     f'\\boxed{{{s}}}', f'\\boxed{{{g}}}'),
+            ('mv_dollar',    f'${s}$', f'${g}$'),
+            ('mv_dfrac_sub', re.sub(r'\\(?:dfrac|tfrac|cfrac)\b', r'\\frac', s),
+                             re.sub(r'\\(?:dfrac|tfrac|cfrac)\b', r'\\frac', g)),
+        ]
+        for name, s_try, g_try in rungs:
+            try:
+                sp_p = parse(s_try, extraction_config=E)
+                gp_p = parse(g_try, extraction_config=E)
+                if not sp_p or not gp_p: continue   # STRICT: must have non-empty parses on both
+                if verify(gp_p, sp_p): return (True, name)
+            except Exception: continue
+    except Exception: pass
+    return (False, 'all_failed')
+
+
+# Backwards-compatible wrapper
+def qc_match(s, g):
+    return qc_match_with_rung(s, g)[0]
 
 
 # Helper: trace existence check (uniform padding)
