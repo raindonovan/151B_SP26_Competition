@@ -1,0 +1,44 @@
+{
+  "phase": "v5_TRAIN_COMPLETE",
+  "module_sha256": "902aa7e48677764bd3c71cc0409837bc3d23c5b453e6c5c00237456e2e729e72",
+  "stream": "B_fp32_v5_variance",
+  "dataset_size": 27,
+  "stages": {
+    "stage_a": {
+      "max_length": 1024,
+      "max_steps": 10
+    },
+    "stage_b": {
+      "max_length": 2048,
+      "max_steps": 17
+    }
+  },
+  "config": {
+    "lr": 5e-06,
+    "warmup_ratio": 0.2,
+    "scheduler": "cosine",
+    "max_grad_norm": 0.05,
+    "adam_epsilon": 1e-05,
+    "grad_accum": 1,
+    "batch_size": 1,
+    "lora_r": 16,
+    "lora_alpha": 8,
+    "target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj"
+    ],
+    "fp32": true,
+    "attn": "eager"
+  },
+  "guard_state": {
+    "skipped_steps": 0,
+    "skip_reasons": [],
+    "max_skips_allowed": 1
+  },
+  "gate_b_pass": true,
+  "preflight_min_supervised": 65,
+  "preflight_max_supervised": 998,
+  "wall_seconds": 203.66274619102478
+}
