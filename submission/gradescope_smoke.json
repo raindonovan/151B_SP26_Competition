@@ -1,0 +1,19 @@
+{
+  "stream": "A_gradescope_smoke",
+  "date": "2026-05-31",
+  "run_inference_py": "inference/scripts/run_inference.py",
+  "entry_point": "run_inference()",
+  "callable": true,
+  "ast_parse": "OK",
+  "module_import": "OK",
+  "model": "Qwen/Qwen3-4B-Thinking-2507",
+  "base_only_no_adapter": true,
+  "output_schema": [
+    "id",
+    "response"
+  ],
+  "kaggle_spec_match": true,
+  "end_to_end_10item": "NOT_RUN_ON_THIS_BOX",
+  "reason": "run_inference() requires vLLM+GPU (LLM() at line 349); claude_vscode box is CPU-only, no nvidia-smi. GPU smoke is a tnr-0/tnr-1 task.",
+  "cpu_checks": "PASS (parse/import/callable/schema/base-only)"
+}
