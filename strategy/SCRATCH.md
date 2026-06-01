@@ -766,3 +766,11 @@ claude_vscode phase0a PASS 103e319
 - fp32 fixed bf16 forward NaN, but LoRA backward (r=64 α=128 LR=2e-4 no warmup) produces inf grad on first step
 - module_sha256: 902aa7e48677764bd3c71cc0409837bc3d23c5b453e6c5c00237456e2e729e72
 - No retries per spec. Fallback ships unchanged.
+
+## tnr-0 phase1_pilot_a_v2 FAIL gate_a — 2026-06-01
+- Stream B v2 fp32+eager+stabilizers (LR=5e-5 warmup=0.15 cosine α=64 clip=0.3 ε=1e-6 accum=4)
+- HardStop window 1-3 PASSED (grad_norms: 8917, 13620, 4.258e7 — all finite)
+- FailFast at step 4: grad_norm=inf. Gate_a fails (>10x jump steps 2→3, then inf)
+- v2 vs v1: direction-correct (v1 step1 inf → v2 step4 inf) but insufficient
+- module_sha256: 902aa7e48677764bd3c71cc0409837bc3d23c5b453e6c5c00237456e2e729e72
+- NO RETRIES per spec. Stream A fallback ships unchanged.
