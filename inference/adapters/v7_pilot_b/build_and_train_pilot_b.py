@@ -245,29 +245,12 @@ def main():
     # ── STEP 4: training ──────────────────────────────────────────────────────
     print("\n--- STEP 4: training ---")
     import torch
-    from transformers import AutoModelForCausalLM
+    from transformers import AutoModelForCausalLM, Trainer, TrainingArguments
     from transformers.trainer_utils import get_last_checkpoint
-    from trl import SFTTrainer, SFTConfig
     from peft import LoraConfig, get_peft_model
 
     OUTPUT_DIR = str(OUT_DIR / "adapter")
-    MAX_SEQ_LENGTH = 16384
 
-    TRAINING_CONFIG = {
-        "num_train_epochs": 4,
-        "per_device_train_batch_size": 1,
-        "gradient_accumulation_steps": 4,
-        "learning_rate": 2.0e-4,
-        "lr_scheduler_type": "linear",
-        "weight_decay": 0.0,
-        "warmup_ratio": 0.05,
-        "bf16": True,
-        "logging_steps": 1,
-        "save_strategy": "epoch",
-        "save_total_limit": 4,
-        "optim": "adamw_torch",
-        "report_to": "none",
-    }
     LORA_CONFIG = {
         "r": 64,
         "lora_alpha": 128,
@@ -284,15 +267,48 @@ def main():
     model = get_peft_model(model, LoraConfig(**LORA_CONFIG))
     model.print_trainable_parameters()
 
-    training_args = SFTConfig(output_dir=OUTPUT_DIR, max_length=MAX_SEQ_LENGTH, packing=False, **TRAINING_CONFIG)
+    # Pre-tokenize with BoundaryAssistantCollator; use base Trainer which never rewrites labels.
     collator = BoundaryAssistantCollator(tokenizer=tokenizer)
+    tokenized_data = collator(list(hf_dataset))
+    from datasets import Dataset as _DS
+    tok_dataset = _DS.from_dict({k: v.tolist() for k, v in tokenized_data.items()})
 
-    trainer = SFTTrainer(
+    # Verify labels are non-trivial before training
+    total_sup = sum(sum(1 for x in row if x != -100) for row in tok_dataset["labels"])
+    assert total_sup > 0, f"All labels are -100 after tokenization — abort"
+    print(f"Total supervised tokens across dataset: {total_sup}")
+
+    training_args = TrainingArguments(
+        output_dir=OUTPUT_DIR,
+        num_train_epochs=4,
+        per_device_train_batch_size=1,
+        gradient_accumulation_steps=4,
+        learning_rate=1.0e-4,
+        lr_scheduler_type="linear",
+        weight_decay=0.0,
+        warmup_ratio=0.10,
+        bf16=True,
+        bf16_full_eval=False,
+        max_grad_norm=1.0,
+        logging_steps=1,
+        save_strategy="epoch",
+        save_total_limit=4,
+        optim="adamw_torch",
+        report_to="none",
+        remove_unused_columns=False,
+    )
+
+    # Simple stack collator — dataset is already padded to uniform length by BoundaryAssistantCollator.
+    # DataCollatorForSeq2Seq must NOT be used: it re-pads and may corrupt labels.
+    def stack_collator(features):
+        import torch
+        return {k: torch.tensor([f[k] for f in features]) for k in features[0]}
+
+    trainer = Trainer(
         model=model,
         args=training_args,
-        train_dataset=hf_dataset,
-        processing_class=tokenizer,
-        data_collator=collator,
+        train_dataset=tok_dataset,
+        data_collator=stack_collator,
         callbacks=[FailFastCallback()],
     )
 

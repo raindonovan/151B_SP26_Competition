@@ -167,12 +167,14 @@ def preflight_supervised_tokens(dataset, tokenizer, n_check=64):
     return {'min_supervised': sup.min().item(), 'max_supervised': sup.max().item()}
 
 
-# FIX 6 — fail-fast on first 10 training steps
+# FIX 6 — fail-fast on first 10 training steps (non-finite only; loss=0 allowed on step 1)
 class FailFastCallback(TrainerCallback):
     def on_log(self, args, state, control, logs=None, **kwargs):
         if state.global_step > 10 or logs is None: return
         loss, gn = logs.get('loss'), logs.get('grad_norm')
-        if loss is not None and (loss == 0.0 or not torch.isfinite(torch.tensor(loss))):
-            raise RuntimeError(f'FailFast step {state.global_step}: loss={loss}')
-        if gn is not None and not torch.isfinite(torch.tensor(gn)):
-            raise RuntimeError(f'FailFast step {state.global_step}: grad_norm={gn}')
+        if loss is not None and not torch.isfinite(torch.tensor(float(loss))):
+            raise RuntimeError(f'FailFast step {state.global_step}: loss={loss} (non-finite)')
+        if loss is not None and loss == 0.0 and state.global_step > 1:
+            raise RuntimeError(f'FailFast step {state.global_step}: loss=0.0 (vacuous training)')
+        if gn is not None and not torch.isfinite(torch.tensor(float(gn))):
+            raise RuntimeError(f'FailFast step {state.global_step}: grad_norm={gn} (non-finite)')
