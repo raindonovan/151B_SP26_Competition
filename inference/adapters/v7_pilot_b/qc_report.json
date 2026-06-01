@@ -1,0 +1,103 @@
+{
+  "n_in": 30,
+  "n_pass": 16,
+  "n_dropped": 14,
+  "dropped": [
+    {
+      "item_id": 635,
+      "reason": "sonnet_wrong: boxed='37.6,\\\\ 0.746,\\\\ -25.4' gold='37.6,0.746,-25.4'"
+    },
+    {
+      "item_id": 469,
+      "reason": "no_boxed_in_trace"
+    },
+    {
+      "item_id": 106,
+      "reason": "sonnet_wrong: boxed='\\\\dfrac{13' gold='\\\\frac{13}{6}'"
+    },
+    {
+      "item_id": 41,
+      "reason": "no_boxed_in_trace"
+    },
+    {
+      "item_id": 576,
+      "reason": "sonnet_wrong: boxed='\\\\frac{5' gold='\\\\frac{5}{2},\\\\frac{1}{2}'"
+    },
+    {
+      "item_id": 587,
+      "reason": "no_boxed_in_trace"
+    },
+    {
+      "item_id": 506,
+      "reason": "no_boxed_in_trace"
+    },
+    {
+      "item_id": 218,
+      "reason": "sonnet_wrong: boxed='\\\\arcsin\\\\!\\\\left(\\\\dfrac{7' gold='\\\\arcsin(\\\\frac{7}{10})'"
+    },
+    {
+      "item_id": 122,
+      "reason": "no_boxed_in_trace"
+    },
+    {
+      "item_id": 137,
+      "reason": "no_boxed_in_trace"
+    },
+    {
+      "item_id": 495,
+      "reason": "sonnet_wrong: boxed='100, 100, 200, 0.255, 5.99, B' gold='100,100,200,0.255,5.991,B'"
+    },
+    {
+      "item_id": 362,
+      "reason": "sonnet_wrong: boxed='(6x+5y)(6x-5y)' gold='(6x-5y)(6x+5y)'"
+    },
+    {
+      "item_id": 317,
+      "reason": "no_boxed_in_trace"
+    },
+    {
+      "item_id": 393,
+      "reason": "sonnet_wrong: boxed='\\\\frac{1' gold='\\\\frac{1}{10} \\\\arccos(\\\\frac{x - 6}{16}),[-10,22]'"
+    }
+  ],
+  "passed_ids": [
+    60,
+    350,
+    168,
+    628,
+    707,
+    734,
+    473,
+    76,
+    477,
+    185,
+    813,
+    191,
+    699,
+    158,
+    689,
+    44
+  ],
+  "qc_match_sha256": "d65ca0a36a1d2cef1f336f254817932f7f9d1919b993ddd502216d1856b40b35",
+  "qc_chain": [
+    "exact",
+    "norm_string",
+    "numeric_1e6",
+    "math_verify"
+  ],
+  "dataset_size": 16,
+  "drop_rate": 0.4667,
+  "mcq_ratio_before": 0.0333,
+  "mcq_ratio_after": 0.0,
+  "tier_dist_before": {
+    "2": 18,
+    "3": 3,
+    "5": 6,
+    "4": 2,
+    "0": 1
+  },
+  "tier_dist_after": {
+    "2": 15,
+    "3": 1
+  }
+}
