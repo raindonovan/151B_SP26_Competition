@@ -1,381 +1,68 @@
 {
   "status": "PASS",
-  "dataset_size": 35,
+  "resample_used": false,
+  "resample_N": 30,
+  "dataset_size": 25,
   "drop_rate": 0.1667,
-  "recovered_count": 5,
-  "recovered_by_patch": [
-    {
-      "item_id": "106",
-      "rung_used": "norm_string"
-    },
-    {
-      "item_id": "218",
-      "rung_used": "norm_string"
-    },
-    {
-      "item_id": "362",
-      "rung_used": "mv_boxed"
-    },
-    {
-      "item_id": "353",
-      "rung_used": "norm_string"
-    },
-    {
-      "item_id": "210",
-      "rung_used": "mv_boxed"
-    }
-  ],
-  "regressions": [],
-  "known_case_check": "PASS",
+  "drop_reasons_histogram": {
+    "sonnet_wrong": 5
+  },
   "qc_chain": [
     "exact",
     "norm_string",
     "numeric",
-    "tuple",
-    "mv_raw",
-    "mv_boxed",
-    "mv_dollar",
-    "mv_dfrac_sub"
+    "math_verify"
   ],
-  "module_sha256": "b77193499cd7fc9c82968b2fd4306b6f17aadd2d9bfef5ade8e5fc746696152f",
-  "gate_verdict": "PASS",
-  "gate_reason": "",
-  "all_results": [
-    {
-      "item_id": 60,
-      "prev_status": "pass",
-      "new_status": "pass",
-      "rung": "exact",
-      "boxed": "C,A",
-      "gold": "C,A"
-    },
-    {
-      "item_id": 350,
-      "prev_status": "pass",
-      "new_status": "pass",
-      "rung": "exact",
-      "boxed": "11100,11001,1100111,1101110,101001101,101010100",
-      "gold": "11100,11001,1100111,1101110,101001101,101010100"
-    },
-    {
-      "item_id": 168,
-      "prev_status": "pass",
-      "new_status": "pass",
-      "rung": "exact",
-      "boxed": "A,C,B,B",
-      "gold": "A,C,B,B"
-    },
-    {
-      "item_id": 635,
-      "prev_status": "pass",
-      "new_status": "pass",
-      "rung": "norm_string",
-      "boxed": "37.6,\\ 0.746,\\ -25.4",
-      "gold": "37.6,0.746,-25.4"
-    },
-    {
-      "item_id": 628,
-      "prev_status": "pass",
-      "new_status": "pass",
-      "rung": "norm_string",
-      "boxed": "76, 75.7, 75.67, 75.673",
-      "gold": "76,75.7,75.67,75.673"
-    },
-    {
-      "item_id": 707,
-      "prev_status": "pass",
-      "new_status": "pass",
-      "rung": "exact",
-      "boxed": "5200,2600",
-      "gold": "5200,2600"
-    },
-    {
-      "item_id": 734,
-      "prev_status": "pass",
-      "new_status": "pass",
-      "rung": "norm_string",
-      "boxed": "4830, 4.830",
-      "gold": "4830,4.830"
-    },
-    {
-      "item_id": 576,
-      "prev_status": "pass",
-      "new_status": "pass",
-      "rung": "exact",
-      "boxed": "\\frac{5}{2},\\frac{1}{2}",
-      "gold": "\\frac{5}{2},\\frac{1}{2}"
-    },
-    {
-      "item_id": 473,
-      "prev_status": "pass",
-      "new_status": "pass",
-      "rung": "exact",
-      "boxed": "[-7,-3]",
-      "gold": "[-7,-3]"
-    },
-    {
-      "item_id": 506,
-      "prev_status": "pass",
-      "new_status": "pass",
-      "rung": "exact",
-      "boxed": "J",
-      "gold": "J"
-    },
-    {
-      "item_id": 76,
-      "prev_status": "pass",
-      "new_status": "pass",
-      "rung": "exact",
-      "boxed": "-4,-11,3,33,-32,9,-14,-13",
-      "gold": "-4,-11,3,33,-32,9,-14,-13"
-    },
-    {
-      "item_id": 122,
-      "prev_status": "pass",
-      "new_status": "pass",
-      "rung": "exact",
-      "boxed": "1174.8,55",
-      "gold": "1174.8,55"
-    },
-    {
-      "item_id": 137,
-      "prev_status": "pass",
-      "new_status": "pass",
-      "rung": "exact",
-      "boxed": "2/13,2/1",
-      "gold": "2/13,2/1"
-    },
-    {
-      "item_id": 477,
-      "prev_status": "pass",
-      "new_status": "pass",
-      "rung": "exact",
-      "boxed": "A,C",
-      "gold": "A,C"
-    },
-    {
-      "item_id": 185,
-      "prev_status": "pass",
-      "new_status": "pass",
-      "rung": "exact",
-      "boxed": "T,F,T,F,T",
-      "gold": "T,F,T,F,T"
-    },
-    {
-      "item_id": 813,
-      "prev_status": "pass",
-      "new_status": "pass",
-      "rung": "exact",
-      "boxed": "A,C",
-      "gold": "A,C"
-    },
-    {
-      "item_id": 191,
-      "prev_status": "pass",
-      "new_status": "pass",
-      "rung": "exact",
-      "boxed": "D,A,C,B,E",
-      "gold": "D,A,C,B,E"
-    },
-    {
-      "item_id": 699,
-      "prev_status": "pass",
-      "new_status": "pass",
-      "rung": "exact",
-      "boxed": "6,3",
-      "gold": "6,3"
-    },
-    {
-      "item_id": 158,
-      "prev_status": "pass",
-      "new_status": "pass",
-      "rung": "exact",
-      "boxed": "A,C",
-      "gold": "A,C"
-    },
-    {
-      "item_id": 689,
-      "prev_status": "pass",
-      "new_status": "pass",
-      "rung": "exact",
-      "boxed": "45,43",
-      "gold": "45,43"
-    },
-    {
-      "item_id": 163,
-      "prev_status": "pass",
-      "new_status": "pass",
-      "rung": "exact",
-      "boxed": "9,-5,4",
-      "gold": "9,-5,4"
-    },
-    {
-      "item_id": 902,
-      "prev_status": "pass",
-      "new_status": "pass",
-      "rung": "exact",
-      "boxed": "3,2",
-      "gold": "3,2"
-    },
-    {
-      "item_id": 103,
-      "prev_status": "pass",
-      "new_status": "pass",
-      "rung": "exact",
-      "boxed": "8\\sqrt{2}",
-      "gold": "8\\sqrt{2}"
-    },
-    {
-      "item_id": 238,
-      "prev_status": "pass",
-      "new_status": "pass",
-      "rung": "norm_string",
-      "boxed": "-61,\\,61,\\,62",
-      "gold": "-61,61,62"
-    },
-    {
-      "item_id": 56,
-      "prev_status": "pass",
-      "new_status": "pass",
-      "rung": "exact",
-      "boxed": "D,D,A",
-      "gold": "D,D,A"
-    },
-    {
-      "item_id": 44,
-      "prev_status": "pass",
-      "new_status": "pass",
-      "rung": "norm_string",
-      "boxed": "True, True, True, False",
-      "gold": "True,True,True,False"
-    },
-    {
-      "item_id": 52,
-      "prev_status": "pass",
-      "new_status": "pass",
-      "rung": "exact",
-      "boxed": "231,385",
-      "gold": "231,385"
-    },
-    {
-      "item_id": 234,
-      "prev_status": "pass",
-      "new_status": "pass",
-      "rung": "exact",
-      "boxed": "29x^7 + 6x^5",
-      "gold": "29x^7 + 6x^5"
-    },
-    {
-      "item_id": 376,
-      "prev_status": "pass",
-      "new_status": "pass",
-      "rung": "no_gold_warn",
-      "boxed": "1275",
-      "gold": "This is a complex or challenging question,and it is difficult to provide a direct and correct answer. I need to think about it.\nWell,so the problem is: find the sum of the smallest 50 possible values of gcd(a\u00b2 + b\u00b2 + c\u00b2,abc) where a,b,c are positive integers. Hmm,let's start by understanding what gcd(a\u00b2 + b\u00b2 + c\u00b2,abc) can be. Maybe first consider cases where a,b,c are small,compute some gcds,see if we can find patterns or constraints.\n\nFirst,let's recall that for any integers x,y,gcd(x,y) divides any linear combination,so in particular,gcd(a\u00b2 + b\u00b2 + c\u00b2,abc) must divide each of a\u00b2 + b\u00b2 + c\u00b2 - k*abc for integer k,but maybe more straightforward: let d = gcd(a\u00b2 + b\u00b2 + c\u00b2,abc),then d divides abc,so all prime factors of d must divide at least one of a,b,c. Let's suppose without loss of generality (since the problem is symmetric in a,b,c) that p is a prime dividing d,so p divides abc,so p divides a or b or c,say p divides a. Then since d divides a\u00b2 + b\u00b2 + c\u00b2,p divides a\u00b2 + b\u00b2 + c\u00b2,so p divides b\u00b2 + c\u00b2 (because p divides a\u00b2). So if p divides a,then p divides b\u00b2 + c\u00b2. Similarly,if p divides b,p divides a\u00b2 + c\u00b2,etc.\n\nLet's check small primes first. Let's try p=2. When does 2 divide d? That would mean 2 divides a\u00b2 + b\u00b2 + c\u00b2 and 2 divides abc (so at least one of a,b,c even). Wait,but if only one of a,b,c is even,say a even,b,c odd,then a\u00b2 + b\u00b2 + c\u00b2 \u2261 0 + 1 + 1 = 2 \u2261 0 mod 2,so that's okay. If two even,say a,b even,c odd: 0 + 0 + 1 = 1 mod 2,so gcd wouldn't have factor 2? Wait no,wait d divides abc,so if two are even,abc is even,but a\u00b2 + b\u00b2 + c\u00b2 is 0 + 0 + 1 = 1 mod 2,so gcd would be odd? Wait,hold on! If two numbers are even,their squares are 0 mod 2,third odd square is 1 mod 2,so sum is 1 mod 2,so gcd can't have factor 2. If all three even,sum is 0 + 0 + 0 = 0 mod 2,so sum is even,abc is even,so gcd could have factor 2. If one even,two odd: sum is 0 + 1 + 1 = 2 \u2261 0 mod 2,so sum even,abc even,so gcd could have factor 2. If all three odd: sum is 1 + 1 + 1 = 3 \u2261 1 mod 2,so sum odd,abc odd,so gcd odd. So possible cases for parity:\n\n- All odd: gcd odd\n- One even,two odd: sum even,abc even \u21d2 gcd could be even\n- Two even,one odd: sum odd,abc even \u21d2 gcd odd (since sum is odd,can't share factor 2 with abc)\n- All even: sum even,abc even \u21d2 gcd could be even\n\nWait,but maybe instead of getting bogged down in parity,let's test small triples (a,b,c) with a \u2264 b \u2264 c to avoid duplicates (since gcd is symmetric).\n\nStart with smallest positive integers: (1,1,1). Compute gcd(1+1+1,1*1*1) = gcd(3,1)=1.\n\n(1,1,2): gcd(1+1+4,1*1*2)=gcd(6,2)=2.\n\n(1,1,3): gcd(1+1+9,3)=gcd(11,3)=1.\n\n(1,1,4): gcd(1+1+16,4)=gcd(18,4)=2.\n\n(1,1,5): gcd(1+1+25,5)=gcd(27,5)=1.\n\n(1,1,6): gcd(1+1+36,6)=gcd(38,6)=2.\n\nHmm,pattern here for (1,1,n): gcd(2 + n\u00b2,n). Let's compute this: gcd(n\u00b2 + 2,n) = gcd(2,n),since gcd(n\u00b2 + 2,n) = gcd(2,n). Oh! That's a good point,Euclidean algorithm. So for fixed a=b=1,c=n,gcd(1\u00b2 +1\u00b2 +n\u00b2,1*1*n)=gcd(n\u00b2 + 2,n)=gcd(2,n). So that's 1 if n odd,2 if n even. So that gives us gcd=1 or 2 for these triples.\n\nNow (1,2,2): gcd(1 + 4 + 4,1*2*2)=gcd(9,4)=1.\n\n(1,2,3): gcd(1 + 4 + 9,6)=gcd(14,6)=2.\n\n(1,2,4): gcd(1 + 4 + 16,8)=gcd(21,8)=1.\n\n(1,2,5): gcd(1 + 4 + 25,10)=gcd(30,10)=10.\n\nWait,hold on! 30 and 10,gcd is 10. That's bigger. Let's check that again: 1\u00b2 + 2\u00b2 + 5\u00b2 = 1 + 4 + 25 = 30,abc=1*2*5=10,gcd(30,10)=10. Yep,that's right. So that's a new value,10.\n\n(1,2,6): gcd(1 + 4 + 36,12)=gcd(41,12)=1.\n\n(1,2,7): gcd(1 + 4 + 49,14)=gcd(54,14)=2 (54=2*27,14=2*7,gcd=2).\n\n(1,2,8): gcd(1 + 4 + 64,16)=gcd(69,16)=1.\n\n(1,2,9): gcd(1 + 4 + 81,18)=gcd(86,18)=2 (86=2*43,18=2*9,gcd=2).\n\n(1,2,10): gcd(1 + 4 + 100,20)=gcd(105,20)=5 (105=5*21,20=5*4,gcd=5). Oh,another one,5.\n\nWait,so (1,2,10) gives gcd=5. Nice,that's smaller than 10. Let's note that.\n\n(1,3,3): gcd(1 + 9 + 9,9)=gcd(19,9)=1.\n\n(1,3,4): gcd(1 + 9 + 16,12)=gcd(26,12)=2.\n\n(1,3,5): gcd(1 + 9 + 25,15)=gcd(35,15)=5 (35=5*7,15=5*3,gcd=5). Okay,so (1,3,5) gives 5.\n\n(1,3,6): gcd(1 + 9 + 36,18)=gcd(46,18)=2.\n\n(1,3,7): gcd(1 + 9 + 49,21)=gcd(59,21)=1.\n\n(1,3,8): gcd(1 + 9 + 64,24)=gcd(74,24)=2.\n\n(1,3,9): gcd(1 + 9 + 81,27)=gcd(91,27)=1 (91=7*13,27=3\u00b3).\n\n(1,3,10): gcd(1 + 9 + 100,30)=gcd(110,30)=10 (110=10*11,30=10*3,gcd=10).\n\n(1,4,4): gcd(1 + 16 + 16,16)=gcd(33,16)=1.\n\n(1,4,5): gcd(1 + 16 + 25,20)=gcd(42,20)=2.\n\n(1,4,6): gcd(1 + 16 + 36,24)=gcd(53,24)=1.\n\n(1,4,7): gcd(1 + 16 + 49,28)=gcd(66,28)=2 (66=2*3*11,28=4*7,gcd=2).\n\n(1,4,8): gcd(1 + 16 + 64,32)=gcd(81,32)=1.\n\n(1,4,9): gcd(1 + 16 + 81,36)=gcd(98,36)=2 (98=2*49,36=4*9,gcd=2).\n\n(1,4,10): gcd(1 + 16 + 100,40)=gcd(117,40)=1 (117=9*13,40=8*5).\n\n(1,5,5): gcd(1 + 25 + 25,25)=gcd(51,25)=1.\n\n(1,5,6): gcd(1 + 25 + 36,30)=gcd(62,30)=2.\n\n(1,5,7): gcd(1 + 25 + 49,35)=gcd(75,35)=5 (75=5*15,35=5*7,gcd=5). Another 5!\n\n(1,5,8): gcd(1 + 25 + 64,40)=gcd(90,40)=10 (90=10*9,40=10*4,gcd=10).\n\n(1,5,9): gcd(1 + 25 + 81,45)=gcd(107,45)=1 (107 is prime? Maybe,107/3\u224835.6,107/5=21.4,107/7\u224815.28,yes prime).\n\n(1,5,10): gcd(1 + 25 + 100,50)=gcd(126,50)=2 (126=2*63,50=2*25,gcd=2).\n\nOkay,so far we have seen gcd values: 1,2,5,10. Let's list the triples we found with these gcds and their values:\n\n- gcd=1: (1,1,1),(1,1,3),(1,1,5),(1,2,2),(1,2,4),(1,2,6),(1,3,3),(1,3,7),(1,4,4),(1,4,6),(1,4,8),(1,5,5),(1,5,9),... probably many triples give 1\n- gcd=2: (1,1,2),(1,1,4),(1,1,6),(1,2,3),(1,2,7),(1,2,9),(1,3,4),(1,3,6),(1,3,8),(1,4,5),(1,4,7),(1,4,9),(1,5,6),(1,5,10),... also many\n- gcd=5: (1,2,10),(1,3,5),(1,5,7),(1,5,10)? Wait no,(1,5,10) was gcd=2,wait (1,2,10) was gcd=10? Wait no,earlier (1,2,10): 1+4+100=105,abc=20,gcd(105,20)=5? Wait wait,hold on! I think I made a mistake here. Let's recalculate (1,2,10):\n\na=1,b=2,c=10: a\u00b2 + b\u00b2 + c\u00b2 = 1 + 4 + 100 = 105; abc = 1*2*10 = 20. gcd(105,20). Factors of 105: 3,5,7; factors of 20: 2,5. So gcd is 5. Yes! I wrote earlier \"gcd(105,20)=5\",but then later said \"another one,5\" \u2013 that's correct,I had a typo in the thought process but the number was right. Phew,okay,important to check again.\n\n(1,3,5): 1+9+25=35,abc=15,gcd(35,15)=5,correct.\n\n(1,5,7): 1+25+49=75,abc=35,gcd(75,35)=5,correct.\n\n(2,2,2): gcd(4+4+4,8)=gcd(12,8)=4. Wait,didn't think of this triple! (2,2,2) is all even,sum=12,product=8,gcd=4. That's a new value,4. Good catch,missed that earlier.\n\n(2,2,3): gcd(4+4+9,12)=gcd(17,12)=1.\n\n(2,2,4): gcd(4+4+16,16)=gcd(24,16)=8. Wait,24 and 16,gcd=8. That's bigger.\n\n(2,2,5): gcd(4+4+25,20)=gcd(33,20)=1.\n\n(2,2,6): gcd(4+4+36,24)=gcd(44,24)=4 (44=4*11,24=4*6,gcd=4).\n\n(2,3,3): gcd(4+9+9,18)=gcd(22,18)=2.\n\n(2,3,4): gcd(4+9+16,24)=gcd(29,24)=1.\n\n(2,3,5): gcd(4+9+25,30)=gcd(38,30)=2.\n\n(2,3,6): gcd(4+9+36,36)=gcd(49,36)=1.\n\n(2,4,4): gcd(4+16+16,32)=gcd(36,32)=4.\n\n(2,4,5): gcd(4+16+25,40)=gcd(45,40)=5. Oh,(2,4,5): 4+16+25=45,abc=40,gcd(45,40)=5. Another 5.\n\n(2,5,5): gcd(4+25+25,50)=gcd(54,50)=2.\n\n(3,3,3): gcd(9+9+9,27)=gcd(27,27)=27. Wait,that's big,27. Maybe not small.\n\n(3,3,4): gcd(9+9+16,36)=gcd(34,36)=2.\n\n(3,3,5): gcd(9+9+25,45)=gcd(43,45)=1.\n\n(3,4,4): gcd(9+16+16,48)=gcd(41,48)=1.\n\n(3,4,5): gcd(9+16+25,60)=gcd(50,60)=10. Oh,(3,4,5) triangle,classic! Sum of squares 50,product 60,gcd(50,60)=10. That's a 10,same as before.\n\n(4,4,4): gcd(16*3,64)=gcd(48,64)=16. Bigger.\n\nWait,let's recap the gcd values we have so far from small triples,ordered from smallest to largest:\n\nWe have 1,2,4,5,10,... let's check if we missed any between 1 and 10.\n\nIs there a gcd=3? Let's see if we can get gcd=3.\n\nSuppose d=3 divides gcd(a\u00b2+b\u00b2+c\u00b2,abc),so 3 divides abc,so at least one of a,b,c divisible by 3,say 3|a,then 3 divides a\u00b2 + b\u00b2 + c\u00b2 \u21d2 0 + b\u00b2 + c\u00b2 \u2261 0 mod 3 \u21d2 b\u00b2 + c\u00b2 \u2261 0 mod 3. But squares mod 3 are 0 or 1,so b\u00b2 + c\u00b2 \u2261 0 mod 3 only if both b\u00b2\u22610 and c\u00b2\u22610 mod 3,i.e.,3|b and 3|c. So for 3 to divide the gcd,all three numbers must be divisible by 3.\n\nLet's test a triple where all are divisible by 3,say (3,3,3): we did that,gcd=27,which is divisible by 3,but 27 is big. What about (3,3,6): gcd(9+9+36,54)=gcd(54,54)=54. (3,3,9): gcd(9+9+81,81)=gcd(99,81)=9. Wait,(3,3,9): a\u00b2+b\u00b2+c\u00b2=9+9+81=99,abc=3*3*9=81,gcd(99,81)=9. Ah,9! So gcd=9 is possible.\n\nWait,(3,3,9): let's verify: 3\u00b2+3\u00b2+9\u00b2=9+9+81=99; 3*3*9=81; gcd(99,81)=9. Correct,99=9*11,81=9*9,so gcd=9.\n\nCan we get gcd=3? Let's see. Suppose we take (3,3,3k) for some k,let's set a=b=3,c=3k,then gcd(9 + 9 + 9k\u00b2,3*3*3k)=gcd(9(k\u00b2 + 2),27k)=9*gcd(k\u00b2 + 2,3k). Now,gcd(k\u00b2 + 2,3k)=gcd(k\u00b2 + 2,k)*gcd(k\u00b2 + 2,3) [by Chinese remainder theorem,since 3 and k may not be coprime,but actually better to do step by step]. gcd(k\u00b2 + 2,k)=gcd(2,k),as before. gcd(k\u00b2 + 2,3)=gcd(2,3) if k not divisible by 3,else gcd(0 + 2,3)=2? Wait,k divisible by 3: k=3m,k\u00b2=9m\u00b2\u22610 mod3,so k\u00b2+2\u22612 mod3; k not divisible by 3: k\u00b2\u22611 mod3,so k\u00b2+2\u22610 mod3. So gcd(k\u00b2 + 2,3)=3 if 3\u2224k,else 1.\n\nSo gcd(9(k\u00b2 + 2),27k)=9*gcd(k\u00b2 + 2,3k). Let's compute for k=1: (3,3,3),gcd=9*gcd(1+2,3)=9*gcd(3,3)=9*3=27,which matches.\n\nk=2: (3,3,6),gcd=9*gcd(4+2,6)=9*gcd(6,6)=9*6=54,correct as above.\n\nk=3: (3,3,9),gcd=9*gcd(9+2,9)=9*gcd(11,9)=9*1=9,correct.\n\nk=4: (3,3,12),gcd=9*gcd(16+2,12)=9*gcd(18,12)=9*6=54.\n\nk=5: (3,3,15),gcd=9*gcd(25+2,15)=9*gcd(27,15)=9*3=27.\n\nk=6: (3,3,18),gcd=9*gcd(36+2,18)=9*gcd(38,18)=9*2=18.\n\nk=7: (3,3,21),gcd=9*gcd(49+2,21)=9*gcd(51,21)=9*3=27 (51=3*17,21=3*7).\n\nk=8: (3,3,24),gcd=9*gcd(64+2,24)=9*gcd(66,24)=9*6=54.\n\nk=9: (3,3,27),gcd=9*gcd(81+2,27)=9*gcd(83,27)=9*1=9.\n\nSo the gcds here for (3,3,3k) are 9,18,27,54,... so never 3. What if we take a triple with one number divisible by 3,but earlier we saw that if only one number is divisible by 3,then the sum a\u00b2+b\u00b2+c\u00b2 \u2261 0 + 1 + 1 = 2 mod3 (if two numbers not divisible by 3),which isn't 0,so 3 doesn't divide the sum,hence 3 can't divide the gcd (since gcd divides the sum). If two numbers divisible by 3,say a=3m,b=3n,c not divisible by 3,then sum=9m\u00b2+9n\u00b2+c\u00b2\u2261c\u00b2 mod3\u22611 mod3 (since c not divisible by 3),so sum\u22611 mod3,so 3 doesn't divide sum,hence gcd can't have factor 3. Only when all three divisible by 3 does 3 divide the sum,but then as we saw,the gcd ends up being at least 9 (from (3,3,9) giving 9). So gcd=3 is impossible? Let's confirm with an example: is there any triple where gcd is 3?\n\nSuppose gcd=3,so 3 divides abc and 3 divides a\u00b2+b\u00b2+c\u00b2. As above,must have all three divisible by 3,so let a=3a',b=3b',c=3c',then gcd(9a'\u00b2+9b'\u00b2+9c'\u00b2,27a'b'c')=9*gcd(a'\u00b2+b'\u00b2+c'\u00b2,3a'b'c'). So the original gcd is 9 times something,so original gcd must be at least 9 if it's divisible by 3. Therefore,gcd=3 is impossible. Good,so 3 is out.\n\nHow about gcd=4? We have (2,2,2) gives gcd=4,as we saw: 12 and 8,gcd=4. Let's check if there's a smaller gcd than 4 that we missed: we have 1,2,4 \u2013 is there a gcd=3? We just saw no,gcd=4 is next after 2.\n\nWait,gcd=1: yes,many triples,like (1,1,1),(1,2,2),etc.\n\ngcd=2: yes,(1,1,2),(1,2,3),etc.\n\ngcd=4: (2,2,2) gives 4,is there a triple with gcd=4 smaller than (2,2,2)? Wait,(2,2,2) is the smallest triple with all even,maybe (2,2,1) but we can order them,so (1,2,2) is smaller,but (1,2,2) gave gcd=1,as we saw (1+4+4=9,1*2*2=4,gcd=1). So (2,2,2) is the first all-even triple with gcd=4.\n\nWait,let's check (2,2,4): gcd(4+4+16,16)=gcd(24,16)=8,which is higher. (2,4,4): gcd(4+16+16,32)=gcd(36,32)=4,so (2,4,4) also gives 4. So multiple triples give 4.\n\nWhat about gcd=5? We have several: (1,2,10),(1,3,5),(1,5,7),(2,4,5),etc. Let's check if there's a triple with gcd=5 smaller than those? For example,(1,3,5): 1,3,5 are small,sum=1+9+25=35,product=15,gcd=5. That's pretty small triple for gcd=5.\n\ngcd=6? Is 6 possible? Let's see. Suppose d=6 divides gcd,so 2 and 3 divide d. First,2 divides d: as before,sum a\u00b2+b\u00b2+c\u00b2 even and abc even. 3 divides d: so 3 divides sum and abc,so as before,all three divisible by 3 (for 3 to divide sum). Wait,but if all three divisible by 3,then abc divisible by 27,sum divisible by 9,so gcd divisible by 9,so can't have gcd=6 (which is 2*3,but gcd would need to be divisible by 9 if divisible by 3). Alternatively,maybe not all divisible by 3? Wait,if 3 divides abc,then at least one divisible by 3,but for 3 to divide sum,as we saw earlier,must have all three divisible by 3. So if 3 divides d,then all three divisible by 3,so d divisible by 9,hence gcd=6 is impossible (since 6 not divisible by 9). So gcd=6 is out.\n\ngcd=7? Let's see if we can get 7. Suppose d=7,so 7 divides abc and 7 divides a\u00b2+b\u00b2+c\u00b2. Let's try small triples with a number divisible by 7,say c=7,then compute gcd(a\u00b2+b\u00b2+49,7ab). Let's take a=1,b=1: gcd(1+1+49,7)=gcd(51,7)=1. a=1,b=2: gcd(1+4+49,14)=gcd(54,14)=2. a=1,b=3: gcd(1+9+49,21)=gcd(59,21)=1. a=1,b=4: gcd(1+16+49,28)=gcd(66,28)=2. a=1,b=5: gcd(1+25+49,35)=gcd(75,35)=5. a=1,b=6: gcd(1+36+49,42)=gcd(86,42)=2. a=1,b=7: gcd(1+49+49,49)=gcd(99,49)=1 (99=9*11,49=7\u00b2). a=2,b=2: gcd(4+4+49,28)=gcd(57,28)=1. a=2,b=3: gcd(4+9+49,42)=gcd(62,42)=2. a=2,b=4: gcd(4+16+49,56)=gcd(69,56)=1. a=2,b=5: gcd(4+25+49,70)=gcd(78,70)=2. a=3,b=3: gcd(9+9+49,63)=gcd(67,63)=1. a=3,b=4: gcd(9+16+49,84)=gcd(74,84)=2. a=3,b=5: gcd(9+25+49,105)=gcd(83,105)=1 (83 prime). a=4,b=4: gcd(16+16+49,112)=gcd(81,112)=1. a=4,b=5: gcd(16+25+49,140)=gcd(90,140)=10. a=5,b=5: gcd(25+25+49,175)=gcd(99,175)=1.\n\nHmm,not seeing 7 yet. Maybe try c=7,a=1,b= something else? Wait,maybe a triple where two numbers are multiples of 7? a=7,b=7,c=1: gcd(49+49+1,49)=gcd(99,49)=1. a=7,b=7,c=2: gcd(49+49+4,98)=gcd(102,98)=2. a=7,b=7,c=3: gcd(49+49+9,147)=gcd(107,147)=1. a=7,b=7,c=4: gcd(49+49+16,196)=gcd(114,196)=2. a=7,b=7,c=5: gcd(49+49+25,245)=gcd(123,245)=1 (123=3*41,245=5*49). a=7,b=7,c=6: gcd(49+49+36,294)=gcd(134,294)=2. a=7,b=7,c=7: gcd(147,343)=49 (147=49*3,343=49*7,gcd=49). Okay,so (7,7,7) gives 49,which is big.\n\nWait,maybe gcd=7 is possible with larger numbers? Let's think algebraically. Suppose d=7,so 7 divides a\u00b2+b\u00b2+c\u00b2 and 7 divides abc,so 7 divides one of a,b,c,say 7|a,so a=7a',then 7 divides 49a'\u00b2 + b\u00b2 + c\u00b2 \u21d2 7 divides b\u00b2 + c\u00b2. Squares mod7: 0,1,2,4. So b\u00b2 + c\u00b2 \u22610 mod7. Possible pairs (b\u00b2,c\u00b2) mod7: (0,0),(1,6) but 6 not a square,(2,5) nope,(4,3) nope,so only (0,0) mod7. Therefore,7 divides b and 7 divides c. So if 7 divides the gcd,then 7 divides all three a,b,c. Therefore,similar to the 3 case: if 7 divides d,then 7 divides a,b,c,so let a=7a',b=7b',c=7c',then gcd(49a'\u00b2+49b'\u00b2+49c'\u00b2,343a'b'c')=49*gcd(a'\u00b2+b'\u00b2+c'\u00b2,7a'b'c'). Therefore,the original gcd is 49 times something,so original gcd \u226549 if divisible by 7. Ah! That's a key point.\n\nLet's formalize this for a prime p. Suppose p is an odd prime,and p divides d = gcd(a\u00b2+b\u00b2+c\u00b2,abc). Then p divides abc,so p divides at least one of a,b,c,say p|a. Then p divides a\u00b2 + b\u00b2 + c\u00b2 \u21d2 p divides b\u00b2 + c\u00b2. Now,when does a prime p divide b\u00b2 + c\u00b2? It depends on p mod4,but for p=2,we handled separately,but for odd primes p,the equation x\u00b2 + y\u00b2 \u22610 mod p has solutions (x,y)\u2260(0,0) iff p=2 or p\u22611 mod4 (by Fermat's theorem on sums of two squares). Wait,but in our case,if p is an odd prime dividing b\u00b2 + c\u00b2,then either p divides both b and c (if p\u22613 mod4,because for p\u22613 mod4,-1 is not a quadratic residue,so x\u00b2\u2261-y\u00b2 mod p \u21d2 (x/y)\u00b2\u2261-1 mod p,which has no solution unless x\u2261y\u22610 mod p),or p\u22611 mod4 and there exist non-zero solutions.\n\nWait,let's check p=3 (which is 3 mod4): x\u00b2 + y\u00b2 \u22610 mod3 \u21d2 x\u00b2\u2261-y\u00b2 mod3 \u21d2 (x/y)\u00b2\u2261-1 mod3. But squares mod3: 0,1; -1\u22612 mod3,not a square,so only solution is x\u2261y\u22610 mod3. So for p=3 (3 mod4),b\u00b2 + c\u00b2\u22610 mod p \u21d2 p|b and p|c.\n\np=5 (1 mod4): x\u00b2 + y\u00b2\u22610 mod5 has solutions,e.g.,1\u00b2 + 2\u00b2=5\u22610 mod5,so non-trivial solutions.\n\np=7 (3 mod4): same as p=3,x\u00b2 + y\u00b2\u22610 mod7 \u21d2 x\u2261y\u22610 mod7,since -1 is not a quadratic residue mod7 (quadratic residues mod7: 0,1,2,4; -1=6 not among them).\n\nAh! This is crucial. So for an odd prime p:\n\n- If p \u2261 3 mod4,then p divides b\u00b2 + c\u00b2 \u21d2 p divides b and p divides c (as shown for p=3,7).\n- If p \u2261 1 mod4,then p divides b\u00b2 + c\u00b2 \u21d2 p divides b and p divides c or there are non-trivial solutions (i.e.,p doesn't divide both b and c).\n\nLet's apply this to our problem.\n\nFirst,handle prime p=2: we saw earlier,can have 2 dividing d if the number of even numbers is 1 or 3 (since sum even then).\n\nFor odd primes p:\n\nCase 1: p \u2261 3 mod4 (like 3,7,11,...). Then if p divides d,then p divides all three a,b,c (since p|a \u21d2 p|b and p|c,so p|all three). Therefore,d is divisible by p\u00b3? Wait,no: if p divides all three,then let a=p a',b=p b',c=p c',so d = gcd(p\u00b2(a'\u00b2+b'\u00b2+c'\u00b2),p\u00b3 a'b'c') = p\u00b2 gcd(a'\u00b2+b'\u00b2+c'\u00b2,p a'b'c'). So d is divisible by p\u00b2,but could be higher. Wait,for p=3,we saw (3,3,9) gives d=9=3\u00b2,which is p\u00b2. (3,3,3) gives d=27=3\u00b3,(3,3,6) gives 54=2*3\u00b3,etc. So for p\u22613 mod4,if p divides d,then d is divisible by p\u00b2,and in fact,the minimal such d for p=3 is 9,as in (3,3,9).\n\nCase 2: p \u22611 mod4 (like 5,13,17,...). Then p divides d \u21d2 p divides abc and p divides a\u00b2+b\u00b2+c\u00b2. Suppose p|a,so p|b\u00b2+c\u00b2. Since p\u22611 mod4,there exist non-zero b,c with b\u00b2+c\u00b2\u22610 mod p,so p can divide exactly one of b,c or none? Wait,no: if p|b\u00b2+c\u00b2 and p\u22611 mod4,then either p divides both b and c (trivial solution) or there exist non-zero b,c not divisible by p with b\u00b2+c\u00b2\u22610 mod p (non-trivial solutions). So for p\u22611 mod4,it's possible for p to divide d without p dividing all three numbers.\n\nLet's take p=5 (1 mod4). Can we have d divisible by 5 without all three divisible by 5? Let's see the triple (1,3,5): here,5 divides c,5 doesn't divide a or b. Check if 5 divides a\u00b2+b\u00b2+c\u00b2: 1+9+25=35,yes,5 divides 35. And 5 divides abc (since c=5). So yes! Here,p=5 divides d,but only one of a,b,c divisible by 5 (c=5),and 5 divides the sum (since 1\u00b2+3\u00b2=10\u22610 mod5,so 10+25=35\u22610 mod5). Perfect,so this works because 1\u00b2+3\u00b2=10\u22610 mod5,so b\u00b2+c\u00b2\u22610 mod p when p|c and p doesn't divide b,because b\u00b2\u2261-c\u00b2 mod p \u21d2 (b/c)\u00b2\u2261-1 mod p,which is solvable for p\u22611 mod4.\n\nSo for p\u22611 mod4,it's possible to have d divisible by p with exactly one of a,b,c divisible by p (and the other two satisfying x\u00b2+y\u00b2\u22610 mod p,i.e.,their squares sum to 0 mod p).\n\nFor p=5,we have examples where d=5: (1,3,5),(1,5,7) [1\u00b2+7\u00b2=1+49=50\u22610 mod5],(2,4,5) [4+16=20\u22610 mod5],etc. So these triples have one number divisible by 5,the other two such that their squares sum to 0 mod5.\n\nSimilarly,for p=13 (1 mod4),we could have triples where one number is 13,and the other two satisfy x\u00b2+y\u00b2\u22610 mod13,e.g.,2\u00b2+3\u00b2=4+9=13\u22610 mod13,so (2,3,13) would be a candidate: a=2,b=3,c=13,gcd(4+9+169,2*3*13)=gcd(182,78). 182=14*13=2*7*13,78=6*13=2*3*13,so gcd=26. Oh,so gcd=26 here,which is 2*13. Wait,so why is there a factor of 2? Because in (2,3,13),two numbers are odd (2 is even,3 and 13 odd),so sum: 2\u00b2+3\u00b2+13\u00b2=4+9+169=182 even,abc=78 even,so gcd has factor 2. So that's why it's 26.\n\nBut the point is,for p\u22611 mod4,we can get d divisible by p,and sometimes by higher powers? Wait,in the p=5 examples,we got d=5,but can we get d=25? Let's see: take (5,5,5): gcd(75,125)=25. Oh,(5,5,5): sum=75,product=125,gcd=25. So that's 25. (5,5,10): sum=25+25+100=150,product=250,gcd(150,250)=50. (5,5,15): sum=25+25+225=275,product=375,gcd(275,375)=25 (275=25*11,375=25*15). So yes,d=25 is possible.\n\nBut back to the problem: we need the smallest 50 gcd values. Let's list all possible gcd values in increasing order,starting from the smallest,and figure out how many of each there are (or at least the sequence of distinct values,but wait,no: the problem says \"the smallest 50 possible values\" \u2013 wait,does it mean the smallest 50 distinct values? Wait,no,wait: \"sum of the smallest 50 possible values of gcd(...)\" \u2013 \"possible values\" here might mean distinct possible values? Wait,the problem says: \"the smallest 50 possible values\". Wait,let's check the wording again: \"Determine the sum of the smallest 50 possible values of gcd(a\u00b2+b\u00b2+c\u00b2,abc) across all triples of positive integers (a,b,c).\"\n\nHmm,\"possible values\" \u2013 in math problems,when they say \"smallest n possible values\",sometimes they mean distinct values,but sometimes they might mean the smallest n values counting multiplicity? Wait,no,the problem says \"values of gcd\",so each gcd is a value,but \"possible values\" usually refers to distinct values that can occur. Wait,but let's look at the problem statement: \"the smallest 50 possible values\". For example,if the gcd can take value 1 infinitely often,but the value itself is 1,so the \"possible values\" are the distinct integers that can be achieved as gcd for some triple. Wait,that interpretation makes sense: \"possible values\" are the distinct values that the gcd can take,so we need the 50 smallest distinct positive integers that are achievable as gcd(a\u00b2+b\u00b2+c\u00b2,abc) for some positive integers a,b,c.\n\nWait,but hold on,in my earlier examples,I saw gcd=1,2,4,5,9,10,... Let's check if the problem says \"values\" (plural) so probably distinct. The problem says \"the smallest 50 possible values\",so if it were with multiplicity,it would say \"the smallest 50 values\" (implying each occurrence counts),but \"possible values\" suggests distinct values that are possible. Let's confirm with the problem statement: \"across all triples\",so each triple gives a value,but \"possible values\" are the values that can be obtained,i.e.,the image of the function,and we need the smallest 50 elements of that image.\n\nYes,that must be it. For example,if gcd=1 is possible (it is),gcd=2 is possible (yes),gcd=4 is possible (yes),gcd=5 is possible (yes),gcd=9 is possible (yes),gcd=10 is possible (yes),etc. So we need to list all distinct positive integers d such that there exists a,b,c \u2208 \u2115 with d = gcd(a\u00b2+b\u00b2+c\u00b2,abc),then take the smallest 50 such d,sum them.\n\nThat interpretation seems right,otherwise if it were with multiplicity,the problem would be infinite (since many triples give gcd=1,so smallest 50 values with multiplicity would be 1 repeated 50 times,sum=50),but that's trivial and the problem says \"smallest 50 possible values\",so likely distinct.\n\nLet's proceed with distinct values. Let's make a table of distinct d we know,ordered,and check if we can prove they are the smallest.\n\nStart from d=1:\n\n- d=1: possible? Yes,(1,1,1): gcd(3,1)=1. So 1 is achievable.\n\nd=2:\n\n- Possible? Yes,(1,1,2): gcd(6,2)=2. Also (1,2,3): gcd(14,6)=2. So 2 is achievable.\n\nd=3:\n\n- Earlier we proved d=3 is impossible. Why? If d=3,then 3 divides abc and 3 divides a\u00b2+b\u00b2+c\u00b2. As p=3\u22613 mod4,3 divides a\u00b2+b\u00b2+c\u00b2 \u21d2 3 divides all three a,b,c (since if 3|a,then 3|b\u00b2+c\u00b2 \u21d2 3|b,3|c). Then let a=3a',b=3b',c=3c',so d=3*gcd(9a'\u00b2+9b'\u00b2+9c'\u00b2,27a'b'c')=9*gcd(a'\u00b2+b'\u00b2+c'\u00b2,3a'b'c') \u22659*1=9. Hence d\u22659 if 3 divides d,so d=3 impossible. Correct,so skip 3.\n\nd=4:\n\n- Possible? Yes,(2,2,2): gcd(12,8)=4. Also (2,4,4): gcd(36,32)=4. So 4 is achievable.\n\nd=5:\n\n- Possible? Yes,(1,3,5): gcd(35,15)=5. (1,5,7): gcd(75,35)=5. (2,4,5): gcd(45,40)=5. So 5 is achievable.\n\nd=6:\n\n- Impossible? Let's see. d=6=2*3. For 3 to divide d,as above,d must be \u22659,so d=6 <9,impossible. Hence d=6 not achievable.\n\nd=7:\n\n- As we discussed earlier,for p=7\u22613 mod4,if 7 divides d,then 7 divides all three a,b,c,so d=49*gcd(...),so d\u226549. Hence d=7 impossible (since 7<49).\n\nd=8:\n\n- Is 8 achievable? Let's check. Let's try to construct a triple with gcd=8.\n\nFirst,note that if d=8,then 8 divides abc and 8 divides a\u00b2+b\u00b2+c\u00b2. Let's consider parity: 8 is power of 2,so all numbers even? Let's try all even: a=2a',b=2b',c=2c',then d=gcd(4a'\u00b2+4b'\u00b2+4c'\u00b2,8a'b'c')=4*gcd(a'\u00b2+b'\u00b2+c'\u00b2,2a'b'c'). So d=8 \u21d2 4*gcd(...) =8 \u21d2 gcd(a'\u00b2+b'\u00b2+c'\u00b2,2a'b'c')=2. So now need gcd(x,y)=2 where x=a'\u00b2+b'\u00b2+c'\u00b2,y=2a'b'c'.\n\nSo x and y even (since gcd=2),so x even \u21d2 a'\u00b2+b'\u00b2+c'\u00b2 even \u21d2 even number of odd squares (since odd\u00b2=1 mod2,even\u00b2=0). y=2a'b'c' even,which it is.\n\nLet's take a'=b'=1,c'=1: x=1+1+1=3,y=2*1*1*1=2,gcd(3,2)=1 \u22602.\n\na'=1,b'=1,c'=2: x=1+1+4=6,y=2*1*1*2=4,gcd(6,4)=2. Perfect! So this corresponds to a=2*1=2,b=2*1=2,c=2*2=4. So triple (2,2,4): a\u00b2+b\u00b2+c\u00b2=4+4+16=24,abc=16,gcd(24,16)=8. Yes! (2,2,4) gives gcd=8. Great,so d=8 is achievable.\n\nWait,earlier I thought (2,2,4) was 8,yes,24 and 16,gcd=8. Good,so d=8 is possible.\n\nd=9:\n\n- Possible? Yes,(3,3,9): gcd(9+9+81,81)=gcd(99,81)=9. As we saw earlier. Also,(3,3,3k) with k=3 gives 9. So d=9 is achievable.\n\nd=10:\n\n- Possible? Yes,(1,2,10): gcd(1+4+100,20)=gcd(105,20)=5? Wait no,wait earlier confusion: (1,2,10): 1+4+100=105,1*2*10=20,gcd(105,20)=5. Wait,but (3,4,5): 9+16+25=50,3*4*5=60,gcd(50,60)=10. Yes! That's a standard triple,gives gcd=10. So d=10 is achievable.\n\nd=11:\n\n- p=11\u22613 mod4 (11 mod4=3),so if 11 divides d,then 11 divides all three a,b,c,so d\u226511\u00b2=121. Hence d=11 impossible.\n\nd=12:\n\n- Let's see if d=12 is achievable. First,12=4*3,so 3 divides d \u21d2 d\u22659,but we need d=12. To have 3 divide d,need all three divisible by 3 (as p=3\u22613 mod4),so let a=3a',b=3b',c=3c',then d=9*gcd(a'\u00b2+b'\u00b2+c'\u00b2,3a'b'c'). So d=12 \u21d2 9*gcd(...) =12 \u21d2 gcd(...) =12/9=4/3,not integer. Contradiction. Hence d=12 impossible (since if 3 divides d,d must be multiple of 9). Wait,is that true? Wait,for p=3,we have d=9*gcd(...),so d must be multiple of 9 if 3 divides d. Therefore,any d divisible by 3 must be multiple of 9. So d=3,6,12,15,... all impossible (since 3|d \u21d2 9|d). That's a key point I missed earlier!\n\nLet's formalize the divisibility rules based on the prime factors:\n\n1. If a prime p\u22613 mod4 divides d,then p\u00b2 divides d (from earlier: for p\u22613 mod4,p|d \u21d2 p|a,b,c \u21d2 d=p\u00b2*gcd(...),so d divisible by p\u00b2).\n\n2. If a prime p\u22611 mod4 divides d,then p can divide d to the first power (as seen in examples: d=5,13,...),but could it divide higher? Yes,e.g.,d=25=5\u00b2,but for now,we care about minimal d.\n\n3. Prime p=2: let's analyze d's power of 2.\n\nFirst,for p=2:\n\n- If d is even,then as established earlier,the number of even numbers in (a,b,c) is 1 or 3 (since sum a\u00b2+b\u00b2+c\u00b2 even \u21e8 even number of odd squares \u21e8 even number of odds \u21e8 odd number of evens? Wait,no: squares mod2: odd\u00b2=1,even\u00b2=0. So sum mod2 = (number of odd numbers) mod2. Wait,hold on! I think I messed up the parity earlier.\n\nCritical correction: a\u00b2 mod2 = a mod2,since 0\u00b2=0,1\u00b2=1 mod2. So a\u00b2 + b\u00b2 + c\u00b2 mod2 = (a + b + c) mod2. Wait,yes! Because 0\u00b2=0,1\u00b2=1 mod2,so square preserves parity. Therefore,a\u00b2 + b\u00b2 + c\u00b2 is even iff a + b + c is even (i.e.,even number of odd numbers in a,b,c).\n\nAlso,abc is even iff at least one of a,b,c is even (i.e.,odd number of odd numbers? No: abc even iff not all odd,i.e.,at least one even).\n\nSo gcd(a\u00b2+b\u00b2+c\u00b2,abc) is even iff both a\u00b2+b\u00b2+c\u00b2 and abc are even,i.e.,a+b+c even (from above) and abc even (not all odd).\n\nSo when is abc even? When at least one even \u21d2 at most two odds.\n\nWhen is a+b+c even? When 0 or 2 odds (since 0 odds: all even; 2 odds: one even).\n\nSo intersection: abc even and a+b+c even \u21e8 (0 odds: all even) or (2 odds: one even). Which matches what I had earlier for the sum being even: 0 odds (all even): sum of squares=0+0+0=0 mod2; 2 odds: sum of squares=1+1+0=0 mod2. Correct.\n\nSo back to power of 2 in d.\n\nLet's consider cases based on the number of odd numbers in (a,b,c):\n\nCase A: 0 odd numbers (all even): a=2a',b=2b',c=2c'. Then:\n\na\u00b2+b\u00b2+c\u00b2=4(a'\u00b2+b'\u00b2+c'\u00b2)\n\nabc=8a'b'c'\n\nThus d=gcd(4S,8P)=4*gcd(S,2P),where S=a'\u00b2+b'\u00b2+c'\u00b2,P=a'b'c'\n\nSo v2(d)=2 + v2(gcd(S,2P)),where v2 is 2-adic valuation.\n\nCase B: 2 odd numbers (one even): a=2a',b=2b'+1,c=2c'+1 (without loss of generality). Then:\n\na\u00b2+b\u00b2+c\u00b2=4a'\u00b2 + 4b'\u00b2 +4b' +1 +4c'\u00b2 +4c' +1=4(a'\u00b2+b'\u00b2+c'\u00b2+b'+c') +2\n\nabc=2a'(2b'+1)(2c'+1)=2a'(4bc + ...) \u21d2 abc even,and v2(abc)=1 + v2(a'(2b'+1)(2c'+1))=1 + v2(a') (since 2b'+1,2c'+1 odd)\n\na\u00b2+b\u00b2+c\u00b2=2 mod4 (from above: 4*(...) +2),so v2(sum)=1.\n\nTherefore,v2(d)=v2(gcd(sum,abc))=min(v2(sum),v2(abc))=min(1,v2(abc)). Since v2(abc)\u22651 (abc even),min is 1. So in Case B,v2(d)=1.\n\nCase C: 1 or 3 odd numbers: but we saw that for gcd to be even,need 0 or 2 odds (Case A or B),so 1 or 3 odds give gcd odd (v2(d)=0).\n\nGreat,so to summarize v2(d):\n\n- If d even: v2(d)=1 (Case B) or v2(d)\u22652 (Case A,since v2(sum)=2 + v2(gcd(...)) \u22652)\n\nWait,in Case A (all even),v2(sum)=2 (since sum=4S,S integer),v2(abc)=3 + v2(a'b'c') \u22653,so v2(d)=min(2 + v2(S),3 + v2(P))=2 + min(v2(S),1 + v2(P)) \u22652.\n\nSo possible v2(d) for even d:\n\n- v2(d)=1: occurs in Case B (2 odds,1 even),e.g.,(1,1,2): 1,1 odd (2 odds),2 even; sum=1+1+4=6 (v2=1),product=2 (v2=1),gcd=2 (v2=1).\n\n- v2(d)\u22652: occurs in Case A (all even),e.g.,(2,2,2): all even,sum=12 (v2=2),product=8 (v2=3),gcd=4 (v2=2); (2,2,4): sum=24 (v2=3),product=16 (v2=4),gcd=8 (v2=3); (2,4,4): sum=36 (v2=2),product=32 (v2=5),gcd=4 (v2=2).\n\nSo for d even,v2(d) can be 1 or \u22652.\n\nNow,back to listing distinct d in order,using the earlier rules:\n\nd=1: yes (e.g.,(1,1,1))\n\nd=2: yes (e.g.,(1,1,2))\n\nd=3: no (must be \u22659)\n\nd=4: yes (e.g.,(2,2,2))\n\nd=5: yes (e.g.,(1,3,5))\n\nd=6: no (div by 3 \u21d2 div by 9)\n\nd=7: no (div by 7 \u21d2 div by 49)\n\nd=8: yes (e.g.,(2,2,4))\n\nd=9: yes (e.g.,(3,3,9))\n\nd=10: yes (e.g.,(3,4,5))\n\nd=11: no (div by 11 \u21d2 div by 121)\n\nd=12: no (div by 3 \u21d2 div by 9,12 not divisible by 9)\n\nd=13: p=13\u22611 mod4 (13=4*3+1),so can we get d=13? Let's check if there's a triple with gcd=13.\n\nSince 13\u22611 mod4,we can have a triple where one number is 13,and the other two satisfy x\u00b2+y\u00b2\u22610 mod13 (since 13|a\u00b2+b\u00b2+c\u00b2 and 13|c \u21d2 13|x\u00b2+y\u00b2 where x,y are the other two). For example,2\u00b2+3\u00b2=4+9=13\u22610 mod13,so take (2,3,13): a=2,b=3,c=13.\n\nCompute gcd(4 + 9 + 169,2*3*13)=gcd(182,78). 182=2*7*13,78=2*3*13,so gcd=26. Hmm,so gcd=26,which is 2*13. Why? Because in (2,3,13),there's 1 even (2) and 2 odds (3,13),so Case B (2 odds,1 even),so v2(d)=1,hence d=2*13=26.\n\nCan we get a triple where the other two numbers are both odd? Wait,2 and 3: 2 is even,3 is odd. Let's take both odd numbers: say a=1,b=1,c=13: gcd(1+1+169,13)=gcd(171,13)=1 (171=9*19,13 prime). a=1,b=2,c=13: gcd(1+4+169,26)=gcd(174,26)=2 (174=2*3*29,26=2*13). a=1,b=3,c=13: gcd(1+9+169,39)=gcd(179,39)=1 (179 prime). a=1,b=4,c=13: gcd(1+16+169,52)=gcd(186,52)=2 (186=2*3*31,52=4*13). a=1,b=5,c=13: gcd(1+25+169,65)=gcd(195,65)=65 (195=5*39=5*3*13,65=5*13,gcd=65). Oh! (1,5,13): a=1,b=5,c=13. Check: 1\u00b2+5\u00b2+13\u00b2=1+25+169=195; abc=1*5*13=65; gcd(195,65)=65. Wait,195=3*5*13,65=5*13,so gcd=65. That's 5*13,but why?\n\nBecause here,a=1 (odd),b=5 (odd),c=13 (odd): all odd numbers! Wait,Case C (3 odds),so sum of squares is 3 mod2=1 (odd),product=1*5*13=65 (odd),so gcd is odd,which matches. Now,1\u00b2+5\u00b2=26\u22610 mod13 (26=2*13),so 1\u00b2+5\u00b2+13\u00b2\u22610+0=0 mod13,and 13 divides abc (c=13),so 13 divides gcd. Also,5 divides 195 and 65,so 5 divides gcd. Wait,195=5*39,65=5*13,so gcd=5*13=65.\n\nBut we wanted d=13,not 65. Can we get rid of the extra factor? Let's try to find a triple where the gcd is exactly 13.\n\nSuppose d=13,so 13 divides abc and 13 divides a\u00b2+b\u00b2+c\u00b2. Let's assume 13|c,so c=13k,then 13 divides a\u00b2+b\u00b2+169k\u00b2 \u21d2 13 divides a\u00b2+b\u00b2. So need a\u00b2+b\u00b2\u22610 mod13,with a,b not divisible by 13 (to keep d=13,not higher).\n\nAs 13\u22611 mod4,there are solutions: e.g.,a=1,b=2: 1+4=5\u22600; a=1,b=5:1+25=26\u22610 mod13. Yes! a=1,b=5,c=13: we did that,gives gcd=65 (since 5 divides both sum and product). Why does 5 divide it? Because 1\u00b2+5\u00b2=26\u22610 mod13,but 1\u00b2+5\u00b2=26,so 5\u00b2 +1\u00b2=26 \u21d2 1\u00b2 +5\u00b2=2*13,so 1\u00b2 +5\u00b2 is divisible by 13 but not by 5 (26/5=5.2),wait no: 1\u00b2 +5\u00b2=26,which is divisible by 13,but 26 and 5: gcd(26,5)=1,so 1\u00b2 +5\u00b2=26,so sum=26 +169=195=5*39,product=1*5*13=65=5*13,so gcd(195,65)=5*13=65.\n\nTo get gcd=13,we need that 13 divides the gcd,but no other prime divides it. So let's take a,b,c such that 13 divides a\u00b2+b\u00b2+c\u00b2 and 13 divides abc,but no other prime divides both the sum and the product.\n\nLet's try a=1,b=2,c=13: sum=1+4+169=174,product=26,gcd(174,26)=2 (as before). Not 13.\n\na=1,b=3,c=13: sum=1+9+169=179 (prime),product=39,gcd=1.\n\na=1,b=4,c=13: sum=1+16+169=186,product=52,gcd=2.\n\na=1,b=6,c=13: sum=1+36+169=206,product=78,gcd(206,78)=2 (206=2*103,78=2*3*13).\n\na=1,b=7,c=13: sum=1+49+169=219,product=91,gcd(219,91)=1 (219=3*73,91=7*13).\n\na=1,b=8,c=13: sum=1+64+169=234,product=104,gcd(234,104)=26 (234=2*117=2*9*13,104=8*13,gcd=2*13=26).\n\na=1,b=9,c=13: sum=1+81+169=251 (prime),product=117,gcd=1.\n\na=1,b=10,c=13: sum=1+100+169=270,product=130,gcd(270,130)=10 (270=10*27,130=10*13).\n\na=1,b=11,c=13: sum=1+121+169=291,product=143,gcd(291,143)=1 (291=3*97,143=11*13).\n\na=1,b=12,c=13: sum=1+144+169=314,product=156,gcd(314,156)=2.\n\na=2,b=3,c=13: sum=4+9+169=182,product=78,gcd=26 (as before).\n\na=2,b=4,c=13: sum=4+16+169=189,product=104,gcd(189,104)=1 (189=9*21,104=8*13).\n\na=2,b=5,c=13: sum=4+25+169=198,product=130,gcd(198,130)=2 (198=2*99,130=2*65).\n\na=2,b=6,c=13: sum=4+36+169=209,product=156,gcd(209,156)=1 (209=11*19,156=12*13).\n\na=2,b=7,c=13: sum=4+49+169=222,product=182,gcd(222,182)=2 (222=2*111,182=2*91).\n\na=3,b=4,c=13: sum=9+16+169=194,product=156,gcd(194,156)=2.\n\na=3,b=5,c=13: sum=9+25+169=203,product=195,gcd(203,195)=1 (203=7*29,195=5*39).\n\na=3,b=6,c=13: sum=9+36+169=214,product=234,gcd(214,234)=2.\n\na=4,b=5,c=13: sum=16+25+169=210,product=260,gcd(210,260)=10.\n\nHmm,not seeing d=13. Maybe d=13 is impossible? Let's think.\n\nSuppose d=13,so 13 divides gcd(S,P) where S=a\u00b2+b\u00b2+c\u00b2,P=abc. Since 13 is prime,13 divides P \u21d2 13 divides a,b,or c,say 13|c. Then 13|S \u21d2 a\u00b2+b\u00b2\u22610 mod13. As 13\u22611 mod4,solutions exist: (a,b)=(1,5),(2,3),(3,2),(5,1),etc. mod13.\n\nTake (a,b)=(1,5),c=13: S=1+25+169=195=5*39=5*3*13,P=1*5*13=5*13,so gcd(S,P)=5*13=65.\n\nTake (a,b)=(2,3),c=13: S=4+9+169=182=14*13=2*7*13,P=2*3*13=6*13,gcd=2*13=26.\n\nTake (a,b)=(1,1),c=13: S=1+1+169=171=9*19,P=1*1*13=13,gcd=1.\n\nTake (a,b)=(1,2),c=13: S=1+4+169=174=2*3*29,P=1*2*13=26=2*13,gcd=2.\n\nTake (a,b)=(1,3),c=13: S=1+9+169=179 (prime),P=1*3*13=39,gcd=1.\n\nTake (a,b)=(1,4),c=13: S=1+16+169=186=2*3*31,P=1*4*13=52=4*13,gcd=2.\n\nTake (a,b)=(1,6),c=13: S=1+36+169=206=2*103,P=1*6*13=78=6*13,gcd=2.\n\nTake (a,b)=(1,7),c=13: S=1+49+169=219=3*73,P=1*7*13=91=7*13,gcd=1.\n\nTake (a,b)=(1,8),c=13: S=1+64+169=234=2*117=2*9*13,P=1*8*13=104=8*13,gcd=2*13=26.\n\nAh,here we go: (1,8,13) gives gcd=26.\n\nIs there any pair (a,b) with a,b <13,13|a\u00b2+b\u00b2,such that gcd(a\u00b2+b\u00b2+169,ab*13)=13?\n\nThat would require that 13 divides a\u00b2+b\u00b2+169 (which it does,since 169=13\u00b2),and 13 divides ab*13 (yes),but also that no other prime divides both a\u00b2+b\u00b2+169 and ab*13.\n\nSuppose 13 divides a\u00b2+b\u00b2,so a\u00b2+b\u00b2=13k for some k\u22651. Then S=a\u00b2+b\u00b2+c\u00b2=13k +169=13(k+13). P=abc=13ab (c=13). So gcd(S,P)=13*gcd(k+13,ab). Therefore,gcd(S,P)=13 iff gcd(k+13,ab)=1.\n\nSo let's take (a,b) such that a\u00b2+b\u00b2=13k,and gcd(k+13,ab)=1.\n\nExample: a=1,b=5: a\u00b2+b\u00b2=26=13*2 \u21d2 k=2. Then k+13=15. ab=5. gcd(15,5)=5\u22601 \u21d2 gcd(S,P)=13*5=65.\n\na=2,b=3: a\u00b2+b\u00b2=13=13*1 \u21d2 k=1. k+13=14. ab=6. gcd(14,6)=2\u22601 \u21d2 gcd(S,P)=13*2=26.\n\na=3,b=2: same as above.\n\na=5,b=1: same as first.\n\na=4,b= ? 4\u00b2=16,16 + b\u00b2=13k \u21d2 b\u00b2=13k-16. Try k=2: 26-16=10 not square; k=3:39-16=23 nope; k=4:52-16=36=6\u00b2 \u21d2 b=6. So (a,b)=(4,6): a\u00b2+b\u00b2=16+36=52=13*4 \u21d2 k=4. k+13=17. ab=24. gcd(17,24)=1. Perfect!\n\nSo (a,b)=(4,6),c=13: triple (4,6,13). Let's compute gcd(4\u00b2+6\u00b2+13\u00b2,4*6*13)=gcd(16+36+169,312)=gcd(221,312).\n\nWait,221: 13*17=221 (13*17=221,yes,13*10=130,13*7=91,130+91=221). 312=13*24. So gcd(221,312)=13. Yes! Finally,d=13 is achievable.\n\nPhew,took a while,but (4,6,13) gives gcd=13. Let's verify:\n\n4\u00b2 = 16,6\u00b2=36,13\u00b2=169; sum=16+36=52+169=221.\n\nProduct=4*6*13=24*13=312.\n\n221 divided by 13 is 17 (13*17=221),312 divided by 13 is 24 (13*24=312). 17 and 24 are coprime (17 prime,doesn't divide 24),so gcd(221,312)=13. Perfect,so d=13 is possible.\n\nGreat,so that shows d=13 is achievable.\n\nNow,let's list the distinct d we have confirmed so far,in order,with explanations:\n\n1. d=1: yes (1,1,1)\n2. d=2: yes (1,1,2)\n3. d=3: no (must be \u22659)\n4. d=4: yes (2,2,2)\n5. d=5: yes (1,3,5)\n6. d=6: no (div by 3 \u21d2 div by 9)\n7. d=7: no (div by 7 \u21d2 div by 49)\n8. d=8: yes (2,2,4)\n9. d=9: yes (3,3,9)\n10. d=10: yes (3,4,5)\n11. d=11: no (div by 11 \u21d2 div by 121)\n12. d=12: no (div by 3 \u21d2 div by 9)\n13. d=13: yes (4,6,13) [just found]\n14. d=14: Let's check d=14=2*7. 7\u22613 mod4,so if 7 divides d,d\u226549,but 14<49,so d=14 impossible.\n15. d=15: div by 3 \u21d2 d\u22659,but 15 not divisible by 9? Wait,no: if 3 divides d,d must be divisible by 9 (from p=3\u22613 mod4),so d=15 has 3 as factor but not 9,so impossible. Correct,d=15 no.\n16. d=16: Let's check. d=16=2\u2074. Can we get d=16?\n\nFrom Case A (all even),d=4*gcd(S,2P),S=a'\u00b2+b'\u00b2+c'\u00b2,P=a'b'c'. So d=16 \u21d2 4*gcd(S,2P)=16 \u21d2 gcd(S,2P)=4. So need gcd(S,2P)=4,where S and 2P are integers.\n\nLet's try small a',b',c' (since a=2a',etc.):\n\na'=1,b'=1,c'=1: S=3,2P=2 \u21d2 gcd(3,2)=1 \u22604\n\na'=1,b'=1,c'=2: S=1+1+4=6,2P=2*1*1*2=4 \u21d2 gcd(6,4)=2 \u22604\n\na'=1,b'=2,c'=2: S=1+4+4=9,2P=2*1*2*2=8 \u21d2 gcd(9,8)=1\n\na'=2,b'=2,c'=2: S=4+4+4=12,2P=2*2*2*2=16 \u21d2 gcd(12,16)=4. Perfect!\n\nSo a=2*2=4,b=2*2=4,c=2*2=4. Triple (4,4,4): sum=16+16+16=48,product=64,gcd(48,64)=16. Yes! (4,4,4) gives gcd=16. So d=16 is achievable.\n\n17. d=17: p=17\u22611 mod4 (17=4*4+1). Can we get d=17? Similar to d=13,use the method: find a,b with a\u00b2+b\u00b2=17k,such that gcd(k+17,ab)=1.\n\nTake a=1,b=4: 1+16=17=17*1 \u21d2 k=1. k+17=18. ab=4. gcd(18,4)=2\u22601.\n\na=2,b=3: 4+9=13\u226017; a=2,b=4:4+16=20=17*1+3; a=1,b=2:1+4=5; a=1,b=3:1+9=10; a=1,b=4:17 (done); a=2,b=5:4+25=29=17+12; a=3,b=4:9+16=25=17+8; a=4,b=4:16+16=32=17*1+15; a=3,b=5:9+25=34=17*2 \u21d2 k=2. k+17=19. ab=15. gcd(19,15)=1. Perfect!\n\nSo (a,b)=(3,5),c=17: triple (3,5,17). Compute gcd(9+25+289,3*5*17)=gcd(323,255).\n\n323: 17*19=323 (17*19=323,yes),255=15*17=3*5*17. So gcd(323,255)=17. Yes! d=17 is achievable.\n\n18. d=18: div by 3 \u21d2 d\u22659,but 18 not divisible by 9 (18/9=2),so impossible (since if 3|d,9|d). Correct,d=18 no.\n\n19. d=19: p=19\u22613 mod4 (19=4*4+3),so if 19|d,d\u226519\u00b2=361. Hence d=19 impossible.\n\n20. d=20: div by 4 and 5. 5\u22611 mod4,so possible? Let's see. d=20=4*5. Need to check if achievable.\n\nFirst,5|d: possible (as d=5 is achievable),4|d: possible (d=4 is achievable). Can we combine?\n\nTry to find a triple with gcd=20. Let's think of triples with gcd=5 and multiply by 4? Wait,better to construct.\n\nFrom earlier,d=5 is achievable with (1,3,5): sum=35,product=15,gcd=5. If we scale by 2: (2,6,10),sum=4+36+100=140,product=120,gcd(140,120)=20. Yes! (2,6,10): 2\u00b2+6\u00b2+10\u00b2=4+36+100=140; 2*6*10=120; gcd(140,120)=20. Perfect,so d=20 is achievable.\n\nWait,scaling a triple (a,b,c) by k gives new triple (ka,kb,kc),sum of squares=k\u00b2(a\u00b2+b\u00b2+c\u00b2),product=k\u00b3abc,so gcd(k\u00b2S,k\u00b3P)=k\u00b2 gcd(S,P) where S=a\u00b2+b\u00b2+c\u00b2,P=abc. So if original triple has gcd(S,P)=d,then scaled triple has gcd=k\u00b2d.\n\nIn the case of (1,3,5): gcd(S,P)=5,so scaled by k=2: gcd=2\u00b2*5=20. Exactly,so that's why (2,6,10) gives 20.\n\nSimilarly,(1,1,2) has gcd=2,scaled by k=2: (2,2,4),sum=24,product=16,gcd=8=2\u00b2*2. Which matches: original gcd=2,scaled by k=2 gives 2\u00b2*2=8,which we have.\n\n(2,2,2) has gcd=4,scaled by k=2: (4,4,4),sum=48,product=64,gcd=16=2\u00b2*4,which is what we did for d=16.\n\nThis scaling idea is very useful! Let's formalize:\n\nIf (a,b,c) is a triple with gcd(S,P)=d (S=a\u00b2+b\u00b2+c\u00b2,P=abc),then for any k\u22651,(ka,kb,kc) has gcd(k\u00b2S,k\u00b3P)=k\u00b2 gcd(S,P)=k\u00b2d.\n\nTherefore,if d is achievable,then for any k\u22651,k\u00b2d is achievable.\n\nThis is a key tool for generating more achievable values.\n\nSo let's list the minimal achievable d first (the smallest d that can't be generated by scaling),then their multiples by squares will be achievable.\n\nFirst,what are the minimal achievable d (not expressible as k\u00b2*d' with d' smaller)?\n\nFrom our list:\n\nd=1: minimal (can't be scaled from smaller,since 1 is smallest)\n\nd=2: minimal (can't be written as k\u00b2*d' with d'<2,k\u22652 \u21d2 k\u00b2\u22654 >2)\n\nd=4: is 4=k\u00b2*d'? k=2,d'=1; yes! (2,2,2) is scaled from (1,1,1) by k=2: (1,1,1) has gcd=1,scaled by 2 gives gcd=2\u00b2*1=4. So d=4 is not minimal,it's 2\u00b2*1.\n\nd=5: minimal (k=2 would give 4*5=20,which we saw is achievable,but 5 itself is smaller than 4? Wait no,5>4,but 5 is minimal in its own right)\n\nWait,let's categorize achievable d by their \"primitive\" parts,i.e.,d = m * n\u00b2 where n\u22651,m is square-free and m is achievable (or m=1).\n\nWait,from the scaling: if d is achievable,then k\u00b2d is achievable for any k\u22651. So every achievable d is either:\n\n- A primitive d (not divisible by any square >1),or\n\n- A multiple of a primitive d by a square.\n\nBut wait,is every d achievable equal to k\u00b2 * m where m is primitive (square-free,achievable)?\n\nLet's see:\n\nd=1: 1=1\u00b2*1,m=1 (primitive)\n\nd=2: 2=1\u00b2*2,m=2 (primitive)\n\nd=4: 4=2\u00b2*1,m=1 (primitive)\n\nd=5: 5=1\u00b2*5,m=5 (primitive)\n\nd=8: 8=2\u00b2*2,m=2 (primitive)\n\nd=9: 9=3\u00b2*1,but wait,earlier we saw d=9 is achievable via (3,3,9),but is 9 primitive? 9=3\u00b2,so m=1 (since 9=3\u00b2*1). Wait,but can we get d=9 without scaling? Yes,(3,3,9) is not a scaling of a smaller triple (since (1,1,3) has gcd=1,scaling by 3 gives (3,3,9),sum=9+9+81=99,product=81,gcd(99,81)=9=3\u00b2*1,so yes,d=9=3\u00b2*1,m=1.\n\nd=10: 10=1\u00b2*10,m=10 (primitive? 10=2*5,square-free,yes)\n\nd=13: 13=1\u00b2*13,m=13 (primitive)\n\nd=16: 16=4\u00b2*1=2\u2074*1,m=1\n\nd=17: 17=1\u00b2*17,m=17 (primitive)\n\nd=20: 20=2\u00b2*5,m=5 (primitive)\n\nAh,so the primitive achievable d (square-free,not expressible as k\u00b2*m with k>1,m achievable) are the ones we need to find first,because all achievable d are generated by taking primitive d and multiplying by squares (k\u00b2).\n\nLet's define:\n\n- A primitive achievable d is a positive integer d such that d is achievable,and d is square-free (or at least,d is not divisible by any square >1? Wait,no,d=9 is divisible by 9,but it's 3\u00b2*1,so it's not square-free. Maybe better to say: the minimal set of achievable d is the set of d where d is achievable and d is not of the form k\u00b2*d' with d' achievable and k>1.\n\nBut from the scaling argument,if d is achievable,then k\u00b2d is achievable for any k\u22651. Therefore,the set of achievable d is equal to the set { k\u00b2 * m | k\u22651,m \u2208 M },where M is the set of minimal achievable d (i.e.,d \u2208 M iff d is achievable and d is not of the form k\u00b2*m with k>1,m achievable).\n\nSo we need to find M,the minimal achievable d (not expressible as k\u00b2*m with k>1,m achievable),then all achievable d are k\u00b2*m for k\u22651,m\u2208M.\n\nLet's find M by checking small numbers and seeing if they can be written as k\u00b2*m with k>1,m achievable.\n\nStart with d=1:\n\n- Can 1 be written as k\u00b2*m,k>1? k\u22652 \u21d2 k\u00b2\u22654 >1,so no. Thus 1\u2208M.\n\nd=2:\n\n- k=2: 4*m=2 \u21d2 m=0.5 nope; k=1: 2=1\u00b2*2,so m=2. Is 2\u2208M? Yes,since 2 can't be written as k\u00b2*m with k>1,m achievable (m would have to be <2,so m=1,but 1*4=4\u22602). So 2\u2208M.\n\nd=3:\n\n- Not achievable (we proved),so not in M.\n\nd=4:\n\n- 4=2\u00b2*1,and 1\u2208M (achievable),so 4\u2209M.\n\nd=5:\n\n- k=2: 4*m=5 \u21d2 m=1.25 nope; k=1: 5=1\u00b2*5,so m=5. Is 5 achievable? Yes. Can 5 be written as k\u00b2*m,k>1? k\u22652 \u21d2 k\u00b2\u22654,m=5/4 not integer,so no. Thus 5\u2208M.\n\nd=6:\n\n- Not achievable,so not in M.\n\nd=7:\n\n- Not achievable,not in M.\n\nd=8:\n\n- 8=2\u00b2*2,and 2\u2208M (achievable),so 8\u2209M.\n\nd=9:\n\n- 9=3\u00b2*1,1\u2208M,so 9\u2209M.\n\nd=10:\n\n- k=2: 4*m=10 \u21d2 m=2.5 nope; k=1: 10=1\u00b2*10,m=10. Achievable? Yes. Can 10 be written as k\u00b2*m,k>1? k=2: 4*2.5=10,nope; k=3:9*m=10,nope. So 10\u2208M.\n\nd=11:\n\n- Not achievable,not in M.\n\nd=12:\n\n- Not achievable,not in M.\n\nd=13:\n\n- k=2: 4*m=13 \u21d2 m=3.25 nope; k=1:13=1\u00b2*13,achievable (yes,we found (4,6,13)),so 13\u2208M.\n\nd=14:\n\n- Not achievable (div by 7 \u21d2 \u226549),so no.\n\nd=15:\n\n- Not achievable (div by 3 \u21d2 \u22659,15 not divisible by 9),so no.\n\nd=16:\n\n- 16=4\u00b2*1=2\u2074*1,so 16=2\u00b2*4,but 4=2\u00b2*1,so 16=2\u2074*1,so 16\u2209M (since it's k\u00b2*1 with k=4,or k=2,m=4 which is not minimal).\n\nd=17:\n\n- k=2:4*m=17\u21d2no; k=1:17=1\u00b2*17,achievable (yes,(3,5,17)),so 17\u2208M.\n\nd=18:\n\n- Not achievable (div by 3 \u21d2 \u22659,18 not divisible by 9),so no.\n\nd=19:\n\n- Not achievable (div by 19 \u21d2 \u2265361),so no.\n\nd=20:\n\n- 20=2\u00b2*5,5\u2208M (achievable),so 20\u2209M.\n\nOkay,let's list the minimal achievable d (M) in order,using the above and our knowledge:\n\nFrom above,M should contain:\n\n1 (yes,minimal),2 (yes),5 (yes),10 (yes),13 (yes),17 (yes),... let's check if there are others below 20.\n\nWait,d=1: M\n\nd=2: M\n\nd=3: no\n\nd=4: not M (4=2\u00b2*1)\n\nd=5: M\n\nd=6: no\n\nd=7: no\n\nd=8: not M (8=2\u00b2*2)\n\nd=9: not M (9=3\u00b2*1)\n\nd=10: M\n\nd=11: no\n\nd=12: no\n\nd=13: M\n\nd=14: no\n\nd=15: no\n\nd=16: not M (16=4\u00b2*1)\n\nd=17: M\n\nd=18: no\n\nd=19: no\n\nd=20: not M (20=2\u00b2*5)\n\nWhat about d=21? Not achievable (div by 3 \u21d2 \u22659,21 not divisible by 9),so no.\n\nd=22: div by 2 and 11; 11\u22613 mod4 \u21d2 d\u2265121,so 22<121,impossible.\n\nd=23: p=23\u22613 mod4 \u21d2 d\u2265529,impossible.\n\nd=24: div by 3 \u21d2 d\u22659,24 not divisible by 9,impossible.\n\nd=25: 25=5\u00b2*1,so 25\u2209M (25=5\u00b2*1,1\u2208M),but is 25 achievable? Yes,(5,5,5): sum=75,product=125,gcd=25. But since 25=5\u00b2*1,it's not minimal.\n\nd=26: 26=2*13,13\u2208M,so 26=1\u00b2*26,but is 26 achievable? Yes,(1,8,13) gives gcd=26 (earlier we saw (1,8,13): sum=234,product=104,gcd=26). But 26=2*13,and 13\u2208M,2\u2208M,so is 26 in M? To be in M,26 must not be expressible as k\u00b2*m with k>1,m\u2208M. k=2: 4*m=26 \u21d2 m=6.5 nope; k=1:26=1\u00b2*26,so if 26 is achievable and not expressible as k\u00b2*m with k>1,m\u2208M,then 26\u2208M. But wait,can 26 be written as k\u00b2*m with k>1,m\u2208M? k=2: m=6.5 no; k=3: m=26/9 no; so yes,26\u2208M? Wait,but let's check if 26 is minimal.\n\nWait,no,let's step back. The key insight from the scaling is that if d is achievable,then k\u00b2d is achievable for any k\u22651. Therefore,the set of achievable d is closed under multiplication by squares. Therefore,the smallest achievable d are the minimal elements of this set,which are the d\u2208M where M is the set of achievable d that are square-free? Wait,no,because d=9 is achievable (9=3\u00b2),but it's 3\u00b2*1,so it's not square-free,but it's generated from 1 by scaling.\n\nActually,the set M (minimal achievable d) consists of all achievable d that are not divisible by any square greater than 1? No,d=1 is divisible by 1,but 1 is square-free.\n\nWait,let's look for known results or patterns. From number theory,for the gcd(a\u00b2+b\u00b2+c\u00b2,abc),the possible values are related to the following:\n\n- For the case where one number is divisible by a prime p\u22613 mod4,you must have all three divisible by p,leading to d divisible by p\u00b2.\n\n- For primes p\u22611 mod4,you can have d divisible by p (as in d=5,13,17,...),and for p=2,you can have d divisible by 2^k for k\u22651 (with some restrictions).\n\nBut from our earlier examples and the scaling,the smallest achievable d are:\n\n1,2,4 (but 4=2\u00b2*1),5,8 (8=2\u00b2*2),9 (9=3\u00b2*1),10,13,16 (16=4\u00b2*1),17,20 (20=2\u00b2*5),25 (25=5\u00b2*1),26 (26=2*13),29 (29\u22611 mod4,let's check if achievable),etc.\n\nWait,but we need the smallest 50 distinct achievable d. Let's list them in order by checking each number starting from 1,and marking achievable or not.\n\nLet's create a table for d=1 to,say,50,and mark if achievable:\n\nd : achievable? reason\n1 : yes (1,1,1)\n2 : yes (1,1,2)\n3 : no (must be \u22659)\n4 : yes (2,2,2) = 2\u00b2*1\n5 : yes (1,3,5)\n6 : no (div by 3 \u21d2 \u22659)\n7 : no (div by 7 \u21d2 \u226549)\n8 : yes (2,2,4) = 2\u00b2*2\n9 : yes (3,3,9) = 3\u00b2*1\n10 : yes (3,4,5)\n11 : no (div by 11 \u21d2 \u2265121)\n12 : no (div by 3 \u21d2 \u22659,12 not divisible by 9)\n13 : yes (4,6,13) [found]\n14 : no (div by 7 \u21d2 \u226549)\n15 : no (div by 3 \u21d2 \u22659,15 not divisible by 9)\n16 : yes (4,4,4) = 4\u00b2*1 = 2\u2074*1\n17 : yes (3,5,17) [found]\n18 : no (div by 3 \u21d2 \u22659,18 not divisible by 9)\n19 : no (div by 19 \u21d2 \u2265361)\n20 : yes (2,6,10) = 2\u00b2*5 (from scaling (1,3,5) by 2)\n21 : no (div by 3 \u21d2 \u22659,21 not divisible by 9)\n22 : no (div by 11 \u21d2 \u2265121)\n23 : no (div by 23 \u21d2 \u2265529)\n24 : no (div by 3 \u21d2 \u22659,24 not divisible by 9)\n25 : yes (5,5,5) = 5\u00b2*1\n26 : yes (1,8,13) = 2*13 (from earlier,(1,8,13) gives gcd=26)\n27 : yes? (3,3,3): gcd(27,27)=27. Wait,(3,3,3): sum=27,product=27,gcd=27. Is 27 achievable? Yes! 27=3\u00b3,but from the p=3\u22613 mod4 rule: if 3|d,d\u22659,and (3,3,3) gives d=27. Also,27=3\u00b3*1,but can it be written as k\u00b2*m? k=3: 9*m=27 \u21d2 m=3,but m=3 is not achievable,so 27 is in M? Wait,no,27 is achievable,and it's 3\u00b3,but let's check if it's minimal.\n\nWait,d=27: is it achievable? Yes,(3,3,3): 3\u00b2+3\u00b2+3\u00b2=27,3*3*3=27,gcd=27. So yes,d=27 is achievable.\n\n28 : div by 4 and 7; 7\u22613 mod4 \u21d2 d\u226549,so 28<49,no.\n29 : p=29\u22611 mod4 (29=4*7+1),so should be achievable. Let's confirm quickly: find a,b with a\u00b2+b\u00b2=29k,gcd(k+29,ab)=1. a=2,b=5: 4+25=29=29*1 \u21d2 k=1. k+29=30. ab=10. gcd(30,10)=10\u22601. a=3,b=4:9+16=25=29*0+25; a=1,b=5:1+25=26; a=2,b=3:4+9=13; a=3,b=5:9+25=34=29+5; a=4,b=5:16+25=41; a=5,b=5:25+25=50=29*1+21; a=1,b=6:1+36=37; a=2,b=6:4+36=40; a=3,b=6:9+36=45; a=4,b=6:16+36=52=29*1+23; a=5,b=6:25+36=61; a=1,b=7:1+49=50; a=2,b=7:4+49=53; a=3,b=7:9+49=58=29*2 \u21d2 k=2. k+29=31. ab=21. gcd(31,21)=1. Yes! So (3,7,29): sum=9+49+841=899,product=3*7*29=609. 899=29*31 (29*30=870+29=899),609=21*29=3*7*29,so gcd=29. Thus d=29 is achievable.\n\n30 : div by 3 \u21d2 d\u22659,30 not divisible by 9; div by 5,but 30=2*3*5,3|d \u21d2 d\u22659,but 30 not divisible by 9,so no.\n\n31 : p=31\u22613 mod4 (31=4*7+3),so d\u226531\u00b2=961,no.\n\n32 : 32=2\u2075. Can we get d=32? Using scaling: (2,2,2) has d=4,scale by k=2: (4,4,4) has d=16; scale by k=3: (6,6,6),sum=108,product=216,gcd(108,216)=108. Wait,no: scaling (a,b,c) by k gives gcd=k\u00b2*d_original. So (2,2,2) has d=4,so (2k,2k,2k) has d=(2k)\u00b2*4 / gcd? Wait,better to use the formula: for triple (ka,kb,kc),gcd((ka)\u00b2+(kb)\u00b2+(kc)\u00b2,ka kb kc)=k\u00b2 gcd(a\u00b2+b\u00b2+c\u00b2,abc). Yes! That's the key formula I missed earlier.\n\nOh my goodness,this is critical: for any triple (a,b,c),and any positive integer k,the triple (ka,kb,kc) has gcd equal to k\u00b2 * gcd(a\u00b2+b\u00b2+c\u00b2,abc).\n\nProof: Let d = gcd(a\u00b2+b\u00b2+c\u00b2,abc). Then gcd((ka)\u00b2+(kb)\u00b2+(kc)\u00b2,ka kb kc) = gcd(k\u00b2(a\u00b2+b\u00b2+c\u00b2),k\u00b3 abc) = k\u00b2 gcd(a\u00b2+b\u00b2+c\u00b2,k abc) = k\u00b2 gcd(d,k) * d? Wait,no,better: gcd(k\u00b2S,k\u00b3P) = k\u00b2 gcd(S,kP) where S=a\u00b2+b\u00b2+c\u00b2,P=abc.\n\nBut in general,gcd(k\u00b2S,k\u00b3P) = k\u00b2 gcd(S,kP) \u2264 k\u00b2 gcd(S,P) * gcd(kP,S)/gcd(S,P)? Maybe not necessary.\n\nWait,let's test with (1,1,1): d=1. Triple (2,2,2): gcd(12,8)=4=2\u00b2*1. Correct.\n\n(1,1,2): d=2. Triple (2,2,4): gcd(24,16)=8=2\u00b2*2. Correct.\n\n(1,3,5): d=5. Triple (2,6,10): gcd(140,120)=20=2\u00b2*5. Correct.\n\n(3,4,5): d=10. Triple (6,8,10): gcd(36+64+100,480)=gcd(200,480)=40=2\u00b2*10. Correct.\n\nAh! So the correct scaling formula is: if (a,b,c) has gcd(S,P)=d,then (ka,kb,kc) has gcd(k\u00b2S,k\u00b3P)=k\u00b2 gcd(S,kP) ??? Wait,no,in the examples:\n\n(1,1,1): S=3,P=1,d=1. (2,2,2): S=12,P=8,gcd(12,8)=4=2\u00b2*1. So here,gcd(k\u00b2S,k\u00b3P)=k\u00b2 gcd(S,kP)? k=2: gcd(4*3,8*1)=gcd(12,8)=4=2\u00b2*1,and gcd(S,kP)=gcd(3,2*1)=1,so yes,k\u00b2*1=4.\n\n(1,1,2): S=6,P=2,d=2. (2,2,4): S=24,P=16,gcd(24,16)=8=2\u00b2*2. gcd(S,kP)=gcd(6,2*2)=gcd(6,4)=2,so k\u00b2*2=8. Correct.\n\n(1,3,5): S=35,P=15,d=5. (2,6,10): S=140,P=120,gcd(140,120)=20=2\u00b2*5. gcd(S,kP)=gcd(35,2*15)=gcd(35,30)=5,so k\u00b2*5=20. Correct.\n\n(3,4,5): S=50,P=60,d=10. (6,8,10): S=200,P=480,gcd(200,480)=40=2\u00b2*10. gcd(S,kP)=gcd(50,2*60)=gcd(50,120)=10,so k\u00b2*10=40. Correct.\n\nSo the general formula is: gcd(k\u00b2S,k\u00b3P) = k\u00b2 * gcd(S,kP).\n\nBut in the cases where gcd(S,P)=d,we have gcd(S,kP)=gcd(S,P) * gcd(S/d,kP/d) = d * gcd(S/d,kP/d) (by gcd properties). However,for the minimal triples where gcd(S,P)=d and gcd(S,d)=d (which is always true),we can get that for k coprime to d,gcd(S,kP)=d,so gcd(k\u00b2S,k\u00b3P)=k\u00b2d.\n\nFor example,(1,1,1): d=1,S=3,P=1,gcd(S,1)=1,so for any k,gcd(k\u00b2*3,k\u00b3*1)=k\u00b2 gcd(3,k) *1? Wait,maybe better to stick to the examples where we have triples with gcd(S,P)=d and d is square-free or something,but the key takeaway is that we can generate new gcd values by scaling triples that have small gcds.\n\nBut from the examples,we saw that:\n\n- Scaling a triple with gcd=d by k gives a triple with gcd=k\u00b2*d (when k is coprime to the triple,or in specific cases where gcd(S,kP)=d).\n\nThis is extremely helpful because it means that if we have a primitive triple (a triple with gcd(S,P)=d where d is not divisible by any square >1? Not exactly,but d is \"small\"),then scaling it by k gives gcd=k\u00b2*d.\n\nNow,let's list all achievable d in order,using the following strategy:\n\n1. List all d that are achievable and not divisible by any square >1 (square-free achievable d),and d that are powers of squares times these (like 4=2\u00b2*1,8=2\u00b2*2,9=3\u00b2*1,16=4\u00b2*1,20=2\u00b2*5,25=5\u00b2*1,26=2*13,etc.)\n\n2. Use the scaling to get higher d from lower ones.\n\nFirst,let's list the square-free achievable d (M) that we know,in order:\n\nFrom d=1 to 30,square-free achievable d:\n\n1 (square-free),2 (square-free),5 (square-free),10 (square-free),13 (square-free),17 (square-free),26 (square-free),29 (square-free),... let's check:\n\n- 1: yes\n- 2: yes\n- 3: no\n- 4: not square-free\n- 5: yes\n- 6: no\n- 7: no\n- 8: not square-free (2\u00b3)\n- 9: not square-free (3\u00b2)\n- 10: yes (2*5)\n- 11: no\n- 12: not square-free\n- 13: yes\n- 14: no\n- 15: no\n- 16: not square-free\n- 17: yes\n- 18: no\n- 19: no\n- 20: not square-free (2\u00b2*5)\n- 21: no\n- 22: no\n- 23: no\n- 24: no\n- 25: not square-free (5\u00b2)\n- 26: yes (2*13)\n- 27: not square-free (3\u00b3)\n- 28: no\n- 29: yes (prime,1 mod4)\n- 30: no\n\nNow,let's verify the square-free achievable d:\n\n- 1: square-free,achievable\n- 2: square-free,achievable\n- 5: square-free,achievable\n- 10: square-free (2*5),achievable\n- 13: square-free,achievable\n- 17: square-free,achievable\n- 26: square-free (2*13),achievable (yes,(1,8,13) gives 26)\n- 29: square-free,achievable (yes,(3,7,29) gives 29)\n- Next square-free: 37 (next prime \u22611 mod4 after 29: 37=4*9+1,yes),let's check if achievable: similar to 13,17,29,yes,using the method with a=1,b=6 (1+36=37),so (1,6,37): sum=1+36+1369=1406,product=1*6*37=222. gcd(1406,222): 1406\u00f72=703,222\u00f72=111; 703=19*37 (19*37=703),111=3*37,so gcd=2*37=74. Wait,not 37. Need to find a,b with a\u00b2+b\u00b2=37k,gcd(k+37,ab)=1. a=1,b=6:1+36=37=37*1 \u21d2 k=1. k+37=38. ab=6. gcd(38,6)=2\u22601. a=2,b=5:4+25=29; a=3,b=4:9+16=25; a=3,b=6:9+36=45=37+8; a=4,b=5:16+25=41; a=5,b=6:25+36=61; a=1,b=7:1+49=50=37+13; a=2,b=6:4+36=40; a=3,b=7:9+49=58=37*1+21; a=4,b=6:16+36=52; a=5,b=7:25+49=74=37*2 \u21d2 k=2. k+37=39. ab=35. gcd(39,35)=1. Yes! So (5,7,37): sum=25+49+1369=1443,product=5*7*37=1295. 1443\u00f737=39 (37*39=1443),1295\u00f737=35 (37*35=1295),gcd(1443,1295)=37. Perfect,so d=37 is achievable.\n\n- 34: 2*17,square-free. Is 34 achievable? Yes,scale (1,1,2) by k=\u221a(34/2)? Wait,no: (1,1,2) has d=2,so scale by k=\u221a17? Not integer. Better: find a triple with gcd=34. Since 34=2*17,and 17 is achievable,can we get 34? From the scaling idea: if we have a triple with gcd=17,scale by k=\u221a2? No. Instead,use the method for d=26: (1,8,13) gives 26,so (1,8*2,13*2)=(1,16,26) would give gcd=4*26=104 (wait,no,scaling by k=2: gcd becomes k\u00b2*d=4*26=104). Alternatively,construct directly: a=1,b=16,c=26: sum=1+256+676=933,product=1*16*26=416. gcd(933,416): 933-2*416=933-832=101,gcd(416,101)=gcd(101,416-4*101)=gcd(101,12)=gcd(12,101-8*12)=gcd(12,5)=gcd(5,2)=1. Not helpful.\n\nWait,but from the earlier examples,for any square-free d that is achievable (i.e.,d is square-free and d is achievable),then d is in M (the minimal set),and all achievable d are of the form k\u00b2 * m where m \u2208 M.\n\nWait,no: d=10 is square-free,achievable,so m=10 \u2208 M. d=20=2\u00b2*5,5\u2208M,so 20=2\u00b2*5 is achievable. d=26=2*13,both 2 and 13 \u2208 M,so is 26 \u2208 M? Yes,because 26 cannot be written as k\u00b2*m with k>1,m \u2208 M (k=2: 4*m=26 \u21d2 m=6.5 not integer; k=3: 9*m=26 \u21d2 nope).\n\nSo let's define M as the set of square-free achievable d (since non-square-free d are k\u00b2*m with k>1,m \u2208 M).\n\nWait,d=1 is square-free,achievable,so 1\u2208M.\n\nd=2: square-free,achievable,2\u2208M.\n\nd=3: not achievable,not in M.\n\nd=4: not square-free (2\u00b2),so 4=2\u00b2*1 \u21d2 4\u2209M.\n\nd=5: square-free,achievable,5\u2208M.\n\nd=6: not achievable,not in M.\n\nd=7: not achievable,not in M.\n\nd=8: not square-free (2\u00b3),8=2\u00b2*2 \u21d2 8\u2209M.\n\nd=9: not square-free (3\u00b2),9=3\u00b2*1 \u21d2 9\u2209M.\n\nd=10: square-free,achievable,10\u2208M.\n\nd=11: not achievable,not in M.\n\nd=12: not square-free,not achievable,not in M.\n\nd=13: square-free,achievable,13\u2208M.\n\nd=14: not achievable,not in M.\n\nd=15: not achievable,not in M.\n\nd=16: not square-free (4\u00b2),16=4\u00b2*1 \u21d2 16\u2209M.\n\nd=17: square-free,achievable,17\u2208M.\n\nd=18: not achievable,not in M.\n\nd=19: not achievable,not in M.\n\nd=20: not square-free (2\u00b2*5),20=2\u00b2*5 \u21d2 20\u2209M.\n\nd=21: not achievable,not in M.\n\nd=22: not achievable,not in M.\n\nd=23: not achievable,not in M.\n\nd=24: not achievable,not in M.\n\nd=25: not square-free (5\u00b2),25=5\u00b2*1 \u21d2 25\u2209M.\n\nd=26: square-free (2*13),achievable,26\u2208M.\n\nd=27: not square-free,achievable,but 27=3\u00b3,so 27=3\u00b2*3,but 3 is not achievable,so 27 is in M? Wait,27 is achievable,but it's not square-free,so it's not in M (since M is square-free). The set of achievable d is { k\u00b2 * m | k\u22651,m \u2208 M },where M is the set of square-free achievable d.\n\nYes,this makes sense because:\n\n- If d is square-free and achievable,then d \u2208 M.\n\n- If d is achievable and not square-free,write d = k\u00b2 * m where m is square-free (k\u22652),then m is achievable (by the scaling property: since d is achievable,m = d / k\u00b2 is achievable? Wait,no,but from the examples,we saw that d=4=2\u00b2*1 (m=1),d=8=2\u00b2*2 (m=2),d=9=3\u00b2*1 (m=1),d=16=4\u00b2*1 (m=1),d=20=2\u00b2*5 (m=5),so yes,every achievable d can be written as k\u00b2 * m with m square-free and m achievable.\n\nTherefore,the set of achievable d is the union over k\u22651 of { k\u00b2 * m | m \u2208 M },where M is the set of square-free achievable d.\n\nThis is a crucial realization. So to list all achievable d in order,we can list M (square-free achievable d) in order,then for each m \u2208 M,list m,4m,9m,16m,... in order.\n\nFirst,let's find all square-free achievable d (M) in increasing order.\n\nWe know:\n\n- m=1: square-free,achievable (yes)\n- m=2: square-free,achievable (yes)\n- m=3: square-free,not achievable (no)\n- m=5: square-free,achievable (yes)\n- m=6: square-free,not achievable (no,div by 3 \u21d2 \u22659)\n- m=7: square-free,not achievable (no,div by 7 \u21d2 \u226549)\n- m=10: square-free (2*5),achievable (yes)\n- m=13: square-free,achievable (yes)\n- m=14: square-free,not achievable (no,div by 7 \u21d2 \u226549)\n- m=17: square-free,achievable (yes)\n- m=19: square-free,not achievable (no,div by 19 \u21d2 \u2265361)\n- m=22: square-free,not achievable (no,div by 11 \u21d2 \u2265121)\n- m=26: square-free (2*13),achievable (yes)\n- m=29: square-free,achievable (yes)\n- m=34: square-free (2*17),achievable? Let's check: use the construction for m=26 (which is 2*13) and replace 13 with 17. Take a=1,b=16,c=17? Wait,better to use the earlier method for m=34: find a,b with a\u00b2+b\u00b2=34k,gcd(k+34,ab)=1.\n\na=1,b=5:1+25=26; a=2,b=5:4+25=29; a=3,b=5:9+25=34=34*1 \u21d2 k=1. k+34=35. ab=15. gcd(35,15)=5\u22601.\n\na=3,b=5: sum of squares=34,so (3,5,34): sum=9+25+1156=1190,product=3*5*34=510. gcd(1190,510)=10 (1190=10*119,510=10*51),so gcd=10. Not 34.\n\na=1,b=6:1+36=37; a=2,b=6:4+36=40=34+6; a=3,b=6:9+36=45; a=4,b=6:16+36=52; a=5,b=6:25+36=61; a=1,b=7:1+49=50; a=2,b=7:4+49=53; a=3,b=7:9+49=58=34+24; a=4,b=7:16+49=65; a=5,b=7:25+49=74=34*2 + 6; a=1,b=8:1+64=65; a=2,b=8:4+64=68=34*2 \u21d2 k=2. k+34=36. ab=16. gcd(36,16)=4\u22601.\n\na=3,b=8:9+64=73; a=4,b=8:16+64=80; a=5,b=8:25+64=89; a=6,b=8:36+64=100=34*2 + 32; a=1,b=9:1+81=82; a=2,b=9:4+81=85=34*2 + 17; a=3,b=9:9+81=90; a=4,b=9:16+81=97; a=5,b=9:25+81=106; a=6,b=9:36+81=117; a=7,b=9:49+81=130=34*3 + 28; a=1,b=10:1+100=101; a=2,b=10:4+100=104; a=3,b=10:9+100=109; a=4,b=10:16+100=116; a=5,b=10:25+100=125; a=6,b=10:36+100=136=34*4 \u21d2 k=4. k+34=38. ab=30. gcd(38,30)=2\u22601.\n\na=7,b=10:49+100=149; a=8,b=10:64+100=164=34*4 + 28; a=9,b=10:81+100=181.\n\nThis is taking too long. Instead,let's rely on known results from the problem's context: in competitions,such problems often have the smallest achievable gcds as 1,2,4,5,8,9,10,13,16,17,20,25,26,29,32,34,37,... but we need to be systematic.\n\nWait,let's list all achievable d we have confirmed with examples,in order,and count them until we have 50.\n\n1. 1 (yes)\n2. 2 (yes)\n3. 4 (yes,(2,2,2))\n4. 5 (yes,(1,3,5))\n5. 8 (yes,(2,2,4))\n6. 9 (yes,(3,3,9))\n7. 10 (yes,(3,4,5))\n8. 13 (yes,(4,6,13))\n9. 16 (yes,(4,4,4))\n10. 17 (yes,(3,5,17))\n11. 20 (yes,(2,6,10))\n12. 25 (yes,(5,5,5))\n13. 26 (yes,(1,8,13))\n14. 29 (yes,(3,7,29))\n15. 32 (let's confirm: (4,4,4) has d=16,scale by k=2: (8,8,8),sum=64*3=192,product=512,gcd(192,512)=64. Wait,no: scaling (4,4,4) by k=2 gives (8,8,8),gcd= k\u00b2*d_original=4*16=64. To get d=32,try (2,4,4): sum=4+16+16=36,product=32,gcd(36,32)=4. (4,4,2) same. (6,6,6): sum=108,product=216,gcd=108. (2,2,6): sum=4+4+36=44,product=24,gcd=4. (2,4,6): sum=4+16+36=56,product=48,gcd(56,48)=8. (4,4,8): sum=16+16+64=96,product=128,gcd(96,128)=32. Yes! (4,4,8): 4\u00b2+4\u00b2+8\u00b2=16+16+64=96; 4*4*8=128; gcd(96,128)=32. So d=32 is achievable.\n16. 34 (let's assume for now,since 34=2*17,and 17 is achievable,we can construct a triple: similar to (1,8,13) for 26,(1,16,17) would be? Wait,(1,16,17): sum=1+256+289=546,product=272,gcd(546,272)=2 (546=2*273,272=2*136). Not helpful. But from the scaling idea: if we have a triple with gcd=17,say (3,5,17) with gcd=17,then scale by k=\u221a(34/17)=\u221a2? Not integer. Alternatively,use the method for d=26: (1,8,13) gives 26,so replace 13 with 17: (1,8,17): sum=1+64+289=354,product=136,gcd(354,136)=2 (354=2*177,136=2*68). (2,8,17): sum=4+64+289=357,product=272,gcd(357,272)=17 (357=17*21,272=17*16). Yes! (2,8,17): 2\u00b2+8\u00b2+17\u00b2=4+64+289=357; 2*8*17=272; 357\u00f717=21,272\u00f717=16,so gcd=17. Not 34. (1,16,17): sum=1+256+289=546,product=272,gcd=2. (3,16,17): sum=9+256+289=554,product=816,gcd=2. (4,16,17): sum=16+256+289=561,product=1088,gcd=17 (561=17*33,1088=17*64). Ah,(4,16,17): gcd=17. To get gcd=34,need to multiply by 2. Let's take (4,16,17) and scale by k=\u221a2? No,instead,take a triple where gcd=17 and multiply by 2 in the scaling: wait,(2,2,2) has gcd=4,scale by k=\u221a(34/4)=\u221a8.5 no. Maybe d=34 is achievable,but let's check the next ones first.\n\nWait,let's list the achievable d we have with concrete examples,in order,and count them:\n\n1. 1 (1,1,1)\n2. 2 (1,1,2)\n3. 4 (2,2,2)\n4. 5 (1,3,5)\n5. 8 (2,2,4)\n6. 9 (3,3,9)\n7. 10 (3,4,5)\n8. 13 (4,6,13)\n9. 16 (4,4,4)\n10. 17 (3,5,17)\n11. 20 (2,6,10)\n12. 25 (5,5,5)\n13. 26 (1,8,13)\n14. 29 (3,7,29)\n15. 32 (4,4,8)\n16. 34 (let's say yes,(2,8,17) gives 17,but maybe (1,10,17) gives something: 1+100+289=390,1*10*17=170,gcd(390,170)=10. Not 34. (3,10,17):9+100+289=398,3*10*17=510,gcd=2. (5,10,17):25+100+289=414,5*10*17=850,gcd(414,850)=2. (7,10,17):49+100+289=438,7*10*17=1190,gcd=2. (9,10,17):81+100+289=470,9*10*17=1530,gcd=10. (1,12,17):1+144+289=434,1*12*17=204,gcd(434,204)=2. (2,12,17):4+144+289=437,2*12*17=408,gcd(437,408)=1 (437=19*23). (3,12,17):9+144+289=442,3*12*17=612,gcd(442,612)=34 (442=2*13*17,612=4*153=4*9*17,so gcd=2*17=34). Yes! (3,12,17): 3\u00b2+12\u00b2+17\u00b2=9+144+289=442; 3*12*17=612; gcd(442,612)=34. Perfect,so d=34 is achievable.\n17. 37 (3,7,37) as constructed earlier: gcd=37\n18. 40 (scale (3,4,5) by k=2: (6,8,10),sum=36+64+100=200,product=480,gcd=40=2\u00b2*10)\n19. 41 (p=41\u22611 mod4,let's assume achievable; (5,9,41): 25+81+1681=1787,product=1845,but better to trust the pattern for now)\n20. 45 (wait,45=9*5,but 45 divisible by 3 \u21d2 d\u22659,45 divisible by 9? 45/9=5,yes! So d=45=9*5,which is 3\u00b2*5. Is it achievable? (3,3,15): sum=9+9+225=243,product=135,gcd(243,135)=27. (3,3,30): sum=9+9+900=918,product=270,gcd(918,270)=18. (3,3,45): sum=9+9+2025=2043,product=405,gcd(2043,405)=9 (2043=9*227,405=9*45). (5,5,5): d=25,scale by k=3: (15,15,15),sum=675,product=3375,gcd=225. (1,3,5) scaled by k=3: (3,9,15),sum=9+81+225=315,product=405,gcd(315,405)=45. Yes! (3,9,15): gcd=45. So d=45 is achievable.\n21. 49 (p=7\u22613 mod4,so d\u226549,(7,7,7): sum=147,product=343,gcd=49. Yes,d=49 is achievable)\n22. 50 (scale (1,1,2) by k=\u221a(50/2)=\u221a25=5: (5,5,10),sum=25+25+100=150,product=250,gcd(150,250)=50. Yes,d=50 achievable)\n23. 52 (2\u00b2*13,13\u2208M,so 52=4*13,achievable: (2,2,13) scaled? (2,2,13): sum=4+4+169=177,product=52,gcd=1. (4,4,13): sum=16+16+169=201,product=208,gcd=1. (1,2,13): sum=1+4+169=174,product=26,gcd=2. (2,6,13): sum=4+36+169=209,product=156,gcd=1. (4,6,13): sum=16+36+169=221,product=312,gcd=13. Scale (4,6,13) by k=2: (8,12,26),sum=64+144+676=884,product=2496,gcd=4*13=52. Yes,d=52 achievable)\n24. 53 (p=53\u22611 mod4,assume achievable)\n25. 58 (2*29,29\u2208M,so 58=2*29,achievable: (1,16,29) gives gcd=2,(3,16,29) gives gcd=29? Wait,(1,16,29): sum=1+256+841=1098,product=464,gcd=2. (2,16,29): sum=4+256+841=1101,product=928,gcd=1. (3,16,29): sum=9+256+841=1106,product=1352,gcd(1106,1352)=2 (1106=2*553,1352=8*169=8*13\u00b2). (4,16,29): sum=16+256+841=1113,product=1856,gcd=1. (5,16,29): sum=25+256+841=1122,product=2320,gcd=2. (6,16,29): sum=36+256+841=1133,product=2784,gcd=1. (7,16,29): sum=49+256+841=1146,product=3176,gcd=2. (8,16,29): sum=64+256+841=1161,product=3680,gcd=1. (9,16,29): sum=81+256+841=1178,product=4176,gcd(1178,4176)=2 (1178=2*19*31,4176=16*261=16*9*29). (10,16,29): sum=100+256+841=1197,product=4640,gcd=1. (11,16,29): sum=121+256+841=1218,product=4976,gcd=2. (12,16,29): sum=144+256+841=1241,product=5568,gcd(1241,5568)=17 (1241=17*73,5568=17*327.529? Wait,17*327=5559,5568-5559=9,so no. Maybe better to use the construction for d=26: (1,8,13) gives 26,so (1,8*2,13*2)=(1,16,26) gives gcd=4*26=104,not helpful. But from the pattern,since 29 is achievable and 2 is achievable,58 should be achievable,so we'll assume it for now.\n\nThis is getting tedious,but let's recall that in the set of achievable d,the smallest ones are generated by the minimal square-free d (M) and their squares.\n\nFrom the literature (or standard problems),the smallest achievable gcd(a\u00b2+b\u00b2+c\u00b2,abc) are:\n\n1,2,4,5,8,9,10,13,16,17,20,25,26,29,32,34,37,40,41,45,49,50,52,53,58,61,65,68,73,80,81,82,85,89,90,97,100,...\n\nWait,let's list them in order with counts:\n\n1. 1\n2. 2\n3. 4\n4. 5\n5. 8\n6. 9\n7. 10\n8. 13\n9. 16\n10. 17\n11. 20\n12. 25\n13. 26\n14. 29\n15. 32\n16. 34\n17. 37\n18. 40\n19. 41\n20. 45\n21. 49\n22. 50\n23. 52\n24. 53\n25. 58\n26. 61 (p=61\u22611 mod4)\n27. 65 (5*13,5 and 13 achievable)\n28. 68 (4*17)\n29. 73 (p=73\u22611 mod4)\n30. 80 (1"
-    },
-    {
-      "item_id": 877,
-      "prev_status": "pass",
-      "new_status": "pass",
-      "rung": "exact",
-      "boxed": "F",
-      "gold": "F"
-    },
+  "module_sha256": "902aa7e48677764bd3c71cc0409837bc3d23c5b453e6c5c00237456e2e729e72",
+  "preflight_min_supervised": 9,
+  "preflight_max_supervised": 1812,
+  "passed_ids": [
+    60,
+    350,
+    168,
+    635,
+    106,
+    628,
+    707,
+    734,
+    576,
+    473,
+    506,
+    218,
+    76,
+    122,
+    137,
+    477,
+    185,
+    813,
+    191,
+    699,
+    158,
+    362,
+    689,
+    376,
+    877
+  ],
+  "dropped": [
     {
       "item_id": 469,
-      "prev_status": "drop",
-      "new_status": "drop",
-      "rung": "all_failed",
-      "boxed": "s^2,\\ 0.1575A,\\ 0.1575s^2,\\ C,\\ 81,\\ \\text{A 9-ft square deck has area 81 sq ft},\\ 14.175,\\ \\text{Cost to stain 90 sq ft is \\$14.175},\\ 19.0575,\\ \\text{Cost to stain an 11-ft square deck is \\$19.0575}",
-      "gold": "s^2,0.1575A,0.1575s^2,C,81,square feet,14.175,dollars,19.0575,dollars"
-    },
-    {
-      "item_id": 106,
-      "prev_status": "drop",
-      "new_status": "pass",
-      "rung": "norm_string",
-      "boxed": "\\dfrac{13}{6}",
-      "gold": "\\frac{13}{6}"
+      "reason": "sonnet_wrong: boxed='s^2,\\\\ 0.1575A,\\\\ 0.1575s^2,\\\\ C,\\\\ 81,\\\\ \\\\text{A 9-ft square deck has area 81 sq ft},\\\\ 14.175,\\\\ \\\\text{Cost to stain 90 sq ft is \\\\$14.175},\\\\ 19.0575,\\\\ \\\\text{Cost to stain an 11-ft square deck is \\\\$19.0575}' gold='s^2,0.1575A,0.1575s^2,C,81,square feet,14.175,dollars,19.0575,dollars'"
     },
     {
       "item_id": 41,
-      "prev_status": "drop",
-      "new_status": "drop",
-      "rung": "all_failed",
-      "boxed": "3986",
-      "gold": "4048"
+      "reason": "sonnet_wrong: boxed='3986' gold='4048'"
     },
     {
       "item_id": 587,
-      "prev_status": "drop",
-      "new_status": "drop",
-      "rung": "all_failed",
-      "boxed": "B,C,D,E,F,J \\quad|\\quad C \\quad|\\quad A,B,C \\quad|\\quad A,B",
-      "gold": "B,C,D,E,F,J,C,A,B,B"
-    },
-    {
-      "item_id": 218,
-      "prev_status": "drop",
-      "new_status": "pass",
-      "rung": "norm_string",
-      "boxed": "\\arcsin\\!\\left(\\dfrac{7}{10}\\right)",
-      "gold": "\\arcsin(\\frac{7}{10})"
+      "reason": "sonnet_wrong: boxed='B,C,D,E,F,J \\\\quad|\\\\quad C \\\\quad|\\\\quad A,B,C \\\\quad|\\\\quad A,B' gold='B,C,D,E,F,J,C,A,B,B'"
     },
     {
       "item_id": 495,
-      "prev_status": "drop",
-      "new_status": "drop",
-      "rung": "all_failed",
-      "boxed": "100, 100, 200, 0.255, 5.99, B",
-      "gold": "100,100,200,0.255,5.991,B"
-    },
-    {
-      "item_id": 362,
-      "prev_status": "drop",
-      "new_status": "pass",
-      "rung": "mv_boxed",
-      "boxed": "(6x+5y)(6x-5y)",
-      "gold": "(6x-5y)(6x+5y)"
+      "reason": "sonnet_wrong: boxed='100, 100, 200, 0.255, 5.99, B' gold='100,100,200,0.255,5.991,B'"
     },
     {
       "item_id": 317,
-      "prev_status": "drop",
-      "new_status": "drop",
-      "rung": "all_failed",
-      "boxed": "H",
-      "gold": "D"
-    },
-    {
-      "item_id": 353,
-      "prev_status": "drop",
-      "new_status": "pass",
-      "rung": "norm_string",
-      "boxed": "8, C, 5 \\text{ and } 7, D",
-      "gold": "8,C,5 and 7,D"
-    },
-    {
-      "item_id": 89,
-      "prev_status": "drop",
-      "new_status": "drop",
-      "rung": "all_failed",
-      "boxed": "46.57",
-      "gold": "\\frac{326}{7}"
-    },
-    {
-      "item_id": 210,
-      "prev_status": "drop",
-      "new_status": "pass",
-      "rung": "mv_boxed",
-      "boxed": "-\\dfrac{16\\sqrt{33}+49\\sqrt{3}}{15},\\,\\dfrac{2x}{1+x^2}",
-      "gold": "-\\frac{49\\sqrt{3} + 16\\sqrt{33}}{15},\\frac{2x}{x^2 + 1}"
-    },
-    {
-      "item_id": 405,
-      "prev_status": "drop",
-      "new_status": "drop",
-      "rung": "all_failed",
-      "boxed": "F",
-      "gold": "H"
+      "reason": "sonnet_wrong: boxed='H' gold='D'"
     }
   ]
 }

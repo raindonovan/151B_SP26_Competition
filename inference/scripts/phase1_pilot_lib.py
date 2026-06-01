@@ -135,7 +135,10 @@ class BoundaryAssistantCollator:
         for f in features:
             msgs = f['messages']
             assert msgs[-1]['role'] == 'assistant', f'last message must be assistant, got {msgs[-1]["role"]}'
-            prompt_text = self.tokenizer.apply_chat_template(msgs[:-1], tokenize=False, add_generation_prompt=True)
+            # rstrip('\n') needed: Qwen thinking template appends '<think>\n' via
+            # add_generation_prompt=True, but the assistant content starts with '\n</think>',
+            # causing tokenization drift. Strip trailing newline so both encode identically.
+            prompt_text = self.tokenizer.apply_chat_template(msgs[:-1], tokenize=False, add_generation_prompt=True).rstrip('\n')
             full_text   = self.tokenizer.apply_chat_template(msgs,     tokenize=False, add_generation_prompt=False)
             prompt_ids = self.tokenizer.encode(prompt_text, add_special_tokens=False)
             full_ids   = self.tokenizer.encode(full_text,   add_special_tokens=False)

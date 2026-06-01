@@ -8,7 +8,7 @@ import csv, hashlib, json, os, random, re, sys
 from pathlib import Path
 
 # Must run from repo root
-REPO = Path(__file__).parent.parent.parent
+REPO = Path(__file__).parent.parent.parent.parent
 os.chdir(REPO)
 sys.path.insert(0, str(REPO / "inference/scripts"))
 
