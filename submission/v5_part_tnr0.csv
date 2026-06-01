@@ -1,0 +1,61 @@
+id,response
+0,16
+1,A
+2,A
+3,B
+4,-\dfrac{7}{10}
+5,"\begin{aligned}
+(a) &\quad 541.3 \\
+(b) &\quad 63.25 \\
+(c) &\quad 135.325 \\
+(d) &\quad 4.217 \\
+(e) &\quad 32.09
+\end{aligned}"
+6,148.02
+9,\dfrac{L - 8x}{6F}
+18,I
+20,250
+21,67.4
+25,"\begin{array}{c}
+\text{(a)} \\
+\text{Below 50: } 0.127 \\
+\text{50-59: } 0.095 \\
+\text{60-69: } 0.175 \\
+\text{70-79: } 0.270 \\
+\text{80-89: } 0.206 \\
+\text{90-100: } 0.127 \\
+\\
+\text{(b)} \\
+\text{Below 50: } 8 \\
+\text{50-59: } 14 \\
+\text{60-69: } 25 \\
+\text{70-79: } 42 \\
+\text{80-89: } 55 \\
+\text{90-100: } 63 \\
+\end{array}"
+26,I
+27,"\frac{7}{6}, \frac{11}{6}"
+28,140
+30,664
+31,42
+33,F
+35,\ln p
+41,4048
+42,A
+43,28
+44,False
+46,A
+52,385
+56,A
+60,A
+61,"P(c) = 
+\begin{cases}
+0.76c & \text{if } 0 \leq c \leq 150 \\
+0.69c + 10.5 & \text{if } c > 150
+\end{cases}"
+62,0
+63,LCL = 16.04
+64,P(t) = 850 - 350 \cos\left(\frac{\pi}{6} t\right)
+67,5.38
+68,5.44
+71,18
