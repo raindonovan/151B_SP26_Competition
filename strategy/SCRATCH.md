@@ -760,3 +760,32 @@ Kaggle returned: r20_normalized.csv=0.664 · pickb_norm_nt13_v1.csv=0.660.
 **Don't ship pickb_norm_nt13_v1 as Pick B.** Keep locked Pick B = Conservative-13 NT-join at 0.664 until a >0.664 candidate is verified.
 
 claude_vscode phase0a PASS 103e319
+
+## tnr-0 phase1_pilot_a_fp32 FAIL gate_a — 2026-06-01
+- Stream B fp32+eager: forward-pass preflight PASS (27/27 finite), supervised-token preflight PASS, but FailFast at training step 1 on grad_norm=inf
+- fp32 fixed bf16 forward NaN, but LoRA backward (r=64 α=128 LR=2e-4 no warmup) produces inf grad on first step
+- module_sha256: 902aa7e48677764bd3c71cc0409837bc3d23c5b453e6c5c00237456e2e729e72
+- No retries per spec. Fallback ships unchanged.
+
+## tnr-0 phase1_pilot_a_v2 FAIL gate_a — 2026-06-01
+- Stream B v2 fp32+eager+stabilizers (LR=5e-5 warmup=0.15 cosine α=64 clip=0.3 ε=1e-6 accum=4)
+- HardStop window 1-3 PASSED (grad_norms: 8917, 13620, 4.258e7 — all finite)
+- FailFast at step 4: grad_norm=inf. Gate_a fails (>10x jump steps 2→3, then inf)
+- v2 vs v1: direction-correct (v1 step1 inf → v2 step4 inf) but insufficient
+- module_sha256: 902aa7e48677764bd3c71cc0409837bc3d23c5b453e6c5c00237456e2e729e72
+- NO RETRIES per spec. Stream A fallback ships unchanged.
+
+## tnr-0 phase1_pilot_a_v3 FAIL step_2_nonfinite — 2026-06-01
+- Stream B v3 (LR=1e-5 α=16 attn-only clip=0.1 ε=1e-5 accum=8 warmup=0.25)
+- Step 1: loss=1.153 grad=372.7 (much better than v2's 8.9K) → step 2: grad=NaN, killed by HardStopV3
+- Three-attempt pattern: v1 step1 inf | v2 steps1-3 finite-but-growing step4 inf | v3 step1 finite step2 NaN
+- fp32+eager fixed forward NaN but LoRA backward is fundamentally unstable on Sonnet content + Qwen3-4B + trl 0.24.0/peft 0.19.1
+- NO v4 per spec. Stream A fallback ships unchanged.
+- module_sha256: 902aa7e48677764bd3c71cc0409837bc3d23c5b453e6c5c00237456e2e729e72
+
+## tnr-0 phase1_pilot_a_v4 PREFLIGHT_DISPROVES toxic=0 — 2026-06-01
+- v4 canary: per-sample fwd+bwd on all 27 items → 0 toxic, 27 healthy
+- Healthy grad_norm distribution very wide: min=0.4 median=1.3 MAX=7545.0 (items 289, 567, 20, 268 produce >1000x grads vs median)
+- Implication: no single 'toxic' sample. NaN in v1/v2/v3 training arises from composite gradient when high-grad items micro-batch+accumulate, OR Adam second-moment amplification
+- Per spec: no train. Plan B (Cursor boxed-only) is next.
+- module_sha256: 902aa7e48677764bd3c71cc0409837bc3d23c5b453e6c5c00237456e2e729e72

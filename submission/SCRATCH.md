@@ -245,3 +245,10 @@ Spot-checks confirm precision: id=2 multi-slot→letter A, id=12 '2c+4p=70,11'�
 WALL-TIME: 172s/item (thinking-twin observed, SC@16, single A100). 118 items = ~339 min single-A100, **~113 min across 3 A100s parallel**. Could halve with SC@8 if Thunder time tight.
 
 DID NOT: run inference (Thunder not up), include R20-correct items, touch 17-truncated, build Pick-B. Just the target list. Commit: a23ea1b.
+
+---
+## STREAM A — fallback picks LOCKED (claude_vscode 2026-05-31)
+- **Pick A** = `submission/30_05/slot4_aggressive/30_05_slot4_aggressive_v2.csv` — Kaggle 0.745 (FLOOR). 943 rows, ids 0-942 unique, schema [id,response]. sha256=999ebb7e57d8c020…
+- **Pick B** = `submission/csvs/picks/picks_nothinking_join_conservative_v1.csv` — Kaggle 0.664. 943 rows, ids 0-942 unique, schema [id,response]. sha256=264a13e4c480798… (per picks_lock.json)
+- Hashes + validity in `submission/picks_lock.json`. Gradescope run_inference smoke in `submission/gradescope_smoke.json`.
+- run_inference() smoke: CPU checks PASS (ast-parse/import/callable/schema [id,response]/base-only). End-to-end 10-item NOT RUN — needs vLLM+GPU (LLM() line 349); this box CPU-only. GPU smoke = tnr-0/tnr-1 task.

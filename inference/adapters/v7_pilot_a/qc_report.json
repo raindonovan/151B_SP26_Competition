@@ -1,0 +1,6 @@
+{
+  "phase": "PREFLIGHT_DISPROVES_HYPOTHESIS",
+  "module_sha256": "902aa7e48677764bd3c71cc0409837bc3d23c5b453e6c5c00237456e2e729e72",
+  "n_toxic": 0,
+  "n_healthy": 27
+}

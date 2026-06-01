@@ -1,0 +1,11 @@
+{
+  "item_ids": [
+    2,
+    4,
+    5,
+    7,
+    9
+  ],
+  "selection_rule": "1) in anchor_set_FINAL.csv; 2) NOT in v7_pilot_a/dataset.jsonl; 3) sonnet trace data/search/teachers/sonnet/item_{id:04d}.md exists; 4) gold_provenance non-null in data/v7_wrong_residual.csv; 5) exclude {20,268,289,567}; pick 5 lowest item_id ascending",
+  "frozen_at": "2026-06-01T02:56:21.302627+00:00"
+}

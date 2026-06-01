@@ -1,0 +1,43 @@
+Loaded 27 items from v3-validated dataset
+
+=== STEP 2: Load model fp32 + eager + apply v3 LoRA (for canary) ===
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   0%|          | 1/398 [00:15<1:40:03, 15.12s/it]Loading weights:  45%|████▍     | 179/398 [00:15<00:13, 16.06it/s]Loading weights:  53%|█████▎    | 212/398 [00:19<00:13, 14.05it/s]Loading weights:  57%|█████▋    | 227/398 [00:21<00:13, 12.85it/s]Loading weights:  59%|█████▉    | 235/398 [00:21<00:12, 12.56it/s]Loading weights:  61%|██████    | 241/398 [00:22<00:12, 12.10it/s]Loading weights:  62%|██████▏   | 245/398 [00:22<00:12, 12.38it/s]Loading weights:  63%|██████▎   | 249/398 [00:23<00:12, 11.66it/s]Loading weights:  63%|██████▎   | 252/398 [00:23<00:12, 12.10it/s]Loading weights:  64%|██████▍   | 255/398 [00:23<00:13, 10.58it/s]Loading weights:  65%|██████▍   | 258/398 [00:24<00:12, 11.14it/s]Loading weights:  65%|██████▌   | 260/398 [00:24<00:12, 11.36it/s]Loading weights:  66%|██████▌   | 262/398 [00:24<00:11, 11.52it/s]Loading weights:  66%|██████▋   | 264/398 [00:24<00:11, 12.07it/s]Loading weights:  67%|██████▋   | 267/398 [00:25<00:16,  7.79it/s]Loading weights:  69%|██████▊   | 273/398 [00:25<00:10, 12.18it/s]Loading weights:  69%|██████▉   | 276/398 [00:25<00:12, 10.05it/s]Loading weights:  70%|███████   | 279/398 [00:26<00:12,  9.81it/s]Loading weights:  71%|███████   | 281/398 [00:26<00:13,  8.82it/s]Loading weights:  71%|███████▏  | 284/398 [00:26<00:11,  9.57it/s]Loading weights:  73%|███████▎  | 289/398 [00:27<00:13,  8.17it/s]Loading weights:  75%|███████▍  | 297/398 [00:27<00:08, 12.12it/s]Loading weights:  75%|███████▌  | 300/398 [00:28<00:08, 11.29it/s]Loading weights:  76%|███████▌  | 302/398 [00:28<00:10,  9.14it/s]Loading weights:  77%|███████▋  | 305/398 [00:28<00:09, 10.27it/s]Loading weights:  77%|███████▋  | 308/398 [00:29<00:07, 11.68it/s]Loading weights:  78%|███████▊  | 311/398 [00:29<00:11,  7.79it/s]Loading weights:  80%|███████▉  | 317/398 [00:30<00:07, 10.85it/s]Loading weights:  81%|████████  | 322/398 [00:30<00:07, 10.22it/s]Loading weights:  81%|████████▏ | 324/398 [00:31<00:08,  8.37it/s]Loading weights:  84%|████████▎ | 333/398 [00:31<00:06, 10.27it/s]Loading weights:  85%|████████▍ | 338/398 [00:32<00:05, 11.44it/s]Loading weights:  86%|████████▋ | 344/398 [00:32<00:04, 12.35it/s]Loading weights:  87%|████████▋ | 346/398 [00:33<00:06,  8.56it/s]Loading weights:  88%|████████▊ | 350/398 [00:33<00:05,  9.59it/s]Loading weights:  89%|████████▉ | 355/398 [00:33<00:03, 12.51it/s]Loading weights:  90%|████████▉ | 357/398 [00:34<00:04,  8.87it/s]Loading weights:  91%|█████████ | 363/398 [00:34<00:02, 13.04it/s]Loading weights:  92%|█████████▏| 366/398 [00:34<00:03, 10.07it/s]Loading weights:  92%|█████████▏| 368/398 [00:35<00:03,  9.80it/s]Loading weights:  93%|█████████▎| 372/398 [00:35<00:02, 10.71it/s]Loading weights:  95%|█████████▍| 377/398 [00:35<00:01, 12.69it/s]Loading weights:  95%|█████████▌| 379/398 [00:36<00:02,  9.23it/s]Loading weights:  96%|█████████▌| 382/398 [00:36<00:01, 10.17it/s]Loading weights:  97%|█████████▋| 388/398 [00:36<00:00, 11.10it/s]Loading weights:  98%|█████████▊| 390/398 [00:37<00:01,  7.38it/s]Loading weights:  99%|█████████▉| 396/398 [00:37<00:00, 10.81it/s]Loading weights: 100%|██████████| 398/398 [00:37<00:00, 10.54it/s]
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+trainable params: 23,592,960 || all params: 4,046,061,056 || trainable%: 0.5831
+
+=== STEP 3: Toxic-sample canary (per-item fwd+bwd) ===
+  [ 0] item 124: ok (loss=1.165, grad_norm=132.74)
+  [ 1] item 44: ok (loss=1.319, grad_norm=94.16)
+  [ 2] item 342: ok (loss=1.899, grad_norm=0.97)
+  [ 3] item 314: ok (loss=0.955, grad_norm=0.63)
+  [ 4] item 268: ok (loss=1.001, grad_norm=1474.83)
+  [ 5] item 119: ok (loss=1.794, grad_norm=0.96)
+  [ 6] item 766: ok (loss=0.981, grad_norm=0.69)
+  [ 7] item 101: ok (loss=1.008, grad_norm=0.65)
+  [ 8] item 567: ok (loss=1.583, grad_norm=1878.67)
+  [ 9] item 56: ok (loss=1.630, grad_norm=0.96)
+  [10] item 52: ok (loss=0.906, grad_norm=0.36)
+  [11] item 103: ok (loss=1.624, grad_norm=1.07)
+  [12] item 260: ok (loss=1.053, grad_norm=1.15)
+  [13] item 289: ok (loss=0.924, grad_norm=7544.95)
+  [14] item 726: ok (loss=1.337, grad_norm=1.34)
+  [15] item 902: ok (loss=1.871, grad_norm=1.45)
+  [16] item 243: ok (loss=1.039, grad_norm=32.51)
+  [17] item 565: ok (loss=1.508, grad_norm=0.99)
+  [18] item 265: ok (loss=1.406, grad_norm=32.52)
+  [19] item 615: ok (loss=0.860, grad_norm=32.51)
+  [20] item 343: ok (loss=1.298, grad_norm=8.18)
+  [21] item 20: ok (loss=0.753, grad_norm=2173.08)
+  [22] item 188: ok (loss=1.379, grad_norm=0.93)
+  [23] item 152: ok (loss=1.411, grad_norm=62.99)
+  [24] item 30: ok (loss=0.790, grad_norm=1.18)
+  [25] item 324: ok (loss=0.905, grad_norm=352.68)
+  [26] item 292: ok (loss=0.750, grad_norm=0.42)
+
+[v4-canary] toxic=0 healthy=27
+[v4-canary] healthy grad_norm: min=0.4 median=1.3 max=7545.0
+[v4-canary] toxic item_ids: []
+
+[v4] PREFLIGHT_DISPROVES_HYPOTHESIS — exiting clean (no train)
+=== DONE ===

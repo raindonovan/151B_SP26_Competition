@@ -1,0 +1,24 @@
+{
+  "pickA": {
+    "path": "submission/30_05/slot4_aggressive/30_05_slot4_aggressive_v2.csv",
+    "rows": 943,
+    "ids_0_942_unique": true,
+    "cols": [
+      "id",
+      "response"
+    ],
+    "sha256": "999ebb7e57d8c02061dae695d95f00ddb414a048eded92e5c3ed1c6ffa068931",
+    "valid": true
+  },
+  "pickB": {
+    "path": "submission/csvs/picks/picks_nothinking_join_conservative_v1.csv",
+    "rows": 943,
+    "ids_0_942_unique": true,
+    "cols": [
+      "id",
+      "response"
+    ],
+    "sha256": "264a13e40c480798bded1b6f2bcb2f4b8657717787e5082555e8c89c8c37c330",
+    "valid": true
+  }
+}

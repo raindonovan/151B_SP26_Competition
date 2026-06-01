@@ -66,3 +66,11 @@ reproduction of Runs 09 / run14b, see `experiments.md` and the launcher scripts 
 - Required model: `Qwen/Qwen3-4B-Thinking-2507` (no alternatives at inference)
 - No external API calls or tool-augmented generation at inference time
 - 3 Kaggle submissions per day, 2 final submissions selectable at deadline
+
+## Submission entry point (Gradescope)
+
+Single entry point: `inference/scripts/run_inference.py` → `run_inference()`.
+- Loads `Qwen/Qwen3-4B-Thinking-2507` (base, no adapter), runs SC inference, post-processes, writes `submission.csv` (columns: `id,response`). No external API calls.
+- Invoke: `python3 -c "from inference.scripts.run_inference import run_inference; run_inference()"` (or `python3 inference/scripts/run_inference.py`).
+- Requires: vLLM (0.10.2/0.11.1) + 1× GPU (A100/A30). GPU type + inference time + weight setup per the run config in that file.
+- Fallback Pick A/B CSVs (no model run needed): `submission/30_05/slot4_aggressive/30_05_slot4_aggressive_v2.csv` (0.745) and `submission/csvs/picks/picks_nothinking_join_conservative_v1.csv` (0.664).
