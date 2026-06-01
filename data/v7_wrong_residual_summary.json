@@ -1,0 +1,25 @@
+{
+  "total": 943,
+  "wrong_residual": 381,
+  "route_eligible": 165,
+  "selected": 152,
+  "T1T2_share_pct": 65.8,
+  "HIGH_W": 58,
+  "per_tier_route_eligible": {
+    "T5": 26,
+    "T2": 112,
+    "T4": 5,
+    "T3": 19,
+    "T0": 2,
+    "T1": 1
+  },
+  "n_culprits": 0,
+  "n_culprits_by_reason": {},
+  "gate": "PASS",
+  "gate_detail": {
+    "route>=100": true,
+    "selected>=100": true,
+    "T1T2>=30%": true
+  },
+  "note": "compare engine = math-verify (exact/numeric-1e-6/parse+verify). NO sympy/judger, NO SIGALRM, NO subprocess, NO prose detector. parse_error culprits \u2192 route_eligible=False."
+}
