@@ -782,3 +782,10 @@ claude_vscode phase0a PASS 103e319
 - fp32+eager fixed forward NaN but LoRA backward is fundamentally unstable on Sonnet content + Qwen3-4B + trl 0.24.0/peft 0.19.1
 - NO v4 per spec. Stream A fallback ships unchanged.
 - module_sha256: 902aa7e48677764bd3c71cc0409837bc3d23c5b453e6c5c00237456e2e729e72
+
+## tnr-0 phase1_pilot_a_v4 PREFLIGHT_DISPROVES toxic=0 — 2026-06-01
+- v4 canary: per-sample fwd+bwd on all 27 items → 0 toxic, 27 healthy
+- Healthy grad_norm distribution very wide: min=0.4 median=1.3 MAX=7545.0 (items 289, 567, 20, 268 produce >1000x grads vs median)
+- Implication: no single 'toxic' sample. NaN in v1/v2/v3 training arises from composite gradient when high-grad items micro-batch+accumulate, OR Adam second-moment amplification
+- Per spec: no train. Plan B (Cursor boxed-only) is next.
+- module_sha256: 902aa7e48677764bd3c71cc0409837bc3d23c5b453e6c5c00237456e2e729e72
