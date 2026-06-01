@@ -726,6 +726,7 @@ Self-verification: 943 rows ✓ · schema id,response ✓ · id order preserved 
 Anomalies: normalizer changed 645 rows vs the recipe's ~342 "slot-3 reference" — NOT a fault: the 342 reference predates the current Tier-1 normalizer (c6bfdbc: multi-slot consolidation + 4 no-box force_value overrides + dup-option/value-equality MCQ), which legitimately touches more rows. 645 is correct for the current normalizer. Also: pre-flight run14b wc-l=352778 not 944 — purely embedded-newline inflation in responses; csv.DictReader confirms 943 data rows, schema id,response, unique ids.
 Commit: 77b2ad7
 STATUS: ready for Cursor audit; DO NOT upload until Cursor verdict
+<<<<<<< HEAD
 
 ---
 ## claude_strategy note — 2026-05-31 — Kitchen-sink audit findings (durable, for next-batch Pick B)
@@ -758,3 +759,5 @@ Kaggle returned: r20_normalized.csv=0.664 · pickb_norm_nt13_v1.csv=0.660.
 4. Pick A = 0.745 unchanged; floor protected.
 
 **Don't ship pickb_norm_nt13_v1 as Pick B.** Keep locked Pick B = Conservative-13 NT-join at 0.664 until a >0.664 candidate is verified.
+
+claude_vscode phase0a PASS 103e319
