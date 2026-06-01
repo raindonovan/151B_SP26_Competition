@@ -760,3 +760,9 @@ Kaggle returned: r20_normalized.csv=0.664 · pickb_norm_nt13_v1.csv=0.660.
 **Don't ship pickb_norm_nt13_v1 as Pick B.** Keep locked Pick B = Conservative-13 NT-join at 0.664 until a >0.664 candidate is verified.
 
 claude_vscode phase0a PASS 103e319
+
+## tnr-0 phase1_pilot_a_fp32 FAIL gate_a — 2026-06-01
+- Stream B fp32+eager: forward-pass preflight PASS (27/27 finite), supervised-token preflight PASS, but FailFast at training step 1 on grad_norm=inf
+- fp32 fixed bf16 forward NaN, but LoRA backward (r=64 α=128 LR=2e-4 no warmup) produces inf grad on first step
+- module_sha256: 902aa7e48677764bd3c71cc0409837bc3d23c5b453e6c5c00237456e2e729e72
+- No retries per spec. Fallback ships unchanged.

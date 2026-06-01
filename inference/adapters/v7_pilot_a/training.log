@@ -1,0 +1,76 @@
+Pools: wrong=152 anchor=316
+
+Build: N=30 dropped=3 (10.0%) kept=27 rungs={'exact': 21, 'norm_string': 6, 'all_failed': 3}
+Wrote 27 items
+
+=== STEP 3: fp32 + eager attention model load ===
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/398 [00:00<?, ?it/s]Loading weights:   0%|          | 1/398 [00:04<28:30,  4.31s/it]Loading weights:  38%|███▊      | 152/398 [00:04<00:05, 47.90it/s]Loading weights:  53%|█████▎    | 211/398 [00:07<00:06, 29.85it/s]Loading weights:  61%|██████▏   | 244/398 [00:09<00:05, 27.74it/s]Loading weights:  67%|██████▋   | 265/398 [00:10<00:05, 24.61it/s]Loading weights:  70%|███████   | 279/398 [00:11<00:05, 23.70it/s]Loading weights:  73%|███████▎  | 289/398 [00:11<00:04, 23.79it/s]Loading weights:  75%|███████▍  | 297/398 [00:11<00:04, 24.64it/s]Loading weights:  76%|███████▋  | 304/398 [00:12<00:04, 21.91it/s]Loading weights:  78%|███████▊  | 309/398 [00:12<00:04, 21.28it/s]Loading weights:  79%|███████▊  | 313/398 [00:13<00:04, 20.69it/s]Loading weights:  80%|███████▉  | 317/398 [00:13<00:03, 21.33it/s]Loading weights:  80%|████████  | 320/398 [00:13<00:03, 20.82it/s]Loading weights:  81%|████████  | 323/398 [00:13<00:03, 20.74it/s]Loading weights:  82%|████████▏ | 326/398 [00:13<00:03, 21.68it/s]Loading weights:  83%|████████▎ | 329/398 [00:13<00:03, 21.47it/s]Loading weights:  84%|████████▎ | 333/398 [00:13<00:02, 23.75it/s]Loading weights:  84%|████████▍ | 336/398 [00:14<00:03, 15.63it/s]Loading weights:  86%|████████▌ | 341/398 [00:14<00:03, 17.38it/s]Loading weights:  87%|████████▋ | 346/398 [00:14<00:02, 18.00it/s]Loading weights:  89%|████████▉ | 355/398 [00:15<00:01, 23.75it/s]Loading weights:  90%|████████▉ | 358/398 [00:15<00:02, 19.95it/s]Loading weights:  91%|█████████ | 363/398 [00:15<00:01, 19.88it/s]Loading weights:  92%|█████████▏| 367/398 [00:15<00:01, 20.32it/s]Loading weights:  93%|█████████▎| 372/398 [00:15<00:01, 24.41it/s]Loading weights:  95%|█████████▍| 377/398 [00:15<00:00, 28.91it/s]Loading weights:  96%|█████████▌| 381/398 [00:16<00:00, 25.22it/s]Loading weights:  97%|█████████▋| 388/398 [00:16<00:00, 22.54it/s]Loading weights: 100%|██████████| 398/398 [00:16<00:00, 24.01it/s]
+
+=== STEP 3.5a: preflight_finite_logits (HARD GATE) ===
+  preflight item 0 (id=124): ok logits=[-24.84,47.56]
+  preflight item 1 (id=44): ok logits=[-38.50,50.26]
+  preflight item 2 (id=342): ok logits=[-28.39,46.19]
+  preflight item 3 (id=314): ok logits=[-30.40,46.49]
+  preflight item 4 (id=268): ok logits=[-27.79,46.60]
+  preflight item 5 (id=119): ok logits=[-28.34,50.27]
+  preflight item 6 (id=766): ok logits=[-23.16,46.43]
+  preflight item 7 (id=101): ok logits=[-27.53,45.56]
+  preflight item 8 (id=567): ok logits=[-26.27,44.97]
+  preflight item 9 (id=56): ok logits=[-28.07,45.15]
+  preflight item 10 (id=52): ok logits=[-28.95,46.00]
+  preflight item 11 (id=103): ok logits=[-24.86,46.72]
+  preflight item 12 (id=260): ok logits=[-29.35,49.49]
+  preflight item 13 (id=289): ok logits=[-24.68,46.13]
+  preflight item 14 (id=726): ok logits=[-27.89,46.42]
+  preflight item 15 (id=902): ok logits=[-22.60,46.34]
+  preflight item 16 (id=243): ok logits=[-23.70,52.56]
+  preflight item 17 (id=565): ok logits=[-24.24,46.69]
+  preflight item 18 (id=265): ok logits=[-31.68,45.84]
+  preflight item 19 (id=615): ok logits=[-26.75,46.65]
+  preflight item 20 (id=343): ok logits=[-25.56,48.11]
+  preflight item 21 (id=20): ok logits=[-23.86,46.60]
+  preflight item 22 (id=188): ok logits=[-23.96,49.70]
+  preflight item 23 (id=152): ok logits=[-26.54,46.97]
+  preflight item 24 (id=30): ok logits=[-25.43,48.12]
+  preflight item 25 (id=324): ok logits=[-28.00,46.34]
+  preflight item 26 (id=292): ok logits=[-25.27,46.96]
+ALL items produce finite logits (fp32 fix confirmed)
+
+=== STEP 3.5b: preflight_supervised_tokens ===
+supervised: min=65 max=998
+
+=== STEP 4: train (fp32, 1 epoch, batch=1) ===
+trainable params: 132,120,576 || all params: 4,154,588,672 || trainable%: 3.1801
+[transformers] The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None, 'pad_token_id': 151643}.
+  0%|          | 0/27 [00:00<?, ?it/s]  4%|▎         | 1/27 [00:05<02:18,  5.33s/it]Traceback (most recent call last):
+  File "/home/ubuntu/151B_SP26_Competition/inference/adapters/v7_pilot_a/build_train_fp32_stream_b.py", line 257, in <module>
+    main()
+  File "/home/ubuntu/151B_SP26_Competition/inference/adapters/v7_pilot_a/build_train_fp32_stream_b.py", line 232, in main
+    trainer.train()
+  File "/home/ubuntu/venv/lib/python3.12/site-packages/transformers/trainer.py", line 1427, in train
+    return inner_training_loop(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/venv/lib/python3.12/site-packages/transformers/trainer.py", line 1509, in _inner_training_loop
+    self._run_epoch(
+  File "/home/ubuntu/venv/lib/python3.12/site-packages/transformers/trainer.py", line 1778, in _run_epoch
+    self._maybe_log_save_evaluate(
+  File "/home/ubuntu/venv/lib/python3.12/site-packages/transformers/trainer.py", line 2080, in _maybe_log_save_evaluate
+    self.log(logs, start_time)
+  File "/home/ubuntu/venv/lib/python3.12/site-packages/trl/trainer/sft_trainer.py", line 1197, in log
+    super().log(logs, start_time)
+  File "/home/ubuntu/venv/lib/python3.12/site-packages/transformers/trainer.py", line 3875, in log
+    self.control = self.callback_handler.on_log(self.args, self.state, self.control, logs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/venv/lib/python3.12/site-packages/transformers/trainer_callback.py", line 535, in on_log
+    return self.call_event("on_log", args, state, control, logs=logs, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/venv/lib/python3.12/site-packages/transformers/trainer_callback.py", line 545, in call_event
+    result = getattr(callback, event)(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/151B_SP26_Competition/inference/scripts/phase1_pilot_lib.py", line 178, in on_log
+    raise RuntimeError(f'FailFast step {state.global_step}: grad_norm={gn}')
+RuntimeError: FailFast step 1: grad_norm=inf
+  4%|▎         | 1/27 [00:05<02:29,  5.76s/it]
+=== DONE ===

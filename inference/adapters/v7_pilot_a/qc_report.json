@@ -1,0 +1,40 @@
+{
+  "phase": "FAIL_STEP4_promotion_gate_a",
+  "module_sha256": "902aa7e48677764bd3c71cc0409837bc3d23c5b453e6c5c00237456e2e729e72",
+  "stream": "B_fp32",
+  "dataset_size": 27,
+  "drop_rate": 0.1,
+  "qc_rungs": {
+    "exact": 21,
+    "norm_string": 6,
+    "all_failed": 3
+  },
+  "qc_chain": [
+    "exact",
+    "norm_string",
+    "numeric",
+    "tuple",
+    "mv_raw",
+    "mv_boxed",
+    "mv_dollar",
+    "mv_dfrac_sub"
+  ],
+  "seed_used": 42,
+  "preflight_min_supervised": 65,
+  "preflight_max_supervised": 998,
+  "preflight_finite_logits": "pass (all 27 items finite in fp32+eager)",
+  "training_failure": {
+    "step": 1,
+    "loss": "finite (FailFast did not trigger on loss)",
+    "grad_norm": "inf",
+    "gate_failed": "promotion_gate_a_training_loss_finiteness",
+    "fail_fast_message": "FailFast step 1: grad_norm=inf"
+  },
+  "diagnosis": "fp32+eager fixed the forward-pass NaN seen in Stream A (bf16). However, with LoRA r=64 alpha=128 LR=2e-4 no-warmup, the first backward pass on Sonnet content produces inf gradient on the B matrix that exceeds fp32 range even after max_grad_norm=0.5 clipping.",
+  "candidate_fixes_not_attempted_per_spec_no_retries": [
+    "lower LR (5e-5 or 1e-5)",
+    "warmup_ratio=0.1",
+    "lower alpha (e.g., 32) to halve LoRA scaling",
+    "max_grad_norm=0.1"
+  ]
+}
