@@ -1,64 +1,61 @@
 {
-  "phase": "FAIL_v2_gate_a_grad_explosion",
+  "phase": "FAIL_v3_step_2_nonfinite",
   "module_sha256": "902aa7e48677764bd3c71cc0409837bc3d23c5b453e6c5c00237456e2e729e72",
-  "stream": "B_fp32_v2",
+  "stream": "B_fp32_v3",
   "dataset_size_post_precheck": 27,
-  "precheck_summary": {
+  "precheck_v3_stats": {
     "min": 154,
     "p50": 376,
     "max": 1229
   },
-  "precheck_dropped": 0,
-  "config_v2": {
-    "lr": 5e-05,
-    "warmup_ratio": 0.15,
+  "config_v3": {
+    "lr": 1e-05,
+    "warmup_ratio": 0.25,
     "scheduler": "cosine",
-    "max_grad_norm": 0.3,
-    "adam_epsilon": 1e-06,
-    "grad_accum": 4,
+    "max_grad_norm": 0.1,
+    "adam_epsilon": 1e-05,
+    "grad_accum": 8,
     "batch_size": 1,
-    "lora_alpha": 64,
-    "lora_r": 64,
-    "max_length": 4096,
+    "lora_alpha": 16,
+    "lora_r": 32,
+    "target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj"
+    ],
+    "max_length": 2048,
     "fp32": true,
-    "attn": "eager"
+    "attn": "eager",
+    "total_optimizer_steps_possible": 4
   },
-  "step_grads": [
+  "step_history": [
     {
       "step": 1,
-      "loss": 1.061,
-      "grad_norm": 8917,
+      "loss": 1.153,
+      "grad_norm": 372.7,
       "lr": 0,
       "ok": true
     },
     {
       "step": 2,
-      "loss": 1.278,
-      "grad_norm": 13620.0,
-      "lr": 2.5e-05,
-      "ok": true
-    },
-    {
-      "step": 3,
-      "loss": 1.054,
-      "grad_norm": 42580000.0,
-      "lr": 5e-05,
-      "ok": "finite_but_42M"
-    },
-    {
-      "step": 4,
       "loss": null,
-      "grad_norm": "inf",
+      "grad_norm": "nan",
       "lr": null,
-      "ok": false
+      "ok": false,
+      "killed_by": "HardStopV3"
     }
   ],
-  "hard_stop_window_1_3": "passed (all finite)",
-  "gate_a_promotion": "FAILED (grad jumps 8.9K\u219213.6K\u219242.6M\u2192inf; >10x between steps 2-3 and step 4 inf)",
-  "v2_vs_v1_improvement": "v1 had inf at step 1; v2 stabilizers pushed to step 4 \u2014 direction-correct but insufficient",
-  "preflight_finite_logits_v2": "pass (27/27)",
+  "preflight_finite_logits_v3": "pass (27/27)",
   "preflight_supervised_tokens": {
     "min": 65,
     "max": 998
-  }
+  },
+  "three_attempt_summary": {
+    "v1_lr2e-4_a128_all": "step 1 grad=inf",
+    "v2_lr5e-5_a64_all_clip0.3_eps1e-6_accum4_warmup0.15": "steps 1-3 finite (8.9K\u219213.6K\u219242.6M), step 4 inf",
+    "v3_lr1e-5_a16_attnonly_clip0.1_eps1e-5_accum8_warmup0.25": "step 1 finite (372.7), step 2 NaN direct"
+  },
+  "conclusion": "fp32+eager fixed forward NaN but LoRA backward on Sonnet content + Qwen3-4B-Thinking-2507 + this trl 0.24.0/peft 0.19.1 stack produces non-finite gradients regardless of hyperparameter aggression. Likely deeper compat issue (kernel/precision/template interaction) requiring different lib stack or training framework.",
+  "fallback": "Stream A (per spec) ships unchanged. NO v4 per spec."
 }

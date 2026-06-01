@@ -1,0 +1,148 @@
+{
+  "status": "PASS",
+  "over_2048": [],
+  "all": [
+    {
+      "item_id": 124,
+      "token_len": 1229,
+      "kept": true
+    },
+    {
+      "item_id": 44,
+      "token_len": 776,
+      "kept": true
+    },
+    {
+      "item_id": 342,
+      "token_len": 373,
+      "kept": true
+    },
+    {
+      "item_id": 314,
+      "token_len": 230,
+      "kept": true
+    },
+    {
+      "item_id": 268,
+      "token_len": 295,
+      "kept": true
+    },
+    {
+      "item_id": 119,
+      "token_len": 384,
+      "kept": true
+    },
+    {
+      "item_id": 766,
+      "token_len": 338,
+      "kept": true
+    },
+    {
+      "item_id": 101,
+      "token_len": 622,
+      "kept": true
+    },
+    {
+      "item_id": 567,
+      "token_len": 501,
+      "kept": true
+    },
+    {
+      "item_id": 56,
+      "token_len": 598,
+      "kept": true
+    },
+    {
+      "item_id": 52,
+      "token_len": 376,
+      "kept": true
+    },
+    {
+      "item_id": 103,
+      "token_len": 154,
+      "kept": true
+    },
+    {
+      "item_id": 260,
+      "token_len": 237,
+      "kept": true
+    },
+    {
+      "item_id": 289,
+      "token_len": 309,
+      "kept": true
+    },
+    {
+      "item_id": 726,
+      "token_len": 259,
+      "kept": true
+    },
+    {
+      "item_id": 902,
+      "token_len": 193,
+      "kept": true
+    },
+    {
+      "item_id": 243,
+      "token_len": 386,
+      "kept": true
+    },
+    {
+      "item_id": 565,
+      "token_len": 250,
+      "kept": true
+    },
+    {
+      "item_id": 265,
+      "token_len": 355,
+      "kept": true
+    },
+    {
+      "item_id": 615,
+      "token_len": 343,
+      "kept": true
+    },
+    {
+      "item_id": 343,
+      "token_len": 664,
+      "kept": true
+    },
+    {
+      "item_id": 20,
+      "token_len": 444,
+      "kept": true
+    },
+    {
+      "item_id": 188,
+      "token_len": 607,
+      "kept": true
+    },
+    {
+      "item_id": 152,
+      "token_len": 1198,
+      "kept": true
+    },
+    {
+      "item_id": 30,
+      "token_len": 559,
+      "kept": true
+    },
+    {
+      "item_id": 324,
+      "token_len": 1104,
+      "kept": true
+    },
+    {
+      "item_id": 292,
+      "token_len": 375,
+      "kept": true
+    }
+  ],
+  "n_kept": 27,
+  "n_dropped": 0,
+  "stats": {
+    "min": 154,
+    "p50": 376,
+    "max": 1229
+  }
+}

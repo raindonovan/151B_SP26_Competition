@@ -774,3 +774,11 @@ claude_vscode phase0a PASS 103e319
 - v2 vs v1: direction-correct (v1 step1 inf → v2 step4 inf) but insufficient
 - module_sha256: 902aa7e48677764bd3c71cc0409837bc3d23c5b453e6c5c00237456e2e729e72
 - NO RETRIES per spec. Stream A fallback ships unchanged.
+
+## tnr-0 phase1_pilot_a_v3 FAIL step_2_nonfinite — 2026-06-01
+- Stream B v3 (LR=1e-5 α=16 attn-only clip=0.1 ε=1e-5 accum=8 warmup=0.25)
+- Step 1: loss=1.153 grad=372.7 (much better than v2's 8.9K) → step 2: grad=NaN, killed by HardStopV3
+- Three-attempt pattern: v1 step1 inf | v2 steps1-3 finite-but-growing step4 inf | v3 step1 finite step2 NaN
+- fp32+eager fixed forward NaN but LoRA backward is fundamentally unstable on Sonnet content + Qwen3-4B + trl 0.24.0/peft 0.19.1
+- NO v4 per spec. Stream A fallback ships unchanged.
+- module_sha256: 902aa7e48677764bd3c71cc0409837bc3d23c5b453e6c5c00237456e2e729e72
