@@ -1,0 +1,16 @@
+name,policy,source_coverage,n_overrides_vs_run14b,sha1_12,kaggle_public
+s01_qwen_control,qwen_base+one_hot,0,0,a9fcc9dd6960,TBD
+s02_sonnet,qwen_base+one_hot,943,943,ae033f10918e,TBD
+s03_gpt54,qwen_base+one_hot,943,943,8a19928f2423,TBD
+s04_gpt_oss,qwen_base+one_hot,938,938,55a8208d6e35,TBD
+s05_xhigh,qwen_base+one_hot,940,940,9cd85d20053f,TBD
+s06_opus,qwen_base+one_hot,316,316,496259b35b49,TBD
+s07_wolfram_HIGH,qwen_base+one_hot,58,58,1a9eb2a97560,TBD
+s08_search,qwen_base+one_hot,47,47,da08e5a4f215,TBD
+s09_anchor316,qwen_base+one_hot,316,316,c4eb8ec78dc0,TBD
+s10_v7_fusion,qwen_base+one_hot,943,943,3d5b67f1187f,TBD
+s11_agree_k2,5LLM_agree>=2,832,832,3ea34da8e88b,TBD
+s12_agree_k3,5LLM_agree>=3,665,665,5275a74446cb,TBD
+s13_agree_k4,5LLM_agree>=4,526,526,f48b48ea6698,TBD
+s14_agree_k5,5LLM_agree>=5,98,98,440f828e5407,TBD
+s15_v7_fusion_raw,v7_raw_render(no_canon),943,943,714830af8e6b,TBD
