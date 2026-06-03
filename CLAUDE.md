@@ -58,6 +58,11 @@ Every operational folder has a `SCRATCH.md`. When you discover something interes
 - Status board at end of every response
 - NEVER split a prompt across messages
 
+## Post-competition phase (after deadline)
+- `post_comp/README.md` — scratch attribution, debrief meeting procedure, read order
+- `post_comp/POST_COMP_SCRATCH.md` — shared post-deadline scratchpad
+- `post_comp/POST_COMP_DEBRIEF_MEETING.md` — debrief goals and narrative
+
 ## Folder-specific CLAUDE.md files
 - `strategy/CLAUDE.md` — Central strategy agent (claude_strategy in Claude.ai)
 - `inference/CLAUDE.md` — Inference execution agent

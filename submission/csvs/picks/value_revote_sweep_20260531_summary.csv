@@ -1,0 +1,6 @@
+run_id,rows,changed_voted,rescues_from_B,rescues_from_A_lucky,total_rescues,regressions,net
+R09,943,54,2,2,4,8,-4
+R20,943,41,3,1,4,16,-12
+R20b,943,61,2,0,2,44,-42
+NT943,943,81,2,2,4,22,-18
+THtr,61,5,1,1,2,1,1
