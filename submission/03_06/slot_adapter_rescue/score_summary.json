@@ -1,0 +1,10 @@
+{
+  "slot": "slot_adapter_rescue",
+  "parent": "slot1_baseline_R20",
+  "n_overrides": 11,
+  "dropped": [
+    184,
+    556
+  ],
+  "kaggle_public": null
+}
