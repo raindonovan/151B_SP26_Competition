@@ -1,0 +1,15 @@
+{
+  "slot": "slot2_nothinking_join",
+  "parent": "slot1_baseline_R20",
+  "source_files": [
+    {
+      "path": "submission/csvs/picks/picks_nothinking_join_conservative_v1.csv",
+      "sha": "7b2f6e221c4c8bf41ec7c20dad748e4fe7a8e0a5"
+    }
+  ],
+  "layer_added": "NoThinking u R20 join (confirmed 0.664)",
+  "n_rows": 943,
+  "n_changed_vs_parent": "see Kaggle 0.664 confirmed; byte-copy of NTJ",
+  "kaggle_public": 0.664,
+  "kaggle_private": null
+}

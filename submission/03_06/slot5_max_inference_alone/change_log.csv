@@ -1,0 +1,46 @@
+id,layer,before_box,after_box
+2,consensus,A,"-1.460, 1.645, A"
+9,thinking_rescue,\dfrac{L - 8x}{6F},"L - 8x, 6F"
+25,consensus,"8, 14, 25, 42, 55, 63","0.1270, 0.09524, 0.1746, 0.2698, 0.2063, 0.1270, 8, 14, 25, 42, 55, 63"
+55,consensus,5x^4,y = 5x^4
+67,consensus,"13.89, 5.382","7.6(1.09)^t, 13.89, 5.384"
+82,consensus,"1.309, 1.677, \text{No}","1.323, 1.677, No"
+143,consensus,"(0, -8), (0, 6), (3, 5.196)","0.000, -8.000, 0.000, 6.000, 3.000, 5.196"
+145,consensus,"4.735, 25000",4.735
+169,consensus,400.0,400
+177,consensus,I,E
+184,consensus,A,J
+242,consensus,"241.2, 239.5, 233, 221.7, 14.89, 6.173","241.2, 239.5, 233.0, 221.7, 14.89, 6.172"
+273,consensus,"-\cos^2 x, 1, 2\cos^2 x","-\cos^2(x), 1, 2\cos^2(x)"
+297,consensus,"0.2372, (-\infty, -1.881)U(1.881, \infty), 0.8126, C",C
+299,consensus,"18805.7, \text{no}","18805.7, no"
+302,consensus,H,H
+354,consensus,"g, g, t, kg, g","mg, g, kg, kg, g"
+370,consensus,10,"-5, 10"
+387,consensus,-230.00,-230
+435,consensus,A,"0.4457, 0.5368, A"
+435,thinking_rescue,"0.4457, 0.5368, A","0.4457, 0.5368, A"
+449,consensus,"3.585, 0.0003170, B",B
+479,consensus,"40.01, 43.99","40.36, 43.64, 40.01, 43.99"
+479,thinking_rescue,"40.36, 43.64, 40.01, 43.99","40.36, 43.64, 40.01, 43.99"
+480,consensus,"2.500, 2.500","2.5, 2.5"
+489,consensus,385,385.0
+491,consensus,Central Limit Theorem,"1255.37, 1091, 1420, No, Central Limit Theorem"
+502,consensus,\dfrac{8}{11},0.7273
+537,consensus,42,42.00
+638,thinking_rescue,D,"0.15, (-infty, -1.75) U (1.75, infty), 0.88, D"
+647,consensus,B,F
+653,consensus,47.14,"\frac{600 - 45t}{7}, 85.71, 47.14"
+655,consensus,0.85L,S = 0.85L
+657,consensus,"-10.33, 10.33","172.5, 187.5, 172.9, 187.1, 0.0000, 5.167, -10.33, 10.33"
+694,consensus,"6750 + 9x, 36x, 27x - 6750, 250",250
+756,consensus,"109.3, 520.2","520.2, 109.3, 520.2"
+763,expr_safety,"4+9,8\div3","13, \frac{8}{3}"
+794,consensus,"4.47, 4","4.47, 4.00"
+812,consensus,\dfrac{512}{\sin^6(2t)},\frac{512}{(\sin 2t)^6}
+833,consensus,"-19/3, 3/4, 8, 40/3","-19/3, 3/4, 48/6, 40/3"
+842,consensus,"65.47, 1.552, 6.052, 1.833, B","65.47, 1.552, 6.051, 1.833, B"
+858,consensus,"2.300, 1.691, Yes","2.300, 1.694, Yes"
+887,consensus,C,I
+897,consensus,84.88,84.875
+923,consensus,"93.00, 48.00","y = -6.2x + 297.6, 93.00, 48.00"

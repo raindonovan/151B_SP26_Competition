@@ -1,0 +1,15 @@
+{
+  "slot": "slot1_baseline_R20",
+  "parent": null,
+  "source_files": [
+    {
+      "path": "submission/csvs/run14b_sc8_v1.csv",
+      "sha": "7fd5a33af245c267d1dcdf3a1d679d3e51a6d9ab"
+    }
+  ],
+  "layer_added": "none (R20 baseline anchor)",
+  "n_rows": 943,
+  "n_changed_vs_parent": 0,
+  "kaggle_public": null,
+  "kaggle_private": null
+}

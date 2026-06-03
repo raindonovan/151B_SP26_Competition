@@ -121,3 +121,15 @@ Two-file slot (intermediate + final from same SPLICE build).
 - Pick A = 0.745 `slot4_aggressive_v2` (unchanged)
 - Pick B = 0.664 (best Qwen-only: Conservative-13 NT-join OR normalizer-only-v1 — equivalent)
 - 0.660 candidate NOT a pick (regression).
+
+## 03_06_QWEN_ONLY_CEILING_LADDER (2026-06-03)
+
+Qwen-only "inference-alone ceiling" ladder — does any cheap Qwen-only lever stack past 0.664? Each slot = +1 layer for readable Kaggle deltas. NO teacher/anchor/Opus/search/answer-sheet VALUES (rule #11 legal: Qwen-over-Qwen). File assembly only; Rain submits. Status: **built** (slots 1/2/5), Kaggle **TBD**.
+
+- **slot1_baseline_R20** — `submission/03_06/slot1_baseline_R20/03_06_slot1_baseline_R20.csv`. Byte copy of BASE (`run14b_sc8_v1.csv`), sha1 `7fd5a33af245…`. 0.646 floor. Kaggle TBD.
+- **slot2_nothinking_join** — `…/slot2_nothinking_join/03_06_slot2_nothinking_join.csv`. Byte copy of NTJ, sha1 `7b2f6e221c4c…`. Confirmed 0.664 (re-submitted for same-leaderboard delta). Kaggle TBD.
+- **slot3_join_undercount** — **NOT BUILT.** `data/undercount_candidates.csv` is teacher-sourced (forbidden in Qwen-only); Qwen multi-box signal = reasoning-noise (item-15 additive-defect risk). Held for strategy.
+- **slot4_join_undercount_frac** — **NOT BUILT.** `submission/28_05/csvs/slot1_frac_override.csv` is a 943-row pipeline CSV (604 rows ≠ BASE incl. teacher expansions), not the spec's 8-id frac map. Held for strategy.
+- **slot5_max_inference_alone** — `…/slot5_max_inference_alone/03_06_slot5_max_inference_alone.csv`, sha1 `c4b72274e809…`. Built on slot2. Layers: cross-run consensus (TXOV 40 ids) + high-budget Thinking SC@16 rescues (9/435/479/638 from `targeted_rescue_*.jsonl`) + expression-form safety (763 → `13, \frac{8}{3}`). 42 rows changed vs slot2; 943 rows, id-set==BASE, box-count invariant holds. Rule #11 LEGAL (all values Qwen's own). Kaggle TBD.
+
+**Pre-flight gate PASS:** all sources unpadded int, id-space ⊆ BASE. **Reported, not guessed:** slots 3/4 blocked on source-vs-spec mismatch per spec "if absent, report; do not guess." Phase-2 GPU levers (GenSelect / multi-temp SC / DeepConf / full Thinking SC@16) listed in `submission/03_06/README.md`, NOT built here.

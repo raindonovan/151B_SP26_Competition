@@ -1,0 +1,23 @@
+{
+  "slot": "slot5_max_inference_alone",
+  "parent": "slot2_nothinking_join",
+  "source_files": [
+    {
+      "path": "submission/csvs/picks/overrides_texas_oil_conservative.csv",
+      "sha": "15ead1702ccf2d96796a3a851e8a934ae201e4bb"
+    },
+    {
+      "path": "inference/base_model/TH_targeted_rescue_thinking_sc16_f61/targeted_rescue_20260526T201046Z.jsonl",
+      "sha": "cd52bfabb73b834a61b51776feebc7f08b066130"
+    },
+    {
+      "path": "submission/csvs/picks/expression_form_audit.csv",
+      "sha": "ab7d33b097c2556d5dcf0f5d8baefa3438dd6d8a"
+    }
+  ],
+  "layer_added": "cross-run consensus (40) + Thinking SC@16 rescues (9,435,479,638) + expr-form safety (763); built on slot2",
+  "n_rows": 943,
+  "n_changed_vs_parent": 42,
+  "kaggle_public": null,
+  "kaggle_private": null
+}
