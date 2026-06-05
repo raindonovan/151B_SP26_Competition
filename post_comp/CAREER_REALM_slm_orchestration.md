@@ -28,3 +28,19 @@ quantified results (cost/latency/accuracy deltas) · an eval framework · failur
 
 ## Next pass (TODO)
 - Re-map the 6 PROJECTS (see ROADMAP_artifacts_and_projects.md) so each is explicitly aimed at a named green-flag, with **RAG slotted into at least one build** (paired with retrieval-eval). To be done in the dedicated projects discussion.
+
+## DECISION: RAG build = next major build
+- Locked. The next big build is a **small-model RAG system with a retrieval-eval harness as the centerpiece** (the eval layer is the differentiator, and reuses the competition's black-box-forensics skill). Artifacts wrapping up the competition + smaller demos are supporting work, not the headline.
+- Enter it to DEMONSTRATE the scarce skill (build + evaluate reliable small-model RAG), NOT to find a novel trick.
+
+## RESEARCH FINDING: 2026 RAG is also fully mapped — but the open lane is eval/reliability
+- Direct translations of our 2025 tricks → RAG are all DONE, often 2026-datestamped: self-consistency/parallel scaling (SPARC-RAG, HypoSelectSimRAG), confidence/uncertainty-gating (CRAG, ReaLM-Retrieve, MultiRAG), adaptive reasoning depth (Cost-Aware Adaptive Depth, When-to-Retrieve), test-time adaptation = transductive (TTARAG), agentic+reasoning RAG (Search-o1, CoRAG), and our EXACT stack — small model + R1-distilled reasoning + RAG + on-prem — already published (Retrieval-augmented reasoning with lean LMs / NHS corpus).
+- LESSON (permanent): **novelty-by-translation is itself a saturated strategy.** Porting a trick one field over is a treadmill, not an escape. Stop hunting unclaimed concepts.
+- The OPEN lane (where the field's own surveys point): eval, reliability, faithfulness, **positional/permutation fragility** (Stable-RAG 2026 — rhymes with our multi-slot positional grader problem), failure attribution, on-prem deployment. These are MEASUREMENT problems = our lane.
+
+## THE OPEN SEAM (best candidate for the 5-week research project)
+- 2026 papers show the small-model RAG failure picture is unresolved AND metric-hidden:
+  - "Can Small Language Models Use What They Retrieve?" — ≤7B models fail to extract the answer 85–100% even with ORACLE retrieval; context DESTROYS 42–100% of previously-known answers (distraction). Bottleneck = context UTILIZATION, not retrieval quality; naive RAG can be net-negative at this scale.
+  - "When Small Models Are Right for Wrong Reasons" — 50–69% of CORRECT 7–9B answers have flawed reasoning (invisible to accuracy); RAG helps reasoning integrity, self-critique HURTS small models.
+- Viable project shape: **a forensic characterization of WHERE/WHY a 4B model fails to use retrieved context (utilization vs retrieval vs negative-rejection vs right-for-wrong-reasons) on a real corpus, + a failure-attribution harness.** Empirical autopsy, not a new method. Doubles as the RAG build's eval layer.
+- Trap check: the BROAD question ("do small models use retrieval well") is being actively claimed by the two 2026 papers above. Our defensible wedge = forensic attribution + specific real corpus + reusable harness. NEEDS one confirmatory diligence pass before committing.

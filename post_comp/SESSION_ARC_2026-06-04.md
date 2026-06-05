@@ -12,3 +12,11 @@
 - Quote bank for the blog (recurring meta-lessons): "the contribution is the autopsy, not the skeleton"; "you're not lost anymore, you're circling a runway you're already cleared to land on"; "stop frame-shopping and commit to motion"; "every frame we reach for is pre-empted as a concept — novelty lives in the empirics"; "we're prime to win something."
 - Career frame: job / internship / residency / new-grad — same lever (the portfolio); **build is the lever that opens them; ship + apply in parallel.**
 - Live open threads: rare-trace experiment (GO; diligence owed); timeline + priority (next); what to enter after the 10 weeks.
+
+## §12 RAG pivot + the open seam (magic)
+- "Firm ground": RAG build = next build, confirmed.
+- Reframed the trap: not "find a virgin concept" (dead 6× over) but "answer an OPEN, NAMED question with a careful real-system measurement." That's legitimate, not flag-planting.
+- The lane, said plainly: "not very sexy — real-systems building + the eval harness." Embrace it; it's the thing nobody copies from a paper.
+- Permanent lesson: novelty-by-translation (port the trick one field over) is ALSO saturated. The field jumps with you.
+- The live seam (2026, unresolved, our-shaped): small models can't *use* what they retrieve (utilization bottleneck) + are "right for wrong reasons" — and accuracy metrics hide both. Our competition skill (forensic failure taxonomy + eval that catches hidden failure) is exactly the missing tool.
+- Permutation/positional fragility in RAG (Stable-RAG 2026) ≈ our multi-slot positional grader problem. Same shape, twice.
