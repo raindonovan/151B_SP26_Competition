@@ -51,3 +51,10 @@ F. Resume bullets + LinkedIn.
 - ARTIFACTS = TWO (confirmed): eval-lab (industry door) + Gao paper (research door).
 - NoThinking (was artifact C-paper): DEMOTED to short blog/LinkedIn writeup. Charted by Ma et al. (2504.09858); Qwen3-2507 prefill demo is replication-grade, not novel paper. Low priority, never flagship. Also trims competition-emphasis.
 - POSITIONING: lead forward-looking (eval-lab + Gao + agentic-2.0); competition = origin anecdote + credibility, NOT centerpiece.
+
+## NOTHINKING ARTIFACT — REFRAME (verified 2026-06-06)
+- CORRECTION (verified): empty-think prefill <think>\n\n</think>\n\n is NOT undocumented. It's the official enable_thinking=False mechanism (HF Qwen3 chat-template blog, Apr 2025) + the documented community workaround for thinking-only 2507/3.5 models where the toggle is ignored (QwenLM/lmstudio GitHub issues Feb–Mar 2026; continue_assistant_turn prefill). NOT "obsoleted by a toggle" — prefill is the de-facto WORKING method. Landscape moved (Qwen3.5/3.6 now exist, thinking-default). Conceptual novelty ~ZERO.
+- ⇒ FRAME the post as "pragmatic survey + measurement," NOT a finding. NEVER claim undocumented/novel — Gao would catch it instantly.
+- TWO USES (both hold): (1) recruiter-skim aesthetic piece — headline = the finding, one before/after chart, light effort + high polish; (2) Gao due-diligence testimony — field map + rigorous prior-art tracing + honest landing ("concept saturated → leverage = pragmatics/empirics"). Honesty is the point; = research maturity Gao trusts. Present as due-diligence map + small honest measurement, not a paper.
+- OPTIONAL substance add: measure prefill-suppressed Thinking-2507 vs natively-non-thinking Instruct-2507 ("does hushing a thinking model match a non-thinking sibling?") — a real comparative question. Default stays light.
+- EFFORT TIERING (locked): LIGHT/aesthetic = NoThinking piece. FLAGSHIP/flawless+meaty = eval-lab + agentic-workflow docs (postmortem + 2.0 design).
