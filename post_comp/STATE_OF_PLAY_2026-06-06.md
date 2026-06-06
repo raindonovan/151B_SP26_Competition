@@ -43,3 +43,11 @@ C. NoThinking paper (in progress).
 D. Eval-lab repo+README+demo (resume centerpiece).
 E. Gao research paper (FMCAD Student Forum / VSTTE WiP / ACL-AACL SRW).
 F. Resume bullets + LinkedIn.
+
+## UPDATES 2026-06-06b
+- WORK-AUTH RESOLVED: Rain has US green card (in renewal). Meets "US work auth, no sponsorship" bar → RESIDENCY DOOR OPEN (Anthropic Fellows, OpenAI reachable). Confirm in-renewal specifics w/ program + immigration attorney if travel/timing involved. (Not legal advice.)
+- PRIMARY TARGET DECIDED: residency-FIRST as primary (best fit/ceiling, rewards non-traditional + research profile, de-emphasizes LeetCode, green-card-enabled, leads to frontier research-eng = the "keep learning real ML" constraint). Mid-market run IN PARALLEL as volume hedge (residencies lottery-ish; mid-market higher base-rate). Timing: start mid-market referral pipeline NOW; residency apps when portfolio ready (~3mo).
+- BUILD #2 SHAPE: product with research-grade rigor (eval-lab B/B-minus, carefully measured) → serves BOTH doors. "C" (separate research benchmark) SUBSUMED — not a third artifact.
+- ARTIFACTS = TWO (confirmed): eval-lab (industry door) + Gao paper (research door).
+- NoThinking (was artifact C-paper): DEMOTED to short blog/LinkedIn writeup. Charted by Ma et al. (2504.09858); Qwen3-2507 prefill demo is replication-grade, not novel paper. Low priority, never flagship. Also trims competition-emphasis.
+- POSITIONING: lead forward-looking (eval-lab + Gao + agentic-2.0); competition = origin anecdote + credibility, NOT centerpiece.
