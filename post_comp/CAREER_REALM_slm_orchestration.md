@@ -117,3 +117,20 @@ quantified results (cost/latency/accuracy deltas) · an eval framework · failur
 - "Built an eval/failure-forensics harness for stochastic LLM outputs: normalization, failure taxonomy, self-consistency + confidence selection, regression gates."
 - "Reduced unreliable generation to auditable proposal→check→repair loops, tracking parse/verifier failures, duplicates, latency, cost."
 - Lead identity: "I build and evaluate reliable verified-generation / multi-agent systems on small models."
+
+## MAX OUT THE STUDENT CARD (~3 months left at UCSD)
+Organizing principle: rank by what EXPIRES at graduation. Clock-bound first.
+- [ ] Student-only apps w/ deadlines (TOP — they vanish): student research workshops + travel grants (FMCAD Student Forum, AACL/ACL SRW); UCSD-internal fellowships/showcases; new-grad programs requiring current-enrollment/recent-grad status. VERIFY exact dates.
+- [ ] People (access expires): Gao + his PhD students (reference network); 2–3 adjacent AI/ML/systems faculty (breadth + letters); CSE/HDSI career staff (employer pipelines); seminar speakers; UCSD alumni at target cos (LinkedIn warm-intro path).
+- [ ] Events: CSE/HDSI seminars, career fairs, research expos/demo days, hackathons, reading groups.
+- [ ] Resources: compute credits, paper access, .edu perks.
+
+## APPLY-IN-PARALLEL (research lead time < application lead time)
+- Apply WHILE research in progress; describe it in-progress (residencies accept this).
+- Residencies/fellowships: Anthropic Fellows, OpenAI Residency — reference in-progress research + Gao. Verify cycles.
+- Job pipeline NOW via referral/recruiter (cold apps convert terribly): UCSD network + alumni; AI-mature mid-market + AI-for-X + infra startups.
+- Show finished research (~wk6–7+): FMCAD Student Forum / VSTTE WiP / AACL-ACL SRW + UCSD expos.
+
+## DECISIONS
+- NO second formal research program (dilutes). Informal breadth OK (reading groups, coffees). Gao = gold, depth > breadth.
+- Current research program: keep ONLY for its instrumental value (Gao conduit? funding? letter? line?). Minimize time on hand-holding; extract the one thing it gives.
