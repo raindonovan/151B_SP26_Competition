@@ -44,3 +44,76 @@ quantified results (cost/latency/accuracy deltas) · an eval framework · failur
   - "When Small Models Are Right for Wrong Reasons" — 50–69% of CORRECT 7–9B answers have flawed reasoning (invisible to accuracy); RAG helps reasoning integrity, self-critique HURTS small models.
 - Viable project shape: **a forensic characterization of WHERE/WHY a 4B model fails to use retrieved context (utilization vs retrieval vs negative-rejection vs right-for-wrong-reasons) on a real corpus, + a failure-attribution harness.** Empirical autopsy, not a new method. Doubles as the RAG build's eval layer.
 - Trap check: the BROAD question ("do small models use retrieval well") is being actively claimed by the two 2026 papers above. Our defensible wedge = forensic attribution + specific real corpus + reusable harness. NEEDS one confirmatory diligence pass before committing.
+
+## BIG REVEAL: advisor = Prof. Sicun (Sean) Gao, UCSD CSE
+- Renowned: CMU PhD under Edmund Clarke; built **dReal** (SMT solver for nonlinear reals; used by Toyota Research, NASA, a UK hospital). Associate Prof since 2023.
+- His lane: automated reasoning, formal verification, **safe neural control** (neural Lyapunov/barrier functions, ReLU-net verification — SEEV NeurIPS'24), NP-hard search/optimization, and recently **RL theory** (ICML 2025: value estimation in policy gradients; max-entropy pitfalls). Self-described mission: "practical algorithms for NP-hard search and optimization… reliable yet aggressively optimized… needles in haystacks."
+- His lane is NOT LLMs/RAG/NLP. ⇒ This RESHAPES the research half of the plan. A great advisor in HIS area > a mediocre fit to our pre-chosen RAG area.
+
+## RESEARCH DIRECTION PIVOT (two independent minds converged)
+- Both Claude and ChatGPT independently concluded: with Gao as a hard constraint, **small-model RAG context-utilization is second-best** (dragging NLP into a verification lab; "evaluation" is not enough glue).
+- The surviving, advisor-shaped ABSTRACTION (this is the durable win): **a small LLM as a stochastic search/proposal policy INSIDE a verified system** — NOT "RAG." This is the honest abstraction of what we actually did well in the competition (search + selection + canonicalization + verifier-mismatch forensics), and the repo confirms it (fusion/overlay submissions beat the SFT/LoRA ones; LoRA was never the winning story).
+- Competition→Gao skill map: SC sampler → proposal distribution; Kaggle grader → SMT/dReal checker; boxed-answer normalizer → parse/canonicalize to a formal object; "rare correct trace" → "valid certificate = needle in haystack" (literally Gao's mission).
+
+## CERTSEARCH VERDICT (ChatGPT's proposal — pressure-tested, NOT locked)
+- ChatGPT proposed "CertSearch": small model proposes Lyapunov/barrier/invariant certificates, dReal/SMT checks, counterexample-guided repair, failure forensics, budgeted search. Strong advisor-fit AND portfolio-fit.
+- BUT its claim "near-frontier, not saturated in Gao's niche" FAILED diligence — same failure mode as every prior idea, one domain over:
+  - **BarrierBench (2025)** is CertSearch's twin: LLM agentic framework for barrier-cert synthesis, 100 dynamical systems (lin/nonlin/discrete/cont), LLM template discovery + SMT verification + counterexample refinement, even tests RAG + agentic coordination; >90% valid. Benchmark + toolchain released.
+  - **Global Lyapunov functions w/ symbolic transformers (Meta 2024)**: LMs discover Lyapunov functions, beat solvers on polynomial systems. "LLM finds Lyapunov" headline taken.
+  - CEGIS-with-LLM loop is an established named pattern (Counterexample-Guided Inductive Synthesis + SAT/SMT, 2023); loop-invariant world saturated (LaM4Inv; reasoning-LLM+Z3 = 100% on Code2Inv 2025).
+  - ⇒ CertSearch as pitched = "BarrierBench but smaller model + more forensics" = footnote on someone's flag, not open ground.
+- PERMANENT LESSON reconfirmed (6th time): no obvious conceptual/translation wedge is open in this field. Novelty lives in EMPIRICS / a specific real-system measurement.
+
+## THE SURVIVING SEAM (promising, HYPOTHESIS — needs its own diligence pass before building)
+- The one corner BarrierBench did NOT center: **selection economics + confidence-signal forensics for verifier-guided small-model synthesis** — "which of a small model's many candidates deserves an expensive solver call, and where do naive confidence signals LIE?"
+- Grounded by: **Grammars of Formal Uncertainty (2025)** — token-entropy fails to predict correctness of LLM formal artifacts; lightweight selective verification cuts errors 14–100%. **Neural Synthesis for SMT-Assisted Proof** — fine-tuned SMALL models (Phi-2) rival GPT-4 at far lower cost on verified synthesis.
+- This is EXACTLY our competition machinery (self-consistency + selection + "when does the confidence signal mislead"), it's Gao-shaped (budgeted search under an exact checker), and less crowded than success-rate-maximizing cert synthesis.
+- STATUS: Claude's hypothesis, NOT a verified-open finding. Run confirmatory diligence before committing as headline.
+
+## TWO-TRACK FORK (decision pending; take to Gao)
+- Track A (job-optimal, advisor-neutral): small-model RAG + eval-harness build. Strong portfolio, weak Gao-fit. Keep as BACKUP / portfolio, not the Gao project.
+- Track B (advisor-optimal): small-LLM-as-search-policy inside a verified synthesis loop, in Gao's domain — pending Gao's read on WHICH specific sub-question is still open (the selection-economics seam is our best guess).
+- KEY MOVE: take Track B to Gao as a DIRECTION, not a finished proposal — BarrierBench means the obvious version is taken, so his expertise must pick the open sub-question. Opener instinct: "small LLM as proposal policy inside a verified loop; BarrierBench/symbolic-Lyapunov did the obvious version; my competition instinct says the open part is selection economics — which candidates deserve expensive verification and why confidence misleads — but you'll know the real gap."
+
+## VENUES (Gao-fit, mid/late 2026)
+- HIGH signal: **FMCAD 2026 Student Forum** (student-specific, formal methods, ongoing-work reports, talk/poster, NOT archival so doesn't block later pub; abstract ~Jun 16, submission ~Jun 22 — VERIFY exact dates). **VSTTE 2026** WiP/short (co-located FMCAD; abstract ~Jul 10, paper ~Jul 17 — VERIFY).
+- North star (deadlines passed for 2026): CAV (ML/autonomous-system verification scope). NeurIPS 2026 workshops possible later (neuro-symbolic / AI-for-theorem-proving / reliable-ML) if a relevant one appears.
+- Prior RAG-track venue intel (if Track A ever revived): ACL/AACL Student Research Workshops (first-author-must-be-student = our edge; non-archival; pre-submission mentorship; AACL deadline ~Jul 26 2026 — VERIFY).
+
+## URGENT REPO HYGIENE (before ANY employer or Gao sees the repo)
+- Root README is placeholder text — fix.
+- A leaked-API-key warning is visible in the repo — ROTATE the key + scrub. Non-negotiable; it's the first thing a viewer sees.
+
+## FOUR-LLM SWEEP RESULTS (ChatGPT + Gemini build-ideas; DeepSeek + Opus4.8 + 1 more CertSearch critiques)
+
+### Citation verification (Claude ran this — Rain's standing instruction)
+- VERIFIED: "selection economics" is DEAD as a research contribution — preempted, not open. Real, published 2025–26: "When to Trust the Cheap Check: Weak and Strong Verification for Reasoning" (weak/strong policies, two-threshold, online algo SSV); a state-level selective-verification paper (gating + pre-verification ranking + adaptive verifier-call allocation; beats best-of-N w/ ~44% fewer calls); Singhi "When to Solve, When to Verify"; "Budget-aware Test-time Scaling via Discriminative Verification." ⇒ "which candidates deserve an expensive verifier call + where confidence misleads" is one of the most active corners of test-time-compute research. Occupied.
+- Citation trust pattern (confirmed): DeepSeek cited BarrierBench as 2503.12311 — WRONG (real = 2511.09363); other DeepSeek cites unverifiable/likely fabricated. Opus4.8 citations clean. RULE: trust the critiques' reasoning (it converges); trust DeepSeek's specific citations not at all.
+
+### Build sweep — STRONG convergence (two independent models, near-identical top 3)
+- #1 (BOTH): eval / failure-forensics lab. ChatGPT "GraderScope" ≈ Gemini "Grader-Hacking Evals Lab" — open-source harness that finds where graders/judges/brittle checkers fail on stochastic LLM output, then patches w/ normalization + calibration + regression tests. Weaponizes Rain's standout skill. Maps onto residency/frontier hiring (Anthropic reward-models, OpenAI frontier-evals, Cursor eval). Highest feasibility. ← LIKELY THE BUILD.
+- #2–3 (BOTH): aviation domain wedge — safety-report normalizer on public NASA ASRS + FAA SDR, tied to Part 135 SMS deadline 2027 "why now." FlightCheck ≈ Aviation SMS Event Normalizer. Pilot background as wedge, not trivia.
+- #3 (BOTH): verifiable agent harness (orchestrator-worker-verifier, replay, trace diffing, regression gates).
+- Gemini's best line — the HYBRID: aviation SMS tool as the PRODUCT story, grader-forensics machinery as the intellectual CORE. Hard to fake, easy to interview on.
+- Universal hinge question (BOTH): "Can Rain get ~3 real users/design partners + data access in the first 2 weeks in a wedge domain (aviation/fleet/creator)?" YES → domain-wedge build; NO → eval/forensics lab.
+- Avoid (unanimous): generic RAG chatbot, thin model-wrapper, sprawling platform, benchmark untied to a real workflow.
+
+### Genuinely-new items the sweep surfaced
+- Eval/forensics lab as the crisp #1 — wasn't our headline; now is.
+- Aviation SMS wedge w/ real regulatory why-now (Part 135 SMS 2027) + public data.
+- "Build ON Gao's existing code (SEEV / FOSSIL), not from scratch" — rescues a Gao project from the dReal-from-scratch trap.
+- Cheap-verifier pivot (code / text-to-SQL): same skill ("selection under an expensive oracle"), free verifier (test execution), zero install pain, instant hiring legibility (Opus).
+
+### Divergence — the Gao research pivot (only Gao resolves)
+3-way split: DeepSeek → value-guided inference search for control / repair-selection. Opus → empirical study on SEEV/FOSSIL, or selection-economics reframed WITHOUT the LLM. 3rd → LLM-guided boundary-partitioning to accelerate SEEV. (Build models barely diverge — itself a signal.)
+
+### SETTLED SHAPE (post-sweep)
+- Job build decided in spirit: eval/failure-forensics lab, possibly w/ aviation SMS wedge as product skin. Serves residency + mid-market + AI-for-X.
+- CertSearch dead. A Gao research project lives ONLY if it (a) builds on his existing code AND (b) he picks the open sub-question.
+- One-artifact-vs-two leans TWO related tracks (eval/aviation build for job; SEEV/FOSSIL empirical study for Gao) — share a through-line (forensic eval + selection under a verifier). GAO CONFIRMS OR COLLAPSES THIS.
+- Sweep DONE. No fifth model. Bottleneck = Gao conversation → start building.
+
+### Resume-bullet language (reframe — do NOT lead with "I fine-tune LLMs")
+- "Built an eval/failure-forensics harness for stochastic LLM outputs: normalization, failure taxonomy, self-consistency + confidence selection, regression gates."
+- "Reduced unreliable generation to auditable proposal→check→repair loops, tracking parse/verifier failures, duplicates, latency, cost."
+- Lead identity: "I build and evaluate reliable verified-generation / multi-agent systems on small models."
