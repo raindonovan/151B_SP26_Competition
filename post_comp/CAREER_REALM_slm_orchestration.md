@@ -159,3 +159,22 @@ Organizing principle: rank by what EXPIRES at graduation. Clock-bound first.
 - Three tiers (better than binary): A = GraderScope, domain-agnostic, no users. B-minus = aviation on public ASRS alone, scored vs NASA coded fields (domain wedge + why-now, no partners). B-full = aviation + 3 real design partners + validated user story.
 - Data is FREE (public ASRS CSV + NASA expert-coded fields as ground-truth anchor; FAA SDR for maintenance). Design partners are NOT for data — they're for: what "correct/dangerous" means operationally, the real-user story (the reason B>A), workflow realism. Rain's pilot network = partner pipeline.
 - Decider A vs B: can Rain get ~3 partners + data in 2 weeks? Yes→B/hybrid, No→A. C (research judge-robustness benchmark) only if residency-first over mid-market.
+
+## SWEEP FACT-CHECK (build #2 docs) — what's real
+VERIFIED, citable:
+- Judges gameable: "One Token to Fool LLM-as-a-Judge"; AdvJudge-Zero (arXiv 2512.17375, Dec'25 + PaloAlto Unit42) — >90% FPR on 22/24 cells (Unit42 blog says "99%").
+- Agreeableness bias: Beyond Consensus (arXiv 2510.11822, NUS Oct'25) — TPR>96%/TNR<25%, minority-veto, regression→1.2% max error. SCOPE: one code-feedback task (366 buggy Python, ~7.5% invalid). Cite scoped, not as universal law.
+- 12 judge biases (Justice or Prejudice, Ye 2024); pairwise flips ~35% vs 9% (Tripathi); VerifyBench/RewardBench "room for improvement."
+- CertSearch anchors verified prior: BarrierBench 2511.09363, SEEV 2410.20326, Snell 2408.03314, Setlur 2502.12118.
+- Eval incumbents real (LangSmith/Inspect/DeepEval/promptfoo/Braintrust/Langfuse/Galileo/Openlayer).
+
+UNVERIFIED — do not quote w/o checking (recent-ID fabrication risk):
+- RAG cluster doc#3: RAGVUE 2601.04196, Pandey 2603.11513, Stable-RAG 2601.02993, "Agentic AI" 2605.14675, RAGBench 2407.11005, Wallat 2412.18004. ODAR routing. Conformal coverage %s (97.1/98.6/91.4). N-Rep $0.039-vs-$0.46 (2505.14174).
+
+FABRICATED — never cite (doc#4):
+- "Flagship" platform comparison table (beats Braintrust/LangSmith/etc.) = aspirational spec presented as measured.
+- ASRS table "Flagship MV Ensemble 89.5% precision" etc. = invented results for a system that doesn't exist.
+
+STRATEGY:
+- Docs #4/#5 = over-scoped fantasy (1 real paper [Beyond Consensus] + conformal/HDBSCAN/ODAR theater). Build doc #3's HONEST CORE: 2×2 production-grader vs oracle-grader → failure taxonomy → safe normalization → regression gate. Conformal/clustering = optional spice, not spine.
+- AVIATION DEMOTED (per Rain): optional demo skin, not thesis. Lead domain-agnostic. Generate own measured numbers if aviation demo built; never reuse doc#4's fake ASRS stats.
