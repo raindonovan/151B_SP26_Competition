@@ -134,3 +134,28 @@ Organizing principle: rank by what EXPIRES at graduation. Clock-bound first.
 ## DECISIONS
 - NO second formal research program (dilutes). Informal breadth OK (reading groups, coffees). Gao = gold, depth > breadth.
 - Current research program: keep ONLY for its instrumental value (Gao conduit? funding? letter? line?). Minimize time on hand-holding; extract the one thing it gives.
+
+## GAO TIMING + WEEKEND REFRAME
+- Gao takes meetings WEDNESDAY onward. Weekend = continued planning → transition into focused Gao meeting prep. Email still sends Sunday eve (waits in inbox Mon); meeting lands Wed+. No pressure to have anything "done" by Monday.
+
+## POST-RESEARCH DREAM BOARD (residencies/fellowships — verify exact dates at apply-time, programs move)
+- Anthropic Fellows (BEST-TIMED): 4mo, empirical→paper, $3,850/wk + ~$15k/mo compute, Berkeley/London/remote-in-country. Workstreams incl. RL Fellows (GRPO/RLVR/small-model fit) + ML Systems & Performance (vLLM/inference fit). Credentials-agnostic, bachelor's min. ROLLING, multiple cohorts/yr (May/Jul/late-Sept 2026+). Apply when build+Gao paper ready.
+- OpenAI Safety Fellowship: Sep'26–Feb'27, priority incl. SAFETY EVALUATION + robustness (= build #2). Output paper/benchmark/dataset. Apps closed May 3 → WATCH next cycle.
+- OpenAI Residency: 6mo, full salary, early-builders. CLOSED for 2026 → watch.
+- MATS Autumn 2026: fully funded, ~$5k/mo+compute, housing/travel, J1 visa support, top mentors. Closes JUNE 7. AI-safety/alignment focus = stretch-fit on current profile. Multiple cohorts → target a future one with stronger materials.
+- Cambridge ERA:AI: 10wk Cambridge, fully funded incl visa+travel, GLOBAL (SA-friendly). 2026 likely closed (Jul 6 start) → watch 2027.
+
+## CRITICAL GATE: WORK AUTHORIZATION
+- Anthropic Fellows + OpenAI require US/UK/Canada work auth, NO visa sponsorship. Rain's SA background → must confirm status. If uncertain → MATS (J1) + ERA (global) are the safer doors. CONFIRM RAIN'S WORK-AUTH STATUS — gates the list.
+
+## AVIATION BUILD — INTERNATIONAL/ICAO REFRAME (build #2 framing)
+- SA contacts (SACAA, not FAA) DON'T break build B — they bend framing. SMS is a GLOBAL ICAO mandate (Annex 19, in force 2013); FAA Part 135 2027 is the US instance; SA has SA-CAR Part 140 (SMS in law: accountable manager, safety manager, SRB/SAG, audits — from ICAO Annex 19 + Doc 9859); EASA its own. Internationally-harmonized 12-element framework.
+- ⇒ Build is regulator-agnostic: public US ASRS data as corpus (regardless of validator nationality) + ICAO-harmonized taxonomy. SA safety officers are valid design partners; their judgment transfers. Cross-regime 121+135 + 1000hr = RICHER credential.
+- Flags: time-zone (SA ~UTC+2 vs CA ~UTC-8 → async process); DO NOT request confidential/proprietary reports (POPIA/privacy) — public ASRS for data, contacts for judgment/validation ONLY.
+- Net framing: build on ASRS, why-now = global SMS (ICAO; FAA 2027 + SA-CAR 140 as instances), validate with SA network. Strongest form of B.
+
+## BUILD #2 — CHOSEN SHAPE + TIERS
+- DECISION: Option B (aviation SMS normalizer) as product + Option A (grader/confidence forensics) as engine. Hybrid.
+- Three tiers (better than binary): A = GraderScope, domain-agnostic, no users. B-minus = aviation on public ASRS alone, scored vs NASA coded fields (domain wedge + why-now, no partners). B-full = aviation + 3 real design partners + validated user story.
+- Data is FREE (public ASRS CSV + NASA expert-coded fields as ground-truth anchor; FAA SDR for maintenance). Design partners are NOT for data — they're for: what "correct/dangerous" means operationally, the real-user story (the reason B>A), workflow realism. Rain's pilot network = partner pipeline.
+- Decider A vs B: can Rain get ~3 partners + data in 2 weeks? Yes→B/hybrid, No→A. C (research judge-robustness benchmark) only if residency-first over mid-market.
