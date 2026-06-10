@@ -8,28 +8,11 @@ Work **after** the Kaggle deadline: document the **win**, portfolio, effort evid
 
 Post-comp docs must **not** mention late submissions, Kaggle final-pick UI mistakes, or any framing that contradicts the win. Internal lessons stay internal; debrief and public artifacts stay win-forward.
 
-## Leaderboard screenshot (Rain #1 / 0.778)
-
-Regenerate the edited private-LB screenshot (row 1 only; rest of page is the real capture):
-
-```bash
-# One-time on WSL if Chromium fails (no sudo): fetches .deb libs into post_comp/.lib/
-bash post_comp/setup_render_env.sh
-
-python3 post_comp/render_leaderboard_final.py
-```
-
-Output: `post_comp/leaderboard_rain_0.778.png` (composites HTML row onto the original browser screenshot).
-
-Uses **Playwright** + bundled `libgbm`/`libxkbcommon` deps — not Photopea.
-
 ## Files in this folder
 
 | File | Role |
 |------|------|
 | `README.md` | Ops, narrative lock, debrief procedure |
-| `render_leaderboard_final.py` | Playwright render + composite |
-| `leaderboard_row_rain.html` | Row-1 markup (Rain / 0.778 / solo) |
 | `setup_render_env.sh` | WSL shared-lib bootstrap (no apt install) |
 | `POST_COMP_SCRATCH.md` | Shared scratchpad (win-forward when promoted) |
 | `POST_COMP_STARTUP_SCRATCH.md` | Startup scratch (Rain-driven; see `POST_COMP_STARTUP_README.md`) |
