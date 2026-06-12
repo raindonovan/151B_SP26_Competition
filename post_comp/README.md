@@ -18,6 +18,10 @@ Post-comp docs must **not** mention late submissions, Kaggle final-pick UI mista
 | `POST_COMP_STARTUP_SCRATCH.md` | Startup scratch (Rain-driven; see `POST_COMP_STARTUP_README.md`) |
 | `POST_COMP_STARTUP_README.md` | How we use startup scratch vs final doc later |
 | `POST_COMP_DEBRIEF_MEETING.md` | Debrief substance: win narrative, tooling, next stage |
+| `COMPETITION_TARGETS.md` | Ranked student-comp strategy (Rain, 2026-06-03) |
+| `COMPETITION_TRANSDUCTIVE.md` | Transductive / inference-forward competition targets (Rain, 2026-06) |
+| `CAREER_BRIDGE.md` | Career/bridge opportunities, plans, UCSD resources (Rain, 2026-06-04) |
+| `RESEARCH_NOTES.md` | Post-comp research angles (NoThinking vs comp axis; Rain, 2026-06-04) |
 
 During the competition, folder `SCRATCH.md` + `CLAUDE.md` signoffs still apply. Post-deadline, default to **`POST_COMP_SCRATCH.md`** unless the note belongs in a subsystem scratch.
 
