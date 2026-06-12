@@ -31,7 +31,7 @@
 % Final submission: render normally (black). Uncomment the red version to review edits.
 \newcommand{\new}[1]{#1}
 % \newcommand{\new}[1]{{\color{red} #1}}
-\usepackage{xcolor, colortbl}
+\usepackage{colortbl}
 \definecolor{darkblue}{rgb}{0.19, 0.19, 0.62}
 \hypersetup{
   colorlinks = true,
@@ -110,7 +110,7 @@ serving long-context self-consistency over 943 problems across heterogeneous GPU
 under a wall-clock budget. (4) \textbf{Engineering:} the grader is a black box whose
 value-equality logic has gaps (it does not auto-equate every equivalent form, reads
 a single box per multi-part item, and falls back to a brittle last-integer
-heuristic). (5) \textbf{Evaluation:} my local judger is systematically more lenient
+heuristic). (5) \textbf{Evaluation:} my local judge is systematically more lenient
 than the live grader, so local accuracy is a noisy predictor of LB movement.
 
 \new{
@@ -330,21 +330,21 @@ quantifying the headroom that is about \emph{answers}, not formatting, but it is
 not a model-only result and I treat it as a ceiling, not a submission.
 
 \begin{table}[h]
-  \caption{Ablations (private / public). Agreement sweep = override where $\geq K$ of
+  \caption{Ablations (public / private). Agreement sweep = override where $\geq K$ of
   five teacher models agree on a canonicalized value, else keep the base.}
   \label{tab:abl}
   \centering
   \begin{tabular}{lcc}
     \toprule
-    Variant & Private & Public \\
+    Variant & Public & Private \\
     \midrule
-    Model-only base (canonical control)              & 0.583 & 0.667 \\
-    $+$ answer-memorization LoRA (11 items)          & 0.587 & 0.667 \\
-    Agreement K$\geq$2                               & 0.672 & 0.734 \\
-    Agreement K$\geq$3                               & 0.642 & 0.713 \\
-    Agreement K$\geq$4                               & 0.631 & 0.689 \\
-    Agreement unanimous (K$=$5)                      & 0.592 & 0.671 \\
-    Teacher one-hot (ceiling, $\dagger$)             & 0.715 & 0.756 \\
+    Model-only base (canonical control)              & 0.667 & 0.583 \\
+    $+$ answer-memorization LoRA (11 items)          & 0.667 & 0.587 \\
+    Agreement K$\geq$2                               & 0.734 & 0.672 \\
+    Agreement K$\geq$3                               & 0.713 & 0.642 \\
+    Agreement K$\geq$4                               & 0.689 & 0.631 \\
+    Agreement unanimous (K$=$5)                      & 0.671 & 0.592 \\
+    Teacher one-hot (ceiling, $\dagger$)             & 0.756 & 0.715 \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -407,7 +407,7 @@ were fabricated. In particular, the official final private score (0.428) is repo
 honestly even though a higher-scoring submission (0.684) exists in my submission
 history but was not selected as a counting pick.
 
-\bibliography{references}
 \bibliographystyle{plainnat}
+\bibliography{references}
 
 \end{document}
