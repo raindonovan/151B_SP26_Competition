@@ -1,0 +1,411 @@
+% =======> CSE 151B/251B Final Report
+% Honest reporting: official final private score reflects the two submissions
+% actually selected as counting picks; best-achieved scores are reported separately
+% and transparently. No fabricated rank/score.
+% =================================================
+
+\documentclass{article}
+
+\PassOptionsToPackage{numbers, compress}{natbib}
+\usepackage[preprint]{neurips_2024}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{float}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{subcaption}
+\usepackage{booktabs}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{hyperref}
+\usepackage{wrapfig}
+\usepackage[capitalize,noabbrev]{cleveref}
+\RequirePackage{doi}
+\usepackage{xcolor}
+\newcommand{\new}[1]{{\color{red} #1}}
+\usepackage{xcolor, colortbl}
+\definecolor{darkblue}{rgb}{0.19, 0.19, 0.62}
+\hypersetup{
+  colorlinks = true,
+  citecolor  = darkblue,
+  filecolor  = darkblue,
+  urlcolor   = darkblue,
+}
+
+\title{
+CSE 151B/251B Final Report\\
+\large Inference-Time Discipline Beats Fine-Tuning for Small-Model Mathematical Reasoning
+}
+
+\author{%
+  Rain van Eetveldt \\
+  Department of Computer Science and Engineering\\
+  University of California, San Diego\\
+  \texttt{dvaneetv@ucsd.edu} \\
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We study how far a \emph{frozen} 4B-parameter reasoning model can be pushed on a
+943-question private math leaderboard (Qwen3-4B-Thinking-2507; mixed
+multiple-choice and free-form answers, graded by value equality) using only
+inference-time and post-processing methods --- no change to model weights on the
+winning path. Our central finding is that for a small reasoning model, \emph{format-faithful
+answer extraction plus self-consistency dominate fine-tuning}: our best
+submission reached \textbf{0.745 public / 0.684 private}, which would have ranked
+approximately \textbf{5th} on the private leaderboard (topped by 0.774), whereas every
+LoRA/SFT route we tried was flat-to-negative. We quantify the split between
+``the model cannot do the math'' and ``the answer is right but formatted wrong''
+with a source-attribution campaign and a local value-equality grader mirror that
+predicts the format gap before submission. \textbf{Honesty note on our official score:}
+through a final-submission-\emph{selection} error we marked two early diagnostic
+probes as our two counting submissions (private 0.428 and 0.375), so our
+\emph{official} final private score is \textbf{0.428}, despite the 0.684 submission
+existing in our submission history. We report both transparently. Code:
+\url{https://github.com/beepbeeepimajeep/151B_SP26_Competition}.
+\end{abstract}
+
+% % % === Introduction
+\section{Introduction}
+\label{sec:intro}
+
+\paragraph{Problem Definition.}
+The task is mathematical reasoning over a fixed, hidden test set of 943 problems
+spanning high-school to graduate level, in two formats: multiple-choice (up to 9
+options) and free-form numerical/symbolic answers (including multi-part answers
+with several required values). A model receives a problem statement and must emit
+its final answer inside a \texttt{\textbackslash boxed\{\}} expression. Submissions
+are a CSV of \texttt{(id, response)} rows scored by an automatic grader; a public
+leaderboard (LB) scores a $\sim$283-question subset and a private leaderboard scores
+the full set. Crucially, the competition fixes the base model and provides no
+training labels for the test set, so the problem is fundamentally one of
+\emph{test-time inference and weak supervision}, not standard supervised learning.
+
+\paragraph{Problem Significance.}
+Small open models are increasingly deployed where cost, latency, on-prem
+constraints, or privacy rule out frontier APIs. Squeezing reliable, correctly
+\emph{formatted} answers out of a 4B model --- and knowing \emph{when} its answer can be
+trusted --- is exactly the capability needed for automated tutoring/grading,
+spreadsheet and unit-aware calculators, and any pipeline that feeds a model's
+output into a downstream checker. The competition is a clean proxy: a frozen small
+model, an unforgiving automatic grader, and a hard budget.
+
+\paragraph{Technical Challenge.}
+The project is hard along five axes. (1) \textbf{Data:} no test labels and a frozen
+base, so improvements must come from sampling, selection, and post-processing rather
+than from fitting. (2) \textbf{Model:} a 4B ``thinking'' model that emits long
+chains of reasoning, is prone to truncation under large token budgets, and
+sometimes \emph{overthinks} a correct answer into a wrong one. (3) \textbf{Implementation:}
+serving long-context self-consistency over 943 problems across heterogeneous GPUs
+under a wall-clock budget. (4) \textbf{Engineering:} the grader is a black box whose
+value-equality logic has gaps (it does not auto-equate every equivalent form, reads
+a single box per multi-part item, and falls back to a brittle last-integer
+heuristic). (5) \textbf{Evaluation:} our local judger is systematically more lenient
+than the live grader, so local accuracy is a noisy predictor of LB movement.
+
+\new{
+\paragraph{Contributions.}
+Existing work improves small-model reasoning mainly by self-consistency
+(SC)~\citep{wang2023sc} or by distilling a stronger teacher via
+(Q)LoRA~\citep{dettmers2023qlora}. The first under-uses structure (naive voting
+counts garbage and mis-formatted samples); the second is fragile at 4B (style
+mismatch, catastrophic forgetting). Our contributions:
+\begin{itemize}
+  \item \textbf{An inference-only pipeline that lifts a frozen 4B model from
+        0.586 to 0.745 public / 0.684 private} (\cref{sec:results}) via
+        format-gated self-consistency and a grader-faithful canonical renderer ---
+        no weight training on the winning path.
+  \item \textbf{Evidence that fine-tuning does not pay at this scale:} trace-distillation
+        SFT was flat-to-negative and induced an inference-time pathology invisible to
+        training loss, and a targeted answer-memorization LoRA moved the private
+        score by only $+0.004$ on 11 items (\cref{sec:ablations}).
+  \item \textbf{A source-attribution campaign + local value-equality grader mirror}
+        that separates ``math'' error from ``format'' error and predicts the format
+        gap before any submission (183/183 differing rows judged value-equal,
+        \cref{sec:evaluation}).
+  \item \textbf{NoThinking via chat-template prefill} on Qwen3-Thinking-2507 as an
+        efficiency lever ($\sim$80\% fewer tokens at a $\sim$5pp accuracy cost), and an
+        honest post-mortem of a final-pick \emph{selection} error that cost us our
+        true standing (\cref{sec:discussion}).
+\end{itemize}
+}
+
+% % % === Related Work
+\section{Related Work}
+\label{sec:relatedwork}
+
+\paragraph{Inference-time scaling for reasoning.}
+Self-consistency~\citep{wang2023sc} samples multiple chains and majority-votes the
+final answer; it is the single most reliable lever in this competition and the spine
+of our pipeline. Meta-analysis shows chain-of-thought helps \emph{mainly} on math and
+symbolic tasks~\citep{sprague2024cot}, which both justifies sampling-based reasoning
+here and implies that on our domain the value of \emph{suppressing} thinking is
+efficiency, not capability.
+
+\paragraph{When reasoning hurts, and efficient reasoning.}
+Explicit reasoning can also \emph{degrade} instruction-following and inject spurious
+content~\citep{li2025thinkingfails}; we observe the analogous failure where extra
+deliberation manufactures an extra, wrong root. A large ``efficient-reasoning''
+literature compresses or bypasses chains (e.g.\ token-budgeting and no-think prefills);
+our NoThinking variant is the bypass-not-compress instance on Qwen3-Thinking-2507,
+where the vendor \texttt{enable\_thinking=False} toggle is ignored and a closed
+\texttt{<think></think>} prefill is the working mechanism.
+
+\paragraph{Fine-tuning small models.}
+QLoRA~\citep{dettmers2023qlora} enables 4-bit LoRA fine-tuning on a single GPU and is
+the standard distillation route. Consistent with the competitor debrief, trace
+distillation at 4B is fragile; the working fine-tuning mode others used was
+\emph{answer-memorization} deployed as a gated overlay, not trace distillation ---
+which directly motivates our ablation. The Qwen3 family is documented
+in~\citep{qwen3report}.
+
+% % % === Methods
+\section{Methods}
+\label{sec:methods}
+
+\paragraph{Problem Setting.}
+Let $x$ be a problem (text, plus options for MCQ) and $a^\star$ the hidden gold
+answer. We never modify the model $p_\theta$; instead we design a test-time policy
+that emits $\hat a(x)$ to maximize expected agreement with the grader $g$, which
+tests value-equality at $\sim$$10^{-8}$ tolerance. Because we cannot evaluate $g$
+against $a^\star$ at train time, we optimize a surrogate: draw $N$ samples
+$y_1,\dots,y_N \sim p_\theta(\cdot\mid x)$, extract a candidate $c_i$ from the final
+\texttt{\textbackslash boxed\{\}} of each $y_i$, cluster candidates by value-equality,
+and select the canonical render of the largest cluster,
+\begin{equation}
+\hat a(x) \;=\; \mathrm{render}\Big(\argmax_{c}\; \textstyle\sum_{i=1}^{N}
+   \mathbb{1}\!\left[c_i \equiv_g c\right]\Big),
+\label{eq:sc}
+\end{equation}
+where $\equiv_g$ is value-equality and $\mathrm{render}(\cdot)$ maps the chosen value
+to the grader's canonical surface form. This is plain SC@$N$ when $\equiv_g$ is exact
+string match and $\mathrm{render}$ is identity; our gains come from making both
+grader-faithful. The data are 943 private problems (Kaggle test) and a public set
+used only as a noisy probe; answers are extracted from the \emph{final} boxed
+expression and multi-part answers are emitted as one comma-separated box.
+
+\paragraph{Idea Summary.}
+The pipeline is \emph{extract $\to$ select $\to$ normalize}, with optional
+\emph{overlays}. SC@8 supplies diversity; value-equality clustering prevents
+equivalent-but-differently-written answers (e.g.\ $0.5$ and $\tfrac12$) from splitting
+the vote; the canonical renderer removes the dominant failure mode (right value,
+wrong surface form). The risk is that for genuinely hard items SC simply concentrates
+on a confidently wrong answer; the mitigation (and a source of late gains) is a small
+set of \emph{overlays} --- high-budget ``thinking'' re-runs on flagged hard items and
+cross-run consensus --- applied only where they cannot hurt the majority result.
+
+\new{
+\paragraph{Method Description.}
+\emph{Sampling.} Vendor settings for Qwen3-Thinking-2507: temperature 0.6, top-$p$
+0.95, top-$k$ 20; token budget 49{,}152 with a 24{,}576 thinking budget, raised to
+81{,}920/65{,}536 for hard items to curb truncation. \emph{Selection.} SC@8 with
+value-equality clustering; for contested multi-part items we count boxed slots to the
+expected count rather than trusting a single box. \emph{Canonical renderer.} A single
+value-preserving function applied identically to every candidate: evaluate pure
+arithmetic ($4{+}9\!\to\!13$), integer $a/b \to \frac{a}{b}$, $\ast\to\cdot$,
+emit multi-part answers as one \texttt{\textbackslash boxed\{a, b, c\}} in slot order,
+MCQ as \texttt{\textbackslash boxed\{LETTER\}} (the grader reads the \emph{first} box
+for MCQ, so we write a bare box so first $=$ last), and otherwise normalize whitespace
+while preserving the value. \emph{NoThinking.} A closed \texttt{<think></think>}
+prefill bypasses deliberation for an efficiency/accuracy trade. \emph{Fine-tuning
+(studied, not shipped).} LoRA rank 16, $\alpha 8$, on $q/k/v/o$, kept as an adapter
+(no merge); used only to test answer-memorization as a gated overlay. We did not split
+``training'' data for the winning path because it trains no weights; the only learned
+artifact (the adapter) was trained on teacher traces for the ablation.
+}
+
+% % % === Experiments
+\section{Experiments}
+\label{sec:experiments}
+
+\subsection{Baselines}
+\label{sec:baselines}
+We compare, all on the frozen base unless noted:
+\begin{itemize}
+    \item \textbf{Base, single sample} (Run~08): vendor defaults, one sample. Public 0.586.
+    \item \textbf{Base, SC@8} (Run~09): majority vote over 8 samples. Public 0.614 (our milestone result).
+    \item \textbf{Base, SC@8, 32k budget} (R20): longer budget, better prompt. Public 0.646.
+    \item \textbf{Per-slot prompt} (Run~10): emits separate boxes per part. Public 0.424 --- a 16pp
+          \emph{regression} that isolates format from reasoning.
+    \item \textbf{Answer-memorization LoRA} (overlay on 11 items): tests fine-tuning as a gated overlay.
+\end{itemize}
+
+\subsection{Evaluation}
+\label{sec:evaluation}
+The primary metric is the Kaggle private LB; the public LB ($\sim$283 items) is a
+budget-limited probe. Locally we use a value-equality grader mirror
+(\texttt{Grader.is\_equal}, sympy-backed) as a Kaggle proxy, with the explicit caveat
+that it is $\sim$28pp more lenient on a restricted, easier gold subset, so we read
+\emph{relative} movement and per-source accuracy, not the absolute number. We use the
+mirror for a \textbf{format-gap predictor}: rendering our fusion sheet canonically vs.\
+raw produced 183 differing rows, of which \textbf{183/183 (100\%)} were judged
+value-equal --- correctly predicting that a true value-based grader closes the entire
+canonical-vs-raw gap (confirmed on the live LB: the two scored identically).
+
+\subsection{Implementation details}
+\label{sec:implementation_details}
+\textbf{Platform.} Inference on DSMLP A30 (24\,GB) and Thunder A100 (80\,GB)/H100 nodes
+via vLLM 0.10.2/0.11.1 in BF16 with prefix caching; the winning path trains no weights.
+SC@8 over the full 943-item set runs in tens of minutes to a few hours depending on
+budget and node; the milestone SC@8 run took $\sim$28h on a single A30 before the
+move to A100/H100 and a larger token budget. The lone LoRA artifact (rank 16, $\alpha 8$,
+$q/k/v/o$) was trained on an A100. \textbf{Hyperparameters.} Sampling temperature 0.6,
+top-$p$ 0.95, top-$k$ 20; $N=8$ for SC; token/thinking budget 49{,}152/24{,}576
+(81{,}920/65{,}536 for hard items). These follow vendor recommendations; the budget
+was raised specifically to reduce truncation-induced empty boxes, which we observed
+to cost real points.
+
+\subsection{Results}
+\label{sec:results}
+\Cref{tab:results} reports the pipeline's public/private scores. Format-faithful SC
+moves the frozen base from 0.586 to 0.745 public / 0.684 private. For context, the
+private LB was topped by 0.774 (SupComp) and 0.771 (Dannyyyz), with 0.689 at 4th and
+0.666 at 5th: \textbf{our 0.684 best submission would have placed approximately 5th}.
+As an external yardstick, a single GPT-5.5-high pass scored 0.756/0.715 --- our 4B
+inference pipeline reaches within $\sim$3pp private of a frontier model's single pass.
+
+\begin{table}[h]
+  \caption{Pipeline results. Public is the $\sim$283-item LB; private is the full
+  943-item set. ``--'' = not privately evaluated during the live competition. Rows
+  marked $\dagger$ use external teacher/answer-bank values and are reported as
+  \emph{diagnostic ceilings}, not as our model-only result. The final two rows are the
+  submissions we actually \emph{selected} as counting picks (see \cref{sec:discussion}).}
+  \label{tab:results}
+  \centering
+  \begin{tabular}{lcc}
+    \toprule
+    Method & Public & Private \\
+    \midrule
+    Base, single sample (Run~08)                       & 0.586 & -- \\
+    Base, SC@8 (Run~09, milestone)                      & 0.614 & -- \\
+    Base, SC@8, 32k budget (R20)                        & 0.646 & -- \\
+    R20 $+$ canonical normalization stack               & 0.713 & -- \\
+    NoThinking $\cup$ R20 join (model-only)             & 0.664 & -- \\
+    \textbf{Best entry: SC $+$ normalization $+$ overlays} & \textbf{0.745} & \textbf{0.684} \\
+    \midrule
+    v7 fusion (canonical) $\dagger$                     & 0.749 & 0.686 \\
+    GPT-5.5-high single pass (reference)                & 0.756 & 0.715 \\
+    \midrule
+    Selected pick 1: \texttt{run09sc8\_probe\_b\_reversed} & 0.438 & 0.428 \\
+    Selected pick 2: \texttt{expA\_run08\_perslot}         & 0.420 & 0.375 \\
+    \textbf{Official final (best of selected)}             & \textbf{0.438} & \textbf{0.428} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\paragraph{Result 1 --- Self-consistency and budget lift the base by $\sim$6pp.}
+Single-sample 0.586 $\to$ SC@8 0.614 $\to$ SC@8 with a 32k budget 0.646, all on the
+same frozen model: variance reduction plus fewer truncations.
+
+\paragraph{Result 2 --- Format, not math, is the dominant error source.}
+Re-formatting identical reasoning into per-slot boxes caused a 16pp regression
+(0.586 $\to$ 0.424), and conversely the canonical normalization stack lifted R20 from
+0.646 to 0.713 with no change to the underlying answers. Multi-part ``undercount''
+(emitting fewer boxed values than required) accounts for the majority of our format
+losses.
+
+\subsection{Ablations}
+\label{sec:ablations}
+\Cref{tab:abl} isolates components on the full private set (post-deadline
+re-evaluations). \textbf{Agreement threshold:} requiring more cross-model agreement
+trades recall for precision and \emph{lowers} the score (K$\geq$2 0.672 $\to$
+unanimous 0.592), because high-agreement-only sheets fall back to the weaker base on
+everything else --- evidence that broad, well-normalized coverage beats narrow
+high-confidence coverage. \textbf{Fine-tuning:} the answer-memorization LoRA overlay
+on 11 items scored 0.587 private vs.\ the 0.583 base it sat on --- a real but
+$+0.004$ effect, i.e.\ fine-tuning's contribution is marginal at this scale, whereas
+the model-only canonical control already sits at 0.667/0.583. \textbf{Teacher
+overlay ($\dagger$):} a one-hot of a strong teacher's answers reaches 0.756/0.715,
+quantifying the headroom that is about \emph{answers}, not formatting --- but it is
+not a model-only result and we treat it as a ceiling, not a submission.
+
+\begin{table}[h]
+  \caption{Ablations (private / public). Agreement sweep = override where $\geq K$ of
+  five teacher models agree on a canonicalized value, else keep the base.}
+  \label{tab:abl}
+  \centering
+  \begin{tabular}{lcc}
+    \toprule
+    Variant & Private & Public \\
+    \midrule
+    Model-only base (canonical control)              & 0.583 & 0.667 \\
+    $+$ answer-memorization LoRA (11 items)          & 0.587 & 0.667 \\
+    Agreement K$\geq$2                               & 0.672 & 0.734 \\
+    Agreement K$\geq$3                               & 0.642 & 0.713 \\
+    Agreement K$\geq$4                               & 0.631 & 0.689 \\
+    Agreement unanimous (K$=$5)                      & 0.592 & 0.671 \\
+    Teacher one-hot (ceiling, $\dagger$)             & 0.715 & 0.756 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+% % % === Discussion
+\section{Discussion}
+\label{sec:discussion}
+
+\paragraph{Achievements.}
+On a frozen 4B model we built an inference-only pipeline scoring 0.745 public /
+0.684 private --- approximately a 5th-place private result and within $\sim$3pp of a
+frontier model's single pass --- and we quantified precisely how much of the gap is
+formatting (large, cheaply recoverable) vs.\ raw math (the remaining headroom). The
+deliverable is less a single CSV than a disciplined \emph{measurement} of where a
+small reasoning model fails.
+
+\new{
+\paragraph{Bottlenecks and Mitigation.}
+(1) \emph{Grader opacity} --- solved by building a local value-equality mirror and,
+after the sympy judge hung on non-answer prose, switching the offline comparator to
+\texttt{math-verify} (parse-fails to False instead of hanging). (2) \emph{Multi-part
+undercount} --- the canonical renderer counts slots to the expected number.
+(3) \emph{Truncation} --- larger token/thinking budgets on hard items.
+(4) \emph{Submission budget} --- differential submissions to probe the grader. Relative
+to the milestone, the biggest change is the reframe from ``fine-tune the model'' to
+``be faithful to the grader,'' which is what actually moved the score.
+}
+
+\new{
+\paragraph{Lessons Learned.}
+\textbf{The judge is the spec:} building evaluation to \emph{be} the grader and bucketing
+failures by reason paid more than any modeling change. \textbf{At 4B, inference
+discipline beats fine-tuning:} SC plus format-faithful normalization dominated every
+LoRA/SFT route we tried. \textbf{Process is part of the result:} our most expensive
+lesson was not modeling --- it was that we \emph{selected the wrong two submissions} as
+our final counting picks. Two early diagnostic probes (private 0.428 and 0.375) were
+left marked as our final submissions, so our official private score is \textbf{0.428}
+even though a 0.684 submission existed in our history. With more time we would
+(i)~automate a pre-deadline submission gate that verifies the selected picks are the
+best-scoring valid CSVs, and (ii)~invest earlier in format-gated voting rather than
+chasing fine-tuning gains that did not materialize.
+}
+
+\paragraph{Team Responsibilities.}
+Solo project. The author (Rain van Eetveldt, UCSD CSE) was responsible for all
+aspects: problem framing, the inference and post-processing pipeline, the
+source-attribution and ablation campaigns, submission strategy, and this report. A
+multi-model agentic workflow was used as engineering tooling (see LLM Usage).
+
+\section*{LLM Usage}
+LLMs were used substantially as engineering and writing assistants throughout this
+project: a coordinated workflow of assistant models (Anthropic Claude via Claude Code
+and chat) helped implement the inference/post-processing scripts, organize
+experiments and documentation, draft and critique strategy, and draft this report.
+LLMs were also \emph{objects of study} (the frozen Qwen3-Thinking model under test, and
+teacher models used only to measure answer-headroom ceilings, clearly marked as such).
+All reported scores come from actual Kaggle submissions and logged runs; the author
+takes full responsibility for the contents, and no numbers or results in this report
+were fabricated. In particular, the official final private score (0.428) is reported
+honestly even though a higher-scoring submission (0.684) exists in our submission
+history but was not selected as a counting pick.
+
+\bibliography{references}
+\bibliographystyle{plainnat}
+
+\end{document}
