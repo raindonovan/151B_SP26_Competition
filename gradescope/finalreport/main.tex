@@ -28,7 +28,10 @@
 \usepackage[capitalize,noabbrev]{cleveref}
 \RequirePackage{doi}
 \usepackage{xcolor}
-\newcommand{\new}[1]{{\color{red} #1}}
+% Template uses \new to flag content added since the milestone (red while drafting).
+% Final submission: render normally (black). Uncomment the red version to review edits.
+\newcommand{\new}[1]{#1}
+% \newcommand{\new}[1]{{\color{red} #1}}
 \usepackage{xcolor, colortbl}
 \definecolor{darkblue}{rgb}{0.19, 0.19, 0.62}
 \hypersetup{
