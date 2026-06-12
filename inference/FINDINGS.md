@@ -31,9 +31,15 @@ The format layer applies to BOTH buckets — even Bucket-A items can be graded w
 
 _Will be filled in run-by-run. Examples of what would land here:_
 - "SC plateau at N≈16 across all base_model AND adapter runs we've tested"
-- "NoThinking mode produces ~5% truncation regardless of token budget"
 - "Per-temperature SC diversification helps base_model but not adapter (or vice versa)"
 - etc.
+
+---
+## [Rain] 2026-06-04 — External validation (NoThinking / 151B paper line)
+
+**GOLD (filed same session):** Independent field confirmation that **truncation** and **thinking-length** are the core failure axes on this model family, and that **inference-time scaling beats SFT** on this task — direct support for our token-budget and inference-first findings.
+
+**Repo tie-in:** Locked budgets at `inference/FINDINGS.md` L11 (`49152/24576`, hard items `81920/65536`); R20 deep audit shows truncation as the dominant 16K failure mode and 32K rescuing 72/89 always-truncated-at-16K items (`inference/SCRATCH.md` L247, L338). SFT lines peaked below inference-only SC@8 (`strategy/INFERENCE_TECHNIQUES.md` L9–L13: 0.646 base vs SFT v3–v5 ≤0.639); competition outcome aligned with inference discipline over adapter/SFT (`post_comp/POST_COMP_DEBRIEF_MEETING.md` L57–L63, win-forward `30_05_slot4_aggressive_v2` 0.745/0.684).
 
 ## Per-folder findings docs
 

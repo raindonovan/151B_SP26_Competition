@@ -64,3 +64,13 @@ milestone_report.log
 # Tunnel binaries (regenerable)
 vscode_cli.tar.gz
 # run14b + run09 large JSONLs now tracked via Git LFS (removed from gitignore)
+
+# --- secrets / venvs (never commit) ---
+.kagglecli/
+# --- stray nested clone ---
+151B_SP26_Competition/
+# --- temp / scratch dirs ---
+tmp_final/
+splice_audit_*/
+splice_excl_*/
+adapter_picker_test_*/

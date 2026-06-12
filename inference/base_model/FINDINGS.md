@@ -34,6 +34,14 @@
 - DeepSeek-R1 recommends NO system prompt at all.
 - Qwen3-Thinking vendor recommendations match our locked config (T=0.6, TopP=0.95, TopK=20).
 
-## To-add (will populate as we catalog each base-model run)
+## Token budget / thinking-length / truncation (CONFIRMED, R08–R20 matrix + high-budget probes)
 
-_Empty._
+- **16K**: truncation dominant failure mode (`inference/SCRATCH.md` L247: 119 truncated on R08; L284: tokens remain ceiling even with SC@8).
+- **32K (R20)**: trunc=17 vs R08 119 / R09 93; **72/89** items always truncated at 16K rescued at 32K (`inference/SCRATCH.md` L338). Token dividend +7 scored vs SC +33 at fixed v1 (L342–L343) — SC first, tokens second-order but material on long derivations.
+- **High thinking budget (81920/65536)**: thinking_probe runs 0 truncations on targeted slices (`inference/SCRATCH.md` L479–L498); on hard multi-slot items, long Thinking beats NoThinking twin (L37–L39 in `inference/base_model/SCRATCH.md`).
+- **NoThinking full-943**: trunc=9 vs R20 trunc=17 (`inference/SCRATCH.md` L421); Kaggle join lever 0.664 (`submission/REGISTRY.md` L9) — orthogonal to Pick A win path, not a contradiction of win-forward lock.
+
+---
+## [Rain] 2026-06-04 — External validation (truncation + thinking-length axes)
+
+**GOLD:** Field independently confirmed truncation + thinking-length as core failure axes and inference-time scaling > SFT on this model — aligns with R08–R20 token matrix above and `inference/FINDINGS.md` (2026-06-04 entry).

@@ -14,4 +14,4 @@ s12_agree_k3,5LLM_agree>=3,665,665,5275a74446cb,0.713,0.642
 s13_agree_k4,5LLM_agree>=4,526,526,f48b48ea6698,0.689,0.631
 s14_agree_k5,5LLM_agree>=5,98,98,440f828e5407,0.671,0.592
 s15_v7_fusion_raw,v7_raw_render(no_canon),943,943,714830af8e6b,0.749,0.686
-adapter_rescue,"R20 + 11 adapter answers (drop 184,556)",11,11,14522da90c41,TBD,TBD
+adapter_rescue,"R20 + 11 adapter answers (drop 184,556)",11,11,14522da90c41,0.667,0.587

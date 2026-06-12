@@ -40,10 +40,15 @@ Post-deadline ablation/oracle overlays (teacher/Wolfram/search values in `respon
 
 | slot | description | layer added | kaggle_public | kaggle_private | local_indep_gold |
 |---|---|---|---|---|---|
-| slot1_baseline_R20 | R20 SC8/32K, pure Qwen | — (anchor) | TBD | TBD | n/a |
+| slot1_baseline_R20 | R20 SC8/32K, pure Qwen | — (anchor) | 0.667 | 0.583 | n/a |
+| slot_adapter_rescue | `03_06_R20_plus_adapter11.csv` | adapter (11) | 0.667 | 0.587 | n/a |
 | slot2_nothinking_join | NoThinking∪R20 join | NT-join | 0.664 (confirmed) | TBD | n/a |
 | slot3_join_undercount | **NOT BUILT** (no Qwen-only source) | — | — | — | — |
 | slot4_join_undercount_frac | **NOT BUILT** (source mismatch) | — | — | — | — |
 | slot5_max_inference_alone | consensus + Thinking rescues + expr-safety | 40 consensus + 4 thinking + 763 expr | TBD | TBD | n/a |
+
+**slot1_baseline_R20:** COMPLETE (submitted 2026-06-03 ~23:24 UTC). Public ties **s01_qwen_control** (0.667); private matches s01 (0.583).
+
+**slot_adapter_rescue:** COMPLETE. Public ties baseline (0.667); private **+0.004** vs slot1_baseline_R20 (0.587 vs 0.583).
 
 See README "Blocked slots" for why 3 and 4 are held.

@@ -1,6 +1,10 @@
 # Inference Techniques Inventory
 
-**Updated**: 2026-05-28 Day 6
+**Updated**: 2026-06-04
+
+## [Rain] 2026-06-04 — External validation (GOLD)
+
+Independent confirmation: **truncation** + **thinking-length** = core failure axes; **inference-time scaling beats SFT** on Qwen3-4B-Thinking for this task. Aligns with tried-table below (SC@8 **0.646** vs SFT v3–v5 ≤**0.639**) and `inference/FINDINGS.md` / `inference/SCRATCH.md` R20 truncation rescues (L338).
 
 ## Tried
 

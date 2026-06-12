@@ -68,3 +68,26 @@ Rain wants the post-competition phase to turn the **win** into durable value:
 - convert the experience into portfolio, job-search, research, and next-stage roadmap (see debrief Goal 7)
 
 Key reminder: lock the "indication of effort" discussion into docs. Candidate artifacts include git activity heatmaps, commit timelines, score-over-time plots, subsystem effort maps, and final sprint timelines.
+
+---
+## [Rain] 2026-06-03 — Student competition strategy (canonical)
+
+Full ranked next-competition plan logged in **`post_comp/COMPETITION_TARGETS.md`**.
+
+- **Now:** Mega Agent-A-Thon (Jun 4–14) + ICML AI4Math Codabench track (~Jun 15)
+- **Watch:** AIMO Progress Prize 4 (same game as 151B; multi-week sprint when it drops)
+- **Paper lane:** INFORMS DMS Best Student Paper (submit Jun 30)
+- **Optional:** USAII undergrad hackathon (Jun 21) if productized
+- **Deprioritize:** ARC Prize, AIMO3-scale Kaggle, AIXDATA (past), human-only exams
+
+---
+## [Rain] 2026-06-04 — Career bridge (canonical)
+
+See **`post_comp/CAREER_BRIDGE.md`**.
+
+---
+## [Rain] 2026-06-04 — NoThinking / 151B paper — external validation (GOLD)
+
+**Quote (independent confirmation):** "The field independently confirmed truncation + thinking-length as the core failure axes, and that inference-time scaling beats SFT on this model — direct support for your token-budget findings."
+
+**Repo tie-in (win-forward safe):** Canonical win remains `30_05_slot4_aggressive_v2` (0.745/0.684); this validates the *mechanism* narrative (inference OS, token budgets, SC) filed in `inference/FINDINGS.md` and R20 audits (`inference/SCRATCH.md` L338), not a revised pick story. SFT ceiling vs inference: `strategy/INFERENCE_TECHNIQUES.md` L9–L13; debrief inference-first: `post_comp/POST_COMP_DEBRIEF_MEETING.md` L57–L63. Paper draft artifact: `gradescope/milestone_report.tex` (SFT pathology + inference-time levers). INFORMS lane deadline Jun 30 per entries above.

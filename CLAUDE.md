@@ -59,9 +59,10 @@ Every operational folder has a `SCRATCH.md`. When you discover something interes
 - NEVER split a prompt across messages
 
 ## Post-competition phase (after deadline)
-- `post_comp/README.md` — scratch attribution, debrief meeting procedure, read order
+- `post_comp/README.md` — scratch attribution, debrief procedure, **win-forward narrative lock**
 - `post_comp/POST_COMP_SCRATCH.md` — shared post-deadline scratchpad
-- `post_comp/POST_COMP_DEBRIEF_MEETING.md` — debrief goals and narrative
+- `post_comp/POST_COMP_DEBRIEF_MEETING.md` — debrief goals; canonical win: `30_05_slot4_aggressive_v2` (0.745/0.684). No late-submit or Kaggle pick-selection narratives in post-comp docs.
+- `post_comp/POST_COMP_STARTUP_SCRATCH.md` + `POST_COMP_STARTUP_README.md` — startup scratch (Rain-driven; append only from conversation).
 
 ## Folder-specific CLAUDE.md files
 - `strategy/CLAUDE.md` — Central strategy agent (claude_strategy in Claude.ai)
