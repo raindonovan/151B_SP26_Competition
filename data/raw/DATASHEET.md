@@ -36,7 +36,7 @@ and **answers** (labels), plus a joined convenience view. Questions and answers 
 - `options` — list of MCQ option strings; `[]` for free-form.
 - `question_type` — one of **`MCQ`** (options present), **`FREE_SINGLE`** (no options, one
   required value), **`FREE_MULTI`** (no options, ≥2 required values). *Derived* (see Preprocessing).
-- `n_ans_slots` — number of required answer values (1–18). *Derived* from the answer.
+- `n_ans_slots` — number of required answer values (positive integer = answer length; observed range 1–42, private max 18, public max 42). *Derived* from the answer.
 - `is_matharena` — (private only) 1 if the item came from the MathArena benchmark (50 items), else 0.
 - `answer` — the official answer: a **string** for single-value items, a **list of strings**
   for multi-value items.
@@ -92,6 +92,14 @@ single-letter.)
 - `question_type` / `n_ans_slots` are *derived* heuristics (from options + answer shape), not
   an official field; re-derive if you disagree with the rule.
 - `is_matharena` exists only for the private set (it is a column of the private solution sheet).
+- **Public and private are not fully content-disjoint.** At least one item appears in both
+  (private id 784 == public id 117 — identical question and answer `17/60`), inherited from
+  the Kaggle source pools. Do not assume the two sets share no items (relevant if public is
+  used to tune/validate something later measured on private).
+
+*Audited 2026-06-28 (Codex, `findings/data_raw_audit.md`): build verified faithful to source
+on counts, joins, answer fidelity, types, options, `is_matharena`, encoding; the two items
+above were its findings.*
 
 ## Maintenance
 
