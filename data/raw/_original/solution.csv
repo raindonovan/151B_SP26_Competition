@@ -1,0 +1,944 @@
+id,answer,options,Usage,is_matharena
+0,"[""4"", ""16""]",[],Private,0
+1,A,"[""Unchanged"", ""Increased by ten percent"", ""Reduced by one percent"", ""Increased by one percent"", ""Decreased by ten percent"", ""Halved"", ""Unable to determine"", ""Doubled"", ""Decreased by five percent"", ""Expanded tenfold""]",Private,0
+2,"[""-1.46059348668044"", ""1.64485"", ""A""]",[],Private,0
+3,B,"[""50%"", ""40%"", ""55%"", ""30%"", ""35%"", ""60%"", ""45%"", ""25%"", ""10%"", ""20%""]",Private,0
+4,"[""-0.573462344363328"", ""0.81923192051904"", ""-0.7""]",[],Private,0
+5,"[""541.3"", ""63.25"", ""135.325"", ""4.21666666666667"", ""32.0928853754941""]",[],Private,0
+6,"[""148.022""]",[],Public,0
+7,\frac{448}{3},[],Private,1
+8,"[""420""]",[],Private,0
+9,"[""L-8*x"", ""6*F""]",[],Private,0
+10,E,"[""$$\n\\int_{\\mid z \\mid=\\rho} \\frac{\\mid\\mathrm{d} z \\mid} {\\mid z-a \\mid^{2}}=\\left\\{\\begin{array} {c c} {{{\\frac{\\pi \\rho} {\\mid a \\mid^{2}-\\rho},}}} & {{{if \\mid a \\mid< \\rho,}}} \\\\ {{{\\frac{\\pi \\rho} {\\rho^{2}-\\mid a \\mid},}}} & {{{ if \\mid a \\mid> \\rho.}}} \\\\ \\end{array} \\right.\n$$"", ""$$\n\\int_{\\mid z \\mid=\\rho} \\frac{\\mid\\mathrm{d} z \\mid} {\\mid z-a \\mid^{2}}=\\left\\{\\begin{array} {c c} {{{\\frac{\\pi \\rho^{2}} {\\rho^{2}-\\mid a \\mid^{2}},}}} & {{{if \\mid a \\mid< \\rho,}}} \\\\ {{{\\frac{\\pi \\rho^{2}} {\\mid a \\mid^{2}-\\rho^{2}},}}} & {{{ if \\mid a \\mid> \\rho.}}} \\\\ \\end{array} \\right.\n$$"", ""$$\n\\int_{\\mid z \\mid=\\rho} \\frac{\\mid\\mathrm{d} z \\mid} {\\mid z-a \\mid^{2}}=\\left\\{\\begin{array} {c c} {{{\\frac{\\pi \\rho} {\\rho^{2}-\\mid a \\mid^{2}},}}} & {{{if \\mid a \\mid> \\rho,}}} \\\\ {{{\\frac{\\pi \\rho} {\\mid a \\mid^{2}-\\rho^{2}},}}} & {{{ if \\mid a \\mid< \\rho.}}} \\\\ \\end{array} \\right.\n$$"", ""$$\n\\int_{\\mid z \\mid=\\rho} \\frac{\\mid\\mathrm{d} z \\mid} {\\mid z-a \\mid^{2}}=\\left\\{\\begin{array} {c c} {{{\\frac{2 \\pi\\rho} {\\mid a \\mid^{2}+\\rho^{2}},}}} & {{{if \\mid a \\mid< \\rho,}}} \\\\ {{{\\frac{2 \\pi\\rho} {\\rho^{2}+\\mid a \\mid^{2}},}}} & {{{ if \\mid a \\mid> \\rho.}}} \\\\ \\end{array} \\right.\n$$"", ""$$\n\\int_{\\mid z \\mid=\\rho} \\frac{\\mid\\mathrm{d} z \\mid} {\\mid z-a \\mid^{2}}=\\left\\{\\begin{array} {c c} {{{\\frac{2 \\pi\\rho} {\\rho^{2}-\\mid a \\mid^{2}},}}} & {{{if \\mid a \\mid< \\rho,}}} \\\\ {{{\\frac{2 \\pi\\rho} {\\mid a \\mid^{2}-\\rho^{2}},}}} & {{{ if \\mid a \\mid> \\rho.}}} \\\\ \\end{array} \\right.\n$$"", ""$$\n\\int_{\\mid z \\mid=\\rho} \\frac{\\mid\\mathrm{d} z \\mid} {\\mid z-a \\mid^{2}}=\\left\\{\\begin{array} {c c} {{{\\frac{2 \\pi} {\\rho^{2}+\\mid a \\mid^{2}},}}} & {{{if \\mid a \\mid< \\rho,}}} \\\\ {{{\\frac{2 \\pi} {\\mid a \\mid^{2}+\\rho^{2}},}}} & {{{ if \\mid a \\mid> \\rho.}}} \\\\ \\end{array} \\right.\n$$"", ""$$\n\\int_{\\mid z \\mid=\\rho} \\frac{\\mid\\mathrm{d} z \\mid} {\\mid z-a \\mid^{2}}=\\left\\{\\begin{array} {c c} {{{\\frac{2 \\pi\\rho} {\\rho^{2}+\\mid a \\mid^{2}},}}} & {{{if \\mid a \\mid> \\rho,}}} \\\\ {{{\\frac{2 \\pi\\rho} {\\mid a \\mid^{2}+\\rho^{2}},}}} & {{{ if \\mid a \\mid< \\rho.}}} \\\\ \\end{array} \\right.\n$$"", ""$$\n\\int_{\\mid z \\mid=\\rho} \\frac{\\mid\\mathrm{d} z \\mid} {\\mid z-a \\mid^{2}}=\\left\\{\\begin{array} {c c} {{{\\frac{\\pi \\rho} {\\rho^{2}+\\mid a \\mid^{2}},}}} & {{{if \\mid a \\mid< \\rho,}}} \\\\ {{{\\frac{\\pi \\rho} {\\mid a \\mid^{2}+\\rho^{2}},}}} & {{{ if \\mid a \\mid> \\rho.}}} \\\\ \\end{array} \\right.\n$$"", ""$$\n\\int_{\\mid z \\mid=\\rho} \\frac{\\mid\\mathrm{d} z \\mid} {\\mid z-a \\mid^{2}}=\\left\\{\\begin{array} {c c} {{{\\frac{2 \\pi} {\\rho^{2}-\\mid a \\mid^{2}},}}} & {{{if \\mid a \\mid< \\rho,}}} \\\\ {{{\\frac{2 \\pi} {\\mid a \\mid^{2}-\\rho^{2}},}}} & {{{ if \\mid a \\mid> \\rho.}}} \\\\ \\end{array} \\right.\n$$"", ""$$\n\\int_{\\mid z \\mid=\\rho} \\frac{\\mid\\mathrm{d} z \\mid} {\\mid z-a \\mid^{2}}=\\left\\{\\begin{array} {c c} {{{\\frac{\\pi \\rho} {\\rho-\\mid a \\mid},}}} & {{{if \\mid a \\mid< \\rho,}}} \\\\ {{{\\frac{\\pi \\rho} {\\mid a \\mid-\\rho},}}} & {{{ if \\mid a \\mid> \\rho.}}} \\\\ \\end{array} \\right.\n$$""]",Public,0
+11,"[""0.939118834890724""]",[],Private,0
+12,"[""2*c+4*p = 70"", ""11""]",[],Private,0
+13,C,"[""C + \\frac{3}{2} \\cdot \\left( \\frac{3}{2 \\cdot \\left( \\cot(4 \\cdot x) \\right)^2} + \\frac{3}{4 \\cdot \\left( \\cot(4 \\cdot x) \\right)^4} + \\frac{1}{6 \\cdot \\left( \\cot(4 \\cdot x) \\right)^6} + \\ln\\left( \\left| \\cot(4 \\cdot x) \\right| \\right) \\right)"", ""C + \\frac{3}{2} \\cdot \\left( \\frac{3}{2 \\cdot \\left( \\cot(4 \\cdot x) \\right)^2} + \\frac{3}{4 \\cdot \\left( \\cot(4 \\cdot x) \\right)^4} - \\frac{1}{6 \\cdot \\left( \\cot(4 \\cdot x) \\right)^6} + \\ln\\left( \\left| \\cot(4 \\cdot x) \\right| \\right) \\right)"", ""C + \\frac{3}{2} \\cdot \\left( \\frac{3}{2 \\cdot \\left( \\cot(4 \\cdot x) \\right)^2} + \\frac{3}{4 \\cdot \\left( \\cot(4 \\cdot x) \\right)^4} + \\frac{1}{6 \\cdot \\left( \\cot(4 \\cdot x) \\right)^6} - \\ln\\left( \\left| \\cot(4 \\cdot x) \\right| \\right) \\right)"", ""C + \\frac{3}{2} \\cdot \\left( \\frac{3}{2 \\cdot \\left( \\cot(4 \\cdot x) \\right)^2} + \\frac{3}{4 \\cdot \\left( \\cot(4 \\cdot x) \\right)^4} - \\frac{1}{6 \\cdot \\left( \\cot(4 \\cdot x) \\right)^6} - \\ln\\left( \\left| \\cot(4 \\cdot x) \\right| \\right) \\right)""]",Public,0
+14,"[""log(35)/log(3)""]",[],Private,0
+15,"[""8"", ""NONE""]",[],Private,0
+16,858,[],Private,1
+17,C,"[""182"", ""189"", ""181"", ""187"", ""191"", ""193"", ""199"", ""197"", ""183"", ""185""]",Private,0
+18,H,"[""30"", ""8"", ""40"", ""35"", ""45/5"", ""20"", ""10"", ""Both 9 and 45/5 are correct"", ""9"", ""50""]",Private,0
+19,E,"[""182"", ""177"", ""171"", ""173"", ""181"", ""183"", ""179"", ""175"", ""178"", ""187""]",Private,0
+20,"[""228"", ""229"", ""250""]",[],Private,0
+21,"[""56.9333333333333+0.291547619047619*t"", ""67.4290476190476""]",[],Private,0
+22,G,"[""252"", ""257"", ""259"", ""258"", ""253"", ""251"", ""255"", ""256"", ""250"", ""254""]",Public,0
+23,H,"[""20km"", ""15km"", ""14km"", ""25km"", ""22km"", ""18km"", ""12km"", ""10km"", ""8km"", ""5km""]",Private,0
+24,"[""1""]",[],Private,0
+25,"[""0.126984126984127"", ""0.0952380952380952"", ""0.174603174603175"", ""0.26984126984127"", ""0.206349206349206"", ""0.126984126984127"", ""8"", ""14"", ""25"", ""42"", ""55"", ""63""]",[],Public,0
+26,I,"[""233"", ""235"", ""239"", ""231"", ""238"", ""236"", ""237"", ""234"", ""232"", ""230""]",Public,0
+27,"[""(0.333333333333333, 0.666666666666667)"", ""(1.16666666666667, 1.83333333333333)""]",[],Private,0
+28,"[""2"", ""70"", ""1"", ""768"", ""2"", ""140""]",[],Private,0
+29,"[""38.2""]",[],Private,0
+30,"[""2944"", ""665""]",[],Private,0
+31,"[""-3"", ""42""]",[],Private,0
+32,"[""10.0498756211209"", ""-1"", ""-3.5""]",[],Private,0
+33,F,"[""27"", ""32"", ""25"", ""34"", ""26"", ""28"", ""22"", ""24"", ""20"", ""30""]",Private,0
+34,J,"[""The interquartile range (IQR) of the data is 7."", ""The data is right-skewed."", ""There are no outliers in the data"", ""Both 3 and 20 are outliers."", ""All numerical values are anomalies."", ""3 is an outlier."", ""Both the minimum and maximum values are outliers."", ""The data exhibits a left-skewed distribution."", ""The data exhibits a symmetrical distribution."", ""20 is an outlier.""]",Private,0
+35,"[""Down"", ""ln(p)""]",[],Private,0
+36,"[""40*x^10*y^9""]",[],Private,0
+37,"[""TOMMY"", ""CHUCKY"", ""7""]",[],Private,0
+38,B,"[""$$\n\\frac{\\pi} {6} i\n$$"", ""$$\n- \\frac{\\pi} {2} i\n$$"", ""$$\n\\pi^{2} i\n$$"", ""$$\n- \\pi i\n$$"", ""$$\n- \\frac{\\pi} {3}\n$$"", ""$$\n\\frac{\\pi} {4} - i\n$$"", ""$$\n\\frac{\\pi} {3} i\n$$"", ""$$\n- \\frac{i} {\\pi}\n$$"", ""$$\n\\frac{1} {\\pi} i\n$$"", ""$$\n\\frac{i} {2 \\pi}\n$$""]",Public,0
+39,"[""475""]",[],Private,0
+40,"[""D = 800-50*d""]",[],Private,0
+41,2112,[],Private,1
+42,"[""No"", ""Yes"", ""A""]",[],Public,0
+43,"[""0.375"", ""14"", ""28""]",[],Public,0
+44,"[""T"", ""T"", ""T"", ""F""]",[],Private,0
+45,F,"[""[39, 39, 40, 41, 41, 42, 42, 43, 44, 44]"", ""[43, 43, 44, 45, 45, 46, 46, 47, 48, 48]"", ""[36, 36, 37, 38, 38, 39, 39, 40, 41, 41]"", ""[44, 44, 45, 46, 46, 47, 47, 48, 49, 49]"", ""[35, 35, 36, 37, 37, 38, 38, 39, 40, 40]"", ""[40, 40, 41, 42, 42, 43, 43, 44, 45, 45]"", ""[42, 42, 43, 44, 44, 45, 45, 46, 47, 47]"", ""[37, 37, 38, 39, 39, 40, 40, 41, 42, 42]"", ""[41, 41, 42, 43, 43, 44, 44, 45, 46, 46]"", ""[38, 38, 39, 40, 40, 41, 41, 42, 43, 43]""]",Private,0
+46,"[""1.64485"", ""1.71926746683576"", ""1.95996"", ""-1.95996"", ""1.71926746683576"", ""B"", ""A""]",[],Private,0
+47,F,"[""3,5,7"", ""1,4,5"", ""2,5,6"", ""1,3,5"", ""2,4,6"", ""1,2,4"", ""1,3,4"", ""2,3,5"", ""2,3,4"", ""1,2,3""]",Private,0
+48,"[""C""]",[],Public,0
+49,"[""0.0143254""]",[],Private,0
+50,"[""140*A+150*B = 5930"", ""3*A+4*B = 142""]",[],Private,0
+51,"[""25452""]",[],Private,0
+52,"[""231"", ""385""]",[],Private,0
+53,F,"[""1.95"", ""1.50"", ""1.65"", ""1.75"", ""2.10"", ""2.03"", ""1.85"", ""Both 2.03 and 1.50 are correct"", ""2.15"", ""2.50""]",Public,0
+54,1/2,[],Public,1
+55,"[""y = 5*x^4""]",[],Private,0
+56,"[""D"", ""D"", ""A""]",[],Private,0
+57,"[""4""]",[],Public,0
+58,59,[],Public,1
+59,"[""49""]",[],Private,0
+60,"[""C"", ""A""]",[],Public,0
+61,"[""0.76*c"", ""1"", ""150"", ""114+0.69*(c-150)"", ""150""]",[],Private,0
+62,"[""-15"", ""192"", ""0""]",[],Public,0
+63,"[""18.9294957788952"", ""15.8705042211048""]",[],Private,0
+64,"[""-350*cos(0.523599*t)+850""]",[],Private,0
+65,"[""-6/7"", ""2/7""]",[],Private,0
+66,"[""sqrt(1012.5^2+(2*675)^2-2*1012.5*2*675*cos(pi*170/180))""]",[],Private,0
+67,"[""7.6*1.09^t"", ""13.8931"", ""5.38403""]",[],Private,0
+68,"[""-2.85714285714286"", ""6.98638131005772"", ""-1.08200356160092"", ""3.70728"", ""-3.70728"", ""A"", ""-12.6466009951146"", ""6.93231528082893""]",[],Private,0
+69,G,"[""$\\frac{4\\pi-\\pi^2}{5}$"", ""$\\frac{4\\pi+\\pi^2}{4}$"", ""$\\frac{4\\pi-\\pi^2}{8}$"", ""$0$"", ""$\\frac{4\\pi-\\pi^2}{6}$"", ""$2\\pi$"", ""$\\frac{4\\pi-\\pi^2}{2}$"", ""$\\frac{4\\pi-\\pi^2}{4}$"", ""$\\frac{4\\pi-\\pi^2}{3}$"", ""$\frac{4\\pi+\\pi^2}{2}$""]",Private,0
+70,"[""5/56""]",[],Private,0
+71,"[""(134-18)/100"", ""18""]",[],Private,0
+72,"[""-0.835165"", ""-0.918681"", ""0.395"", ""-2.32577"", ""IV""]",[],Private,0
+73,E,"[""$$\nf_{UV}(u, v)= \\frac{1} {2 \\pi} \\cdot\\frac{1} {1+v^{2}} \\mathrm{e}^{u} \\,, \\quad u < 0 \\,, v \\in\\, {R}\n$$"", ""$$\nf_{UV}(u, v)= \\frac{1} {4 \\pi} \\cdot\\frac{1} {1+u^{2}} \\mathrm{e}^{-\\frac{u} {v}} \\,, \\quad u > 0 \\,, v \\in\\, {R}\n$$"", ""$$\nf_{UV}(u, v)= \\frac{1} {2 \\pi} \\cdot u \\cdot\\frac{1} {1+v^{2}} \\mathrm{e}^{-\\frac{1} {2}} \\,, \\quad u > 0 \\,, v \\in\\, {R}\n$$"", ""$$\nf_{UV}(u, v)= \\frac{1} {4 \\pi} \\cdot\\frac{v} {1+u^{2}} \\mathrm{e}^{-\\frac{v} {2}} \\,, \\quad u > 0 \\,, v \\in\\, {R}\n$$"", ""$$\nf_{UV}(u, v)= \\frac{1} {2 \\pi} \\cdot\\frac{1} {1+v^{2}} \\mathrm{e}^{-\\frac{u} {2}} \\,, \\quad u > 0 \\,, v \\in\\, {R}\n$$"", ""$$\nf_{UV}(u, v)= \\frac{1} {\\pi} \\cdot\\frac{1} {1+v^{3}} \\mathrm{e}^{-\\frac{1} {2}} \\,, \\quad u > 0 \\,, v \\in\\, {R}\n$$"", ""$$\nf_{UV}(u, v)= \\frac{1} {2 \\pi} \\cdot\\frac{u} {1+v^{2}} \\mathrm{e}^{-\\frac{v} {2}} \\,, \\quad u > 0 \\,, v \\in\\, {R}\n$$"", ""$$\nf_{UV}(u, v)= \\frac{1} {\\pi} \\cdot\\frac{1} {u+v^{2}} \\mathrm{e}^{-\\frac{u} {2}} \\,, \\quad u > 0 \\,, v \\in\\, {R}\n$$"", ""$$\nf_{UV}(u, v)= \\frac{u} {2 \\pi} \\cdot\\frac{1} {1+v} \\mathrm{e}^{-\\frac{u^{2}} {2}} \\,, \\quad u \\geq 0 \\,, v \\in\\, {R}\n$$"", ""$$\nf_{UV}(u, v)= \\frac{1} {2 \\pi} \\cdot\\frac{1} {1+v^{2}} \\mathrm{e}^{-u} \\,, \\quad u > 0 \\,, v \\in\\, {R}\n$$""]",Private,0
+74,"[""(12.356689642138,25.043310357862)""]",[],Private,0
+75,"[""(-infinity, 21250)""]",[],Public,0
+76,"[""-4"", ""-11"", ""3"", ""33"", ""-32"", ""9"", ""-14"", ""-13""]",[],Private,0
+77,"[""C"", ""D"", ""A""]",[],Private,0
+78,G,"[""$$9$$"", ""$$8$$"", ""$$7$$"", ""4"", ""10"", ""5"", ""$$6$$""]",Public,0
+79,"[""25/7""]",[],Private,0
+80,G,"[""\\frac{1}{4\\sqrt{3}}"", ""2\\sqrt{12}"", ""\\frac{4\\sqrt{3}}{108}"", ""2\\sqrt{27}"", ""\\frac{1}{4\\sqrt{27}}"", ""\\frac{4\\sqrt{3}}{27}"", ""\\frac{\\sqrt{3}}{12}"", ""\\frac{4\\sqrt{3}}{33}"", ""\\frac{4\\sqrt{3}}{12}"", ""\\frac{1}{2\\sqrt{3}}""]",Private,0
+81,"[""5241/66""]",[],Private,0
+82,"[""(78.6-72.5)/[sqrt(11.3575+9.9008)]"", ""1.67655"", ""No""]",[],Private,0
+83,355,[],Public,1
+84,"[""-4"", ""5"", ""-11""]",[],Private,0
+85,F,"[""At least 100 people"", ""2"", ""At least 1 person"", ""At least 367 people"", ""At least 50 people"", ""3"", ""10"", ""At least 23 people"", ""20"", ""At least 5 people""]",Private,0
+86,"[""16""]",[],Private,0
+87,"[""OBSERVATION"", ""OBSERVATION"", ""EXPERIMENT""]",[],Private,0
+88,C,"[""[1, 12, 5, 3, 6, 7, 0, 15, 5, 5]"", ""[2, 13, 5, 3, 5, 6, 1, 15, 5, 5]"", ""[1, 13, 5, 3, 5, 7, 1, 15, 5, 5]"", ""[0, 13, 6, 3, 5, 7, 2, 15, 5, 5]"", ""[1, 13, 5, 3, 4, 7, 1, 15, 5, 5]"", ""[1, 12, 5, 3, 5, 7, 1, 15, 5, 4]"", ""[1, 13, 5, 3, 6, 7, 1, 15, 6, 5]"", ""[1, 14, 5, 2, 5, 7, 1, 15, 4, 5]"", ""[1, 13, 5, 4, 5, 7, 1, 16, 5, 5]"", ""[2, 13, 4, 3, 5, 8, 1, 14, 5, 5]""]",Private,0
+89,"[""46.5""]",[],Private,0
+90,"[""8 + 7 * (n-1)""]",[],Public,0
+91,J,"[""[1050, 1052, 1054, 1060, 1070, 1071, 1072, 1150, 1151, 1152]"", ""[1023, 1025, 1026, 1034, 1035, 1040, 1041, 1110, 1112, 1113]"", ""[1020, 1023, 1030, 1035, 1040, 1090, 1091, 1170, 1171, 1172]"", ""[1031, 1032, 1033, 1045, 1050, 1060, 1061, 1140, 1141, 1142]"", ""[1015, 1016, 1017, 1041, 1042, 1080, 1081, 1160, 1161, 1162]"", ""[1003, 1005, 1024, 1025, 1026, 1040, 1045, 1120, 1121, 1122]"", ""[1060, 1062, 1064, 1075, 1076, 1101, 1103, 1180, 1181, 1182]"", ""[1011, 1014, 1015, 1032, 1033, 1050, 1051, 1130, 1131, 1132]"", ""[1040, 1043, 1055, 1056, 1065, 1110, 1112, 1190, 1191, 1192]"", ""[1012, 1013, 1020, 1021, 1022, 1030, 1031, 1100, 1101, 1102]""]",Private,0
+92,E,"[""$$\nI= \\frac{1} {n} \\,-\\, \\frac{1} {n \\,+\\, m} \\,+\\, \\frac{2} {n \\,+\\, 2 m}-\\frac{2} {n \\,+\\, 3 m} \\,+\\, \\cdots\n$$"", ""$$\nI= \\frac{1} {m} \\,-\\, \\frac{2} {m \\,+\\, n} \\,+\\, \\frac{3} {m \\,+\\, 2 n}-\\frac{4} {m \\,+\\, 3 n} \\,+\\, \\cdots\n$$"", ""$$\nI= \\frac{1} {n} \\,-\\, \\frac{1} {n \\,+\\, m} \\,+\\, \\frac{1} {n \\,+\\, 2 m}-\\frac{1} {n \\,+\\, 3 m} \\,+\\, \\cdots\n$$"", ""$$\nI= \\frac{1} {m} \\,-\\, \\frac{1} {m \\,+\\, 3n} \\,+\\, \\frac{1} {m \\,+\\, 5n}-\\frac{1} {m \\,+\\, 7n} \\,+\\, \\cdots\n$$"", ""$$\nI= \\frac{1} {m} \\,-\\, \\frac{1} {m \\,+\\, n} \\,+\\, \\frac{1} {m \\,+\\, 2 n}-\\frac{1} {m \\,+\\, 3 n} \\,+\\, \\cdots\n$$"", ""$$\nI= \\frac{1} {m \\,+\\, n} \\,-\\, \\frac{1} {m} \\,+\\, \\frac{1} {n}-\\frac{1} {m \\,+\\, 2n} \\,+\\, \\cdots\n$$"", ""$$\nI= \\frac{1} {m \\,+\\, n} \\,-\\, \\frac{1} {m \\,+\\, 2n} \\,+\\, \\frac{1} {m \\,+\\, 3n}-\\frac{1} {m \\,+\\, 4n} \\,+\\, \\cdots\n$$"", ""$$\nI= \\frac{1} {m^{2}} \\,-\\, \\frac{1} {m^{2} \\,+\\, n} \\,+\\, \\frac{1} {m^{2} \\,+\\, 2 n}-\\frac{1} {m^{2} \\,+\\, 3 n} \\,+\\, \\cdots\n$$"", ""$$\nI= \\frac{1} {2m} \\,-\\, \\frac{1} {2m \\,+\\, n} \\,+\\, \\frac{1} {2m \\,+\\, 2 n}-\\frac{1} {2m \\,+\\, 3 n} \\,+\\, \\cdots\n$$"", ""$$\nI= \\frac{1} {n} \\,-\\, \\frac{1} {n \\,+\\, 2m} \\,+\\, \\frac{1} {n \\,+\\, 3m}-\\frac{1} {n \\,+\\, 4m} \\,+\\, \\cdots\n$$""]",Public,0
+93,63,[],Private,1
+94,C,"[""( int_0^1 {left[ {sqrt {1 - x} + sqrt {1 - x} } right]dx} )"", ""( int_0^1 {left[ {sqrt {1 - x} - sqrt {1 - x} } right]dx} )"", ""( int_0^1 {left[ {sqrt {1 - x} - ( - sqrt {1 - x} )} right]dx} )"", ""( int_0^1 {sqrt {1 - x} dx} )"", ""( int_0^1 {left[ {sqrt {1 - x} + ( - sqrt {1 - x} )} right]dx} )"", ""( int_0^1 {left[ {sqrt {1 - x} + (1 - sqrt {1 - x})} right]dx} )"", ""( int_0^1 {( - sqrt {1 - x} )dx} )"", ""( int_0^1 {(1 - {y^2})dy} )"", ""( int_0^1 {left[ {sqrt {1 - x} + ( - 2sqrt {1 - x} )} right]dx} )"", ""( int_0^1 {left[ {sqrt {1 - x} - 2( - sqrt {1 - x} )} right]dx} )""]",Public,0
+95,\frac{9\sqrt{30}}{4},[],Private,1
+96,"[""158%""]",[],Private,0
+97,"[""0"", ""4"", ""4""]",[],Private,0
+98,A,"[""$(1^2, 2, 8^6), 8$"", ""$(1^2, 5, 5^6), 6$"", ""$(1^3, 1, 8^5), 15$"", ""$(1^1, 4, 7^6), 11$"", ""$(1^2, 4, 6^4), 12$"", ""$(2^2, 1, 9^5), 9$"", ""$(1^2, 3, 7^5), 10$"", ""$(2^1, 2, 7^6), 7$"", ""$(2^2, 3, 6^5), 5$"", ""$(1^2, 6, 4^6), 4$""]",Public,0
+99,"[""-6"", ""12"", ""-6""]",[],Private,0
+100,"[""(8100-90*70)/70""]",[],Private,0
+101,"[""A"", ""C"", ""A"", ""A""]",[],Public,0
+102,I,"[""3"", ""4"", ""7"", ""8"", ""2"", ""9"", ""0"", ""5"", ""1"", ""6""]",Private,0
+103,"[""11.3137084989848""]",[],Private,0
+104,"[""7.7*31*pi/180""]",[],Private,0
+105,"[""24"", ""9.114091653405""]",[],Public,0
+106,"[""2.16666666666667""]",[],Private,0
+107,H,"[""$$\\left( \\dfrac { 2 }{ 5 } ,-\\dfrac { 2 }{ 5 } \\right)$$"", ""\\left( \\dfrac { 1 }{ 5 } ,-\\dfrac { 1 }{ 5 } \\right)"", ""\\left( \\dfrac { 1 }{ 4 } ,-\\dfrac { 1 }{ 4 } \\right)"", ""\\left( \\dfrac { 1 }{ 2 } ,-\\dfrac { 1 }{ 2 } \\right)"", ""\\left( \\dfrac { 4 }{ 15 } ,-\\dfrac { 4 }{ 15 } \\right)"", ""$$None\\ of\\ these$$"", ""\\left( \\dfrac { 3 }{ 10 } ,-\\dfrac { 3 }{ 10 } \\right)"", ""$$\\left( \\dfrac { 1 }{ 3 } ,-\\dfrac { 1 }{ 3 } \\right)$$"", ""\\left( \\dfrac { 1 }{ 7 } ,-\\dfrac { 1 }{ 7 } \\right)"", ""$$\\left( \\dfrac { 1 }{ 13 } ,-\\dfrac { 1 }{ 13 } \\right)$$""]",Private,0
+108,"[""72"", ""2*6*x""]",[],Private,0
+109,B,"[""Eigenvalues are 5, 2 for the first matrix; 1, 2, 3 for the second matrix; 1, 1, 3 for the third matrix"", ""Eigenvalues are 4, 2 for the first matrix; 1, 1, 5 for the second matrix; 1, -1, 3 for the third matrix"", ""Eigenvalues are 5, 1 for the first matrix; 1, 2, 2 for the second matrix; 2, -1, 1 for the third matrix"", ""Eigenvalues are 3, 2 for the first matrix; 1, 1, 4 for the second matrix; 1, -1, 3 for the third matrix"", ""Eigenvalues are 2, 3 for the first matrix; 1, 1, 2 for the second matrix; 2, -2, 3 for the third matrix"", ""Eigenvalues are 4, 1 for the first matrix; 3, 1, 1 for the second matrix; 1, -1, 4 for the third matrix"", ""Eigenvalues are 4, 4 for the first matrix; 2, 1, 5 for the second matrix; -1, 1, 4 for the third matrix"", ""Eigenvalues are 3, 1 for the first matrix; 1, 3, 4 for the second matrix; 3, -1, 1 for the third matrix"", ""Eigenvalues are 4, 2 for the first matrix; 1, 2, 3 for the second matrix; 1, -1, 2 for the third matrix"", ""Eigenvalues are 2, 4 for the first matrix; 2, 2, 3 for the second matrix; -1, 1, 3 for the third matrix""]",Private,0
+110,"[""A"", ""(3, 9)""]",[],Private,0
+111,"[""8*x^3""]",[],Private,0
+112,675,[],Private,1
+113,"[""1-2*[(x+4)/5]^2""]",[],Public,0
+114,D,"[""P=\\frac{1}{2^{n+1}}\\cdot\\frac{\\sin\\left(2^{n+1}\\cdot a\\right)}{\\sin(2^{n+1}a)}"", ""P=\\frac{1}{2^{n+2}}\\cdot\\frac{\\sin\\left(2^{n+1}\\cdot a\\right)}{\\sin(a)}"", ""P=\\frac{1}{2^{n+1}}\\cdot\\frac{\\sin\\left(2^{n+1}\\cdot a\\right)}{\\sin(2^{n+2}a)}"", ""P=\\frac{1}{2^{n+1}}\\cdot\\frac{\\sin\\left(2^{n+1}\\cdot a\\right)}{\\sin(a)}"", ""P=\\frac{1}{2^{n}}\\cdot\\frac{\\sin\\left(2^{n}\\cdot a\\right)}{\\sin(a)}"", ""P=\\frac{1}{2^{n+1}}\\cdot\\frac{\\sin\\left(2^{n+1}\\cdot a\\right)}{\\sin(2a)}"", ""P=\\frac{1}{2^{n+1}}\\cdot\\frac{\\sin\\left(2^{n+1}\\cdot a\\right)}{\\sin(2^{n}a)}"", ""P=\\frac{1}{2^{n+1}}\\cdot\\frac{\\sin\\left(2^{n}\\cdot a\\right)}{\\sin(a)}"", ""P=\\frac{1}{2^{n+1}}\\cdot\\frac{\\sin\\left(2^{n+2}\\cdot a\\right)}{\\sin(a)}"", ""P=\\frac{1}{2^n}\\cdot\\frac{\\sin\\left(2^{n+1}\\cdot a\\right)}{\\sin(a)}""]",Private,0
+115,"[""11*x+-1200"", ""11"", ""109"", ""0.0909091*y+109.091"", ""1958""]",[],Private,0
+116,"[""30"", ""6""]",[],Private,0
+117,B,"[""2017"", ""2020"", ""2011"", ""2019"", ""2014"", ""2013"", ""2012"", ""2018"", ""2016"", ""2015""]",Private,0
+118,"[""3.6""]",[],Private,0
+119,"[""A"", ""C"", ""B"", ""D""]",[],Private,0
+120,138,[],Private,1
+121,"[""35""]",[],Private,0
+122,"[""1174.8"", ""55""]",[],Private,0
+123,G,"[""{{x}^{2}}sin y-{{y}^{2}}cos x+C"", ""{{x}^{2}}cos y-{{y}^{2}}cos x-C"", ""${{x}^{2}}cos y-{{y}^{2}}cos x+C$"", ""{{x}^{2}}cos y+{{y}^{2}}sin x+C"", ""{{x}^{2}}sin y+{{y}^{2}}cos x-C"", ""${{x}^{2}}sin y-{{y}^{2}}sin x+C$"", ""${{x}^{2}}cos y+{{y}^{2}}cos x+C$"", ""${{x}^{2}}sin y+{{y}^{2}}sin x+C$"", ""{{x}^{2}}sin y-{{y}^{2}}cos x-C"", ""{{x}^{2}}cos y-{{y}^{2}}sin x+C""]",Private,0
+124,H,"[""5"", ""1"", ""-4"", ""2"", ""4"", ""-2"", ""-1"", ""0"", ""-3"", ""3""]",Private,0
+125,G,"[""\\boxed{9}"", ""\\boxed{16}"", ""\\boxed{5}"", ""\\boxed{7}"", ""\\boxed{6}"", ""\\boxed{14}"", ""\\boxed{8}"", ""\\boxed{11}"", ""\\boxed{12}"", ""\\boxed{10}""]",Private,0
+126,"[""138000""]",[],Public,0
+127,"[""-ln(1-75/85)/0.2""]",[],Private,0
+128,"[""(y-3)/(y+3)""]",[],Private,0
+129,"[""5/[sin(t)]"", ""2.64575"", ""-3*cos(t)"", ""2.82843*tan(t)""]",[],Private,0
+130,"[""r^42""]",[],Private,0
+131,"[""0.108395""]",[],Private,0
+132,"[""10.8""]",[],Private,0
+133,"[""-0.866025406775933"", ""0.49999999481858"", ""-1.73205083150083"", ""2.00000002072568""]",[],Private,0
+134,"[""1"", ""5"", ""12"", ""20"", ""26"", ""30"", ""31"", ""27.625""]",[],Private,0
+135,"[""0.6""]",[],Private,0
+136,"[""A"", ""C""]",[],Public,0
+137,"[""36/234"", ""208/104""]",[],Private,0
+138,"[""7236.81""]",[],Public,0
+139,"[""201"", ""1/(n*(n+1))""]",[],Public,0
+140,"[""2744""]",[],Private,0
+141,A,"[""\\boxed{1}"", ""\\boxed{4}"", ""\\boxed{5}"", ""\\boxed{7}"", ""\\boxed{6}"", ""\\boxed{8}"", ""\\boxed{2}"", ""\\boxed{3}""]",Private,0
+142,"[""(7, 8, 9, 10, 11)""]",[],Private,0
+143,"[""0"", ""-8"", ""0"", ""6"", ""3"", ""5.19615""]",[],Private,0
+144,C,"[""5.06577774"", ""5.06577777"", ""5.06577778"", ""5.06577770"", ""5.06577779"", ""5.06577773"", ""5.06577776"", ""5.06577775"", ""5.06577772"", ""5.06577771""]",Private,0
+145,"[""x/5280"", ""4.73485"", ""25000""]",[],Public,0
+146,F,"[""(2*x+1)*sqrt(x^2+8*x)-3*ln(|x+4-sqrt(x^2+8*x)|)+C"", ""(2*x+1)*sqrt(x^2+8*x)+3*ln(|x+4+sqrt(x^2+8*x)|)+C/4"", ""(2*x+1)*sqrt(x^2+8*x)+3*ln(|x+4+sqrt(x^2+8*x)|)-C"", ""(2*x+1)*sqrt(x^2+8*x)+3*ln(|x+4+sqrt(x^2+8*x)|)+C/5"", ""(2*x+1)*sqrt(x^2+8*x)+3*ln(|x+4-sqrt(x^2+8*x)|)+C"", ""(2*x+1)*sqrt(x^2+8*x)+3*ln(|x+4+sqrt(x^2+8*x)|)+C"", ""(2*x+1)*sqrt(x^2+8*x)-3*ln(|x+4+sqrt(x^2+8*x)|)+C"", ""(2*x+1)*sqrt(x^2+8*x)+3*ln(|x+4+sqrt(x^2+8*x)|)+2*C"", ""(2*x+1)*sqrt(x^2+8*x)+3*ln(|x+4+sqrt(x^2+8*x)|)+C/3"", ""(2*x+1)*sqrt(x^2+8*x)+3*ln(|x+4+sqrt(x^2+8*x)|)+C/2""]",Public,0
+147,I,"[""\u03c0\u22c525/5"", ""\u03c0\u22c525/9"", ""\u03c0\u22c525/10"", ""\u03c0\u22c525/8"", ""\u03c0\u22c525/6"", ""\u03c0\u22c525/7"", ""\u03c0\u22c525/12"", ""\u03c0\u22c525/15"", ""\u03c0\u22c525/3"", ""\u03c0\u22c525/4""]",Public,0
+148,A,"[""$$\n\\begin{array} {l} {{{E ( Y_{i} )=\\frac{5 t} {\\mu}}}} \\\\ {{{\\mathrm{v a r} ( Y_{i} )=\\frac{1 0 t} {\\mu^{2}}}}} \\\\ {{{\\phi_{\\mathrm{r}} ( v )=\\operatorname{e x p} \\left( \\frac{\\mathrm{j} 5 v t} {\\mu-\\mathrm{j} v} \\right)}}} \\\\ \\end{array}\n$$"", ""$$\n\\begin{array} {l} {{{E ( Y_{i} )=\\frac{3 t} {\\mu}}}} \\\\ {{{\\mathrm{v a r} ( Y_{i} )=\\frac{9 t} {\\mu^{2}}}}} \\\\ {{{\\phi_{\\mathrm{r}} ( v )=\\operatorname{e x p} \\left( \\frac{\\mathrm{j} 4 v t} {\\mu-\\mathrm{j} v} \\right)}}} \\\\ \\end{array}\n$$"", ""$$\n\\begin{array} {l} {{{E ( Y_{i} )=\\frac{7 t} {\\mu}}}} \\\\ {{{\\mathrm{v a r} ( Y_{i} )=\\frac{12 t} {\\mu^{2}}}}} \\\\ {{{\\phi_{\\mathrm{r}} ( v )=\\operatorname{e x p} \\left( \\frac{\\mathrm{j} 7 v t} {\\mu-\\mathrm{j} v} \\right)}}} \\\\ \\end{array}\n$$"", ""$$\n\\begin{array} {l} {{{E ( Y_{i} )=\\frac{6 t} {\\mu}}}} \\\\ {{{\\mathrm{v a r} ( Y_{i} )=\\frac{8 t} {\\mu^{2}}}}} \\\\ {{{\\phi_{\\mathrm{r}} ( v )=\\operatorname{e x p} \\left( \\frac{\\mathrm{j} 6 v t} {\\mu-\\mathrm{j} v} \\right)}}} \\\\ \\end{array}\n$$"", ""$$\n\\begin{array} {l} {{{E ( Y_{i} )=\\frac{2 t} {\\mu}}}} \\\\ {{{\\mathrm{v a r} ( Y_{i} )=\\frac{4 t} {\\mu^{2}}}}} \\\\ {{{\\phi_{\\mathrm{r}} ( v )=\\operatorname{e x p} \\left( \\frac{\\mathrm{j} 2 v t} {\\mu-\\mathrm{j} v} \\right)}}} \\\\ \\end{array}\n$$"", ""$$\n\\begin{array} {l} {{{E ( Y_{i} )=\\frac{9 t} {\\mu}}}} \\\\ {{{\\mathrm{v a r} ( Y_{i} )=\\frac{6 t} {\\mu^{2}}}}} \\\\ {{{\\phi_{\\mathrm{r}} ( v )=\\operatorname{e x p} \\left( \\frac{\\mathrm{j} 9 v t} {\\mu-\\mathrm{j} v} \\right)}}} \\\\ \\end{array}\n$$"", ""$$\n\\begin{array} {l} {{{E ( Y_{i} )=\\frac{4 t} {\\mu}}}} \\\\ {{{\\mathrm{v a r} ( Y_{i} )=\\frac{8 t} {\\mu^{2}}}}} \\\\ {{{\\phi_{\\mathrm{r}} ( v )=\\operatorname{e x p} \\left( \\frac{\\mathrm{j} 5 v t} {\\mu-\\mathrm{j} 2v} \\right)}}} \\\\ \\end{array}\n$$"", ""$$\n\\begin{array} {l} {{{E ( Y_{i} )=\\frac{8 t} {\\mu}}}} \\\\ {{{\\mathrm{v a r} ( Y_{i} )=\\frac{6 t} {\\mu^{2}}}}} \\\\ {{{\\phi_{\\mathrm{r}} ( v )=\\operatorname{e x p} \\left( \\frac{\\mathrm{j} 8 v t} {\\mu-\\mathrm{j} v} \\right)}}} \\\\ \\end{array}\n$$"", ""$$\n\\begin{array} {l} {{{E ( Y_{i} )=\\frac{5 t} {\\mu}}}} \\\\ {{{\\mathrm{v a r} ( Y_{i} )=\\frac{5 t} {\\mu^{2}}}}} \\\\ {{{\\phi_{\\mathrm{r}} ( v )=\\operatorname{e x p} \\left( \\frac{\\mathrm{j} 3 v t} {\\mu-\\mathrm{j} v} \\right)}}} \\\\ \\end{array}\n$$"", ""$$\n\\begin{array} {l} {{{E ( Y_{i} )=\\frac{5 t} {\\lambda}}}} \\\\ {{{\\mathrm{v a r} ( Y_{i} )=\\frac{10 t} {\\mu^{3}}}}} \\\\ {{{\\phi_{\\mathrm{r}} ( v )=\\operatorname{e x p} \\left( \\frac{\\mathrm{j} 5 v t} {\\lambda-\\mathrm{j} v} \\right)}}} \\\\ \\end{array}\n$$""]",Private,0
+149,"[""6.85417""]",[],Private,0
+150,A,"[""$$\nS_{3}^{*} \\left( x \\right)=0.9963+0.9979_{x}+0.5367_{x}\\ {^2}+0.1761_{x}\\ ^{3}\n$$"", ""$$\nS_{3}^{*} \\left( x \\right)=1.0023+1.0101_{x}+0.5299_{x}\\ {^2}+0.1897_{x}\\ ^{3}\n$$"", ""$$\nS_{3}^{*} \\left( x \\right)=1.0041+0.9927_{x}+0.5456_{x}\\ {^2}+0.1675_{x}\\ ^{3}\n$$"", ""$$\nS_{3}^{*} \\left( x \\right)=0.9875+0.9923_{x}+0.5518_{x}\\ {^2}+0.1819_{x}\\ ^{3}\n$$"", ""$$\nS_{3}^{*} \\left( x \\right)=0.9982+0.9807_{x}+0.5489_{x}\\ {^2}+0.1546_{x}\\ ^{3}\n$$"", ""$$\nS_{3}^{*} \\left( x \\right)=1.0064+1.0203_{x}+0.5231_{x}\\ {^2}+0.1650_{x}\\ ^{3}\n$$"", ""$$\nS_{3}^{*} \\left( x \\right)=0.9919+0.9951_{x}+0.5333_{x}\\ {^2}+0.1722_{x}\\ ^{3}\n$$"", ""$$\nS_{3}^{*} \\left( x \\right)=0.9958+0.9992_{x}+0.5398_{x}\\ {^2}+0.1509_{x}\\ ^{3}\n$$"", ""$$\nS_{3}^{*} \\left( x \\right)=0.9907+1.0054_{x}+0.5412_{x}\\ {^2}+0.1483_{x}\\ ^{3}\n$$"", ""$$\nS_{3}^{*} \\left( x \\right)=0.9931+0.9879_{x}+0.5623_{x}\\ {^2}+0.1612_{x}\\ ^{3}\n$$""]",Public,0
+151,"[""36""]",[],Private,0
+152,J,"[""874"", ""875"", ""873"", ""876"", ""872"", ""878"", ""877"", ""871"", ""879"", ""880""]",Public,0
+153,B,"[""$$\nf=-w_{1}^{2}-4 w_{2}^{2}+7 w_{3}^{2}\n$$"", ""$$\nf=w_{1}^{2}-4 w_{2}^{2}+7 w_{3}^{2}\n$$"", ""$$\nf=w_{1}^{2}-4 w_{2}^{2}+6 w_{3}^{2}\n$$"", ""$$\nf=3w_{1}^{2}-4 w_{2}^{2}+7 w_{3}^{2}\n$$"", ""$$\nf=w_{1}^{2}-4 w_{2}^{2}-7 w_{3}^{2}\n$$"", ""$$\nf=w_{1}^{2}-4 w_{2}^{2}+ w_{3}^{2}\n$$"", ""$$\nf=2w_{1}^{2}-4 w_{2}^{2}+7 w_{3}^{2}\n$$"", ""$$\nf=w_{1}^{2}+4 w_{2}^{2}+7 w_{3}^{2}\n$$"", ""$$\nf=-3w_{1}^{2}-4 w_{2}^{2}+7 w_{3}^{2}\n$$"", ""$$\nf=-2w_{1}^{2}-4 w_{2}^{2}+7 w_{3}^{2}\n$$""]",Private,0
+154,"[""18.75""]",[],Private,0
+155,"[""12.17""]",[],Public,0
+156,H,"[""$$\n\\lambda_{1}=-1 \\;, \\lambda_{2}=-1,\\lambda_{3}=2\n$$"", ""$$\n\\lambda_{1}=-1 \\;, \\lambda_{2}=1,\\lambda_{3}=2\n$$"", ""$$\n\\lambda_{1}=-4 \\;, \\lambda_{2}=\\lambda_{3}=2\n$$"", ""$$\n\\lambda_{1}=-7 \\;, \\lambda_{2}=\\lambda_{3}=1\n$$"", ""$$\n\\lambda_{1}=-1 \\;, \\lambda_{2}=\\lambda_{3}=2\n$$"", ""$$\n\\lambda_{1}=-7 \\;, \\lambda_{2}=1,\\lambda_{3}=2\n$$"", ""$$\n\\lambda_{1}=-1 \\;, \\lambda_{2}=1,\\lambda_{3}=3\n$$"", ""$$\n\\lambda_{1}=-7 \\;, \\lambda_{2}=\\lambda_{3}=2\n$$"", ""$$\n\\lambda_{1}=-1 \\;, \\lambda_{2}=0,\\lambda_{3}=-2\n$$"", ""$$\n\\lambda_{1}=-1 \\;, \\lambda_{2}=1,\\lambda_{3}=0\n$$""]",Public,0
+157,"[""1*(5/0.1)*sin(0.1*t)+(-1*7)*cos(0.1*t)"", ""46.3054174704875""]",[],Private,0
+158,"[""A"", ""C""]",[],Private,0
+159,"[""0.07"", ""0.007"", ""0.0007""]",[],Private,0
+160,"[""(22+x)/y"", ""Identity Property of Multiplication""]",[],Public,0
+161,\frac{1}{46}\binom{2024}{990}+\frac{1}{2},[],Private,1
+162,B,"[""[5, 5, 3, 3, 2, 2, 1, 1, 1, 1]"", ""[6, 4, 2, 2, 1, 1, 0, 0, 0, 0]"", ""[5, 4, 3, 2, 2, 1, 1, 1, 0, 0]"", ""[7, 3, 3, 3, 2, 1, 1, 1, 0, 0]"", ""[6, 4, 2, 2, 1, 1, 1, 0, 0, 0]"", ""[6, 4, 2, 3, 1, 0, 0, 0, 0, 0]"", ""[6, 4, 3, 1, 1, 1, 0, 0, 0, 0]"", ""[6, 5, 2, 2, 1, 1, 1, 0, 0, 0]"", ""[4, 4, 4, 2, 2, 2, 1, 0, 0, 0]"", ""[5, 4, 2, 2, 1, 1, 0, 0, 0, 0]""]",Private,0
+163,"[""9"", ""-5"", ""4""]",[],Public,0
+164,G,"[""443"", ""442"", ""449"", ""448"", ""447"", ""440"", ""446"", ""444"", ""445"", ""441""]",Private,0
+165,I,"[""0.72"", ""0.78"", ""0.74"", ""0.88"", ""0.68"", ""0.82"", ""0.85"", ""0.70"", ""0.76"", ""0.80""]",Private,0
+166,"[""175*0.75^n""]",[],Public,0
+167,"[""B"", ""A"", ""B"", ""B""]",[],Private,0
+168,"[""A"", ""C"", ""B"", ""B""]",[],Private,0
+169,"[""400%""]",[],Public,0
+170,F,"[""14"", ""9"", ""13"", ""5"", ""11"", ""7"", ""12"", ""10"", ""6"", ""8""]",Private,0
+171,"[""20""]",[],Public,0
+172,"[""2*0.983607*0.180328""]",[],Private,0
+173,C,"[""605"", ""600"", ""604"", ""607"", ""609"", ""606"", ""602"", ""603"", ""601"", ""608""]",Private,0
+174,"[""7"", ""7/8""]",[],Private,0
+175,I,"[""[232792561, 232792561, 5354228881, 5354228881, 26771144401, 26771144401, 80313433201, 80313433201, 2329089562801, 2329089562801]"", ""[232792563, 232792563, 5354228883, 5354228883, 26771144403, 26771144403, 80313433203, 80313433203, 2329089562803, 2329089562803]"", ""[232792568, 232792568, 5354228888, 5354228888, 26771144408, 26771144408, 80313433208, 80313433208, 2329089562808, 2329089562808]"", ""[232792567, 232792567, 5354228887, 5354228887, 26771144407, 26771144407, 80313433207, 80313433207, 2329089562807, 2329089562807]"", ""[232792565, 232792565, 5354228885, 5354228885, 26771144405, 26771144405, 80313433205, 80313433205, 2329089562805, 2329089562805]"", ""[232792566, 232792566, 5354228886, 5354228886, 26771144406, 26771144406, 80313433206, 80313433206, 2329089562806, 2329089562806]"", ""[232792564, 232792564, 5354228884, 5354228884, 26771144404, 26771144404, 80313433204, 80313433204, 2329089562804, 2329089562804]"", ""[232792562, 232792562, 5354228882, 5354228882, 26771144402, 26771144402, 80313433202, 80313433202, 2329089562802, 2329089562802]"", ""[232792560, 232792560, 5354228880, 5354228880, 26771144400, 26771144400, 80313433200, 80313433200, 2329089562800, 2329089562800]"", ""[232792569, 232792569, 5354228889, 5354228889, 26771144409, 26771144409, 80313433209, 80313433209, 2329089562809, 2329089562809]""]",Private,0
+176,"[""(p-6*k-m)/8""]",[],Public,0
+177,E,"[""$$\nf ( x ) \\!=\\! {\\frac{x} {\\sqrt{1 \\!+\\! x^{2}}}} \\;, \\; \\; \\mathrm{x} \\! \\in\\! \\; \\; ( 0 \\;, \\; \\;+\\infty)\n$$,\n$$V=\\frac{\\pi ^{2} }{4} $$"", ""$$\nf ( x ) \\!=\\! {\\frac{x} {\\sqrt{1 \\!-\\! x^{2}}}} \\;, \\; \\; \\mathrm{x} \\! \\in\\! \\; \\; ( 0 \\;, \\; \\;+\\infty)\n$$,\n$$V=\\frac{\\pi ^{2} }{2} $$"", ""$$\nf ( x ) \\!=\\! {\\frac{x} {\\sqrt{1 \\!+\\! x^{2}}}} \\;, \\; \\; \\mathrm{x} \\! \\in\\! \\; \\; ( 0 \\;, \\; \\;+\\infty)\n$$,\n$$V=\\frac{\\pi ^{2} }{2} $$"", ""$$\nf ( x ) \\!=\\! {\\frac{x} {\\sqrt{1 \\!-\\! x^{2}}}} \\;, \\; \\; \\mathrm{x} \\! \\in\\! \\; \\; ( 0 \\;, \\; \\;+\\infty)\n$$,\n$$V=\\frac{\\pi ^{2} }{12} $$"", ""$$\nf ( x ) \\!=\\! {\\frac{x} {\\sqrt{1 \\!+\\! x^{2}}}} \\;, \\; \\; \\mathrm{x} \\! \\in\\! \\; \\; ( 0 \\;, \\; \\;+\\infty)\n$$,\n$$V=\\frac{\\pi ^{2} }{6} $$"", ""$$\nf ( x ) \\!=\\! {\\frac{x} {\\sqrt{1 \\!-\\! x^{2}}}} \\;, \\; \\; \\mathrm{x} \\! \\in\\! \\; \\; ( 0 \\;, \\; \\;+\\infty)\n$$,\n$$V=\\frac{\\pi ^{2} }{4} $$"", ""$$\nf ( x ) \\!=\\! {\\frac{x} {\\sqrt{1 \\!-\\! x^{2}}}} \\;, \\; \\; \\mathrm{x} \\! \\in\\! \\; \\; ( 0 \\;, \\; \\;+\\infty)\n$$,\n$$V=\\frac{\\pi ^{2} }{3} $$"", ""$$\nf ( x ) \\!=\\! {\\frac{x} {\\sqrt{1 \\!+\\! x^{2}}}} \\;, \\; \\; \\mathrm{x} \\! \\in\\! \\; \\; ( 0 \\;, \\; \\;+\\infty)\n$$,\n$$V=\\frac{\\pi ^{2} }{12} $$"", ""$$\nf ( x ) \\!=\\! {\\frac{x} {\\sqrt{1 \\!+\\! x^{2}}}} \\;, \\; \\; \\mathrm{x} \\! \\in\\! \\; \\; ( 0 \\;, \\; \\;+\\infty)\n$$,\n$$V=\\frac{\\pi ^{2} }{3} $$"", ""$$\nf ( x ) \\!=\\! {\\frac{x} {\\sqrt{1 \\!-\\! x^{2}}}} \\;, \\; \\; \\mathrm{x} \\! \\in\\! \\; \\; ( 0 \\;, \\; \\;+\\infty)\n$$,\n$$V=\\frac{\\pi ^{2} }{6} $$""]",Private,0
+178,C,"[""2"", ""-6"", ""-4"", ""-1"", ""4"", ""-2"", ""-8"", ""-12"", ""-10"", ""8""]",Private,0
+179,"[""29"", ""3"", ""21"", ""1"", ""21"", ""4"", ""19"", ""4"", ""23"", ""3""]",[],Public,0
+180,"[""1/2*m-7/2""]",[],Private,0
+181,A,"[""$$\nt ( R )=\\left[ \\begin{matrix} {{{1}}} & {{{0. 8 7}}} & {{{0. 8 7}}} & {{{0. 8 7}}} \\\\ {{{0. 8 7}}} & {{{1}}} & {{{0. 9 2}}} & {{{0. 8 8}}} \\\\ {{{0. 8 7}}} & {{{0. 9 2}}} & {{{1}}} & {{{0. 8 8}}} \\\\ {{{0. 8 7}}} & {{{0. 8 8}}} & {{{0. 8 8}}} & {{{1}}} \\\\ \\end{matrix} \\right]\n$$"", ""$$\nt ( R )=\\left[ \\begin{matrix} {{{1}}} & {{{0. 8 9}}} & {{{0. 8 7}}} & {{{0. 8 6}}} \\\\ {{{0. 8 5}}} & {{{1}}} & {{{0. 9 0}}} & {{{0. 8 8}}} \\\\ {{{0. 8 7}}} & {{{0. 9 2}}} & {{{1}}} & {{{0. 8 7}}} \\\\ {{{0. 8 7}}} & {{{0. 8 8}}} & {{{0. 8 4}}} & {{{1}}} \\\\ \\end{matrix} \\right]\n$$"", ""$$\nt ( R )=\\left[ \\begin{matrix} {{{1}}} & {{{0. 8 6}}} & {{{0. 8 9}}} & {{{0. 8 7}}} \\\\ {{{0. 8 7}}} & {{{1}}} & {{{0. 9 2}}} & {{{0. 8 7}}} \\\\ {{{0. 8 7}}} & {{{0. 9 2}}} & {{{1}}} & {{{0. 8 5}}} \\\\ {{{0. 8 3}}} & {{{0. 8 8}}} & {{{0. 8 6}}} & {{{1}}} \\\\ \\end{matrix} \\right]\n$$"", ""$$\nt ( R )=\\left[ \\begin{matrix} {{{1}}} & {{{0. 8 8}}} & {{{0. 8 7}}} & {{{0. 8 5}}} \\\\ {{{0. 8 4}}} & {{{1}}} & {{{0. 9 2}}} & {{{0. 8 7}}} \\\\ {{{0. 8 5}}} & {{{0. 9 0}}} & {{{1}}} & {{{0. 8 8}}} \\\\ {{{0. 8 6}}} & {{{0. 8 8}}} & {{{0. 8 9}}} & {{{1}}} \\\\ \\end{matrix} \\right]\n$$"", ""$$\nt ( R )=\\left[ \\begin{matrix} {{{1}}} & {{{0. 8 7}}} & {{{0. 8 8}}} & {{{0. 8 7}}} \\\\ {{{0. 8 5}}} & {{{1}}} & {{{0. 9 3}}} & {{{0. 8 7}}} \\\\ {{{0. 8 7}}} & {{{0. 9 2}}} & {{{1}}} & {{{0. 8 6}}} \\\\ {{{0. 8 7}}} & {{{0. 8 4}}} & {{{0. 8 8}}} & {{{1}}} \\\\ \\end{matrix} \\right]\n$$"", ""$$\nt ( R )=\\left[ \\begin{matrix} {{{1}}} & {{{0. 8 4}}} & {{{0. 8 7}}} & {{{0. 8 7}}} \\\\ {{{0. 8 7}}} & {{{1}}} & {{{0. 9 1}}} & {{{0. 8 9}}} \\\\ {{{0. 8 7}}} & {{{0. 9 2}}} & {{{1}}} & {{{0. 8 5}}} \\\\ {{{0. 8 7}}} & {{{0. 8 7}}} & {{{0. 8 8}}} & {{{1}}} \\\\ \\end{matrix} \\right]\n$$"", ""$$\nt ( R )=\\left[ \\begin{matrix} {{{1}}} & {{{0. 8 7}}} & {{{0. 8 5}}} & {{{0. 8 8}}} \\\\ {{{0. 8 6}}} & {{{1}}} & {{{0. 9 2}}} & {{{0. 8 5}}} \\\\ {{{0. 8 6}}} & {{{0. 9 3}}} & {{{1}}} & {{{0. 8 7}}} \\\\ {{{0. 8 4}}} & {{{0. 8 6}}} & {{{0. 8 8}}} & {{{1}}} \\\\ \\end{matrix} \\right]\n$$"", ""$$\nt ( R )=\\left[ \\begin{matrix} {{{1}}} & {{{0. 8 7}}} & {{{0. 8 3}}} & {{{0. 8 7}}} \\\\ {{{0. 8 9}}} & {{{1}}} & {{{0. 9 2}}} & {{{0. 8 5}}} \\\\ {{{0. 8 7}}} & {{{0. 9 2}}} & {{{1}}} & {{{0. 8 4}}} \\\\ {{{0. 8 9}}} & {{{0. 8 9}}} & {{{0. 8 7}}} & {{{1}}} \\\\ \\end{matrix} \\right]\n$$"", ""$$\nt ( R )=\\left[ \\begin{matrix} {{{1}}} & {{{0. 8 5}}} & {{{0. 8 7}}} & {{{0. 8 7}}} \\\\ {{{0. 8 9}}} & {{{1}}} & {{{0. 9 0}}} & {{{0. 8 8}}} \\\\ {{{0. 8 7}}} & {{{0. 9 1}}} & {{{1}}} & {{{0. 8 8}}} \\\\ {{{0. 8 9}}} & {{{0. 8 8}}} & {{{0. 8 7}}} & {{{1}}} \\\\ \\end{matrix} \\right]\n$$"", ""$$\nt ( R )=\\left[ \\begin{matrix} {{{1}}} & {{{0. 7 5}}} & {{{0. 8 7}}} & {{{0. 8 7}}} \\\\ {{{0. 8 7}}} & {{{1}}} & {{{0. 9 2}}} & {{{0. 8 8}}} \\\\ {{{0. 7 8}}} & {{{0. 9 2}}} & {{{1}}} & {{{0. 8 7}}} \\\\ {{{0. 8 7}}} & {{{0. 8 8}}} & {{{0. 8 8}}} & {{{1}}} \\\\ \\end{matrix} \\right]\n$$""]",Private,0
+182,E,"[""P(A)=0.5077,P(B)=0.4915"", ""P(A)=0.5277,P(B)=0.4914"", ""P(A)=0.5077,P(B)=0.4814"", ""P(A)=0.5176,P(B)=0.4914"", ""P(A)=0.5177,P(B)=0.4914"", ""P(A)=0.5178,P(B)=0.4914"", ""P(A)=0.5176,P(B)=0.4915"", ""P(A)=0.5177,P(B)=0.4915"", ""P(A)=0.5277,P(B)=0.4915"", ""P(A)=0.5276,P(B)=0.4915""]",Private,0
+183,D,"[""$$C + \\frac{1}{16} \\cdot \\left(2 \\cdot \\left(\\tan\\left(\\frac{x}{2}\\right)\\right)^2 + 6 \\cdot \\ln\\left(\\left|\\tan\\left(\\frac{x}{2}\\right)\\right|\\right) + \\frac{1}{4} \\cdot \\left(\\tan\\left(\\frac{x}{2}\\right)\\right)^4 - \\frac{2}{\\left(\\tan\\left(\\frac{x}{2}\\right)\\right)^2} + \\frac{1}{2 \\cdot \\left(\\tan\\left(\\frac{x}{2}\\right)\\right)^4}\\right)$$"", ""$$C + \\frac{1}{16} \\cdot \\left(2 \\cdot \\left(\\tan\\left(\\frac{x}{2}\\right)\\right)^2 + 6 \\cdot \\ln\\left(\\left|\\tan\\left(\\frac{x}{2}\\right)\\right|\\right) + \\frac{1}{4} \\cdot \\left(\\tan\\left(\\frac{x}{2}\\right)\\right)^4 - \\frac{2}{\\left(\\tan\\left(\\frac{x}{2}\\right)\\right)^2} - \\frac{1}{2 \\cdot \\left(\\tan\\left(\\frac{x}{2}\\right)\\right)^4}\\right)$$"", ""$$C + \\frac{1}{16} \\cdot \\left(2 \\cdot \\left(\\tan\\left(\\frac{x}{2}\\right)\\right)^2 + 6 \\cdot \\ln\\left(\\left|\\tan\\left(\\frac{x}{2}\\right)\\right|\\right) + \\frac{1}{4} \\cdot \\left(\\tan\\left(\\frac{x}{2}\\right)\\right)^4 - \\frac{2}{\\left(\\tan\\left(\\frac{x}{2}\\right)\\right)^2} + \\frac{1}{8 \\cdot \\left(\\tan\\left(\\frac{x}{2}\\right)\\right)^4}\\right)$$"", ""$$C + \\frac{1}{16} \\cdot \\left(2 \\cdot \\left(\\tan\\left(\\frac{x}{2}\\right)\\right)^2 + 6 \\cdot \\ln\\left(\\left|\\tan\\left(\\frac{x}{2}\\right)\\right|\\right) + \\frac{1}{4} \\cdot \\left(\\tan\\left(\\frac{x}{2}\\right)\\right)^4 - \\frac{2}{\\left(\\tan\\left(\\frac{x}{2}\\right)\\right)^2} - \\frac{1}{4 \\cdot \\left(\\tan\\left(\\frac{x}{2}\\right)\\right)^4}\\right)$$"", ""$$C + \\frac{1}{16} \\cdot \\left(2 \\cdot \\left(\\tan\\left(\\frac{x}{2}\\right)\\right)^2 + 6 \\cdot \\ln\\left(\\left|\\tan\\left(\\frac{x}{2}\\right)\\right|\\right) + \\frac{1}{4} \\cdot \\left(\\tan\\left(\\frac{x}{2}\\right)\\right)^4 - \\frac{2}{\\left(\\tan\\left(\\frac{x}{2}\\right)\\right)^2} + \\frac{1}{4 \\cdot \\left(\\tan\\left(\\frac{x}{2}\\right)\\right)^4}\\right)$$""]",Public,0
+184,A,"[""[27, 32, 27, 20, 27, 32, 27, 20, 11, 0]"", ""[24, 29, 24, 17, 24, 29, 24, 17, 8, 5]"", ""[22, 27, 22, 15, 22, 27, 22, 15, 6, 3]"", ""[29, 34, 29, 22, 29, 34, 29, 22, 13, 2]"", ""[28, 33, 28, 21, 28, 33, 28, 21, 12, 1]"", ""[31, 36, 31, 24, 31, 36, 31, 24, 15, 4]"", ""[30, 35, 30, 23, 30, 35, 30, 23, 14, 3]"", ""[26, 31, 26, 19, 26, 31, 26, 19, 10, 7]"", ""[23, 28, 23, 16, 23, 28, 23, 16, 7, 4]"", ""[25, 30, 25, 18, 25, 30, 25, 18, 9, 6]""]",Private,0
+185,"[""T"", ""F"", ""T"", ""F"", ""T""]",[],Private,0
+186,A,"[""2 m/s"", ""4 m/s"", ""1.5 m/s"", ""3 m/s"", ""1 m/s"", ""5 m/s"", ""2.5 m/s"", ""2.2 m/s"", ""7 m/s"", ""6 m/s""]",Public,0
+187,"[""1.58578"", ""0.0615938"", ""0.658621"", ""0.56829"", ""42"", ""45"", ""1"", ""48"", ""43""]",[],Private,0
+188,"[""60"", ""60"", ""60""]",[],Private,0
+189,"[""850*a+1200*r = 35000""]",[],Public,0
+190,"[""-21/8""]",[],Public,0
+191,"[""D"", ""A"", ""C"", ""B"", ""E""]",[],Public,0
+192,"[""1.0585"", ""(1.88079,infinity)"", ""0.14491377439927"", ""A""]",[],Public,0
+193,D,"[""in the interval $5\\le t \\le 6$ seconds, the distance travelled is equal to the magnitude of the displacement."", ""in the interval $5\\le t \\le 6$ seconds, the distance travelled is not equal to the magnitude of the displacement."", ""in the interval $3< t <5$, the particle is moving in +x direction"", ""in the interval $5\\le t \\le 6$ seconds, the distance travelled is equal to the displacement."", ""in the interval $5\\le t \\le 6$ seconds, the distance travelled is greater than the displacement."", ""the particle reverses its direction of motion twice in entire motion if it starts at $t=0$"", ""the average acceleration from $ 1\\le t\\le 2$ seconds is $6 \\,m/s^2$"", ""in the interval $5\\le t \\le 6$ seconds, the distance travelled is greater than the magnitude of the displacement."", ""in the interval $5\\le t \\le 6$ seconds, the distance travelled is not equal to the displacement."", ""in the interval $5\\le t \\le 6$ seconds, the distance travelled is less than the displacement.""]",Private,0
+194,"[""600"", ""July"", ""1908"", ""890"", ""March"", ""1907""]",[],Private,0
+195,"[""(-2.43750405502063,-0.762495944979369)""]",[],Private,0
+196,"[""14.7447367972019"", ""10.3243758543188"", ""35""]",[],Public,0
+197,"[""3"", ""4""]",[],Public,0
+198,24,[],Private,1
+199,60,[],Public,1
+200,I,"[""469"", ""466"", ""461"", ""462"", ""465"", ""467"", ""460"", ""464"", ""463"", ""468""]",Private,0
+201,"[""(5*t+8)*(5*t+8)""]",[],Public,0
+202,"[""54/35""]",[],Public,0
+203,I,"[""26"", ""33"", ""24"", ""27"", ""30"", ""31"", ""32"", ""25"", ""29"", ""28""]",Private,0
+204,E,"[""2"", ""4"", ""8"", ""6"", ""3"", ""9"", ""5"", ""7"", ""10"", ""1""]",Public,0
+205,"[""3/4"", ""11/20""]",[],Private,0
+206,"[""4""]",[],Public,0
+207,"[""14/5""]",[],Private,0
+208,"[""16.2"", ""4.67720649086386""]",[],Public,0
+209,B,"[""0.25"", ""0.34"", ""0.28"", ""0.41"", ""0.44"", ""0.27"", ""0.30"", ""0.38"", ""0.39"", ""0.33""]",Private,0
+210,"[""-11.7856"", ""2*x/(1+x^2)""]",[],Private,0
+211,I,"[""177"", ""178"", ""175"", ""179"", ""183"", ""187"", ""173"", ""171"", ""181"", ""185""]",Private,0
+212,J,"[""$$F_{T_i}(t)=\\begin{cases}1-\\mathrm{e}^{\\lambda t}\\sum_{i=0}^{t-1}\\frac{(t)^i}{i!},&t\\geqslant0\\\\\\\\0,&t<0\\end{cases}$$"", ""$$F_{T_i}(t)=\\begin{cases}1-\\mathrm{e}^{-\\lambda t}\\sum_{i=0}^{t}\\frac{(\\lambda t)^{i-1}}{i!},&t\\geqslant0\\\\\\\\0 ,&t<0\\end{cases}$$"", ""$$F_{T_i}(t)=\\begin{cases}\\mathrm{e}^{-\\lambda t}\\sum_{i=0}^{t-1}\\frac{(\\lambda)^i}{t!},&t\\geqslant0\\\\\\\\0,&t<0\\end{cases}$$"", ""$$F_{T_i}(t)=\\begin{cases}1-\\mathrm{e}^{-\\lambda t}\\sum_{i=0}^{t-2}\\frac{(\\lambda t)^i}{i!},&t\\geqslant0\\\\\\\\0 ,&t<0\\end{cases}$$"", ""$$F_{T_i}(t)=\\begin{cases}1-\\mathrm{e}^{-\\lambda t}\\sum_{i=0}^{t-1}\\frac{(t)^i}{i!},&t\\geqslant0\\\\\\\\0 ,&t<0\\end{cases}$$"", ""$$F_{T_i}(t)=\\begin{cases}1-\\lambda t\\sum_{i=0}^{t-1}\\frac{\\mathrm{e}^{-\\lambda t}}{i!},&t\\geqslant0\\\\\\\\0 ,&t<0\\end{cases}$$"", ""$$F_{T_i}(t)=\\begin{cases}\\mathrm{e}^{-\\lambda t}\\sum_{i=1}^{t}\\frac{(\\lambda t)^i}{i!},&t\\geqslant0\\\\\\\\1,&t<0\\end{cases}$$"", ""$$F_{T_i}(t)=\\begin{cases}1-\\mathrm{e}^{-\\lambda t}\\sum_{i=1}^{t-1}\\frac{(\\lambda t)^i}{i!},&t\\geqslant0\\\\\\\\0 ,&t<0\\end{cases}$$"", ""$$F_{T_i}(t)=\\begin{cases}1-\\mathrm{e}^{-\\lambda t}\\sum_{i=0}^{t-1}\\frac{(\\lambda t)^i}{t!},&t\\geqslant0\\\\\\\\0 ,&t<0\\end{cases}$$"", ""$$F_{T_i}(t)=\\begin{cases}1-\\mathrm{e}^{-\\lambda t}\\sum_{i=0}^{t-1}\\frac{(\\lambda t)^i}{i!},&t\\geqslant0\\\\\\\\0 ,&t<0\\end{cases}$$""]",Private,0
+213,"[""2/9""]",[],Private,0
+214,"[""11"", ""F"", ""7"", ""T""]",[],Public,0
+215,"[""376""]",[],Private,0
+216,"[""60""]",[],Private,0
+217,C,"[""617"", ""623"", ""619"", ""618"", ""620"", ""624"", ""621"", ""625"", ""616"", ""622""]",Private,0
+218,"[""asin(7/10)""]",[],Public,0
+219,"[""27""]",[],Private,0
+220,A,"[""101"", ""102"", ""105"", ""98"", ""100"", ""99"", ""106"", ""103"", ""104"", ""107""]",Private,0
+221,"[""2750""]",[],Private,0
+222,C,"[""1000"", ""1007"", ""1005"", ""1008"", ""1001"", ""1006"", ""1003"", ""1002"", ""1004"", ""1009""]",Public,0
+223,A,"[""[-620297, 2382785, 7869898, 7001471, -126742987, -398035821, 1687054711, -7911171596, -47301104551, 43244638645]"", ""[-620299, 2382785, 7869900, 7001471, -126742982, -398035824, 1687054711, -7911171594, -47301104553, 43244638642]"", ""[-620298, 2382786, 7869899, 7001471, -126742988, -398035820, 1687054710, -7911171595, -47301104550, 43244638646]"", ""[-620296, 2382788, 7869896, 7001474, -126742987, -398035818, 1687054712, -7911171595, -47301104557, 43244638649]"", ""[-620297, 2382787, 7869898, 7001473, -126742988, -398035819, 1687054713, -7911171593, -47301104551, 43244638645]"", ""[-620300, 2382789, 7869895, 7001470, -126742990, -398035827, 1687054714, -7911171597, -47301104554, 43244638646]"", ""[-620297, 2382785, 7869898, 7001470, -126742989, -398035823, 1687054710, -7911171595, -47301104552, 43244638643]"", ""[-620295, 2382783, 7869899, 7001472, -126742985, -398035820, 1687054712, -7911171594, -47301104548, 43244638647]"", ""[-620297, 2382785, 7869898, 7001472, -126742984, -398035819, 1687054709, -7911171592, -47301104550, 43244638641]"", ""[-620296, 2382784, 7869897, 7001472, -126742986, -398035822, 1687054711, -7911171596, -47301104549, 43244638644]""]",Private,0
+224,"[""2643""]",[],Public,0
+225,"[""0.625330869650362"", ""4"", ""2.77630"", ""A""]",[],Private,0
+226,"[""8""]",[],Private,0
+227,"[""A"", ""C""]",[],Private,0
+228,"[""v^7""]",[],Private,0
+229,n-1,[],Private,1
+230,"[""[ln(16/50)]/[ln(1.6)]""]",[],Public,0
+231,"[""4.74193548387097 + 0.516129032258065 * x""]",[],Public,0
+232,"[""40"", ""37"", ""3""]",[],Public,0
+233,"[""1.95996398465615"", ""-1.95996398465615"", ""-5.17656981021216"", ""B""]",[],Private,0
+234,"[""29*x^7+6*x^5""]",[],Public,0
+235,B,"[""394"", ""293"", ""396"", ""393"", ""397"", ""391"", ""395"", ""399"", ""398"", ""392""]",Private,0
+236,"[""6*e"", ""-6""]",[],Private,0
+237,"[""50%""]",[],Public,0
+238,"[""-61"", ""61"", ""62""]",[],Public,0
+239,"[""35"", ""3.44949829127925""]",[],Private,0
+240,"[""12"", ""4.9"", ""3.3""]",[],Private,0
+241,B,"[""532"", ""533"", ""530"", ""535"", ""537"", ""538"", ""534"", ""539"", ""531"", ""536""]",Private,0
+242,"[""241.222222222222"", ""239.5"", ""233"", ""221.712418300654"", ""14.8900106883996"", ""0.0617273589109149""]",[],Private,0
+243,"[""0.8925"", ""0.215""]",[],Private,0
+244,F,"[""588"", ""568"", ""578"", ""580"", ""564"", ""576"", ""572"", ""582"", ""570"", ""560""]",Private,0
+245,"[""980""]",[],Public,0
+246,"[""25"", ""23"", ""17"", ""23"", ""19""]",[],Private,0
+247,"[""37.0615384615385"", ""2474/(1 + 37.0615384615385*2.71828182845905**(-0.53*t))"", ""2473.83860394299""]",[],Public,0
+248,180 + 2023 \cdot \frac{180}{2025},[],Public,1
+249,G,"[""1.967"", ""1.9682"", ""1.970"", ""1.9675"", ""1.9685"", ""1.9683"", ""1.968"", ""1.966"", ""1.969"", ""1.965""]",Private,0
+250,213,[],Private,1
+251,"[""172.7""]",[],Private,0
+252,"[""C""]",[],Public,0
+253,E,"[""\\( f = - y_1^2 + y_2^2 - 5y_3^2 \\)"", ""f = - y_1^2 + y_2^2 + 3y_3^2"", ""\\( f = - y_1^2 + y_2^2 + 5y_3^2 \\)"", ""\\( f = - y_1^2 - y_2^2 - 5y_3^2 \\)"", ""\\( f = - y_1^2 - y_2^2 + 5y_3^2 \\)"", ""f = - y_1^2 + y_2^2 - 3y_3^2"", ""\\( f = y_1^2 + y_2^2 + 5y_3^2 \\)"", ""f = y_1^2 + y_2^2 - 3y_3^2"", ""\\( f = y_1^2 + y_2^2 - 5y_3^2 \\)"", ""\\( f = y_1^2 - y_2^2 + 5y_3^2 \\)""]",Public,0
+254,H,"[""$$\ng ( \\Sigma)=4 g+0.\n$$"", ""$$\ng ( \\Sigma)=3 g+2.\n$$"", ""$$\ng ( \\Sigma)=5 g-4.\n$$"", ""$$\ng ( \\Sigma)=3 g-5.\n$$"", ""$$\ng ( \\Sigma)=4 g+1.\n$$"", ""$$\ng ( \\Sigma)=4 g-5.\n$$"", ""$$\ng ( \\Sigma)=5 g-2.\n$$"", ""$$\ng ( \\Sigma)=4 g-3.\n$$"", ""$$\ng ( \\Sigma)=2 g-3.\n$$"", ""$$\ng ( \\Sigma)=6 g-1.\n$$""]",Private,0
+255,A,"[""[1898026232, 8248853134, 35849651070, 155803171860, 677123141810, 2942788286798, 12789406189672, 55582969192486, 241564496305670, 1049843265359828]"", ""[1898026236, 8248853140, 35849651076, 155803171869, 677123141818, 2942788286790, 12789406189679, 55582969192481, 241564496305679, 1049843265359837]"", ""[1898026229, 8248853133, 35849651073, 155803171866, 677123141815, 2942788286801, 12789406189676, 55582969192484, 241564496305676, 1049843265359834]"", ""[1898026234, 8248853138, 35849651074, 155803171863, 677123141813, 2942788286802, 12789406189674, 55582969192490, 241564496305674, 1049843265359832]"", ""[1898026233, 8248853131, 35849651072, 155803171865, 677123141814, 2942788286803, 12789406189675, 55582969192485, 241564496305675, 1049843265359833]"", ""[1898026235, 8248853136, 35849651075, 155803171864, 677123141811, 2942788286797, 12789406189670, 55582969192489, 241564496305673, 1049843265359831]"", ""[1898026228, 8248853139, 35849651068, 155803171867, 677123141816, 2942788286788, 12789406189677, 55582969192483, 241564496305677, 1049843265359835]"", ""[1898026230, 8248853132, 35849651071, 155803171862, 677123141812, 2942788286800, 12789406189673, 55582969192488, 241564496305672, 1049843265359830]"", ""[1898026231, 8248853135, 35849651069, 155803171861, 677123141809, 2942788286799, 12789406189671, 55582969192487, 241564496305671, 1049843265359829]"", ""[1898026238, 8248853130, 35849651067, 155803171868, 677123141817, 2942788286789, 12789406189678, 55582969192482, 241564496305678, 1049843265359836]""]",Private,0
+256,"[""-30"", ""30""]",[],Private,0
+257,"[""2.52014133761734"", ""2.99985866238266"", ""A""]",[],Private,0
+258,C,"[""\\frac{-390\\cdot x^2+23\\cdot x+138}{x^{24}\\cdot(3\\cdot x+2)^3}"", ""\\frac{-390\\cdot x^2+23\\cdot x+138}{x^{24}\\cdot(3\\cdot x+2)^7}"", ""\\frac{-390\\cdot x^2+23\\cdot x+138}{x^{24}\\cdot(3\\cdot x+2)^5}"", ""\\frac{-390\\cdot x^2+23\\cdot x+138}{x^{24}\\cdot(3\\cdot x+2)^8}"", ""\\frac{-390\\cdot x^2+23\\cdot x+138}{x^{24}\\cdot(3\\cdot x+2)^6}"", ""\\frac{-390\\cdot x^2+23\\cdot x+138}{x^{24}\\cdot(3\\cdot x+2)^4}""]",Public,0
+259,"[""D""]",[],Private,0
+260,"[""-22"", ""8""]",[],Private,0
+261,"[""4""]",[],Private,0
+262,"[""850-50*t"", ""1480-140*t"", ""7""]",[],Public,0
+263,E,"[""-63/19"", ""-63/17"", ""-63/13"", ""-63/12"", ""-63/16"", ""-63/18"", ""-63/15"", ""-63/14"", ""-63/11"", ""-63/20""]",Public,0
+264,"[""4*3.14159265358979*8*8*t*t""]",[],Private,0
+265,"[""A"", ""D""]",[],Public,0
+266,G,"[""[4272, 4579, 4890, 5241, 5589, 5962, 6343, 6739, 7157, 7589]"", ""[4268, 4574, 4892, 5232, 5582, 5953, 6337, 6732, 7154, 7581]"", ""[4260, 4568, 4891, 5238, 5579, 5956, 6333, 6729, 7148, 7582]"", ""[4269, 4575, 4899, 5240, 5585, 5960, 6338, 6737, 7159, 7590]"", ""[4265, 4570, 4895, 5233, 5583, 5951, 6331, 6735, 7152, 7583]"", ""[4271, 4578, 4896, 5239, 5588, 5959, 6341, 6738, 7161, 7587]"", ""[4263, 4571, 4894, 5231, 5584, 5952, 6336, 6736, 7153, 7586]"", ""[4270, 4577, 4893, 5236, 5586, 5958, 6332, 6740, 7155, 7591]"", ""[4267, 4576, 4898, 5235, 5587, 5957, 6340, 6733, 7156, 7588]"", ""[4264, 4573, 4897, 5230, 5581, 5954, 6335, 6734, 7158, 7585]""]",Public,0
+267,C,"[""$$-\\frac{1}{2} ,\\qquad\\mathrm{F}(y) =\\left\\{\\begin{aligned} {{}} & {{} {{} {0 ,y<0}}} \\\\ {{}} & {{} {{} {-\\frac{y^2}{4}+y ,0\\leq y<2}}} \\\\\\ {{}} & {{} {{} {1, y\\geq2}}} \\end{aligned} \\right.,\\qquad\\frac{1}{12} $$"", ""$$\\frac{1}{4} ,\\qquad\\mathrm{F}(y) =\\left\\{\\begin{aligned} {{}} & {{} {{} {0 ,y<0}}} \\\\ {{}} & {{} {{} {-\\frac{y^2}{4}+y ,0\\leq y<2}}} \\\\\\ {{}} & {{} {{} {1, y\\geq2}}} \\end{aligned} \\right.,\\qquad\\frac{1}{16} $$"", ""$$-\\frac{1}{2} ,\\qquad\\mathrm{F}(y) =\\left\\{\\begin{aligned} {{}} & {{} {{} {0 ,y<0}}} \\\\ {{}} & {{} {{} {-\\frac{y^2}{4}+y ,0\\leq y<2}}} \\\\\\ {{}} & {{} {{} {1, y\\geq2}}} \\end{aligned} \\right.,\\qquad\\frac{1}{16} $$"", ""$$-\\frac{1}{2} ,\\qquad\\mathrm{F}(y) =\\left\\{\\begin{aligned} {{}} & {{} {{} {0 ,y<0}}} \\\\ {{}} & {{} {{} {-\\frac{y^2}{4}+y ,0\\leq y<2}}} \\\\\\ {{}} & {{} {{} {1, y\\geq2}}} \\end{aligned} \\right.,\\qquad\\frac{1}{8} $$"", ""$$\\frac{1}{2} ,\\qquad\\mathrm{F}(y) =\\left\\{\\begin{aligned} {{}} & {{} {{} {0 ,y<0}}} \\\\ {{}} & {{} {{} {-\\frac{y^2}{4}+y ,0\\leq y<2}}} \\\\\\ {{}} & {{} {{} {1, y\\geq2}}} \\end{aligned} \\right.,\\qquad\\frac{1}{16} $$"", ""$$-\\frac{1}{2} ,\\qquad\\mathrm{F}(y) =\\left\\{\\begin{aligned} {{}} & {{} {{} {0 ,y<0}}} \\\\ {{}} & {{} {{} {-\\frac{y^2}{4}+y ,0\\leq y<2}}} \\\\\\ {{}} & {{} {{} {1, y\\geq2}}} \\end{aligned} \\right.,\\qquad\\frac{1}{6} $$"", ""$$-\\frac{1}{4} ,\\qquad\\mathrm{F}(y) =\\left\\{\\begin{aligned} {{}} & {{} {{} {0 ,y<0}}} \\\\ {{}} & {{} {{} {-\\frac{y^2}{4}+y ,0\\leq y<2}}} \\\\\\ {{}} & {{} {{} {1, y\\geq2}}} \\end{aligned} \\right.,\\qquad\\frac{1}{16} $$"", ""$$-\\frac{1}{2} ,\\qquad\\mathrm{F}(y) =\\left\\{\\begin{aligned} {{}} & {{} {{} {0 ,y<0}}} \\\\ {{}} & {{} {{} {-\\frac{y^2}{4}+y ,0\\leq y<2}}} \\\\\\ {{}} & {{} {{} {1, y\\geq2}}} \\end{aligned} \\right.,\\qquad\\frac{1}{4} $$"", ""$$-\\frac{1}{2} ,\\qquad\\mathrm{F}(y) =\\left\\{\\begin{aligned} {{}} & {{} {{} {0 ,y<0}}} \\\\ {{}} & {{} {{} {-\\frac{y^2}{4}+y ,0\\leq y<2}}} \\\\\\ {{}} & {{} {{} {1, y\\geq2}}} \\end{aligned} \\right.,\\qquad\\frac{1}{2} $$""]",Private,0
+268,"[""4450"", ""14""]",[],Private,0
+269,"[""1.78937"", ""0.319763226012716"", ""B""]",[],Private,0
+270,"[""1.25538384746103""]",[],Private,0
+271,"[""(0, 4, -4)""]",[],Private,0
+272,B,"[""x - sqrt(x^2 + 1)"", ""x + sqrt(x^2 - 1)"", ""x - sqrt(x^2 - 1)"", ""x + sqrt(x^2 + 1)""]",Private,0
+273,"[""-(cos(x))^2"", ""1"", ""2(cos(x))^2""]",[],Private,0
+274,G,"[""[27057728, 168669110, 1194911840, 7681566800, 53504964992, 418499988338, 3047269834280, 23394756531620, 199308751634000, 1608461415071822]"", ""[27117728, 169269110, 1200911840, 7688566800, 53574964992, 419199988338, 3055269834280, 23474756531620, 199908751634000, 1616461415071822]"", ""[27047728, 168569110, 1193911840, 7680566800, 53494964992, 418399988338, 3046269834280, 23384756531620, 199208751634000, 1607461415071822]"", ""[27067728, 168769110, 1195911840, 7682566800, 53514964992, 418599988338, 3048269834280, 23404756531620, 199408751634000, 1609461415071822]"", ""[27037728, 168469110, 1192911840, 7679566800, 53484964992, 418299988338, 3045269834280, 23374756531620, 199108751634000, 1606461415071822]"", ""[27087728, 168969110, 1197911840, 7684566800, 53534964992, 418799988338, 3050269834280, 23424756531620, 199608751634000, 1611461415071822]"", ""[27027728, 168369110, 1191911840, 7678566800, 53474964992, 418199988338, 3044269834280, 23364756531620, 199008751634000, 1605461415071822]"", ""[27007728, 168169110, 1189911840, 7676566800, 53454964992, 417999988338, 3042269834280, 23344756531620, 198808751634000, 1603461415071822]"", ""[27017728, 168269110, 1190911840, 7677566800, 53464964992, 418099988338, 3043269834280, 23354756531620, 198908751634000, 1604461415071822]""]",Public,0
+275,10^{225}-1,[],Private,1
+276,"[""(0.500364,0)"", ""none""]",[],Private,0
+277,"[""38800.00""]",[],Private,0
+278,"[""38""]",[],Private,0
+279,J,"[""\u2211_{k=0}^\u221e((-1)^{k+1}\u00b7\\frac{(k+1)}{(k+2)}\u00b7x^k)"", ""\u2211_{k=0}^\u221e((-1)^{k+1}\u00b7\\frac{(k+1)}{(k+5)}\u00b7x^k)"", ""\u2211_{k=0}^\u221e((-1)^{k+1}\u00b7\\frac{(k+3)}{(k+3)}\u00b7x^k)"", ""\u2211_{k=0}^\u221e((-1)^{k+1}\u00b7\\frac{(k+2)}{(k+2)}\u00b7x^k)"", ""\u2211_{k=0}^\u221e((-1)^{k+1}\u00b7\\frac{(k+2)}{(k+5)}\u00b7x^k)"", ""\u2211_{k=0}^\u221e((-1)^{k+1}\u00b7\\frac{(k+1)}{(k+4)}\u00b7x^k)"", ""\u2211_{k=0}^\u221e((-1)^{k+1}\u00b7\\frac{(k+2)}{(k+3)}\u00b7x^k)"", ""\u2211_{k=0}^\u221e((-1)^{k+1}\u00b7\\frac{(k+3)}{(k+4)}\u00b7x^k)"", ""\u2211_{k=0}^\u221e((-1)^{k+1}\u00b7\\frac{(k+2)}{(k+4)}\u00b7x^k)"", ""\u2211_{k=0}^\u221e((-1)^{k+1}\u00b7\\frac{(k+1)}{(k+3)}\u00b7x^k)""]",Public,0
+280,H,"[""$$2 / 5$$"", ""$$1 / 3$$"", ""$$1 / 2$$"", ""$$3 / 5$$"", ""$$3 / 4$$"", ""$$2 / 3$$"", ""$$6 / 5$$"", ""$$4 / 3$$"", ""$$5 / 3$$"", ""$$7 / 4$$""]",Private,0
+281,"[""-1.0000*0.4618"", ""0.8870"", ""-1.0000*0.5206"", ""-1.0000/0.4618""]",[],Private,0
+282,"[""(-7.38906, 7.38906)""]",[],Private,0
+283,"[""114""]",[],Public,0
+284,E,"[""57"", ""60"", ""72"", ""56"", ""63"", ""54"", ""58"", ""65"", ""69"", ""66""]",Private,0
+285,735,[],Private,1
+286,H,"[""60"", ""63"", ""62"", ""66"", ""68"", ""61"", ""64"", ""65"", ""67"", ""69""]",Public,0
+287,"[""212"", ""136""]",[],Private,0
+288,"[""96*0.9^n"", ""27.1132"", ""44""]",[],Public,0
+289,"[""4"", ""9""]",[],Private,0
+290,C,"[""$$2(\\sqrt{3}+1)$$"", ""$\\sqrt{3}-1$"", ""\\(2(\\sqrt{3}-1)\\)"", ""$$2(\\sqrt{3}+2)$$"", ""$$2(\\sqrt{3}+1) - 1$$"", ""\\( \\sqrt{3}+1 \\)"", ""$$2(\\sqrt{3}-2)$$"", ""\\(2(\\sqrt{3}+1)\\)"", ""$$2(\\sqrt{3}+1) - 2$$"", ""$$2(\\sqrt{3}+1) + 1$$""]",Private,0
+291,"[""2304""]",[],Private,0
+292,"[""-3.73205080756888""]",[],Private,0
+293,"[""(3800+4300)/4*t-4300""]",[],Public,0
+294,"[""43.2"", ""7.2"", ""6""]",[],Public,0
+295,C,"[""2\u03c0/15"", ""10\u03c0/15"", ""8\u03c0/15"", ""6\u03c0/15"", ""14\u03c0/15"", ""12\u03c0/15"", ""20\u03c0/15"", ""16\u03c0/15"", ""4\u03c0/15"", ""18\u03c0/15""]",Private,0
+296,"[""45"", ""180"", ""270""]",[],Private,0
+297,"[""0.237170824512629"", ""(-infinity,-1.88079) U (1.88079,infinity)"", ""0.812524267341679"", ""C""]",[],Private,0
+298,C,"[""$$\n0.9,\\ 0.1\n$$"", ""$$\n0.3,\\ 0.3\n$$"", ""$$\n0.6,\\ 0.3\n$$"", ""$$\n0.2,\\ 0.8\n$$"", ""$$\n0.2,\\ 0.4\n$$"", ""$$\n0.5,\\ 0.3\n$$"", ""$$\n0.8,\\ 0.8\n$$"", ""$$\n0.7,\\ 0.4\n$$"", ""$$\n0.7,\\ 0.8\n$$"", ""$$\n0.4,\\ 0.3\n$$""]",Private,0
+299,"[""18805.7"", ""NO""]",[],Private,0
+300,"[""6500""]",[],Private,0
+301,"[""0.877611113176951"", ""57.223044471744""]",[],Public,0
+302,H,"[""251"", ""247"", ""255"", ""250"", ""252"", ""254"", ""249"", ""253"", ""248"", ""245""]",Private,0
+303,C,"[""100"", ""210"", ""112"", ""111"", ""113"", ""130"", ""110"", ""2006"", ""120"", ""115""]",Public,0
+304,G,"[""$4pi i$"", ""$2pi$"", ""-1"", ""$4pi$"", ""$-2pi$"", ""$-2pi i$"", ""$2pi i$"", ""$-4pi i$"", ""0""]",Private,0
+305,B,"[""[59, 84, 60, 63, 76, 64, 37, 102, 67, 81]"", ""[59, 84, 61, 63, 76, 64, 38, 102, 67, 81]"", ""[59, 84, 61, 63, 77, 64, 38, 102, 67, 81]"", ""[59, 85, 61, 63, 77, 64, 38, 102, 67, 82]"", ""[60, 84, 61, 63, 76, 64, 38, 101, 67, 81]"", ""[59, 84, 61, 62, 76, 64, 38, 102, 67, 80]"", ""[59, 84, 62, 63, 76, 64, 38, 102, 67, 81]"", ""[58, 84, 61, 63, 76, 65, 38, 102, 67, 81]"", ""[59, 84, 61, 64, 76, 64, 38, 103, 67, 81]"", ""[59, 83, 61, 63, 76, 64, 38, 102, 68, 81]""]",Private,0
+306,A,"[""0"", ""2"", ""\\frac{1}{e^3}"", ""-1"", ""does not exist"", ""\\frac{1}{2}"", ""\\frac{1}{e^2}"", ""1"", ""-2"", ""\\frac{1}{e}""]",Private,0
+307,"[""(24*9-15*8)/(8*9)""]",[],Public,0
+308,\frac{1980}{169},[],Private,1
+309,"[""83000""]",[],Private,0
+310,"[""4*k+6"", ""5*k-11"", ""5*y-11""]",[],Private,0
+311,"[""1584.89319246112""]",[],Private,0
+312,171,[],Private,1
+313,"[""-0.498887651569859""]",[],Public,0
+314,"[""7"", ""-8"", ""-4""]",[],Public,0
+315,"[""B"", ""B"", ""A""]",[],Private,0
+316,A,"[""54"", ""56"", ""58"", ""51"", ""57"", ""50"", ""53"", ""59"", ""55"", ""52""]",Private,0
+317,D,"[""$$ (d+1)^{2}d $$"", ""$$ d(d-2)^{2} $$"", ""$$ d^{3}-(d-1)^{2} $$"", ""$$\n(d-1)^{2}d\n$$"", ""$$ (d-1)d^{2} $$"", ""$$ (d+1)^{3} $$"", ""$$ d^{2}(d-2) $$"", ""$$ d(d-1)^{2} $$"", ""$$ (d-1)^{3} $$"", ""$$ (d+1)^{2}(d-1) $$""]",Private,0
+318,"[""8"", ""0.562536""]",[],Public,0
+319,"[""F"", ""T"", ""T"", ""F""]",[],Private,0
+320,"[""The oxygen level will eventually return to its normal level in the long-run."", ""3.732""]",[],Private,0
+321,H,"[""0"", ""5"", ""sqrt(2) (the square root of 2, approximately 1.41421)"", ""-1 (note that this is not a valid option since the question specifies a > 0)"", ""1/2"", ""3"", ""2"", ""1"", ""4"", ""e (Euler's number, approximately 2.71828)""]",Public,0
+322,"[""40"", ""25"", ""1000""]",[],Private,0
+323,"[""[10,12)"", ""[-8,-6)"", ""[10,18)"", ""[-16,-6)""]",[],Private,0
+324,H,"[""[43, 16, 11, 2, 57, 11, 11, 11, 34, 2]"", ""[47, 13, 10, 5, 55, 10, 10, 10, 29, 5]"", ""[44, 11, 6, 6, 56, 6, 6, 6, 32, 6]"", ""[40, 14, 8, 2, 50, 8, 8, 8, 28, 2]"", ""[46, 17, 12, 1, 53, 12, 12, 12, 33, 1]"", ""[42, 16, 7, 4, 52, 7, 7, 7, 31, 4]"", ""[49, 15, 5, 3, 59, 5, 5, 5, 37, 3]"", ""[45, 15, 9, 3, 54, 9, 9, 9, 30, 3]"", ""[48, 18, 7, 4, 58, 7, 7, 7, 36, 4]"", ""[41, 19, 8, 5, 51, 8, 8, 8, 35, 5]""]",Private,0
+325,"[""[0,280]"", ""[0,14]""]",[],Private,0
+326,"[""0.67"", ""0.36"", ""0.06""]",[],Private,0
+327,"[""7.6""]",[],Private,0
+328,"[""B"", ""D"", ""A"", ""C""]",[],Public,0
+329,J,"[""61917364226"", ""61917364229"", ""61917364227"", ""61917364228"", ""61917364221"", ""61917364220"", ""61917364223"", ""61917364225"", ""61917364222"", ""61917364224""]",Private,0
+330,"[""27"", ""2613.75631729995""]",[],Public,0
+331,H,"[""365"", ""360"", ""359"", ""356"", ""363"", ""362"", ""357"", ""361"", ""358"", ""364""]",Private,0
+332,"[""778"", ""624""]",[],Private,0
+333,"[""54"", ""62""]",[],Public,0
+334,F,"[""L/2"", ""4L/5"", ""2L/5"", ""L/3"", ""3L/10"", ""2L/3"", ""4L/3"", ""5L/12"", ""3L/5"", ""5L/6""]",Public,0
+335,E,"[""1/4"", ""1/3 + 1/4"", ""1/6"", ""1/3 + 1/6"", ""2/3"", ""1/2"", ""1/3 + 1/5"", ""1/3 + 1/12"", ""1/3"", ""1/5""]",Private,0
+336,D,"[""115"", ""104"", ""127"", ""83"", ""45"", ""96"", ""139"", ""37"", ""72"", ""58""]",Private,0
+337,H,"[""$a=2$,$b=1$"", ""$a=2$,$b=4$"", ""$a=5$,$b=5$"", ""$a=3$,$b=2$"", ""$a=3$,$b=1$"", ""$a=4$,$b=4$"", ""$a=1$,$b=3$"", ""$a=2$,$b=5$"", ""$a=2$,$b=3$"", ""$a=2$,$b=2$""]",Public,0
+338,"[""y-axis"", ""origin""]",[],Public,0
+339,G,"[""$$\n= \\ \\sum_{n=0}^{n} \\ \\left[ \\ (-1)^{n+1} \\frac{n-2} {5^{n+3}}+\\frac{3} {5^{n+1}} \\right] z^{n} \\,, \\ | \\ z \\ | < 2.\n$$"", ""$$\n= \\ \\sum_{n=0}^{n} \\ \\left[ \\ (-1)^{n+2} \\frac{n} {2^{2 n+4}}-\\frac{3} {2^{n+1}} \\right] z^{n} \\,, \\ | \\ z \\ | < 3.\n$$"", ""$$\n= \\ \\sum_{n=0}^{n} \\ \\left[ \\ (-1)^{n} \\frac{n+3} {2^{3 n+3}}-\\frac{3} {4^{n}} \\right] z^{n} \\,, \\ | \\ z \\ | < 5.\n$$"", ""$$\n= \\ \\sum_{n=0}^{n} \\ \\left[ \\ (-1)^{n} \\frac{n} {3^{2 n+3}}-\\frac{2} {3^{n-1}} \\right] z^{n} \\,, \\ | \\ z \\ | < 3.\n$$"", ""$$\n= \\ \\sum_{n=0}^{n} \\ \\left[ \\ (-1)^{n+2} \\frac{n+4} {2^{n+3}}+\\frac{1} {2^{n-2}} \\right] z^{n} \\,, \\ | \\ z \\ | < 2.\n$$"", ""$$\n= \\ \\sum_{n=0}^{n} \\ \\left[ \\ (-1)^{n-2} \\frac{n+1} {2^{n+4}}-\\frac{1} {3^{n}} \\right] z^{n} \\,, \\ | \\ z \\ | < 4.\n$$"", ""$$\n= \\ \\sum_{n=0}^{n} \\ \\left[ \\ ( \\,-1 \\, )^{n+1} \\frac{n+1} {2^{2 n+3}}-\\frac{1} {2^{n-1}} \\right] z^{n} \\,, \\ | \\ z \\ | < 2.\n$$"", ""$$\n= \\ \\sum_{n=0}^{n} \\ \\left[ \\ (-1)^{n+1} \\frac{n+2} {4^{2 n+3}}+\\frac{2} {2^{n+1}} \\right] z^{n} \\,, \\ | \\ z \\ | < 2.\n$$"", ""$$\n= \\ \\sum_{n=0}^{n} \\ \\left[ \\ (-1)^{n} \\frac{3n} {3^{3 n+4}}+\\frac{2} {3^{n}} \\right] z^{n} \\,, \\ | \\ z \\ | < 1.\n$$"", ""$$\n= \\ \\sum_{n=0}^{n} \\ \\left[ \\ (-1)^{n} \\frac{n-1} {3^{n+3}}+\\frac{2} {3^{n-1}} \\right] z^{n} \\,, \\ | \\ z \\ | < 2.\n$$""]",Private,0
+340,"[""ACEFH""]",[],Public,0
+341,"[""x + 5**3"", ""x**(11/6)+5*x**(1/3) +5*x^(3/2) + (5)**2""]",[],Public,0
+342,"[""NEGATIVE"", ""POSITIVE"", ""NEGATIVE"", ""Positive"", ""Positive""]",[],Public,0
+343,"[""D"", ""A"", ""C"", ""B"", ""E""]",[],Private,0
+344,"[""-5""]",[],Private,0
+345,"[""-0.833333333333333"", ""0.833333333333333""]",[],Private,0
+346,"[""0.7"", ""0.07"", ""0.007""]",[],Public,0
+347,F,"[""377"", ""378"", ""371"", ""372"", ""373"", ""374"", ""376"", ""379"", ""375"", ""370""]",Public,0
+348,D,"[""1/2 * sqrt(4 * x + 1) * arcsin(4 * x) - (C + sqrt(1 + 4 * x))"", ""1/2 * sqrt(4 * x + 1) * arcsin(4 * x) - (C - sqrt(1 + 4 * x))"", ""1/2 * sqrt(4 * x + 1) * arcsin(4 * x) - (C + sqrt(1 - 4 * x))"", ""1/2 * sqrt(4 * x + 1) * arcsin(4 * x) - (C - sqrt(1 - 4 * x))""]",Public,0
+349,"[""-2/15""]",[],Private,0
+350,"[""11100"", ""11001"", ""1100111"", ""1101110"", ""101001101"", ""101010100""]",[],Public,0
+351,A,"[""12.287"", ""4.512"", ""3.005"", ""8.984"", ""7.213"", ""2.829"", ""6.723"", ""1.459"", ""5.672"", ""3.999""]",Private,0
+352,"[""68""]",[],Private,0
+353,"[""8"", ""C"", ""(5, 7)"", ""D""]",[],Private,0
+354,"[""milligrams"", ""grams"", ""kilograms"", ""kilograms"", ""grams""]",[],Private,0
+355,C,"[""((26/9,-3))"", ""((3,-26/9))"", ""((-3,26/9))"", ""((26/9, -26/9))"", ""((-2,-3))"", ""((3,26/9))"", ""((-3,-2))"", ""((-3, -26/9))"", ""((26/9,3))"", ""((3, -26/9))""]",Private,0
+356,F,"[""$$\n\\sum_{n=0}^{\\infty} \\frac{( -\\mathrm{i} )^{n}} {( z+\\mathrm{i} )^{n+3}}\n$$\n$$\n\\sum_{n=0}^{\\infty} \\left(-1 \\right)^{n} \\frac{z^2} {z^{2n+2}}.\n$$"", ""$$\n\\sum_{n=0}^{\\infty} \\frac{( 2\\mathrm{i} )^{n+1}} {( z+\\mathrm{i} )^{n+3}}\n$$\n$$\n\\sum_{n=0}^{\\infty} \\left(-1 \\right)^{n+1} \\frac{1} {z^{2 \\left( n+1 \\right)+1}}.\n$$"", ""$$\n\\sum_{n=0}^{\\infty} \\frac{( 2\\mathrm{i} )^{n+1}} {( z+\\mathrm{i} )^{n+4}}\n$$\n$$\n\\sum_{n=0}^{\\infty} \\left(-1 \\right)^{n} \\frac{1} {z^{2n+3}}.\n$$"", ""$$\n\\sum_{n=0}^{\\infty} \\frac{( -2 )^{n}} {( z-\\mathrm{i} )^{n+2}}\n$$\n$$\n\\sum_{n=0}^{\\infty} \\left(-1 \\right)^{n} \\frac{1} {z^{n+2}}.\n$$"", ""$$\n\\sum_{n=0}^{\\infty} \\frac{( \\mathrm{i} )^{n}} {( z-\\mathrm{i} )^{n+3}}\n$$\n$$\n\\sum_{n=0}^{\\infty} \\frac{1} {z^{2n+2}}.\n$$"", ""$$\n\\sum_{n=0}^{\\infty} \\frac{( 2 \\mathrm{i} )^{n}} {( z+\\mathrm{i} )^{n+2}}\n$$\n$$\n\\sum_{n=0}^{\\infty} \\left(-1 \\right)^{n} \\frac{1} {z^{2 \\left( n+1 \\right)}}.\n$$"", ""$$\n\\sum_{n=0}^{\\infty} \\frac{1} {( z+2\\mathrm{i} )^{n+2}}\n$$\n$$\n\\sum_{n=0}^{\\infty} \\left(-1 \\right)^{n+1} \\frac{z} {z^{2n+3}}.\n$$"", ""$$\n\\sum_{n=0}^{\\infty} \\frac{( -\\mathrm{i} )^{n+1}} {( z+2\\mathrm{i} )^{n+2}}\n$$\n$$\n\\sum_{n=0}^{\\infty} \\left(-1 \\right)^{n+1} \\frac{1} {z^{2n}}.\n$$"", ""$$\n\\sum_{n=0}^{\\infty} \\frac{( -2\\mathrm{i} )^{n}} {( z+\\mathrm{i} )^{n+2}}\n$$\n$$\n\\sum_{n=0}^{\\infty} \\left(-1 \\right)^{n-1} \\frac{1} {z^{2 \\left( n \\right)}}.\n$$"", ""$$\n\\sum_{n=0}^{\\infty} \\frac{\\mathrm{i}^{n}} {( z+2\\mathrm{i} )^{n+2}}\n$$\n$$\n\\sum_{n=0}^{\\infty} \\frac{1} {z^{2n+4}}.\n$$""]",Public,0
+357,"[""320"", ""0.0656950324416964""]",[],Private,0
+358,B,"[""402"", ""401"", ""406"", ""404"", ""407"", ""410"", ""405"", ""412"", ""411"", ""403""]",Public,0
+359,D,"[""$\\frac{1}{4}\\ln2$"", ""$-\\frac{1}{4}\\ln2$"", ""$\\text{ln2}$"", ""$-\\frac{1}{2}\\ln2$"", ""$-\\frac{1}{3}\\ln2$"", ""$\\frac{1}{3}\\ln2$"", ""$\\frac{1}{5}\\ln2$"", ""$\\frac{1}{2}\\ln2$"", ""-1n2"", ""$-\\frac{1}{5}\\ln2$""]",Private,0
+360,D,"[""\\frac{9}{33}"", ""\\frac{9}{37}"", ""\\frac{9}{35}"", ""\\frac{9}{32}"", ""\\frac{9}{30}"", ""\\frac{9}{31}"", ""\\frac{9}{39}"", ""\\frac{9}{34}"", ""\\frac{9}{38}"", ""\\frac{9}{36}""]",Private,0
+361,"[""180-7*x""]",[],Private,0
+362,"[""(6*x-5*y)*(6*x+5*y)""]",[],Private,0
+363,"[""10000*0.89^t"", ""4969.81"", ""19.7589""]",[],Private,0
+364,"[""Y"", ""N"", ""Y"", ""N""]",[],Private,0
+365,"[""C""]",[],Public,0
+366,G,"[""$$X=c (-1, 1,1, 1 ) r+( 1, 2, 3, 4 ) \\tau, c\\in R\n$$"", ""$$X=c (-1,-1,-1, 1 ) r+( 1, 2, 3, 4 ) \\tau, c\\in R\n$$"", ""$$X=c (-1, 1,-1, 1 ) r+( 1, 2, 3, 3 ) \\tau, c\\in R\n$$"", ""$$X=c (-1, 1,-1, 1 ) r+( 1, -2, 3, 4 ) \\tau, c\\in R\n$$"", ""$$X=c (-1, 1,-1, -1 ) r+( 1, 2, 3, 4 ) \\tau, c\\in R\n$$"", ""$$X=c (-1, 1,-1, 1 ) r+(-1, 2, 3, 4 ) \\tau, c\\in R\n$$"", ""$$X=c (-1, 1,-1, 1 ) r+( 1, 2, 3, 4 ) \\tau, c\\in R\n$$"", ""$$X=c (-1, 1,-1, 1 ) r+( 1, 2, -3, 4 ) \\tau, c\\in R\n$$"", ""$$X=c (-1, 1,-1, 1 ) r+( 1, 2, 3, -4 ) \\tau, c\\in R\n$$"", ""$$X=c (1, 1,-1, 1 ) r+( 1, 2, 3, 4 ) \\tau, c\\in R\n$$""]",Private,0
+367,"[""60.3"", ""46.3"", ""53.3""]",[],Public,0
+368,"[""C"", ""D"", ""D"", ""E""]",[],Public,0
+369,"[""0.75"", ""5"", ""2""]",[],Public,0
+370,"[""y = -5"", ""10""]",[],Private,0
+371,"[""268/(0.01*402*9)""]",[],Private,0
+372,"[""0.505118451639423""]",[],Private,0
+373,"[""51.1276636268752"", ""56.7073363731248""]",[],Private,0
+374,"[""4000""]",[],Private,0
+375,"[""A""]",[],Private,0
+376,2618,[],Private,1
+377,B,"[""249"", ""251"", ""247"", ""259"", ""255"", ""257"", ""243"", ""254"", ""253"", ""245""]",Private,0
+378,"[""0.000142000000000087"", ""2.20545567265954E-05"", ""0.000119945443273491"", ""0.155313779764661"", ""15.5313779764661""]",[],Private,0
+379,"[""480""]",[],Private,0
+380,"[""75/1000"", ""239/1000"", ""32*1000"", ""1671*10"", ""38*1000"", ""2.48/1000"", ""52*1000""]",[],Private,0
+381,"[""2040""]",[],Private,0
+382,"[""10.3888888888889"", ""6.11111111111111""]",[],Public,0
+383,6266942768,[],Private,1
+384,"[""[ln(22/64)-3]/5""]",[],Private,0
+385,"[""A"", ""A"", ""A""]",[],Private,0
+386,3,[],Private,1
+387,"[""-230""]",[],Public,0
+388,"[""4.10967741935484"", ""3.52258064516129"", ""2.93548387096774"", ""1.1741935483871"", ""0""]",[],Public,0
+389,F,"[""$$\nx^{2}-5x+10\n$$"", ""$$\nx^{3}+5x+1\n$$"", ""$$\nx^{2}+5x+4\n$$"", ""$$\nx^{4}+5x+2\n$$"", ""$$\nx^{3}+5x+8\n$$"", ""$$\nx^{2}+5 x \\pm5\n$$"", ""$$\nx^{3}+6x-7\n$$"", ""$$\nx^{2}-4x+3\n$$"", ""$$\nx^{2}-5x+9\n$$"", ""$$\nx^{2}+3x-5\n$$""]",Private,0
+390,"[""3/25"", ""-15/14""]",[],Public,0
+391,B,"[""9"", ""2"", ""6"", ""1"", ""0"", ""4"", ""3"", ""8"", ""5"", ""7""]",Private,0
+392,"[""37+31+13""]",[],Private,0
+393,"[""(1/10)*arccos((x-6)/16)"", ""-10"", ""22""]",[],Private,0
+394,H,"[""\\frac{1}{16}\\cdot\\left(2\\cdot\\left(\\arctan(2\\cdot x)\\right)^2+2\\cdot\\ln\\left(4\\cdot x^2+1\\right)+8\\cdot x^2\\cdot\\left(\\arctan(2\\cdot x)\\right)^2-12\\cdot x\\cdot\\arctan(2\\cdot x)\\right)+C"", ""\\frac{1}{16}\\cdot\\left(2\\cdot\\left(\\arctan(2\\cdot x)\\right)^2+2\\cdot\\ln\\left(4\\cdot x^2+1\\right)+8\\cdot x^2\\cdot\\left(\\arctan(2\\cdot x)\\right)^2-4\\cdot x\\cdot\\arctan(2\\cdot x)\\right)+C"", ""\\frac{1}{16}\\cdot\\left(2\\cdot\\left(\\arctan(2\\cdot x)\\right)^2+2\\cdot\\ln\\left(4\\cdot x^2+1\\right)+8\\cdot x^2\\cdot\\left(\\arctan(2\\cdot x)\\right)^2-18\\cdot x\\cdot\\arctan(2\\cdot x)\\right)+C"", ""\\frac{1}{16}\\cdot\\left(2\\cdot\\left(\\arctan(2\\cdot x)\\right)^2+2\\cdot\\ln\\left(4\\cdot x^2+1\\right)+8\\cdot x^2\\cdot\\left(\\arctan(2\\cdot x)\\right)^2-14\\cdot x\\cdot\\arctan(2\\cdot x)\\right)+C"", ""\\frac{1}{16}\\cdot\\left(2\\cdot\\left(\\arctan(2\\cdot x)\\right)^2+2\\cdot\\ln\\left(4\\cdot x^2+1\\right)+8\\cdot x^2\\cdot\\left(\\arctan(2\\cdot x)\\right)^2-10\\cdot x\\cdot\\arctan(2\\cdot x)\\right)+C"", ""\\frac{1}{16}\\cdot\\left(2\\cdot\\left(\\arctan(2\\cdot x)\\right)^2+2\\cdot\\ln\\left(4\\cdot x^2+1\\right)+8\\cdot x^2\\cdot\\left(\\arctan(2\\cdot x)\\right)^2-6\\cdot x\\cdot\\arctan(2\\cdot x)\\right)+C"", ""\\frac{1}{16}\\cdot\\left(2\\cdot\\left(\\arctan(2\\cdot x)\\right)^2+2\\cdot\\ln\\left(4\\cdot x^2+1\\right)+8\\cdot x^2\\cdot\\left(\\arctan(2\\cdot x)\\right)^2-2\\cdot x\\cdot\\arctan(2\\cdot x)\\right)+C"", ""\\frac{1}{16}\\cdot\\left(2\\cdot\\left(\\arctan(2\\cdot x)\\right)^2+2\\cdot\\ln\\left(4\\cdot x^2+1\\right)+8\\cdot x^2\\cdot\\left(\\arctan(2\\cdot x)\\right)^2-8\\cdot x\\cdot\\arctan(2\\cdot x)\\right)+C"", ""\\frac{1}{16}\\cdot\\left(2\\cdot\\left(\\arctan(2\\cdot x)\\right)^2+2\\cdot\\ln\\left(4\\cdot x^2+1\\right)+8\\cdot x^2\\cdot\\left(\\arctan(2\\cdot x)\\right)^2-16\\cdot x\\cdot\\arctan(2\\cdot x)\\right)+C""]",Private,0
+395,"[""85/3"", ""-95/4"", ""-10/7""]",[],Private,0
+396,"[""(-infinity,5)"", ""(-3,5]""]",[],Private,0
+397,"[""804.247719318987"", ""2144.66058485063""]",[],Private,0
+398,A,"[""$$\n\\left( \\begin{matrix} {{2}}\\\\{{4}} \\\\ {{-1}} \\\\ \\end{matrix} \\right)\n$$"", ""$$\n\\left( \\begin{matrix} {{2}}\\\\{{2}} \\\\ {{-1}} \\\\ \\end{matrix} \\right)\n$$"", ""$$\n\\left( \\begin{matrix} {{2}}\\\\{{4}} \\\\ {{1}} \\\\ \\end{matrix} \\right)\n$$"", ""$$\n\\left( \\begin{matrix} {{2}}\\\\{{3}} \\\\ {{-1}} \\\\ \\end{matrix} \\right)\n$$"", ""$$\n\\left( \\begin{matrix} {{2}}\\\\{{4}} \\\\ {{2}} \\\\ \\end{matrix} \\right)\n$$"", ""$$\n\\left( \\begin{matrix} {{2}}\\\\{{4}} \\\\ {{-2}} \\\\ \\end{matrix} \\right)\n$$"", ""$$\n\\left( \\begin{matrix} {{2}}\\\\{{1}} \\\\ {{-1}} \\\\ \\end{matrix} \\right)\n$$"", ""$$\n\\left( \\begin{matrix} {{3}}\\\\{{4}} \\\\ {{-1}} \\\\ \\end{matrix} \\right)\n$$"", ""$$\n\\left( \\begin{matrix} {{4}}\\\\{{4}} \\\\ {{-1}} \\\\ \\end{matrix} \\right)\n$$"", ""$$\n\\left( \\begin{matrix} {{1}}\\\\{{4}} \\\\ {{-1}} \\\\ \\end{matrix} \\right)\n$$""]",Public,0
+399,E,"[""32674"", ""32673"", ""32678"", ""32670"", ""32672"", ""32679"", ""32675"", ""32671"", ""32676"", ""32677""]",Private,0
+400,E,"[""( 0.84 )"", ""0.1408"", ""0.1376"", ""0.1472"", ""( 0.1344 )"", ""0.1392"", ""0.1536"", ""( 0.7312 )"", ""( 0.16 )"", ""0.128""]",Private,0
+401,"[""143.239"", ""240"", ""52.5211"", ""-135""]",[],Private,0
+402,J,"[""[10, 26, 16, 38, 3, 19, 24, 43, 8, 29]"", ""[11, 23, 13, 39, 5, 15, 20, 44, 7, 25]"", ""[14, 21, 13, 43, 6, 17, 25, 47, 6, 25]"", ""[12, 25, 15, 41, 4, 17, 22, 43, 9, 28]"", ""[12, 23, 18, 36, 4, 15, 19, 46, 8, 24]"", ""[11, 25, 17, 42, 3, 14, 22, 40, 9, 26]"", ""[13, 24, 15, 40, 2, 18, 23, 41, 7, 26]"", ""[13, 26, 16, 35, 5, 18, 20, 39, 7, 30]"", ""[14, 22, 14, 37, 6, 20, 21, 45, 6, 27]"", ""[10, 24, 14, 40, 3, 16, 21, 42, 8, 27]""]",Private,0
+403,J,"[""$$\n\\underset{\\sim}T{_R} ( A )=( 0. 2, 0. 3, 0. 5 )=\\frac{0. 2} {y_{1}}+\\frac{0. 3} {y_{2}}+\\frac{0. 5} {y_{3}}\n$$"", ""$$\n\\underset{\\sim}T{_R} ( A )=( 0. 5, 0. 2, 0. 3 )=\\frac{0. 5} {y_{1}}+\\frac{0. 2} {y_{2}}+\\frac{0. 3} {y_{3}}\n$$"", ""$$\n\\underset{\\sim}T{_R} ( A )=( 0. 4, 0. 4, 0. 2 )=\\frac{0. 4} {y_{1}}+\\frac{0. 4} {y_{2}}+\\frac{0. 2} {y_{3}}\n$$"", ""$$\n\\underset{\\sim}T{_R} ( A )=( 0. 4, 0. 1, 0. 5 )=\\frac{0. 4} {y_{1}}+\\frac{0. 1} {y_{2}}+\\frac{0. 5} {y_{3}}\n$$"", ""$$\n\\underset{\\sim}T{_R} ( A )=( 0. 6, 0. 3, 0. 1 )=\\frac{0. 6} {y_{1}}+\\frac{0. 3} {y_{2}}+\\frac{0. 1} {y_{3}}\n$$"", ""$$\n\\underset{\\sim}T{_R} ( A )=( 0. 1, 0. 5, 0. 4 )=\\frac{0. 1} {y_{1}}+\\frac{0. 5} {y_{2}}+\\frac{0. 4} {y_{3}}\n$$"", ""$$\n\\underset{\\sim}T{_R} ( A )=( 0. 2, 0. 4, 0. 4 )=\\frac{0. 2} {y_{1}}+\\frac{0. 4} {y_{2}}+\\frac{0. 4} {y_{3}}\n$$"", ""$$\n\\underset{\\sim}T{_R} ( A )=( 0. 3, 0. 6, 0. 1 )=\\frac{0. 3} {y_{1}}+\\frac{0. 6} {y_{2}}+\\frac{0. 1} {y_{3}}\n$$"", ""$$\n\\underset{\\sim}T{_R} ( A )=( 0. 1, 0. 7, 0. 2 )=\\frac{0. 1} {y_{1}}+\\frac{0. 7} {y_{2}}+\\frac{0. 2} {y_{3}}\n$$"", ""$$\n\\underset{\\sim}T{_R} ( A )=( 0. 3, 1, 0. 7 )=\\frac{0. 3} {y_{1}}+\\frac{1} {y_{2}}+\\frac{0. 7} {y_{3}}\n$$""]",Private,0
+404,"[""52""]",[],Private,0
+405,H,"[""[11701995, 16790133, 23964591, 34034388, 48104066, 67679106, 94800534, 132230018, 183686991, 254170329]"", ""[11701992, 16790130, 23964588, 34034385, 48104063, 67679103, 94800531, 132230015, 183686988, 254170326]"", ""[11701999, 16790137, 23964595, 34034392, 48104070, 67679110, 94800538, 132230022, 183686995, 254170333]"", ""[11701996, 16790134, 23964592, 34034389, 48104067, 67679107, 94800535, 132230019, 183686992, 254170330]"", ""[11701990, 16790128, 23964586, 34034383, 48104061, 67679101, 94800529, 132230013, 183686986, 254170324]"", ""[11701993, 16790131, 23964589, 34034386, 48104064, 67679104, 94800532, 132230016, 183686989, 254170327]"", ""[11701997, 16790135, 23964593, 34034390, 48104068, 67679108, 94800536, 132230020, 183686993, 254170331]"", ""[11701998, 16790136, 23964594, 34034391, 48104069, 67679109, 94800537, 132230021, 183686994, 254170332]"", ""[11701991, 16790129, 23964587, 34034384, 48104062, 67679102, 94800530, 132230014, 183686987, 254170325]"", ""[11701994, 16790132, 23964590, 34034387, 48104065, 67679105, 94800533, 132230017, 183686990, 254170328]""]",Public,0
+406,"[""-7""]",[],Public,0
+407,C,"[""184"", ""173"", ""165"", ""156"", ""159"", ""192"", ""145"", ""283"", ""116"", ""178""]",Private,0
+408,"[""5816/9999"", ""3017/99990"", ""574/999"", ""653/9990"", ""428/999""]",[],Private,0
+409,"[""(-2.81297576413121,7.0269292525033)"", ""(-0.0809433069614509,4.29489679533354)""]",[],Private,0
+410,"[""360/8"", ""8/2""]",[],Public,0
+411,"[""27.3667626712711""]",[],Private,0
+412,"[""0.00454227035154714""]",[],Public,0
+413,"[""0.893010836681381"", ""(1.82966,infinity)"", ""0.200754"", ""A""]",[],Private,0
+414,I,"[""3/4 * (C - sqrt(5 + 1/x^2 - 2/x) - ln(abs(1/x + sqrt(5 + 1/x^2 - 2/x) - 3)))"", ""3/4 * (C - sqrt(5 + 1/x^2 - 2/x) - ln(abs(1/x + sqrt(5 + 1/x^2 - 2/x) - 4)))"", ""3/4 * (C - sqrt(5 + 1/x^2 - 2/x) - ln(abs(1/x + sqrt(5 + 1/x^2 - 2/x) - 5)))"", ""3/4 * (C - sqrt(5 + 1/x^2 - 2/x) - ln(abs(1/x - sqrt(5 + 1/x^2 - 2/x) - 2)))"", ""3/4 * (C - sqrt(5 + 1/x^2 - 2/x) - ln(abs(1/x + sqrt(5 + 1/x^2 - 2/x) + 2)))"", ""3/4 * (C - sqrt(5 + 1/x^2 - 2/x) - ln(abs(1/x - sqrt(5 + 1/x^2 - 2/x) + 1)))"", ""3/4 * (C - sqrt(5 + 1/x^2 - 2/x) - ln(abs(1/x + sqrt(5 + 1/x^2 - 2/x) + 1)))"", ""3/4 * (C - sqrt(5 + 1/x^2 - 2/x) - ln(abs(1/x + sqrt(5 + 1/x^2 - 2/x) + 3)))"", ""3/4 * (C - sqrt(5 + 1/x^2 - 2/x) - ln(abs(1/x + sqrt(5 + 1/x^2 - 2/x) - 1)))"", ""3/4 * (C - sqrt(5 + 1/x^2 - 2/x) - ln(abs(1/x - sqrt(5 + 1/x^2 - 2/x) - 1)))""]",Public,0
+415,"[""sqrt(A/6)"", ""A"", ""(A/6)^1.5"", ""A""]",[],Private,0
+416,"[""11"", ""16""]",[],Public,0
+417,"[""1.00555555555556"", ""0.967544864452081"", ""28"", ""29.1"", ""1.03928571428571""]",[],Private,0
+418,"[""2.9580398915498"", ""1.75069"", ""0.00154801"", ""B""]",[],Private,0
+419,2n(n-1),[],Public,1
+420,H,"[""P(E, F), P(H|E, F), P(E|H)"", ""P(E, F), P(H|E), P(F|H)"", ""P(H), P(E, F|H), P(F)"", ""P(E, F), P(H), P(E|H), P(F|H)"", ""P(H), P(E|H), P(F|H)"", ""P(H), P(E, F|H), P(E|F)"", ""P(E, F), P(E|H), P(F|H)"", ""P(E, F), P(H), P(E, F|H)"", ""P(E, F), P(H|F), P(E|H)"", ""P(H), P(E, F), P(E|H)""]",Private,0
+421,"[""-[sqrt(9^2)]/[sqrt(9^2-1)]"", ""-1/[sqrt(9^2-1)]""]",[],Private,0
+422,4N^3+9N^2+6N+1,[],Public,1
+423,"[""(10+-11+4+7+-7+-6)/6""]",[],Private,0
+424,"[""PARAMETER"", ""PARAMETER"", ""STATISTIC"", ""statistic""]",[],Private,0
+425,"[""7""]",[],Private,0
+426,"[""11""]",[],Private,0
+427,E,"[""511"", ""516"", ""517"", ""514"", ""520"", ""513"", ""515"", ""519"", ""512"", ""518""]",Private,0
+428,"[""43"", ""55""]",[],Private,0
+429,"[""A""]",[],Private,0
+430,E,"[""2"", ""0"", ""-1"", ""1/3"", ""1"", ""3"", ""1/2"", ""2/3""]",Private,0
+431,"[""5"", ""42""]",[],Private,0
+432,"[""(1.20362249297668, 2.12939564213846, 4.34521514656647, 5.27098829572825)""]",[],Public,0
+433,C,"[""$$\ncos3 \\theta\\!=\\! \\operatorname{s i n}^{2} \\, \\theta\\!-\\! 3 \\operatorname{c o s} \\, \\theta\\! \\operatorname{s i n} \\, \\theta\\!=\\! 4 \\operatorname{s i n}^{2} \\, \\theta\\!-\\! 3 \\operatorname{c o s} \\, \\theta\\\n$$"", ""$$\ncos3 \\theta\\!=\\! \\operatorname{s i n}^{2} \\, \\theta\\!+\\! 3 \\operatorname{c o s}^{2} \\, \\theta\\! \\operatorname{s i n} \\, \\theta\\!=\\! 4 \\operatorname{s i n}^{2} \\, \\theta\\!+\\! 3 \\operatorname{c o s}^{2} \\, \\theta\\\n$$"", ""$$\ncos3 \\theta\\!=\\! \\operatorname{c o s}^{3} \\, \\theta\\!-\\! 3 \\operatorname{c o s} \\, \\theta\\! \\operatorname{s i n}^{2} \\, \\theta\\!=\\! 4 \\operatorname{c o s}^{3} \\, \\theta\\!-\\! 3 \\operatorname{c o s} \\, \\theta\\\n$$"", ""$$\ncos3 \\theta\\!=\\! \\operatorname{s i n}^{3} \\, \\theta\\!+\\! 3 \\operatorname{c o s} \\, \\theta\\! \\operatorname{s i n} \\, \\theta\\!=\\! 4 \\operatorname{s i n}^{3} \\, \\theta\\!+\\! 3 \\operatorname{c o s} \\, \\theta\\\n$$"", ""$$\ncos3 \\theta\\!=\\! \\operatorname{c o s}^{2} \\, \\theta\\!+\\! 3 \\operatorname{c o s} \\, \\theta\\! \\operatorname{s i n}^{2} \\, \\theta\\!=\\! 4 \\operatorname{c o s}^{2} \\, \\theta\\!+\\! 3 \\operatorname{c o s} \\, \\theta\\\n$$"", ""$$\ncos3 \\theta\\!=\\! \\operatorname{c o s}^{3} \\, \\theta\\!+\\! 3 \\operatorname{s i n} \\, \\theta\\! \\operatorname{c o s}^{2} \\, \\theta\\!=\\! 4 \\operatorname{c o s}^{3} \\, \\theta\\!+\\! 3 \\operatorname{s i n} \\, \\theta\\\n$$"", ""$$\ncos3 \\theta\\!=\\! \\operatorname{c o s}^{3} \\, \\theta\\!+\\! 3 \\operatorname{s i n}^{2} \\, \\theta\\! \\operatorname{c o s} \\, \\theta\\!=\\! 4 \\operatorname{c o s}^{3} \\, \\theta\\!+\\! 3 \\operatorname{s i n}^{2} \\, \\theta\\\n$$"", ""$$\ncos3 \\theta\\!=\\! \\operatorname{s i n}^{3} \\, \\theta\\!-\\! 3 \\operatorname{s i n} \\, \\theta\\! \\operatorname{c o s}^{2} \\, \\theta\\!=\\! 4 \\operatorname{s i n}^{3} \\, \\theta\\!-\\! 3 \\operatorname{s i n} \\, \\theta\\\n$$"", ""$$\ncos3 \\theta\\!=\\! \\operatorname{s i n}^{3} \\, \\theta \\!+\\! 3 \\operatorname{c o s} \\, \\theta\\! \\operatorname{s i n}^{2} \\, \\theta\\!=\\! 4 \\operatorname{s i n}^{3} \\, \\theta\\!+\\! 3 \\operatorname{c o s} \\, \\theta\\\n$$"", ""$$\ncos3 \\theta\\!=\\! \\operatorname{c o s}^{2} \\, \\theta\\!-\\! 3 \\operatorname{s i n} \\, \\theta\\! \\operatorname{c o s} \\, \\theta\\!=\\! 4 \\operatorname{c o s}^{2} \\, \\theta\\!-\\! 3 \\operatorname{s i n} \\, \\theta\\\n$$""]",Private,0
+434,I,"[""[269766659, 667224482, 1653266560, 4103910936, 10203669281, 25408828062, 63364046195, 158229645726, 395632288592, 990419552732]"", ""[269766653, 667224485, 1653266566, 4103910927, 10203669284, 25408828061, 63364046191, 158229645719, 395632288595, 990419552737]"", ""[269766657, 667224483, 1653266568, 4103910929, 10203669283, 25408828070, 63364046186, 158229645718, 395632288594, 990419552739]"", ""[269766658, 667224481, 1653266563, 4103910925, 10203669280, 25408828067, 63364046185, 158229645725, 395632288596, 990419552731]"", ""[269766656, 667224488, 1653266564, 4103910928, 10203669282, 25408828069, 63364046187, 158229645727, 395632288588, 990419552733]"", ""[269766650, 667224480, 1653266567, 4103910932, 10203669286, 25408828066, 63364046192, 158229645722, 395632288591, 990419552735]"", ""[269766651, 667224484, 1653266569, 4103910935, 10203669287, 25408828063, 63364046188, 158229645721, 395632288590, 990419552734]"", ""[269766652, 667224487, 1653266558, 4103910933, 10203669288, 25408828068, 63364046183, 158229645723, 395632288593, 990419552736]"", ""[269766655, 667224480, 1653266565, 4103910930, 10203669285, 25408828065, 63364046190, 158229645720, 395632288590, 990419552730]"", ""[269766654, 667224486, 1653266562, 4103910937, 10203669289, 25408828064, 63364046189, 158229645724, 395632288589, 990419552738]""]",Private,0
+435,"[""0.445722313755966"", ""0.536777686244034"", ""A""]",[],Private,0
+436,"[""20""]",[],Private,0
+437,"[""(76.3741836590702,79.6258163409298)""]",[],Private,0
+438,"[""5"", ""9"", ""1"", ""10"", ""2"", ""0"", ""10"", ""1*x**3*y**7"", ""1""]",[],Public,0
+439,"[""-4/13""]",[],Private,0
+440,G,"[""\\frac{13}{2}"", ""\\frac{9}{2}"", ""\\frac{10}{2}"", ""\\frac{7}{2}"", ""\\frac{4}{2}"", ""\\frac{3}{2}"", ""\\frac{5}{2}"", ""\\frac{6}{2}"", ""\\frac{8}{2}"", ""\\frac{11}{2}""]",Private,0
+441,"[""260""]",[],Private,0
+442,E,"[""\\left\\langle\\frac{1}{2\\cdot x\\cdot y\\cdot\\sqrt{x}}-\\frac{\\sqrt{x}+y^2}{x^2\\cdot y},\\frac{2}{x}-\\frac{\\sqrt{x}+y^2}{x^2\\cdot y^2} \\right\\rangle"", ""\\left\\langle\\frac{1}{2\\cdot x\\cdot y\\cdot\\sqrt{x}}-\\frac{\\sqrt{x}+y^2}{x\\cdot y^2},\\frac{2}{x}-\\frac{\\sqrt{x}+y^2}{x\\cdot y}\\right\\rangle"", ""\\left\\langle\\frac{1}{2\\cdot x\\cdot y\\cdot\\sqrt{x}}-\\frac{\\sqrt{x}+y^2}{x\\cdot y^2},\\frac{2}{x}-\\frac{\\sqrt{x}+y^2}{x\\cdot y^2} \\right\\rangle"", ""\\left\\langle\\frac{1}{2\\cdot x\\cdot y\\cdot\\sqrt{x}}-\\frac{\\sqrt{x}+y^2}{x^2\\cdot y},\\frac{2}{x}-\\frac{\\sqrt{x}+y^2}{x^2\\cdot y} \\right\\rangle"", ""\\left\\langle\\frac{1}{2\\cdot x\\cdot y\\cdot\\sqrt{x}}-\\frac{\\sqrt{x}+y^2}{y\\cdot x^2},\\frac{2}{x}-\\frac{\\sqrt{x}+y^2}{x\\cdot y^2}\\right\\rangle"", ""\\left\\langle\\frac{1}{2\\cdot x\\cdot y\\cdot\\sqrt{x}}-\\frac{\\sqrt{x}+y^2}{x\\cdot y^2},\\frac{2}{x}-\\frac{\\sqrt{x}+y^2}{x^2\\cdot y^2}\\right\\rangle"", ""\\left\\langle\\frac{1}{2\\cdot x\\cdot y\\cdot\\sqrt{x}}-\\frac{\\sqrt{x}+y^2}{x\\cdot y^2},\\frac{2}{x}-\\frac{\\sqrt{x}+y^2}{x^2\\cdot y} \\right\\rangle"", ""\\left\\langle\\frac{1}{2\\cdot x\\cdot y\\cdot\\sqrt{x}}-\\frac{\\sqrt{x}+y^2}{x^2\\cdot y},\\frac{2}{x}-\\frac{\\sqrt{x}+y^2}{x\\cdot y^2}\\right\\rangle"", ""\\left\\langle\\frac{1}{2\\cdot x\\cdot y\\cdot\\sqrt{x}}-\\frac{\\sqrt{x}+y^2}{x^2\\cdot y^2},\\frac{2}{x}-\\frac{\\sqrt{x}+y^2}{x\\cdot y^2} \\right\\rangle"", ""\\left\\langle\\frac{1}{2\\cdot x\\cdot y\\cdot\\sqrt{x}}-\\frac{\\sqrt{x}+y^2}{x^2\\cdot y},\\frac{2}{x}-\\frac{\\sqrt{x}+y^2}{x\\cdot y^2} \\right\\rangle""]",Private,0
+443,G,"[""12"", ""14"", ""16"", ""23"", ""18"", ""17"", ""13"", ""19"", ""15"", ""11""]",Public,0
+444,"[""113"", ""35"", ""112"", ""61"", ""148"", ""43""]",[],Private,0
+445,A,"[""149"", ""159"", ""148"", ""150"", ""151"", ""153"", ""155"", ""147"", ""152"", ""157""]",Private,0
+446,"[""1.8716572269499"", ""0.971960239259388""]",[],Private,0
+447,"[""(-infinity, 4]""]",[],Public,0
+448,"[""x^3-4*x^2-6*x+30"", ""x^2-9*x+20""]",[],Public,0
+449,"[""3.58533015812897"", ""0.000336652"", ""B""]",[],Private,0
+450,I,"[""24"", ""25"", ""21"", ""28"", ""20"", ""23"", ""26"", ""27"", ""22"", ""29""]",Private,0
+451,"[""0.129032258064516"", ""0.193548387096774"", ""0.209677419354839"", ""14"", ""0.17741935483871"", ""0.0645161290322581""]",[],Private,0
+452,"[""42""]",[],Public,0
+453,1350,[],Private,1
+454,"[""30/20"", ""15/16""]",[],Private,0
+455,"[""C""]",[],Private,0
+456,"[""-7.70945"", ""A"", ""B""]",[],Private,0
+457,G,"[""837"", ""835"", ""836"", ""830"", ""839"", ""834"", ""833"", ""831"", ""838"", ""832""]",Public,0
+458,12,[],Private,1
+459,"[""[sin(A)]^2"", ""[cos(A)]/[sin(A)]"", ""[sec(A)]^2"", ""1/[tan(A)]"", ""1/[sin(A)]""]",[],Private,0
+460,"[""F"", ""F"", ""T"", ""T"", ""T"", ""T"", ""F""]",[],Private,0
+461,"[""2"", ""302""]",[],Public,0
+462,"[""-7"", ""8""]",[],Private,0
+463,J,"[""$m \\left( f' ( E ) \\right)$"", ""$m \\left( f ( b ) \\right)$"", ""$m \\left( E \\right)$"", ""$m^{*} \\left( f ( [a, b] ) \\right)$"", ""$m \\left( f ( E ) \\right)$"", ""$m^{*} \\left( f ( a ) \\right)$"", ""$m^{*} \\left( E \\right)$"", ""$m \\left( f' ( [a, b] ) \\right)$"", ""$m^{*} \\left( f' ( E ) \\right)$"", ""$m^{*} \\left( f ( E ) \\right)$""]",Private,0
+464,G,"[""$$\\left\\{\\begin{aligned} {{\\alpha e^{-\\alpha z}-\\beta e^{-\\beta z}-( \\alpha+\\beta) e^{-( \\alpha+\\beta) z},}} & {{z > 0}} \\\\ {{0,}} & {{z \\leq0}} \\\\ \\end{aligned} \\right.\n$$"", ""$$\\left\\{\\begin{aligned} {{\\alpha e^{-\\alpha z}+\\beta e^{-\\beta z}-( \\alpha-\\beta) e^{-( \\alpha+\\beta) z},}} & {{z > 0}} \\\\ {{0,}} & {{z \\leq0}} \\\\ \\end{aligned} \\right.\n$$"", ""$$\\left\\{\\begin{aligned} {{\\alpha e^{\\alpha z}+\\beta e^{-\\beta z}-( \\alpha+\\beta) e^{-( \\alpha+\\beta) z},}} & {{z > 0}} \\\\ {{0,}} & {{z \\leq0}} \\\\ \\end{aligned} \\right.\n$$"", ""$$\\left\\{\\begin{aligned} {{\\alpha e^{-\\alpha z}+\\beta e^{\\beta z}-( \\alpha+\\beta) e^{-( \\alpha+\\beta) z},}} & {{z > 0}} \\\\ {{0,}} & {{z \\leq0}} \\\\ \\end{aligned} \\right.\n$$"", ""$$\n\\frac{d} {d z} F_{z} ( z )=\\left\\{\\begin{aligned} {{\\alpha e^{-\\alpha z}+\\beta e^{-\\beta z},}} & {{z > 0}} \\\\ {{0,}} & {{z \\leq0}} \\\\ \\end{aligned} \\right.\n$$"", ""$$\\left\\{\\begin{aligned} {{\\alpha e^{-\\alpha z}+\\beta e^{-\\beta z}+( \\alpha+\\beta) e^{-( \\alpha+\\beta) z},}} & {{z > 0}} \\\\ {{0,}} & {{z \\leq0}} \\\\ \\end{aligned} \\right.\n$$"", ""$$\\left\\{\\begin{aligned} {{\\alpha e^{-\\alpha z}+\\beta e^{-\\beta z}-( \\alpha+\\beta) e^{-( \\alpha+\\beta) z},}} & {{z > 0}} \\\\ {{0,}} & {{z \\leq0}} \\\\ \\end{aligned} \\right.\n$$"", ""$$\\left\\{\\begin{aligned} {{\\alpha e^{-\\alpha z}+\\beta e^{-\\beta z}-( \\alpha+\\beta) e^{( \\alpha+\\beta) z},}} & {{z > 0}} \\\\ {{0,}} & {{z \\leq0}} \\\\ \\end{aligned} \\right.\n$$"", ""$$\n\\frac{d} {d z} F_{z} ( z )=\\left\\{\\begin{aligned} {{\\alpha e^{-\\alpha z}-\\beta e^{-\\beta z},}} & {{z > 0}} \\\\ {{0,}} & {{z \\leq0}} \\\\ \\end{aligned} \\right.\n$$"", ""$$\n\\frac{d} {d z} F_{z} ( z )=\\left\\{\\begin{aligned} {{\\alpha e^{-\\alpha z}+\\beta e^{\\beta z},}} & {{z > 0}} \\\\ {{0,}} & {{z \\leq0}} \\\\ \\end{aligned} \\right.\n$$""]",Private,0
+465,H,"[""10/18"", ""6/9"", ""18/9"", ""16/9"", ""14/9"", ""12/9"", ""10/9"", ""8/9"", ""4/9"", ""2/9""]",Private,0
+466,"[""26.9""]",[],Public,0
+467,"[""-0.017+0.027*w"", ""A"", ""A"", ""5""]",[],Private,0
+468,"[""0.671348243768397"", ""0.881592932702191""]",[],Private,0
+469,"[""s^2"", ""0.1575*A"", ""0.1575*s^2"", ""C"", ""81"", ""square feet"", ""14.175"", ""dollars"", ""19.0575"", ""dollars""]",[],Private,0
+470,"[""1.95996398465615"", ""2.20098"", ""2.32634787539286"", ""2.71808"", ""2.57582930805671"", ""3.10580""]",[],Private,0
+471,C,"[""49"", ""45"", ""43"", ""47"", ""41""]",Public,0
+472,I,"[""745"", ""755"", ""775"", ""735"", ""795"", ""760"", ""750"", ""780"", ""765"", ""720""]",Private,0
+473,"[""[-7,-3]""]",[],Private,0
+474,E,"[""249"", ""246"", ""248"", ""245"", ""247"", ""243"", ""244"", ""256"", ""255"", ""242""]",Private,0
+475,\frac{4}{9},[],Private,1
+476,G,"[""0.1943"", ""0.1949"", ""0.1947"", ""0.1945"", ""0.1941"", ""0.1944"", ""0.1948"", ""0.1946"", ""0.1942"", ""0.1950""]",Private,0
+477,"[""A"", ""C""]",[],Private,0
+478,"[""-0.3""]",[],Public,0
+479,"[""40.3566710729968"", ""43.6433289270032"", ""40.0108376404341"", ""43.9891623595659""]",[],Private,0
+480,"[""2.5"", ""2.5""]",[],Private,0
+481,A,"[""435"", ""425"", ""420"", ""445"", ""455"", ""430"", ""415"", ""440""]",Private,0
+482,H,"[""$$\nc_{0}=1 1, \\; \\; c_{1}=-2 4, \\; \\; c_{2}=2 2, \\; \\; c_{3}=-8, \\; \\; c_{4}=1 1\n$$"", ""$$\nc_{0}=1 1, \\; \\; c_{1}=-2 4, \\; \\; c_{2}=2 0, \\; \\; c_{3}=-8, \\; \\; c_{4}=1\n$$"", ""$$\nc_{0}=1 1, \\; \\; c_{1}=-2 4, \\; \\; c_{2}=2 2, \\; \\; c_{3}=-1 8, \\; \\; c_{4}=1\n$$"", ""$$\nc_{0}=1 1, \\; \\; c_{1}=-2 , \\; \\; c_{2}=2 2, \\; \\; c_{3}=-8, \\; \\; c_{4}=1\n$$"", ""$$\nc_{0}=1 1, \\; \\; c_{1}=-2 0, \\; \\; c_{2}=2 2, \\; \\; c_{3}=-8, \\; \\; c_{4}=1\n$$"", ""$$\nc_{0}=1 1, \\; \\; c_{1}=-2 4, \\; \\; c_{2}=2 2, \\; \\; c_{3}=-8, \\; \\; c_{4}=1 0\n$$"", ""$$\nc_{0}=1 , \\; \\; c_{1}=-2 4, \\; \\; c_{2}=2 2, \\; \\; c_{3}=-8, \\; \\; c_{4}=1\n$$"", ""$$\nc_{0}=1 1, \\; \\; c_{1}=-2 4, \\; \\; c_{2}=2 2, \\; \\; c_{3}=-8, \\; \\; c_{4}=1\n$$"", ""$$\nc_{0}=1 1, \\; \\; c_{1}=-2 4, \\; \\; c_{2}=2 , \\; \\; c_{3}=-8, \\; \\; c_{4}=1\n$$"", ""$$\nc_{0}=1 1, \\; \\; c_{1}=-2 4, \\; \\; c_{2}=2 2, \\; \\; c_{3}=-8, \\; \\; c_{4}=1 2\n$$""]",Private,0
+483,A,"[""59"", ""57"", ""58"", ""55"", ""56""]",Private,0
+484,C,"[""27"", ""25"", ""26"", ""22"", ""28"", ""23"", ""24"", ""21"", ""29""]",Public,0
+485,"[""135""]",[],Public,0
+486,B,"[""18"", ""8"", ""14"", ""10"", ""12"", ""16""]",Public,0
+487,"[""-21.0999999999999"", ""-0.963646143179892""]",[],Private,0
+488,4050,[],Public,1
+489,"[""385""]",[],Private,0
+490,"[""23"", ""BTUs per square foot"", ""410"", ""square feet""]",[],Private,0
+491,"[""1255.36666666667"", ""1091.04989941512"", ""1419.68343391822"", ""no"", ""central limit theorem""]",[],Private,0
+492,"[""A"", ""A""]",[],Private,0
+493,"[""14.6675182469538"", ""B"", ""0.0686634069466562"", ""0.108275796407642""]",[],Public,0
+494,"[""7"", ""0.062""]",[],Private,0
+495,"[""100"", ""100"", ""200"", ""0.255"", ""5.99146"", ""B""]",[],Private,0
+496,"[""9.59407""]",[],Public,0
+497,"[""1.11061"", ""88.8065"", ""88.8065"", ""0.900404""]",[],Private,0
+498,89,[],Private,1
+499,"[""36.9"", ""0.3225"", ""32.25"", ""2.149""]",[],Private,0
+500,J,"[""J a c o b i:\n$$\n\\varepsilon^{( k )}=\n2^{-k} {\\left[ \\begin{array} {l l} {{1}} & {{0}} \\\\ {{0}} & {{1}} \\\\ \\end{array} \\right]}^{k} {\\varepsilon^{( 0 )}}\n$$\nG a u s s-S e i d e l:\n$$\n\\varepsilon^{( k )}\\mathcal{}=\\left[ \\begin{array} {c} {{{2 \\cdot2^{-2 k} \\varepsilon{}_{1}^{( 0 )}}}} \\\\ {{{2^{-2 k} \\varepsilon{}_{1}^{( 0 )}}}} \\\\ \\end{array} \\right]\n$$"", ""J a c o b i:\n$$\n\\varepsilon^{( k )}=\n7^{-k} {\\left[ \\begin{array} {l l} {{0}} & {{2}} \\\\ {{2}} & {{1}} \\\\ \\end{array} \\right]}^{k} {\\varepsilon^{( 0 )}}\n$$\nG a u s s-S e i d e l:\n$$\n\\varepsilon^{( k )}\\mathcal{}=\\left[ \\begin{array} {c} {{{7 \\cdot7^{-2 k} \\varepsilon{}_{2}^{( 0 )}}}} \\\\ {{{7^{-2 k} \\varepsilon{}_{1}^{( 0 )}}}} \\\\ \\end{array} \\right]\n$$"", ""J a c o b i:\n$$\n\\varepsilon^{( k )}=\n4^{-k} {\\left[ \\begin{array} {l l} {{0}} & {{2}} \\\\ {{2}} & {{0}} \\\\ \\end{array} \\right]}^{k} {\\varepsilon^{( 0 )}}\n$$\nG a u s s-S e i d e l:\n$$\n\\varepsilon^{( k )}\\mathcal{}=\\left[ \\begin{array} {c} {{{4 \\cdot4^{-2 k} \\varepsilon{}_{2}^{( 0 )}}}} \\\\ {{{4^{-2 k} \\varepsilon{}_{2}^{( 0 )}}}} \\\\ \\end{array} \\right]\n$$"", ""J a c o b i:\n$$\n\\varepsilon^{( k )}=\n3^{-k} {\\left[ \\begin{array} {l l} {{1}} & {{0}} \\\\ {{0}} & {{0}} \\\\ \\end{array} \\right]}^{k} {\\varepsilon^{( 0 )}}\n$$\nG a u s s-S e i d e l:\n$$\n\\varepsilon^{( k )}\\mathcal{}=\\left[ \\begin{array} {c} {{{3 \\cdot3^{-2 k} \\varepsilon{}_{1}^{( 0 )}}}} \\\\ {{{3^{-2 k} \\varepsilon{}_{1}^{( 0 )}}}} \\\\ \\end{array} \\right]\n$$"", ""J a c o b i:\n$$\n\\varepsilon^{( k )}=\n2^{-k} {\\left[ \\begin{array} {l l} {{1}} & {{1}} \\\\ {{0}} & {{1}} \\\\ \\end{array} \\right]}^{k} {\\varepsilon^{( 0 )}}\n$$\nG a u s s-S e i d e l:\n$$\n\\varepsilon^{( k )}\\mathcal{}=\\left[ \\begin{array} {c} {{{2 \\cdot2^{-2 k} \\varepsilon{}_{1}^{( 0 )}}}} \\\\ {{{2^{-2 k} \\varepsilon{}_{1}^{( 0 )}}}} \\\\ \\end{array} \\right]\n$$"", ""J a c o b i:\n$$\n\\varepsilon^{( k )}=\n4^{-k} {\\left[ \\begin{array} {l l} {{2}} & {{2}} \\\\ {{2}} & {{2}} \\\\ \\end{array} \\right]}^{k} {\\varepsilon^{( 0 )}}\n$$\nG a u s s-S e i d e l:\n$$\n\\varepsilon^{( k )}\\mathcal{}=\\left[ \\begin{array} {c} {{{4 \\cdot4^{-2 k} \\varepsilon{}_{1}^{( 0 )}}}} \\\\ {{{4^{-2 k} \\varepsilon{}_{2}^{( 0 )}}}} \\\\ \\end{array} \\right]\n$$"", ""J a c o b i:\n$$\n\\varepsilon^{( k )}=\n5^{-k} {\\left[ \\begin{array} {l l} {{0}} & {{1}} \\\\ {{1}} & {{2}} \\\\ \\end{array} \\right]}^{k} {\\varepsilon^{( 0 )}}\n$$\nG a u s s-S e i d e l:\n$$\n\\varepsilon^{( k )}\\mathcal{}=\\left[ \\begin{array} {c} {{{5 \\cdot5^{-2 k} \\varepsilon{}_{2}^{( 0 )}}}} \\\\ {{{5^{-2 k} \\varepsilon{}_{1}^{( 0 )}}}} \\\\ \\end{array} \\right]\n$$"", ""J a c o b i:\n$$\n\\varepsilon^{( k )}=\n6^{-k} {\\left[ \\begin{array} {l l} {{2}} & {{0}} \\\\ {{0}} & {{1}} \\\\ \\end{array} \\right]}^{k} {\\varepsilon^{( 0 )}}\n$$\nG a u s s-S e i d e l:\n$$\n\\varepsilon^{( k )}\\mathcal{}=\\left[ \\begin{array} {c} {{{6 \\cdot6^{-2 k} \\varepsilon{}_{2}^{( 0 )}}}} \\\\ {{{6^{-2 k} \\varepsilon{}_{1}^{( 0 )}}}} \\\\ \\end{array} \\right]\n$$"", ""J a c o b i:\n$$\n\\varepsilon^{( k )}=\n3^{-k} {\\left[ \\begin{array} {l l} {{1}} & {{1}} \\\\ {{1}} & {{1}} \\\\ \\end{array} \\right]}^{k} {\\varepsilon^{( 0 )}}\n$$\nG a u s s-S e i d e l:\n$$\n\\varepsilon^{( k )}\\mathcal{}=\\left[ \\begin{array} {c} {{{3 \\cdot3^{-2 k} \\varepsilon{}_{2}^{( 0 )}}}} \\\\ {{{3^{-2 k} \\varepsilon{}_{2}^{( 0 )}}}} \\\\ \\end{array} \\right]\n$$"", ""J a c o b i:\n$$\n\\varepsilon^{( k )}=\n2^{-k} {\\left[ \\begin{array} {l l} {{0}} & {{1}} \\\\ {{1}} & {{0}} \\\\ \\end{array} \\right]}^{k} {\\varepsilon^{( 0 )}}\n$$\nG a u s s-S e i d e l:\n$$\n\\varepsilon^{( k )}\\mathcal{}=\\left[ \\begin{array} {c} {{{2 \\cdot2^{-2 k} \\varepsilon{}_{2}^{( 0 )}}}} \\\\ {{{2^{-2 k} \\varepsilon{}_{2}^{( 0 )}}}} \\\\ \\end{array} \\right]\n$$""]",Private,0
+501,F,"[""111"", ""107"", ""103"", ""102"", ""105"", ""108"", ""106"", ""104"", ""110"", ""109""]",Private,0
+502,"[""0.727272727272727""]",[],Private,0
+503,"[""y = -43000*x+833000"", ""446000"", ""2020""]",[],Private,0
+504,"[""3*cos(4*pi/3)"", ""3*sin(4*pi/3)""]",[],Private,0
+505,"[""1"", ""10+-7*1"", ""27+-7*3"", ""37+-7*6"", ""-39+-7*-5"", ""-26+-7*-4""]",[],Public,0
+506,J,"[""[4525, 4625, 4673, 4840, 5048, 5108, 5206, 5343, 5388, 5475]"", ""[4515, 4615, 4660, 4832, 5042, 5102, 5202, 5332, 5382, 5462]"", ""[4530, 4630, 4680, 4850, 5060, 5120, 5210, 5350, 5400, 5480]"", ""[4534, 4634, 4678, 4848, 5056, 5116, 5214, 5351, 5396, 5484]"", ""[4520, 4620, 4670, 4830, 5040, 5100, 5200, 5340, 5390, 5470]"", ""[4550, 4640, 4690, 4860, 5070, 5130, 5230, 5370, 5415, 5500]"", ""[4522, 4622, 4672, 4838, 5046, 5106, 5204, 5341, 5380, 5468]"", ""[4518, 4618, 4666, 4835, 5045, 5105, 5205, 5335, 5385, 5465]"", ""[4540, 4635, 4685, 4855, 5065, 5125, 5225, 5360, 5410, 5490]"", ""[4527, 4627, 4674, 4842, 5050, 5110, 5208, 5345, 5390, 5478]""]",Private,0
+507,I,"[""596"", ""598"", ""597"", ""599"", ""595"", ""592"", ""593"", ""594"", ""601""]",Private,0
+508,n(n-1)/2,[],Private,1
+509,H,"[""P(A)=0.5842"", ""P(A)=0.5556"", ""P(A)=0.5877"", ""P(A)=0.5723"", ""P(A)=0.6094"", ""P(A)=0.5149"", ""P(A)=0.5841"", ""P(A)=0.5966"", ""P(A)=0.6312"", ""P(A)=0.6235""]",Private,0
+510,3/2,[],Public,1
+511,I,"[""4.321"", ""7.891"", ""8.567"", ""5.678"", ""8.123"", ""9.456"", ""5.432"", ""6.789"", ""7.333"", ""6.123""]",Private,0
+512,"[""64*p^2+64*p+16""]",[],Private,0
+513,"[""-1.40507"", ""1.40507"", ""1.75069""]",[],Private,0
+514,I,"[""4\\cdot\\int_0^{\\frac{\\pi}{3}}1d\\theta+16\\cdot\\int_{\\frac{\\pi}{3}}^{\\frac{\\pi}{2}}\\sin\\left(\\theta\\right)^2d\\theta"", ""4\\cdot\\int_0^{\\frac{\\pi}{3}}1d\\theta+16\\cdot\\int_{\\frac{\\pi}{3}}^{\\frac{\\pi}{2}}\\cos\\left(\\theta\\right)d\\theta"", ""4\\cdot\\int_0^{\\frac{\\pi}{3}}1d\\theta+16\\cdot\\int_{\\frac{\\pi}{3}}^{\\frac{\\pi}{2}}\\cos\\left(\\theta\\right)^{1.5}d\\theta"", ""4\\cdot\\int_0^{\\frac{\\pi}{3}}1d\\theta+16\\cdot\\int_{\\frac{\\pi}{3}}^{\\frac{\\pi}{2}}\\cos\\left(\\theta\\right)^4d\\theta"", ""4\\cdot\\int_0^{\\frac{\\pi}{3}}1d\\theta+16\\cdot\\int_{\\frac{\\pi}{3}}^{\\frac{\\pi}{2}}\\cos\\left(\\theta\\right)^3d\\theta"", ""4\\cdot\\int_0^{\\frac{\\pi}{3}}1d\\theta+16\\cdot\\int_{\\frac{\\pi}{3}}^{\\frac{\\pi}{2}}\\cos\\left(\\theta\\right)^{0.5}d\\theta"", ""4\\cdot\\int_0^{\\frac{\\pi}{3}}1d\\theta+16\\cdot\\int_{\\frac{\\pi}{3}}^{\\frac{\\pi}{2}}\\cos\\left(2\\theta\\right)d\\theta"", ""4\\cdot\\int_0^{\\frac{\\pi}{3}}1d\\theta+16\\cdot\\int_{\\frac{\\pi}{3}}^{\\frac{\\pi}{2}}\\cos\\left(\\theta\\right)^{2.5}d\\theta"", ""4\\cdot\\int_0^{\\frac{\\pi}{3}}1d\\theta+16\\cdot\\int_{\\frac{\\pi}{3}}^{\\frac{\\pi}{2}}\\cos\\left(\\theta\\right)^2d\\theta"", ""4\\cdot\\int_0^{\\frac{\\pi}{3}}1d\\theta+16\\cdot\\int_{\\frac{\\pi}{3}}^{\\frac{\\pi}{2}}\\cos\\left(\\theta\\right)^{1.75}d\\theta""]",Private,0
+515,"[""(-8, 1, 12, 19)""]",[],Public,0
+516,"[""(7, -11, 4)"", ""0*j""]",[],Public,0
+517,E,"[""678"", ""660"", ""688"", ""675"", ""680"", ""685"", ""682"", ""670"", ""672"", ""690""]",Private,0
+518,E,"[""[5, 8, 12, 10, 9, 14, 13, 15, 14, 12]"", ""[8, 7, 13, 11, 11, 12, 12, 15, 12, 11]"", ""[6, 8, 12, 10, 11, 12, 11, 14, 14, 13]"", ""[9, 6, 12, 13, 10, 12, 14, 12, 11, 14]"", ""[6, 7, 12, 11, 10, 11, 12, 13, 13, 11]"", ""[9, 7, 11, 13, 10, 14, 12, 12, 13, 12]"", ""[7, 10, 11, 10, 14, 11, 13, 12, 13, 12]"", ""[7, 9, 11, 12, 11, 10, 12, 14, 12, 10]"", ""[8, 9, 12, 11, 12, 13, 11, 14, 13, 10]"", ""[10, 6, 13, 10, 12, 11, 12, 14, 12, 13]""]",Public,0
+519,"[""426.27"", ""5090.39"", ""98.3023""]",[],Private,0
+520,"[""93-7*7""]",[],Public,0
+521,F,"[""12, 7"", ""7, 10"", ""9, 10"", ""4, 15"", ""1, 18"", ""5, 14"", ""2, 17"", ""3, 16"", ""8, 11"", ""6, 13""]",Public,0
+522,"[""(-0.4718876482, 0.4718876482)""]",[],Private,0
+523,2^{21} - 2,[],Private,1
+524,I,"[""$$\nD_{+} f ( 0 ) \\!=\\! a^{\\prime} \\,, \\; D_{-} f ( 0 ) \\!=\\! b^{\\prime} \\,, \\; D^{-} f ( 0 ) \\!=\\! a.\n$$"", ""$$\nD_{+} f ( 0 ) \\!=\\! b^{\\prime} \\,, \\; D_{-} f ( 0 ) \\!=\\! a^{\\prime} \\,, \\; D^{-} f ( 0 ) \\!=\\! b.\n$$"", ""$$\nD_{+} f ( 0 ) \\!=\\! a \\,, \\; D_{-} f ( 0 ) \\!=\\! b \\,, \\; D^{-} f ( 0 ) \\!=\\! a.\n$$"", ""$$\nD_{+} f ( 0 ) \\!=\\! b \\,, \\; D_{-} f ( 0 ) \\!=\\! b \\,, \\; D^{-} f ( 0 ) \\!=\\! b.\n$$"", ""$$\nD_{+} f ( 0 ) \\!=\\! b \\,, \\; D_{-} f ( 0 ) \\!=\\! b^{\\prime} \\,, \\; D^{-} f ( 0 ) \\!=\\! a.\n$$"", ""$$\nD_{+} f ( 0 ) \\!=\\! a^{\\prime} \\,, \\; D_{-} f ( 0 ) \\!=\\! a \\,, \\; D^{-} f ( 0 ) \\!=\\! b.\n$$"", ""$$\nD_{+} f ( 0 ) \\!=\\! b^{\\prime} \\,, \\; D_{-} f ( 0 ) \\!=\\! a \\,, \\; D^{-} f ( 0 ) \\!=\\! a^{\\prime}.\n$$"", ""$$\nD_{+} f ( 0 ) \\!=\\! b \\,, \\; D_{-} f ( 0 ) \\!=\\! a^{\\prime} \\,, \\; D^{-} f ( 0 ) \\!=\\! b^{\\prime}.\n$$"", ""$$\nD_{+} f ( 0 ) \\!=\\! a \\,, \\; D_{-} f ( 0 ) \\!=\\! a^{\\prime} \\,, \\; D^{-} f ( 0 ) \\!=\\! b^{\\prime}.\n$$"", ""$$\nD_{+} f ( 0 ) \\!=\\! b^{\\prime} \\,, \\; D_{-} f ( 0 ) \\!=\\! b \\,, \\; D^{-} f ( 0 ) \\!=\\! a^{\\prime}.\n$$""]",Private,0
+525,H,"[""1564"", ""1172"", ""1175"", ""1955"", ""391"", ""1174"", ""1568"", ""782"", ""1176"", ""1173""]",Private,0
+526,"[""y = 128*x^4+16*x^2+4""]",[],Private,0
+527,"[""8"", ""700"", ""x"", ""25000"", ""285.714""]",[],Private,0
+528,"[""43189.8113507122"", ""2069""]",[],Public,0
+529,"[""21.45""]",[],Public,0
+530,"[""8/9"", ""7/9"", ""5""]",[],Private,0
+531,"[""CDFH""]",[],Private,0
+532,I,"[""r = \\frac{7/8}{1 + (7/2)\\cos\\theta}"", ""r = \\frac{7/8}{1 + (7/3)\\cos\\theta}"", ""r = \\frac{7/8}{1 - (7/4)\\sin\\theta}"", ""r = \\frac{7/8}{1 - (7/3)\\cos\\theta}"", ""r = \\frac{7/8}{1 - (7/4)\\cos\\theta}"", ""r = \\frac{7/8}{1 - (7/3)\\sin\\theta}"", ""r = \\frac{7/8}{1 + (7/2)\\sin\\theta}"", ""r = \\frac{7/8}{1 + (7/4)\\cos\\theta}"", ""r = \\frac{7/8}{1 - (7/2)\\cos\\theta}"", ""r = \\frac{7/8}{1 - (7/2)\\sin\\theta}""]",Public,0
+533,"[""0.0563414303158162""]",[],Private,0
+534,G,"[""$$\n1 \\,, \\; \\; 0 \\,, \\; \\; 2\n$$"", ""$$\n1 \\,, \\; \\; 0 \\,, \\; \\; 1\n$$"", ""$$\n2 \\,, \\; \\; 0 \\,, \\; \\; 3\n$$"", ""$$\n2 \\,, \\; \\; 1 \\,, \\; \\; 3\n$$"", ""$$\n1 \\,, \\; \\; 0 \\,, \\; \\; 3\n$$"", ""$$\n2 \\,, \\; \\; 0 \\,, \\; \\; 2\n$$"", ""$$\n2 \\,, \\; \\; 1 \\,, \\; \\; 4\n$$"", ""$$\n2 \\,, \\; \\; 1 \\,, \\; \\; 2\n$$"", ""$$\n1 \\,, \\; \\; 1 \\,, \\; \\; 1\n$$"", ""$$\n2 \\,, \\; \\; 0 \\,, \\; \\; 1\n$$""]",Private,0
+535,"[""(-6, -4)""]",[],Private,0
+536,E,"[""$$\nL= \\left[ \\begin{matrix} {{1}} & {{0}} & {{0}} \\\\ {{-\\frac{1} {3}}} & {{1}} & {{0}} \\\\ {{\\frac{3} {2}}} & {{1}} & {{1}} \\\\ \\end{matrix} \\right],\n$$\n$$\nU= \\left[ \\begin{matrix} {{{2}}} & {{{-1}}} & {{{-1}}} \\\\ {{{0}}} & {{{\\frac{3} {2}}}} & {{{-\\frac{2} {3}}}} \\\\ {{{0}}} & {{{0}}} & {{{5}}} \\\\ \\end{matrix} \\right]\n$$"", ""$$\nL= \\left[ \\begin{matrix} {{1}} & {{0}} & {{0}} \\\\ {{-\\frac{1} {4}}} & {{1}} & {{0}} \\\\ {{\\frac{3} {2}}} & {{1}} & {{1}} \\\\ \\end{matrix} \\right],\n$$\n$$\nU= \\left[ \\begin{matrix} {{{2}}} & {{{-1}}} & {{{-1}}} \\\\ {{{0}}} & {{{\\frac{3} {4}}}} & {{{-\\frac{1} {2}}}} \\\\ {{{0}}} & {{{0}}} & {{{5}}} \\\\ \\end{matrix} \\right]\n$$"", ""$$\nL= \\left[ \\begin{matrix} {{1}} & {{0}} & {{0}} \\\\ {{-\\frac{1} {2}}} & {{1}} & {{0}} \\\\ {{2}} & {{1}} & {{1}} \\\\ \\end{matrix} \\right],\n$$\n$$\nU= \\left[ \\begin{matrix} {{{2}}} & {{{-1}}} & {{{-1}}} \\\\ {{{0}}} & {{{\\frac{3} {2}}}} & {{{-\\frac{1} {2}}}} \\\\ {{{0}}} & {{{0}}} & {{{5}}} \\\\ \\end{matrix} \\right]\n$$"", ""$$\nL= \\left[ \\begin{matrix} {{1}} & {{0}} & {{0}} \\\\ {{0}} & {{1}} & {{0}} \\\\ {{\\frac{3} {2}}} & {{1}} & {{1}} \\\\ \\end{matrix} \\right],\n$$\n$$\nU= \\left[ \\begin{matrix} {{{2}}} & {{{-1}}} & {{{-1}}} \\\\ {{{0}}} & {{{\\frac{3} {2}}}} & {{{-\\frac{1} {2}}}} \\\\ {{{0}}} & {{{0}}} & {{{5}}} \\\\ \\end{matrix} \\right]\n$$"", ""$$\nL= \\left[ \\begin{matrix} {{1}} & {{0}} & {{0}} \\\\ {{-\\frac{1} {2}}} & {{1}} & {{0}} \\\\ {{\\frac{3} {2}}} & {{1}} & {{1}} \\\\ \\end{matrix} \\right],\n$$\n$$\nU= \\left[ \\begin{matrix} {{{2}}} & {{{-1}}} & {{{-1}}} \\\\ {{{0}}} & {{{\\frac{3} {2}}}} & {{{-\\frac{1} {2}}}} \\\\ {{{0}}} & {{{0}}} & {{{5}}} \\\\ \\end{matrix} \\right]\n$$"", ""$$\nL= \\left[ \\begin{matrix} {{1}} & {{0}} & {{0}} \\\\ {{-\\frac{1} {2}}} & {{1}} & {{0}} \\\\ {{\\frac{3} {2}}} & {{1}} & {{1}} \\\\ \\end{matrix} \\right],\n$$\n$$\nU= \\left[ \\begin{matrix} {{{2}}} & {{{-1}}} & {{{0}}} \\\\ {{{0}}} & {{{\\frac{3} {2}}}} & {{{-\\frac{1} {2}}}} \\\\ {{{0}}} & {{{0}}} & {{{5}}} \\\\ \\end{matrix} \\right]\n$$"", ""$$\nL= \\left[ \\begin{matrix} {{1}} & {{0}} & {{0}} \\\\ {{-\\frac{1} {2}}} & {{1}} & {{0}} \\\\ {{\\frac{3} {2}}} & {{1}} & {{0}} \\\\ \\end{matrix} \\right],\n$$\n$$\nU= \\left[ \\begin{matrix} {{{2}}} & {{{-1}}} & {{{-1}}} \\\\ {{{0}}} & {{{\\frac{3} {2}}}} & {{{-\\frac{1} {2}}}} \\\\ {{{0}}} & {{{0}}} & {{{5}}} \\\\ \\end{matrix} \\right]\n$$"", ""$$\nL= \\left[ \\begin{matrix} {{1}} & {{0}} & {{0}} \\\\ {{-\\frac{1} {2}}} & {{1}} & {{0}} \\\\ {{\\frac{3} {2}}} & {{1}} & {{1}} \\\\ \\end{matrix} \\right],\n$$\n$$\nU= \\left[ \\begin{matrix} {{{2}}} & {{{0}}} & {{{-1}}} \\\\ {{{0}}} & {{{\\frac{3} {2}}}} & {{{-\\frac{1} {2}}}} \\\\ {{{0}}} & {{{0}}} & {{{5}}} \\\\ \\end{matrix} \\right]\n$$"", ""$$\nL= \\left[ \\begin{matrix} {{1}} & {{0}} & {{0}} \\\\ {{-\\frac{1} {2}}} & {{1}} & {{0}} \\\\ {{\\frac{3} {2}}} & {{\\frac{1} {2}}} & {{1}} \\\\ \\end{matrix} \\right],\n$$\n$$\nU= \\left[ \\begin{matrix} {{{2}}} & {{{-1}}} & {{{-1}}} \\\\ {{{0}}} & {{{\\frac{3} {2}}}} & {{{-\\frac{1} {2}}}} \\\\ {{{0}}} & {{{0}}} & {{{5}}} \\\\ \\end{matrix} \\right]\n$$"", ""$$\nL= \\left[ \\begin{matrix} {{1}} & {{0}} & {{0}} \\\\ {{-\\frac{1} {2}}} & {{1}} & {{0}} \\\\ {{\\frac{3} {2}}} & {{0}} & {{1}} \\\\ \\end{matrix} \\right],\n$$\n$$\nU= \\left[ \\begin{matrix} {{{2}}} & {{{-1}}} & {{{-1}}} \\\\ {{{0}}} & {{{\\frac{3} {2}}}} & {{{-\\frac{1} {2}}}} \\\\ {{{0}}} & {{{0}}} & {{{3}}} \\\\ \\end{matrix} \\right]\n$$""]",Public,0
+537,"[""42""]",[],Private,0
+538,E,"[""x_1=-\\sqrt{3}, x_2=\\frac{\\sqrt{3}-\\sqrt{3+4\\cdot\\sqrt{3}}}{2}, x_3=\\frac{\\sqrt{3}+\\sqrt{3+4\\cdot\\sqrt{3}}}{2}"", ""x_1=-\\sqrt{3}, x_2=\\frac{\\sqrt{3}-\\sqrt{3-4\\cdot\\sqrt{3}}}{2}, x_3=\\frac{\\sqrt{3}+\\sqrt{3-4\\cdot\\sqrt{3}}}{2}"", ""x_1=-\\sqrt{3}, x_2=\\frac{\\sqrt{3}+\\sqrt{3-4\\cdot\\sqrt{3}}}{2}, x_3=\\frac{\\sqrt{3}-\\sqrt{3-4\\cdot\\sqrt{3}}}{2}"", ""x_1=\\sqrt{3}, x_2=\\frac{-\\sqrt{3}+\\sqrt{3-4\\cdot\\sqrt{3}}}{2}, x_3=\\frac{-\\sqrt{3}-\\sqrt{3-4\\cdot\\sqrt{3}}}{2}"", ""x_1=\\sqrt{3}, x_2=\\frac{-\\sqrt{3}-\\sqrt{3+4\\cdot\\sqrt{3}}}{2}, x_3=\\frac{-\\sqrt{3}+\\sqrt{3+4\\cdot\\sqrt{3}}}{2}"", ""x_1=-\\sqrt{3}, x_2=\\frac{\\sqrt{3}+\\sqrt{3+4\\cdot\\sqrt{3}}}{2}, x_3=\\frac{\\sqrt{3}-\\sqrt{3+4\\cdot\\sqrt{3}}}{2}""]",Private,0
+539,"[""4"", ""5""]",[],Private,0
+540,"[""C"", ""A"", ""A""]",[],Private,0
+541,"[""15/3""]",[],Public,0
+542,"[""285"", ""8389.25"", ""91.5928490658523"", ""A""]",[],Private,0
+543,"[""1.43"", ""0.54""]",[],Public,0
+544,"[""A""]",[],Private,0
+545,"[""400000""]",[],Public,0
+546,"[""92"", ""126"", ""146"", ""72"", ""172""]",[],Private,0
+547,H,"[""\\frac{1}{\\sqrt{2}}"", ""\\frac{1}{\\sqrt{3}}"", ""\\frac{1}{\\sqrt{10}}"", ""\\frac{3}{4}"", ""\\frac{3}{5}"", ""\\frac{1}{4}"", ""\\frac{1}{2}"", ""\\frac{2}{5}"", ""\\frac{1}{\\sqrt{5}}"", ""\\frac{1}{3}""]",Public,0
+548,"[""x + 0.2 * x = 144"", ""120.00""]",[],Public,0
+549,J,"[""[1, 1, 0, 0, 0, 1, 0, 1, 0, 2]"", ""[1, 0, 1, 2, 0, 0, 0, 1, 1, 0]"", ""[0, 0, 1, 0, 2, 1, 0, 1, 0, 1]"", ""[1, 0, 0, 1, 1, 0, 2, 0, 0, 1]"", ""[0, 1, 1, 0, 1, 0, 0, 1, 0, 1]"", ""[0, 1, 0, 1, 0, 1, 2, 0, 1, 0]"", ""[1, 1, 0, 0, 1, 2, 0, 0, 1, 0]"", ""[0, 0, 1, 1, 0, 0, 1, 1, 0, 2]"", ""[0, 0, 1, 0, 0, 1, 1, 0, 2, 0]"", ""[1, 0, 2, 1, 0, 0, 1, 0, 1, 0]""]",Private,0
+550,J,"[""113/490"", ""113/480"", ""113/410"", ""113/455"", ""113/440"", ""113/430"", ""113/420"", ""113/470"", ""113/460"", ""113/450""]",Public,0
+551,"[""5.2915""]",[],Public,0
+552,"[""36312.4329882857"", ""33139.3003450476""]",[],Private,0
+553,"[""24"", ""1.6""]",[],Public,0
+554,A,"[""1.094"", ""1.047"", ""Both 1.094 and 1.386 are correct"", ""1.184"", ""1.500"", ""0.875"", ""1.294"", ""0.962"", ""1.321"", ""0.984""]",Private,0
+555,"[""1.11"", ""0.1335""]",[],Private,0
+556,"[""CD""]",[],Private,0
+557,"[""5""]",[],Private,0
+558,"[""6.5*x+-25""]",[],Private,0
+559,"[""-280""]",[],Private,0
+560,"[""C"", ""A"", ""A""]",[],Private,0
+561,E,"[""$$\n3 0!=2^{2 2} \\cdot3^{1 4} \\cdot5^{5} \\cdot7^{4} \\cdot1 1^{2} \\cdot1 3^{2} \\cdot1 8 \\cdot1 9 \\cdot2 3 \\cdot2 9\n$$"", ""$$\n3 0!=2^{2 3} \\cdot3^{1 3} \\cdot5^{5} \\cdot7^{5} \\cdot1 1^{2} \\cdot1 3^{2} \\cdot1 7 \\cdot1 9 \\cdot2 4 \\cdot2 9\n$$"", ""$$\n3 0!=2^{2 3} \\cdot3^{1 4} \\cdot5^{4} \\cdot7^{4} \\cdot1 1^{2} \\cdot1 3^{2} \\cdot1 6 \\cdot1 9 \\cdot2 3 \\cdot2 9\n$$"", ""$$\n3 0!=2^{2 4} \\cdot3^{1 4} \\cdot5^{5} \\cdot7^{4} \\cdot1 1^{3} \\cdot1 3^{1} \\cdot1 7 \\cdot1 9 \\cdot2 3 \\cdot2 9\n$$"", ""$$\n3 0!=2^{2 3} \\cdot3^{1 4} \\cdot5^{5} \\cdot7^{4} \\cdot1 1^{2} \\cdot1 3^{2} \\cdot1 7 \\cdot1 9 \\cdot2 3 \\cdot2 9\n$$"", ""$$\n3 0!=2^{2 3} \\cdot3^{1 5} \\cdot5^{5} \\cdot7^{4} \\cdot1 1^{2} \\cdot1 3^{2} \\cdot1 7 \\cdot1 8 \\cdot2 3 \\cdot2 9\n$$"", ""$$\n3 0!=2^{2 3} \\cdot3^{1 4} \\cdot5^{5} \\cdot7^{4} \\cdot1 1^{2} \\cdot1 3^{2} \\cdot1 7 \\cdot1 9 \\cdot2 2 \\cdot2 8\n$$"", ""$$\n3 0!=2^{2 3} \\cdot3^{1 4} \\cdot5^{5} \\cdot7^{4} \\cdot1 1^{2} \\cdot1 2^{2} \\cdot1 7 \\cdot1 9 \\cdot2 3 \\cdot2 9\n$$"", ""$$\n3 0!=2^{2 4} \\cdot3^{1 4} \\cdot5^{5} \\cdot7^{4} \\cdot1 1^{2} \\cdot1 3^{1} \\cdot1 7 \\cdot1 9 \\cdot2 3 \\cdot2 9\n$$"", ""$$\n3 0!=2^{2 3} \\cdot3^{1 4} \\cdot5^{5} \\cdot7^{3} \\cdot1 1^{3} \\cdot1 3^{2} \\cdot1 7 \\cdot1 9 \\cdot2 3 \\cdot2 9\n$$""]",Private,0
+562,H,"[""4841"", ""4842"", ""4843"", ""4846"", ""4848"", ""4849"", ""4844"", ""4847"", ""4840"", ""4845""]",Private,0
+563,"[""20%""]",[],Private,0
+564,D,"[""30122"", ""35212"", ""12543"", ""19367"", ""14259"", ""17894"", ""32432"", ""30785"", ""21874"", ""25618""]",Private,0
+565,"[""-7.006"", ""-7.06"", ""-7.6""]",[],Private,0
+566,"[""3""]",[],Private,0
+567,"[""A"", ""A""]",[],Private,0
+568,"[""-10"", ""3""]",[],Public,0
+569,B,"[""$$(p^{2}+1)(p^{2}-p)$$"", ""$$\n(p^{2}-1)(p^{2}-p)\n$$"", ""$$(p-1)(p^{2}+p+1)$$"", ""$$(p^{2}+p)(p^{2}-p-1)$$"", ""$$(p^{2}+1)(p^{2}+p)$$"", ""$$(p^{2}-1)(p^{2}-p-1)$$"", ""$$(p^{2}+1)(p^{2}-p+1)$$"", ""$$(p^{2}-p)(p^{2}-p+1)$$"", ""$$(p^{2}-1)(p^{2}+1)$$"", ""$$(p^{2}-1)(p^{2}+p)$$""]",Public,0
+570,H,"[""[0, 1, 0, 0, 1, 1, 0, 1, 1, 0]"", ""[0, 0, 1, 1, 1, 0, 0, 1, 1, 0]"", ""[1, 1, 1, 0, 0, 1, 0, 1, 0, 1]"", ""[1, 0, 1, 1, 0, 1, 0, 1, 0, 0]"", ""[1, 0, 0, 1, 1, 0, 1, 1, 0, 1]"", ""[0, 1, 0, 0, 1, 0, 1, 1, 1, 1]"", ""[1, 1, 0, 1, 0, 1, 1, 0, 0, 0]"", ""[1, 1, 0, 1, 0, 0, 1, 0, 1, 1]"", ""[1, 0, 1, 1, 0, 0, 1, 1, 1, 0]"", ""[0, 1, 1, 0, 0, 1, 1, 1, 0, 1]""]",Private,0
+571,E,"[""0"", ""-4"", ""-6"", ""2"", ""-1"", ""1"", ""-2"", ""-7"", ""-5"", ""-3""]",Public,0
+572,"[""8"", ""-6"", ""6"", ""8-6+6""]",[],Public,0
+573,"[""17/72""]",[],Private,0
+574,E,"[""$$\n( 1, 0, 0 )^{T}\n$$"", ""$$\n( 3, 1, 0 )^{T}\n$$"", ""$$\n( 1, 2, 3 )^{T}\n$$"", ""$$\n( 1, 0, -3 )^{T}\n$$"", ""$$\n( 1, 1, 1 )^{T}\n$$"", ""$$\n( 1, 1, -3 )^{T}\n$$"", ""$$\n( 1, 1, 0 )^{T}\n$$"", ""$$\n( 1, 1, 2 )^{T}\n$$"", ""$$\n( 1, 4, 0 )^{T}\n$$"", ""$$\n( 1, 1, 3 )^{T}\n$$""]",Private,0
+575,G,"[""$$\nx=a+\\sigma,x=a-\\frac{\\sigma}{2},x=a\n$$"", ""$$\nx=a-\\sigma,x=a+\\sigma,x=a-\\frac{\\sigma}{2}\n$$"", ""$$\nx=a-\\sigma,x=a+\\frac{\\sigma}{2},x=a\n$$"", ""$$\nx=a-\\sigma,x=a+\\frac{\\sigma}{3},x=a\n$$"", ""$$\nx=a-\\frac{\\sigma}{3},x=a+\\sigma,x=a\n$$"", ""$$\nx=a+\\sigma,x=a+\\frac{\\sigma}{2},x=a\n$$"", ""$$\nx=a-\\sigma,x=a+\\sigma,x=a\n$$"", ""$$\nx=a-\\frac{\\sigma}{2},x=a+\\sigma,x=a\n$$"", ""$$\nx=a-\\sigma,x=a+\\sigma,x=a+\\frac{\\sigma}{2}\n$$"", ""$$\nx=a-\\sigma,x=a+\\sigma,x=a-\\frac{\\sigma}{3}\n$$""]",Private,0
+576,"[""2.5"", ""0.5""]",[],Public,0
+577,F,"[""$$\nc b^{3}-a^{2}+\\frac{b}{8}=0.\n$$"", ""$$\na^{2}+b^{2}-c^{2}=0.\n$$"", ""$$\nb^{3}-c a+\\frac{a}{7}=0.\n$$"", ""$$\nb^{2}-3a+\\frac{c}{6}=0.\n$$"", ""$$\na^{2}-3b+\\frac{c}{2}=0.\n$$"", ""$$\n\\frac{2} {2 7} a^{3}-\\frac{a b} {3}+c=0.\n$$"", ""$$\n3a-c b+\\frac{a}{9}=0.\n$$"", ""$$\nc^{2}-a b+\\frac{a}{5}=0.\n$$"", ""$$\n3c-a b+\\frac{b}{4}=0.\n$$"", ""$$\na c^{3}-b^{2}+\\frac{1}{2}=0.\n$$""]",Private,0
+578,"[""7.62428571428571"", ""8.99571428571429"", ""95.44""]",[],Private,0
+579,C,"[""e^(16/3)"", ""e^(12/3)"", ""e^(8/3)"", ""e^(2/3)"", ""e^(7/3)"", ""e^(10/3)"", ""e^(4/3)"", ""e^(14/3)"", ""e^(11/3)"", ""e^(1/3)""]",Public,0
+580,D,"[""1/9"", ""1/5"", ""1/3"", ""2/3"", ""1/4"", ""1/6"", ""1/2""]",Private,0
+581,F,"[""$$3\\mathrm{e}^{\\frac{2} {\\mathrm{e}}}.$$"", ""$$\\mathrm{e}^{\\frac{3} {\\mathrm{2e}}}.$$"", ""$$\\mathrm{e}^{\\frac{3} {\\mathrm{e}}}.$$"", ""$$2\\mathrm{e}^{-\\frac{2} {\\mathrm{e}}}.$$"", ""$$\\mathrm{e}^{\\frac{3} {\\mathrm{4e}}}.$$"", ""$$\\mathrm{e}^{\\frac{2} {\\mathrm{e}}}.$$"", ""$$3\\mathrm{e}^{-\\frac{2} {\\mathrm{e}}}.$$"", ""$$\\mathrm{e}^{-\\frac{2} {\\mathrm{e}}}.$$"", ""$$\\mathrm{e}^{\\frac{5} {\\mathrm{2e}}}.$$"", ""$$2\\mathrm{e}^{\\frac{2} {\\mathrm{e}}}.$$""]",Public,0
+582,"[""1035""]",[],Public,0
+583,6,[],Private,1
+584,"[""7*z"", ""12*w/2""]",[],Private,0
+585,"[""-0.3/(4.24395/[sqrt(10)])"", ""2.262"", ""-2.262"", ""No""]",[],Private,0
+586,"[""1.89848336912669"", ""-0.941315611416559"", ""0.11098102262374"", ""-0.0296778570473115""]",[],Private,0
+587,"[""BCDEFJ"", ""C"", ""ABC"", ""B""]",[],Public,0
+588,E,"[""$$\n{\\frac{1} {2}}n ( n+2 )\n$$"", ""$$\n{\\frac{1} {4}} n( n+1 )\n$$"", ""$$\nn^2\n$$"", ""$$\n{\\frac{1} {4}}n ( n+2 )\n$$"", ""$$\n{\\frac{1} {2}} ( n+1 ) ( n+2 )\n$$"", ""$$\nn( n+1 )\n$$"", ""$$\n{\\frac{1} {4}} ( n+1 ) ( n+2 )\n$$"", ""$$\nn ( n+2 )\n$$"", ""$$\n( n+1 ) ( n+2 )\n$$"", ""$$\n{\\frac{1} {2}} n( n+1 )\n$$""]",Public,0
+589,D,"[""21"", ""26"", ""25"", ""24"", ""29"", ""23"", ""27"", ""22"", ""28"", ""20""]",Private,0
+590,D,"[""413"", ""410"", ""418"", ""416"", ""419"", ""412"", ""415"", ""420"", ""414"", ""417""]",Private,0
+591,"[""1.08060461173628"", ""1.68294196961579"", ""1.81859485365136"", ""-0.832293673094285"", ""3.16227766016838"", ""-0.321750554396642"", ""4.12310562561766"", ""1.32581766366803""]",[],Public,0
+592,I,"[""\\dfrac{1}{6b}"", ""\\dfrac{1}{12b}"", ""\\dfrac{1}{16b}"", ""\\dfrac{1}{10b}"", ""$$\\dfrac {1}{b}$$"", ""$$\\dfrac {1}{4b}$$"", ""\\dfrac{1}{2b}"", ""\\dfrac{1}{3b}"", ""$$\\dfrac {1}{8b}$$"", ""None of these""]",Private,0
+593,"[""19.4338296595196""]",[],Public,0
+594,F,"[""$$\\mathrm{F}(x) =\\left\\{\\begin{aligned} {{}} & {{} {{} {1 ,x\\geq 3}}} \\\\ {{}} & {{} {{} {0.6 ,2\\leq x<3}}} \\\\{{}} & {{} {{} {0.5 ,1\\leq x<2}}} \\\\ {{}} & {{} {{} {0, x<1}}} \\end{aligned} \\right.$$"", ""$$\\mathrm{F}(x) =\\left\\{\\begin{aligned} {{}} & {{} {{} {1 ,x\\geq 3}}} \\\\ {{}} & {{} {{} {0.9 ,2\\leq x<3}}} \\\\{{}} & {{} {{} {0.8 ,1\\leq x<2}}} \\\\ {{}} & {{} {{} {0, x<1}}} \\end{aligned} \\right.$$"", ""$$\\mathrm{F}(x) =\\left\\{\\begin{aligned} {{}} & {{} {{} {1 ,x\\geq 3}}} \\\\ {{}} & {{} {{} {0.5 ,2\\leq x<3}}} \\\\{{}} & {{} {{} {0.4 ,1\\leq x<2}}} \\\\ {{}} & {{} {{} {0, x<1}}} \\end{aligned} \\right.$$"", ""$$\\mathrm{F}(x) =\\left\\{\\begin{aligned} {{}} & {{} {{} {1 ,x\\geq 3}}} \\\\ {{}} & {{} {{} {0.9 ,2\\leq x<3}}} \\\\{{}} & {{} {{} {0.5 ,1\\leq x<2}}} \\\\ {{}} & {{} {{} {0, x<1}}} \\end{aligned} \\right.$$"", ""$$\\mathrm{F}(x) =\\left\\{\\begin{aligned} {{}} & {{} {{} {1 ,x\\geq 3}}} \\\\ {{}} & {{} {{} {0.8 ,2\\leq x<3}}} \\\\{{}} & {{} {{} {0.5 ,1\\leq x<2}}} \\\\ {{}} & {{} {{} {0, x<1}}} \\end{aligned} \\right.$$"", ""$$\\mathrm{F}(x) =\\left\\{\\begin{aligned} {{}} & {{} {{} {1 ,x\\geq 3}}} \\\\ {{}} & {{} {{} {0.5 ,2\\leq x<3}}} \\\\{{}} & {{} {{} {0.2 ,1\\leq x<2}}} \\\\ {{}} & {{} {{} {0, x<1}}} \\end{aligned} \\right.$$"", ""$$\\mathrm{F}(x) =\\left\\{\\begin{aligned} {{}} & {{} {{} {1 ,x\\geq 3}}} \\\\ {{}} & {{} {{} {0.5 ,2\\leq x<3}}} \\\\{{}} & {{} {{} {0.3 ,1\\leq x<2}}} \\\\ {{}} & {{} {{} {0, x<1}}} \\end{aligned} \\right.$$"", ""$$\\mathrm{F}(x) =\\left\\{\\begin{aligned} {{}} & {{} {{} {1 ,x\\geq 3}}} \\\\ {{}} & {{} {{} {0.7 ,2\\leq x<3}}} \\\\{{}} & {{} {{} {0.5 ,1\\leq x<2}}} \\\\ {{}} & {{} {{} {0, x<1}}} \\end{aligned} \\right.$$"", ""$$\\mathrm{F}(x) =\\left\\{\\begin{aligned} {{}} & {{} {{} {1 ,x\\geq 3}}} \\\\ {{}} & {{} {{} {0.8 ,2\\leq x<3}}} \\\\{{}} & {{} {{} {0.7 ,1\\leq x<2}}} \\\\ {{}} & {{} {{} {0, x<1}}} \\end{aligned} \\right.$$"", ""$$\\mathrm{F}(x) =\\left\\{\\begin{aligned} {{}} & {{} {{} {1 ,x\\geq 3}}} \\\\ {{}} & {{} {{} {0.5 ,2\\leq x<3}}} \\\\{{}} & {{} {{} {0.1 ,1\\leq x<2}}} \\\\ {{}} & {{} {{} {0, x<1}}} \\end{aligned} \\right.$$""]",Private,0
+595,"[""ADEG"", ""PROBABILITY""]",[],Private,0
+596,G,"[""[1916, 1253, 1844, 1375, 2653, 1464, 2179, 1783, 2922, 1781]"", ""[1717, 1455, 1845, 1374, 2654, 1367, 2279, 1784, 2923, 1784]"", ""[2819, 1252, 1642, 1278, 2655, 1472, 2075, 1878, 3125, 1589]"", ""[1819, 1251, 1743, 1378, 2755, 1272, 2175, 1780, 3226, 1689]"", ""[1915, 1453, 1745, 1370, 2756, 1273, 2073, 1785, 3127, 1685]"", ""[1918, 1354, 1645, 1275, 2856, 1463, 2277, 1982, 3025, 1583]"", ""[1818, 1353, 1746, 1377, 2754, 1371, 2178, 1881, 3024, 1683]"", ""[2019, 1452, 1744, 1177, 2657, 1374, 2076, 1879, 2723, 1483]"", ""[2018, 1255, 1843, 1276, 2649, 1372, 2177, 1984, 3022, 1582]"", ""[1817, 1350, 1643, 1379, 2855, 1269, 2176, 1983, 2921, 1682]""]",Public,0
+597,B,"[""120"", ""84"", ""144"", ""96"", ""72"", ""112"", ""168"", ""156"", ""108"", ""160""]",Public,0
+598,G,"[""$$\n2 {y_{1}}^{2}-{\\frac{1} {2}} {y_{2}}^{2}+5 {y_{3}}^{2}\n$$"", ""$$\n2 {y_{1}}^{2}-{\\frac{3} {2}} {y_{2}}^{2}+4 {y_{3}}^{2}\n$$"", ""$$-2 {y_{1}}^{2}-{\\frac{1} {2}} {y_{2}}^{2}+4 {y_{3}}^{2}\n$$"", ""$$\n{y_{1}}^{2}- {y_{2}}^{2}+ {y_{3}}^{2}\n$$"", ""$$\n- {y_{1}}^{2}-{\\frac{1} {2}} {y_{2}}^{2}+4 {y_{3}}^{2}\n$$"", ""$$\n{y_{1}}^{2}+ {y_{2}}^{2}- {y_{3}}^{2}\n$$"", ""$$\n2 {y_{1}}^{2}-{\\frac{1} {2}} {y_{2}}^{2}+4 {y_{3}}^{2}\n$$"", ""$$\n{y_{1}}^{2}-{\\frac{1} {2}} {y_{2}}^{2}+4 {y_{3}}^{2}\n$$"", ""$$\n{y_{1}}^{2}+ {y_{2}}^{2}+ {y_{3}}^{2}\n$$"", ""$$\n{y_{1}}^{2}- {y_{2}}^{2}- {y_{3}}^{2}\n$$""]",Private,0
+599,"[""8.5/[sqrt(22)]""]",[],Private,0
+600,I,"[""\\begin{bmatrix} 0 & 0 & 1 & 0 \\\\ 0 & 0 & 0 & 1 \\\\ 1 & -1 & 0 & 0 \\\\ 3 & 4 & 0 & 0 \\end{bmatrix}"", ""\\begin{bmatrix} 0 & 0 & 1 & 0 \\\\ 0 & 0 & 0 & 1 \\\\ 1 & 1 & 0 & 0 \\\\ 3 & -4 & 0 & 0 \\end{bmatrix}"", ""\begin{bmatrix} 1 & -1 & 0 & 0 \\ -3 & 4 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \\end{bmatrix}"", ""\begin{bmatrix} 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \\ -1 & 1 & 0 & 0 \\ 3 & -4 & 0 & 0 \\end{bmatrix}"", ""\\begin{bmatrix} 0 & 0 & 1 & 0 \\\\ 0 & 0 & 0 & 1 \\\\ -1 & 1 & 0 & 0 \\\\ 3 & -4 & 0 & 0 \\end{bmatrix}"", ""\\begin{bmatrix} 0 & 0 & 1 & 0 \\\\ 0 & 0 & 0 & 1 \\\\ 1 & 1 & 0 & 0 \\\\ -3 & 4 & 0 & 0 \\end{bmatrix}"", ""\begin{bmatrix} 0 & 0 & 1 & -1 \\ 0 & 0 & -3 & 4 \\ 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\end{bmatrix}"", ""\\begin{bmatrix} 0 & 0 & 1 & 0 \\\\ 0 & 0 & 0 & 1 \\\\ -1 & 1 & 0 & 0 \\\\ -3 & 4 & 0 & 0 \\end{bmatrix}"", ""\\begin{bmatrix} 0 & 0 & 1 & 0 \\\\ 0 & 0 & 0 & 1 \\\\ 1 & -1 & 0 & 0 \\\\ -3 & 4 & 0 & 0 \\end{bmatrix}"", ""\\begin{bmatrix} 0 & 0 & 1 & 0 \\\\ 0 & 0 & 0 & 1 \\\\ 1 & -1 & 0 & 0 \\\\ 3 & -4 & 0 & 0 \\end{bmatrix}""]",Private,0
+601,"[""2*s+1"", ""3*s-1""]",[],Private,0
+602,"[""-70.7767857142857"", ""0.71875"", ""53.5669642857143""]",[],Private,0
+603,"[""C"", ""A"", ""B""]",[],Private,0
+604,J,"[""$$(2, 5, 5)$$"", ""(-7, 0, 18)"", ""(-7, 0, 23)"", ""(-7, 0, 21)"", ""$$(0, -5, 17)$$"", ""(-7, 0, 22)"", ""$$(-4, 6, 10)$$"", ""(-7, 0, 17)"", ""(-7, 0, 20)"", ""$$(-7, 0, 19)$$""]",Private,0
+605,"[""       45""]",[],Private,0
+606,E,"[""199"", ""197"", ""191"", ""193"", ""181""]",Public,0
+607,"[""0"", ""0"", ""4"", ""0"", ""0"", ""14"", ""6"", ""6"", ""20"", ""-6"", ""-6"", ""0"", ""-4"", ""-4"", ""10"", ""-4"", ""-4"", ""-12""]",[],Private,0
+608,"[""B"", ""A"", ""A"", ""1981""]",[],Private,0
+609,"[""276.586333718787""]",[],Private,0
+610,2 \sqrt{3}+\frac{8 \pi}{3},[],Private,1
+611,"[""1.35599029399895""]",[],Private,0
+612,"[""68"", ""81""]",[],Public,0
+613,I,"[""$$ \\beta=-\\alpha_{1}+\\alpha_{2}+ \\alpha_{3}-2 \\alpha_{4}\n$$"", ""$$ \\beta=\\alpha_{1}+\\alpha_{2}+2 \\alpha_{3}-2 \\alpha_{4}\n$$"", ""$$ \\beta=-2\\alpha_{1}+2\\alpha_{2}+2 \\alpha_{3}-2 \\alpha_{4}\n$$"", ""$$ \\beta=-\\alpha_{1}+\\alpha_{2}+2 \\alpha_{3}- \\alpha_{4}\n$$"", ""$$ \\beta=-\\alpha_{1}-\\alpha_{2}+2 \\alpha_{3}-2 \\alpha_{4}\n$$"", ""$$ \\beta=-\\alpha_{1}+\\alpha_{2}-2 \\alpha_{3}-2 \\alpha_{4}\n$$"", ""$$ \\beta=-2\\alpha_{1}+\\alpha_{2}+2 \\alpha_{3}-2 \\alpha_{4}\n$$"", ""$$ \\beta=-\\alpha_{1}+\\alpha_{2}+2 \\alpha_{3}+2 \\alpha_{4}\n$$"", ""$$ \\beta=-\\alpha_{1}+\\alpha_{2}+2 \\alpha_{3}-2 \\alpha_{4}\n$$"", ""$$ \\beta=-\\alpha_{1}+2\\alpha_{2}+2 \\alpha_{3}-2 \\alpha_{4}\n$$""]",Private,0
+614,I,"[""a=2, b=2, c=3 or\na=3, b=-2, c=-1 or\na=-2, b=1, c=0 or\na=2, b=4, c=6"", ""a=0, b=0, c=3 or\na=1, b=1, c=4 or\na=2, b=3, c=5 or\na=-2, b=-3, c=-1"", ""a=2, b=0, c=1 or\na=1, b=-3, c=-2 or\na=3, b=4, c=6 or\na=2, b=3, c=5"", ""a=3, b=2, c=1 or\na=-1, b=-3, c=-4 or\na=2, b=5, c=7 or\na=0, b=1, c=2"", ""a=0, b=2, c=3 or\na=4, b=3, c=2 or\na=1, b=3, c=2 or\na=-1, b=-2, c=0"", ""a=1, b=3, c=5 or\na=-2, b=2, c=2 or\na=2, b=6, c=7 or\na=3, b=4, c=5"", ""a=1, b=4, c=5 or\na=-3, b=-1, c=-2 or\na=3, b=5, c=7 or\na=0, b=1, c=3"", ""a=1, b=1, c=2 or\na=-1, b=2, c=-1 or\na=2, b=3, c=4 or\na=-3, b=-2, c=-1"", ""a=1, b=2, c=3 or\na=-1, b=-2, c=-3 or\na=1, b=-2, c=-1 or\na=2, b=-1, c=1"", ""a=1, b=2, c=4 or\na=-2, b=-1, c=-3 or\na=4, b=5, c=6 or\na=-1, b=1, c=0""]",Private,0
+615,"[""14"", ""9""]",[],Public,0
+616,J,"[""$y= C_1 sin x + C_2 cos x - \\frac{cos 2x}{4}$"", ""$y= C_1 x sin x + C_2 cos x - frac{x cos 2x}{2}$"", ""$y= C_1 sin x + C_2 cos x + frac{x cos 2x}{2}$"", ""$y= C_1 sin x + C_2 cos x - \\frac{sin 2x}{6}$"", ""$y= C_1 sin x + C_2 cos x - \\frac{sin 2x}{4}$"", ""$y= C_1 sin x + C_2 cos x - \\frac{sin 2x}{8}$"", ""$y= C_1 sin x + C_2 cos x -frac{cos 2x}{3}$"", ""$y= C_1 sin x + C_2 cos x - \\frac{sin 2x}{2}$"", ""$y= C_1 sin x + C_2 cos x - \\frac{sin 2x}{5}$"", ""$y= C_1 sin x + C_2 cos x - frac{sin 2x}{3}$""]",Private,0
+617,"[""left"", ""7"", ""up"", ""6""]",[],Private,0
+618,A,"[""(frac { { {pi }^{3}}}{4}-2pi )"", ""(frac { { {pi }^{3}}}{8}-2pi )"", ""(frac { { {pi }^{3}}}{8}+pi )"", ""(frac { { {pi }^{3}}}{8}+2pi )"", ""(frac { { {pi }^{3}}}{8}-3pi )"", ""(frac { { {pi }^{3}}}{8}-pi )"", ""(frac { { {pi }^{3}}}{4}-3pi )"", ""(frac { { {pi }^{3}}}{4}-pi )"", ""(frac { { {pi }^{3}}}{4}+2pi )"", ""(frac { { {pi }^{3}}}{4}+pi )""]",Private,0
+619,"[""-3.22601699139086"", ""0.00125526"", ""A""]",[],Private,0
+620,"[""1.51186"", ""2.28571"", ""2.16735"", ""B""]",[],Private,0
+621,"[""153-k""]",[],Private,0
+622,"[""(581.667-523.818)/[sqrt(128.528+96.724)]"", ""2.56693"", ""Yes""]",[],Private,0
+623,"[""T"", ""F"", ""F"", ""F"", ""T"", ""T""]",[],Public,0
+624,F,"[""6"", ""18"", ""36"", ""8"", ""16"", ""32"", ""24"", ""12"", ""40"", ""30""]",Private,0
+625,"[""5(x+2)*(x+3)""]",[],Public,0
+626,G,"[""$$0$$\n$$1$$\n$$2$$"", ""$$2$$\n$$1$$\n$$2$$"", ""$$2$$\n$$2$$\n$$0$$"", ""$$2$$\n$$1$$\n$$1$$"", ""$$0$$\n$$2$$\n$$1$$"", ""$$1$$\n$$2$$\n$$0$$"", ""$$1$$\n$$2$$\n$$2$$"", ""$$1$$\n$$1$$\n$$2$$"", ""$$0$$\n$$2$$\n$$2$$"", ""$$2$$\n$$2$$\n$$1$$""]",Private,0
+627,"[""1089.63245142577""]",[],Private,0
+628,"[""76.000000"", ""75.700000"", ""75.670000"", ""75.673000""]",[],Public,0
+629,625,[],Private,1
+630,"[""71.981"", ""564.365""]",[],Private,0
+631,A,"[""1992"", ""1991.75"", ""1991"", ""1993"", ""1994"", ""1990"", ""1992.25"", ""1991.25"", ""1991.5"", ""1992.5""]",Private,0
+632,"[""23""]",[],Public,0
+633,"[""BD"", ""8""]",[],Public,0
+634,"[""109""]",[],Private,0
+635,"[""37.6"", ""0.746"", ""-25.4""]",[],Public,0
+636,333400,[],Private,1
+637,"[""A"", ""B"", ""F"", ""C"", ""D"", ""E""]",[],Public,0
+638,"[""0.151055333727787"", ""(-infinity,-1.75069) U (1.75069,infinity)"", ""0.879932"", ""D""]",[],Private,0
+639,"[""3.325""]",[],Private,0
+640,G,"[""34"", ""136"", ""17"", ""170"", ""68"", ""340"", ""0"", ""85""]",Private,0
+641,"[""6.4"", ""46.08""]",[],Public,0
+642,"[""6"", ""1.0472"", ""13""]",[],Public,0
+643,"[""TRUE"", ""FALSE"", ""FALSE"", ""True"", ""False""]",[],Private,0
+644,A,"[""41"", ""44"", ""48"", ""40"", ""39"", ""47"", ""43"", ""42"", ""46"", ""45""]",Private,0
+645,"[""129*n-11500""]",[],Public,0
+646,C,"[""0.003662040962236937"", ""0.0036620409622369345"", ""0.0036620409622369353"", ""0.0036620409622369352"", ""0.003662040962236934"", ""0.0036620409622369358"", ""0.003662040962236936"", ""0.003662040962236938"", ""0.0036620409622369365"", ""0.003662040962236935""]",Private,0
+647,J,"[""[73, 18, 79, 14, 70, 82, 159, 76, 19, 46]"", ""[78, 13, 74, 16, 69, 84, 167, 75, 22, 48]"", ""[72, 14, 77, 12, 62, 83, 162, 77, 15, 45]"", ""[77, 19, 80, 18, 64, 87, 163, 72, 23, 42]"", ""[71, 17, 75, 15, 68, 85, 164, 74, 21, 47]"", ""[74, 15, 76, 11, 65, 80, 160, 79, 17, 44]"", ""[79, 11, 81, 19, 63, 88, 165, 71, 24, 41]"", ""[70, 21, 72, 20, 61, 89, 168, 70, 25, 40]"", ""[76, 12, 73, 17, 67, 86, 161, 73, 20, 49]"", ""[75, 16, 78, 13, 66, 81, 166, 78, 18, 43]""]",Public,0
+648,"[""0.83*x + 11.51"", ""30.6""]",[],Private,0
+649,2^{20} - 1,[],Private,1
+650,E,"[""$$n=775$$"", ""$$n=750$$"", ""$$n=800$$"", ""$$n=925$$"", ""$$n=850$$"", ""$$n=700$$"", ""$$n=900$$"", ""$$n=950$$"", ""$$n=875$$"", ""$$n=825$$""]",Private,0
+651,"[""7.3E+07"", ""1.14487E+08""]",[],Private,0
+652,505,[],Public,1
+653,"[""132.491*0.25^(t/7)"", ""132.491"", ""40.377""]",[],Public,0
+654,"[""4.3589"", ""2"", ""2"", ""2""]",[],Private,0
+655,"[""S=L-15/100 * L""]",[],Private,0
+656,"[""a*(x-5/6)*(x-3)""]",[],Public,0
+657,"[""172.516685226452"", ""187.483314773548"", ""172.872588127518"", ""187.127411872482"", ""0"", ""5.16720427310552"", ""-10.334408546211"", ""10.334408546211""]",[],Public,0
+658,A,"[""$$\nP_{2} \\left( x \\right)=\n2 \\, x^{2}+4 \\, x+1\n$$"", ""$$\nP_{2} \\left( x \\right)=\n1 \\, x^{2}+3 \\, x+0\n$$"", ""$$\nP_{2} \\left( x \\right)=\n4 \\, x^{2}+0 \\, x-1\n$$"", ""$$\nP_{2} \\left( x \\right)=\n-1 \\, x^{2}+2 \\, x-2\n$$"", ""$$\nP_{2} \\left( x \\right)=\n2 \\, x^{2}-1 \\, x+3\n$$"", ""$$\nP_{2} \\left( x \\right)=\n1 \\, x^{2}+2 \\, x+3\n$$"", ""$$\nP_{2} \\left( x \\right)=\n0 \\, x^{2}-2 \\, x+4\n$$"", ""$$\nP_{2} \\left( x \\right)=\n3 \\, x^{2}-3 \\, x+1\n$$"", ""$$\nP_{2} \\left( x \\right)=\n3 \\, x^{2}+1 \\, x+4\n$$"", ""$$\nP_{2} \\left( x \\right)=\n0 \\, x^{2}+3 \\, x+2\n$$""]",Public,0
+659,"[""29.9402001398719""]",[],Private,0
+660,E,"[""5\\cdot\\ln\\left(x+1+\\sqrt{x^2+2\\cdot x+2}\\right)+\\frac{10}{x+1+\\sqrt{x^2+2\\cdot x+3}}+C"", ""5\\cdot\\ln\\left(x+1+\\sqrt{x^2+2\\cdot x+2}\\right)+\\frac{10}{x+5+\\sqrt{x^2+2\\cdot x+2}}+C"", ""5\\cdot\\ln\\left(x+1+\\sqrt{x^2+2\\cdot x+2}\\right)+\\frac{10}{x+1+\\sqrt{x^2+2\\cdot x+2}}+C"", ""5\\cdot\\ln\\left(x+1+\\sqrt{x^2+2\\cdot x+2}\\right)+\\frac{10}{x+6+\\sqrt{x^2+2\\cdot x+2}}+C"", ""5\\cdot\\ln\\left(x+1+\\sqrt{x^2+2\\cdot x+2}\\right)+\\frac{10}{x+2+\\sqrt{x^2+2\\cdot x+2}}+C"", ""5\\cdot\\ln\\left(x+1+\\sqrt{x^2+2\\cdot x+2}\\right)+\\frac{10}{x+3+\\sqrt{x^2+2\\cdot x+2}}+C"", ""5\\cdot\\ln\\left(x+1+\\sqrt{x^2+2\\cdot x+2}\\right)+\\frac{10}{x+2+\\sqrt{x^2+2\\cdot x+3}}+C"", ""5\\cdot\\ln\\left(x+1+\\sqrt{x^2+2\\cdot x+2}\\right)+\\frac{10}{x+4+\\sqrt{x^2+2\\cdot x+2}}+C""]",Private,0
+661,"[""r = 4000+h"", ""w = 2880/[(4000+h)^2]""]",[],Private,0
+662,"[""23""]",[],Private,0
+663,F,"[""[-84915, 104399, 364129, -24599, -753227, -703889, 802105, 2209943, 605513, -3814373]"", ""[95873, -204576, 375912, 27649, 763028, 714120, -811876, -2212754, -606764, 3875223]"", ""[-84919, 194599, 374229, -24769, -753047, -713889, 802185, 2208943, 605613, -3814272]"", ""[-84912, 194369, 364239, -24561, -753127, -703789, 801165, 2209941, 605603, -3814263]"", ""[-74715, 194309, 365129, -24579, -752127, -703879, 802125, 2209947, 605612, -3814275]"", ""[-84915, 194399, 364229, -24569, -753027, -703889, 802165, 2209943, 605613, -3814273]"", ""[-84815, 194299, 363229, -24549, -752927, -703889, 802165, 2209942, 605613, -3814263]"", ""[-75815, 204786, 364919, 23659, -754127, -703999, 802265, 2219353, 604713, -3813278]"", ""[-75915, 204799, 376229, 23469, -752027, -704889, 802175, 2209843, 605673, -3815283]"", ""[-85915, 194409, 365229, -24549, -753137, -703989, 803165, 2209944, 605623, -3814283]""]",Private,0
+664,"[""83/100"", ""83/99""]",[],Private,0
+665,B,"[""$int_{x}^{{{x}^{2}}}{-{{y}^{2}}{{e}^{-x{{y}^{2}}}}} \\text{d}y+{{e}^{-{{x}^{5}}}}-{{e}^{-{{x}^{3}}}}$"", ""$int_{x}^{{{x}^{2}}}{-{{y}^{2}}{{e}^{-x{{y}^{2}}}}} \\text{d}y+2x{{e}^{-{{x}^{5}}}}-{{e}^{-{{x}^{3}}}}$"", ""$int_{x}^{{{x}^{2}}}{-{{y}^{2}}{{e}^{-x{{y}^{2}}}}} \\text{d}y+2x{{e}^{-{{x}^{2}}{{y}^{2}}}}-{{e}^{-x{{y}^{2}}}}$"", ""int_{x}^{{{x}^{2}}}{-{{y}^{2}}{{e}^{-x{{y}^{2}}}}} \\text{d}y+2x{{e}^{-{{x}^{4}}}}-{{e}^{-{{x}^{3}}}}"", ""int_{x}^{{{x}^{2}}}{-{{y}^{2}}{{e}^{-x{{y}^{2}}}}} \\text{d}y+2x{{e}^{-{{x}^{4}}}}-{{e}^{-{{x}^{2}}}}"", ""int_{x}^{{{x}^{2}}}{-{{y}^{2}}{{e}^{-x{{y}^{2}}}}} \\text{d}y+2x{{e}^{-{{x}^{4}}}}-{{e}^{-{{x}^{6}}}}"", ""int_{x}^{{{x}^{2}}}{-{{y}^{2}}{{e}^{-x{{y}^{2}}}}} \\text{d}y+2x{{e}^{-{{x}^{4}}}}-{{e}^{-{{x}^{4}}}}"", ""int_{x}^{{{x}^{2}}}{-{{y}^{2}}{{e}^{-x{{y}^{2}}}}} \\text{d}y+2x{{e}^{-{{x}^{4}}}}-{{e}^{-{{x}^{5}}}}"", ""$int_{x}^{{{x}^{2}}}{-{{y}^{2}}{{e}^{-x{{y}^{2}}}}} \\text{d}y+2x{{e}^{-{{x}^{3}}}}-{{e}^{-{{x}^{5}}}}$"", ""$int_{x}^{{{x}^{2}}}{-{{y}^{2}}{{e}^{-x{{y}^{2}}}}} \\text{d}y$""]",Public,0
+666,"[""76*e^([ln(419/76)]/4*t)"", ""100*[ln(419/76)]/4""]",[],Public,0
+667,H,"[""$$\ny=\\frac{2} {3} x^{3}+\\frac{1} {3}\n$$"", ""$$\ny=\\frac{2} {3} x^{\\frac{3} {2}}-1\n$$"", ""$$\ny=\\frac{2} {3} x^{\\frac{3} {2}}\n$$"", ""$$\ny=\\frac{2} {3} x^{4}+\\frac{1} {3}\n$$"", ""$$\ny=\\frac{2} {3} x^{2}+\\frac{1} {3}\n$$"", ""$$\ny=\\frac{2} {3} x^{\\frac{} {}}+\\frac{1} {3}\n$$"", ""$$\ny=\\frac{2} {3} x^{\\frac{3} {2}}+\\frac{2} {3}\n$$"", ""$$\ny=\\frac{2} {3} x^{\\frac{3} {2}}+\\frac{1} {3}\n$$"", ""$$\ny=\\frac{2} {3} x^{\\frac{3} {2}}+2\n$$"", ""$$\ny=\\frac{2} {3} x^{\\frac{3} {2}}+3\n$$""]",Private,0
+668,G,"[""106"", ""105"", ""109"", ""108"", ""100"", ""107"", ""103"", ""101"", ""102"", ""104""]",Private,0
+669,H,"[""$$ { x }_{ A }>{ x }_{ B } $$"", ""$$ { x }_{ A }<{ x }_{ B } $$"", ""{ x }_{ A }=0.5{ x }_{ B }"", ""{ x }_{ A }=1.5{ x }_{ B }"", ""{ x }_{ A }=3{ x }_{ B }"", ""{ x }_{ A }=2.5{ x }_{ B }"", ""$$ { x }_{ A }={ x }_{ B } $$"", ""the information is insufficient to decide the relation of $ { x }_{ A } $ with $ { x }_{ B } $"", ""{ x }_{ A }=4{ x }_{ B }"", ""{ x }_{ A }=2{ x }_{ B }""]",Public,0
+670,D,"[""420"", ""789"", ""256"", ""521"", ""300"", ""512"", ""456"", ""640"", ""1024"", ""128""]",Private,0
+671,"[""1.71"", ""113.2""]",[],Private,0
+672,D,"[""-37/5"", ""-35/5"", ""-39/5"", ""-36/5"", ""-35/6"", ""-35/4"", ""-38/5"", ""-33/5"", ""-34/5""]",Private,0
+673,1080,[],Public,1
+674,"[""8*x+7""]",[],Private,0
+675,B,"[""[102, 108, 113, 114, 116, 117, 120, 121, 124, 125]"", ""[106, 108, 112, 113, 114, 116, 120, 121, 122, 124]"", ""[106, 107, 111, 114, 115, 118, 121, 123, 125, 126]"", ""[104, 109, 113, 115, 116, 119, 120, 122, 123, 126]"", ""[107, 108, 110, 114, 115, 117, 119, 123, 125, 126]"", ""[106, 109, 111, 115, 116, 119, 120, 123, 124, 127]"", ""[105, 109, 112, 115, 116, 118, 120, 122, 124, 126]"", ""[105, 109, 111, 113, 115, 116, 119, 122, 123, 127]"", ""[105, 108, 112, 113, 117, 118, 121, 123, 124, 125]"", ""[104, 107, 110, 113, 115, 117, 119, 121, 123, 125]""]",Public,0
+676,"[""D"", ""A"", ""A""]",[],Private,0
+677,F,"[""Mean: 2.5, Median: 3, Mode: 0"", ""Mean: 1.5, Median: 2, Mode: 3"", ""Mean: 3, Median: 3, Mode: 3"", ""Mean: 2, Median: 1.5, Mode: 2"", ""Mean: 1, Median: 2, Mode: 4"", ""Mean: 2, Median: 2.5, Mode: 3"", ""Mean: 2.5, Median: 2, Mode: 3"", ""Mean: 2, Median: 3, Mode: 0"", ""Mean: 3, Median: 2, Mode: 1"", ""Mean: 2.16, Median: 2, Mode: 3""]",Private,0
+678,"[""13960""]",[],Public,0
+679,"[""11.0020003296683""]",[],Private,0
+680,"[""0.035"", ""0.0525"", ""0.0775"", ""A""]",[],Private,0
+681,"[""28900.00"", ""170.00"", ""135.00"", ""205.00""]",[],Private,0
+682,G,"[""295"", ""292"", ""260"", ""270"", ""288"", ""275"", ""290"", ""282"", ""285"", ""280""]",Private,0
+683,"[""-0.65""]",[],Public,0
+684,"[""-1.55477""]",[],Private,0
+685,"[""CD""]",[],Public,0
+686,D,"[""1/2"", ""2/3"", ""5/12"", ""5/8"", ""1/3"", ""3/5"", ""6/10"", ""7/12"", ""3/4"", ""4/7""]",Private,0
+687,"[""24500""]",[],Public,0
+688,1030219,[],Public,1
+689,"[""45"", ""43""]",[],Private,0
+690,D,"[""5.2326"", ""5.2320"", ""5.2328"", ""5.2322"", ""5.2324"", ""5.2327"", ""5.2325"", ""5.2329"", ""5.2321"", ""5.2323""]",Private,0
+691,"[""(19.6719597914675,26.9947068751991)""]",[],Public,0
+692,"[""1.23874289906441""]",[],Private,0
+693,"[""30"", ""7.5"", ""5.5""]",[],Private,0
+694,"[""9*x+6750"", ""36*x"", ""36*x-9*x-6750"", ""250""]",[],Public,0
+695,E,"[""$$\n\\ \\gamma, \\ \\beta, \\ \\alpha\n$$"", ""$$\n\\ \\beta, \\ \\gamma, \\ \\alpha\n$$"", ""$$\n\\ \\alpha, \\ \\beta, \\ \\gamma\n$$"", ""$$\n\\ \\gamma, \\ \\alpha, \\ \\beta\n$$"", ""$$\n\\ \\alpha, \\ \\gamma, \\ \\beta\n$$"", ""$$\n\\ \\beta, \\ \\alpha, \\ \\gamma\n$$""]",Private,0
+696,"[""x+8"", ""-81""]",[],Private,0
+697,"[""60""]",[],Public,0
+698,"[""-50.92""]",[],Public,0
+699,"[""6"", ""3""]",[],Public,0
+700,F,"[""$$\n\\frac{p+1} {2} \\cdot\\frac{q-1} {3}\n$$"", ""$$\n\\frac{p-1} {3} \\cdot\\frac{q-1} {4}\n$$"", ""$$\n\\frac{p+3} {2} \\cdot\\frac{q-2} {4}\n$$"", ""$$\n\\frac{p-2} {3} \\cdot\\frac{q+3} {2}\n$$"", ""$$\n\\frac{p-1} {3} \\cdot\\frac{q-2} {3}\n$$"", ""$$\n\\frac{p-1} {2} \\cdot\\frac{q-1} {2}\n$$"", ""$$\n\\frac{p+1} {4} \\cdot\\frac{q-1} {2}\n$$"", ""$$\n\\frac{p+2} {3} \\cdot\\frac{q-2} {2}\n$$"", ""$$\n\\frac{p-1} {3} \\cdot\\frac{q+1} {2}\n$$"", ""$$\n\\frac{p-2} {2} \\cdot\\frac{q+2} {3}\n$$""]",Private,0
+701,"[""22""]",[],Private,0
+702,"[""-u^4-4*u^3+3*u^2-6*u-8""]",[],Private,0
+703,B,"[""-\\frac{2\\cdot\\cos(3\\cdot x)}{5\\cdot\\sin(3\\cdot x)^5}+\\frac{24}{5}\\cdot\\left(-\\frac{\\cos(3\\cdot x)}{9\\cdot\\sin(3\\cdot x)^3}+\\frac{1}{12}\\cdot\\cot(3\\cdot x)\\right)+C"", ""-\\frac{2\\cdot\\cos(3\\cdot x)}{5\\cdot\\sin(3\\cdot x)^5}+\\frac{24}{5}\\cdot\\left(-\\frac{\\cos(3\\cdot x)}{9\\cdot\\sin(3\\cdot x)^3}-\\frac{2}{9}\\cdot\\cot(3\\cdot x)\\right)+C"", ""-\\frac{2\\cdot\\cos(3\\cdot x)}{5\\cdot\\sin(3\\cdot x)^5}+\\frac{24}{5}\\cdot\\left(-\\frac{\\cos(3\\cdot x)}{9\\cdot\\sin(3\\cdot x)^3}+\\frac{1}{6}\\cdot\\cot(3\\cdot x)\\right)+C"", ""-\\frac{2\\cdot\\cos(3\\cdot x)}{5\\cdot\\sin(3\\cdot x)^5}+\\frac{24}{5}\\cdot\\left(-\\frac{\\cos(3\\cdot x)}{9\\cdot\\sin(3\\cdot x)^3}-\\frac{1}{3}\\cdot\\cot(3\\cdot x)\\right)+C"", ""-\\frac{2\\cdot\\cos(3\\cdot x)}{5\\cdot\\sin(3\\cdot x)^5}+\\frac{24}{5}\\cdot\\left(-\\frac{\\cos(3\\cdot x)}{9\\cdot\\sin(3\\cdot x)^3}+\\frac{2}{9}\\cdot\\cot(3\\cdot x)\\right)+C"", ""-\\frac{2\\cdot\\cos(3\\cdot x)}{5\\cdot\\sin(3\\cdot x)^5}+\\frac{24}{5}\\cdot\\left(-\\frac{\\cos(3\\cdot x)}{9\\cdot\\sin(3\\cdot x)^3}+\\frac{1}{18}\\cdot\\cot(3\\cdot x)\\right)+C"", ""-\\frac{2\\cdot\\cos(3\\cdot x)}{5\\cdot\\sin(3\\cdot x)^5}+\\frac{24}{5}\\cdot\\left(-\\frac{\\cos(3\\cdot x)}{9\\cdot\\sin(3\\cdot x)^3}-\\frac{1}{9}\\cdot\\cot(3\\cdot x)\\right)+C"", ""-\\frac{2\\cdot\\cos(3\\cdot x)}{5\\cdot\\sin(3\\cdot x)^5}+\\frac{24}{5}\\cdot\\left(-\\frac{\\cos(3\\cdot x)}{9\\cdot\\sin(3\\cdot x)^3}+\\frac{1}{9}\\cdot\\cot(3\\cdot x)\\right)+C"", ""-\\frac{2\\cdot\\cos(3\\cdot x)}{5\\cdot\\sin(3\\cdot x)^5}+\\frac{24}{5}\\cdot\\left(-\\frac{\\cos(3\\cdot x)}{9\\cdot\\sin(3\\cdot x)^3}-\\frac{1}{4}\\cdot\\cot(3\\cdot x)\\right)+C"", ""-\\frac{2\\cdot\\cos(3\\cdot x)}{5\\cdot\\sin(3\\cdot x)^5}+\\frac{24}{5}\\cdot\\left(-\\frac{\\cos(3\\cdot x)}{9\\cdot\\sin(3\\cdot x)^3}+\\frac{1}{3}\\cdot\\cot(3\\cdot x)\\right)+C""]",Private,0
+704,"[""3.65365657242253"", ""1.64485"", ""B""]",[],Private,0
+705,"[""T"", ""F"", ""F"", ""T""]",[],Private,0
+706,"[""2047.22""]",[],Private,0
+707,"[""5200"", ""2600""]",[],Private,0
+708,"[""(-4.5, 4.5)"", ""-20.25""]",[],Public,0
+709,E,"[""[35, 50, 112, 52, 22, 40, 88, 132, 112, 128]"", ""[43, 59, 121, 61, 31, 49, 97, 141, 121, 137]"", ""[40, 56, 118, 58, 28, 46, 94, 138, 118, 134]"", ""[36, 51, 113, 53, 23, 41, 89, 133, 113, 129]"", ""[42, 58, 120, 60, 30, 48, 96, 140, 120, 136]"", ""[44, 57, 119, 59, 29, 47, 95, 139, 119, 135]"", ""[38, 53, 115, 55, 25, 43, 91, 135, 115, 131]"", ""[37, 52, 114, 54, 24, 42, 90, 134, 114, 130]"", ""[41, 55, 117, 57, 27, 45, 93, 137, 117, 133]"", ""[39, 54, 116, 56, 26, 44, 92, 136, 116, 132]""]",Private,0
+710,"[""(4.72865, 1.83772)""]",[],Private,0
+711,D,"[""[2548, 509, 59, 496, 2307, 6931, 14335, 20784, 20956, 14027]"", ""[2560, 515, 58, 500, 2315, 6935, 14325, 20780, 20950, 14030]"", ""[2559, 512, 54, 492, 2318, 6934, 14308, 20779, 20958, 14022]"", ""[2550, 511, 55, 495, 2310, 6930, 14322, 20790, 20955, 14025]"", ""[2555, 520, 50, 490, 2300, 6920, 14320, 20795, 20950, 14020]"", ""[2561, 513, 52, 494, 2302, 6932, 14328, 20789, 20953, 14028]"", ""[2545, 511, 65, 500, 2310, 6925, 14315, 20775, 20945, 14015]"", ""[2552, 517, 51, 499, 2325, 6919, 14329, 20791, 20957, 14022]"", ""[2540, 510, 60, 490, 2305, 6935, 14330, 20785, 20965, 14035]"", ""[2550, 505, 53, 485, 2320, 6940, 14310, 20785, 20960, 14040]""]",Private,0
+712,"[""D"", ""D"", ""A""]",[],Private,0
+713,"[""-3"", ""not real""]",[],Private,0
+714,"[""A""]",[],Private,0
+715,"[""(5, 7, 9, 13)"", ""8.5"", ""(6, 7, 9, 8, 10, 11)"", ""8.5""]",[],Private,0
+716,"[""0.575757575757576""]",[],Public,0
+717,"[""7992""]",[],Private,0
+718,"["" 65761800"", "" 72704000"", ""median""]",[],Private,0
+719,E,"[""42"", ""18"", ""48"", ""33"", ""23"", ""10"", ""36"", ""26"", ""30"", ""15""]",Private,0
+720,I,"[""$$\n\\varepsilon_{n}= \\frac{b} {2} \\, h^{2} x_{n}\n$$"", ""$$\n\\varepsilon_{n}= a \\, h x_{n}^{2}\n$$"", ""$$\n\\varepsilon_{n}= \\frac{a} {4} \\, h x_{n}\n$$"", ""$$\n\\varepsilon_{n}= \\frac{a} {2} \\, x_{n} h\n$$"", ""$$\n\\varepsilon_{n}= \\frac{b} {2} \\, h x_{n}\n$$"", ""$$\n\\varepsilon_{n}= \\frac{a} {2} \\, h^{2} x_{n}\n$$"", ""$$\n\\varepsilon_{n}= a \\, h^{2} x_{n}\n$$"", ""$$\n\\varepsilon_{n}= \\frac{a} {2} \\, h x_{n}^{2}\n$$"", ""$$\n\\varepsilon_{n}= \\frac{a} {2} \\, h x_{n}\n$$"", ""$$\n\\varepsilon_{n}= \\frac{a} {3} \\, h x_{n}\n$$""]",Public,0
+721,"[""D"", ""A"", ""A""]",[],Public,0
+722,2077992225,[],Private,1
+723,"[""-0.866025403784439"", ""-0.707106781186548""]",[],Public,0
+724,2 \cdot (\sqrt{5}-1),[],Private,1
+725,"[""41.3017962527539"", ""13.2767"", ""A""]",[],Public,0
+726,"[""7"", ""48""]",[],Private,0
+727,A,"[""\\frac{480}{49}"", ""\\frac{480}{56}"", ""\\frac{480}{51}"", ""\\frac{480}{48}"", ""\\frac{480}{47}"", ""\\frac{480}{52}"", ""\\frac{480}{55}"", ""\\frac{480}{53}"", ""\\frac{480}{50}"", ""\\frac{480}{54}""]",Private,0
+728,"[""80000""]",[],Public,0
+729,B,"[""$$\n8^{2 0 1 1}\n$$"", ""$$\n8^{2 0 1 2}\n$$"", ""$$\n2^{2 0 1 2}\n$$"", ""$$\n5^{2 0 1 2}\n$$"", ""$$\n8^{2 0 1 4}\n$$"", ""$$\n8^{2 0 1 0}\n$$"", ""$$\n3^{2 0 1 2}\n$$"", ""$$\n6^{2 0 1 2}\n$$"", ""$$\n7^{2 0 1 2}\n$$"", ""$$\n4^{2 0 1 2}\n$$""]",Public,0
+730,I,"[""1/13"", ""1/12"", ""1/6"", ""1/10"", ""1/11"", ""1/8"", ""1/15"", ""1/14"", ""1/7"", ""1/9""]",Public,0
+731,J,"[""770"", ""780"", ""720"", ""700"", ""710"", ""760"", ""790"", ""740"", ""730"", ""750""]",Private,0
+732,H,"[""4"", ""-10"", ""-16"", ""-2"", ""-14"", ""-6"", ""-12"", ""-4"", ""-8"", ""2""]",Private,0
+733,"[""68"", ""247"", ""97"", ""17""]",[],Private,0
+734,"[""4830"", ""4.83""]",[],Public,0
+735,"[""28"", ""42.5"", ""55"", ""-29"", ""82"", ""27"", ""A""]",[],Private,0
+736,"[""[sqrt(30)]/2""]",[],Private,0
+737,"[""2140""]",[],Private,0
+738,"[""A"", ""C"", ""A"", ""A""]",[],Public,0
+739,"[""Q/(1-Z)""]",[],Private,0
+740,"[""5184/(81*[cos(t)]^2-64*[sin(t)]^2)""]",[],Private,0
+741,H,"[""$x=\\frac{\\pi}{4}+k\\pi$ and $x=k\\pi$"", ""$x=-\\frac{\\pi}{2}+k\\pi$ and $x=k\\pi$"", ""$x=\\frac{\\pi}{6}+k\\pi$ and $x=k\\pi$"", ""$x=-\\frac{3\\pi}{4}+k\\pi$ and $x=k\\pi$"", ""$x=\\pi+k\\pi$ and $x=k\\pi$"", ""$x=\\frac{\\pi}{3}+k\\pi$ and $x=k\\pi$"", ""$x=-\\frac{\\pi}{6}+k\\pi$ and $x=k\\pi$"", ""$x=-\\frac{\\pi}{4}+k\\pi$ and $x=k\\pi$"", ""$x=\\frac{5\\pi}{6}+k\\pi$ and $x=k\\pi$"", ""$x=\\frac{3\\pi}{4}+k\\pi$ and $x=k\\pi$""]",Public,0
+742,"[""241""]",[],Private,0
+743,"[""430""]",[],Private,0
+744,"[""26.875"", ""32.1875""]",[],Private,0
+745,"[""2*sin(C)*cos(C)"", ""cos(A)*cos(B)-sin(A)*sin(B)"", ""2*tan(C)/(1-[tan(C)]^2)"", ""sin(A)*cos(B)-cos(A)*sin(B)"", ""sin(A)*cos(B)+cos(A)*sin(B)"", ""cos(A)*cos(B)+sin(A)*sin(B)"", ""[1-cos(x)]/[sin(x)]"", ""[cos(C)]^2-[sin(C)]^2""]",[],Private,0
+746,"[""17417"", ""30856"", ""808694"", ""103863"", ""876259"", ""924095"", ""21108""]",[],Private,0
+747,A,"[""93"", ""74"", ""42"", ""67"", ""85"", ""52"", ""11"", ""12"", ""28"", ""36""]",Private,0
+748,"[""222.51"", ""186.49"", ""79.429"", ""66.571"", ""50.0511"", ""41.9489"", ""31.0099"", ""25.9901"", ""20.7912"", ""3"", ""11.3449"", ""B""]",[],Private,0
+749,"[""(5, 5, 5, 5, 5)"", ""is"", ""(1.55556, 1.35714, 1.26316, 1.20833, 1.17241)"", ""is not"", ""5*n+9"", ""(-1)^(n+1)*(5*n+9)""]",[],Private,0
+750,"[""100*(1-0.95^9)"", ""ln(0.95)"", ""CE""]",[],Public,0
+751,31,[],Private,1
+752,D,"[""218"", ""228"", ""216"", ""220"", ""224"", ""232"", ""212"", ""204"", ""208"", ""196""]",Public,0
+753,"[""A"", ""0.24"", ""A"", ""16.54""]",[],Private,0
+754,"[""60*x^2+65*x""]",[],Private,0
+755,J,"[""y_ss[n] = \\surd(1/7)cos[(\\pi/6)n tan^-1 [{1} / {3\\surd(3)}]"", ""y_ss[n] = \\surd(3/7)cos[(\\pi/3)n tan^-1 [{1} / {3\\surd(3)}]"", ""y_ss[n] = \\surd(3/8)sin[(\\pi/6)n - tan^-1 [{1} / {3\\surd(3)}]"", ""y_ss[n] = \\surd(3/7)cos[(\\pi/6)n tan^-1 [{1} / {2\\surd(3)}]"", ""y_ss[n] = \\surd(2/7)sin[(\\pi/6)n + tan^-1 [{1} / {3\\surd(3)}]"", ""y_ss[n] = \\surd(3/7)cos[(\\pi/6)n + tan^-1 [{1} / {3\\surd(3)}]"", ""y_ss[n] = \\surd(3/7)sin[(\\pi/6)n - tan^-1 [{1} / {2\\surd(3)}]"", ""y_ss[n] = \\surd(3/7)sin[(\\pi/6)n tan^-1 [{1} / {3\\surd(3)}]"", ""y_ss[n] = \\surd(2/7)cos[(\\pi/6)n tan^-1 [{1} / {3\\surd(3)}]"", ""y_ss[n] = \\surd(3/7)cos[(\\pi/6)n tan^-1 [{1} / {3\\surd(3)}]""]",Private,0
+756,"[""109.27"", ""520.163""]",[],Private,0
+757,"[""C""]",[],Public,0
+758,"[""C""]",[],Private,0
+759,"[""C""]",[],Public,0
+760,I,"[""frac{1}{4}cdotlnleft(frac{|x+1|}{|x-1|}right)+frac{1}{4}cdotarctan(x)"", ""frac{1}{4}cdotlnleft(frac{|x+1|}{|x-1|}right)-frac{1}{6}cdotarctan(x)"", ""frac{1}{4}cdotlnleft(frac{|x+1|}{|x-1|}right)-frac{1}{4}cdotarctan(x)"", ""frac{1}{4}cdotlnleft(frac{|x+1|}{|x-1|}right)+frac{1}{2}cdotarctan(x)"", ""frac{1}{4}cdotlnleft(frac{|x+1|}{|x-1|}right)-frac{1}{7}cdotarctan(x)"", ""frac{1}{4}cdotlnleft(frac{|x+1|}{|x-1|}right)-frac{1}{3}cdotarctan(x)"", ""frac{1}{4}cdotlnleft(frac{|x+1|}{|x-1|}right)-frac{1}{5}cdotarctan(x)"", ""frac{1}{4}cdotlnleft(frac{|x+1|}{|x-1|}right)-frac{1}{8}cdotarctan(x)"", ""frac{1}{4}cdotlnleft(frac{|x+1|}{|x-1|}right)-frac{1}{2}cdotarctan(x)"", ""frac{1}{4}cdotlnleft(frac{|x+1|}{|x-1|}right)-frac{1}{9}cdotarctan(x)""]",Private,0
+761,"[""5*f(n-1)+4""]",[],Private,0
+762,"[""110*x^2+42*x""]",[],Private,0
+763,"[""9+4"", ""8/3""]",[],Private,0
+764,"[""(a+b)*(a-b)**4/c**5""]",[],Private,0
+765,A,"[""10"", ""24"", ""18"", ""20"", ""8"", ""6"", ""2"", ""12"", ""16"", ""14""]",Private,0
+766,"[""4+3/8"", ""7+2/6"", ""11+3/7""]",[],Private,0
+767,D,"[""$-frac{1}{2}ln left| {{sqrt[3]{frac{x+1}{x-1}}}^{2}}+sqrt[3]{frac{x+1}{x-1}}+1 right| +ln left| sqrt[3]{frac{x+1}{x-1}}-1 right| -sqrt{3}arctan frac{2sqrt{3}}{3}left( sqrt[3]{frac{x+1}{x-1}}-frac{1}{2} right)+C$"", ""$frac{1}{2}ln left| {{sqrt[3]{frac{x+1}{x-1}}}^{2}}-sqrt[3]{frac{x+1}{x-1}}+1 right| -ln left| sqrt[3]{frac{x+1}{x-1}}-1 right| +sqrt{3}arctan frac{2sqrt{3}}{3}left( sqrt[3]{frac{x+1}{x-1}}+frac{1}{2} right)+C$"", ""$-frac{1}{2}ln left| {{sqrt[3]{frac{x+1}{x-1}}}^{2}}+sqrt[3]{frac{x+1}{x-1}}+1 right| -ln left| sqrt[3]{frac{x+1}{x-1}}-1 right| +sqrt{3}arctan frac{2sqrt{3}}{3}left( sqrt[3]{frac{x+1}{x-1}}+frac{1}{2} right)+C$"", ""$frac{1}{2}ln left| {{sqrt[3]{frac{x+1}{x-1}}}^{2}}+sqrt[3]{frac{x+1}{x-1}}+1 right| -ln left| sqrt[3]{frac{x+1}{x-1}}-1 right| +sqrt{3}arctan frac{2sqrt{3}}{3}left( sqrt[3]{frac{x+1}{x-1}}+frac{1}{2} right)+C$"", ""$frac{1}{2}ln |x-1|+frac{3}{2}ln left| sqrt[3]{frac{x+1}{x-1}}-1 right|-sqrt{3}arctan frac{2sqrt{3}}{3}left( sqrt[3]{frac{x+1}{x-1}}-frac{1}{2} right)+C$"", ""$-frac{1}{2}ln left| {{sqrt[3]{frac{x+1}{x-1}}}^{2}}-sqrt[3]{frac{x+1}{x-1}}+1 right| -ln left| sqrt[3]{frac{x+1}{x-1}}-1 right| +sqrt{3}arctan frac{2sqrt{3}}{3}left( sqrt[3]{frac{x+1}{x-1}}-frac{1}{2} right)+C$"", ""$-frac{1}{2}ln |x-1|-frac{3}{2}ln left| sqrt[3]{frac{x+1}{x-1}}-1 right|+sqrt{3}arctan frac{2sqrt{3}}{3}left( sqrt[3]{frac{x+1}{x-1}}-frac{1}{2} right)+C$"", ""$frac{1}{2}ln left| {{sqrt[3]{frac{x+1}{x-1}}}^{2}}-sqrt[3]{frac{x+1}{x-1}}+1 right| -ln left| sqrt[3]{frac{x+1}{x-1}}+1 right| +sqrt{3}arctan frac{2sqrt{3}}{3}left( sqrt[3]{frac{x+1}{x-1}}-frac{1}{2} right)+C$"", ""$-frac{1}{2}ln left| {{sqrt[3]{frac{x+1}{x-1}}}^{2}}-sqrt[3]{frac{x+1}{x-1}}+1 right| +ln left| sqrt[3]{frac{x+1}{x-1}}+1 right| -sqrt{3}arctan frac{2sqrt{3}}{3}left( sqrt[3]{frac{x+1}{x-1}}+frac{1}{2} right)+C$"", ""$-frac{1}{2}ln left| {{sqrt[3]{frac{x+1}{x-1}}}^{2}}-sqrt[3]{frac{x+1}{x-1}}+1 right| +ln left| sqrt[3]{frac{x+1}{x-1}}-1 right| -sqrt{3}arctan frac{2sqrt{3}}{3}left( sqrt[3]{frac{x+1}{x-1}}-frac{1}{2} right)+C$""]",Private,0
+768,G,"[""$y = left{ begin{array}{l} - ln (x - 1),{rm{ }}quad x ge 2, 1 - frac{1}{2}x,{rm{ }}qquad ,0 < x < 1, 1 + sqrt {|x|} {rm{, }};;,{rm{ }}quad x le -1 end{array} right. $"", ""$y = left{ begin{array}{l} - ln (x - 1),{rm{ }}quad x ge 1, 1 - frac{1}{2}x,{rm{ }}qquad ,0 < x < 2, 1 + sqrt {|x|} {rm{, }};;,{rm{ }}quad x le 0 end{array} right. $"", ""$y = left{ begin{array}{l} - ln (x - 1),{rm{ }}quad x ge 1, 1 - frac{1}{2}x,{rm{ }}qquad ,0 < x < 2, 1 + sqrt {|x|} {rm{, }};;,{rm{ }}quad x le -1 end{array} right. $"", ""$y = left{ begin{array}{l} - ln (x - 1),{rm{ }}quad x ge 0, 1 - frac{1}{2}x,quad quad - {rm{2}} < x < 0, 1 + sqrt {|x|} {rm{, }}qquad {rm{ }}x le - 2 end{array} right. $"", ""$y = left{ begin{array}{l} - ln (x - 1),{rm{ }}quad x ge 1, 1 - frac{1}{2}x,{rm{ }}qquad ,0 < x < 2, 1 + sqrt {|x|} {rm{, }};;,{rm{ }}quad x le -2 end{array} right. $"", ""$y = left{ begin{array}{l} - ln (x - 1),{rm{ }}quad x ge 1, 1 - frac{1}{2}x,{rm{ }}qquad ,0 < x < 2, 1 + sqrt {|x|} {rm{, }};;,{rm{ }}quad x le 1 end{array} right. $"", ""$y = left{ begin{array}{l} - ln (x - 1),{rm{ }}quad x ge 2, 1 - frac{1}{2}x,{rm{ }}qquad ,0 < x < 2, 1 + sqrt {|x|} {rm{, }};;,{rm{ }}quad x le 0 end{array} right. $"", ""$y = left{ begin{array}{l} - ln (x - 1),{rm{ }}quad x ge 1, 1 - frac{1}{2}x,{rm{ }}qquad ;0 < x < 1, 1 + sqrt {|x|} {rm{, }};;,quad x le 0 end{array} right. $"", ""$y = left{ begin{array}{l} - ln (x - 1),{rm{ }}quad x ge 1, 1 - frac{1}{2}x,{rm{ }}qquad ,0 < x < 1, 1 + sqrt {|x|} {rm{, }};;,{rm{ }}quad x le 0 end{array} right. $"", ""$y = left{ begin{array}{l} - ln (x - 1),{rm{ }}quad x ge 2, 1 - frac{1}{2}x,quad ;;; - {rm{2}} < x < 2, 1 + sqrt {|x|} {rm{, }};;quad x le - 2 end{array} right. $""]",Public,0
+769,"[""1620""]",[],Private,0
+770,"[""3"", ""4"", ""1"", ""3"", ""2"", ""1"", ""2"", ""2"", ""0.5"", ""2""]",[],Private,0
+771,"[""2""]",[],Public,0
+772,H,"[""[1, 3, 2, 4, 4, 1, 3, 2, 4, 1]"", ""[1, 2, 3, 2, 4, 1, 3, 4, 1, 2]"", ""[3, 1, 4, 2, 2, 3, 4, 1, 3, 2]"", ""[3, 4, 1, 2, 2, 4, 3, 3, 1, 4]"", ""[4, 2, 3, 1, 4, 3, 2, 1, 4, 3]"", ""[1, 1, 2, 2, 3, 3, 4, 4, 3, 2]"", ""[4, 4, 3, 1, 1, 2, 2, 3, 2, 3]"", ""[2, 3, 4, 4, 3, 2, 1, 1, 2, 3]"", ""[4, 3, 2, 1, 1, 2, 3, 4, 2, 1]"", ""[2, 1, 4, 3, 3, 4, 2, 1, 4, 3]""]",Private,0
+773,"[""(3*a-2*5-4)/3""]",[],Public,0
+774,"[""24"", ""28"", ""33"", ""39"", ""42""]",[],Private,0
+775,"[""6*sin(x-7)-6""]",[],Private,0
+776,"[""A""]",[],Private,0
+777,"[""8""]",[],Private,0
+778,I,"[""0.600"", ""0.815"", ""0.500"", ""0.295"", ""0.415"", ""0.635"", ""0.725"", ""0.485"", ""0.685"", ""0.765""]",Private,0
+779,F,"[""$$1$$"", ""$$\\frac{3\\pi}{8}$$"", ""$$\\frac{\\pi}{2}$$"", ""$$\\frac{\\pi}{6}$$"", ""$$\\frac{5\\pi}{12}$$"", ""$$\n\\frac{\\pi} {4}\n$$"", ""$$2$$"", ""$$\\frac{\\pi}{3}$$"", ""$$0$$"", ""$$\\frac{1}{2}$$""]",Public,0
+780,"[""3*t^14+6*t^12+9*t^10""]",[],Private,0
+781,"[""[sqrt(15)]/8""]",[],Private,0
+782,"[""(40+1) *(2*3+40*-2)/2""]",[],Private,0
+783,H,"[""C + \\frac{1}{3} \\cdot (\\cos(2 \\cdot x))^3 + \\frac{1}{7} \\cdot (\\cos(2 \\cdot x))^7 - \\frac{1}{4} \\cdot (\\cos(2 \\cdot x))^5"", ""C + \\frac{1}{3} \\cdot (\\cos(2 \\cdot x))^3 + \\frac{1}{7} \\cdot (\\cos(2 \\cdot x))^7 - \\frac{1}{5} \\cdot (\\cos(2 \\cdot x))^5"", ""C + \\frac{1}{3} \\cdot (\\cos(2 \\cdot x))^3 + \\frac{1}{7} \\cdot (\\cos(2 \\cdot x))^7 - \\frac{3}{5} \\cdot (\\cos(2 \\cdot x))^5"", ""C + \\frac{1}{3} \\cdot (\\cos(2 \\cdot x))^3 + \\frac{1}{7} \\cdot (\\cos(2 \\cdot x))^7 - \\frac{1}{6} \\cdot (\\cos(2 \\cdot x))^5"", ""C + \\frac{1}{3} \\cdot (\\cos(2 \\cdot x))^3 + \\frac{1}{7} \\cdot (\\cos(2 \\cdot x))^7 - \\frac{1}{2} \\cdot (\\cos(2 \\cdot x))^5"", ""C + \\frac{1}{3} \\cdot (\\cos(2 \\cdot x))^3 + \\frac{1}{7} \\cdot (\\cos(2 \\cdot x))^7 - \\frac{1}{8} \\cdot (\\cos(2 \\cdot x))^5"", ""C + \\frac{1}{3} \\cdot (\\cos(2 \\cdot x))^3 + \\frac{1}{7} \\cdot (\\cos(2 \\cdot x))^7 - \\frac{4}{5} \\cdot (\\cos(2 \\cdot x))^5"", ""C + \\frac{1}{3} \\cdot (\\cos(2 \\cdot x))^3 + \\frac{1}{7} \\cdot (\\cos(2 \\cdot x))^7 - \\frac{2}{5} \\cdot (\\cos(2 \\cdot x))^5"", ""C + \\frac{1}{3} \\cdot (\\cos(2 \\cdot x))^3 + \\frac{1}{7} \\cdot (\\cos(2 \\cdot x))^7 - \\frac{1}{3} \\cdot (\\cos(2 \\cdot x))^5"", ""C + \\frac{1}{3} \\cdot (\\cos(2 \\cdot x))^3 + \\frac{1}{7} \\cdot (\\cos(2 \\cdot x))^7 - \\frac{1}{10} \\cdot (\\cos(2 \\cdot x))^5""]",Private,0
+784,"[""17/60""]",[],Private,0
+785,"[""F"", ""T"", ""F"", ""F""]",[],Public,0
+786,I,"[""\\boxed{31877746252}"", ""\\boxed{31877746254}"", ""\\boxed{31877746253}"", ""\\boxed{31877746258}"", ""\\boxed{31877746259}"", ""\\boxed{31877746255}"", ""\\boxed{31877746256}"", ""\\boxed{31877746250}"", ""\\boxed{31877746251}"", ""\\boxed{31877746257}""]",Public,0
+787,"[""148178452.176242"", ""41.5477061638511"", ""46.9698589738733""]",[],Public,0
+788,A,"[""516"", ""512"", ""513"", ""517"", ""518"", ""511"", ""510"", ""515"", ""514"", ""519""]",Private,0
+789,"[""8"", ""8"", ""-8"", ""-8""]",[],Public,0
+790,"[""45*x-20*x^2-25""]",[],Private,0
+791,F,"[""S=\\frac{\\sin\\left(\\frac{(n+1)\\cdot a}{2}\\right)\\cdot\\cos\\left(\\frac{(n-1)\\cdot a}{2}\\right)}{\\sin\\left(\\frac{a}{2}\\right)}"", ""S=\\frac{\\sin\\left(\\frac{(n+1)\\cdot a}{2}\\right)\\cdot\\cos\\left(\\frac{(n+2)\\cdot a}{2}\\right)}{\\sin\\left(\\frac{a}{2}\\right)}"", ""S=\\frac{\\sin\\left(\\frac{n\\cdot a}{2}\\right)\\cdot\\cos\\left(\\frac{n\\cdot a}{2}\\right)}{\\sin\\left(\\frac{a}{2}\\right)}"", ""S=\\frac{\\sin\\left(\\frac{(n-1)\\cdot a}{2}\\right)\\cdot\\cos\\left(\\frac{(n+1)\\cdot a}{2}\\right)}{\\sin\\left(\\frac{a}{2}\\right)}"", ""S=\\frac{\\sin\\left(\\frac{(n+1)\\cdot a}{2}\\right)\\cdot\\cos\\left(\\frac{n\\cdot a}{2}\\right)}{\\sin\\left(\\frac{a}{2}\\right)}"", ""S=\\frac{\\sin\\left(\\frac{n\\cdot a}{2}\\right)\\cdot\\cos\\left(\\frac{(n+1)\\cdot a}{2}\\right)}{\\sin\\left(\\frac{a}{2}\\right)}""]",Private,0
+792,"[""[ln(T/V)]/[ln(g/h)]""]",[],Public,0
+793,"[""1.3466"", ""(1.48738,infinity)"", ""0.0905468"", ""D""]",[],Private,0
+794,"[""4.47368"", ""4""]",[],Private,0
+795,"[""450"", ""2"", ""6""]",[],Private,0
+796,F,"[""68"", ""62"", ""65"", ""66"", ""60"", ""63"", ""67"", ""61"", ""69"", ""64""]",Private,0
+797,C,"[""671"", ""669.5"", ""670"", ""669"", ""670.75"", ""670.25"", ""672"", ""670.125"", ""670.5"", ""668""]",Private,0
+798,"[""3924.399184"", ""EXTRANEOUS""]",[],Private,0
+799,8096,[],Private,1
+800,"[""140""]",[],Public,0
+801,A,"[""$$\nk ( n+m-k )-1\n$$"", ""$$\nk ( n-m+k )-1\n$$"", ""$$\nm ( n+k-m )-1\n$$"", ""$$\nl ( m+n-k )-1\n$$"", ""$$\nn ( k+m-l )-1\n$$"", ""$$\nk ( n+m+l )-2\n$$"", ""$$\nk ( m+n-k+l )-1\n$$"", ""$$\nm ( l+n-k )-1\n$$"", ""$$\nl ( n+m-l )-1\n$$"", ""$$\nk ( l+n-m )-1\n$$""]",Private,0
+802,"[""12*13/(6*7)""]",[],Private,0
+803,"[""123.079848310228""]",[],Private,0
+804,B,"[""$$\n\\frac{\\pi} {2 a^{2}} \\mathrm{e}^{\\frac{ma} {\\sqrt{2}}} \\cdot\\operatorname{c o s} \\frac{m a} {\\sqrt{2}}\n$$"", ""$$\n\\frac{\\pi} {2 a^{2}} \\mathrm{e}^{\\frac{ma} {\\sqrt{2}}} \\cdot\\operatorname{s i n} \\frac{m a} {\\sqrt{2}}\n$$"", ""$$\n\\frac{\\pi} {a^{3}} \\mathrm{e}^{\\frac{ma} {\\sqrt{2}}} \\cdot\\operatorname{s i n} \\frac{m a} {\\sqrt{2}}\n$$"", ""$$\n\\frac{\\pi} {2 a} \\mathrm{e}^{\\frac{ma} {\\sqrt{2}}} \\cdot\\operatorname{s i n} \\frac{m a} {\\sqrt{2}}\n$$"", ""$$\n\\frac{\\pi} {2 a^{2}} \\mathrm{e}^{\\frac{ma} {\\sqrt{2}}} \\cdot\\operatorname{s i n} \\frac{2m a} {\\sqrt{2}}\n$$"", ""$$\n\\frac{\\pi} {2 a^{2}} \\mathrm{e}^{-\\frac{ma} {\\sqrt{2}}} \\cdot\\operatorname{s i n} \\frac{m a} {\\sqrt{2}}\n$$"", ""$$\n\\frac{\\pi} {2 a^{2}} \\mathrm{e}^{\\frac{-ma} {\\sqrt{2}}} \\cdot\\operatorname{s i n} \\frac{m a} {2\\sqrt{2}}\n$$"", ""$$\n\\frac{\\pi} {2 a^{3}} \\mathrm{e}^{\\frac{ma} {\\sqrt{2}}} \\cdot\\operatorname{s i n} \\frac{m a} {\\sqrt{2}}\n$$"", ""$$\n\\frac{\\pi} {2 a^{2}} \\mathrm{e}^{\\frac{ma} {\\sqrt{3}}} \\cdot\\operatorname{s i n} \\frac{m a} {\\sqrt{2}}\n$$"", ""$$\n\\frac{\\pi} {a^{2}} \\mathrm{e}^{\\frac{ma} {\\sqrt{2}}} \\cdot\\operatorname{s i n} \\frac{m a} {2\\sqrt{2}}\n$$""]",Public,0
+805,C,"[""[40386519, 96018828, 228284494, 542745738, 1290376450, 3067866320, 7293843431, 17341091933, 41228396594, 98020395241]"", ""[40386516, 96018832, 228284498, 542745741, 1290376446, 3067866324, 7293843429, 17341091934, 41228396590, 98020395243]"", ""[40386518, 96018831, 228284497, 542745740, 1290376448, 3067866323, 7293843428, 17341091936, 41228396592, 98020395245]"", ""[40386512, 96018824, 228284490, 542745734, 1290376454, 3067866316, 7293843435, 17341091929, 41228396598, 98020395237]"", ""[40386511, 96018823, 228284489, 542745733, 1290376455, 3067866315, 7293843436, 17341091928, 41228396599, 98020395236]"", ""[40386514, 96018826, 228284492, 542745736, 1290376452, 3067866318, 7293843433, 17341091931, 41228396596, 98020395239]"", ""[40386513, 96018825, 228284491, 542745735, 1290376453, 3067866317, 7293843434, 17341091930, 41228396597, 98020395238]"", ""[40386517, 96018830, 228284496, 542745739, 1290376447, 3067866322, 7293843427, 17341091935, 41228396591, 98020395244]"", ""[40386520, 96018829, 228284495, 542745742, 1290376449, 3067866321, 7293843430, 17341091937, 41228396593, 98020395242]"", ""[40386515, 96018827, 228284493, 542745737, 1290376451, 3067866319, 7293843432, 17341091932, 41228396595, 98020395240]""]",Private,0
+806,"[""-0.655084576577052"", ""-0.755555555555556"", ""0.867023704293157"", ""1.15337100363969"", ""-1.32352941176471"", ""-1.52652044599371""]",[],Public,0
+807,E,"[""1/2 * sec(\u03c6) * tan(\u03c6) * sec(\u03c6)"", ""1/2 * sec(\u03c6) * tan(\u03c6)"", ""1/2 * sec(\u03c6) * tan(\u03c6/2)"", ""1/2 * sec(\u03c6) * tan(2 * \u03c6)"", ""1/2 * sec(2 * \u03c6)"", ""1/2 * sec(\u03c6) * sec(\u03c6)"", ""1/2 * sec(\u03c6/2)"", ""1/2 * sec(\u03c6) * sec(\u03c6/2)"", ""1/2 * sec(\u03c6) * sec(2 * \u03c6)"", ""1/2 * sec(\u03c6)""]",Public,0
+808,D,"[""[24, 26, 27, 20, 21, 23, 22, 65, 64, 66]"", ""[04, 06, 07, 00, 01, 03, 02, 45, 44, 46]"", ""[94, 96, 97, 90, 91, 93, 92, 135, 134, 136]"", ""[44, 46, 47, 40, 41, 43, 42, 85, 84, 86]"", ""[74, 76, 77, 70, 71, 73, 72, 115, 114, 116]"", ""[54, 56, 59, 50, 51, 53, 52, 95, 94, 96]"", ""[14, 16, 17, 10, 11, 13, 12, 55, 54, 56]"", ""[64, 66, 67, 60, 61, 63, 62, 105, 104, 106]"", ""[34, 36, 39, 30, 31, 33, 32, 75, 74, 76]"", ""[84, 86, 87, 80, 81, 83, 82, 125, 124, 126]""]",Private,0
+809,371,[],Private,1
+810,E,"[""$y= C_1 x \\sin x + C_2 \\cos x + \\frac{x \\cos x}{2}$"", ""$y= C_1 \\sin x + C_2 \\cos x - \\frac{x \\sin x}{2}$"", ""$y= C_1 x \\sin x + C_2 \\cos x + \\frac{x \\sin x}{2}$"", ""$y= C_1 \\sin x + C_2 \\cos x + \\sin x$"", ""$y= C_1 x \\sin x + C_2 \\cos x - \\frac{x \\cos x}{2}$"", ""$y= C_1 \\sin x + C_2 \\cos x + \frac{x \\cos x}{2}$"", ""$y= C_1 \\sin x + C_2 \\cos x + \\frac{x \\sin x}{2}$"", ""$y= C_1 \\sin x + C_2 \\cos x + \\cos x$""]",Private,0
+811,"[""1.336 x 10^-19""]",[],Private,0
+812,"[""8*[2*csc(2*t)]^6""]",[],Private,0
+813,"[""A"", ""C""]",[],Public,0
+814,"[""5"", ""4.72555555555556"", ""0.945111111111111"", ""1.22441341586296"", ""30"", ""23.1566666666667"", ""0.771888888888889"", ""35"", ""27.8822222222222"", ""1.717""]",[],Private,0
+815,H,"[""$$0.68,\\ \\frac{1} {4}+\\frac{1} {4} \\operatorname{l n} 2\n$$"", ""$$0.68,\\ \\frac{1} {8}+\\frac{1} {2} \\operatorname{l n} 2\n$$"", ""$$0.48,\\ \\frac{1} {4}+\\frac{1} {2} \\operatorname{l n} 2\n$$"", ""$$0.18,\\ \\frac{1} {4}+\\frac{1} {2} \\operatorname{l n} 2\n$$"", ""$$0.38,\\ \\frac{1} {4}+\\frac{1} {2} \\operatorname{l n} 2\n$$"", ""$$0.28,\\ \\frac{1} {4}+\\frac{1} {2} \\operatorname{l n} 2\n$$"", ""$$0.58,\\ \\frac{1} {4}+\\frac{1} {2} \\operatorname{l n} 2\n$$"", ""$$0.68,\\ \\frac{1} {4}+\\frac{1} {2} \\operatorname{l n} 2\n$$"", ""$$0.88,\\ \\frac{1} {4}+\\frac{1} {2} \\operatorname{l n} 2\n$$"", ""$$0.78,\\ \\frac{1} {4}+\\frac{1} {2} \\operatorname{l n} 2\n$$""]",Private,0
+816,"[""8.7"", ""10.5333""]",[],Private,0
+817,"[""88/21""]",[],Public,0
+818,"[""6*b+5*a"", ""a*b""]",[],Public,0
+819,E,"[""$\\tan \\frac{x}{2}+\\ln (1-\\cos \\frac{x}{2})+C$"", ""$\\tan \frac{x}{2}-\\ln (1+\\cos \frac{x}{2})+C$"", ""$\\tan \\frac{x}{2}+\\ln (1-\\cos x)+C$"", ""$\\tan \\frac{x}{2}-\\ln (1-\\cos x)+C$"", ""$\\tan \\frac{x}{2}-\\ln (1+\\cos x)+C$"", ""$\\tan \\frac{x}{2}-\\ln (1-\\sin x)+C$"", ""$\\tan \\frac{x}{2}-\\ln (1+\\cos \\frac{x}{2})+C$"", ""$\\tan \frac{x}{2}+\\ln (1+\\cos x)+C$"", ""$\\tan \frac{x}{2}+\\ln (1+\\cos \frac{x}{2})+C$"", ""$\\tan \\frac{x}{2}-\\ln (1+\\sin x)+C$""]",Public,0
+820,"[""18-6/2""]",[],Private,0
+821,"[""C"", ""A"", ""A"", ""A""]",[],Private,0
+822,"[""199.919532501169""]",[],Private,0
+823,281,[],Public,1
+824,C,"[""$$\n\\begin{array} {c} {{{y ( 0, 2 5 ) =0, 2 1 2 4 2 7 \\,,}}} \\\\ {{{y ( 0, 5 0 ) =0, 4 8 4 2 0 4 \\,,}}} \\\\ {{{y ( 0, 7 5 ) =0, 6 2 9 7 7 7 \\,,}}} \\\\ {{{y ( 1, 0 0 ) =0. 7 6 2 9 8 5 \\,}}} \\\\ \\end{array}\n$$"", ""$$\n\\begin{array} {c} {{{y ( 0, 2 5 ) =0, 2 3 2 4 2 7 \\,,}}} \\\\ {{{y ( 0, 5 0 ) =0, 4 5 9 2 0 4 \\,,}}} \\\\ {{{y ( 0, 7 5 ) =0, 6 2 4 7 7 7 \\,,}}} \\\\ {{{y ( 1, 0 0 ) =0. 7 4 7 9 8 5 \\,}}} \\\\ \\end{array}\n$$"", ""$$\n\\begin{array} {c} {{{y ( 0, 2 5 ) =0, 2 4 2 4 2 7 \\,,}}} \\\\ {{{y ( 0, 5 0 ) =0, 4 5 7 2 0 4 \\,,}}} \\\\ {{{y ( 0, 7 5 ) =0, 6 2 5 7 7 7 \\,,}}} \\\\ {{{y ( 1, 0 0 ) =0. 7 4 2 9 8 5 \\,}}} \\\\ \\end{array}\n$$"", ""$$\n\\begin{array} {c} {{{y ( 0, 2 5 ) =0, 2 8 2 4 2 7 \\,,}}} \\\\ {{{y ( 0, 5 0 ) =0, 4 7 2 3 0 4 \\,,}}} \\\\ {{{y ( 0, 7 5 ) =0, 6 5 5 7 7 7 \\,,}}} \\\\ {{{y ( 1, 0 0 ) =0. 7 1 8 9 8 5 \\,}}} \\\\ \\end{array}\n$$"", ""$$\n\\begin{array} {c} {{{y ( 0, 2 5 ) =0, 3 2 4 4 2 7 \\,,}}} \\\\ {{{y ( 0, 5 0 ) =0, 4 4 2 2 0 4 \\,,}}} \\\\ {{{y ( 0, 7 5 ) =0, 6 3 4 7 7 7 \\,,}}} \\\\ {{{y ( 1, 0 0 ) =0. 7 5 3 9 8 5 \\,}}} \\\\ \\end{array}\n$$"", ""$$\n\\begin{array} {c} {{{y ( 0, 2 5 ) =0, 2 4 3 4 2 7 \\,,}}} \\\\ {{{y ( 0, 5 0 ) =0, 4 6 2 2 0 4 \\,,}}} \\\\ {{{y ( 0, 7 5 ) =0, 6 4 5 7 7 7 \\,,}}} \\\\ {{{y ( 1, 0 0 ) =0. 7 5 1 9 8 5 \\,}}} \\\\ \\end{array}\n$$"", ""$$\n\\begin{array} {c} {{{y ( 0, 2 5 ) =0, 2 9 2 4 2 7 \\,,}}} \\\\ {{{y ( 0, 5 0 ) =0, 4 2 2 2 0 4 \\,,}}} \\\\ {{{y ( 0, 7 5 ) =0, 6 3 8 7 7 7 \\,,}}} \\\\ {{{y ( 1, 0 0 ) =0. 7 4 5 8 8 5 \\,}}} \\\\ \\end{array}\n$$"", ""$$\n\\begin{array} {c} {{{y ( 0, 2 5 ) =0, 2 4 1 4 2 7 \\,,}}} \\\\ {{{y ( 0, 5 0 ) =0, 4 7 2 2 0 4 \\,,}}} \\\\ {{{y ( 0, 7 5 ) =0, 6 1 5 7 7 7 \\,,}}} \\\\ {{{y ( 1, 0 0 ) =0. 7 3 9 8 8 5 \\,}}} \\\\ \\end{array}\n$$"", ""$$\n\\begin{array} {c} {{{y ( 0, 2 5 ) =0, 2 5 1 4 2 7 \\,,}}} \\\\ {{{y ( 0, 5 0 ) =0, 4 3 7 2 0 4 \\,,}}} \\\\ {{{y ( 0, 7 5 ) =0, 6 3 5 7 7 7 \\,,}}} \\\\ {{{y ( 1, 0 0 ) =0. 7 5 2 9 8 5 \\,}}} \\\\ \\end{array}\n$$"", ""$$\n\\begin{array} {c} {{{y ( 0, 2 5 ) =0, 2 2 4 4 2 7 \\,,}}} \\\\ {{{y ( 0, 5 0 ) =0, 4 8 2 2 0 4 \\,,}}} \\\\ {{{y ( 0, 7 5 ) =0, 6 1 7 7 7 7 \\,,}}} \\\\ {{{y ( 1, 0 0 ) =0. 7 4 6 9 8 5 \\,}}} \\\\ \\end{array}\n$$""]",Public,0
+825,D,"[""$$\n\\pi i\n$$"", ""$$\n2 \\pi i\n$$"", ""$$\n0\n$$"", ""$$\n- \\pi i\n$$"", ""$$\n- 2 \\pi i\n$$"", ""$$\ni\n$$"", ""$$\n\\pi\n$$"", ""$$\n- \\pi\n$$"", ""$$\n- i\n$$"", ""$$\n2 i\n$$""]",Private,0
+826,"[""1800""]",[],Private,0
+827,H,"[""P(0.8351,0.6874)"", ""P(0.8351,0.7274)"", ""P(0.8351,0.6674)"", ""P(0.8351,0.7074)"", ""P(0.8351,0.7374)"", ""P(0.8351,0.7474)"", ""P(0.8351,0.7574)"", ""P(0.8351,0.6974)"", ""P(0.8351,0.7174)"", ""P(0.8351,0.6774)""]",Private,0
+828,"[""99.63386"", ""110.36614""]",[],Private,0
+829,"[""8464""]",[],Public,0
+830,"[""9.21533845053006""]",[],Private,0
+831,E,"[""C+\\frac{1}{128}\\cdot\\left(2\\cdot\\left(\\tan(4\\cdot x)\\right)^2+6\\cdot\\ln\\left(\\left|\\tan(4\\cdot x)\\right|\\right)+\\frac{1}{4}\\cdot\\left(\\tan(4\\cdot x)\\right)^4-\\frac{2}{\\left(\\tan(4\\cdot x)\\right)^2}+\\frac{1}{4\\cdot\\left(\\tan(4\\cdot x)\\right)^4}\\right)"", ""C+\\frac{1}{128}\\cdot\\left(2\\cdot\\left(\\tan(4\\cdot x)\\right)^2+6\\cdot\\ln\\left(\\left|\\tan(4\\cdot x)\\right|\\right)+\\frac{1}{4}\\cdot\\left(\\tan(4\\cdot x)\\right)^4-\\frac{2}{\\left(\\tan(4\\cdot x)\\right)^2}+\\frac{1}{2\\cdot\\left(\\tan(4\\cdot x)\\right)^4}\\right)"", ""C+\\frac{1}{128}\\cdot\\left(2\\cdot\\left(\\tan(4\\cdot x)\\right)^2+6\\cdot\\ln\\left(\\left|\\tan(4\\cdot x)\\right|\\right)+\\frac{1}{4}\\cdot\\left(\\tan(4\\cdot x)\\right)^4-\\frac{2}{\\left(\\tan(4\\cdot x)\\right)^2}-\\frac{1}{2\\cdot\\left(\\tan(4\\cdot x)\\right)^4}\\right)"", ""C+\\frac{1}{128}\\cdot\\left(2\\cdot\\left(\\tan(4\\cdot x)\\right)^2+6\\cdot\\ln\\left(\\left|\\tan(4\\cdot x)\\right|\\right)+\\frac{1}{4}\\cdot\\left(\\tan(4\\cdot x)\\right)^4-\\frac{2}{\\left(\\tan(4\\cdot x)\\right)^2}+\\frac{1}{8\\cdot\\left(\\tan(4\\cdot x)\\right)^4}\\right)"", ""C+\\frac{1}{128}\\cdot\\left(2\\cdot\\left(\\tan(4\\cdot x)\\right)^2+6\\cdot\\ln\\left(\\left|\\tan(4\\cdot x)\\right|\\right)+\\frac{1}{4}\\cdot\\left(\\tan(4\\cdot x)\\right)^4-\\frac{2}{\\left(\\tan(4\\cdot x)\\right)^2}-\\frac{1}{4\\cdot\\left(\\tan(4\\cdot x)\\right)^4}\\right)""]",Private,0
+832,J,"[""\\( 2{[f'(x)]^2} + 2f'(x)f''(x) \\)"", ""\\\\( 2{[f'(x)]^2} + 2f(x)f'(x)f''(x) \\\\)"", ""\\\\( 2{[f'(x)]^2} + 2f'(x)f(x)f''(x) \\\\)"", ""\\( 2{[f'(x)]^2} + 3f(x)f''(x) \\)"", ""\\( 2{[f'(x)]^2} + 4f(x)f''(x) \\)"", ""2{[f'(x)]^2} + f'(x)f''(x)"", ""\\( 2[f'(x)] + 2f(x)f''(x) \\)"", ""\\( 2{[f'(x)]^2} + f(x)f''(x) \\)"", ""2{[f'(x)]^2} + f(x)f''(x) + f'(x)"", ""\\( 2{[f'(x)]^2} + 2f(x)f''(x) \\)""]",Private,0
+833,"[""(-19/3, 3/4, 48/6, 40/3)""]",[],Public,0
+834,"[""0.785398163397448"", ""4.71238898038469"", ""-9.94837673636768""]",[],Private,0
+835,"[""126""]",[],Private,0
+836,4049,[],Public,1
+837,D,"[""$$\nI \\!=\\! \\frac{3}{4} \\!-\\! \\sum_{n=2}^{\\infty} \\frac{1} {n ( n \\!+\\! 1 )}\n$$"", ""$$\nI \\!=\\! \\ln 2 \\!-\\! \\sum_{n=1}^{\\infty} \\frac{1} {n^{2} ( n \\!+\\! 2 )}\n$$"", ""$$\nI \\!=\\! \\frac{1}{2} \\!+\\! \\sum_{n=3}^{\\infty} \\frac{1} {n^{3} ( n \\!+\\! 1 )}\n$$"", ""$$\nI \\!=\\! 1 \\!-\\! \\sum_{n=2}^{\\infty} \\frac{1} {n^{2} ( n \\!-\\! 1 )}\n$$"", ""$$\nI \\!=\\! e \\!-\\! \\sum_{n=2}^{\\infty} \\frac{1} {n^{3} ( n \\!+\\! 1 )}\n$$"", ""$$\nI \\!=\\! \\frac{1}{4} \\!+\\! \\sum_{n=2}^{\\infty} \\frac{1} {n^{2} ( n \\!-\\! 2 )}\n$$"", ""$$\nI \\!=\\! \\ln 3 \\!-\\! \\sum_{n=3}^{\\infty} \\frac{1} {n^{2} ( n \\!-\\! 3 )}\n$$"", ""$$\nI \\!=\\! \\frac{1}{3} \\!-\\! \\sum_{n=2}^{\\infty} \\frac{1} {n^{2} ( n \\!+\\! 1 )}\n$$"", ""$$\nI \\!=\\! \\pi \\!-\\! \\sum_{n=2}^{\\infty} \\frac{1} {n^{3} ( n \\!-\\! 1 )}\n$$"", ""$$\nI \\!=\\! 0 \\!+\\! \\sum_{n=1}^{\\infty} \\frac{1} {n^{2} ( n \\!-\\! 2 )}\n$$""]",Private,0
+838,"[""(23.6590809927474,28.3409190072526)""]",[],Private,0
+839,G,"[""\\frac{\\pi}{4}"", ""\\frac{3\\pi}{4}"", ""\\frac{2\\pi}{3}"", ""\\frac{5\\pi}{6}"", ""\\frac{\\pi}{6}"", ""\\frac{\\pi}{3}"", ""\\frac{\\pi}{2}"", ""\\frac{3\\pi}{8}""]",Private,0
+840,F,"[""7"", ""9"", ""8"", ""4"", ""10"", ""2"", ""3"", ""11"", ""6"", ""5""]",Public,0
+841,"[""sin(8*sqrt(x)+40)"", ""5+sqrt(sin(8*x))""]",[],Private,0
+842,"[""65.47"", ""1.5521"", ""6.051"", ""1.833"", ""B""]",[],Private,0
+843,"[""2*y"", ""10""]",[],Public,0
+844,J,"[""64"", ""45"", ""32"", ""77"", ""28"", ""63"", ""19"", ""52"", ""23"", ""11""]",Private,0
+845,"[""5""]",[],Private,0
+846,"[""3"", ""1"", ""2"", ""3"", ""-2""]",[],Private,0
+847,H,"[""$\\lambda^{3}+3 \\lambda^{2}+\\lambda^{2}$"", ""$\\lambda^{2}+2 \\lambda+1$"", ""$\\lambda^{3}+3 \\lambda^{2}+4 \\lambda$"", ""$\\lambda^{3}-3 \\lambda^{2}+\\lambda$"", ""$\\lambda^{3}+3 \\lambda+\\lambda$"", ""$\\lambda^{3}+3 \\lambda^{2}-\\lambda$"", ""$\\lambda^{3}+2 \\lambda+\\lambda$"", ""$\\lambda^{3}+3 \\lambda^{2}+\\lambda$"", ""$\\lambda^{3}+3 \\lambda^{2}+\\lambda+1$"", ""$\\lambda^{3}+3 \\lambda^{2}+2 \\lambda$""]",Public,0
+848,E,"[""1.585786437626905"", ""1.690983005625053"", ""1.527864045000421"", ""1.309016994374947"", ""1.618033988749895"", ""1.472135954999579"", ""1.381966011250105"", ""1.632455532033676"", ""1.660254037844386"", ""1.5618033988749895""]",Private,0
+849,"[""8*(n+1)/2""]",[],Public,0
+850,C,"[""825"", ""827"", ""821"", ""817"", ""815"", ""822"", ""823"", ""819"", ""829"", ""818""]",Private,0
+851,"[""BC""]",[],Private,0
+852,"[""414.72""]",[],Public,0
+853,C,"[""$$\nI \\approx8. 9 0 4 7\n$$"", ""$$\nI \\approx9. 5 0 7 9\n$$"", ""$$\nI \\approx9. 6 8 8 4\n$$"", ""$$\nI \\approx8. 1 5 5 3\n$$"", ""$$\nI \\approx9. 3 1 6 2\n$$"", ""$$\nI \\approx9. 2 4 7 1\n$$"", ""$$\nI \\approx7. 8 9 2 4\n$$"", ""$$\nI \\approx7. 9 3 4 2\n$$"", ""$$\nI \\approx8. 7 5 1 8\n$$"", ""$$\nI \\approx10. 0 0 0\n$$""]",Private,0
+854,"[""-47/8"", ""-47/6""]",[],Private,0
+855,"[""20000"", ""2000""]",[],Private,0
+856,H,"[""284"", ""293"", ""292"", ""289"", ""291"", ""288"", ""285"", ""290"", ""287"", ""286""]",Private,0
+857,"[""A"", ""0.895352836509192"", ""0.916647163490808"", ""C"", ""0.89990204375043"", ""0.923764622916237""]",[],Private,0
+858,"[""2.3"", ""1.691"", ""Yes""]",[],Public,0
+859,"[""1"", ""2"", ""2"", ""4""]",[],Private,0
+860,"[""22""]",[],Public,0
+861,G,"[""199"", ""197"", ""192"", ""191"", ""200"", ""193"", ""195"", ""194"", ""190"", ""196""]",Private,0
+862,I,"[""[32, 65, 33, 67, 34, 69, 35, 71, 36, 73]"", ""[33, 66, 34, 68, 35, 70, 36, 72, 37, 74]"", ""[32, 66, 34, 68, 36, 70, 38, 72, 40, 74]"", ""[30, 66, 31, 68, 32, 70, 33, 72, 34, 74]"", ""[32, 64, 33, 66, 34, 68, 35, 70, 36, 72]"", ""[32, 67, 33, 69, 34, 71, 35, 73, 36, 75]"", ""[32, 66, 33, 69, 34, 71, 35, 73, 36, 75]"", ""[31, 66, 32, 68, 33, 70, 34, 72, 35, 74]"", ""[32, 66, 33, 68, 34, 70, 35, 72, 36, 74]""]",Private,0
+863,"[""1/(t^69)""]",[],Public,0
+864,"[""5/9*(77-32)"", ""5/9*(53-32)""]",[],Private,0
+865,"[""7/x-8""]",[],Public,0
+866,H,"[""$$\n\\frac{\\mathrm{e}^{-\\mathrm{i} \\pi}+\\mathrm{e}^{\\mathrm{i}}} {4 \\mathrm{i}},\n$$"", ""$$\n\\frac{\\mathrm{e}^{\\mathrm{i}}+\\mathrm{e}^{\\mathrm{i} \\pi}} {4 \\pi},\n$$"", ""$$\n\\frac{\\mathrm{e}^{\\mathrm{i}}-\\mathrm{e}^{\\mathrm{z}}} {2 \\mathrm{i}},\n$$"", ""$$\n\\frac{\\mathrm{e}^{\\mathrm{i}}-\\mathrm{e}^{2 \\mathrm{i}}} {\\pi},\n$$"", ""$$\n\\frac{\\mathrm{e}^{-\\mathrm{z}}+\\mathrm{e}^{\\mathrm{z i}}} {\\pi \\mathrm{i}},\n$$"", ""$$\n\\frac{\\mathrm{e}^{2 \\mathrm{i}}-\\mathrm{e}} {3 \\mathrm{i}},\n$$"", ""$$\n\\frac{\\mathrm{e}^{-\\mathrm{i}}+\\mathrm{e}^{\\mathrm{i} \\pi}} {3 \\mathrm{i}},\n$$"", ""$$\n\\frac{\\mathrm{e}^{-\\mathrm{i}}-\\mathrm{e}} {2 \\mathrm{i}},\n$$"", ""$$\n\\frac{\\mathrm{e}+\\mathrm{e}^{-\\mathrm{i} \\pi}} {2 \\pi},\n$$"", ""$$\n\\frac{\\mathrm{e}^{1+\\mathrm{i}}-\\mathrm{e}^{-\\mathrm{i}}} {2 \\mathrm{e}},\n$$""]",Public,0
+867,E,"[""$$\n{\\frac{4} {5}}\n$$"", ""$$\n{\\frac{1} {8}}\n$$"", ""$$\n{\\frac{2} {3}}\n$$"", ""$$\n{\\frac{1} {6}}\n$$"", ""$$\n{\\frac{1} {4}}\n$$"", ""$$\n{\\frac{1} {3}}\n$$"", ""$$\n{\\frac{1} {2}}\n$$"", ""$$\n{\\frac{1} {5}}\n$$"", ""$$\n{\\frac{3} {4}}\n$$"", ""$$\n{\\frac{2} {5}}\n$$""]",Private,0
+868,E,"[""80"", ""90"", ""85"", ""83"", ""88"", ""82"", ""84"", ""87"", ""81"", ""86""]",Public,0
+869,"[""20.5"", ""(x+y+x*y)/2""]",[],Private,0
+870,D,"[""2/8"", ""5/8"", ""3/6"", ""3/8"", ""6/8"", ""7/8"", ""1/6"", ""1/8"", ""1/3"", ""4/8""]",Private,0
+871,B,"[""x=a"", ""x=-a"", ""x=$\\frac {a}{2}$"", ""x=\\frac{a}{3}"", ""x=-\\frac{3a}{2}"", ""x=\\frac{3a}{2}"", ""x=0"", ""x=\\frac{2a}{3}"", ""x=-\\frac{a}{2}""]",Private,0
+872,"[""infinity"", ""0""]",[],Private,0
+873,G,"[""[68437032, 287910046, 1217627175, 5173854025, 22077273855, 94564541168, 406451008388, 1752472631366, 7577758539860, 32852955892195]"", ""[68437029, 287910035, 1217627165, 5173854008, 22077273808, 94564541162, 406451008382, 1752472631358, 7577758539828, 32852955892189]"", ""[68437040, 287910060, 1217627190, 5173854030, 22077273870, 94564541175, 406451008395, 1752472631375, 7577758539880, 32852955892220]"", ""[68437025, 287910030, 1217627160, 5173854005, 22077273790, 94564541155, 406451008375, 1752472631340, 7577758539780, 32852955892170]"", ""[68437028, 287910044, 1217627174, 5173854009, 22077273820, 94564541161, 406451008381, 1752472631354, 7577758539818, 32852955892188]"", ""[68437030, 287910040, 1217627170, 5173854015, 22077273850, 94564541165, 406451008385, 1752472631362, 7577758539840, 32852955892185]"", ""[68437033, 287910048, 1217627176, 5173854018, 22077273858, 94564541166, 406451008386, 1752472631360, 7577758539846, 32852955892191]"", ""[68437031, 287910042, 1217627172, 5173854012, 22077273812, 94564541164, 406451008383, 1752472631364, 7577758539842, 32852955892192]"", ""[68437035, 287910050, 1217627180, 5173854020, 22077273860, 94564541170, 406451008390, 1752472631365, 7577758539850, 32852955892200]"", ""[68437021, 287910036, 1217627164, 5173854010, 22077273800, 94564541160, 406451008380, 1752472631350, 7577758539800, 32852955892180]""]",Private,0
+874,J,"[""[66, 70, 65, 69, 99, 103, 105, 99, 105, 108]"", ""[68, 69, 66, 68, 101, 102, 105, 100, 103, 109]"", ""[66, 70, 67, 69, 100, 103, 105, 101, 102, 108]"", ""[67, 69, 67, 68, 100, 102, 103, 102, 103, 111]"", ""[68, 69, 67, 67, 101, 102, 103, 102, 104, 111]"", ""[68, 70, 66, 70, 101, 103, 104, 101, 105, 112]"", ""[67, 70, 66, 69, 101, 102, 106, 102, 105, 109]"", ""[67, 69, 67, 68, 101, 103, 104, 101, 104, 110]"", ""[67, 68, 67, 69, 100, 101, 104, 100, 102, 109]"", ""[67, 69, 66, 68, 100, 102, 104, 101, 103, 110]""]",Private,0
+875,D,"[""$$1$$"", ""-4"", ""$$2$$"", ""$$-2$$"", ""4"", ""$$-1$$"", ""$$3$$"", ""-5"", ""-3""]",Private,0
+876,C,"[""$$ 2 8 \\operatorname{l n} 4 \\operatorname{m i n} $$"", ""$$ (2 0 \\operatorname{l n} 5 +2)\\operatorname{m i n} $$"", ""$$ 3 0 \\operatorname{l n} 5 \\operatorname{m i n} $$"", ""$$ 3 2 \\operatorname{l n} 5 \\operatorname{m i n} $$"", ""$$ 3 5 \\operatorname{l n} 5 \\operatorname{m i n} $$"", ""$$ 3 0 \\operatorname{l n} 6 \\operatorname{m i n} $$"", ""$$ 3 0 \\operatorname{l n} 4 \\operatorname{m i n} $$"", ""$$ 2 9 \\operatorname{l n} 5 \\operatorname{m i n} $$"", ""$$ 2 5 \\operatorname{l n} 6 \\operatorname{m i n} $$"", ""$$ (3 0 \\operatorname{l n} 5 -2)\\operatorname{m i n} $$""]",Public,0
+877,F,"[""[9725505567, 56684405277, 330380931085, 1925601180283, 11223226150563, 65413755723585, 381259308191437, 2222142093424987, 12951593252358435, 75487417420726113]"", ""[9725506566, 56684406276, 330380931094, 1925601180292, 11223226150662, 65413755723684, 381259308191446, 2222142093424996, 12951593252358534, 75487417420726212]"", ""[8734506567, 46574406277, 229280931095, 1814601180293, 10113226150663, 55303755723685, 280159308191447, 1211142093424997, 11841593252358535, 65377417420726213]"", ""[9735506567, 56784406277, 331380931095, 1935601180293, 11323226150663, 65513755723685, 382259308191447, 2232142093424997, 13051593252358535, 75587417420726213]"", ""[10725506567, 67684406277, 440380931095, 3025601180293, 12223226150663, 76413755723685, 481259308191447, 3222142093424997, 23951593252358535, 86487417420726213]"", ""[9725506567, 56684406277, 330380931095, 1925601180293, 11223226150663, 65413755723685, 381259308191447, 2222142093424997, 12951593252358535, 75487417420726213]"", ""[9724506567, 56674406277, 330280931095, 1924601180293, 11213226150663, 65403755723685, 381159308191447, 2221142093424997, 12941593252358535, 75477417420726213]"", ""[8725506567, 46684406277, 230380931095, 1825601180293, 10223226150663, 55413755723685, 281259308191447, 1222142093424997, 11951593252358535, 65487417420726213]"", ""[9725506568, 56684406278, 330380931096, 1925601180294, 11223226150664, 65413755723686, 381259308191448, 2222142093424998, 12951593252358536, 75487417420726214]"", ""[9725506566, 56684406275, 330380931093, 1925601180291, 11223226150661, 65413755723683, 381259308191445, 2222142093424995, 12951593252358533, 75487417420726211]""]",Private,0
+878,I,"[""94"", ""29"", ""57"", ""45"", ""52"", ""14"", ""38"", ""63"", ""70"", ""81""]",Public,0
+879,H,"[""12 \\pi^2 - 36 \\pi"", ""12 \\pi^2 - 18 \\pi"", ""12 \\pi"", ""12 \\pi^2 - 12 \\pi"", ""12 \\pi^2 - 24 \\pi"", ""12 \\pi^2 - 6 \\pi"", ""18 \\pi"", ""6 \\pi^2"", ""18 \\pi^2"", ""12 \\pi^2""]",Private,0
+880,"[""0.945946"", ""2.91667""]",[],Private,0
+881,D,"[""10"", ""3"", ""1"", ""6"", ""9"", ""8"", ""4"", ""2"", ""5"", ""7""]",Private,0
+882,"[""1200"", ""3600""]",[],Public,0
+883,"[""656.088459953688""]",[],Private,0
+884,"[""(x-59)^2+74""]",[],Public,0
+885,"[""18"", ""139.875"", ""18"", ""B""]",[],Private,0
+886,"[""A"", ""C""]",[],Private,0
+887,I,"[""$$X=([0,0.5],[0.1,1],[0.5,0.6],[0,1])U([0.5,0.6],[0,1],[0.7,1],[0.4,1])U([0,0.6],[0.4,0.5],[0.5,1],[0,1])$$"", ""$$X=([0.5,0.7],[0,1],[0.5,1],[0.2,1])U([0.7,1],[0.5,0.7],[0,1],[0.1,0.5])U([0.6,1],[0.7,1],[0,1],[0.5,1])$$"", ""$$X=([0.5,1],[0.6,1],[0,0.5],[0.3,1])U([0,0.5],[0.4,1],[0.5,1],[0.6,1])U([0,0.5],[0.6,1],[0.5,1],[0,0.3])$$"", ""$$X=([0.4,0.5],[0,1],[0.5,0.7],[0.8,1])U([0.6,1],[0.3,0.5],[0,1],[0,0.5])U([0.5,0.7],[0,1],[0,0.4],[0.5,1])$$"", ""$$X=([0.5,1],[0,0.7],[0.3,1],[0.6,1])U([0.3,0.5],[0.5,1],[0,1],[0,0.6])U([0.5,0.6],[0,1],[0,0.5],[0,0.4])$$"", ""$$X=([0.5,0.6],[0,0.3],[0.6,1],[0,0.5])U([0.3,0.5],[0.4,1],[0.5,0.6],[0.7,1])U([0,1],[0.6,1],[0.5,0.7],[0,1])$$"", ""$$X=([0.7,1],[0,1],[0.3,0.5],[0.1,1])U([0.3,0.5],[0.5,1],[0,1],[0.4,0.6])U([0.5,0.6],[0,1],[0,0.4],[0.5,1])$$"", ""$$X=([0.5,1],[0.5,0.7],[0,0.5],[0,1])U([0.5,1],[0.5,0.6],[0,1],[0.3,1])U([0.5,1],[0.3,0.5],[0,0.4],[0.5,1])$$"", ""$$\nX=(0.5,[0,0.5],[0,1],[0,1])U([0,0.5],0.5,[0,1],[0,1])U([0,0.5],[0,0.5],[0.5,1],[0,1])\n$$"", ""$$X=([0.6,1],[0,0.5],[0,1],[0.5,1])U([0.5,0.6],[0,0.5],[0.7,1],[0,1])U([0.5,0.6],[0,1],[0.7,1],[0.5,1])$$""]",Private,0
+888,I,"[""$$A=\\left( \\begin{matrix} {{{1}}} & {{{0}}} & {{{0}}} \\\\ {{{2}}} & {{{0}}} & {{{0}}} \\\\ {{{6}}} & {{{-1}}} & {{{1}}} \\\\ \\end{matrix} \\right), A^{2 0 1 3}=A\n$$"", ""$$A=\\left( \\begin{matrix} {{{1}}} & {{{0}}} & {{{0}}} \\\\ {{{2}}} & {{{0}}} & {{{0}}} \\\\ {{{6}}} & {{{-1}}} & {{{-1}}} \\\\ \\end{matrix} \\right), A^{2 0 1 0}=A\n$$"", ""$$A=\\left( \\begin{matrix} {{{1}}} & {{{0}}} & {{{0}}} \\\\ {{{2}}} & {{{0}}} & {{{0}}} \\\\ {{{6}}} & {{{-1}}} & {{{-1}}} \\\\ \\end{matrix} \\right), A^{2 0 1 3}=A\n$$"", ""$$A=\\left( \\begin{matrix} {{{1}}} & {{{0}}} & {{{0}}} \\\\ {{{2}}} & {{{0}}} & {{{0}}} \\\\ {{{6}}} & {{{-1}}} & {{{1}}} \\\\ \\end{matrix} \\right), A^{2 0 1 0}=A\n$$"", ""$$A=\\left( \\begin{matrix} {{{1}}} & {{{0}}} & {{{0}}} \\\\ {{{2}}} & {{{0}}} & {{{0}}} \\\\ {{{6}}} & {{{-1}}} & {{{1}}} \\\\ \\end{matrix} \\right), A^{2 0 1 2}=A\n$$"", ""$$A=\\left( \\begin{matrix} {{{1}}} & {{{0}}} & {{{0}}} \\\\ {{{2}}} & {{{0}}} & {{{0}}} \\\\ {{{6}}} & {{{-1}}} & {{{-1}}} \\\\ \\end{matrix} \\right), A^{2 0 1 2}=A\n$$"", ""$$A=\\left( \\begin{matrix} {{{1}}} & {{{0}}} & {{{0}}} \\\\ {{{2}}} & {{{0}}} & {{{0}}} \\\\ {{{6}}} & {{{-1}}} & {{{-1}}} \\\\ \\end{matrix} \\right), A^{2 0 1 4}=A\n$$"", ""$$A=\\left( \\begin{matrix} {{{1}}} & {{{0}}} & {{{0}}} \\\\ {{{2}}} & {{{0}}} & {{{0}}} \\\\ {{{6}}} & {{{-1}}} & {{{1}}} \\\\ \\end{matrix} \\right), A^{2 0 1 4}=A\n$$"", ""$$A=\\left( \\begin{matrix} {{{1}}} & {{{0}}} & {{{0}}} \\\\ {{{2}}} & {{{0}}} & {{{0}}} \\\\ {{{6}}} & {{{-1}}} & {{{-1}}} \\\\ \\end{matrix} \\right), A^{2 0 1 1}=A\n$$"", ""$$A=\\left( \\begin{matrix} {{{1}}} & {{{0}}} & {{{0}}} \\\\ {{{2}}} & {{{0}}} & {{{0}}} \\\\ {{{6}}} & {{{-1}}} & {{{1}}} \\\\ \\end{matrix} \\right), A^{2 0 1 1}=A\n$$""]",Private,0
+889,"[""5"", ""4*y""]",[],Public,0
+890,"[""A"", ""A"", ""C"", ""6""]",[],Private,0
+891,A,"[""$$\\left(-\\frac{\\pi} {2}, \\frac{\\pi} {2} \\right)$$"", ""$$\\left(-\\frac{\\pi}{8}, \\frac{\\pi}{8}\\right)$$"", ""$$\\left(-\\frac{3\\pi}{4}, \\frac{3\\pi}{4}\\right)$$"", ""$$\\left(-\\frac{\\pi} {3}, \\frac{\\pi} {3} \\right)$$"", ""$$\\left(-\\frac{5\\pi}{12}, \\frac{5\\pi}{12}\\right)$$"", ""$$\\left(-\\frac{3\\pi}{2}, \\frac{3\\pi}{2}\\right)$$"", ""$$\\left(-\\pi, \\pi\\right)$$"", ""$$\\left(-\\frac{2\\pi}{3}, \\frac{2\\pi}{3}\\right)$$"", ""$$\\left(-\\frac{\\pi}{6}, \\frac{\\pi}{6}\\right)$$"", ""$$\\left(-\\frac{\\pi}{4}, \\frac{\\pi}{4}\\right)$$""]",Public,0
+892,"[""69.6452693877142""]",[],Private,0
+893,"[""A"", ""C""]",[],Private,0
+894,"[""0.00831242415822129"", ""1.78257716293546"", ""2.012896"", ""-0.090534602029955"", ""0.282557912870595"", ""-0.10013933334609"", ""0.272311864900281"", ""10""]",[],Private,0
+895,"[""70*(20/70)^[(x-10)/20]""]",[],Public,0
+896,"[""False"", ""True"", ""False"", ""False"", ""True"", ""True"", ""False"", ""True""]",[],Public,0
+897,"[""84.875""]",[],Private,0
+898,"[""8*6+0*7""]",[],Private,0
+899,D,"[""\\frac{1}{2}\\cdot\\ln\\left(\\tan(x)^2+\\sqrt{\\tan(x)^4+2}\\right)+C"", ""\\frac{1}{2}\\cdot\\ln\\left(\\tan(x)^2+\\sqrt{\\tan(x)^4+8}\\right)+C"", ""\\frac{1}{2}\\cdot\\ln\\left(\\tan(x)^2+\\sqrt{\\tan(x)^4-1}\\right)+C"", ""\\frac{1}{2}\\cdot\\ln\\left(\\tan(x)^2+\\sqrt{\\tan(x)^4+1}\\right)+C"", ""\\frac{1}{2}\\cdot\\ln\\left(\\tan(x)^2+\\sqrt{\\tan(x)^4+7}\\right)+C"", ""\\frac{1}{2}\\cdot\\ln\\left(\\tan(x)^2+\\sqrt{\\tan(x)^4+5}\\right)+C"", ""\\frac{1}{2}\\cdot\\ln\\left(\\tan(x)^2+\\sqrt{\\tan(x)^4+4}\\right)+C"", ""\\frac{1}{2}\\cdot\\ln\\left(\\tan(x)^2+\\sqrt{\\tan(x)^4+6}\\right)+C"", ""\\frac{1}{2}\\cdot\\ln\\left(\\tan(x)^2+\\sqrt{\\tan(x)^4+3}\\right)+C"", ""\\frac{1}{2}\\cdot\\ln\\left(\\tan(x)^2+\\sqrt{\\tan(x)^4+9}\\right)+C""]",Private,0
+900,"[""1200"", ""3600""]",[],Private,0
+901,H,"[""$$(\\underline{2}+\\underline{3})(z)=\\begin{cases}\\frac{z-4}{3}&4<z\\leqslant6\\\\\\\\\\frac{6-z}{3}&6<z<8\\end{cases},\\quad(\\underline{2}-\\underline{3})(z)=\\begin{cases}\\frac{2-z}{3}&-2\\leqslant z<0\\\\\\\\\\frac{4+z}{3}&-4<z<-2\\end{cases}$$"", ""$$(\\underline{2}+\\underline{3})(z)=\\begin{cases}\\frac{z-3}{3}&3<z\\leqslant5\\\\\\\\\\frac{8-z}{3}&5<z<7\\end{cases},\\quad(\\underline{2}-\\underline{3})(z)=\\begin{cases}\\frac{z-2}{3}&-3\\leqslant z<-1\\\\\\\\\\frac{4+z}{3}&-4<z<-2\\end{cases}$$"", ""$$(\\underline{2}+\\underline{3})(z)=\\begin{cases}\\frac{z-3}{2}&3<z\\leqslant5\\\\\\\\\\frac{6-z}{2}&5<z<7\\end{cases},\\quad(\\underline{2}-\\underline{3})(z)=\\begin{cases}\\frac{z-1}{2}&-1<z\\leqslant1\\\\\\\\\\frac{3-z}{2}&-3<z<-1\\end{cases}$$"", ""$$(\\underline{2}+\\underline{3})(z)=\\begin{cases}\\frac{z-2}{3}&2<z\\leqslant4\\\\\\\\\\frac{5-z}{3}&4<z<6\\end{cases},\\quad(\\underline{2}-\\underline{3})(z)=\\begin{cases}\\frac{1+z}{3}&-3\\leqslant z<-1\\\\\\\\\\frac{4-z}{3}&-1<z<1\\end{cases}$$"", ""$$(\\underline{2}+\\underline{3})(z)=\\begin{cases}\\frac{z-4}{2}&4<z\\leqslant6\\\\\\\\\\frac{8-z}{2}&6<z<8\\end{cases},\\quad(\\underline{2}-\\underline{3})(z)=\\begin{cases}\\frac{3-z}{2}&-2<z\\leqslant0\\\\\\\\\\frac{5+z}{2}&-5<z<-2\\end{cases}$$"", ""$$(\\underline{2}+\\underline{3})(z)=\\begin{cases}\\frac{z-2}{2}&2<z\\leqslant4\\\\\\\\\\frac{5-z}{2}&4<z<6\\end{cases},\\quad(\\underline{2}-\\underline{3})(z)=\\begin{cases}\\frac{1-z}{2}&-1\\leqslant z<1\\\\\\\\\\frac{4+z}{2}&-4<z<-1\\end{cases}$$"", ""$$(\\underline{2}+\\underline{3})(z)=\\begin{cases}\\frac{z-2}{2}&2<z\\leqslant4\\\\\\\\\\frac{7-z}{2}&4<z<6\\end{cases},\\quad(\\underline{2}-\\underline{3})(z)=\\begin{cases}\\frac{1+z}{2}&-2\\leqslant z\\leqslant0\\\\\\\\\\frac{3-z}{2}&-3<z<-2\\end{cases}$$"", ""$$(\\underline{2}+\\underline{3})(z)=\\begin{cases}\\frac{z-3}{2}&3<z\\leqslant5\\\\\\\\\\frac{7-z}{2}&5<z<7\\end{cases},\\quad(\\underline{2}-\\underline{3})(z)=\\begin{cases}\\frac{1-z}{2}&-1\\leqslant z<1\\\\\\\\\\frac{3+z}{2}&-3<z<-1\\end{cases}$$"", ""$$(\\underline{2}+\\underline{3})(z)=\\begin{cases}\\frac{z-3}{3}&3<z\\leqslant5\\\\\\\\\\frac{9-z}{3}&5<z<7\\end{cases},\\quad(\\underline{2}-\\underline{3})(z)=\\begin{cases}\\frac{z-1}{3}&-2<z\\leqslant1\\\\\\\\\\frac{6-z}{3}&-6<z<-2\\end{cases}$$"", ""$$(\\underline{2}+\\underline{3})(z)=\\begin{cases}\\frac{z-2}{2}&2<z\\leqslant4\\\\\\\\\\frac{6-z}{2}&4<z<6\\end{cases},\\quad(\\underline{2}-\\underline{3})(z)=\\begin{cases}\\frac{2-z}{2}&-1<z\\leqslant1\\\\\\\\\\frac{5+z}{2}&-5<z<-1\\end{cases}$$""]",Public,0
+902,"[""9"", ""6""]",[],Private,0
+903,"[""A"", ""C""]",[],Private,0
+904,A,"[""$$\n(R_1 \\cup R_2) \\cdot (R_3 \\cdot R_5)=\\left\\{\\begin{matrix} {{{0. 5}}} & {{{0. 4}}} & {{{0. 5}}} \\\\ {{{0. 5}}} & {{{0. 4}}} & {{{0. 8}}} \\\\ {{{0. 5}}} & {{{0. 4}}} & {{{0. 8}}} \\\\ \\end{matrix} \\right\\}\n$$"", ""$$\n(R_1 \\cup R_2) \\cdot (R_3 \\cdot R_5)=\\left\\{\\begin{matrix} {{{0. 3}}} & {{{0. 1}}} & {{{0. 3}}} \\\\ {{{0. 3}}} & {{{0. 3}}} & {{{0. 3}}} \\\\ {{{0. 3}}} & {{{0. 6}}} & {{{0. 7}}} \\\\ \\end{matrix} \\right\\}\n$$"", ""$$\n(R_1 \\cup R_2) \\cdot (R_3 \\cdot R_5)=\\left\\{\\begin{matrix} {{{0. 6}}} & {{{0. 3}}} & {{{0. 7}}} \\\\ {{{0. 6}}} & {{{0. 1}}} & {{{0. 9}}} \\\\ {{{0. 6}}} & {{{0. 3}}} & {{{0. 9}}} \\\\ \\end{matrix} \\right\\}\n$$"", ""$$\n(R_1 \\cup R_2) \\cdot (R_3 \\cdot R_5)=\\left\\{\\begin{matrix} {{{0. 4}}} & {{{0. 6}}} & {{{0. 4}}} \\\\ {{{0. 4}}} & {{{0. 2}}} & {{{0. 5}}} \\\\ {{{0. 4}}} & {{{0. 4}}} & {{{0. 6}}} \\\\ \\end{matrix} \\right\\}\n$$"", ""$$\n(R_1 \\cup R_2) \\cdot (R_3 \\cdot R_5)=\\left\\{\\begin{matrix} {{{0. 9}}} & {{{0. 7}}} & {{{0. 8}}} \\\\ {{{0. 9}}} & {{{0. 5}}} & {{{0. 8}}} \\\\ {{{0. 9}}} & {{{0. 5}}} & {{{0. 6}}} \\\\ \\end{matrix} \\right\\}\n$$"", ""$$\n(R_1 \\cup R_2) \\cdot (R_3 \\cdot R_5)=\\left\\{\\begin{matrix} {{{1. 0}}} & {{{0. 9}}} & {{{0. 9}}} \\\\ {{{1. 0}}} & {{{0. 7}}} & {{{0. 6}}} \\\\ {{{1. 0}}} & {{{0. 2}}} & {{{0. 5}}} \\\\ \\end{matrix} \\right\\}\n$$"", ""$$\n(R_1 \\cup R_2) \\cdot (R_3 \\cdot R_5)=\\left\\{\\begin{matrix} {{{0. 8}}} & {{{0. 2}}} & {{{0. 8}}} \\\\ {{{0. 8}}} & {{{0. 3}}} & {{{0. 2}}} \\\\ {{{0. 8}}} & {{{0. 5}}} & {{{0. 3}}} \\\\ \\end{matrix} \\right\\}\n$$"", ""$$\n(R_1 \\cup R_2) \\cdot (R_3 \\cdot R_5)=\\left\\{\\begin{matrix} {{{0. 7}}} & {{{0. 5}}} & {{{0. 6}}} \\\\ {{{0. 7}}} & {{{0. 5}}} & {{{0. 7}}} \\\\ {{{0. 7}}} & {{{0. 1}}} & {{{0. 5}}} \\\\ \\end{matrix} \\right\\}\n$$"", ""$$\n(R_1 \\cup R_2) \\cdot (R_3 \\cdot R_5)=\\left\\{\\begin{matrix} {{{0. 1}}} & {{{0. 5}}} & {{{0. 1}}} \\\\ {{{0. 1}}} & {{{0. 8}}} & {{{0. 1}}} \\\\ {{{0. 1}}} & {{{0. 7}}} & {{{0. 3}}} \\\\ \\end{matrix} \\right\\}\n$$"", ""$$\n(R_1 \\cup R_2) \\cdot (R_3 \\cdot R_5)=\\left\\{\\begin{matrix} {{{0. 2}}} & {{{0. 8}}} & {{{0. 2}}} \\\\ {{{0. 2}}} & {{{0. 6}}} & {{{0. 2}}} \\\\ {{{0. 2}}} & {{{0. 9}}} & {{{0. 2}}} \\\\ \\end{matrix} \\right\\}\n$$""]",Public,0
+905,"[""B"", ""C""]",[],Private,0
+906,"[""(x = 5, x = 2)""]",[],Private,0
+907,372,[],Private,1
+908,"[""100*0.83^t"", ""39.39""]",[],Private,0
+909,"[""1520""]",[],Private,0
+910,"[""1134"", ""16""]",[],Public,0
+911,I,"[""268"", ""261"", ""253"", ""262"", ""259"", ""256"", ""267"", ""258"", ""265"", ""264""]",Private,0
+912,"[""6012.26889910529""]",[],Private,0
+913,G,"[""$ln left| x right| + {1 over {x + 1}} + ln left| {x - 1} right| + C$"", ""$ln left| x right| - {1 over {x - 1}} + ln left| {x + 1} right| + C$"", ""$ln left| x right| + {1 over x} - ln left| {x - 1} right| + C$"", ""$ln left| x right| + {1 over {x + 1}} - ln left| {x - 1} right| + C$"", ""$ln left| x right| - {1 over {x + 1}} - ln left| {x - 1} right| + C$"", ""$ln left| x right| - {1 over {x - 1}} + ln left| {x - 1} right| + C$"", ""$ln left| x right| - {1 over {x - 1}} - ln left| {x - 1} right| + C$"", ""$ln left| x right| + {1 over {x - 1}} - ln left| {x + 1} right| + C$"", ""$ln left| x right| + {1 over {x - 1}} - ln left| {x - 1} right| + C$"", ""$ln left| x right| - {1 over x} + ln left| {x + 1} right| + C$""]",Private,0
+914,"[""0.21875-0.0286471"", ""0.21875+0.0286471""]",[],Private,0
+915,"[""-2""]",[],Private,0
+916,"[""4.24264068711928"", ""8.48528137423857"", ""18""]",[],Public,0
+917,"[""189.793"", ""246.373"", ""43""]",[],Private,0
+918,C,"[""$$\n\\sqrt{1 5+\\sqrt{2 8 9}}\n$$"", ""$$\n\\sqrt{1 5+\\sqrt{2 2 5}}\n$$"", ""$$\n\\sqrt{1 5+\\sqrt{2 2 1}}\n$$"", ""$$\n\\sqrt{1 5+\\sqrt{2 2 3}}\n$$"", ""$$\n\\sqrt{1 5+\\sqrt{2 1 3}}\n$$"", ""$$\n\\sqrt{1 5+\\sqrt{2 3 1}}\n$$"", ""$$\n\\sqrt{1 5+\\sqrt{2 1 9}}\n$$"", ""$$\n\\sqrt{1 5+\\sqrt{2 1 5}}\n$$"", ""$$\n\\sqrt{1 5+\\sqrt{2 1 8}}\n$$"", ""$$\n\\sqrt{1 5+\\sqrt{2 1 1}}\n$$""]",Public,0
+919,317/3528,[],Private,1
+920,"[""178""]",[],Private,0
+921,D,"[""x_1=\\frac{\\pi}{4}+\\pi\\cdot n, x_2=\\arctan\\left(\\frac{1}{4}\\right)+\\pi\\cdot n"", ""x_1=\\frac{\\pi}{4}+\\pi\\cdot n, x_2=\\arctan\\left(-\\frac{1}{2}\\right)+\\pi\\cdot n"", ""x_1=\\frac{\\pi}{4}+\\pi\\cdot n, x_2=\\arctan\\left(-\\frac{1}{3}\\right)+\\pi\\cdot n"", ""x_1=-\\frac{\\pi}{4}+\\pi\\cdot n, x_2=\\arctan\\left(\\frac{1}{2}\\right)+\\pi\\cdot n"", ""x_1=\\frac{\\pi}{4}+\\pi\\cdot n, x_2=\\arctan\\left(\\frac{1}{3}\\right)+\\pi\\cdot n"", ""x_1=\\frac{\\pi}{4}+\\pi\\cdot n, x_2=\\arctan\\left(\\frac{1}{2}\\right)+\\pi\\cdot n""]",Public,0
+922,B,"[""$$\n-4 \\pi\\mathrm{i}\n$$"", ""$$\n4 \\pi\\mathrm{i}\n$$"", ""$$\n\\pi\\mathrm{i}\n$$"", ""$$\n-8 \\pi\\mathrm{i}\n$$"", ""$$\n-2 \\pi\\mathrm{i}\n$$"", ""$$\n2 \\pi\\mathrm{i}\n$$"", ""$$\n12 \\pi\\mathrm{i}\n$$"", ""$$\n6 \\pi\\mathrm{i}\n$$"", ""$$\n0\n$$"", ""$$\n8 \\pi\\mathrm{i}\n$$""]",Public,0
+923,"[""y = -6.2*x+297.6"", ""93"", ""48""]",[],Public,0
+924,"[""0.2*t-n = -55"", ""2010""]",[],Public,0
+925,"[""256""]",[],Public,0
+926,"[""5-3*(t+1)^2""]",[],Private,0
+927,"[""F"", ""T"", ""T"", ""T"", ""F"", ""F""]",[],Private,0
+928,E,"[""f(x)= (1 / 2) - (2 / \\pi) \\sum_n=1^\u221e (- 1)^n [{cos(2n)} / (2n + 1)]"", ""f(x)= (1 / 2) - (2 / \\pi) \\infty \\sum_n=0 (- 1)^n [{tan(2n + 1)} / (2n + 1)]"", ""f(x)= (1 / 2) - (4 / \\pi) \\sum_n=0^\u221e (- 1)^n [{sin(2n)} / (2n + 1)]"", ""f(x)= (1 / 2) - (2 / \\pi) \\sum_n=0^\u221e [{cos(2n + 1)} / (2n)]"", ""f(x)= (1 / 2) - (2 / \\pi) \\infty \\sum_n=0 (- 1)^n [{cos(2n + 1)} / (2n + 1)]"", ""f(x)= (1 / 2) + (2 / \\pi) \\sum_n=1^\u221e (- 1)^n [{cos(2n)} / (2n)]"", ""f(x)= (1 / 2) - (2 / \\pi) \\sum_n=0^\u221e (- 1)^n [{sin(n)} / (2n + 1)]"", ""f(x)= (1 / 2) - (1 / \\pi) \\sum_n=0^\u221e (- 1)^n [{cos(n)} / n]"", ""f(x)= (1 / 2) - (2 / \\pi) \\infty \\sum_n=0 (- 1)^n [{cos(2n + 1)} / (2n + 2)]"", ""f(x)= (1 / 2) - (2 / \\pi) \\infty \\sum_n=0 (- 1)^n [{sin(2n + 1)} / (2n + 1)]""]",Public,0
+929,"[""6.08615"", ""(-0.722013, 3.12201)"", ""A""]",[],Private,0
+930,E,"[""$$\nn! ( 1-\\sum_{i=2}^{n} {\\frac{1} {i-1}} )\n$$"", ""$$\n(n + 1)! ( 1-\\sum_{i=2}^{n} {\\frac{1} {i}} )\n$$"", ""$$\nn! ( 1-\\sum_{i=2}^{n} {\\frac{1} {i+1}} )\n$$"", ""$$\nn! ( 1+\\sum_{i=2}^{n} {\\frac{1} {1-i}} )\n$$"", ""$$\nn! ( 1-\\sum_{i=2}^{n} {\\frac{1} {i}} )\n$$"", ""$$\nn! ( 1+\\sum_{i=2}^{n} {\\frac{1} {1+i}} )\n$$"", ""$$\nn! ( 1+\\sum_{i=2}^{n} {\\frac{1} {i}} )\n$$"", ""$$\n(n - 1)! ( 1-\\sum_{i=2}^{n} {\\frac{1} {i}} )\n$$"", ""$$\n(n + 2)! ( 1-\\sum_{i=2}^{n} {\\frac{1} {i}} )\n$$"", ""$$\n(n - 2)! ( 1-\\sum_{i=2}^{n} {\\frac{1} {i}} )\n$$""]",Private,0
+931,"[""3"", ""-3""]",[],Private,0
+932,"[""26""]",[],Private,0
+933,E,"[""01000"", ""01110"", ""01001"", ""11100"", ""01101"", ""10011"", ""00010"", ""11000"", ""10010"", ""00111""]",Public,0
+934,D,"[""[48, 58, 53, 45, 68, 51, 50, 58, 75, 76]"", ""[46, 56, 51, 43, 66, 49, 48, 56, 73, 74]"", ""[50, 60, 55, 47, 70, 53, 52, 60, 77, 78]"", ""[44, 54, 49, 41, 64, 47, 46, 54, 71, 72]"", ""[49, 59, 54, 46, 69, 52, 51, 59, 76, 77]"", ""[52, 62, 57, 49, 72, 55, 54, 62, 79, 80]"", ""[45, 55, 50, 42, 65, 48, 47, 55, 72, 73]"", ""[43, 53, 48, 40, 63, 46, 45, 53, 70, 71]"", ""[51, 61, 56, 48, 71, 54, 53, 61, 78, 79]"", ""[47, 57, 52, 44, 67, 50, 49, 57, 74, 75]""]",Private,0
+935,H,"[""405"", ""435"", ""480"", ""420"", ""455"", ""445"", ""465"", ""450"", ""495"", ""460""]",Public,0
+936,"[""275/16""]",[],Public,0
+937,"[""640""]",[],Public,0
+938,"[""$49.88""]",[],Public,0
+939,E,"[""180"", ""199"", ""195"", ""197"", ""200"", ""198"", ""194"", ""192"", ""196"", ""190""]",Private,0
+940,B,"[""[2, 1, 3, 1, 2, 1, 3, 1, 2, 1]"", ""[1, 2, 1, 4, 1, 2, 1, 2, 1, 3]"", ""[4, 5, 4, 7, 4, 5, 4, 5, 4, 6]"", ""[3, 4, 3, 6, 3, 4, 3, 4, 3, 5]"", ""[0, 2, 0, 5, 0, 2, 0, 2, 0, 3]"", ""[0, 1, 0, 3, 0, 1, 0, 1, 0, 2]"", ""[5, 6, 5, 8, 5, 6, 5, 6, 5, 7]"", ""[2, 3, 2, 1, 2, 3, 2, 3, 2, 3]"", ""[1, 0, 1, 0, 1, 0, 1, 0, 1, 1]"", ""[2, 3, 2, 5, 2, 3, 2, 3, 2, 4]""]",Public,0
+941,"[""A"", ""C"", ""A"", ""A"", ""B"", ""C""]",[],Public,0
+942,"[""(5+1)^2""]",[],Private,0
