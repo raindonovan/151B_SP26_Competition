@@ -222,6 +222,67 @@ def pick(mode):
 ex_think = pick("thinking")
 ex_noth = pick("nothinking")
 
+
+# ---- runs bird's-eye: inventory table + cross-tab matrices ----
+def _cell(v, dash="—"):
+    if v is None:
+        return dash
+    s = str(v)
+    return dash if s in ("", "None", "nan", "NaT") else s
+
+
+def fmt_budget(v):
+    return "—" if pd.isna(v) else f"{int(v/1024)}k"
+
+
+def runs_inventory_md():
+    r = RUNS.copy()
+    r["full"] = r["n_items"] == 943
+    r = r.sort_values(["full", "sc_n", "n_items"], ascending=[False, True, False])
+    out = ["| run_id | SC | mode | budget | coverage | samples | date | prompt | what it is |",
+           "|---|--:|---|--:|---|--:|---|---|---|"]
+    for _, x in r.iterrows():
+        cov = "**943** · full" if x["full"] else f"{int(x['n_items'])} · subset"
+        date = _cell(str(x.get("date"))[:10] if _cell(x.get("date")) != "—" else None)
+        out.append(
+            f"| `{x['run_id']}` | {int(x['sc_n'])} | {x['think_mode']} | {fmt_budget(x['token_budget'])} | "
+            f"{cov} | {int(x['n_samples']):,} | {date} | {_cell(x.get('prompt_version'))} | "
+            f"{trunc(_cell(x.get('notes'), ''), 44)} |")
+    return "\n".join(out)
+
+
+def coverage_matrix_md():
+    r = RUNS.copy()
+    r["full"] = r["n_items"] == 943
+    items_at = S.groupby("sc_n")["item_id"].nunique().to_dict()
+    rows = ["| SC depth | full-943 runs | hard-subset runs | distinct items w/ ≥1 sample |",
+            "|---|---|---|---:|"]
+    for sc in [1, 8, 16]:
+        full = r[(r.sc_n == sc) & r.full]["run_id"].tolist()
+        sub = r[(r.sc_n == sc) & ~r.full]
+        full_s = ", ".join(f"`{x}`" for x in full) if full else "—"
+        if len(sub):
+            lo, hi = int(sub.n_items.min()), int(sub.n_items.max())
+            rng = f"{lo}" if lo == hi else f"{lo}–{hi}"
+            sub_s = (f"`{sub.iloc[0]['run_id']}` ({int(sub.iloc[0]['n_items'])} items)"
+                     if len(sub) == 1 else f"{len(sub)} runs ({rng} items each)")
+        else:
+            sub_s = "—"
+        rows.append(f"| **SC@{sc}** | {full_s} | {sub_s} | {items_at.get(sc, 0)} |")
+    return "\n".join(rows)
+
+
+def mode_depth_matrix_md():
+    ct = pd.crosstab(S["think_mode"], S["sc_n"], margins=True, margins_name="all")
+    cols = [c for c in ct.columns]
+    head = "| samples | " + " | ".join(f"SC@{c}" if c != "all" else "**all**" for c in cols) + " |"
+    sep = "|---|" + "|".join(["--:"] * len(cols)) + "|"
+    rows = [head, sep]
+    for idx in ct.index:
+        label = f"**{idx}**" if idx == "all" else idx
+        rows.append("| " + label + " | " + " | ".join(f"{int(ct.loc[idx, c]):,}" for c in cols) + " |")
+    return "\n".join(rows)
+
 # ----------------------------------------------------------------------------
 # assemble PREVIEW.md
 # ----------------------------------------------------------------------------
@@ -271,6 +332,18 @@ A(f"**{len(S):,} samples** across **{S['run_id'].nunique()} runs**, one row per 
   f"(base `Qwen3-4B-Thinking-2507`, private set). All **943** items covered. "
   "The `response` text is stored **raw** — no extracted/voted answer (that's the research point).\n")
 
+A("### Runs at a glance — the inventory\n")
+A("One row per run; this is the metadata bird's-eye. `coverage` = how many of the 943 items the "
+  "run targeted (full-943 vs a hard-item subset); `SC` = self-consistency depth.\n")
+A(runs_inventory_md() + "\n")
+A("**Coverage × SC depth** — *where* each depth exists. The structural fact for the research: "
+  "full-943 coverage exists only at SC@1 and SC@8; **every SC@16 run is a hard-item subset**, so "
+  "per-item depth is uneven (reconstruct it from `run_id` + `sc_n`).\n")
+A(coverage_matrix_md() + "\n")
+A("**Samples by mode × SC depth** — the 32,646 samples cross-tabulated.\n")
+A(mode_depth_matrix_md() + "\n")
+A("![samples per run](preview/samples_per_run.png)\n")
+
 A("### Data fields\n")
 A("| field | type | example | notes |")
 A("|---|---|---|---|")
@@ -295,7 +368,6 @@ for ex in (ex_think, ex_noth):
 A("### Distributions\n")
 A("![sample categorical distributions](preview/samples_categorical.png)\n")
 A("![response length](preview/samples_response_length.png) ![per-item depth](preview/samples_depth.png)\n")
-A("![samples per run](preview/samples_per_run.png)\n")
 A(dist_table("sc_n", vc_list("sc_n", order=[1, 8, 16]), len(S)) + "\n")
 A(dist_table("think_mode", vc_list("think_mode"), len(S)) + "\n")
 A(dist_table("finish_reason", vc_list("finish_reason"), len(S)) + "\n")

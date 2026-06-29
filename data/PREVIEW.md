@@ -72,6 +72,45 @@
 
 **32,646 samples** across **14 runs**, one row per raw model sample (base `Qwen3-4B-Thinking-2507`, private set). All **943** items covered. The `response` text is stored **raw** — no extracted/voted answer (that's the research point).
 
+### Runs at a glance — the inventory
+
+One row per run; this is the metadata bird's-eye. `coverage` = how many of the 943 items the run targeted (full-943 vs a hard-item subset); `SC` = self-consistency depth.
+
+| run_id | SC | mode | budget | coverage | samples | date | prompt | what it is |
+|---|--:|---|--:|---|--:|---|---|---|
+| `R08_single_p943` | 1 | thinking | 16k | **943** · full | 943 | — | v1 | single-sample (SC1), v1 prompt, 16k budget, … |
+| `R10_perslot_single_p943` | 1 | thinking | 16k | **943** · full | 943 | — | v3_perslot | single-sample (SC1), v3-perslot prompt, 16k, … |
+| `NT_nothinking_sc8_p943` | 8 | nothinking | 8k | **943** · full | 7,544 | 2026-05-27 | nothinking_prefill | SC8 NoThinking prefill, 8k budget, full 943 |
+| `R09_sc8_p943_t16k` | 8 | thinking | 16k | **943** · full | 7,544 | — | v1 | SC8, v1 prompt, 16k budget, full 943 |
+| `R20_sc8_p943_t32k` | 8 | thinking | 32k | **943** · full | 7,544 | — | v1 | SC8, v1 prompt, 32k budget, full 943 (best i … |
+| `NT_probe98_sc8_f98` | 8 | nothinking | 8k | 98 · subset | 784 | — | nothinking_prefill | SC8 NoThinking probe, 98 items |
+| `hybrid_sc16_weak128` | 16 | thinking | — | 127 · subset | 2,032 | 2026-05-26 | — | SC16 thinking, 127 weak items |
+| `NT_tr_nothinking_sc16_f61` | 16 | nothinking | 8k | 61 · subset | 976 | 2026-05-26 | nothinking_prefill | SC16 NoThinking targeted-rescue, 61 hard ite … |
+| `TH_tr_thinking_sc16_f61` | 16 | thinking | — | 61 · subset | 976 | 2026-05-26 | v1 | SC16 thinking targeted-rescue, 61 hard items … |
+| `thinking_probe_tnr0_sc16_f59` | 16 | thinking | — | 59 · subset | 944 | 2026-05-31 | — | SC16 thinking probe, 59 items, GPU shard tnr … |
+| `thinking_probe_tnr1_sc16_f59` | 16 | thinking | — | 59 · subset | 944 | 2026-05-31 | — | SC16 thinking probe, 59 items, GPU shard tnr … |
+| `hybrid_sc16_base_f43` | 16 | thinking | — | 43 · subset | 688 | — | — | SC16 thinking, 43 items |
+| `hybrid_sc16_hardest30` | 16 | thinking | — | 30 · subset | 480 | 2026-05-26 | — | SC16 thinking, 30 hardest items |
+| `kitchensink_sc16_f19` | 16 | thinking | — | 19 · subset | 304 | 2026-05-31 | — | SC16 kitchen-sink, 19 items (late run) |
+
+**Coverage × SC depth** — *where* each depth exists. The structural fact for the research: full-943 coverage exists only at SC@1 and SC@8; **every SC@16 run is a hard-item subset**, so per-item depth is uneven (reconstruct it from `run_id` + `sc_n`).
+
+| SC depth | full-943 runs | hard-subset runs | distinct items w/ ≥1 sample |
+|---|---|---|---:|
+| **SC@1** | `R08_single_p943`, `R10_perslot_single_p943` | — | 943 |
+| **SC@8** | `NT_nothinking_sc8_p943`, `R09_sc8_p943_t16k`, `R20_sc8_p943_t32k` | `NT_probe98_sc8_f98` (98 items) | 943 |
+| **SC@16** | — | 8 runs (19–127 items each) | 255 |
+
+**Samples by mode × SC depth** — the 32,646 samples cross-tabulated.
+
+| samples | SC@1 | SC@8 | SC@16 | **all** |
+|---|--:|--:|--:|--:|
+| nothinking | 0 | 8,328 | 976 | 9,304 |
+| thinking | 1,886 | 15,088 | 6,368 | 23,342 |
+| **all** | 1,886 | 23,416 | 7,344 | 32,646 |
+
+![samples per run](preview/samples_per_run.png)
+
 ### Data fields
 
 | field | type | example | notes |
@@ -157,8 +196,6 @@ on context; here it's given to one decimal place.)
 ![sample categorical distributions](preview/samples_categorical.png)
 
 ![response length](preview/samples_response_length.png) ![per-item depth](preview/samples_depth.png)
-
-![samples per run](preview/samples_per_run.png)
 
 | sc_n | count | % | |
 |---|---:|---:|:--|
