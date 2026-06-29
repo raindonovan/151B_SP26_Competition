@@ -126,6 +126,9 @@ One row per run; this is the metadata bird's-eye. `coverage` = how many of the 9
 | `gen_tokens` | int | `4173` | generated token count (null where unrecorded) |
 | `finish_reason` | str | `stop` | `stop` / `length` (truncated) / null |
 | `temperature` | float | `0.6` | sampling temperature |
+| `has_box` | bool | `true` | grader can extract a `\boxed{}` answer (derived) |
+| `box_status` | str | `boxed` | `boxed` / `cut` (no box, ran out of tokens) / `no_emit` (no box, finished) |
+| `box_status_inferred` | bool | `false` | `cut`/`no_emit` inferred (run didn't log `finish_reason`) |
 
 ### Data instances — two real samples (head + tail)
 
@@ -215,6 +218,33 @@ on context; here it's given to one decimal place.)
 | length | 1,139 | 3.5% | `█▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁` |
 
 **response length** (chars): min 246 · median 9,377 · max 140,858.  **per-item depth:** min 26 · median 26 · max 114 samples/item.
+
+### Answer status — boxed vs cut vs no-emit
+
+**30,625** of 32,646 samples carry a grader-extractable `\boxed{}` answer; **2,021** do not. A no-box sample casts a *null vote* in self-consistency — and the split below says how recoverable that is. `finish_reason` describes the *generation* (a truncated sample can still be boxed: 48 are), so `box_status` is a separate, answer-level column.
+
+| box_status | count | % | |
+|---|---:|---:|:--|
+| boxed | 30,625 | 93.8% | `██████████████████████` |
+| cut | 1,683 | 5.2% | `█▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁` |
+| no_emit | 338 | 1.0% | `▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁` |
+
+So of the 2,021 no-box samples, **1,683 (83%) were `cut`** — reasoning ran out of tokens before boxing (recoverable with a bigger budget) — and **338 (17%) `no_emit`** — finished but never boxed. 726 of the labels are inferred (`box_status_inferred`; runs that didn't log `finish_reason`).
+
+**No-box by run** (where the misses concentrate — the 8k-budget NoThinking run dominates):
+
+| run_id | samples | no-box | cut | no_emit | no-box % |
+|---|--:|--:|--:|--:|--:|
+| `R09_sc8_p943_t16k` | 7,544 | 881 | 881 | 0 | 11.7% |
+| `NT_nothinking_sc8_p943` | 7,544 | 351 | 237 | 114 | 4.7% |
+| `R20_sc8_p943_t32k` | 7,544 | 221 | 210 | 11 | 2.9% |
+| `NT_probe98_sc8_f98` | 784 | 193 | 0 | 193 | 24.6% |
+| `hybrid_sc16_base_f43` | 688 | 146 | 143 | 3 | 21.2% |
+| `R08_single_p943` | 943 | 114 | 109 | 5 | 12.1% |
+| `R10_perslot_single_p943` | 943 | 109 | 99 | 10 | 11.6% |
+| `NT_tr_nothinking_sc16_f61` | 976 | 4 | 4 | 0 | 0.4% |
+| `hybrid_sc16_hardest30` | 480 | 1 | 0 | 1 | 0.2% |
+| `kitchensink_sc16_f19` | 304 | 1 | 0 | 1 | 0.3% |
 
 ---
 
