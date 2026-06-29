@@ -5,10 +5,13 @@ Import the grader from here:  `from grading.grader import Grader`
 WHAT IT IS
 ----------
 `Grader` is the value-equality engine (numeric equality at ~1e-8 with sympy/LaTeX
-parsing). It is our best mirror of the UPDATED Kaggle grader, which switched to
-value-based comparison (4.000 == 4, 0.6 == 3/5) around 2026-05-27.
-Status: believed-accurate, pending final Kaggle confirmation (see
-submission/30_05/SCORES.md, the #1-vs-#2 rejudge comparison).
+parsing). It mirrors the UPDATED Kaggle grader, which switched to value-based
+comparison (4.000 == 4, 0.6 == 3/5) around 2026-05-27.
+Status: KAGGLE-CONFIRMED EXACT. Boxing the official solution sheet back into a
+submission scores 943/943 under this engine, and that CSV scored 1.0 on Kaggle —
+so on the 943-item private set this grader's verdicts == Kaggle's, item for item.
+See submission/29_06/perfect_score_check/ (REGISTRY PC1) and the portable copy in
+summer_research/grading/ (verify_grader.py reproduces the 943/943).
 
 TRUST NOTE (read this — the historical docs are inverted)
 ---------------------------------------------------------

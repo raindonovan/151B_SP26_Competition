@@ -1,6 +1,13 @@
 # 29_06 — perfect-score sanity check
 
-**Hypothesis.** Box the *official* Kaggle solutions back into a submission CSV and it
+> ✅ **RESULT: scored 1.0 on Kaggle (CONFIRMED).** The official solutions, boxed back
+> into a submission, score a perfect 1.0 — proving our value-equality grader mirror
+> (`grading.grader.Grader`) and our response format agree with Kaggle's grader
+> **exactly** on all 943 private items. The "believed-accurate, pending confirmation"
+> caveat on the grader is now resolved. The grader ships in `summer_research/grading/`
+> (`verify_grader.py` reproduces the local 943/943).
+
+**Hypothesis (confirmed).** Box the *official* Kaggle solutions back into a submission CSV and it
 should score **1.0** on Kaggle. This is a **validation harness**, not a leaderboard
 play: it tests whether our grader mirror (`grading.grader.Grader`) and our response
 format actually agree with Kaggle's grader. A 1.0 confirms both; anything less localizes

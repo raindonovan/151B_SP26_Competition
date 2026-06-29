@@ -53,3 +53,27 @@ This is why the inference-run scan (tomorrow's task) must check, per tier-1 item
 **The fix that scores**: emit the percent as a plain final-answer sentence — `The answer is 158%.` — which the grader's *free-text* extractor (`extract_ans`) reads as `158%` and grades **True** for all 4. (Note: `Answer: 158%.` and a bare `158%` do **not** score — the working form is the `The answer is <v>.` sentence; and a `\boxed{}` anywhere in the string wins extraction, so you cannot box-then-rescue.)
 
 **Implication**: percent answers are a normalization blind spot of the canonical `\boxed{}` convention. Any submission carrying percent golds (or any item whose correct answer is naturally a percent) must route those items to the free-text sentence form, not a box. See `submission/29_06/perfect_score_check/` (943/943 local, Strategy A hybrid).
+
+## F9 — The value-equality grader is the Kaggle grader, EXACTLY (KAGGLE-CONFIRMED)
+
+**Claim**: `grading.grader.Grader` (the sympy value-equality engine) reproduces Kaggle's
+grader verdict-for-verdict on the 943-item private test set.
+
+**Proof** (29_06 perfect-score check, REGISTRY PC1):
+- Box the *official* solution sheet back into a submission (Strategy A: canonical
+  `\boxed{<v>}`, percent items → `The answer is X%.` per F8).
+- Grade all 943 with the analyze_run grader mirror (`auto_judge` over comma-split gold
+  slots + options) → **943/943** score locally.
+- Submit that exact CSV to Kaggle → **1.0**.
+- Therefore, on every one of the 943 private items, this grader's correct/incorrect
+  verdict equals Kaggle's. The long-standing "believed-accurate, pending confirmation"
+  caveat (grading/grader.py trust note) is now **resolved: confirmed exact.**
+
+**Caveat on scope**: this confirms agreement on the *value-equality* judgments for these
+943 golds. It does not re-open the retired strict (Hendrycks) mirror — that remains the
+deprecated, pre-2026-05-27 grader and is not predictive of current Kaggle.
+
+**Implication**: the grader can be trusted as ground-truth-grade for offline work (no
+Kaggle round-trip needed to know if an answer scores). It now ships portably in
+`summer_research/grading/` for the sample-level re-grade research; `verify_grader.py`
+reproduces the 943/943 there.
