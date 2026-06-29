@@ -4,6 +4,9 @@ data/*
 !data/slices/
 !data/teacher_answers_compact.json
 !data/HANDOFF_v4.1.md
+!data/PREVIEW.md
+!data/make_preview.py
+!data/preview/
 __pycache__
 LICENSE.ipynb_checkpoints/
 core

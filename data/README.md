@@ -7,6 +7,9 @@ audited, that together support the summer-research question:
 > *When self-consistency votes, how often was a correct answer sitting in one of the samples
 > but got outvoted?* (re-extract → re-vote → grade vs. truth.)
 
+> 👁️ **Want to just *look* at the data?** → [`PREVIEW.md`](PREVIEW.md) — rendered sample rows,
+> field dictionaries, and distribution charts for both datasets.
+
 ## The two datasets at a glance
 
 | | `data/raw/` | `data/samples/` |
