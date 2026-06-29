@@ -26,7 +26,7 @@ Apply by default. Evidence from reading Hendrycks source code and instructor con
 | 2.1 | dfrac→frac, tfrac→frac | Hendrycks `_strip_string` line: `replace("tfrac","frac")` | YES (redundant but safe) |
 | 2.2 | Strip \left, \right | Hendrycks source | YES (redundant but safe) |
 | 2.3 | Strip ^\circ, ^{\circ} | Hendrycks source | YES (redundant but safe) |
-| 2.4 | Strip \%, \$ | Hendrycks source | YES (redundant but safe) |
+| 2.4 | Strip \%, \$ | Hendrycks source | YES, but ⚠️ see F8 — a *bare-percent gold* (`158%`) is NOT a `\%` and the grader keeps it; you cannot box a percent answer (`\boxed{X%}`→`X`). Route bare-percent answers to the free-text `The answer is X%.` form. |
 | 2.5 | Strip ALL whitespace | Hendrycks source: `replace(" ","")` | YES (redundant but safe) |
 | 2.6 | Strip \text{ UNIT} suffix (with leading space before unit) | Hendrycks `_remove_right_units` | YES (redundant but safe) |
 | 2.7 | Strip x= prefix when LHS ≤ 2 chars | Hendrycks source | YES (redundant but safe) |

@@ -39,3 +39,17 @@ Ceiling from fixing WRONG answers >> fixing FORMAT or rescuing no-box.
 3. **Format layer sits on BOTH**: even bucket-A items can be graded wrong if emitted in wrong format (decimal vs fraction, etc.).
 
 This is why the inference-run scan (tomorrow's task) must check, per tier-1 item: (a) did any run get the math right? (b) is our submitted format correct for it?
+
+## F8 — `\boxed{X%}` does NOT score — `%` is a LaTeX comment char (EMPIRICALLY CONFIRMED)
+
+**Claim**: A percent answer placed inside `\boxed{...}` can never be graded correct, even though the gold *is* the percent.
+
+**Proof** (grader-mirror forensics, 29_06 perfect-score check on the official solution sheet):
+- 4 private items have a bare-percent gold: id 96 `158%`, id 169 `400%`, id 237 `50%`, id 563 `20%`.
+- The grader **keeps** `%` in gold: `norm_math_str('158%')` → `'158%'`; and `is_equal('158%','158%')` → **True**.
+- But boxed extraction strips it: `extract_boxed_answer('\boxed{158%}')` → `'158'` (the `%` starts a LaTeX comment, truncating the box content). And `\%` is normalized away: `norm_math_str('158\%')` → `'158'`. So **every** boxed form (`\boxed{158%}`, `\boxed{158\%}`, `\boxed{158 \%}`, `\boxed{\frac{158}{100}}`) grades **False** vs gold `158%`.
+- There is no boxed value that extracts to `158%`, so no `\boxed{}` answer can match a bare-percent gold.
+
+**The fix that scores**: emit the percent as a plain final-answer sentence — `The answer is 158%.` — which the grader's *free-text* extractor (`extract_ans`) reads as `158%` and grades **True** for all 4. (Note: `Answer: 158%.` and a bare `158%` do **not** score — the working form is the `The answer is <v>.` sentence; and a `\boxed{}` anywhere in the string wins extraction, so you cannot box-then-rescue.)
+
+**Implication**: percent answers are a normalization blind spot of the canonical `\boxed{}` convention. Any submission carrying percent golds (or any item whose correct answer is naturally a percent) must route those items to the free-text sentence form, not a box. See `submission/29_06/perfect_score_check/` (943/943 local, Strategy A hybrid).
