@@ -3,7 +3,7 @@
 
 ## ARTIFACTS (things we WRITE)
 - **A1 — Research paper.** Course requirement. Topic OPEN (rare-trace pending diligence). Treated in isolation.
-- **A2 — Systems / competition writeup.** The pragmatic "how I actually approached the competition" doc — the honest equivalent of a "how I won" post. Blog first, arXiv optional.
+- **A2 — Systems / competition writeup.** The pragmatic "how I actually approached the competition" doc. Blog first, arXiv optional.
 - **A3 — "What I learned executing this competition."** The lessons list (seed below). Standalone OR a section of A2.
 - **A4 — Agentic workflow doc.** What the orchestration was, what broke ("butcher shop" friction — agents couldn't read/write paths, coordination overhead), what worked, how to do it better. Doubles as the design spec for P1.
 

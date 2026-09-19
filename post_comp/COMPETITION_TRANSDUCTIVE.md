@@ -1,6 +1,6 @@
 # Transductive / inference-forward competition targets (June 2026)
 
-> **Logged:** 2026-06-04 · Research for Rain (151B winner: hidden holdout + SC/thinking + oracle/format loop).  
+> **Logged:** 2026-06-04 · Research for Rain (151B stack: hidden holdout + SC/thinking + oracle/format loop).  
 > **Ratings (1–10):** H = hidden test + submit loop; I = inference-at-scale fit; O = legal test-time adaptation / ensemble exploit; W = field size / win probability for Rain.
 
 ## Best 3 to enter now (June 4, 2026)

@@ -1,7 +1,7 @@
 # Competition targets — student strategy
 
 > **Logged:** 2026-06-03 · **[Rain]**  
-> **Context:** Post-151B win (`30_05_slot4_aggressive_v2`, 0.745/0.684). Ranked next competitions for transfer of inference, verification, and agent stack.
+> **Context:** Post-151B (best submission `30_05_slot4_aggressive_v2`, 0.745/0.684). Ranked next competitions for transfer of inference, verification, and agent stack.
 
 ## One-line strategy
 
@@ -37,7 +37,7 @@ These are the best near-term targets: small or student-bounded fields, deadlines
 
 ### AIMO Progress Prize 4 (Kaggle)
 
-Same game as 151B: olympiad math, integer/LaTeX answers. Rain is at winning-student-team level on the course variant (~0.745 control, 0.756 xhigh ablation on the 03_06 campaign). **PP4 is the right long-term target**, not a casual datathon — expect labs and GMs; plan for a multi-week sprint.
+Same game as 151B: olympiad math, integer/LaTeX answers. Course-variant baseline: ~0.745 control, 0.756 xhigh ablation on the 03_06 campaign. **PP4 is the right long-term target**, not a casual datathon — expect labs and GMs; plan for a multi-week sprint.
 
 - **Monitor:** [aimoprize.com](https://aimoprize.com/) (AIMO3 closed April 2026; PP4 timing TBD)
 

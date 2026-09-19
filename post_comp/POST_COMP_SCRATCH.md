@@ -8,9 +8,7 @@ This is the shared scratchpad for all post-competition work.
 
 Use this file for rough notes, partial thoughts, todo lists, debrief fragments, portfolio ideas, research directions, job-search angles, meeting notes, and anything else that belongs to the post-competition phase but does not yet have a polished home.
 
-**Narrative lock:** When promoting material to portfolio, case study, or public docs, frame **we won** (winning path: `30_05_slot4_aggressive_v2`, 0.745/0.684 per `submission/REGISTRY.md`). Do not carry late-submission or Kaggle pick-selection narratives into polished post-comp output.
-
-Do not overthink placement. If it is about what happens after the competition, put it here first. Later, promote useful material into more structured documents (win-forward).
+Do not overthink placement. If it is about what happens after the competition, put it here first. Later, promote useful material into more structured documents.
 
 ## Attribution Rule
 
@@ -60,9 +58,9 @@ This file is intentionally informal. It is allowed to be messy.
 ---
 ## [Cursor] 2026-06-03 — Post-Competition Phase Kickoff
 
-Rain wants the post-competition phase to turn the **win** into durable value:
+Rain wants the post-competition phase to turn the competition into durable value:
 
-- document the winning inference/postproc path and operating system
+- document the production inference/postproc path and operating system
 - explain agents, GPU boxes, red-team loops, submission discipline, and evidence cycles
 - plan tooling upgrades for the next competition or product
 - convert the experience into portfolio, job-search, research, and next-stage roadmap (see debrief Goal 7)
@@ -90,4 +88,4 @@ See **`post_comp/CAREER_BRIDGE.md`**.
 
 **Quote (independent confirmation):** "The field independently confirmed truncation + thinking-length as the core failure axes, and that inference-time scaling beats SFT on this model — direct support for your token-budget findings."
 
-**Repo tie-in (win-forward safe):** Canonical win remains `30_05_slot4_aggressive_v2` (0.745/0.684); this validates the *mechanism* narrative (inference OS, token budgets, SC) filed in `inference/FINDINGS.md` and R20 audits (`inference/SCRATCH.md` L338), not a revised pick story. SFT ceiling vs inference: `strategy/INFERENCE_TECHNIQUES.md` L9–L13; debrief inference-first: `post_comp/POST_COMP_DEBRIEF_MEETING.md` L57–L63. Paper draft artifact: `gradescope/milestone_report.tex` (SFT pathology + inference-time levers). INFORMS lane deadline Jun 30 per entries above.
+**Repo tie-in:** Best submission remains `30_05_slot4_aggressive_v2` (0.745/0.684); this validates the *mechanism* narrative (inference OS, token budgets, SC) filed in `inference/FINDINGS.md` and R20 audits (`inference/SCRATCH.md` L338), not a revised pick story. SFT ceiling vs inference: `strategy/INFERENCE_TECHNIQUES.md` L9–L13; debrief inference-first: `post_comp/POST_COMP_DEBRIEF_MEETING.md` L57–L63. Paper draft artifact: `gradescope/milestone_report.tex` (SFT pathology + inference-time levers). INFORMS lane deadline Jun 30 per entries above.

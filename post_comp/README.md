@@ -1,23 +1,17 @@
 # post_comp/ — Post-competition phase
 
-Work **after** the Kaggle deadline: document the **win**, portfolio, effort evidence, research angles, and next-stage momentum. Not inference execution.
-
-## Narrative lock
-
-**We won.** Canonical result: `30_05_slot4_aggressive_v2` at **0.745 public / 0.684 private** (`submission/REGISTRY.md`).
-
-Post-comp docs must **not** mention late submissions, Kaggle final-pick UI mistakes, or any framing that contradicts the win. Internal lessons stay internal; debrief and public artifacts stay win-forward.
+Work **after** the Kaggle deadline: document the pipeline and results, portfolio, effort evidence, research angles, and next-stage momentum. Not inference execution.
 
 ## Files in this folder
 
 | File | Role |
 |------|------|
-| `README.md` | Ops, narrative lock, debrief procedure |
+| `README.md` | Ops, debrief procedure |
 | `setup_render_env.sh` | WSL shared-lib bootstrap (no apt install) |
-| `POST_COMP_SCRATCH.md` | Shared scratchpad (win-forward when promoted) |
+| `POST_COMP_SCRATCH.md` | Shared scratchpad |
 | `POST_COMP_STARTUP_SCRATCH.md` | Startup scratch (Rain-driven; see `POST_COMP_STARTUP_README.md`) |
 | `POST_COMP_STARTUP_README.md` | How we use startup scratch vs final doc later |
-| `POST_COMP_DEBRIEF_MEETING.md` | Debrief substance: win narrative, tooling, next stage |
+| `POST_COMP_DEBRIEF_MEETING.md` | Debrief substance: results, tooling, next stage |
 | `COMPETITION_TARGETS.md` | Ranked student-comp strategy (Rain, 2026-06-03) |
 | `COMPETITION_TRANSDUCTIVE.md` | Transductive / inference-forward competition targets (Rain, 2026-06) |
 | `CAREER_BRIDGE.md` | Career/bridge opportunities, plans, UCSD resources (Rain, 2026-06-04) |
@@ -32,18 +26,18 @@ Full rules: **`POST_COMP_SCRATCH.md`**.
 1. Append under **`Scratch Entries`** — never rewrite old entries.
 2. Tag: `[Rain]`, `[Cursor]`, `[Claude]`, `[Other: name]`.
 3. Format: `---` / `## [Tag] YYYY-MM-DD — title` / bullets.
-4. Promote to portfolio/case study later; apply **narrative lock** on anything public-facing.
+4. Promote to portfolio/case study later.
 5. **GOLD-RULE:** confirmed facts → canonical home same session.
 
 ## How to run the debrief meeting
 
-**Substance:** `POST_COMP_DEBRIEF_MEETING.md` (read narrative lock first).
+**Substance:** `POST_COMP_DEBRIEF_MEETING.md`.
 
 | Block | Time | Do |
 |-------|------|-----|
-| Setup | 5 min | Debrief doc + `submission/REGISTRY.md` + winning CSV path (`30_05_slot4_aggressive_v2`). |
-| Win path | 10 min | What moved the needle: inference, SC, postproc, submission analysis. |
-| Pipeline audit | 15 min | Document winning pipeline end-to-end (manifests, gates, artifacts). |
+| Setup | 5 min | Debrief doc + `submission/REGISTRY.md` + best-scoring CSV path (`30_05_slot4_aggressive_v2`). |
+| Score path | 10 min | What moved the needle: inference, SC, postproc, submission analysis. |
+| Pipeline audit | 15 min | Document the production pipeline end-to-end (manifests, gates, artifacts). |
 | Operating system | 10 min | Agents, GPUs, red-team, scratch — portfolio/research angles. |
 | Effort evidence | 10 min | Git heatmaps, score timeline, 72h sprint. |
 | Momentum | 10 min | Goal 7: next-stage roadmap (paper, portfolio, tooling, startup lane). |
@@ -61,7 +55,7 @@ Full rules: **`POST_COMP_SCRATCH.md`**.
 ## Read order (agents)
 
 1. `post_comp/README.md`
-2. `post_comp/POST_COMP_DEBRIEF_MEETING.md` (narrative lock)
+2. `post_comp/POST_COMP_DEBRIEF_MEETING.md`
 3. `post_comp/POST_COMP_SCRATCH.md` — last 5–10 entries
 4. `submission/REGISTRY.md`
 

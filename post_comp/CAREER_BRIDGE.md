@@ -1,6 +1,6 @@
 # CAREER_BRIDGE.md — Rain (UCSD CS, grad summer 2026)
 
-> **Profile:** UCSD CS undergrad graduating **summer 2026**; available **August 2026** for ~6–12+ months. Strong AI/ML (151B Kaggle win, inference/verification pipeline, paper in progress). Goals: AI/ML career path + **paid bridge** (RA, fellowship, contract, new-grad FT) while full-time search. Location: San Diego; open to remote/travel (SF, LA).
+> **Profile:** UCSD CS undergrad graduating **summer 2026**; available **August 2026** for ~6–12+ months. Strong AI/ML (151B Kaggle competition, inference/verification pipeline, paper in progress). Goals: AI/ML career path + **paid bridge** (RA, fellowship, contract, new-grad FT) while full-time search. Location: San Diego; open to remote/travel (SF, LA).
 >
 > **As of:** 2026-06-04. Still enrolled → **apply student-only roles this week** before degree status flips.
 

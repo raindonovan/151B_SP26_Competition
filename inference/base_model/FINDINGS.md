@@ -39,7 +39,7 @@
 - **16K**: truncation dominant failure mode (`inference/SCRATCH.md` L247: 119 truncated on R08; L284: tokens remain ceiling even with SC@8).
 - **32K (R20)**: trunc=17 vs R08 119 / R09 93; **72/89** items always truncated at 16K rescued at 32K (`inference/SCRATCH.md` L338). Token dividend +7 scored vs SC +33 at fixed v1 (L342–L343) — SC first, tokens second-order but material on long derivations.
 - **High thinking budget (81920/65536)**: thinking_probe runs 0 truncations on targeted slices (`inference/SCRATCH.md` L479–L498); on hard multi-slot items, long Thinking beats NoThinking twin (L37–L39 in `inference/base_model/SCRATCH.md`).
-- **NoThinking full-943**: trunc=9 vs R20 trunc=17 (`inference/SCRATCH.md` L421); Kaggle join lever 0.664 (`submission/REGISTRY.md` L9) — orthogonal to Pick A win path, not a contradiction of win-forward lock.
+- **NoThinking full-943**: trunc=9 vs R20 trunc=17 (`inference/SCRATCH.md` L421); Kaggle join lever 0.664 (`submission/REGISTRY.md` L9) — orthogonal to the Pick A path.
 
 ---
 ## [Rain] 2026-06-04 — External validation (truncation + thinking-length axes)
