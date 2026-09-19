@@ -124,3 +124,61 @@ signal") overstates what this particular measurement can carry.
 datasets that could answer it — `v5_final.csv` (45 held-out) and
 `adapter_rescue_61` (61 held-out) — are both ungraded. That is the gap worth
 closing, and neither needs a new adapter.
+
+---
+
+## 4. Slice membership — how far it can be pinned (#7)
+
+**Exact per-item membership is not determinable** from what the repo holds. The
+method the repo already uses (`submission/REGISTRY.md`: *"realized +1.8pp = ~5
+items on slice (38% slice-landing rate)"*) is differential submission — for two
+submissions differing on item set S, `Δpublic × 283 = net correctness change
+among S ∩ public`. I ran it over all 39 scored submissions that resolve to a
+943-row CSV on disk (`slice_membership.py`).
+
+Result: **0 of the 11** appear in any pair with a diff set small enough to
+constrain them (|S| ≤ 30). Only **4 of the 50** do — ids 18, 445, 700, 720.
+
+The usable pairs that do exist are about other items, e.g.:
+
+| pair | \|S\| | Δpublic | in items |
+|---|---|---|---|
+| `slot4_undercount_expand` → `mcq_prepend_fix` | 6 | −0.003 | −1 |
+| `slot4_undercount_expand` → `undercount_plus_frac` | 8 | +0.007 | +2 |
+| `slot4_minus_wolfram_med` → `slot5_minus_all_med` | 8 | 0.000 | 0 |
+
+### But one constraint does bind, and it answers the question that mattered
+
+The 11-overlay is the rare case with **both** scores on the **same** 11-cell
+change (`submission/03_06/SCORES.md:43-44`):
+
+| | base | adapter | Δ | in items |
+|---|---|---|---|---|
+| public (283, a **subset** of the 943) | 0.667 | 0.667 | 0.000 | **0.00** |
+| private (the **full** 943) | 0.583 | 0.587 | +0.004 | **+3.77** |
+
+3-decimal rounding bands: public ∈ (−0.14, +0.14) items → exactly **0**;
+private ∈ (+3.3, +4.2) items → **+4**.
+
+All 11 are scored in private, because private *is* the 943. Only those in the
+283 are also scored in public. So:
+
+> **items in public contributed net 0; items outside it contributed net +4.**
+> All ~4 net gains land **outside** the public subset.
+
+That resolves the tension left open in §1 — it is not a contradiction, it is a
+fact about where the gains fell.
+
+### Two readings, and neither is closed by arithmetic
+
+1. **None of the 6 `adapter_win` items is in the public 283.** Under a uniform
+   30% draw that is `0.7⁶ = 12%` — uncommon, not remarkable.
+2. **A win did land in public and was cancelled.** Ids 302 and 839 are
+   `both_correct` locally but change text: `H, H` → `H` and `G, G` → `G`. If
+   Kaggle grades the multi-slot form differently than `Grader.is_equal` does,
+   each is −1, which would mask up to two wins.
+
+Reading 2 is testable and matters beyond this issue: if Kaggle treats `H, H` and
+`H` differently, that affects every multi-slot item in every submission, not
+just these two. It is the more consequential hypothesis and it is cheap to probe
+with a single-item differential submission.
