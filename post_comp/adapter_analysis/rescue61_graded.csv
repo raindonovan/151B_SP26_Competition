@@ -1,0 +1,62 @@
+id,gold,base,adapter,base_ok,adapter_ok,indep,multislot,in_train
+0,"4,16","4, 16","4,16",True,True,True,True,False
+5,"541.3, 63.25, 135.325, 4.2167, 32.09","541.3, 63.25, 135.3, 4.217, 32.09","541.22, 84.3248, 135.305, 5.6217, 24.07",True,False,True,True,False
+9,"L-8x, 6F",\frac{L - 8x}{6F},\frac{L-8x}{6F},False,False,True,True,False
+12,"2c + 4p = 70, 11",11,"2c+4p=70,11",False,True,True,True,False
+25,"8/63, 6/63, 11/63, 17/63, 13/63, 8/63","8, 14, 25, 42, 55, 63","0.1270, 0.0952, 0.1746, 0.2700, 0.2063, 0.1270, 8, 14, 25, 42, 55, 63",False,False,True,True,False
+68,"-2.857, 6.986, -1.082, 3.707, -3.707, A, -12.647, 6.933","-11.16, 5.442","-4.1429, 7.1348, -1.5356, 3.143, -3.143, A, -12.6285, 4.3427",False,False,True,True,False
+72,"-0.8352, -0.9187, 0.3950, -2.3258, Quadrant IV","-0.8352, -0.9187, 0.3950, -2.3258, IV","-0.8354,-0.9257,0.3950,-2.3436,QIV",True,False,True,True,False
+77,"C,D,A","D, D, A","C,D,A",False,True,False,True,False
+82,"\text{No},1.309,1.677,\text{No}","1.309, 1.677, No","0.364, 1.677, No",False,False,False,True,False
+134,"1, 5, 12, 20, 26, 30, 31, 27.63",27.63,27.625,False,False,True,True,False
+192,"1.06, (1.88, infty), 0.1449, A",A,"0.4234, (2.17,\infty), 0.3336, A",False,False,True,True,False
+232,"40,37,3",3,"40,37,3",False,True,False,True,False
+257,"2.52, 3.00, A",A,"0.353, 5.167, A",False,False,True,True,False
+310,"4k+6,5k-11,5y+4",NO,"6+4k,5k-11",False,True,False,True,False
+318,"8,\arctan(\frac{8}{\sqrt{161}})","8.000, 0.5625","8, \arctan\!\left(\dfrac{8}{\sqrt{161}}\right)",True,True,False,True,False
+338,"y-axis,origin","y-axis, origin","y\text{-axis},\text{origin}",True,False,False,True,False
+353,"8, C, 5 and 7, D","5,7","8,C,5,7,D",False,True,True,True,False
+385,"A, A, A","A, A, A","A,A,B",True,True,True,True,False
+413,"0.89, (1.83, infty), 0.2008, A",A,"0.805, (1.895, \infty), 0.221, A",False,False,True,True,False
+435,"0.4457, 0.5368, A",A,"0.446, 0.537, A",False,False,True,True,False
+469,"s^2, 0.1575A, 0.1575s^2, C, 81, square feet, 14.175, dollars, 19.0575, dollars",19.06,"s^2,\ 0.1575A,\ 0.1575s^2,\ C,\ 81\text{ ft}^2,\ 14.18\text{ dollars},\ 19.06\text{ dollars}",False,False,True,True,False
+479,"40.36, 43.64, 40.01, 43.99","40.01, 43.99","25.56, 58.44, 22.10, 61.90",False,False,True,True,False
+487,"-21.1, -0.9636","-21.10, -0.9636","-21.1,-0.957",True,True,True,True,False
+490,"23.00,410.0","23.00, 410.0","23,\text{BTU/sq ft},410",True,False,False,True,False
+494,"7,0.062","7.000, 0.06200","7, 0.062",True,True,False,True,False
+495,"100, 100, 200, 0.255, 5.991, B",B,"100, 100, 200",False,True,True,True,False
+499,"36.9, 0.3225, 32.25, 2.149","36.9, 0.3225, 32.25, 2.149","36.9, 0.3228, 32.28\%, 2.147",True,True,True,True,False
+505,"1,3,6,-5,-4,2",2,2,False,False,True,True,False
+519,"426.3, 5090, 98.30","426.3, 5090, 98.30","423.6, 4963, 98.62",True,False,True,True,False
+527,285.7,285.7,"8, 700, x, 25000, 285.71",True,False,False,False,False
+548,"1.20x = 144, $120.00",120.00,120.00,False,False,True,True,False
+578,"7.62, 9.00, 95.44",95.44,"1.45, 15.17, 95.44",False,False,True,True,False
+584,"7z, 6w","7.000, 6.000","7z, 6w",False,True,True,True,False
+585,"-0.2235,2.262,-2.262,No","-0.2235, 2.262, -2.262","-0.2235, 2.262, -2.262, No",True,True,False,True,False
+587,"B, C, D, E, F, J, C, A, B, B",A,"B,C,D,E,C,A,B,C,B",False,True,True,True,False
+591,"1.081, 1.683, 1.819, -0.832, 3.162, -0.322, 4.123, 1.326","3.162, -0.3218, 4.123, 1.326","\sqrt{10},\arctan(3),\sqrt{17},\arctan(4)",False,False,True,True,False
+595,"A,D,E,G,probability",product,"A,E,G,product",False,True,False,True,False
+601,(2s+1)(3s-1),(3s - 1)(2s + 1),"(3s-1),(2s+1)",True,False,True,False,False
+622,"3.854,2.567,Yes","3.854, 2.567, Yes","1.522, 2.567, No",True,False,False,True,False
+633,"B, D, 8",8.000,"B,D,8",False,True,True,True,False
+638,"0.15, (-infty, -1.75)U(1.75, infty), 0.88, D",D,B,False,False,True,True,False
+657,"172.52, 187.48, 172.87, 187.13, 0, 5.167, -10.33, 10.33","-10.33, 10.33","156.34, 203.66, 157.46, 202.54, 0, 5.17, -10.34, 10.34",False,False,True,True,False
+676,"D,A,A","D, A, A","D,A,A",True,True,True,True,False
+708,"-\frac{9}{2},\frac{9}{2},-\frac{81}{4}","-4.500, 4.500, -20.25","-4.5, 4.5, -20.25",True,True,False,True,False
+715,"5, 7, 9, 13, 8.5, 6, 7, 8, 9, 10, 11, 8.5",8.500,"5, 7, 9, 13, 8.5, 6, 7, 9, 8, 10, 11, 8.5",False,True,True,True,False
+721,"D, A, A","D, A, A","A,D,A",True,True,True,True,False
+748,"222.51, 186.49, 79.43, 66.57, 50.05, 41.95, 31.01, 25.99, 20.79, 3, 11.345, B",B,"20.76, 3, 11.34, B",False,False,True,True,False
+749,"5,5,5,5,5,is,14/9,19/14,24/19,29/24,34/29,is not,9+5n,(-1)^(n+1)(5n+9)","9 + 5n, (-1)^{n+1}(5n + 9)","5, 5, 5, is, 14/9, 19/14, 24/19, is not, 9+5n, (-1)^(n+1)(9+5n)",False,True,False,True,False
+750,"36.98\%,\ln(0.95),C,E","C, E","37.0,-0.0513,C,E",False,False,False,True,False
+753,16.56,16.56,"A, 0.25, A, 16.7",True,False,False,False,False
+787,"16446944,\ 41.56,\ 46.92","148100000, 158, 189.7","4064000, 311, 128",False,False,False,True,False
+793,"1.35, (1.49, inf), 0.0895, D",D,"1.353, (1.84, \infty), 0.0885, D",False,False,True,True,False
+818,"6b+5a,ab",\frac{5a + 6b}{ab},"5a+6b,ab",False,True,True,True,False
+858,"2.300,1.691,Yes","2.300, 1.691, Yes","6.130, 1.691, yes",True,False,False,True,False
+886,"A, C","A, C","A, C",True,True,True,True,False
+889,"5,4y","5, 4y","5, 4y",True,True,False,True,False
+890,"A,A,C,6","A, A, C, 6","B,A,C,6",True,False,True,True,False
+894,"0.008,1.783,2.013,-0.091,0.283,-0.100,0.272,10",9,"0.025, 1.152, 2.011, -0.171, 0.334, -0.178, 0.328, 10",False,False,False,True,False
+917,"189.8, 246.4, 43",43,"163.4, 221.6, 43",False,False,True,True,False
+924,"n = 55 + 0.2t, 2010",2010,"n=55+0.2t,2010",False,True,True,True,False
+929,"5.860, (-0.78, 3.18), A",A,"5.860,-17.66,20.06,A",False,True,True,True,False

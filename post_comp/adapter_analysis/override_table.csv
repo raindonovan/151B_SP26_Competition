@@ -1,0 +1,62 @@
+item_id,override_set,tier,is_mcq,in_training_set,base_answer,adapter_answer,gold_answer,gold_provenance,math_sources,math_source_tier,gold_independent,backsolve_answer,backsolve_conf,backsolve_tier,adapter_correct,base_correct,classification,trace_similarity,circular
+89,11_overlay,T4,False,True,46.57,\frac{326}{7},\frac{326}{7},HIGH,anchor|wolfram_only,T1,True,46.57,74.12,3,True,False,adapter_win,0.9963,False
+127,11_overlay,T3,False,True,10.70,10.7,5*ln(17/2),HIGH,qwen_voted,T4,True,5\ln\left(\dfrac{17}{2}\right),81.65,2,False,False,both_wrong,0.9848,False
+182,11_overlay,T4,True,True,E,E,"P(A)=0.5177,P(B)=0.4914",HIGH,anchor|web_search_only,T1,True,E,77.43,3,False,False,both_wrong,0.991,False
+302,11_overlay,T2,True,True,"H, H",H,H,HIGH,teacher_4of4,T2,True,H,99.0,1,True,True,both_correct,0.9978,False
+317,11_overlay,T4,True,True,H,D,D,HIGH,qwen_voted,T4,True,H,74.12,3,True,False,adapter_win,0.973,False
+389,11_overlay,T3,True,True,F,F,x^2+5x±5,HIGH,qwen_voted,T4,True,F,77.43,3,False,False,both_wrong,0.9835,False
+429,11_overlay,T5,False,True,7.05,A,A,MED,qwen_voted,T4,False,7.05,96.23,1,True,False,adapter_win,0.913,True
+463,11_overlay,T5,True,True,E,J,J,MED,qwen_voted,T4,False,E,93.03,1,True,False,adapter_win,0.9955,True
+762,11_overlay,T5,False,True,110x^2 + 42x,2x(55x+21),2x(55x+21),MED,anchor|wolfram_only,T1,True,110x^2 + 42x,77.43,3,True,False,adapter_win,0.9816,False
+776,11_overlay,T5,False,True,17 \frac{1}{2},A,A,MED,qwen_voted,T4,False,17 \frac{1}{2},66.72,3,True,False,adapter_win,0.9474,True
+839,11_overlay,T2,True,True,"G, G",G,G,HIGH,teacher_4of4,T2,True,G,99.0,1,True,True,both_correct,0.9934,False
+0,50_v5final,T2,,False,,,"4,16",,teacher_4of4,T2,False,16,54.66,4,,,,,False
+1,50_v5final,T2,True,True,A,A,A,HIGH,teacher_4of4,T2,True,A,99.0,1,True,True,both_correct,0.9938,False
+2,50_v5final,T1,,False,,,"-1.461, 1.645, A",,anchor|wolfram_only,T1,True,"-1.461, 1.645, A",45.33,4,,,,,False
+3,50_v5final,T2,True,True,B,B,B,HIGH,teacher_4of4,T2,True,B,99.0,1,True,True,both_correct,0.9926,False
+4,50_v5final,T1,,False,,,"-7/sqrt(149), 10/sqrt(149), -7/10",,anchor|wolfram_only,T1,True,"-0.5735, 0.8192, -0.7000",33.41,5,,,,,False
+5,50_v5final,T1,,False,,,"541.3, 63.25, 135.325, 4.2167, 32.09",,anchor|wolfram_only,T1,True,32.09,52.57,4,,,,,False
+6,50_v5final,T3,,False,,,148.02,,opus|teacher_3of4,T3,False,148.02,77.43,3,,,,,False
+9,50_v5final,T1,,False,,,"L-8x, 6F",,anchor|wolfram_only,T1,True,\dfrac{L - 8x}{6F},85.57,2,,,,,False
+18,50_v5final,T2,,False,,,H,,teacher_4of4,T2,False,INVALID,45.37,4,,,,,False
+20,50_v5final,T2,,False,,,"228, 229, 250",,teacher_4of4,T2,False,229,49.19,4,,,,,False
+21,50_v5final,T4,,False,,,"0.2915t + 56.93, 67.43",,qwen_voted,T4,False,67.43,58.75,4,,,,,False
+25,50_v5final,T2,,False,,,"\frac{8}{63},\frac{6}{63},\frac{11}{63},\frac{17}{63},\frac{13}{63},\frac{8}{63},8,14,25,42,55,63",,teacher_4of4,T2,False,"8, 14, 25, 42, 55, 63",83.39,2,,,,,False
+26,50_v5final,T4,,False,,,I,,qwen_voted,T4,False,I,77.43,3,,,,,False
+27,50_v5final,T3,,False,,,"1/3,2/3,7/6,11/6",,opus|teacher_3of4,T3,False,"\frac{7}{6}, \frac{11}{6}",43.26,4,,,,,False
+28,50_v5final,T2,,False,,,"2,70,1,768,2,140",,teacher_4of4,T2,False,"2, 140.00",25.31,5,,,,,False
+30,50_v5final,T1,,False,,,"2944, 664",,anchor|wolfram_only,T1,True,"2944, 664",67.78,3,,,,,False
+31,50_v5final,T2,False,True,"-3, 42","-3,42","-3,42",HIGH,teacher_4of4,T2,True,"-3, 42",97.68,1,True,True,both_correct,0.9403,False
+33,50_v5final,T1,,False,,,F,,anchor|web_search_only,T1,True,F,77.43,3,,,,,False
+35,50_v5final,T1,,False,,,"down, ln(p)",,anchor|wolfram_only,T1,True,"\text{down}, \ln p",62.86,3,,,,,False
+41,50_v5final,T2,,False,,,2112,,anchor|wolfram+web_search,T2,True,4048,74.09,3,,,,,False
+42,50_v5final,T2,False,True,"No, Yes, A","No, Yes, A","No,Yes,A",MED,anchor|wolfram_only,T1,True,"No, Yes, A",97.68,1,True,True,both_correct,0.9902,False
+43,50_v5final,T1,,False,,,"3/8, 14, 28",,anchor|wolfram_only,T1,True,"\dfrac{3}{8},\ 14,\ 28",59.19,4,,,,,False
+44,50_v5final,T1,,False,,,"True, True, True, False",,anchor|wolfram_only,T1,True,"True, True, True, False",69.16,3,,,,,False
+46,50_v5final,T4,,False,,,"1.645, 1.719, 1.96, -1.96, 1.719, B, A",,qwen_voted,T4,False,"1.645, 1.719, 1.960, -1.960, 1.719, B, A",72.87,3,,,,,False
+52,50_v5final,T2,False,True,"231, 385","231,385","231,385",HIGH,teacher_4of4,T2,True,"231, 385",97.68,1,True,True,both_correct,0.9806,False
+56,50_v5final,T2,False,True,"D, D, A","D,D,A","D,D,A",HIGH,anchor|wolfram_only,T1,True,"D, D, A",97.68,1,True,True,both_correct,0.9903,False
+60,50_v5final,T2,False,True,"C, A","C,A","C,A",HIGH,teacher_4of4,T2,True,"C, A",97.68,1,True,True,both_correct,0.9889,False
+61,50_v5final,T4,,False,,,"0.7600c, 0, 150, 0.6900c + 10.5, 150",,qwen_voted,T4,False,"0.7600c, 0, 150, 0.6900c + 10.50, 150",87.91,2,,,,,False
+62,50_v5final,T2,False,True,"-15, 192, 0","-15,192,0","-15,192,0",HIGH,teacher_4of4,T2,True,"-15, 192, 0",97.68,1,True,True,both_correct,0.9883,False
+63,50_v5final,T1,,False,,,"15.84, 18.96",,anchor|wolfram_only,T1,True,"15.84, 18.96",81.86,2,,,,,False
+64,50_v5final,T2,,False,,,P(t) = 850 - 350\cos\!\left(\dfrac{\pi}{6}t\right),,teacher_4of4,T2,False,850 - 350 \cos\left(\frac{\pi}{6} t\right),45.48,4,,,,,False
+67,50_v5final,T1,,False,,,"7.6(1.09)^t, 13.9, 5.4",,anchor|wolfram_only,T1,True,"7.6(1.09)^t, 13.89, 5.384",22.05,5,,,,,False
+68,50_v5final,T4,,False,,,"-2.857, 6.986, -1.082, 3.707, -3.707, A, -12.647, 6.933",,qwen_voted,T4,False,5.442,40.62,4,,,,,False
+71,50_v5final,T2,,False,,,"29/25,18",,teacher_4of4,T2,False,"29/25,18",59.19,4,,,,,False
+444,50_v5final,T2,,False,,,"113,35,112,61,148,43",,teacher_4of4,T2,False,43,47.07,4,,,,,False
+445,50_v5final,T4,,False,,,D,,qwen_voted,T4,False,G,46.95,4,,,,,False
+446,50_v5final,T4,,False,,,"1.872, 0.972",,qwen_voted,T4,False,0.9720,62.79,3,,,,,False
+449,50_v5final,T4,,False,,,"3.585, 0.000346, B",,qwen_voted,T4,False,"3.5850, 0.0003460, B",30.36,5,,,,,False
+451,50_v5final,T1,,False,,,"0.1290,0.1935,0.2097,14,0.1774,0.06452",,anchor|wolfram_only,T1,True,"0.1290, 0.1935, 0.2097, 14, 0.1774, 0.06452",65.93,3,,,,,False
+700,50_v5final,T2,,False,,,F,,teacher_4of4,T2,False,A,60.82,3,,,,,False
+701,50_v5final,T2,,False,,,22,,teacher_4of4,T2,False,21.94,48.08,4,,,,,False
+704,50_v5final,T1,,False,,,"3.652, 1.645, B",,anchor|wolfram_only,T1,True,"3.652, 1.645, B",35.25,5,,,,,False
+705,50_v5final,T2,,False,,,"True,False,False,True",,opus|teacher_4of4,T2,False,"1, 0, 0, 1",49.32,4,,,,,False
+707,50_v5final,T2,False,True,"5200, 2600","5200,2600","5200,2600",HIGH,teacher_4of4,T2,True,"5200, 2600",97.68,1,True,True,both_correct,0.9819,False
+708,50_v5final,T4,,False,,,"-\frac{9}{2},\frac{9}{2},-\frac{81}{4}",,qwen_voted,T4,False,-20.25,98.56,1,,,,,False
+710,50_v5final,T1,,False,,,"1.838, 4.729",,anchor|wolfram_only,T1,True,"1.838, 4.729",85.57,2,,,,,False
+712,50_v5final,T2,,False,,,"D,D,A",,teacher_4of4,T2,False,INVALID,52.86,4,,,,,False
+718,50_v5final,T3,,False,,,"65761800,\ 72704000,\ \text{median}",,opus|teacher_3of4,T3,False,median,47.07,4,,,,,False
+720,50_v5final,T2,,False,,,D,,teacher_4of4,T2,False,INVALID,45.37,4,,,,,False
+723,50_v5final,T1,,False,,,"-sqrt(3)/2, -sqrt(2)/2",,anchor|wolfram_only,T1,True,"-\dfrac{\sqrt{3}}{2}, -\dfrac{\sqrt{2}}{2}",79.79,3,,,,,False
