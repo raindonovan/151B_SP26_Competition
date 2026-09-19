@@ -6,9 +6,8 @@ on a 943-item held-out test set spanning high-school to graduate-level math, usi
 only model-intrinsic methods at inference time.
 
 **Best-scoring submission:** 0.745 public / 0.684 private
-(`submission/30_05/slot4_aggressive/30_05_slot4_aggressive_v2.csv`; see `submission/REGISTRY.md`).
-The course final report in `gradescope/finalreport/` gives the full account of results,
-including the official final score and what went wrong at pick selection.
+(`submission/30_05/slot4_aggressive/30_05_slot4_aggressive_v2.csv`). Every scored submission
+is logged in `submission/REGISTRY.md`.
 
 ## What's here
 
@@ -24,8 +23,7 @@ including the official final score and what went wrong at pick selection.
 | `grading/` | `grader.py`, the local mirror of the Kaggle grader (validated 943/943 post-competition) |
 | `submission/` | Dated submission folders, CSVs, registry of every scored submission |
 | `strategy/` | Plans, handoffs, reviews, adapter notes |
-| `research/`, `report/` | Literature notes and figures |
-| `gradescope/` | Milestone and final reports, starter notebook, reproduction entry point |
+| `research/` | Literature notes |
 | `post_comp/` | Post-competition stats, debrief, and follow-on planning |
 | `archive/` | Superseded designs, handoffs, session logs, and postmortems |
 | `private.jsonl` | The 943-item test set |
@@ -63,8 +61,6 @@ Loads the base model (no adapter), runs SC inference, post-processes, and writes
 ```bash
 python3 inference/scripts/run_inference.py
 ```
-
-The starter notebook is at `gradescope/starter_code_cse151b_comp.ipynb`.
 
 ## Companion repo
 

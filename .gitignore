@@ -77,3 +77,11 @@ tmp_final/
 splice_audit_*/
 splice_excl_*/
 adapter_picker_test_*/
+
+# --- coursework deliverables (kept locally, not published) ---
+gradescope/
+report/
+neurips_2024.sty
+references.bib
+submission/gradescope_smoke.json
+post_comp/LECTURE_19_FINDINGS.md
